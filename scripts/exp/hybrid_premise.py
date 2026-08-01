@@ -149,8 +149,6 @@ def _chunked_ppl_inner(model, tokenizer, ids, cache, chunk_size, use_cache, evic
                 R = min(pre + L, cache.evict_budget)
                 R = max(R, L)
                 mask = build_causal_mask(L, R, device)
-                if start % (chunk_size * 4) == 0:
-                    print(f"  [dbg] start={start} pre={pre} L={L} R={R}", flush=True)
 
             outputs = model(
                 input_ids=chunk,
@@ -172,16 +170,22 @@ def _chunked_ppl_inner(model, tokenizer, ids, cache, chunk_size, use_cache, evic
 
 
 def tokenize_corpus(tokenizer, corpus: str, max_len: int, num_seqs: int) -> list[torch.Tensor]:
-    """把语料按空行切成文档，取前 num_seqs 篇，各自 tokenize 并截断到 max_len。"""
-    docs = [d.strip() for d in corpus.split("\n\n") if d.strip()]
-    tensors = []
-    for doc in docs[:num_seqs]:
-        ids = tokenizer(doc, return_tensors="pt").input_ids[:, :max_len]
-        if ids.shape[1] >= 2:
-            tensors.append(ids)
-    if not tensors:
-        raise ValueError("num_seqs 篇文档全太短")
-    return tensors
+    """把整个语料拼接后切成固定 max_len 的序列（保证驱逐预算真实触发）。
+
+    Wikitext 文档常只有几十~几百 token，若按文档截断，驱逐预算（1024/1536）
+    永远不触发。拼接成 token 流再切成等长序列，每个序列都是满 2048。
+    """
+    ids = tokenizer(corpus, return_tensors="pt").input_ids[0]  # [N]
+    seqs = []
+    for start in range(0, len(ids) - 1, max_len):
+        chunk = ids[start : start + max_len]
+        if chunk.shape[0] >= 2:
+            seqs.append(chunk.unsqueeze(0))
+        if len(seqs) >= num_seqs:
+            break
+    if not seqs:
+        raise ValueError("语料太短，无法生成等长序列")
+    return seqs
 
 
 def run_bits(
