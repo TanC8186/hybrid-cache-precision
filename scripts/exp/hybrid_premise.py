@@ -82,7 +82,7 @@ def chunked_ppl(
     model.eval()
     with torch.no_grad():
         for start in range(0, seq_len - 1, chunk_size):
-            chunk = ids[:, start : start + chunk_size]
+            chunk = ids[:, start : start + chunk_size].to(device)
             L = chunk.shape[1]
             pos_ids = torch.arange(start, start + L, device=device).unsqueeze(0)
             outputs = model(

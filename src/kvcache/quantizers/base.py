@@ -45,10 +45,15 @@ class KVQuantizer:
         granularity: str = "per_token",
         symmetric: bool | None = None,
     ) -> None:
-        assert bits in (2, 4, 8), f"bits 只支持 2/4/8，得到 {bits}"
+        assert bits in (2, 4, 8, 16), f"bits 只支持 2/4/8/16，得到 {bits}"
         assert granularity in GRANULARITIES, f"granularity 必须 ∈ {GRANULARITIES}"
         self.bits = bits
         self.granularity = granularity
+        if bits == 16:
+            # FP16 直通：不做量化，字节按 fp16 计（对照基线）
+            self.symmetric = True
+            self.qmin, self.qmax = -32768, 32767
+            return
         # 2-bit 对称只有 4 个电平(-2,-1,0,1)且正侧只有 1 级，默认非对称
         self.symmetric = (bits != 2) if symmetric is None else symmetric
         self.qmin = -2 ** (bits - 1) if self.symmetric else 0
@@ -83,6 +88,11 @@ class KVQuantizer:
     def quantize(self, x: torch.Tensor) -> QuantizedKV:
         """量化 K/V。x: [..., dim]."""
         numel = x.numel()
+        if self.bits == 16:
+            # FP16 直通（对照基线）
+            return QuantizedKV(
+                x.to(torch.float16), torch.ones(1, device=x.device), None, 16, self.granularity, numel
+            )
         if self.symmetric:
             scale = self._amax(x) / self.qmax
             scale = torch.where(scale > 0, scale, torch.ones_like(scale))

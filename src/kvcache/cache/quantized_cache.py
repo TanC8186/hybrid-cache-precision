@@ -15,18 +15,19 @@ from __future__ import annotations
 
 import torch
 
-from transformers.cache_utils import (
-    DYNAMIC_LAYER_TYPE_MAPPING,
-    HybridCache,
-    get_layer_types_and_kwargs,
-)
+from transformers.cache_utils import DynamicCache
 
 from ..eviction import AttentionScoreAccumulator, keep_mask
 from ..quantizers import KVQuantizer
 
 
-class QuantizedEvictingHybridCache(HybridCache):
-    """只量化/驱逐 full_attention 层的 KV，DeltaNet 层状态不动。"""
+class QuantizedEvictingHybridCache(DynamicCache):
+    """只量化/驱逐 full_attention 层的 KV，DeltaNet 层状态不动。
+
+    继承 DynamicCache（transformers 5.x 中它是 hybrid 能力的基础：逐层 cache，
+    DeltaNet 层走 conv/recurrent state，full_attention 层走 KV）。覆写 update()
+    仅干预 6 层 GQA 的 KV。
+    """
 
     def __init__(
         self,
@@ -38,19 +39,9 @@ class QuantizedEvictingHybridCache(HybridCache):
         evict_window: int = 64,
         quantize_every: bool = True,       # 每次 update 都重量化完整 KV（保真测量）
         config=None,
-        offloading: bool = False,
-        offload_only_non_sliding: bool = False,
+        **kwargs,
     ) -> None:
-        if config is not None:
-            # 从 config 构建逐层 cache（DeltaNet 用 recurrent layer，full_attention 用 KV layer）
-            decoder_config = config.get_text_config(decoder=True)
-            layer_types, layer_kwargs = get_layer_types_and_kwargs(decoder_config)
-            layers = [DYNAMIC_LAYER_TYPE_MAPPING[lt](**layer_kwargs) for lt in layer_types]
-            super().__init__(layers=layers, offloading=offloading,
-                             offload_only_non_sliding=offload_only_non_sliding)
-        else:
-            super().__init__(layer_class_to_replicate=None, offloading=offloading,
-                             offload_only_non_sliding=offload_only_non_sliding)
+        super().__init__(config=config, **kwargs)
         self.attention_layer_indices = set(attention_layer_indices)
         self.quantizer = KVQuantizer(bits=bits, granularity=granularity)
         self.evict_budget = evict_budget
