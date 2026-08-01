@@ -59,6 +59,40 @@ def make_cache(bits: int, evict_budget: int | None, attn_indices: list[int], mod
     )
 
 
+def build_causal_mask(L: int, R: int, device) -> torch.Tensor:
+    """构建 [1,1,L,R] 因果 mask。
+
+    前 R-L 列（历史 token，可含被驱逐后的子集）全部可 attend；
+    后 L 列（当前 chunk）严格因果（上三角 -inf）。
+    驱逐会缩小缓存到 R < 理论长度，因此必须手动构建以匹配实际返回的 KV。
+    """
+    mask = torch.zeros((1, 1, L, R), device=device)
+    if L > 1:
+        block = torch.triu(torch.full((L, L), float("-inf"), device=device), diagonal=1)
+        mask[0, 0, :, R - L :] = block
+    return mask
+
+
+def patch_attention_recording(model, cache, attn_indices: list[int]) -> None:
+    """包装 6 层注意力的 forward，把注意力权重喂给 cache 的驱逐打分。
+
+    仅在驱逐开启时调用（纯量化不需要分数）。
+    """
+    layers = model.model.layers
+
+    def make_wrapper(layer_idx: int, orig):
+        def wrapped(hidden_states, **kwargs):
+            out, weights = orig(hidden_states, **kwargs)
+            if weights is not None:
+                cache.record_scores(layer_idx, weights)
+            return out, weights
+        return wrapped
+
+    for i in attn_indices:
+        attn = layers[i].self_attn
+        attn.forward = make_wrapper(i, attn.forward)  # type: ignore[method-assign]
+
+
 def chunked_ppl(
     model,
     tokenizer,
@@ -67,6 +101,7 @@ def chunked_ppl(
     chunk_size: int,
     *,
     use_cache: bool = True,
+    attn_indices: list[int] | None = None,
 ) -> tuple[float, float, float]:
     """分块前向计算 PPL，同时返回量化字节与 FP16 字节（均指 6 层 GQA KV 总计）。
 
@@ -76,18 +111,31 @@ def chunked_ppl(
     device = next(model.parameters()).device
     seq_len = ids.shape[1]
     cache = cache_factory()
+    if attn_indices and cache.evict_budget is not None:
+        patch_attention_recording(model, cache, attn_indices)
     total_loss = 0.0
     total_tokens = 0
 
     model.eval()
+    evicting = getattr(cache, "evict_budget", None) is not None
     with torch.no_grad():
         for start in range(0, seq_len - 1, chunk_size):
             chunk = ids[:, start : start + chunk_size].to(device)
             L = chunk.shape[1]
             pos_ids = torch.arange(start, start + L, device=device).unsqueeze(0)
+
+            # 驱逐时：手动构建因果 mask，宽度 = 实际返回的缓存长度
+            mask = None
+            if evicting:
+                pre = cache.attention_seq_length()
+                R = min(pre + L, cache.evict_budget)
+                R = max(R, L)
+                mask = build_causal_mask(L, R, device)
+
             outputs = model(
                 input_ids=chunk,
                 position_ids=pos_ids,
+                attention_mask=mask,
                 past_key_values=cache if use_cache else None,
                 use_cache=use_cache,
             )
@@ -103,36 +151,63 @@ def chunked_ppl(
     return ppl, cache.total_bytes, cache.total_fp16_bytes
 
 
-def tokenize_corpus(tokenizer, corpus: str, max_len: int) -> torch.Tensor:
-    ids = tokenizer(corpus, return_tensors="pt").input_ids
-    return ids[:, :max_len]
+def tokenize_corpus(tokenizer, corpus: str, max_len: int, num_seqs: int) -> list[torch.Tensor]:
+    """把语料按空行切成文档，取前 num_seqs 篇，各自 tokenize 并截断到 max_len。"""
+    docs = [d.strip() for d in corpus.split("\n\n") if d.strip()]
+    tensors = []
+    for doc in docs[:num_seqs]:
+        ids = tokenizer(doc, return_tensors="pt").input_ids[:, :max_len]
+        if ids.shape[1] >= 2:
+            tensors.append(ids)
+    if not tensors:
+        raise ValueError("num_seqs 篇文档全太短")
+    return tensors
 
 
 def run_bits(
-    model, tokenizer, ids, attn_indices, bits_list, chunk_size, evict_budget, out_path: Path
+    model, tokenizer, ids_list, attn_indices, bits_list, chunk_size, evict_budget, out_path: Path
 ) -> None:
+    import csv
+    import math
+
     rows = []
     for bits in bits_list:
         t0 = time.time()
-        ppl, qbytes, fbytes = chunked_ppl(
-            model, tokenizer, ids,
-            lambda b=bits: make_cache(b, evict_budget, attn_indices, model),
-            chunk_size,
-        )
-        rows.append((bits, evict_budget, ppl, qbytes, fbytes, time.time() - t0))
-        print(f"bits={bits} evict={evict_budget}: PPL={ppl:.4f} KV_bytes={qbytes:.1f} (FP16={fbytes:.1f}) "
-              f"ratio={fbytes / qbytes:.2f}x [{time.time() - t0:.0f}s]")
+        total_loss, total_tokens = 0.0, 0
+        qbytes = fbytes = 0.0
+        for ids in ids_list:
+            ppl, qb, fb = chunked_ppl(
+                model, tokenizer, ids,
+                lambda b=bits: make_cache(b, evict_budget, attn_indices, model),
+                chunk_size,
+                attn_indices=attn_indices,
+            )
+            total_loss += math.log(ppl) * (ids.shape[1] - 1)  # log-prob 总和
+            total_tokens += ids.shape[1] - 1
+            qbytes, fbytes = qb, fb
+        avg_ppl = math.exp(total_loss / total_tokens)
+        rows.append((bits, evict_budget, avg_ppl, qbytes, fbytes, time.time() - t0))
+        print(f"bits={bits} evict={evict_budget}: PPL={avg_ppl:.4f} "
+              f"KV_bytes={qbytes:.1f} (FP16={fbytes:.1f}) ratio={fbytes / qbytes:.2f}x "
+              f"[{time.time() - t0:.0f}s / {len(ids_list)} seqs]")
 
     # FP16 baseline（不量化）
-    ppl0, _, fbytes0 = chunked_ppl(
-        model, tokenizer, ids,
-        lambda: make_cache(16, None, attn_indices, model),
-        chunk_size,
-    )
+    total_loss, total_tokens = 0.0, 0
+    fbytes0 = 0.0
+    for ids in ids_list:
+        ppl0, _, fb = chunked_ppl(
+            model, tokenizer, ids,
+            lambda: make_cache(16, None, attn_indices, model),
+            chunk_size,
+            attn_indices=attn_indices,
+        )
+        total_loss += math.log(ppl0) * (ids.shape[1] - 1)
+        total_tokens += ids.shape[1] - 1
+        fbytes0 = fb
+    ppl0 = math.exp(total_loss / total_tokens)
     rows.append((16, 0, ppl0, fbytes0, fbytes0, 0.0))
     print(f"bits=16 (FP16 baseline): PPL={ppl0:.4f} KV_bytes={fbytes0:.1f}")
 
-    import csv
     with open(out_path, "w", newline="") as f:
         w = csv.writer(f)
         w.writerow(["bits", "evict_budget", "ppl", "kv_quant_bytes", "kv_fp16_bytes", "time_s"])
@@ -149,6 +224,7 @@ def main() -> None:
     ap.add_argument("--smoke", action="store_true", help="冒烟模式（小语料 + 短序列）")
     ap.add_argument("--out", default="results/ablations/bit_curve.csv")
     ap.add_argument("--corpus", type=str, default=None, help="评测语料文本文件；默认用内置冒烟语料")
+    ap.add_argument("--num-seqs", type=int, default=10, help="评测前 N 篇文档（多文档平均 PPL）")
     args = ap.parse_args()
 
     bits_list = [int(b) for b in args.bits.split(",")]
@@ -168,17 +244,19 @@ def main() -> None:
         corpus = _SMOKE_CORPUS * 3
         max_len = 512
         chunk = 64
+        num_seqs = 1
     else:
         corpus = Path(args.corpus).read_text() if args.corpus else _SMOKE_CORPUS
         max_len = args.max_len
         chunk = args.chunk
+        num_seqs = args.num_seqs
 
-    ids = tokenize_corpus(tokenizer, corpus, max_len)
-    print(f"序列长度: {ids.shape[1]} tokens, chunk={chunk}")
+    ids_list = tokenize_corpus(tokenizer, corpus, max_len, num_seqs)
+    print(f"评测序列: {len(ids_list)} 篇 × 最大 {max_len} tokens, chunk={chunk}")
 
     out = Path(args.out)
     out.parent.mkdir(parents=True, exist_ok=True)
-    run_bits(model, tokenizer, ids, attn_indices, bits_list, chunk, args.evict_budget, out)
+    run_bits(model, tokenizer, ids_list, attn_indices, bits_list, chunk, args.evict_budget, out)
 
 
 if __name__ == "__main__":

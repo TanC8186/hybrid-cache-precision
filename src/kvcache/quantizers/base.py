@@ -45,7 +45,7 @@ class KVQuantizer:
         granularity: str = "per_token",
         symmetric: bool | None = None,
     ) -> None:
-        assert bits in (2, 4, 8, 16), f"bits 只支持 2/4/8/16，得到 {bits}"
+        assert bits in (2, 3, 4, 8, 16), f"bits 只支持 2/3/4/8/16，得到 {bits}"
         assert granularity in GRANULARITIES, f"granularity 必须 ∈ {GRANULARITIES}"
         self.bits = bits
         self.granularity = granularity

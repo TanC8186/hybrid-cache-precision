@@ -52,16 +52,21 @@ class AttentionScoreAccumulator:
         self.scores = torch.zeros(0, dtype=torch.float32, device=device)
 
     def accumulate(self, attn_weights: torch.Tensor) -> None:
-        """attn_weights: [1, num_heads, 1, T]（最后一行的 softmax 权重）。
+        """attn_weights: [bsz, num_heads, q_len, T]（softmax 权重）。
 
-        T = 当前缓存长度。累计到 self.scores；若缓存被驱逐过，attn_weights 的
-        列对应的是当前保留的 token（按序），与 self.scores 长度一致。
+        T = 当前缓存长度。累计到 self.scores。若 self.scores 长度与 T 不匹配
+        （新 token 刚 append，分数尚未填充），先填充零再累计。
         """
-        w = attn_weights.mean(dim=(0, 1, 2))  # [T] 跨头平均
-        assert w.shape[0] == self.scores.shape[0], (
-            f"attn 列数 {w.shape[0]} != 缓存长度 {self.scores.shape[0]}"
-        )
-        self.scores += w
+        w = attn_weights.mean(dim=(0, 1, 2))  # [T] 跨头+跨 query 平均
+        if self.scores.shape[0] == 0:
+            self.scores = w.detach().float().clone()
+        elif w.shape[0] >= self.scores.shape[0]:
+            pad = torch.zeros(w.shape[0] - self.scores.shape[0], device=self.scores.device)
+            self.scores = torch.cat([self.scores, pad])
+            self.scores += w.detach().float()
+        else:
+            self.scores += w.detach().float()
+            self.scores = self.scores[: w.shape[0]]
 
     def after_evict(self, mask: torch.Tensor) -> None:
         """驱逐后收缩 scores（只保留 mask 对应的 token）。"""

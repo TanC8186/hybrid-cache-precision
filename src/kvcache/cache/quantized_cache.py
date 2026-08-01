@@ -79,11 +79,21 @@ class QuantizedEvictingHybridCache(DynamicCache):
         # 驱逐（基于此前累计的注意力分数），发生在量化前
         if self.evict_budget is not None and keys.shape[-2] > self.evict_budget:
             acc = self.scores[layer_idx]
+            # 把分数补齐到当前缓存长度（新 append 的 token 分数为 0，靠 window 保护）
+            if acc.scores.shape[0] < keys.shape[-2]:
+                pad = torch.zeros(
+                    keys.shape[-2] - acc.scores.shape[0], device=acc.scores.device
+                )
+                acc.scores = torch.cat([acc.scores, pad])
             mask = keep_mask(acc.scores[: keys.shape[-2]], self.evict_budget, self.evict_window)
             # keys/values: [bsz, n_kv_heads, T, head_dim] → 沿 token 维保留
             keys = keys[..., mask, :]
             values = values[..., mask, :]
             acc.after_evict(mask)
+            # 持久化驱逐到存储层：让 get_seq_length / 下次 update 看到的是驱逐后长度
+            layer = self.layers[layer_idx]
+            layer.keys = keys
+            layer.values = values
 
         if self.quantize_every:
             kq = self.quantizer.quantize(keys)
@@ -94,6 +104,16 @@ class QuantizedEvictingHybridCache(DynamicCache):
             return self.quantizer.dequantize(kq), self.quantizer.dequantize(vq)
 
         return keys, values
+
+    # ---- 长度查询（供驱逐时手动构建 mask） ----
+    def attention_seq_length(self) -> int:
+        """当前 full_attention 层 KV 的 token 数（驱逐后 = 实际保留数）。"""
+        for i in sorted(self.attention_layer_indices):
+            if i < len(self.layers):
+                sl = self.layers[i].get_seq_length()
+                if sl > 0:
+                    return sl
+        return 0
 
     # ---- 字节记账 ----
     @property

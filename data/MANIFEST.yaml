@@ -2,9 +2,14 @@
 # 数据文件本体 gitignored；本清单入库，审稿人据此验证。
 # 约定：任何 data/ 下新文件，下载后立即在此登记哈希。
 
-files: {}
+files:
+  wikitext2_test.txt:
+    sha256: "f7c3d825fe137ae727909932428eec25ff1b05e685b713eefc4efb289bfd49d0"
+    source: "https://hf-mirror.com/datasets/wikitext (wikitext-2-raw-v1/test-00000-of-00001.parquet)"
+    license: "CC-BY-SA-3.0 / GFDL（wikitext 数据集）"
+    preprocessing: "scripts/fetch_wikitext.py --max-docs 800；取 800 篇非空文档，\\n\\n 拼接"
+
 # 示例格式：
-# files:
 #   datasets/longbench_3.0.jsonl:
 #     sha256: <hex>
 #     source: "https://huggingface.co/datasets/THUDM/LongBench@<revision>"
