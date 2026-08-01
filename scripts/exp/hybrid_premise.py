@@ -73,12 +73,14 @@ def build_causal_mask(L: int, R: int, device) -> torch.Tensor:
     return mask
 
 
-def patch_attention_recording(model, cache, attn_indices: list[int]) -> None:
+def patch_attention_recording(model, cache, attn_indices: list[int]):
     """包装 6 层注意力的 forward，把注意力权重喂给 cache 的驱逐打分。
 
-    仅在驱逐开启时调用（纯量化不需要分数）。
+    仅在驱逐开启时调用。返回 restore 函数，必须在运行结束后调用（否则
+    wrapper 会捕获旧 cache 污染后续运行）。
     """
     layers = model.model.layers
+    originals: dict[int, object] = {}
 
     def make_wrapper(layer_idx: int, orig):
         def wrapped(hidden_states, **kwargs):
@@ -90,7 +92,14 @@ def patch_attention_recording(model, cache, attn_indices: list[int]) -> None:
 
     for i in attn_indices:
         attn = layers[i].self_attn
+        originals[i] = attn.forward
         attn.forward = make_wrapper(i, attn.forward)  # type: ignore[method-assign]
+
+    def restore() -> None:
+        for i, orig in originals.items():
+            layers[i].self_attn.forward = orig  # type: ignore[method-assign]
+
+    return restore
 
 
 def chunked_ppl(
@@ -111,13 +120,22 @@ def chunked_ppl(
     device = next(model.parameters()).device
     seq_len = ids.shape[1]
     cache = cache_factory()
-    if attn_indices and cache.evict_budget is not None:
-        patch_attention_recording(model, cache, attn_indices)
+    evicting = getattr(cache, "evict_budget", None) is not None
+    restore_patch = patch_attention_recording(model, cache, attn_indices or []) if (evicting and attn_indices) else None
+    try:
+        return _chunked_ppl_inner(model, tokenizer, ids, cache, chunk_size, use_cache, evicting)
+    finally:
+        if restore_patch:
+            restore_patch()
+
+
+def _chunked_ppl_inner(model, tokenizer, ids, cache, chunk_size, use_cache, evicting) -> tuple[float, float, float]:
+    device = next(model.parameters()).device
+    seq_len = ids.shape[1]
     total_loss = 0.0
     total_tokens = 0
 
     model.eval()
-    evicting = getattr(cache, "evict_budget", None) is not None
     with torch.no_grad():
         for start in range(0, seq_len - 1, chunk_size):
             chunk = ids[:, start : start + chunk_size].to(device)
@@ -131,6 +149,8 @@ def chunked_ppl(
                 R = min(pre + L, cache.evict_budget)
                 R = max(R, L)
                 mask = build_causal_mask(L, R, device)
+                if start % (chunk_size * 4) == 0:
+                    print(f"  [dbg] start={start} pre={pre} L={L} R={R}", flush=True)
 
             outputs = model(
                 input_ids=chunk,
@@ -165,20 +185,23 @@ def tokenize_corpus(tokenizer, corpus: str, max_len: int, num_seqs: int) -> list
 
 
 def run_bits(
-    model, tokenizer, ids_list, attn_indices, bits_list, chunk_size, evict_budget, out_path: Path
+    model, tokenizer, ids_list, attn_indices, bits_list, evict_budgets, chunk_size, out_path: Path
 ) -> None:
     import csv
     import math
 
     rows = []
-    for bits in bits_list:
+    configs = [(b, e) for b in bits_list for e in (evict_budgets or [0])]
+
+    for bits, evict in configs:
         t0 = time.time()
         total_loss, total_tokens = 0.0, 0
         qbytes = fbytes = 0.0
+        eb = evict if evict else None
         for ids in ids_list:
             ppl, qb, fb = chunked_ppl(
                 model, tokenizer, ids,
-                lambda b=bits: make_cache(b, evict_budget, attn_indices, model),
+                lambda b=bits, e=eb: make_cache(b, e, attn_indices, model),
                 chunk_size,
                 attn_indices=attn_indices,
             )
@@ -186,8 +209,8 @@ def run_bits(
             total_tokens += ids.shape[1] - 1
             qbytes, fbytes = qb, fb
         avg_ppl = math.exp(total_loss / total_tokens)
-        rows.append((bits, evict_budget if evict_budget else 0, avg_ppl, qbytes, fbytes, time.time() - t0))
-        print(f"bits={bits} evict={evict_budget}: PPL={avg_ppl:.4f} "
+        rows.append((bits, evict, avg_ppl, qbytes, fbytes, time.time() - t0))
+        print(f"bits={bits} evict={evict}: PPL={avg_ppl:.4f} "
               f"KV_bytes={qbytes:.1f} (FP16={fbytes:.1f}) ratio={fbytes / qbytes:.2f}x "
               f"[{time.time() - t0:.0f}s / {len(ids_list)} seqs]")
 
@@ -220,7 +243,7 @@ def main() -> None:
     ap.add_argument("--bits", default="2,4,8", help="逗号分隔位宽")
     ap.add_argument("--max-len", type=int, default=2048)
     ap.add_argument("--chunk", type=int, default=128)
-    ap.add_argument("--evict-budget", type=int, default=None, help="驱逐保留 token 数（None=不驱逐）")
+    ap.add_argument("--evict-budget", type=str, default="", help="逗号分隔驱逐 token 预算列表，如 '1024,1536'；空=不驱逐")
     ap.add_argument("--smoke", action="store_true", help="冒烟模式（小语料 + 短序列）")
     ap.add_argument("--out", default="results/ablations/bit_curve.csv")
     ap.add_argument("--corpus", type=str, default=None, help="评测语料文本文件；默认用内置冒烟语料")
@@ -254,9 +277,10 @@ def main() -> None:
     ids_list = tokenize_corpus(tokenizer, corpus, max_len, num_seqs)
     print(f"评测序列: {len(ids_list)} 篇 × 最大 {max_len} tokens, chunk={chunk}")
 
+    evict_budgets = [int(x) for x in args.evict_budget.split(",")] if args.evict_budget else []
     out = Path(args.out)
     out.parent.mkdir(parents=True, exist_ok=True)
-    run_bits(model, tokenizer, ids_list, attn_indices, bits_list, chunk, args.evict_budget, out)
+    run_bits(model, tokenizer, ids_list, attn_indices, bits_list, evict_budgets, chunk, out)
 
 
 if __name__ == "__main__":
