@@ -177,20 +177,29 @@ def _chunked_ppl_inner(model, tokenizer, ids, cache, chunk_size, use_cache, evic
     return ppl, cache.total_bytes, cache.total_fp16_bytes
 
 
-def tokenize_corpus(tokenizer, corpus: str, max_len: int, num_seqs: int) -> list[torch.Tensor]:
+def tokenize_corpus(tokenizer, corpus: str, max_len: int, num_seqs: int, seed: int | None = None) -> list[torch.Tensor]:
     """把整个语料拼接后切成固定 max_len 的序列（保证驱逐预算真实触发）。
 
     Wikitext 文档常只有几十~几百 token，若按文档截断，驱逐预算（1024/1536）
     永远不触发。拼接成 token 流再切成等长序列，每个序列都是满 2048。
+
+    seed 提供时：随机采样 num_seqs 个起始位置（确定性，用于 3-seed mean±std）。
+    seed 为 None：从 0 开始均匀切（原始行为）。
     """
     ids = tokenizer(corpus, return_tensors="pt").input_ids[0]  # [N]
+    total = len(ids)
+    if seed is not None:
+        rng = torch.Generator().manual_seed(seed)
+        lo = 0
+        hi = max(lo + 1, total - max_len)
+        starts = torch.randint(lo, hi, (num_seqs,), generator=rng).tolist()
+    else:
+        starts = list(range(0, total - 1, max_len))[:num_seqs]
     seqs = []
-    for start in range(0, len(ids) - 1, max_len):
-        chunk = ids[start : start + max_len]
+    for s in starts:
+        chunk = ids[s : s + max_len]
         if chunk.shape[0] >= 2:
             seqs.append(chunk.unsqueeze(0))
-        if len(seqs) >= num_seqs:
-            break
     if not seqs:
         raise ValueError("语料太短，无法生成等长序列")
     return seqs
@@ -243,11 +252,7 @@ def run_bits(
     rows.append((16, 0, ppl0, fbytes0, fbytes0, 0.0))
     print(f"bits=16 (FP16 baseline): PPL={ppl0:.4f} KV_bytes={fbytes0:.1f}")
 
-    with open(out_path, "w", newline="") as f:
-        w = csv.writer(f)
-        w.writerow(["bits", "evict_budget", "ppl", "kv_quant_bytes", "kv_fp16_bytes", "time_s"])
-        w.writerows(rows)
-    print(f"→ {out_path}")
+    return rows
 
 
 def run_layer_sensitivity(
@@ -350,6 +355,7 @@ def main() -> None:
     ap.add_argument("--num-seqs", type=int, default=10, help="评测前 N 篇文档（多文档平均 PPL）")
     ap.add_argument("--layer-sensitivity", action="store_true", help="逐层敏感度模式")
     ap.add_argument("--hetero", action="store_true", help="异构预算验证模式")
+    ap.add_argument("--seeds", default="42", help="逗号分隔 seed 列表（多 seed 聚合 mean±std）")
     args = ap.parse_args()
 
     bits_list = [int(b) for b in args.bits.split(",")]
@@ -382,12 +388,36 @@ def main() -> None:
     evict_budgets = [int(x) for x in args.evict_budget.split(",")] if args.evict_budget else []
     out = Path(args.out)
     out.parent.mkdir(parents=True, exist_ok=True)
+
     if args.layer_sensitivity:
         run_layer_sensitivity(model, tokenizer, ids_list, attn_indices, chunk, out)
-    elif args.hetero:
+        return
+    if args.hetero:
         run_hetero(model, tokenizer, ids_list, attn_indices, chunk, out)
-    else:
-        run_bits(model, tokenizer, ids_list, attn_indices, bits_list, evict_budgets, chunk, out)
+        return
+
+    # 多 seed 聚合：mean±std（headline 要求）
+    import statistics
+    seeds = [int(s) for s in args.seeds.split(",")]
+    all_rows: dict[tuple[int, int], list[float]] = {}
+    for seed in seeds:
+        s_ids = tokenize_corpus(tokenizer, corpus, max_len, num_seqs, seed=seed)
+        print(f"\n=== seed={seed}（{len(s_ids)} 条序列） ===")
+        for bits, evict, ppl, qbytes, fbytes, _t in run_bits(
+            model, tokenizer, s_ids, attn_indices, bits_list, evict_budgets, chunk, out
+        ):
+            all_rows.setdefault((bits, evict), []).append(ppl)
+
+    import csv
+    with open(out, "w", newline="") as f:
+        w = csv.writer(f)
+        w.writerow(["bits", "evict_budget", "ppl_mean", "ppl_std", "num_seeds"])
+        for (bits, evict), ppls in sorted(all_rows.items()):
+            mean = statistics.mean(ppls)
+            std = statistics.stdev(ppls) if len(ppls) > 1 else 0.0
+            w.writerow([bits, evict, f"{mean:.4f}", f"{std:.4f}", len(ppls)])
+            print(f"bits={bits} evict={evict}: PPL={mean:.4f}±{std:.4f} ({len(ppls)} seeds)")
+    print(f"→ {out}")
 
 
 if __name__ == "__main__":
