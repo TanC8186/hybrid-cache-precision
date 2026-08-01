@@ -186,7 +186,7 @@ def run_bits(
             total_tokens += ids.shape[1] - 1
             qbytes, fbytes = qb, fb
         avg_ppl = math.exp(total_loss / total_tokens)
-        rows.append((bits, evict_budget, avg_ppl, qbytes, fbytes, time.time() - t0))
+        rows.append((bits, evict_budget if evict_budget else 0, avg_ppl, qbytes, fbytes, time.time() - t0))
         print(f"bits={bits} evict={evict_budget}: PPL={avg_ppl:.4f} "
               f"KV_bytes={qbytes:.1f} (FP16={fbytes:.1f}) ratio={fbytes / qbytes:.2f}x "
               f"[{time.time() - t0:.0f}s / {len(ids_list)} seqs]")
