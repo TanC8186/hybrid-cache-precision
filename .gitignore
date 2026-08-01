@@ -15,6 +15,7 @@ dist/
 venv/
 env/
 ENV/
+!/scripts/env/
 
 # --- 实验原始运行产物（按设计 gitignored；provenance 见 results/_provenance.jsonl）---
 experiments/*
