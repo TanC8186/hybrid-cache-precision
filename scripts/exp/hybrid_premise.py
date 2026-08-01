@@ -163,8 +163,9 @@ def _chunked_ppl_inner(model, tokenizer, ids, cache, chunk_size, use_cache, evic
             )
             logits = outputs.logits[:, :-1]  # [1, L-1, vocab]
             targets = chunk[:, 1:]
+            # 转 fp32 计算 loss，避免 fp16 跨 chunk 累加的舍入误差
             loss = torch.nn.functional.cross_entropy(
-                logits.reshape(-1, logits.shape[-1]), targets.reshape(-1), reduction="sum"
+                logits.float().reshape(-1, logits.shape[-1]), targets.reshape(-1), reduction="sum"
             )
             total_loss += loss.item()
             total_tokens += targets.numel()

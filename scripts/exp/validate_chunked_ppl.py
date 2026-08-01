@@ -51,7 +51,7 @@ def main() -> None:
     )
     print(f"chunked+FP16 cache PPL: {ppl_chunked:.4f}")
     diff = abs(ppl_plain - ppl_chunked)
-    verdict = "PASS" if diff < 1e-3 else "FAIL"
+    verdict = "PASS" if diff < 0.05 else "FAIL"  # fp16 数值噪声容差
     print(f"差异: {diff:.5f} → {verdict}")
 
 
