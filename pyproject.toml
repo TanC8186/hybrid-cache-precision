@@ -14,6 +14,8 @@ dependencies = [
     "pydantic>=2.0",
     "datasets>=2.20",
     "tqdm>=4.66",
+    "transformers>=4.44",
+    "accelerate>=0.33",
 ]
 
 [project.optional-dependencies]
