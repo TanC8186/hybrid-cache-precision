@@ -38,12 +38,15 @@ class QuantizedEvictingHybridCache(DynamicCache):
         evict_budget: int | None = None,   # None = 不驱逐
         evict_window: int = 64,
         quantize_every: bool = True,       # 每次 update 都重量化完整 KV（保真测量）
+        layer_bits: dict[int, int] | None = None,  # 逐层位宽覆盖（per-layer 敏感度实验用）
         config=None,
         **kwargs,
     ) -> None:
         super().__init__(config=config, **kwargs)
         self.attention_layer_indices = set(attention_layer_indices)
+        self.layer_bits = layer_bits or {}
         self.quantizer = KVQuantizer(bits=bits, granularity=granularity)
+        self.quantizers: dict[int, KVQuantizer] = {}
         self.evict_budget = evict_budget
         self.evict_window = evict_window
         self.quantize_every = quantize_every
@@ -52,6 +55,13 @@ class QuantizedEvictingHybridCache(DynamicCache):
         self.scores: dict[int, AttentionScoreAccumulator] = {
             i: AttentionScoreAccumulator("cpu") for i in attention_layer_indices
         }
+
+    def _quantizer_for(self, layer_idx: int) -> KVQuantizer:
+        """返回该层量化器（支持逐层位宽覆盖）。"""
+        if layer_idx not in self.quantizers:
+            b = self.layer_bits.get(layer_idx, self.quantizer.bits)
+            self.quantizers[layer_idx] = KVQuantizer(bits=b, granularity=self.quantizer.granularity)
+        return self.quantizers[layer_idx]
 
     # ---- 逐层分数（供驱逐） ----
     def record_scores(self, layer_idx: int, attn_weights: torch.Tensor) -> None:
@@ -96,12 +106,13 @@ class QuantizedEvictingHybridCache(DynamicCache):
             layer.values = values
 
         if self.quantize_every:
-            kq = self.quantizer.quantize(keys)
-            vq = self.quantizer.quantize(values)
+            q = self._quantizer_for(layer_idx)
+            kq = q.quantize(keys)
+            vq = q.quantize(values)
             self.bytes_per_layer[layer_idx] = kq.bytes_used() + vq.bytes_used()
             # 对照：同 KV 的 FP16 字节（= 元素数 × 2）
             self.fp16_bytes_per_layer[layer_idx] = (keys.numel() + values.numel()) * 2
-            return self.quantizer.dequantize(kq), self.quantizer.dequantize(vq)
+            return q.dequantize(kq), q.dequantize(vq)
 
         return keys, values
 

@@ -49,7 +49,7 @@ def attention_layer_indices(model) -> list[int]:
     return [i for i, t in enumerate(types) if t == "full_attention"]
 
 
-def make_cache(bits: int, evict_budget: int | None, attn_indices: list[int], model, evict_window: int = 256) -> QuantizedEvictingHybridCache:
+def make_cache(bits: int, evict_budget: int | None, attn_indices: list[int], model, evict_window: int = 256, layer_bits: dict[int, int] | None = None) -> QuantizedEvictingHybridCache:
     """evict_window 必须 >= chunk_size：驱逐时保护整个当前 chunk，
     否则新 chunk 前缀（分数为 0）会被旧 token 替换，导致因果 mask 错误。
     """
@@ -59,6 +59,7 @@ def make_cache(bits: int, evict_budget: int | None, attn_indices: list[int], mod
         granularity="per_token",
         evict_budget=evict_budget,
         evict_window=evict_window,
+        layer_bits=layer_bits,
         config=model.config,
     )
 
@@ -249,6 +250,52 @@ def run_bits(
     print(f"→ {out_path}")
 
 
+def run_layer_sensitivity(
+    model, tokenizer, ids_list, attn_indices, chunk_size, out_path: Path
+) -> None:
+    """逐层敏感度：该层 KV 压 2-bit、其余层 8-bit，测 PPL。
+
+    全 8-bit 是无损基线；某层单独 2-bit 后 PPL 越接近全 2-bit 越关键。
+    决定 per-layer 异构预算方法是否成立。
+    """
+    import csv
+    import math
+
+    def avg(cache_factory) -> tuple[float, float, float]:
+        tl, tt = 0.0, 0
+        qb = fb = 0.0
+        for ids in ids_list:
+            p, q, f = chunked_ppl(model, tokenizer, ids, cache_factory, chunk_size,
+                                  attn_indices=attn_indices)
+            tl += math.log(p) * (ids.shape[1] - 1)
+            tt += ids.shape[1] - 1
+            qb, fb = q, f
+        return math.exp(tl / tt), qb, fb
+
+    rows = []
+    # 基线：全 8-bit（无损）、全 2-bit（上界）
+    p8, q8, f8 = avg(lambda: make_cache(8, None, attn_indices, model))
+    rows.append(("all_8bit", -1, p8, q8, f8))
+    print(f"all_8bit: PPL={p8:.4f}")
+    p2, q2, f2 = avg(lambda: make_cache(2, None, attn_indices, model))
+    rows.append(("all_2bit", -1, p2, q2, f2))
+    print(f"all_2bit: PPL={p2:.4f}")
+
+    # 逐层：该层 2-bit，其余 8-bit
+    for i in attn_indices:
+        lb = {i: 2}
+        p, q, f = avg(lambda lb=lb: make_cache(8, None, attn_indices, model, layer_bits=lb))
+        rows.append((f"layer{i}_2bit", i, p, q, f))
+        sens = (p - p8) / (p2 - p8) * 100 if p2 != p8 else 0
+        print(f"layer{i}_2bit: PPL={p:.4f} 敏感度={sens:.1f}%（0=不敏感, 100=全 2-bit 代价）")
+
+    with open(out_path, "w", newline="") as f:
+        w = csv.writer(f)
+        w.writerow(["config", "layer_idx", "ppl", "kv_quant_bytes", "kv_fp16_bytes"])
+        w.writerows(rows)
+    print(f"→ {out_path}")
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--bits", default="2,4,8", help="逗号分隔位宽")
@@ -259,6 +306,7 @@ def main() -> None:
     ap.add_argument("--out", default="results/ablations/bit_curve.csv")
     ap.add_argument("--corpus", type=str, default=None, help="评测语料文本文件；默认用内置冒烟语料")
     ap.add_argument("--num-seqs", type=int, default=10, help="评测前 N 篇文档（多文档平均 PPL）")
+    ap.add_argument("--layer-sensitivity", action="store_true", help="逐层敏感度模式")
     args = ap.parse_args()
 
     bits_list = [int(b) for b in args.bits.split(",")]
@@ -291,7 +339,10 @@ def main() -> None:
     evict_budgets = [int(x) for x in args.evict_budget.split(",")] if args.evict_budget else []
     out = Path(args.out)
     out.parent.mkdir(parents=True, exist_ok=True)
-    run_bits(model, tokenizer, ids_list, attn_indices, bits_list, evict_budgets, chunk, out)
+    if args.layer_sensitivity:
+        run_layer_sensitivity(model, tokenizer, ids_list, attn_indices, chunk, out)
+    else:
+        run_bits(model, tokenizer, ids_list, attn_indices, bits_list, evict_budgets, chunk, out)
 
 
 if __name__ == "__main__":
