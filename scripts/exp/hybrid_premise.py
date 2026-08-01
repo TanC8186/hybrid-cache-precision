@@ -142,7 +142,9 @@ def _chunked_ppl_inner(model, tokenizer, ids, cache, chunk_size, use_cache, evic
     model.eval()
     with torch.no_grad():
         for start in range(0, seq_len - 1, chunk_size):
-            chunk = ids[:, start : start + chunk_size].to(device)
+            # 多喂 1 个 token：让每 chunk 最后一个 token 的预测（边界 token）被计分。
+            # 否则 logits[:, :-1] 丢掉它，跨 chunk 边界 token 永不被预测，绝对 PPL 系统性抬高。
+            chunk = ids[:, start : min(start + chunk_size + 1, seq_len)].to(device)
             L = chunk.shape[1]
             pos_ids = torch.arange(start, start + L, device=device).unsqueeze(0)
 
