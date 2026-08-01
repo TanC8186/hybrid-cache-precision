@@ -49,12 +49,16 @@ def attention_layer_indices(model) -> list[int]:
     return [i for i, t in enumerate(types) if t == "full_attention"]
 
 
-def make_cache(bits: int, evict_budget: int | None, attn_indices: list[int], model) -> QuantizedEvictingHybridCache:
+def make_cache(bits: int, evict_budget: int | None, attn_indices: list[int], model, evict_window: int = 256) -> QuantizedEvictingHybridCache:
+    """evict_window 必须 >= chunk_size：驱逐时保护整个当前 chunk，
+    否则新 chunk 前缀（分数为 0）会被旧 token 替换，导致因果 mask 错误。
+    """
     return QuantizedEvictingHybridCache(
         attention_layer_indices=attn_indices,
         bits=bits,
         granularity="per_token",
         evict_budget=evict_budget,
+        evict_window=evict_window,
         config=model.config,
     )
 
