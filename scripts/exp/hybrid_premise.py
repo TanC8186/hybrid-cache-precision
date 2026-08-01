@@ -296,6 +296,48 @@ def run_layer_sensitivity(
     print(f"→ {out_path}")
 
 
+HETERO_ALLOCS = {
+    # 名称 -> layer_bits（未列出的层用默认 bits=8）
+    "uniform_4bit": {3: 4, 7: 4, 11: 4, 15: 4, 19: 4, 23: 4},
+    "uniform_2bit": {3: 2, 7: 2, 11: 2, 15: 2, 19: 2, 23: 2},
+    "early2bit_late4bit": {3: 2, 7: 2, 11: 2, 15: 4, 19: 4, 23: 4},
+    "aggressive": {3: 2, 7: 2, 11: 2, 15: 2, 19: 2, 23: 4},
+}
+
+
+def run_hetero(
+    model, tokenizer, ids_list, attn_indices, chunk_size, out_path: Path
+) -> None:
+    """异构预算验证：若干逐层位宽分配 vs 均匀，输出 PPL vs 字节。"""
+    import csv
+    import math
+
+    def avg(bits: int, layer_bits: dict[int, int] | None) -> tuple[float, float, float]:
+        tl, tt = 0.0, 0
+        qb = fb = 0.0
+        for ids in ids_list:
+            p, q, f = chunked_ppl(model, tokenizer, ids,
+                                  lambda b=bits, lb=layer_bits: make_cache(b, None, attn_indices, model, layer_bits=lb),
+                                  chunk_size, attn_indices=attn_indices)
+            tl += math.log(p) * (ids.shape[1] - 1)
+            tt += ids.shape[1] - 1
+            qb, fb = q, f
+        return math.exp(tl / tt), qb, fb
+
+    rows = []
+    for name, lb in HETERO_ALLOCS.items():
+        bits = next(iter(lb.values()))
+        p, q, f = avg(bits, lb)
+        rows.append((name, p, q, f))
+        print(f"{name}: PPL={p:.4f} KV_bytes={q:.0f} ratio={f / q:.2f}x")
+
+    with open(out_path, "w", newline="") as f:
+        w = csv.writer(f)
+        w.writerow(["alloc", "ppl", "kv_quant_bytes", "kv_fp16_bytes"])
+        w.writerows(rows)
+    print(f"→ {out_path}")
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--bits", default="2,4,8", help="逗号分隔位宽")
@@ -307,6 +349,7 @@ def main() -> None:
     ap.add_argument("--corpus", type=str, default=None, help="评测语料文本文件；默认用内置冒烟语料")
     ap.add_argument("--num-seqs", type=int, default=10, help="评测前 N 篇文档（多文档平均 PPL）")
     ap.add_argument("--layer-sensitivity", action="store_true", help="逐层敏感度模式")
+    ap.add_argument("--hetero", action="store_true", help="异构预算验证模式")
     args = ap.parse_args()
 
     bits_list = [int(b) for b in args.bits.split(",")]
@@ -341,6 +384,8 @@ def main() -> None:
     out.parent.mkdir(parents=True, exist_ok=True)
     if args.layer_sensitivity:
         run_layer_sensitivity(model, tokenizer, ids_list, attn_indices, chunk, out)
+    elif args.hetero:
+        run_hetero(model, tokenizer, ids_list, attn_indices, chunk, out)
     else:
         run_bits(model, tokenizer, ids_list, attn_indices, bits_list, evict_budgets, chunk, out)
 
