@@ -1,0 +1,49 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# --- Virtual environments ---
+.venv/
+venv/
+env/
+ENV/
+
+# --- 实验原始运行产物（按设计 gitignored；provenance 见 results/_provenance.jsonl）---
+experiments/*
+!experiments/README.md
+*.log
+*.tar.gz
+
+# --- 模型权重 / 校准产物 / checkpoint（大二进制）---
+*.safetensors
+*.pt
+*.pth
+*.ckpt
+*.bin
+*.onnx
+
+# --- 数据（大文件；溯源见 data/MANIFEST.yaml，保留 MANIFEST 与 README）---
+/data/*
+!/data/MANIFEST.yaml
+!/data/README.md
+
+# --- OS / 编辑器 ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*~
+
+# --- 环境变量 / 密钥 ---
+.env
+.env.*
+!.env.example

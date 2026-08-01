@@ -1,0 +1,16 @@
+# 质量评测配置 + 环境路由
+name: quality
+env_routing:
+  default: remote_5090
+  context_budget_guard: true        # 断言每 GPU 上下文预算，防止超预算/环境错配
+datasets:
+  perplexity:
+    - wikitext                      # 短上下文
+    - pg19                          # 中长上下文
+  longbench:
+    - sampling
+    - summarization
+  niah:                             # 合成检索（scripts/gen_synthetic_retrieval.py 生成）
+    depths: [0, 25, 50, 75, 100]
+    lengths: [4096, 8192, 16384, 32768]
+# 铁律：禁止把 1-3B（本地 4060）的长上下文结果当作 7B claim

@@ -1,0 +1,7 @@
+# 本地开发用小模型 —— 与 7B 同一家族，保证 num_kv_heads/布局一致
+name: local_3b
+family: qwen2.5            # 与 remote_7b 同家族，消融才有效
+hf_id: "Qwen/Qwen2.5-3B"
+env: local_4060
+dtype: bf16
+quantization: baseline_fp16

@@ -1,0 +1,4 @@
+# 对照基线：vLLM 默认 FP16 KV cache
+name: baseline_fp16
+method: none               # 不做量化，作为质量/吞吐对照
+bits: 16

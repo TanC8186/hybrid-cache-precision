@@ -1,0 +1,14 @@
+# 统一行尾：仓库内一律 LF。
+# 关键：shell 脚本在 Linux/WSL 下遇 CRLF 会报错，必须强制 LF。
+* text=auto
+
+*.sh text eol=lf
+*.py text eol=lf
+Makefile text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.toml text eol=lf
+*.md text eol=lf
+Dockerfile text eol=lf
+.gitignore text eol=lf
+.gitattributes text eol=lf

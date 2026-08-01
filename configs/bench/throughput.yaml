@@ -1,0 +1,25 @@
+# Serving 吞吐扫描配置 + SLO 定义
+name: throughput
+sweep:
+  batch_sizes: [1, 8, 16, 32, 64]
+  context_lengths: [2048, 4096, 8192, 16384]
+  input_output_ratio: 0.2
+  shared_prefix_ratio: 0.0
+  prefill_chunk_size: null
+  concurrency: 16
+request_generator:
+  type: poisson           # poisson | trace (sharegpt_trace)
+  arrival_rate: 10.0
+  length_dist: "1:4"      # input:output
+metrics:
+  - ttft_p50
+  - ttft_p99
+  - tpot_p50
+  - tpot_p99
+  - throughput
+  - max_concurrent_under_slo
+slo:
+  ttft_p99_ms: 2000
+  tpot_p99_ms: 200
+# 协议：warmup_requests / measurement_window_s / steady_state_check / repeats_per_seed
+# 见 configs/experiments/template.yaml 的 benchmark.protocol（被引用）

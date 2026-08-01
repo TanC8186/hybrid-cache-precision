@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kvcache"
+version = "0.1.0"
+description = "KV cache quantization/compression for LLM serving (MLSys research)"
+requires-python = ">=3.10,<3.13"   # vLLM 兼容范围；宿主 Python 3.13 不适用
+dependencies = [
+    "numpy>=1.26",
+    "torch>=2.4",
+    "pyyaml>=6.0",
+    "pydantic>=2.0",
+    "datasets>=2.20",
+    "tqdm>=4.66",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "pytest-cov", "ruff", "mypy"]
+# 注意：vLLM 从 vendor/vllm 构建安装，不在此声明（版本以 configs/env + submodule SHA 锁定）
+bench = ["aiohttp"]
+eval = []   # lm-eval-harness / LongBench 以 submodule 形式固定于 vendor/eval
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.mypy]
+python_version = "3.10"
+strict = false

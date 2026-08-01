@@ -1,0 +1,7 @@
+# 论文权威模型 —— 所有 headline 实验用此配置
+name: remote_7b
+family: qwen2.5            # 与 local_3b 同家族；3B/7B 作为独立实验，绝不求平均
+hf_id: "Qwen/Qwen2.5-7B"
+env: remote_5090
+dtype: bf16
+quantization: 2bit_kv

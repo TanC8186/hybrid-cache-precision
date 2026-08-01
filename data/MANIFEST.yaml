@@ -1,0 +1,18 @@
+# 数据溯源清单 —— 每个数据文件的 sha256、来源、license、预处理
+# 数据文件本体 gitignored；本清单入库，审稿人据此验证。
+# 约定：任何 data/ 下新文件，下载后立即在此登记哈希。
+
+files: {}
+# 示例格式：
+# files:
+#   datasets/longbench_3.0.jsonl:
+#     sha256: <hex>
+#     source: "https://huggingface.co/datasets/THUDM/LongBench@<revision>"
+#     license: MIT
+#     preprocessing: "seed=42 子采样，见 configs/datasets/longbench.yaml"
+#   niah/depth25_len8192.jsonl:
+#     sha256: <hex>
+#     source: "本地生成 scripts/gen_synthetic_retrieval.py --seed 42"
+#     license: "生成数据（无版权）"
+
+# 待登记：longbench、pg19、sharegpt_trace（先确认 license）、niah 合成数据

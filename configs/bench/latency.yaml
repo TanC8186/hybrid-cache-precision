@@ -1,0 +1,20 @@
+# Serving 延迟/容量扫描配置
+name: latency
+sweep:
+  context_lengths: [2048, 4096, 8192, 16384, 32768]
+  batch_sizes: [1, 4, 8]
+  input_output_ratio: 0.2
+  shared_prefix_ratio: [0.0, 0.5]
+  concurrency: [1, 4, 8, 16]
+request_generator:
+  type: poisson
+  arrival_rate: 5.0
+metrics:
+  - ttft_p50
+  - ttft_p99
+  - tpot_p50
+  - tpot_p99
+  - max_context_under_gpu_budget   # 固定 GPU 预算下能塞下的最长上下文（论文卖点）
+slo:
+  ttft_p99_ms: 2000
+  tpot_p99_ms: 200

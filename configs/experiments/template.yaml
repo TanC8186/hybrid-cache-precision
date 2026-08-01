@@ -1,0 +1,29 @@
+# 实验模板 —— 新建实验复制本文件并重命名 <name>.yaml
+# 命名约定：<task>_<model>_<method>_<note>，如 quality_7b_2bitkv_longbench
+name: template
+env: remote_5090           # 引用 configs/env/<name>
+model: remote_7b           # 引用 configs/models/<name>
+quantization: 2bit_kv      # 引用 configs/quantization/<name>
+datasets: [longbench]
+
+# 强制 seed：headline 需 3 个 seed 的 mean±std
+seed: 42
+seeds: [42, 2026, 7]       # 多 seed 在此列出；单 seed 用 `seed`
+
+engine:                    # 引擎默认值显式化，不靠代码默认值
+  max_model_len: 32768
+  max_num_seqs: 64
+  gpu_memory_utilization: 0.9
+  page_size: 16
+  chunked_prefill: false
+  enable_prefix_caching: false
+  attention_backend: auto  # auto | flash_attention | flashinfer | <自定义>
+
+benchmark:                 # 标准测量协议（serving 类实验）
+  protocol:
+    warmup_requests: 20
+    measurement_window_s: 60
+    steady_state_check: true
+    repeats_per_seed: 3
+
+# TODO(提交前): 每次 headline 实验完成后归档（make archive）并登记 _provenance.jsonl

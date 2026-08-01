@@ -1,0 +1,10 @@
+# ShareGPT serving trace 数据卡
+# 注意：serving trace 常带重分发限制——先确认 license 再决定是否随 artifact 提供
+name: sharegpt_trace
+source: "TBD（固定 HF dataset + revision，下载后填入）"
+hf_revision: "TBD"
+license: "待确认（重分发限制需在 data/MANIFEST.yaml 声明）"
+preprocessing:
+  # 请求长度分布、共享前缀比例的 seed 化抽取
+  request_length_distribution: seeded
+  seed: 42

@@ -1,0 +1,12 @@
+# LongBench 数据卡（质量评测核心数据集之一）
+name: longbench
+source: "https://huggingface.co/datasets/THUDM/LongBench"
+hf_revision: "main"        # 固定 revision，防止版本漂移
+split: "test"
+sha256: null               # 下载后填入（或记录到 data/MANIFEST.yaml）
+license: "MIT"
+preprocessing:
+  tokenizer: remote_7b
+  max_seq_len: 32768
+  # 子采样必须 seed 化，采样索引记入 run provenance
+  seed: 42

@@ -1,0 +1,23 @@
+# 我们的核心量化方案（开发中，参数待实验确定）
+name: 2bit_kv
+method: kv_quant
+bits: 2
+granularity: per_channel   # per_channel / per_token / per_head / per_layer
+k:
+  enabled: true
+  bits: 2
+v:
+  enabled: true
+  bits: 2
+quant_group_size: 16
+clip_threshold: auto
+
+# typed 校准块：双环境共用，dev 与 final 断言参数一致
+calibration:
+  dataset: longbench        # 引用 configs/datasets/longbench.yaml
+  num_samples: 256
+  seq_len: 4096
+  algorithm: percentile     # minmax | percentile | mse
+  percentile: 99.99
+  seed: 42
+  sample_order: seeded_random
