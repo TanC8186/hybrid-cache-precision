@@ -48,3 +48,6 @@ Thumbs.db
 .env
 .env.*
 !.env.example
+
+# vLLM 工作副本（镜像浅克隆，不入库；provenance 记录 SHA）
+vendor/vllm/
