@@ -81,11 +81,15 @@ fi
 # ---------- 4) 构建 vLLM（sm_120） ----------
 echo "=== 构建 vLLM (sm_120) ==="
 cd "$VLLM"
+# 部分克隆会触发 git 懒拉取（github 被墙时挂起）——禁用 promisor
+git config remote.origin.promisor false 2>/dev/null || true
+git config extensions.partialClone '' 2>/dev/null || true
 export CUDA_HOME
 export TORCH_CUDA_ARCH_LIST="12.0"
 export VLLM_VERSION_OVERRIDE=0.8.4.dev
+export SETUPTOOLS_SCM_PRETEND_VERSION_FOR_VLLM=0.8.4.dev
 export GIT_TERMINAL_PROMPT=0
-# 全量编译（需要 nvcc + CUDA toolkit）。若只想跑 Python 改动可试 VLLM_USE_PRECOMPILED=1
+# 全量编译（需要 nvcc + CUDA toolkit）。注意：依赖树巨大 + 网络慢，解析/下载可能 10-30 分钟。
 uv pip install -e .
 cd "$ROOT"
 
