@@ -44,9 +44,11 @@ source .venv/bin/activate
 python -m pip --version >/dev/null 2>&1 || python -m ensurepip --upgrade
 
 # ---------- 2) torch 2.13.0+cu130 ----------
-echo "=== 安装 torch 2.13.0+cu130（阿里云 pytorch 镜像，国内快）==="
-# download.pytorch.org 在中国很慢/卡；阿里云镜像 mirrors.aliyun.com/pytorch-wheels/cu130
-python -m pip install "torch==2.13.0" --index-url https://mirrors.aliyun.com/pytorch-wheels/cu130/ 2>&1 | tail -2
+echo "=== 安装 torch 2.13.0+cu130（阿里云 pytorch 扁平目录 find-links + 依赖走阿里云 PyPI）==="
+# download.pytorch.org 在中国很慢/卡；torch wheel 从阿里云 pytorch-wheels（扁平目录用 find-links），依赖从阿里云 PyPI
+python -m pip install "torch==2.13.0" \
+  --find-links "https://mirrors.aliyun.com/pytorch-wheels/cu130/" \
+  --index-url "http://mirrors.aliyun.com/pypi/simple" 2>&1 | tail -2
 python -c "import torch; print('torch', torch.__version__, 'cuda', torch.version.cuda)"
 
 # ---------- 3) git 镜像（github → ghproxy）----------
