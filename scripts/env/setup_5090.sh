@@ -73,8 +73,9 @@ git -C "$VLLM" checkout "$VLLM_COMMIT" 2>/dev/null \
 if grep -q "kv_cache_dtype_per_layer" "$VLLM/vllm/config/cache.py"; then
   echo "per-layer patch 已应用，跳过。"
 else
-  echo "==> 应用 per-layer patch ..."
-  git -C "$VLLM" apply "$ROOT/vendor/vllm-patches/per-layer-kv-dtype.diff"
+  echo "==> 应用 per-layer patch（--ignore-whitespace 容忍 CRLF）..."
+  git -C "$VLLM" apply --ignore-whitespace --ignore-space-change \
+    "$ROOT/vendor/vllm-patches/per-layer-kv-dtype.diff"
 fi
 
 # ---------- 4) 构建 vLLM（sm_120） ----------
