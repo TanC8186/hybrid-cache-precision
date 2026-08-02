@@ -25,9 +25,21 @@ wsl -d Ubuntu -- bash -lc "cd /mnt/e/MLSys_Research && bash scripts/env/setup_ws
 
 ## 租机（5090，32GB，sm_120/Blackwell）
 
+**最终选型（2026-08-02 确认）**：
+| 项 | 值 |
+|---|---|
+| CUDA | **13**（租机商唯一提供，匹配 torch cu130） |
+| torch | **2.13.0+cu130**（pip 覆盖模板 torch，vLLM 硬性要求） |
+| Python | **3.12** |
+| 框架 | vLLM 0.8.4.dev（fork commit e2fa285 + per-layer patch） |
+| 驱动 | >= R580（Blackwell sm_120 必需） |
+| 构建 | `TORCH_CUDA_ARCH_LIST="12.0"` |
+
+**一键搭建**：`bash scripts/env/setup_5090.sh`（venv → torch 2.13 → vLLM fork + patch → 构建 sm_120 → 验证）
+
 - 每次租用后先跑 `./env_check.sh`：确认 driver/CUDA 与锁定版本匹配、无残留进程、vLLM self-test
-- 权威运行环境 = Docker，镜像 digest 固定于 `configs/env/remote_5090.yaml`
 - **driver 跨租期漂移常见**：任何最终实验前必须校验
+- 完整运行手册：`docs/notes/vllm-5090-runbook-2026-08-02.md`
 
 ## 关键版本矩阵
 
