@@ -5,6 +5,25 @@
 # 用法（在 5090 上，项目已就位）: bash scripts/env/setup_5090.sh
 set -uo pipefail
 
+# ---- 数据盘策略：所有数据必须存数据盘，禁止系统盘 ----
+# AutoDL 数据盘 = /root/autodl-tmp (100G)；系统盘 / 只有 30G
+DATA_DISK="/root/autodl-tmp"
+if [ -d "$DATA_DISK" ]; then
+  echo "数据盘: $DATA_DISK"
+  # 缓存全部指向数据盘
+  export HF_HOME="$DATA_DISK/caches/hf"
+  export HF_HUB_CACHE="$DATA_DISK/caches/hf/hub"
+  export MODELSCOPE_CACHE="$DATA_DISK/caches/modelscope"
+  export PIP_CACHE_DIR="$DATA_DISK/caches/pip"
+  export UV_CACHE_DIR="$DATA_DISK/caches/uv"
+  export UV_LINK_MODE=copy
+  export XDG_CACHE_HOME="$DATA_DISK/caches"
+  export VLLM_CACHE_ROOT="$DATA_DISK/caches/vllm"
+  mkdir -p "$DATA_DISK/caches"
+else
+  echo "WARN: 未检测到数据盘，数据将存系统盘（不推荐）"
+fi
+
 ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
 cd "$ROOT"
 
@@ -70,7 +89,7 @@ if ! python -c "import flashinfer" 2>/dev/null; then
 fi
 # 其余运行时依赖（去掉 flashinfer 行，避免 github）
 cd "$VLLM"
-sed '/flashinfer/d; s|^-r common.txt|-r /root/MLSys_Research/vendor/vllm/requirements/common.txt|' requirements/cuda.txt > /tmp/req_filt.txt
+sed "/flashinfer/d; s|^-r common.txt|-r $ROOT/vendor/vllm/requirements/common.txt|" requirements/cuda.txt > /tmp/req_filt.txt
 python -m pip install -r /tmp/req_filt.txt 2>&1 | tail -1
 cd "$ROOT"
 
