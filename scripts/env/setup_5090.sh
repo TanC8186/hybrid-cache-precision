@@ -49,11 +49,18 @@ fi
 # ---------- 3) vLLM fork + per-layer patch ----------
 echo "=== vLLM fork + per-layer patch ==="
 VLLM="vendor/vllm"
+VLLM_COMMIT="e2fa28594f7baad142a426b0b6a2cfe2c79201c7"  # 我们验证的 commit，patch 基于它
 if [ ! -d "$VLLM" ]; then
-  echo "==> 克隆 vLLM（ghfast 镜像）..."
-  git clone --depth 1 --filter=blob:none \
-    https://ghfast.top/https://github.com/vllm-project/vllm "$VLLM"
+  echo "==> 克隆 vLLM 并锁定到 $VLLM_COMMIT ..."
+  # 先试 ghfast 镜像，失败回退 github 直连
+  git clone --filter=blob:none --no-checkout \
+    https://ghfast.top/https://github.com/vllm-project/vllm "$VLLM" 2>/dev/null \
+    || git clone --filter=blob:none --no-checkout \
+       https://github.com/vllm-project/vllm "$VLLM"
 fi
+# 锁定到验证过的 commit
+git -C "$VLLM" checkout "$VLLM_COMMIT" 2>/dev/null \
+  || { echo "==> fetch $VLLM_COMMIT ..."; git -C "$VLLM" fetch origin "$VLLM_COMMIT" && git -C "$VLLM" checkout FETCH_HEAD; }
 if grep -q "kv_cache_dtype_per_layer" "$VLLM/vllm/config/cache.py"; then
   echo "per-layer patch 已应用，跳过。"
 else
