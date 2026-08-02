@@ -8,7 +8,12 @@ set -euo pipefail
 
 # ---------- 0) 前提检查 ----------
 echo "=== 前提检查 ==="
-nvidia-smi --query-gpu=name,memory.total,driver_version --format=csv || { echo "无 GPU"; exit 1; }
+if nvidia-smi --query-gpu=name,memory.total,driver_version --format=csv 2>/dev/null; then
+  echo "GPU OK"
+else
+  echo "WARN: 无 GPU 访问（无卡模式）。torch 安装 + vLLM 构建（nvcc 编译）不需要 GPU，继续。"
+  echo "      后续 serving benchmark / 模型加载需切回 GPU 模式。"
+fi
 echo "CUDA_HOME=${CUDA_HOME:-<未设置，用 /usr/local/cuda>}"
 CUDA_HOME="${CUDA_HOME:-/usr/local/cuda}"
 command -v nvcc >/dev/null 2>&1 || ls "$CUDA_HOME/bin/nvcc" >/dev/null 2>&1 || {
