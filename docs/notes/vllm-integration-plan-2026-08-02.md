@@ -18,6 +18,24 @@
 - vLLM 要求 torch==2.13.0，WSL venv 是 torch 2.13.0+cu130 ✓
 - 支持 sm_89（4060）与 sm_120（5090）✓
 
+## RTX 5090（Blackwell / sm_120）配置（2026-08-02 确认）
+| 规格 | 值 |
+|---|---|
+| 架构 | Blackwell, GB202, **compute capability sm_120 (12.0)** |
+| CUDA cores | 21,760（170 SMs） |
+| 显存 | 32GB GDDR7, 512-bit |
+| **带宽** | **1,792 GB/s**（比 4060 的 ~256GB/s 高 7×） |
+| L2 | 96MB |
+| Tensor Core | 5th-gen, FP4/FP8 支持 |
+| 接口 | PCIe 5.0 x16 |
+| 发布 | 2025-01-30，CUDA 12.x/13.x 编译器支持 sm_120 |
+
+**对集成的意义**：
+- 5090 上 vLLM 应全量构建（`TORCH_CUDA_ARCH_LIST="12.0"`），避免 precompiled wheel 的 sm_120 缺失
+- 高带宽 → lazy-dequant 的带宽代价小，容量收益（长上下文/大 batch）是主卖点
+- FP4/FP8 Tensor Core 可用，但我们的方法是逐层 2/3/4-bit，仍需扩展
+- 7B 模型 + 长上下文可跑（32GB）
+
 ## 集成计划（架构师推荐顺序）
 
 ### Phase 0（先做）：transformers 参考实现（fallback 路径）
