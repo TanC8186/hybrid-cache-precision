@@ -37,6 +37,7 @@ def main() -> None:
         model=str(Path(args.model).resolve()),
         enforce_eager=True,
         max_model_len=args.max_model_len,
+        gpu_memory_utilization=0.82,  # 4060 8GB 只剩 ~6.9GB，0.92 默认会 OOM 报错
         **kv_args,
     )
     out = llm.generate([args.prompt], SamplingParams(max_tokens=args.max_tokens))
