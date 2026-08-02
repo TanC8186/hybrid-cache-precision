@@ -24,10 +24,20 @@ index d267e9a..32988f4 100644
      """ Optional override for mamba page size; used by hybrid mamba/attention
      models to ensure exact alignment with attention page size."""
 diff --git a/vllm/engine/arg_utils.py b/vllm/engine/arg_utils.py
-index 3003d73..200879d 100644
+index 3003d73..dc61338 100644
 --- a/vllm/engine/arg_utils.py
 +++ b/vllm/engine/arg_utils.py
-@@ -1216,6 +1216,13 @@ class EngineArgs:
+@@ -699,6 +699,9 @@ class EngineArgs:
+     kv_cache_dtype_skip_layers: list[str] = get_field(
+         CacheConfig, "kv_cache_dtype_skip_layers"
+     )
++    kv_cache_dtype_per_layer: dict[str, str] = get_field(
++        CacheConfig, "kv_cache_dtype_per_layer"
++    )
+     mamba_cache_dtype: MambaDType = CacheConfig.mamba_cache_dtype
+     mamba_ssm_cache_dtype: MambaDType = CacheConfig.mamba_ssm_cache_dtype
+     mamba_block_size: int | None = get_field(CacheConfig, "mamba_block_size")
+@@ -1216,6 +1219,13 @@ class EngineArgs:
          cache_group.add_argument(
              "--kv-cache-dtype-skip-layers", **cache_kwargs["kv_cache_dtype_skip_layers"]
          )
