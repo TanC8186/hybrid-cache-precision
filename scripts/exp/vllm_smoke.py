@@ -22,6 +22,7 @@ def main() -> None:
     ap.add_argument("--model", default=MODEL)
     ap.add_argument("--kv-dtype", default="float16")
     ap.add_argument("--kv-skip-layers", default="", help="逗号分隔要跳过量化的层索引")
+    ap.add_argument("--kv-per-layer", default="", help="per-layer dtype: '23:float16,3:int4_per_token_head' 等")
     ap.add_argument("--prompt", default="The capital of France is")
     ap.add_argument("--max-tokens", type=int, default=32)
     ap.add_argument("--max-model-len", type=int, default=2048)
@@ -32,6 +33,11 @@ def main() -> None:
     kv_args = {"kv_cache_dtype": args.kv_dtype}
     if args.kv_skip_layers:
         kv_args["kv_cache_dtype_skip_layers"] = [int(x) for x in args.kv_skip_layers.split(",")]
+    if args.kv_per_layer:
+        kv_args["kv_cache_dtype_per_layer"] = {
+            k.strip(): v.strip() for k, v in (p.split(":") for p in args.kv_per_layer.split(","))
+        }
+        print(f"per-layer dtype: {kv_args['kv_cache_dtype_per_layer']}")
 
     llm = LLM(
         model=str(Path(args.model).resolve()),
