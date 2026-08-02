@@ -304,9 +304,12 @@ def run_layer_sensitivity(
 HETERO_ALLOCS = {
     # 名称 -> layer_bits（未列出的层用默认 bits=8）
     "uniform_4bit": {3: 4, 7: 4, 11: 4, 15: 4, 19: 4, 23: 4},
+    "uniform_3bit": {3: 3, 7: 3, 11: 3, 15: 3, 19: 3, 23: 3},
     "uniform_2bit": {3: 2, 7: 2, 11: 2, 15: 2, 19: 2, 23: 2},
-    "early2bit_late4bit": {3: 2, 7: 2, 11: 2, 15: 4, 19: 4, 23: 4},
-    "aggressive": {3: 2, 7: 2, 11: 2, 15: 2, 19: 2, 23: 4},
+    # 灵敏度引导：layer3 免费压 2bit，layer23（最敏感）保 4bit，中间层 3bit
+    "sens_guided": {3: 2, 7: 3, 11: 3, 15: 3, 19: 3, 23: 4},
+    # 仅 layer3 压 2bit，其余 4bit（检验"免费层"的字节收益上限）
+    "only_layer3_2bit": {3: 2, 7: 4, 11: 4, 15: 4, 19: 4, 23: 4},
 }
 
 
