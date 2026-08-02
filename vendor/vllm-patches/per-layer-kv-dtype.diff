@@ -1,0 +1,143 @@
+diff --git a/vllm/config/cache.py b/vllm/config/cache.py
+index d267e9a..32988f4 100644
+--- a/vllm/config/cache.py
++++ b/vllm/config/cache.py
+@@ -30,6 +30,8 @@ CacheDType = Literal[
+     "turboquant_k3v4_nc",
+     "turboquant_3bit_nc",
+     "int4_per_token_head",
++    "int3_per_token_head",
++    "int2_per_token_head",
+     "int8_per_token_head",
+     "fp8_per_token_head",
+     "nvfp4",
+@@ -116,6 +118,11 @@ class CacheConfig:
+     kv_cache_dtype_skip_layers: list[str] = field(default_factory=list)
+     """Layer patterns to skip KV cache quantization. Accepts layer indices
+     (e.g., '0', '2', '4') or attention type names (e.g., 'sliding_window')."""
++    kv_cache_dtype_per_layer: dict[str, str] = field(default_factory=dict)
++    """Per-layer KV cache dtype override (our sensitivity-guided allocation).
++    Keys are layer indices as strings (e.g., '23'), values are CacheDType
++    strings (e.g., 'int4_per_token_head'). Layers not listed use the global
++    `kv_cache_dtype`. Overrides `kv_cache_dtype_skip_layers` where they clash."""
+     mamba_page_size_padded: int | None = None
+     """ Optional override for mamba page size; used by hybrid mamba/attention
+     models to ensure exact alignment with attention page size."""
+diff --git a/vllm/engine/arg_utils.py b/vllm/engine/arg_utils.py
+index 3003d73..200879d 100644
+--- a/vllm/engine/arg_utils.py
++++ b/vllm/engine/arg_utils.py
+@@ -1216,6 +1216,13 @@ class EngineArgs:
+         cache_group.add_argument(
+             "--kv-cache-dtype-skip-layers", **cache_kwargs["kv_cache_dtype_skip_layers"]
+         )
++        cache_group.add_argument(
++            "--kv-cache-dtype-per-layer",
++            **cache_kwargs["kv_cache_dtype_per_layer"],
++            help="Per-layer KV cache dtype (sensitivity-guided allocation). "
++            "Format: layer_idx:dtype,comma-separated, e.g. "
++            "'3:int2_per_token_head,23:int4_per_token_head'",
++        )
+         cache_group.add_argument(
+             "--kv-sharing-fast-prefill", **cache_kwargs["kv_sharing_fast_prefill"]
+         )
+diff --git a/vllm/model_executor/layers/attention/attention.py b/vllm/model_executor/layers/attention/attention.py
+index c8e5a9c..1cda473 100644
+--- a/vllm/model_executor/layers/attention/attention.py
++++ b/vllm/model_executor/layers/attention/attention.py
+@@ -313,12 +313,29 @@ class Attention(nn.Module, AttentionLayerBase):
+             if skip:
+                 kv_cache_dtype = "auto"
+                 calculate_kv_scales = False
+-            logger.debug(
+-                "Layer %s: kv_cache_dtype=%s, sliding_window=%s",
+-                prefix,
+-                kv_cache_dtype,
+-                sliding_window,
+-            )
++
++        # Per-layer KV cache dtype override (sensitivity-guided allocation).
++        # Keyed by layer index string; wins over skip_layers and the global dtype.
++        if cache_config is not None and cache_config.kv_cache_dtype_per_layer:
++            from vllm.model_executor.models.utils import extract_layer_index
++
++            layer_idx = str(extract_layer_index(prefix))
++            per_layer_dtype = cache_config.kv_cache_dtype_per_layer.get(layer_idx)
++            if per_layer_dtype is not None:
++                kv_cache_dtype = per_layer_dtype
++                calculate_kv_scales = False
++                logger.info(
++                    "Layer %s: per-layer kv_cache_dtype override -> %s",
++                    prefix,
++                    kv_cache_dtype,
++                )
++
++        logger.debug(
++            "Layer %s: kv_cache_dtype=%s, sliding_window=%s",
++            prefix,
++            kv_cache_dtype,
++            sliding_window,
++        )
+ 
+         self.kv_cache_torch_dtype = kv_cache_dtype_str_to_dtype(
+             kv_cache_dtype, vllm_config.model_config
+diff --git a/vllm/utils/torch_utils.py b/vllm/utils/torch_utils.py
+index 1472024..90620fc 100644
+--- a/vllm/utils/torch_utils.py
++++ b/vllm/utils/torch_utils.py
+@@ -40,6 +40,8 @@ STR_DTYPE_TO_TORCH_DTYPE = {
+     "fp8_e5m2": torch.uint8,
+     "int8": torch.int8,
+     "int4_per_token_head": torch.uint8,
++    "int3_per_token_head": torch.uint8,
++    "int2_per_token_head": torch.uint8,
+     "int8_per_token_head": torch.int8,
+     "fp8_per_token_head": torch.uint8,
+     "fp8_inc": torch.float8_e4m3fn,
+diff --git a/vllm/v1/kv_cache_interface.py b/vllm/v1/kv_cache_interface.py
+index cc61f1f..0e20909 100644
+--- a/vllm/v1/kv_cache_interface.py
++++ b/vllm/v1/kv_cache_interface.py
+@@ -44,6 +44,8 @@ class KVQuantMode(IntEnum):
+     INT4_PER_TOKEN_HEAD = 4  # packed 2×int4/byte, RHT + asymmetric zp
+     NVFP4 = 5  # packed fp4 data + fp8 block scales
+     TURBOQUANT = 6  # Hadamard-rotated Lloyd-Max quant, packed K+V per slot
++    INT3_PER_TOKEN_HEAD = 7  # packed 3-bit, ~2.67 values/byte (our extension)
++    INT2_PER_TOKEN_HEAD = 8  # packed 4×int2/byte (our extension)
+ 
+     @property
+     def is_per_token_head(self) -> bool:
+@@ -52,6 +54,8 @@ class KVQuantMode(IntEnum):
+             KVQuantMode.INT8_PER_TOKEN_HEAD,
+             KVQuantMode.FP8_PER_TOKEN_HEAD,
+             KVQuantMode.INT4_PER_TOKEN_HEAD,
++            KVQuantMode.INT3_PER_TOKEN_HEAD,
++            KVQuantMode.INT2_PER_TOKEN_HEAD,
+         )
+ 
+     @property
+@@ -69,6 +73,10 @@ def get_kv_quant_mode(kv_cache_dtype: str) -> KVQuantMode:
+     """Map a ``kv_cache_dtype`` string to a :class:`KVQuantMode`."""
+     if kv_cache_dtype == "int4_per_token_head":
+         return KVQuantMode.INT4_PER_TOKEN_HEAD
++    if kv_cache_dtype == "int3_per_token_head":
++        return KVQuantMode.INT3_PER_TOKEN_HEAD
++    if kv_cache_dtype == "int2_per_token_head":
++        return KVQuantMode.INT2_PER_TOKEN_HEAD
+     if kv_cache_dtype == "int8_per_token_head":
+         return KVQuantMode.INT8_PER_TOKEN_HEAD
+     if kv_cache_dtype == "fp8_per_token_head":
+@@ -343,6 +351,13 @@ class FullAttentionSpec(AttentionSpec):
+             ) + nvfp4_kv_cache_full_dim(self.head_size_v)
+         elif self.kv_quant_mode == KVQuantMode.INT4_PER_TOKEN_HEAD:
+             last_dim = self.head_size // 2 + self.head_size_v // 2
++        elif self.kv_quant_mode == KVQuantMode.INT2_PER_TOKEN_HEAD:
++            last_dim = self.head_size // 4 + self.head_size_v // 4
++        elif self.kv_quant_mode == KVQuantMode.INT3_PER_TOKEN_HEAD:
++            # 3-bit: 8/3 ≈ 2.67 values per byte, align to byte
++            last_dim = (
++                (self.head_size * 3 + 7) // 8 + (self.head_size_v * 3 + 7) // 8
++            )
+         else:
+             last_dim = self.head_size + self.head_size_v
+         return (
