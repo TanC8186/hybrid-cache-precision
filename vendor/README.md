@@ -2,14 +2,18 @@
 
 | 路径 | 内容 | 固定方式 |
 |---|---|---|
-| `vendor/vllm` | vLLM fork | submodule 固定 SHA |
-| `vendor/eval` | lm-eval-harness / LongBench 评测脚本 | submodule 固定 commit |
+| `vendor/vllm` | vLLM 工作副本 | 浅克隆（`--depth 1 --filter=blob:none`），provenance 记录 commit SHA |
+| `vendor/eval` | lm-eval-harness / LongBench 评测脚本 | submodule 固定 commit（待建） |
 | `vendor/vllm-patches/` | 我们对 vLLM 的每个改动，`.diff` 留档 | 入库 |
+
+> **网络注意**：huggingface.co 与 github.com 在此环境被墙。
+> - 模型/数据集经 ModelScope 或 hf-mirror.com
+> - vLLM 经 ghfast.top 镜像克隆：`git clone --depth 1 --filter=blob:none https://ghfast.top/https://github.com/vllm-project/vllm vendor/vllm`
 
 ## 初始化
 
 ```bash
-git submodule update --init --recursive vendor/vllm
+git clone --depth 1 --filter=blob:none https://ghfast.top/https://github.com/vllm-project/vllm vendor/vllm
 ```
 
 ## 修改 vLLM 的纪律
@@ -24,3 +28,4 @@ git submodule update --init --recursive vendor/vllm
 
 - vLLM 无原生 Windows 支持；本地开发在 WSL2/Docker 内进行
 - torch/vLLM 按 CUDA 架构（sm_89 vs sm_120）编译，**二进制不互通**，跨机器要重建
+- 工作副本是浅克隆；需完整历史做 rebase 时，用官方 remote 加深（网络允许时）
