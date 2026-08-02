@@ -205,6 +205,65 @@ def tokenize_corpus(tokenizer, corpus: str, max_len: int, num_seqs: int, seed: i
     return seqs
 
 
+def run_serving_metrics(
+    model, tokenizer, ids_list, attn_indices, chunk_size, out_path: Path, kv_budget_mb: float = 4000
+) -> None:
+    """Serving 指标（Phase 0，transformers 参考路径）：
+    - 实际显存占用（torch.cuda.max_memory_allocated 增量）
+    - 解码速度（tokens/sec，验证 lazy-dequant ≈ fp16 速度）
+    - 质量 × 容量前沿：固定 KV 内存预算下，各配置能装多少 token、质量如何
+
+    核心主张（Route 1 卖容量）：固定内存下量化 KV 支持更长上下文/更大 batch。
+    """
+    import csv
+    import math
+    import statistics
+
+    def measure(cache_factory, label):
+        torch.cuda.reset_peak_memory_stats()
+        t0 = time.time()
+        tl, tt = 0.0, 0
+        qb = fb = 0.0
+        for ids in ids_list:
+            p, q, f = chunked_ppl(model, tokenizer, ids, cache_factory, chunk_size,
+                                  attn_indices=attn_indices)
+            tl += math.log(p) * (ids.shape[1] - 1)
+            tt += ids.shape[1] - 1
+            qb, fb = q, f
+        elapsed = time.time() - t0
+        ppl = math.exp(tl / tt)
+        peak = torch.cuda.max_memory_allocated() / 1e6  # MB
+        total_tokens = sum(i.shape[1] - 1 for i in ids_list)
+        toks_per_sec = total_tokens / elapsed
+        # 容量前沿：固定 KV 预算下能装的 token 数
+        bpt = qb / ids_list[0].shape[1]  # bytes/token
+        max_tokens_budget = kv_budget_mb * 1e6 / bpt if bpt > 0 else 0
+        return dict(label=label, ppl=ppl, kv_bytes=qb, fp16_bytes=fb, peak_mb=peak,
+                    toks_per_sec=toks_per_sec, max_tokens_budget=max_tokens_budget)
+
+    configs = [
+        ("fp16", lambda: make_cache(16, None, attn_indices, model)),
+        ("4bit", lambda: make_cache(4, None, attn_indices, model)),
+        ("2bit", lambda: make_cache(2, None, attn_indices, model)),
+        ("3bit", lambda: make_cache(3, None, attn_indices, model)),
+        ("sens_guided", lambda: make_cache(8, None, attn_indices, model,
+                                           layer_bits={3: 2, 7: 3, 11: 3, 15: 3, 19: 3, 23: 4})),
+    ]
+    rows = [measure(f, l) for l, f in configs]
+
+    print(f"\n=== Serving 指标（KV 预算 {kv_budget_mb:.0f} MB） ===")
+    print(f"{'config':>12} {'PPL':>7} {'KV_MB':>8} {'peak_MB':>8} {'tok/s':>8} {'max_tok@budget':>14}")
+    for r in rows:
+        print(f"{r['label']:>12} {r['ppl']:>7.3f} {r['kv_bytes']/1e6:>8.2f} "
+              f"{r['peak_mb']:>8.1f} {r['toks_per_sec']:>8.1f} {r['max_tokens_budget']:>14,.0f}")
+
+    with open(out_path, "w", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
+        w.writeheader()
+        w.writerows(rows)
+    print(f"→ {out_path}")
+
+
 def run_bits(
     model, tokenizer, ids_list, attn_indices, bits_list, evict_budgets, chunk_size, out_path: Path
 ) -> None:
@@ -358,6 +417,7 @@ def main() -> None:
     ap.add_argument("--num-seqs", type=int, default=10, help="评测前 N 篇文档（多文档平均 PPL）")
     ap.add_argument("--layer-sensitivity", action="store_true", help="逐层敏感度模式")
     ap.add_argument("--hetero", action="store_true", help="异构预算验证模式")
+    ap.add_argument("--serving", action="store_true", help="serving 指标模式（显存+速度+容量前沿）")
     ap.add_argument("--seeds", default="42", help="逗号分隔 seed 列表（多 seed 聚合 mean±std）")
     args = ap.parse_args()
 
@@ -397,6 +457,9 @@ def main() -> None:
         return
     if args.hetero:
         run_hetero(model, tokenizer, ids_list, attn_indices, chunk, out)
+        return
+    if args.serving:
+        run_serving_metrics(model, tokenizer, ids_list, attn_indices, chunk, out)
         return
 
     # 多 seed 聚合：mean±std（headline 要求）
