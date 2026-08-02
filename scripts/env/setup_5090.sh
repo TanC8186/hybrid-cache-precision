@@ -43,7 +43,11 @@ echo "=== 安装 torch 2.13.0+cu130 ==="
 # 优先 PyTorch cu130 官方 index（确保 cu130 wheel）；失败则默认 index
 uv pip install "torch==2.13.0" --index-url https://download.pytorch.org/whl/cu130 \
   || uv pip install "torch==2.13.0"
-python -c "import torch; print('torch', torch.__version__, 'cuda', torch.version.cuda, 'cap', torch.cuda.get_device_capability())"
+# torch 版本校验（无卡模式不查 GPU capability，避免 CUDA init 报错）
+python -c "import torch; print('torch', torch.__version__, 'cuda', torch.version.cuda)"
+if nvidia-smi >/dev/null 2>&1; then
+  python -c "import torch; print('cap', torch.cuda.get_device_capability())"
+fi
 
 # nvcc（系统无则用 pip 的）
 if ! command -v nvcc >/dev/null 2>&1 && [ ! -x "$CUDA_HOME/bin/nvcc" ]; then
