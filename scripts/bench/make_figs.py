@@ -44,7 +44,7 @@ fig, ax = plt.subplots(figsize=(4.2, 3.3))
 ax.plot([r["req_s"] for r in fp16], [r["ttft_p99"] for r in fp16],
         color=FP16_C, lw=1.6, marker='o', ms=4, label="fp16 baseline")
 ax.plot([r["req_s"] for r in int4], [r["ttft_p99"] for r in int4],
-        color=INT4_C, lw=1.6, marker='s', ms=4, label="int4 per-layer")
+        color=INT4_C, lw=1.6, marker='s', ms=4, label="uniform int4")
 ax.set_xlabel("Goodput (req/s)")
 ax.set_ylabel("TTFT p99 (ms)")
 ax.set_title("TTFT p99 vs served throughput", fontsize=10)
@@ -60,7 +60,7 @@ fig, ax = plt.subplots(figsize=(4.6, 3.3))
 ax.plot([r["rate"] for r in fp16], [r["ttft_p99"] for r in fp16],
         color=FP16_C, lw=1.6, marker='o', ms=4, label="fp16 baseline")
 ax.plot([r["rate"] for r in int4], [r["ttft_p99"] for r in int4],
-        color=INT4_C, lw=1.6, marker='s', ms=4, label="int4 per-layer")
+        color=INT4_C, lw=1.6, marker='s', ms=4, label="uniform int4")
 ax.axhline(2000, color=SLO_C, lw=1.2, ls='--', zorder=0)
 ax.text(0.5, 2060, "SLO: TTFT p99 < 2000 ms", color=SLO_C, fontsize=8)
 # annotate max SLO-satisfying rates
@@ -86,7 +86,7 @@ for ax, col, title in [(ax1, "p50", "TPOT p50"), (ax2, "p99", "TPOT p99")]:
             label="fp16 baseline" if col=="p50" else None)
     ax.plot([r["rate"] for r in int4], [r["tpot_p50"] if col=="p50" else r["tpot_p99"] for r in int4],
             color=INT4_C, lw=1.6, marker='s', ms=3.5, ls='-' if col=="p50" else '--',
-            label="int4 per-layer" if col=="p50" else None)
+            label="uniform int4" if col=="p50" else None)
     ax.set_xlabel("Offered load (req/s)")
     ax.set_ylabel("TPOT (ms)")
     ax.set_title(title, fontsize=10)
