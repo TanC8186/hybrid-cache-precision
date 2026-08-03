@@ -1,0 +1,107 @@
+===== EXPERIMENT A: uniform_int4 warmup 3-seed =====
+start: 2026-08-03 14:49:06
+--- A seed=7 ---
+exit=0 ; json written; tail:
+BENCH DONE
+INFO 08-03 14:50:13 [utils.py:612] [shutdown] Process manager: send sigterm to process EngineCore
+(EngineCore pid=23859) INFO 08-03 14:50:13 [core.py:1332] [shutdown] EngineCore: trigger received signal=SIGTERM
+(EngineCore pid=23859) INFO 08-03 14:50:13 [core.py:1468] [shutdown] EngineCore: start mode=abort timeout=0s
+(EngineCore pid=23859) INFO 08-03 14:50:13 [core.py:1499] [shutdown] EngineCore: request processing complete; starting resource teardown
+(EngineCore pid=23859) INFO 08-03 14:50:13 [core.py:1345] [shutdown] EngineCore: exiting busy loop
+--- A seed=42 ---
+exit=0 ; json written; tail:
+BENCH DONE
+INFO 08-03 14:51:23 [utils.py:612] [shutdown] Process manager: send sigterm to process EngineCore
+(EngineCore pid=24787) INFO 08-03 14:51:23 [core.py:1332] [shutdown] EngineCore: trigger received signal=SIGTERM
+(EngineCore pid=24787) INFO 08-03 14:51:23 [core.py:1468] [shutdown] EngineCore: start mode=abort timeout=0s
+(EngineCore pid=24787) INFO 08-03 14:51:23 [core.py:1499] [shutdown] EngineCore: request processing complete; starting resource teardown
+(EngineCore pid=24787) INFO 08-03 14:51:23 [core.py:1345] [shutdown] EngineCore: exiting busy loop
+--- A seed=2026 ---
+exit=0 ; json written; tail:
+BENCH DONE
+INFO 08-03 14:52:39 [utils.py:612] [shutdown] Process manager: send sigterm to process EngineCore
+(EngineCore pid=25715) INFO 08-03 14:52:39 [core.py:1332] [shutdown] EngineCore: trigger received signal=SIGTERM
+(EngineCore pid=25715) INFO 08-03 14:52:39 [core.py:1468] [shutdown] EngineCore: start mode=abort timeout=0s
+(EngineCore pid=25715) INFO 08-03 14:52:39 [core.py:1499] [shutdown] EngineCore: request processing complete; starting resource teardown
+(EngineCore pid=25715) INFO 08-03 14:52:39 [core.py:1345] [shutdown] EngineCore: exiting busy loop
+end: 2026-08-03 14:52:43
+===== EXPERIMENT A DONE =====
+===== EXPERIMENT B: fp16 @16384 =====
+start: 2026-08-03 14:53:24
+fp16 server PID: 26376
+waiting for startup...
+===== EXP B: fp16@16384 small bench (rate8, n200, in4096 out256) =====
+start: 2026-08-03 14:56:58
+exit=0 done: 2026-08-03 14:57:38
+--- result files ---
+total 16
+drwxr-xr-x 2 root root   100 Aug  3 14:57 .
+drwxr-xr-x 5 root root    64 Aug  3 14:56 ..
+-rw-r--r-- 1 root root   906 Aug  3 14:57 openai-8.0qps-concurrency512-master-20260803-145738.json
+-rw-r--r-- 1 root root 11579 Aug  3 14:57 rate_8.log
+===== EXP B: fp16@16384 small bench (retry, base-url without /v1) =====
+start: 2026-08-03 14:58:16
+exit=0 done: 2026-08-03 14:58:57
+total 12
+drwxr-xr-x 2 root root  100 Aug  3 14:58 .
+drwxr-xr-x 5 root root   64 Aug  3 14:56 ..
+-rw-r--r-- 1 root root 1135 Aug  3 14:58 openai-8.0qps-concurrency512-master-20260803-145857.json
+-rw-r--r-- 1 root root 8188 Aug  3 14:58 rate_8.log
+===== EXPERIMENT B: int4 per-layer @16384 =====
+start: 2026-08-03 14:59:15
+int4 server PID: 28379
+waiting for startup...
+===== EXP B: int4@16384 small bench (rate8, n200, in4096 out256) =====
+start: 2026-08-03 15:02:33
+exit=0 done: 2026-08-03 15:03:15
+total 12
+drwxr-xr-x 2 root root  100 Aug  3 15:03 .
+drwxr-xr-x 6 root root   86 Aug  3 15:02 ..
+-rw-r--r-- 1 root root 1131 Aug  3 15:03 openai-8.0qps-concurrency512-master-20260803-150315.json
+-rw-r--r-- 1 root root 7704 Aug  3 15:03 rate_8.log
+===== EXP C: download ShareGPT =====
+start: 2026-08-03 15:06:19
+download PID: 30163
+started in background
+===== EXP C: validate ShareGPT + EXP D: start 7B download =====
+start: 2026-08-03 15:11:53
+--- validate ShareGPT JSON ---
+top-level type: list
+num entries: 94145
+sample keys: ['id', 'conversations']
+sample conversations turns: 12
+500-sample prompt char len p50/p90/max: 536 2992 32708
+--- start Qwen2.5-7B-Instruct download (background) ---
+7B download PID: 31219
+===== EXP C: start int4 per-layer @4096 server (port 8000) =====
+start: 2026-08-03 15:12:09
+int4@4096 server PID: 31315
+===== EXP C: int4 ShareGPT benches (rate 8,16; n=500) =====
+start: 2026-08-03 15:14:57
+--- int4 sharegpt rate=8 ---
+done rate=8: 2026-08-03 15:16:16
+--- int4 sharegpt rate=16 ---
+done rate=16: 2026-08-03 15:17:03
+total 44
+drwxr-xr-x 2 root root   192 Aug  3 15:17 .
+drwxr-xr-x 7 root root   111 Aug  3 15:14 ..
+-rw-r--r-- 1 root root  1133 Aug  3 15:17 openai-16.0qps-concurrency512-master-20260803-151703.json
+-rw-r--r-- 1 root root  1134 Aug  3 15:16 openai-8.0qps-concurrency512-master-20260803-151615.json
+-rw-r--r-- 1 root root 14971 Aug  3 15:17 rate_16.log
+-rw-r--r-- 1 root root 19844 Aug  3 15:16 rate_8.log
+===== EXP C: start fp16 @4096 server (port 8001) =====
+start: 2026-08-03 15:17:15
+fp16@4096 server PID: 33007
+===== EXP C: fp16 ShareGPT benches (rate 8,16; n=500) =====
+start: 2026-08-03 15:19:56
+--- fp16 sharegpt rate=8 ---
+done rate=8: 2026-08-03 15:21:14
+--- fp16 sharegpt rate=16 ---
+done rate=16: 2026-08-03 15:22:01
+total 44
+drwxr-xr-x 2 root root   192 Aug  3 15:22 .
+drwxr-xr-x 8 root root   136 Aug  3 15:19 ..
+-rw-r--r-- 1 root root  1137 Aug  3 15:22 openai-16.0qps-concurrency512-master-20260803-152201.json
+-rw-r--r-- 1 root root  1129 Aug  3 15:21 openai-8.0qps-concurrency512-master-20260803-152114.json
+-rw-r--r-- 1 root root 14968 Aug  3 15:22 rate_16.log
+-rw-r--r-- 1 root root 19667 Aug  3 15:21 rate_8.log
