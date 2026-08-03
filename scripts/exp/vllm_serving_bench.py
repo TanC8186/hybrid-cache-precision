@@ -119,12 +119,14 @@ def main() -> None:
         kv_args["kv_cache_dtype_per_layer"] = alloc
         print(f"per-layer allocation: {alloc}")
 
-    # 注意：不要设 disable_log_stats=True，否则 RequestOutput.metrics 为 None
+    # 离线 LLM 入口默认强制 disable_log_stats=True（vllm/entrypoints/llm.py:226），
+    # 会让 RequestOutput.metrics 为 None → 显式关闭，否则 TTFT/TPOT 测不到。
     llm = LLM(
         model=str(model),
         enforce_eager=True,
         max_model_len=args.max_len,
         seed=args.seed,
+        disable_log_stats=False,
         **kv_args,
     )
 
