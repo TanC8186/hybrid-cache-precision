@@ -109,7 +109,7 @@ SLO 定义（`configs/bench/throughput.yaml`）：**TTFT p99 < 2000 ms 且 TPOT 
 ### 4.3 摊薄机制
 
 - server 端 fp16 总 KV 容量 1,203,106 tokens、int4 2,701,721 tokens → **实测 2.2456x**。
-- 纯 attention 3.88x 与实测 2.245x 的差距来自 GDN state 占用同一显存池：GDN state 随**并发序列数**线性增长（每请求 18.63 MiB），在满并发（R=75 观测到 400 并发）下 ≈ **60% KV cache 预算**，把注意力 KV 的 3.88x 摊薄到 2.245x。
+- 纯 attention 3.88x 与实测 2.245x 的差距来自 GDN state 占用同一显存池：GDN state 随**并发序列数**线性增长（每请求 18.63 MiB）。**理论满并发（659.6）下 ≈ 60% KV cache 预算**（18.63 MiB × 659.6 = 12.29 GiB / 20.08 GiB）；**观测峰值并发（R=75 达 400）下 ≈ 36%**（7.45 GiB / 20.08 GiB）。该固定预算把注意力 KV 的 3.88x 摊薄到 2.245x。
 - **诚实表述**：论文两个口径都报——"attention KV 压缩 3.88x"（机制层）+ "端到端 server 容量 2.245x"（系统层，含 GDN state 摊薄）。这也提示混合架构下"只量化 6 层 GQA"的收益上限受 18 层线性注意力的 per-request state 约束。
 
 ---
@@ -130,7 +130,7 @@ SLO 定义（`configs/bench/throughput.yaml`）：**TTFT p99 < 2000 ms 且 TPOT 
 - **负载**：`vllm bench serve --dataset-name random` 合成负载（input_len=1024 固定 / output_len=128 固定），**非 ShareGPT 真实 trace**；变长/真实流量下的 SLO 边界可能不同。
 - **单 GPU 单 run/rate**：无 3-seed mean±std，跨点对比带调度噪声；低负载 int4 延迟劣势与高负载 TPOT 反转均为单 run 观测，方向可信、精确值待补 run。
 - **协议**：`num_warmups=0`（log 确认）；`disable_log_stats=False` 已由 server 端配置保证 metrics 完整（`docs/notes/serving-benchmark-2026-08-03.md` 记录的坑）。
-- **容量 provenance 缺口**：server 启动日志（`GPU KV cache size` / `Maximum concurrency`）**未归档进 commit `fe1f6a6`**（该 commit 仅 20 个 JSON）；2,701,721 / 1,203,106 tokens 与 GDN state 数字来自 Agent F 运行现场记录 + 本笔记对 vLLM 代码的架构复核。GDN 占 KV 预算 ≈60% 为基于该口径的估计，精确值待补存档 server 日志。
+- **容量 provenance**：server 启动日志已归档（`results/ablations/bench_lat/logs/`，commit `525020f`，含 PROVENANCE.md 索引）；注意 int4 侧 `server_pl.log` 为矩阵后同配置**补录**（原 13:33 server 日志被覆盖，见 PROVENANCE.md H1 修正）。GDN 占 KV 预算：理论满并发 659.6 下 ≈60%，观测峰值并发 400 下 ≈36%（推导见 4.3）。
 - 本笔记所有矩阵数字由 `/tmp/g_analysis/parse_all.py` 直接读 JSON 重算；容量/state 数字来源已在 4 节标注推导。
 
 ---

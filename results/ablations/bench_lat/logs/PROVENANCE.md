@@ -7,10 +7,12 @@
 
 | log | 分配 | 启动时刻 | KV cache (tokens) | Max concurrency | KV 内存 |
 |---|---|---|---|---|---|
-| `server_pl.log` | int4 per-layer (L23 fp16) | 08-03 14:31 | **2,701,721** | **659.60x** | 20.08 GiB |
-| `server_fp16.log` | fp16 (`kv_cache_dtype=auto`) | 08-03 14:08 | **1,203,106** | **293.73x** | 20.12 GiB |
+| `server_pl.log` | int4 per-layer (L23 fp16) | 08-03 14:31（**矩阵后补录**）| **2,701,721** | **659.60x** | 20.08 GiB |
+| `server_fp16.log` | fp16 (`kv_cache_dtype=auto`) | 08-03 14:08（矩阵前启动，**第一手**）| **1,203,106** | **293.73x** | 20.12 GiB |
 
-**容量比 = 2,701,721 / 1,203,106 = 2.2456x**（E3 与 notes 引用的数字，第一手来源）
+**容量比 = 2,701,721 / 1,203,106 = 2.2456x**（E3 与 notes 引用的数字）
+
+> ⚠️ **Provenance 修正（code-review-2026-08-03, H1）**：int4 矩阵实际运行于 13:47–14:05，原 server（13:33 启动，pid 8790）日志被 14:31 补录 server 的 `>` 重定向**覆盖丢失**。`server_pl.log` 实为矩阵后**同配置补录**（2,701,721 / 659.60x）。同配置下 KV cache size 为确定性数值、数字可信，但严格第一手证据有损；fp16 侧 `server_fp16.log`（14:08）早于矩阵（14:16–14:29），为第一手。
 
 int4 server 启动配置（`server_pl.log` non-default args）：
 `kv_cache_dtype=int4_per_token_head, kv_cache_dtype_per_layer={23:float16, 3:float16→int4, 7,11,15,19:int4_per_token_head}, gpu_memory_utilization=0.85, max_model_len=4096, enforce_eager=False, enable_chunked_prefill=True`
