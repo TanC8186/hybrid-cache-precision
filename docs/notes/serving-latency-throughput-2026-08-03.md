@@ -1,7 +1,9 @@
-# Serving 吞吐-延迟曲线与 SLO 分析（2026-08-03）— int4 per-layer vs fp16（论文级证据）
+# Serving 吞吐-延迟曲线与 SLO 分析（2026-08-03）— uniform int4 vs fp16（论文级证据）
 
 > 数据：`results/ablations/bench_lat/{int4,fp16}/`，Qwen3.5-2B serving（RTX 5090，gpu_util=0.85，max-len 4096，`vllm serve` + `vllm bench serve --dataset-name random`，400 req/rate 点，Poisson 到达）。
 > 性质声明：**E2（吞吐-延迟矩阵）+ E3（SLO 下容量）正式分析**，论文 supplement 级证据；数字全部由脚本独立重算（`/tmp/g_analysis/parse_all.py`），非手抄。
+>
+> ⚠️ **2026-08-03 深夜修正（主线 re-base = uniform int4）**：下文原标 "int4 per-layer（layer23 fp16 保护）" 的矩阵**实为 uniform int4**。原因：`vendor/vllm/.../engine/arg_utils.py` 构造 `CacheConfig` 漏传 `kv_cache_dtype_per_layer` → CLI 能解析但 override 永不生效（NO-OP），**所有 "per-layer" 运行静默回落到 uniform int4**。修复后（`vendor/vllm-patches/per-layer-kv-dtype.diff`，服务器 site-packages 已同步）真 per-layer 在 vLLM V1 下容量反噬（×0.258，甚至低于 fp16），详见下方「修正说明」。**本文全部 E2/E3 矩阵、SLO +25%、GDN 摊薄、16384 3.155x 数字 = uniform int4 真实值，主线有效。**
 
 ## Material Passport
 
@@ -11,6 +13,33 @@
 - Verification Status: VALIDATED（独立重算 20 个 JSON，与 Agent F 报告逐一核对，无出入）
 - Version Label: paper_evidence_v1
 - Upstream Dependencies: Agent F E2/E3 矩阵（commit `fe1f6a6`，20 个 JSON）；设计文档 `docs/notes/serving-eval-paper-level-2026-08-03.md`；单点基线 `docs/notes/serving-benchmark-2026-08-03.md`
+
+---
+
+## 0. 2026-08-03 深夜修正（主线 re-base：uniform int4 + 真 per-layer 容量反噬）
+
+**背景（重大发现，已由 PROVENANCE.md 更新归档）**：
+
+- **(a) 原 "per-layer" 数据实为 uniform int4（bug）**：`vendor/vllm/vllm/engine/arg_utils.py` 构造 `CacheConfig` 漏传 `kv_cache_dtype_per_layer`，`attention.py:319` override 永不触发 → CLI 能解析但静默无效。**本文 §2/§3 全部矩阵（含 `server_pl.log` 的 2,701,721）都是 uniform int4 假象。** 已修复（本地 `8ef67f4` + 服务器 site-packages 同步验证；patch 更新 158 行）。
+- **(b) 二次 bug（保护 dtype）**：per-layer dict 用 `"float16"` 保护层在 bf16 模型必崩（flash-attn query/key dtype 不匹配）→ 正确保护 dtype = `"auto"`（跟随模型 bf16；page 尺寸与 fp16 等价）。
+- **(c) 真 per-layer 容量反噬（决定性）**：修复后真 per-layer 在 vLLM V1 下容量 **×0.258**：
+  - 2B：696,456 tokens（170.0x conc）vs uniform 2,701,721（659.6x）→ **×0.258**；**低于 fp16 baseline 1,203,106**
+  - 9B：84,787（20.7x）vs uniform 328,499（80.2x）→ **×0.258**；**低于 fp16 150,062**
+  - 机制：V1 KV manager 要求同池 uniform page size，混 dtype 触发 `unify_kv_cache_spec_page_size` 统一到最大 page（bf16=4×int4）→ int4 block_size 2064→8256 → 物理内存 4× + KV group 数暴增 → max_concurrency 暴跌。2B/9B 衰减一致 = 机制确定。
+- **(d) 主线数字不变（uniform int4 全部有效）**：容量 2.245x @4096 / 3.155x @16384 / 2.19x(9B)、吞吐 -6~8%、TPOT +8-10%、SLO +25%、ShareGPT -3% —— 即本笔记 §2/§3 的数字，全部是 uniform int4 真实值，论文主线可直接使用。
+
+**数据真实性标注**：下方 §2.1 表格标题原为 "int4 per-layer（layer23 fp16 保护）"，**实际运行的是 uniform int4**（per-layer NO-OP）。该表格数字真实、可用于 uniform int4 主线；只是标签需要改正。
+
+**真 per-layer 3-seed 补充证据**（`results/ablations/serving_bench_20260803/bench_default_alloc_perlayer_4096_{7,42,2026}.json`，warm-120，eager，gpu_util=0.90，L23=`auto`）：
+
+| seed | 吞吐 (out-tok/s) | TTFT p50 (ms) | TPOT p50 (ms) | TPOT p99 (ms) |
+|---|---|---|---|---|
+| 7 | 1898.2 | 709.7 | 37.7 | 47.3 |
+| 42 | 1745.6 | 793.9 | 40.7 | 49.8 |
+| 2026 | 1860.7 | 704.6 | 37.7 | 91.5 |
+| **mean** | **1834.8** | ≈736 | **38.7** | 47–92 |
+
+对照旧 uniform 假象（`bench_default_alloc_4096_*`，L23=`float16` NO-OP）：吞吐 1999.6（**-8.2%**）、TPOT p50 34.0（**+13.8%**，比 uniform int4 的 +8-10% 更差）、TTFT p50 ≈741（基本持平）。**TPOT p99 反而改善**（47–92 vs 88–159），因 bf16 保护层绕开 int4 Triton JIT（见 `tpot-tail-latency-2026-08-03.md`）。
 
 ---
 
@@ -36,7 +65,7 @@
 
 负载：`random` 数据集，input_len=1024 / output_len=128 固定（log 确认），400 请求，Poisson（burstiness=1），`--max-concurrency 512`，单 run/rate（无 3-seed）。
 
-### 2.1 int4 per-layer（layer23 fp16 保护）
+### 2.1 int4 uniform（实际配置；原标 "per-layer layer23 fp16 保护" 为 NO-OP bug，见 §0）
 
 | rate (offered) | req/s (goodput) | out-tok/s | TTFT mean (ms) | TTFT p99 (ms) | TPOT p50 (ms) | TPOT p99 (ms) | peak conc |
 |---|---|---|---|---|---|---|---|
@@ -76,7 +105,7 @@ SLO 定义（`configs/bench/throughput.yaml`）：**TTFT p99 < 2000 ms 且 TPOT 
 
 | 分配 | 最大 SLO 满足率 | 越过 SLO 的第一个点 | TPOT p99 全程 | 结论 |
 |---|---|---|---|---|
-| int4 per-layer | **50 req/s**（R=50 TTFT p99 1574 ✓） | R=75（4037 ms，2.0x） | 4.8–45.1 ms（远 < 200） | 约束由 TTFT 绑定 |
+| int4 uniform（原标 per-layer，见 §0） | **50 req/s**（R=50 TTFT p99 1574 ✓） | R=75（4037 ms，2.0x） | 4.8–45.1 ms（远 < 200） | 约束由 TTFT 绑定 |
 | fp16 | **40 req/s**（R=40 TTFT p99 566 ✓） | R=50（2081 ms，1.04x） | 4.7–49.3 ms（远 < 200） | 约束由 TTFT 绑定 |
 
 - **TPOT 全程 < 200 ms**（最大 p99 = 49.3 ms @ fp16 R=75），**约束实际由 TTFT 绑定**；TPOT 项对 SLO 判定无贡献。
@@ -116,17 +145,20 @@ SLO 定义（`configs/bench/throughput.yaml`）：**TTFT p99 < 2000 ms 且 TPOT 
 
 ## 5. 关键结论
 
-1. **SLO 容量 +25%**：int4 per-layer 在 TTFT p99 < 2000 ms 下承载 50 req/s vs fp16 40 req/s（`configs/bench/throughput.yaml` 定义的 SLO）。
+1. **SLO 容量 +25%**：int4 uniform 在 TTFT p99 < 2000 ms 下承载 50 req/s vs fp16 40 req/s（`configs/bench/throughput.yaml` 定义的 SLO）。
 2. **饱和 goodput 略优**：int4 平台 ~38.1 vs fp16 ~36.3 req/s（+5%）；out-tok/s 饱和值 4882 vs 4641（+5.2%）。int4 容量优势在饱和点转化为更高承载。
 3. **低负载 fp16 延迟略优（诚实报告）**：R=1 时 fp16 TTFT p99 115.9 vs int4 124.8 ms（+7.7%）、TPOT p50 3.52 vs 3.80 ms（+8.0%）——int4 每步 lazy-dequant 开销在低负载可见，与 `serving-benchmark-2026-08-03.md` 的 "TPOT p50 +8~10%"一致。
 4. **高负载 TPOT 反转**：R≥50 时 int4 TPOT p50 反而低于 fp16（R=75：40.97 vs 42.86 ms），可能来自更大 cache 减少排队/抢占，但为单 run 观测，不单独下结论。
 5. **TPOT 不是约束**：两分配 TPOT p99 全程 ≤ 49.3 ms << 200 ms，SLO 判定完全由 TTFT 绑定。
 
+> **注意（主线）**：以上 1–5 的 "int4" 均指 **uniform int4**（per-layer NO-OP bug 使原矩阵即 uniform 配置，见 §0）。真 per-layer 的容量/吞吐/TPOT 均更差，见 §0(c) 与论文草稿 §8。
+
 ---
 
 ## 6. 诚实性声明 / 局限
 
-- **模型**：Qwen3.5-2B（非 7B）。headline 需 7B 在 `remote_5090` 复验。
+- **主线 re-base（bug 披露）**：本文矩阵原标 "per-layer" 实为 uniform int4（`arg_utils.py` 漏传 `kv_cache_dtype_per_layer`，NO-OP）。**数字本身真实且为 uniform int4 主线**，但标签必须改正；原 per-layer 主张撤回，改以论文草稿 §8 的 limitation 框架表述。真 per-layer 容量 ×0.258、低于 fp16，另见 §0(c)。
+- **模型**：Qwen3.5-2B（非 7B）。headline 需 **Qwen3.5-9B** 在 `remote_5090` 复验（Qwen3.5 家族无 7B；9B 容量探针已测 2.19x @4096）。
 - **负载**：`vllm bench serve --dataset-name random` 合成负载（input_len=1024 固定 / output_len=128 固定），**非 ShareGPT 真实 trace**；变长/真实流量下的 SLO 边界可能不同。
 - **单 GPU 单 run/rate**：无 3-seed mean±std，跨点对比带调度噪声；低负载 int4 延迟劣势与高负载 TPOT 反转均为单 run 观测，方向可信、精确值待补 run。
 - **协议**：`num_warmups=0`（log 确认）；`disable_log_stats=False` 已由 server 端配置保证 metrics 完整（`docs/notes/serving-benchmark-2026-08-03.md` 记录的坑）。
