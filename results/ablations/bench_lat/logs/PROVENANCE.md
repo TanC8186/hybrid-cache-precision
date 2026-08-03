@@ -92,6 +92,15 @@ JSON 见 `results/ablations/serving_bench_20260803/bench_default_alloc_perlayer_
 - TPOT p99 反而大幅改善（真 per-layer 47–92 vs 旧 88–159）——旧 uniform 假象的 p99 尾巴来自 int4 内核 serving-time Triton JIT（见 b5a871d），per-layer 的 bf16 层绕开该 JIT。
 - **诚实标注**：本次 per-layer dict 用 `"auto"` 代替设计稿的 `"float16"`（见上二次 bug），两者 page 尺寸/容量行为等价，但该替换使"保护层全精度"语义 = bf16 而非 fp16；如需 fp16 保护，需模型以 fp16 加载或 flash_attn 加 dtype cast。
 
+## 9B @16384 容量（2026-08-04，gpu_util 0.85）
+
+| log | 分配 | max-len | KV cache (tokens) | Max concurrency | KV 内存 | attn block_size |
+|---|---|---|---|---|---|---|
+| `serve9b_fp16_16384.log` | fp16 | 16384 | 188,650 | 11.51x | 6.51 GiB | 528 |
+| `serve9b_int4_16384.log` | int4 uniform | 16384 | **597,271** | 36.45x | 6.47 GiB | 2048 |
+
+**容量比 = 597,271 / 188,650 = 3.167x**（@16384）。对照 9B @4096 的 2.19x（328,499/150,062）——**9B 同样复现"容量随上下文放大"**（与 2B 的 2.245x→3.155x 一致），GDN 摊薄随长上下文并发降低而减弱，机制跨模型稳健。fp16 @16384 单请求（16384 tokens）可装（11.51x 并发）。
+
 ## 其余日志
 
 - `bench_warm_*.log`：default_alloc/fp16 warmup-120 重跑（seed 42）的 server 日志

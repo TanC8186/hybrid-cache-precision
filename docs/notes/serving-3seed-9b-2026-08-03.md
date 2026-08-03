@@ -56,6 +56,14 @@
 - **9B 单卡 serving 受 KV 预算严重限制**：rate 8→16 即撞并发上限（fp16 ~8.3 / int4 ~9.3 req/s 饱和），TTFT 秒级爆炸——这是 32GB 单卡 + 19.3GB 权重的硬件现实，**不是量化引入的问题**。
 - **int4 相对优势跨规模保持**：饱和 goodput +12%（9.3 vs 8.3）、容量 2.19x、同 rate 下 TTFT 更低（rate8: 692 vs 920）。
 - **E3 @9B**：TTFT p99<2000ms 下两者都到 rate 8（fp16 920 / int4 692 均 OK，rate16 爆）；int4 的 TTFT 余量更大（-25%）。
+
+### 2.1 9B @16384 容量（2026-08-04 补测）
+| 分配 | KV cache (tokens) | Max concurrency | block size |
+|---|---|---|---|
+| fp16 | 188,650 | 11.51x | 528 |
+| int4 uniform | **597,271** | 36.45x | 2048 |
+
+**容量比 = 3.167x @16384**（对照 @4096 的 2.19x）→ **9B 复现"容量随上下文放大"**（2B: 2.245x→3.155x；9B: 2.19x→3.17x），GDN 摊薄随长上下文并发降低而减弱，机制跨模型稳健。fp16 @16384 仍可 serve 单请求（11.51x）。
 - **论文定位**：2B = 主 headline（KV 预算充足，SLO +25% 完整验证）；9B = 规模验证（机制跨 2B→9B 稳健：GDN 摊薄、int4 容量/goodput 优势均复现，但绝对 serving 能力受小 KV 池约束——适合写进 discussion 的"硬件预算 vs 模型规模"权衡）。
 
 ## 3. Material Passport
@@ -65,6 +73,6 @@
 - Verification: 数字由脚本从 JSON 直接计算，非手抄；9B server 配置（uniform int4，无 per-layer）由启动日志确认
 
 ## 4. 局限
-- 9B 单 run/rate（无 3-seed）；9B @16384 容量未测（被停止）
+- 9B 单 run/rate（无 3-seed）；9B @16384 容量已测（2026-08-04，见 §2.1）
 - 9B 的 TTFT 爆炸区间（rate 16+）只有单点，饱和平台可信但过渡区需补点
 - 2B 的 8 点 × 3 seed 覆盖 SLO 边界（40/50/75），低于 16 的点（1/4/8/16/30）也有 3-seed，完整 mean±std 就绪
