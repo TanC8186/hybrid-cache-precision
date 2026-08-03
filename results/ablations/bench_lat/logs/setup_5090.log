@@ -1,0 +1,31 @@
+数据盘: /root/autodl-tmp
+=== 前提检查 ===
+NVIDIA GeForce RTX 5090, 32607 MiB
+CUDA_HOME=/usr/local/cuda
+=== 创建 venv + pip ===
+=== 安装 torch 2.13.0+cu130（阿里云 pytorch 扁平目录 find-links + 依赖走阿里云 PyPI）===
+[notice] A new release of pip is available: 25.0.1 -> 26.2
+[notice] To update, run: pip3 install --upgrade pip
+/root/autodl-tmp/MLSys_Research/.venv/lib/python3.12/site-packages/torch/_subclasses/functional_tensor.py:368: UserWarning: Failed to initialize NumPy: No module named 'numpy' (Triggered internally at /__w/pytorch/pytorch/torch/csrc/utils/tensor_numpy.cpp:84.)
+  cpu = _conversion_method_template(device=torch.device("cpu"))
+torch 2.13.0+cu130 cuda 13.0
+=== git 镜像配置 ===
+=== vLLM fork + per-layer patch ===
+=== 安装构建 + 运行时依赖 ===
+[notice] To update, run: pip3 install --upgrade pip
+==> 从阿里云装 flashinfer ...
+flashinfer URL: 
+ERROR: Directory '/tmp/' is not installable. Neither 'setup.py' nor 'pyproject.toml' found.
+[notice] To update, run: pip3 install --upgrade pip
+=== 构建 vLLM (sm_120, precompiled) ===
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+Terminated
+=== 安装项目包 + 验证 ===
+[notice] To update, run: pip3 install --upgrade pip
+  File "/root/autodl-tmp/MLSys_Research/scripts/exp/check_vllm_cfg.py", line 4, in <module>
+    import vllm.config.cache as c
+ModuleNotFoundError: No module named 'vllm'
+check_vllm_cfg 失败
+=== 5090 环境就绪 ===
