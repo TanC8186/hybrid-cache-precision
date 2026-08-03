@@ -1,0 +1,22 @@
+{
+  "allocation": "fp16",
+  "kv_args": {
+    "kv_cache_dtype": "auto"
+  },
+  "num_reqs": 100,
+  "max_len": 8192,
+  "max_tokens": 64,
+  "gpu_memory_utilization": 0.9,
+  "seed": 42,
+  "throughput_out_tokens_per_sec": 1456.022286220073,
+  "requests_per_sec": 24.146306570813813,
+  "ttft_p50_ms": 1267.8182125091553,
+  "ttft_p99_ms": 2278.003454208374,
+  "ttft_mean_ms": 1228.4356784820557,
+  "tpot_p50_ms": 40.97704444494513,
+  "tpot_p99_ms": 155.404319986701,
+  "tpot_mean_ms": 41.978969263622325,
+  "kv_cache_blocks": 3524,
+  "kv_cache_block_size": 544,
+  "kv_cache_total_slots": 1917056
+}
