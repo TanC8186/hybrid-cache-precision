@@ -1,0 +1,30 @@
+{
+  "allocation": "/root/autodl-tmp/allocation_2b_perlayer.json",
+  "kv_args": {
+    "kv_cache_dtype": "int4_per_token_head",
+    "kv_cache_dtype_per_layer": {
+      "23": "auto",
+      "3": "int4_per_token_head",
+      "7": "int4_per_token_head",
+      "11": "int4_per_token_head",
+      "15": "int4_per_token_head",
+      "19": "int4_per_token_head"
+    }
+  },
+  "num_reqs": 100,
+  "max_len": 4096,
+  "max_tokens": 64,
+  "gpu_memory_utilization": 0.9,
+  "seed": 2026,
+  "throughput_out_tokens_per_sec": 1860.732777888068,
+  "requests_per_sec": 30.20179805044746,
+  "ttft_p50_ms": 704.5764923095703,
+  "ttft_p99_ms": 1184.0236186981201,
+  "ttft_mean_ms": 709.678328037262,
+  "tpot_p50_ms": 37.65995144134477,
+  "tpot_p99_ms": 91.48263558745384,
+  "tpot_mean_ms": 38.726522715760446,
+  "kv_cache_blocks": 5573,
+  "kv_cache_block_size": 2064,
+  "kv_cache_total_slots": 11502672
+}
