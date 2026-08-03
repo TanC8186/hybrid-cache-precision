@@ -1,0 +1,22 @@
+{
+  "allocation": "uniform_int4",
+  "kv_args": {
+    "kv_cache_dtype": "int4_per_token_head"
+  },
+  "num_reqs": 100,
+  "max_len": 4096,
+  "max_tokens": 64,
+  "gpu_memory_utilization": 0.9,
+  "seed": 42,
+  "throughput_out_tokens_per_sec": 1946.4635508950257,
+  "requests_per_sec": 32.49521787804717,
+  "ttft_p50_ms": 695.3330039978027,
+  "ttft_p99_ms": 1187.3021125793457,
+  "ttft_mean_ms": 706.5182018280029,
+  "tpot_p50_ms": 34.30770172013177,
+  "tpot_p99_ms": 146.8244567513466,
+  "tpot_mean_ms": 38.09619588240252,
+  "kv_cache_blocks": 3602,
+  "kv_cache_block_size": 2064,
+  "kv_cache_total_slots": 7434528
+}
