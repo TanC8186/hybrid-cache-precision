@@ -24,7 +24,7 @@ index d267e9a..32988f4 100644
      """ Optional override for mamba page size; used by hybrid mamba/attention
      models to ensure exact alignment with attention page size."""
 diff --git a/vllm/engine/arg_utils.py b/vllm/engine/arg_utils.py
-index 3003d73..21fa542 100644
+index 3003d73..ee99d79 100644
 --- a/vllm/engine/arg_utils.py
 +++ b/vllm/engine/arg_utils.py
 @@ -699,6 +699,9 @@ class EngineArgs:
@@ -48,6 +48,14 @@ index 3003d73..21fa542 100644
          cache_group.add_argument(
              "--kv-sharing-fast-prefill", **cache_kwargs["kv_sharing_fast_prefill"]
          )
+@@ -1959,6 +1966,7 @@ class EngineArgs:
+             prefix_caching_hash_algo=self.prefix_caching_hash_algo,
+             calculate_kv_scales=self.calculate_kv_scales,
+             kv_cache_dtype_skip_layers=self.kv_cache_dtype_skip_layers,
++            kv_cache_dtype_per_layer=self.kv_cache_dtype_per_layer,
+             kv_sharing_fast_prefill=self.kv_sharing_fast_prefill,
+             mamba_cache_dtype=self.mamba_cache_dtype,
+             mamba_ssm_cache_dtype=self.mamba_ssm_cache_dtype,
 diff --git a/vllm/model_executor/layers/attention/attention.py b/vllm/model_executor/layers/attention/attention.py
 index c8e5a9c..1cda473 100644
 --- a/vllm/model_executor/layers/attention/attention.py
