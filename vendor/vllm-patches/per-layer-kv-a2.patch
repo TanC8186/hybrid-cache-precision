@@ -1,7 +1,7 @@
 From 617fe2e3b172329ed655349c01bbb6a613ad8d3c Mon Sep 17 00:00:00 2001
 From: TanC8186 <2677510433@qq.com>
 Date: Tue, 4 Aug 2026 12:28:16 +0800
-Subject: [PATCH] feat: add packed per-layer KV page groups
+Subject: [PATCH 1/2] feat: add packed per-layer KV page groups
 
 ---
  tests/config/test_config_utils.py             | 24 +++++
@@ -18,7 +18,7 @@ Subject: [PATCH] feat: add packed per-layer KV page groups
  11 files changed, 390 insertions(+), 10 deletions(-)
 
 diff --git a/tests/config/test_config_utils.py b/tests/config/test_config_utils.py
-index 35bc1e1..5e9d0da 100644
+index 35bc1e167..5e9d0da9c 100644
 --- a/tests/config/test_config_utils.py
 +++ b/tests/config/test_config_utils.py
 @@ -216,6 +216,30 @@ def test_cache_config_hash_ignores_kv_cache_sizing_knobs():
@@ -53,7 +53,7 @@ index 35bc1e1..5e9d0da 100644
      """Relocating HOME or the XDG roots must not change the compile-cache
      env hash.
 diff --git a/tests/engine/test_arg_utils.py b/tests/engine/test_arg_utils.py
-index 2feb9f7..1169b81 100644
+index 2feb9f7a0..1169b8165 100644
 --- a/tests/engine/test_arg_utils.py
 +++ b/tests/engine/test_arg_utils.py
 @@ -214,6 +214,21 @@ def test_jit_monitor_verbose_arg():
@@ -79,7 +79,7 @@ index 2feb9f7..1169b81 100644
  def test_jit_monitor_mode_arg(mode):
      parser = EngineArgs.add_cli_args(FlexibleArgumentParser())
 diff --git a/tests/v1/core/test_kv_cache_utils.py b/tests/v1/core/test_kv_cache_utils.py
-index 4ee2ea9..2fc3064 100644
+index 4ee2ea9ef..2fc3064ec 100644
 --- a/tests/v1/core/test_kv_cache_utils.py
 +++ b/tests/v1/core/test_kv_cache_utils.py
 @@ -2096,6 +2096,100 @@ def test_mixed_precision_kv_cache_with_uniform_type_specs():
@@ -184,7 +184,7 @@ index 4ee2ea9..2fc3064 100644
      # head_size = kv_lora_rank(512) + qk_rope_head_dim(64) = 576
      return MLAAttentionSpec(
 diff --git a/tests/v1/worker/test_gpu_model_runner.py b/tests/v1/worker/test_gpu_model_runner.py
-index 282c022..46dc873 100644
+index 282c02295..46dc87303 100644
 --- a/tests/v1/worker/test_gpu_model_runner.py
 +++ b/tests/v1/worker/test_gpu_model_runner.py
 @@ -42,6 +42,7 @@ from vllm.v1.kv_cache_interface import (
@@ -257,7 +257,7 @@ index 282c022..46dc873 100644
      new_reqs = []
      num_scheduled_tokens = {}
 diff --git a/vllm/config/cache.py b/vllm/config/cache.py
-index d267e9a..2b02aea 100644
+index d267e9af3..2b02aea58 100644
 --- a/vllm/config/cache.py
 +++ b/vllm/config/cache.py
 @@ -30,10 +30,18 @@ CacheDType = Literal[
@@ -328,7 +328,7 @@ index d267e9a..2b02aea 100644
 +                )
 +        return per_layer_dtypes
 diff --git a/vllm/engine/arg_utils.py b/vllm/engine/arg_utils.py
-index 3003d73..4c91db5 100644
+index 3003d7385..4c91db58f 100644
 --- a/vllm/engine/arg_utils.py
 +++ b/vllm/engine/arg_utils.py
 @@ -699,6 +699,10 @@ class EngineArgs:
@@ -367,7 +367,7 @@ index 3003d73..4c91db5 100644
              mamba_cache_dtype=self.mamba_cache_dtype,
              mamba_ssm_cache_dtype=self.mamba_ssm_cache_dtype,
 diff --git a/vllm/model_executor/layers/attention/attention.py b/vllm/model_executor/layers/attention/attention.py
-index c8e5a9c..1cda473 100644
+index c8e5a9c6a..1cda473fb 100644
 --- a/vllm/model_executor/layers/attention/attention.py
 +++ b/vllm/model_executor/layers/attention/attention.py
 @@ -313,12 +313,29 @@ class Attention(nn.Module, AttentionLayerBase):
@@ -407,7 +407,7 @@ index c8e5a9c..1cda473 100644
          self.kv_cache_torch_dtype = kv_cache_dtype_str_to_dtype(
              kv_cache_dtype, vllm_config.model_config
 diff --git a/vllm/utils/torch_utils.py b/vllm/utils/torch_utils.py
-index 1472024..90620fc 100644
+index 1472024c2..90620fc67 100644
 --- a/vllm/utils/torch_utils.py
 +++ b/vllm/utils/torch_utils.py
 @@ -40,6 +40,8 @@ STR_DTYPE_TO_TORCH_DTYPE = {
@@ -420,7 +420,7 @@ index 1472024..90620fc 100644
      "fp8_per_token_head": torch.uint8,
      "fp8_inc": torch.float8_e4m3fn,
 diff --git a/vllm/v1/core/kv_cache_utils.py b/vllm/v1/core/kv_cache_utils.py
-index 9aea061..c616d56 100644
+index 9aea06109..c616d56fe 100644
 --- a/vllm/v1/core/kv_cache_utils.py
 +++ b/vllm/v1/core/kv_cache_utils.py
 @@ -1324,7 +1324,38 @@ def _use_packed_kv_cache_config(
@@ -538,7 +538,7 @@ index 9aea061..c616d56 100644
      # General case: group_size pools, each shared by one layer per group
      # Memory = group_size * page_size * blocks_for_max_len
 diff --git a/vllm/v1/kv_cache_interface.py b/vllm/v1/kv_cache_interface.py
-index cc61f1f..0e20909 100644
+index cc61f1f5a..0e209090f 100644
 --- a/vllm/v1/kv_cache_interface.py
 +++ b/vllm/v1/kv_cache_interface.py
 @@ -44,6 +44,8 @@ class KVQuantMode(IntEnum):
@@ -585,7 +585,7 @@ index cc61f1f..0e20909 100644
              last_dim = self.head_size + self.head_size_v
          return (
 diff --git a/vllm/v1/worker/gpu_model_runner.py b/vllm/v1/worker/gpu_model_runner.py
-index 5083087..93ed15a 100644
+index 5083087bf..93ed15afd 100644
 --- a/vllm/v1/worker/gpu_model_runner.py
 +++ b/vllm/v1/worker/gpu_model_runner.py
 @@ -7453,9 +7453,24 @@ class GPUModelRunner(
@@ -616,6 +616,306 @@ index 5083087..93ed15a 100644
                  else:
                      raise NotImplementedError
  
+-- 
+2.55.0.windows.2
+
+
+From 55f47685a553ad8d776c464c59785399a98c7185 Mon Sep 17 00:00:00 2001
+From: TanC8186 <2677510433@qq.com>
+Date: Tue, 4 Aug 2026 15:00:01 +0800
+Subject: [PATCH 2/2] fix: balance packed Mamba cache groups
+
+---
+ tests/v1/core/test_kv_cache_utils.py | 101 ++++++++++++++++++++--
+ vllm/v1/core/kv_cache_utils.py       | 120 ++++++++++++++++++++++-----
+ 2 files changed, 192 insertions(+), 29 deletions(-)
+
+diff --git a/tests/v1/core/test_kv_cache_utils.py b/tests/v1/core/test_kv_cache_utils.py
+index 2fc3064ec..2505f4d9a 100644
+--- a/tests/v1/core/test_kv_cache_utils.py
++++ b/tests/v1/core/test_kv_cache_utils.py
+@@ -2148,12 +2148,15 @@ def test_per_layer_page_groups_preserve_mixed_attention_pages_with_mamba():
+         spec.block_size
+         for spec in attention_group.kv_cache_spec.kv_cache_specs.values()
+     } == {16}
+-    assert len(
+-        {
+-            spec.page_size_bytes
+-            for spec in attention_group.kv_cache_spec.kv_cache_specs.values()
+-        }
+-    ) == 2
++    assert (
++        len(
++            {
++                spec.page_size_bytes
++                for spec in attention_group.kv_cache_spec.kv_cache_specs.values()
++            }
++        )
++        == 2
++    )
+     assert isinstance(groups[1].kv_cache_spec, MambaSpec)
+     assert groups[1].layer_names == ["mamba.0", "mamba.1"]
+ 
+@@ -2184,10 +2187,92 @@ def test_per_layer_page_groups_preserve_mixed_attention_pages_with_mamba():
+         // group.kv_cache_spec.page_size_bytes
+         for group in groups
+     )
+-    assert _max_memory_usage_bytes_from_groups(
++    assert (
++        _max_memory_usage_bytes_from_groups(
++            vllm_config,
++            groups,
++        )
++        == block_stride * blocks_needed
++    )
++
++
++def test_per_layer_page_groups_split_large_mamba_group_for_capacity():
++    vllm_config = SimpleNamespace(
++        cache_config=SimpleNamespace(
++            enable_per_layer_page_groups=True,
++            num_gpu_blocks_override=None,
++            mamba_cache_mode="none",
++        ),
++        scheduler_config=SimpleNamespace(
++            disable_hybrid_kv_cache_manager=False,
++        ),
++        model_config=SimpleNamespace(max_model_len=4096),
++        parallel_config=SimpleNamespace(decode_context_parallel_size=1),
++        speculative_config=None,
++        kv_transfer_config=None,
++    )
++
++    int4_spec = new_kv_cache_spec(
++        block_size=2064,
++        num_kv_heads=2,
++        head_size=256,
++        dtype=torch.uint8,
++        kv_quant_mode=KVQuantMode.INT4_PER_TOKEN_HEAD,
++    )
++    bf16_spec = new_kv_cache_spec(
++        block_size=2064,
++        num_kv_heads=2,
++        head_size=256,
++        dtype=torch.bfloat16,
++    )
++    mamba_spec = new_mamba_spec(
++        block_size=4096,
++        shapes=((3, 6144), (16, 128, 128)),
++        dtypes=(torch.bfloat16, torch.float32),
++        num_speculative_blocks=0,
++        page_size_padded=int4_spec.page_size_bytes,
++    )
++    assert int4_spec.page_size_bytes == mamba_spec.page_size_bytes
++
++    specs = {
++        **{f"attn.int4.{i}": int4_spec for i in range(5)},
++        "attn.bf16": bf16_spec,
++        **{f"mamba.{i}": mamba_spec for i in range(18)},
++    }
++
++    groups = get_kv_cache_groups(vllm_config, specs)
++
++    assert len(groups) == 3
++    assert isinstance(groups[0].kv_cache_spec, UniformTypeKVCacheSpecs)
++    assert [len(group.layer_names) for group in groups[1:]] == [9, 9]
++    assert groups[1].layer_names == [f"mamba.{i}" for i in range(0, 18, 2)]
++    assert groups[2].layer_names == [f"mamba.{i}" for i in range(1, 18, 2)]
++
++    from vllm.v1.core.kv_cache_utils import (
++        _get_packed_kv_cache_footprint,
++        _get_packed_kv_cache_layout,
++    )
++
++    block_stride, _ = _get_packed_kv_cache_layout(groups)
++    assert block_stride == 9 * mamba_spec.page_size_bytes
++
++    selected_footprint, _, selected_blocks = _get_packed_kv_cache_footprint(
+         vllm_config,
+         groups,
+-    ) == block_stride * blocks_needed
++    )
++    unsplit_footprint, _, unsplit_blocks = _get_packed_kv_cache_footprint(
++        vllm_config,
++        [
++            groups[0],
++            KVCacheGroupSpec(
++                [f"mamba.{i}" for i in range(18)],
++                mamba_spec,
++            ),
++        ],
++    )
++    assert selected_blocks == 4
++    assert unsplit_blocks == 3
++    assert selected_footprint < unsplit_footprint
+ 
+ 
+ def new_mla_spec(cache_dtype_str=None, block_size=16):
+diff --git a/vllm/v1/core/kv_cache_utils.py b/vllm/v1/core/kv_cache_utils.py
+index c616d56fe..179d83fe8 100644
+--- a/vllm/v1/core/kv_cache_utils.py
++++ b/vllm/v1/core/kv_cache_utils.py
+@@ -1305,6 +1305,84 @@ def _get_packed_kv_cache_layout(
+     return block_stride, layers_by_offset
+ 
+ 
++def _get_packed_kv_cache_footprint(
++    vllm_config: VllmConfig,
++    kv_cache_groups: list[KVCacheGroupSpec],
++) -> tuple[int, int, int]:
++    """Return max-request bytes, block stride, and blocks per request."""
++    block_stride, _ = _get_packed_kv_cache_layout(kv_cache_groups)
++    blocks_needed = sum(
++        cdiv(
++            group.kv_cache_spec.max_memory_usage_bytes(vllm_config),
++            group.kv_cache_spec.page_size_bytes,
++        )
++        for group in kv_cache_groups
++    )
++    return block_stride * blocks_needed, block_stride, blocks_needed
++
++
++def _split_mamba_group_for_packed_capacity(
++    vllm_config: VllmConfig,
++    attention_group: KVCacheGroupSpec,
++    mamba_groups: list[KVCacheGroupSpec],
++) -> list[KVCacheGroupSpec]:
++    """Split one uniform Mamba group to minimize packed max-request bytes."""
++    if len(mamba_groups) != 1:
++        return mamba_groups
++
++    mamba_group = mamba_groups[0]
++    if not isinstance(mamba_group.kv_cache_spec, MambaSpec):
++        return mamba_groups
++
++    layer_names = mamba_group.layer_names
++    if len(layer_names) <= 1:
++        return mamba_groups
++
++    baseline_footprint, baseline_stride, baseline_blocks = (
++        _get_packed_kv_cache_footprint(
++            vllm_config,
++            [attention_group, mamba_group],
++        )
++    )
++    best_groups = mamba_groups
++    best_footprint = baseline_footprint
++    best_stride = baseline_stride
++    best_blocks = baseline_blocks
++
++    for num_groups in range(2, len(layer_names) + 1):
++        candidate_groups = [
++            KVCacheGroupSpec(
++                layer_names[i::num_groups],
++                mamba_group.kv_cache_spec,
++            )
++            for i in range(num_groups)
++        ]
++        footprint, block_stride, blocks_needed = _get_packed_kv_cache_footprint(
++            vllm_config,
++            [attention_group, *candidate_groups],
++        )
++        if footprint < best_footprint:
++            best_groups = candidate_groups
++            best_footprint = footprint
++            best_stride = block_stride
++            best_blocks = blocks_needed
++
++    if len(best_groups) > 1:
++        logger.info(
++            "Split %d Mamba layers into %d packed groups: max-request "
++            "footprint %d -> %d bytes (stride %d -> %d, blocks %d -> %d)",
++            len(layer_names),
++            len(best_groups),
++            baseline_footprint,
++            best_footprint,
++            baseline_stride,
++            best_stride,
++            baseline_blocks,
++            best_blocks,
++        )
++    return best_groups
++
++
+ def _use_packed_kv_cache_config(
+     vllm_config: VllmConfig,
+     kv_cache_groups: list[KVCacheGroupSpec],
+@@ -1347,9 +1425,7 @@ def _use_packed_kv_cache_config(
+         for group in kv_cache_groups
+     )
+     use_per_layer_pages = (
+-        enable_per_layer_pages
+-        and has_mamba_group
+-        and has_mixed_page_attention_group
++        enable_per_layer_pages and has_mamba_group and has_mixed_page_attention_group
+     )
+     return (
+         is_dsv4
+@@ -1874,28 +1950,34 @@ def get_kv_cache_groups(
+             and len(full_attention_specs) + len(mamba_specs) == len(kv_cache_spec)
+         )
+         if supported_mixed_model:
+-            uniform_attention = UniformTypeKVCacheSpecs.from_specs(
+-                full_attention_specs
++            uniform_attention = UniformTypeKVCacheSpecs.from_specs(full_attention_specs)
++            has_mixed_attention_pages = (
++                len({spec.page_size_bytes for spec in full_attention_specs.values()})
++                > 1
+             )
+-            has_mixed_attention_pages = len(
+-                {spec.page_size_bytes for spec in full_attention_specs.values()}
+-            ) > 1
+             if uniform_attention is not None and has_mixed_attention_pages:
+                 unified_mamba_specs = unify_kv_cache_spec_page_size(mamba_specs)
+                 mamba_groups = _get_kv_cache_groups_uniform_page_size(
+                     unified_mamba_specs
+                 )
++                attention_group = KVCacheGroupSpec(
++                    list(full_attention_specs),
++                    uniform_attention,
++                )
++                mamba_groups = _split_mamba_group_for_packed_capacity(
++                    vllm_config,
++                    attention_group,
++                    mamba_groups,
++                )
+                 logger.info(
+                     "Using packed per-layer page groups for %d full-attention "
+-                    "layers and %d Mamba layers",
++                    "layers and %d Mamba layers in %d Mamba groups",
+                     len(full_attention_specs),
+                     len(mamba_specs),
++                    len(mamba_groups),
+                 )
+                 return [
+-                    KVCacheGroupSpec(
+-                        list(full_attention_specs),
+-                        uniform_attention,
+-                    ),
++                    attention_group,
+                     *mamba_groups,
+                 ]
+ 
+@@ -2017,15 +2099,11 @@ def _max_memory_usage_bytes_from_groups(
+             total_max_mem_usage_bytes += g_max_mem_usage_page_bytes
+         return total_max_mem_usage_bytes
+     elif _use_packed_kv_cache_config(vllm_config, kv_cache_groups):
+-        block_stride, _ = _get_packed_kv_cache_layout(kv_cache_groups)
+-        blocks_needed = sum(
+-            cdiv(
+-                group.kv_cache_spec.max_memory_usage_bytes(vllm_config),
+-                group.kv_cache_spec.page_size_bytes,
+-            )
+-            for group in kv_cache_groups
++        footprint, _, _ = _get_packed_kv_cache_footprint(
++            vllm_config,
++            kv_cache_groups,
+         )
+-        return block_stride * blocks_needed
++        return footprint
+ 
+     # General case: group_size pools, each shared by one layer per group
+     # Memory = group_size * page_size * blocks_for_max_len
 -- 
 2.55.0.windows.2
 
