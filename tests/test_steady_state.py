@@ -68,28 +68,40 @@ def make_result(
     start_span: float = 59.0,
     ttfts: list[float] | None = None,
     itls: list[list[float]] | None = None,
+    failed_indices: set[int] | None = None,
 ) -> dict:
     ttfts = ttfts or [0.1, 0.2, 0.6, 1.5]
     itls = itls or [[0.01], [0.02], [0.03], [0.04]]
-    completed = len(ttfts)
+    failed_indices = failed_indices or set()
+    expected = len(ttfts)
+    completed = expected - len(failed_indices)
+    output_lens = [2] * expected
+    errors = [None] * expected
+    for index in failed_indices:
+        ttfts[index] = 0.0
+        itls[index] = []
+        output_lens[index] = 0
+        errors[index] = "ServerDisconnectedError"
     return {
         "duration": duration,
         "completed": completed,
-        "failed": 0,
+        "failed": len(failed_indices),
         "request_throughput": completed / duration,
         "request_goodput": completed / duration,
         "p99_ttft_ms": 1473.0,
         "p99_tpot_ms": 39.4,
         "ttfts": ttfts,
         "itls": itls,
-        "output_lens": [2] * completed,
-        "start_times": [100.0 + start_span * index / (completed - 1) for index in range(completed)],
-        "errors": [None] * completed,
+        "output_lens": output_lens,
+        "start_times": [100.0 + start_span * index / (expected - 1) for index in range(expected)],
+        "errors": errors,
     }
 
 
 def test_analysis_recomputes_threshold_sweep() -> None:
     protocol = {
+        "request_failure_policy": "count_as_slo_miss",
+        "benchmark_client_keepalive_timeout_s": 60,
         "measurement_window_s": 60,
         "ttft_thresholds_ms": [250, 500, 1000, 2000, 3000],
         "tpot_threshold_ms": 200,
@@ -112,6 +124,8 @@ def test_analysis_recomputes_threshold_sweep() -> None:
 
 def test_analysis_fails_closed_on_arrival_window_drift() -> None:
     protocol = {
+        "request_failure_policy": "count_as_slo_miss",
+        "benchmark_client_keepalive_timeout_s": 60,
         "measurement_window_s": 60,
         "ttft_thresholds_ms": [3000],
         "tpot_threshold_ms": 200,
@@ -128,9 +142,63 @@ def test_analysis_fails_closed_on_arrival_window_drift() -> None:
         analyze_result(make_result(start_span=40), sample, protocol)
 
 
+def test_analysis_counts_request_failures_as_slo_misses() -> None:
+    protocol = {
+        "request_failure_policy": "count_as_slo_miss",
+        "benchmark_client_keepalive_timeout_s": 60,
+        "measurement_window_s": 60,
+        "ttft_thresholds_ms": [2000, 3000],
+        "tpot_threshold_ms": 200,
+        "sustainable_goodput_ratio": 0.95,
+        "arrival_window_tolerance_fraction": 0.10,
+        "goodput_crosscheck_abs_tolerance": 0.02,
+    }
+    sample = {
+        "sample_id": "sample",
+        "request_rate": 4 / 60,
+        "num_prompts": 4,
+    }
+
+    analysis = analyze_result(make_result(failed_indices={1}), sample, protocol)
+
+    assert analysis["completed"] == 3
+    assert analysis["failed"] == 1
+    assert analysis["failed_request_fraction"] == 0.25
+    assert analysis["failed_request_indices"] == [1]
+    assert analysis["slo_sweep"]["2000"]["good_requests"] == 3
+    assert analysis["slo_sweep"]["2000"]["goodput_over_offered"] == pytest.approx(0.75)
+    assert analysis["slo_sweep"]["2000"]["sustainable"] is False
+
+
+def test_analysis_fails_closed_on_unaccounted_requests() -> None:
+    protocol = {
+        "request_failure_policy": "count_as_slo_miss",
+        "benchmark_client_keepalive_timeout_s": 60,
+        "measurement_window_s": 60,
+        "ttft_thresholds_ms": [3000],
+        "tpot_threshold_ms": 200,
+        "sustainable_goodput_ratio": 0.95,
+        "arrival_window_tolerance_fraction": 0.10,
+        "goodput_crosscheck_abs_tolerance": 0.02,
+    }
+    sample = {
+        "sample_id": "sample",
+        "request_rate": 4 / 60,
+        "num_prompts": 4,
+    }
+    result = make_result()
+    result["completed"] = 3
+
+    with pytest.raises(ExperimentError, match="denominator mismatch"):
+        analyze_result(result, sample, protocol)
+
+
 def test_config_is_json_serializable_after_resolution() -> None:
     config = load_config(CONFIG_PATH)
     phase = resolve_phase(config, "formal", seed_filter=[42], rate_filter=[35])
     plan = build_sample_plan(config, phase)
     json.dumps(plan)
     assert len(plan) == 4
+    assert config["protocol"]["protocol_version"] == 2
+    assert config["protocol"]["request_failure_policy"] == "count_as_slo_miss"
+    assert config["environment"]["env"]["VLLM_HTTP_TIMEOUT_KEEP_ALIVE"] == "75"

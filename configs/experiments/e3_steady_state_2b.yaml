@@ -8,6 +8,7 @@ environment:
   env:
     VLLM_USE_FLASHINFER_SAMPLER: "0"
     PYTHONUNBUFFERED: "1"
+    VLLM_HTTP_TIMEOUT_KEEP_ALIVE: "75"
 
 server:
   host: 127.0.0.1
@@ -26,6 +27,9 @@ server:
     - "42"
 
 protocol:
+  protocol_version: 2
+  request_failure_policy: count_as_slo_miss
+  benchmark_client_keepalive_timeout_s: 60
   warmup_requests: 120
   measurement_window_s: 60
   max_concurrency: null

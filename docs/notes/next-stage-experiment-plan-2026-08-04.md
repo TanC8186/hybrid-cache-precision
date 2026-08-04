@@ -88,3 +88,17 @@ python scripts/bench/inspect_kv_config.py \
 - 报告 int4 相对 fp16 的 paired goodput difference。
 - Pilot 只用于发现协议缺陷，不进入 formal denominator。
 - 在独立复跑完成前，正式结果最高标记为 `ANALYZED`，不得直接写成已验证论文数字。
+
+## 6. Protocol v2 修订（2026-08-04）
+
+两次 formal attempt 均因 ShareGPT rate 20 中单个 HTTP 连接断开而 fail-closed：
+`e3-formal-c7379f0-01` 为 1199/1200，`e3-formal-c7379f0-02` 为 1199/1200。
+两份 attempt 保留并隔离，不与后续分母合并。
+
+v2 在不改变模型、allocation、seed、到达过程、请求数和 SLO 阈值的前提下修订运行基础设施：
+
+- 显式设置 `VLLM_HTTP_TIMEOUT_KEEP_ALIVE=75`，高于 benchmark 客户端固定的 60 秒连接复用窗口。
+- 请求级失败必须满足 `completed + failed = expected`，且 detailed 数组长度、`errors` 非空条数与 `failed` 完全一致。
+- 已记账的失败请求作为 SLO miss 保留在 offered denominator 中；其 `ttft=0`/`tpot=0` 占位值不得被误算为好请求。
+- benchmark 非零退出、超时、结果缺失、未记账请求、字段长度不一致或错误计数不一致仍使 sample 失败。
+- 协议变更后重新执行故障定向 MVEx 和 pilot；只有新 gate 通过后才能启动新的完整 formal attempt。

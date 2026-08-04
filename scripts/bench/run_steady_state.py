@@ -28,7 +28,9 @@ from urllib.request import urlopen
 import yaml
 
 SCHEMA_VERSION = 1
+ANALYSIS_SCHEMA_VERSION = 2
 VALID_SAMPLE_STATUS = "completed_validated"
+REQUEST_FAILURE_POLICY = "count_as_slo_miss"
 
 
 class ExperimentError(RuntimeError):
@@ -136,6 +138,25 @@ def load_config(path: Path) -> dict[str, Any]:
     missing = sorted(required - config.keys())
     if missing:
         raise ExperimentError(f"config missing keys: {', '.join(missing)}")
+    protocol = config["protocol"]
+    failure_policy = protocol.get("request_failure_policy")
+    if failure_policy != REQUEST_FAILURE_POLICY:
+        raise ExperimentError(
+            "protocol.request_failure_policy must be "
+            f"{REQUEST_FAILURE_POLICY!r}, got {failure_policy!r}"
+        )
+    client_keepalive_s = int(protocol["benchmark_client_keepalive_timeout_s"])
+    server_keepalive_s = int(
+        config["environment"].get("env", {}).get(
+            "VLLM_HTTP_TIMEOUT_KEEP_ALIVE",
+            5,
+        )
+    )
+    if server_keepalive_s <= client_keepalive_s:
+        raise ExperimentError(
+            "server HTTP keep-alive must exceed the benchmark client keep-alive: "
+            f"server={server_keepalive_s}s client={client_keepalive_s}s"
+        )
     return config
 
 
@@ -420,16 +441,31 @@ def analyze_result(
     expected = int(sample["num_prompts"])
     completed = int(result["completed"])
     failed = int(result["failed"])
-    if completed != expected or failed != 0:
-        raise ExperimentError(f"denominator mismatch: expected={expected}, completed={completed}, failed={failed}")
+    if completed + failed != expected:
+        raise ExperimentError(
+            "denominator mismatch: "
+            f"expected={expected}, completed={completed}, failed={failed}"
+        )
+    if completed <= 0:
+        raise ExperimentError("result has no successful requests for latency analysis")
 
     detail_fields = ("ttfts", "itls", "output_lens", "start_times", "errors")
     for field in detail_fields:
         if len(result[field]) != expected:
             raise ExperimentError(f"detailed field {field!r} has {len(result[field])} rows, expected {expected}")
-    nonempty_errors = [error for error in result["errors"] if error]
-    if nonempty_errors:
-        raise ExperimentError(f"result contains request errors: {nonempty_errors[:3]}")
+    errors = list(result["errors"])
+    failed_indices = [index for index, error in enumerate(errors) if error]
+    if len(failed_indices) != failed:
+        raise ExperimentError(
+            "failed request accounting mismatch: "
+            f"reported={failed}, errors={len(failed_indices)}"
+        )
+    success_mask = [not error for error in errors]
+    if sum(success_mask) != completed:
+        raise ExperimentError(
+            "successful request accounting mismatch: "
+            f"reported={completed}, detailed={sum(success_mask)}"
+        )
 
     duration_s = ensure_finite("duration", result["duration"])
     offered_rate = float(sample["request_rate"])
@@ -437,8 +473,10 @@ def analyze_result(
     if duration_s <= 0:
         raise ExperimentError(f"invalid duration: {duration_s}")
 
-    ttfts_ms = [1000.0 * ensure_finite("ttft", value) for value in result["ttfts"]]
-    tpots_ms = per_request_tpot_ms(result)
+    all_ttfts_ms = [1000.0 * ensure_finite("ttft", value) for value in result["ttfts"]]
+    all_tpots_ms = per_request_tpot_ms(result)
+    ttfts_ms = [value for value, success in zip(all_ttfts_ms, success_mask) if success]
+    tpots_ms = [value for value, success in zip(all_tpots_ms, success_mask) if success]
     start_times = [ensure_finite("start_time", value) for value in result["start_times"]]
     arrival_span_s = max(start_times) - min(start_times) if len(start_times) > 1 else 0.0
     arrival_ratio = arrival_span_s / window_s if window_s else 0.0
@@ -456,7 +494,9 @@ def analyze_result(
     for threshold in protocol["ttft_thresholds_ms"]:
         threshold_value = float(threshold)
         good_count = sum(
-            1 for ttft, tpot in zip(ttfts_ms, tpots_ms) if ttft <= threshold_value and tpot <= tpot_threshold
+            1
+            for success, ttft, tpot in zip(success_mask, all_ttfts_ms, all_tpots_ms)
+            if success and ttft <= threshold_value and tpot <= tpot_threshold
         )
         goodput = good_count / duration_s
         goodput_ratio = goodput / offered_rate
@@ -478,11 +518,14 @@ def analyze_result(
         )
 
     return {
-        "schema_version": SCHEMA_VERSION,
+        "schema_version": ANALYSIS_SCHEMA_VERSION,
         "sample_id": sample["sample_id"],
         "status": VALID_SAMPLE_STATUS,
+        "request_failure_policy": REQUEST_FAILURE_POLICY,
         "completed": completed,
         "failed": failed,
+        "failed_request_fraction": failed / expected,
+        "failed_request_indices": failed_indices,
         "offered_rate_req_s": offered_rate,
         "measurement_window_s": window_s,
         "observed_arrival_span_s": arrival_span_s,

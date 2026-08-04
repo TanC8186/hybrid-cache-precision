@@ -130,6 +130,10 @@ def aggregate_attempt(
         grouped.sort(key=lambda row: int(row["sample"]["seed"]))
         seeds = [int(row["sample"]["seed"]) for row in grouped]
         metrics: dict[str, Any] = {
+            "failed_requests": summarize([row["analysis"]["failed"] for row in grouped]),
+            "failed_request_fraction": summarize(
+                [row["analysis"]["failed_request_fraction"] for row in grouped]
+            ),
             "request_throughput_req_s": summarize([row["analysis"]["request_throughput_req_s"] for row in grouped]),
             "request_throughput_over_offered": summarize(
                 [row["analysis"]["request_throughput_over_offered"] for row in grouped]
@@ -328,6 +332,10 @@ def render_markdown(report: Mapping[str, Any]) -> str:
             "### Integrity",
             "",
             ("- No sample is included unless its status is `completed_validated` and both result hashes match."),
+            (
+                "- Accounted request failures remain in the offered denominator and count as SLO misses; "
+                "they are never treated as zero-latency successes."
+            ),
             ("- Boundary summaries retain below-range and right-censored seeds instead of silently dropping them."),
             "- Quantitative paper promotion still requires a reproducibility run.",
             "",
