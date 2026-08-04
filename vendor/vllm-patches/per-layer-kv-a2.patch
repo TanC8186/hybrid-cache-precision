@@ -1,0 +1,621 @@
+From 617fe2e3b172329ed655349c01bbb6a613ad8d3c Mon Sep 17 00:00:00 2001
+From: TanC8186 <2677510433@qq.com>
+Date: Tue, 4 Aug 2026 12:28:16 +0800
+Subject: [PATCH] feat: add packed per-layer KV page groups
+
+---
+ tests/config/test_config_utils.py             | 24 +++++
+ tests/engine/test_arg_utils.py                | 15 +++
+ tests/v1/core/test_kv_cache_utils.py          | 94 +++++++++++++++++++
+ tests/v1/worker/test_gpu_model_runner.py      | 55 +++++++++++
+ vllm/config/cache.py                          | 38 ++++++++
+ vllm/engine/arg_utils.py                      | 14 +++
+ .../layers/attention/attention.py             | 29 ++++--
+ vllm/utils/torch_utils.py                     |  2 +
+ vllm/v1/core/kv_cache_utils.py                | 93 +++++++++++++++++-
+ vllm/v1/kv_cache_interface.py                 | 15 +++
+ vllm/v1/worker/gpu_model_runner.py            | 21 ++++-
+ 11 files changed, 390 insertions(+), 10 deletions(-)
+
+diff --git a/tests/config/test_config_utils.py b/tests/config/test_config_utils.py
+index 35bc1e1..5e9d0da 100644
+--- a/tests/config/test_config_utils.py
++++ b/tests/config/test_config_utils.py
+@@ -216,6 +216,30 @@ def test_cache_config_hash_ignores_kv_cache_sizing_knobs():
+     assert CacheConfig(gpu_memory_utilization=0.5).compute_hash() == base_hash
+ 
+ 
++def test_cache_config_accepts_per_layer_page_groups():
++    cache_config = CacheConfig(
++        kv_cache_dtype_per_layer={"23": "bfloat16"},
++        enable_per_layer_page_groups=True,
++    )
++
++    assert cache_config.kv_cache_dtype_per_layer == {"23": "bfloat16"}
++    assert cache_config.enable_per_layer_page_groups
++
++
++@pytest.mark.parametrize("cache_dtype", ["int2_per_token_head", "int3_per_token_head"])
++def test_cache_config_rejects_unimplemented_cache_dtype(cache_dtype):
++    with pytest.raises(ValueError, match="no runtime kernel implementation"):
++        CacheConfig(cache_dtype=cache_dtype)
++
++    with pytest.raises(ValueError, match="no runtime kernel implementation"):
++        CacheConfig(kv_cache_dtype_per_layer={"23": cache_dtype})
++
++
++def test_cache_config_rejects_non_numeric_per_layer_key():
++    with pytest.raises(ValueError, match="non-negative layer indices"):
++        CacheConfig(kv_cache_dtype_per_layer={"last": "bfloat16"})
++
++
+ def test_envs_compile_factors_relocation_invariant(tmp_path):
+     """Relocating HOME or the XDG roots must not change the compile-cache
+     env hash.
+diff --git a/tests/engine/test_arg_utils.py b/tests/engine/test_arg_utils.py
+index 2feb9f7..1169b81 100644
+--- a/tests/engine/test_arg_utils.py
++++ b/tests/engine/test_arg_utils.py
+@@ -214,6 +214,21 @@ def test_jit_monitor_verbose_arg():
+     assert EngineArgs(model="test", jit_monitor_verbose=True).jit_monitor_verbose
+ 
+ 
++def test_per_layer_page_group_args():
++    parser = EngineArgs.add_cli_args(FlexibleArgumentParser())
++    args = parser.parse_args(
++        [
++            "--kv-cache-dtype-per-layer",
++            '{"23": "bfloat16"}',
++            "--enable-per-layer-page-groups",
++        ]
++    )
++    engine_args = EngineArgs.from_cli_args(args)
++
++    assert engine_args.kv_cache_dtype_per_layer == {"23": "bfloat16"}
++    assert engine_args.enable_per_layer_page_groups
++
++
+ @pytest.mark.parametrize("mode", ["warn", "error"])
+ def test_jit_monitor_mode_arg(mode):
+     parser = EngineArgs.add_cli_args(FlexibleArgumentParser())
+diff --git a/tests/v1/core/test_kv_cache_utils.py b/tests/v1/core/test_kv_cache_utils.py
+index 4ee2ea9..2fc3064 100644
+--- a/tests/v1/core/test_kv_cache_utils.py
++++ b/tests/v1/core/test_kv_cache_utils.py
+@@ -2096,6 +2096,100 @@ def test_mixed_precision_kv_cache_with_uniform_type_specs():
+     assert scheduler_config.needs_kv_cache_zeroing
+ 
+ 
++def test_per_layer_page_groups_preserve_mixed_attention_pages_with_mamba():
++    vllm_config = SimpleNamespace(
++        cache_config=SimpleNamespace(
++            enable_per_layer_page_groups=True,
++            num_gpu_blocks_override=None,
++            mamba_cache_mode="none",
++        ),
++        scheduler_config=SimpleNamespace(
++            disable_hybrid_kv_cache_manager=False,
++        ),
++        model_config=SimpleNamespace(max_model_len=4096),
++        parallel_config=SimpleNamespace(decode_context_parallel_size=1),
++        speculative_config=None,
++        kv_transfer_config=None,
++    )
++
++    int4_spec = new_kv_cache_spec(
++        block_size=16,
++        dtype=torch.uint8,
++        kv_quant_mode=KVQuantMode.INT4_PER_TOKEN_HEAD,
++    )
++    bf16_spec = new_kv_cache_spec(
++        block_size=16,
++        dtype=torch.bfloat16,
++    )
++    mamba_spec = new_mamba_spec(
++        block_size=16,
++        shapes=((2, 64), (4, 64)),
++        dtypes=(torch.bfloat16, torch.float32),
++    )
++    specs = {
++        "attn.int4.0": int4_spec,
++        "attn.int4.1": int4_spec,
++        "attn.bf16": bf16_spec,
++        "mamba.0": mamba_spec,
++        "mamba.1": mamba_spec,
++    }
++
++    groups = get_kv_cache_groups(vllm_config, specs)
++
++    assert len(groups) == 2
++    attention_group = groups[0]
++    assert isinstance(attention_group.kv_cache_spec, UniformTypeKVCacheSpecs)
++    assert attention_group.kv_cache_spec.kv_cache_specs == {
++        "attn.int4.0": int4_spec,
++        "attn.int4.1": int4_spec,
++        "attn.bf16": bf16_spec,
++    }
++    assert {
++        spec.block_size
++        for spec in attention_group.kv_cache_spec.kv_cache_specs.values()
++    } == {16}
++    assert len(
++        {
++            spec.page_size_bytes
++            for spec in attention_group.kv_cache_spec.kv_cache_specs.values()
++        }
++    ) == 2
++    assert isinstance(groups[1].kv_cache_spec, MambaSpec)
++    assert groups[1].layer_names == ["mamba.0", "mamba.1"]
++
++    from vllm.v1.core.kv_cache_utils import (
++        _get_kv_cache_config_packed,
++        _get_packed_kv_cache_layout,
++        _max_memory_usage_bytes_from_groups,
++        _use_packed_kv_cache_config,
++    )
++
++    assert _use_packed_kv_cache_config(vllm_config, groups)
++    block_stride, _ = _get_packed_kv_cache_layout(groups)
++    num_blocks, tensors = _get_kv_cache_config_packed(
++        vllm_config,
++        groups,
++        available_memory=block_stride * 32,
++    )
++    assert num_blocks == 32
++    assert {tensor.block_stride for tensor in tensors} == {block_stride}
++    assert {tensor.size for tensor in tensors} == {block_stride * 32}
++
++    blocks_needed = sum(
++        (
++            group.kv_cache_spec.max_memory_usage_bytes(vllm_config)
++            + group.kv_cache_spec.page_size_bytes
++            - 1
++        )
++        // group.kv_cache_spec.page_size_bytes
++        for group in groups
++    )
++    assert _max_memory_usage_bytes_from_groups(
++        vllm_config,
++        groups,
++    ) == block_stride * blocks_needed
++
++
+ def new_mla_spec(cache_dtype_str=None, block_size=16):
+     # head_size = kv_lora_rank(512) + qk_rope_head_dim(64) = 576
+     return MLAAttentionSpec(
+diff --git a/tests/v1/worker/test_gpu_model_runner.py b/tests/v1/worker/test_gpu_model_runner.py
+index 282c022..46dc873 100644
+--- a/tests/v1/worker/test_gpu_model_runner.py
++++ b/tests/v1/worker/test_gpu_model_runner.py
+@@ -42,6 +42,7 @@ from vllm.v1.kv_cache_interface import (
+     KVCacheConfig,
+     KVCacheGroupSpec,
+     KVCacheTensor,
++    MambaSpec,
+ )
+ from vllm.v1.outputs import EMPTY_MODEL_RUNNER_OUTPUT
+ from vllm.v1.sample.metadata import SamplingMetadata
+@@ -144,6 +145,60 @@ def model_runner():
+ model_runner_2 = model_runner
+ 
+ 
++def test_packed_mamba_cache_uses_strided_view():
++    page_size = 8
++    block_stride = 24
++    num_blocks = 3
++    raw_tensor = torch.zeros(num_blocks * block_stride, dtype=torch.int8)
++    mamba_spec = MambaSpec(
++        block_size=16,
++        shapes=((page_size,),),
++        dtypes=(torch.int8,),
++    )
++    kv_cache_config = KVCacheConfig(
++        num_blocks=num_blocks,
++        kv_cache_tensors=[
++            KVCacheTensor(
++                size=raw_tensor.numel(),
++                shared_by=["mamba.0"],
++                offset=12,
++                block_stride=block_stride,
++            )
++        ],
++        kv_cache_groups=[
++            KVCacheGroupSpec(["mamba.0"], mamba_spec),
++        ],
++    )
++
++    group = SimpleNamespace(
++        kv_cache_spec=mamba_spec,
++        backend=None,
++        kv_cache_group_id=0,
++        layer_names=["mamba.0"],
++    )
++    runner = SimpleNamespace(
++        kv_cache_config=kv_cache_config,
++        runner_only_attn_layers=set(),
++        attn_groups=[[group]],
++        _kv_cache_spec_attn_group_iterator=lambda: iter([group]),
++        _has_mixed_attention_kv_layout=lambda _: False,
++        _update_hybrid_attention_mamba_layout=Mock(),
++    )
++
++    caches = GPUModelRunner._reshape_kv_cache_tensors(
++        runner,
++        {"mamba.0": raw_tensor},
++        [16],
++    )
++    cache = caches["mamba.0"]
++
++    assert cache.shape == (num_blocks, 1, 1, page_size)
++    assert cache.stride()[0] == block_stride
++    cache[1].fill_(7)
++    assert (raw_tensor[block_stride + 12 : block_stride + 20] == 7).all()
++    assert (raw_tensor[:12] == 0).all()
++
++
+ def _schedule_new_request(*req_ids: str) -> SchedulerOutput:
+     new_reqs = []
+     num_scheduled_tokens = {}
+diff --git a/vllm/config/cache.py b/vllm/config/cache.py
+index d267e9a..2b02aea 100644
+--- a/vllm/config/cache.py
++++ b/vllm/config/cache.py
+@@ -30,10 +30,18 @@ CacheDType = Literal[
+     "turboquant_k3v4_nc",
+     "turboquant_3bit_nc",
+     "int4_per_token_head",
++    "int3_per_token_head",
++    "int2_per_token_head",
+     "int8_per_token_head",
+     "fp8_per_token_head",
+     "nvfp4",
+ ]
++_UNIMPLEMENTED_CACHE_DTYPES = frozenset(
++    {
++        "int2_per_token_head",
++        "int3_per_token_head",
++    }
++)
+ MambaDType = Literal["auto", "float32", "float16", "bfloat16"]
+ MambaCacheMode = Literal["all", "align", "none"]
+ PrefixCachingHashAlgo = Literal["sha256", "sha256_cbor", "xxhash", "xxhash_cbor"]
+@@ -116,6 +124,15 @@ class CacheConfig:
+     kv_cache_dtype_skip_layers: list[str] = field(default_factory=list)
+     """Layer patterns to skip KV cache quantization. Accepts layer indices
+     (e.g., '0', '2', '4') or attention type names (e.g., 'sliding_window')."""
++    kv_cache_dtype_per_layer: dict[str, CacheDType] = field(default_factory=dict)
++    """Per-layer KV cache dtype override (our sensitivity-guided allocation).
++    Keys are layer indices as strings (e.g., '23'), values are CacheDType
++    strings (e.g., 'int4_per_token_head'). Layers not listed use the global
++    `kv_cache_dtype`. Overrides `kv_cache_dtype_skip_layers` where they clash."""
++    enable_per_layer_page_groups: bool = False
++    """Use a packed, per-page-size KV layout for mixed-precision full-attention
++    layers in hybrid attention/Mamba models. This avoids inflating compact
++    attention pages to the largest per-layer page. Experimental and opt-in."""
+     mamba_page_size_padded: int | None = None
+     """ Optional override for mamba page size; used by hybrid mamba/attention
+     models to ensure exact alignment with attention page size."""
+@@ -285,6 +302,10 @@ class CacheConfig:
+     @field_validator("cache_dtype", mode="after")
+     @classmethod
+     def _validate_cache_dtype(cls, cache_dtype: CacheDType) -> CacheDType:
++        if cache_dtype in _UNIMPLEMENTED_CACHE_DTYPES:
++            raise ValueError(
++                f"KV cache dtype {cache_dtype!r} has no runtime kernel implementation"
++            )
+         if kv_cache_uses_per_token_head_scales(cache_dtype):
+             logger.info(
+                 "Using %s data type to store kv cache. It reduces the GPU "
+@@ -301,3 +322,20 @@ class CacheConfig:
+                 str(cache_dtype),
+             )
+         return cache_dtype
++
++    @field_validator("kv_cache_dtype_per_layer", mode="after")
++    @classmethod
++    def _validate_per_layer_cache_dtypes(
++        cls,
++        per_layer_dtypes: dict[str, CacheDType],
++    ) -> dict[str, CacheDType]:
++        for layer_idx, cache_dtype in per_layer_dtypes.items():
++            if not layer_idx.isdigit():
++                raise ValueError(
++                    "Per-layer KV cache dtype keys must be non-negative layer indices"
++                )
++            if cache_dtype in _UNIMPLEMENTED_CACHE_DTYPES:
++                raise ValueError(
++                    f"KV cache dtype {cache_dtype!r} has no runtime kernel implementation"
++                )
++        return per_layer_dtypes
+diff --git a/vllm/engine/arg_utils.py b/vllm/engine/arg_utils.py
+index 3003d73..4c91db5 100644
+--- a/vllm/engine/arg_utils.py
++++ b/vllm/engine/arg_utils.py
+@@ -699,6 +699,10 @@ class EngineArgs:
+     kv_cache_dtype_skip_layers: list[str] = get_field(
+         CacheConfig, "kv_cache_dtype_skip_layers"
+     )
++    kv_cache_dtype_per_layer: dict[str, CacheDType] = get_field(
++        CacheConfig, "kv_cache_dtype_per_layer"
++    )
++    enable_per_layer_page_groups: bool = CacheConfig.enable_per_layer_page_groups
+     mamba_cache_dtype: MambaDType = CacheConfig.mamba_cache_dtype
+     mamba_ssm_cache_dtype: MambaDType = CacheConfig.mamba_ssm_cache_dtype
+     mamba_block_size: int | None = get_field(CacheConfig, "mamba_block_size")
+@@ -1216,6 +1220,14 @@ class EngineArgs:
+         cache_group.add_argument(
+             "--kv-cache-dtype-skip-layers", **cache_kwargs["kv_cache_dtype_skip_layers"]
+         )
++        cache_group.add_argument(
++            "--kv-cache-dtype-per-layer",
++            **cache_kwargs["kv_cache_dtype_per_layer"],
++        )
++        cache_group.add_argument(
++            "--enable-per-layer-page-groups",
++            **cache_kwargs["enable_per_layer_page_groups"],
++        )
+         cache_group.add_argument(
+             "--kv-sharing-fast-prefill", **cache_kwargs["kv_sharing_fast_prefill"]
+         )
+@@ -1959,6 +1971,8 @@ class EngineArgs:
+             prefix_caching_hash_algo=self.prefix_caching_hash_algo,
+             calculate_kv_scales=self.calculate_kv_scales,
+             kv_cache_dtype_skip_layers=self.kv_cache_dtype_skip_layers,
++            kv_cache_dtype_per_layer=self.kv_cache_dtype_per_layer,
++            enable_per_layer_page_groups=self.enable_per_layer_page_groups,
+             kv_sharing_fast_prefill=self.kv_sharing_fast_prefill,
+             mamba_cache_dtype=self.mamba_cache_dtype,
+             mamba_ssm_cache_dtype=self.mamba_ssm_cache_dtype,
+diff --git a/vllm/model_executor/layers/attention/attention.py b/vllm/model_executor/layers/attention/attention.py
+index c8e5a9c..1cda473 100644
+--- a/vllm/model_executor/layers/attention/attention.py
++++ b/vllm/model_executor/layers/attention/attention.py
+@@ -313,12 +313,29 @@ class Attention(nn.Module, AttentionLayerBase):
+             if skip:
+                 kv_cache_dtype = "auto"
+                 calculate_kv_scales = False
+-            logger.debug(
+-                "Layer %s: kv_cache_dtype=%s, sliding_window=%s",
+-                prefix,
+-                kv_cache_dtype,
+-                sliding_window,
+-            )
++
++        # Per-layer KV cache dtype override (sensitivity-guided allocation).
++        # Keyed by layer index string; wins over skip_layers and the global dtype.
++        if cache_config is not None and cache_config.kv_cache_dtype_per_layer:
++            from vllm.model_executor.models.utils import extract_layer_index
++
++            layer_idx = str(extract_layer_index(prefix))
++            per_layer_dtype = cache_config.kv_cache_dtype_per_layer.get(layer_idx)
++            if per_layer_dtype is not None:
++                kv_cache_dtype = per_layer_dtype
++                calculate_kv_scales = False
++                logger.info(
++                    "Layer %s: per-layer kv_cache_dtype override -> %s",
++                    prefix,
++                    kv_cache_dtype,
++                )
++
++        logger.debug(
++            "Layer %s: kv_cache_dtype=%s, sliding_window=%s",
++            prefix,
++            kv_cache_dtype,
++            sliding_window,
++        )
+ 
+         self.kv_cache_torch_dtype = kv_cache_dtype_str_to_dtype(
+             kv_cache_dtype, vllm_config.model_config
+diff --git a/vllm/utils/torch_utils.py b/vllm/utils/torch_utils.py
+index 1472024..90620fc 100644
+--- a/vllm/utils/torch_utils.py
++++ b/vllm/utils/torch_utils.py
+@@ -40,6 +40,8 @@ STR_DTYPE_TO_TORCH_DTYPE = {
+     "fp8_e5m2": torch.uint8,
+     "int8": torch.int8,
+     "int4_per_token_head": torch.uint8,
++    "int3_per_token_head": torch.uint8,
++    "int2_per_token_head": torch.uint8,
+     "int8_per_token_head": torch.int8,
+     "fp8_per_token_head": torch.uint8,
+     "fp8_inc": torch.float8_e4m3fn,
+diff --git a/vllm/v1/core/kv_cache_utils.py b/vllm/v1/core/kv_cache_utils.py
+index 9aea061..c616d56 100644
+--- a/vllm/v1/core/kv_cache_utils.py
++++ b/vllm/v1/core/kv_cache_utils.py
+@@ -1324,7 +1324,38 @@ def _use_packed_kv_cache_config(
+     enable_cross_layers = (
+         str(extra_config.get("enable_cross_layers_blocks", "False")).lower() == "true"
+     )
+-    return is_dsv4 or (enable_cross_layers and len(kv_cache_groups) > 1)
++    enable_per_layer_pages = (
++        getattr(
++            vllm_config.cache_config,
++            "enable_per_layer_page_groups",
++            False,
++        )
++        is True
++    )
++    has_mamba_group = any(
++        isinstance(group.kv_cache_spec, MambaSpec) for group in kv_cache_groups
++    )
++    has_mixed_page_attention_group = any(
++        isinstance(group.kv_cache_spec, UniformTypeKVCacheSpecs)
++        and len(
++            {
++                spec.page_size_bytes
++                for spec in group.kv_cache_spec.kv_cache_specs.values()
++            }
++        )
++        > 1
++        for group in kv_cache_groups
++    )
++    use_per_layer_pages = (
++        enable_per_layer_pages
++        and has_mamba_group
++        and has_mixed_page_attention_group
++    )
++    return (
++        is_dsv4
++        or use_per_layer_pages
++        or (enable_cross_layers and len(kv_cache_groups) > 1)
++    )
+ 
+ 
+ def _get_kv_cache_config_packed(
+@@ -1818,6 +1849,56 @@ def get_kv_cache_groups(
+         _annotate_eagle_groups_deepseek_v4(vllm_config, kv_cache_spec, kv_cache_groups)
+         return kv_cache_groups
+ 
++    enable_per_layer_pages = (
++        getattr(
++            vllm_config.cache_config,
++            "enable_per_layer_page_groups",
++            False,
++        )
++        is True
++    )
++    if enable_per_layer_pages:
++        full_attention_specs = {
++            name: spec
++            for name, spec in kv_cache_spec.items()
++            if isinstance(spec, FullAttentionSpec)
++        }
++        mamba_specs = {
++            name: spec
++            for name, spec in kv_cache_spec.items()
++            if isinstance(spec, MambaSpec)
++        }
++        supported_mixed_model = (
++            full_attention_specs
++            and mamba_specs
++            and len(full_attention_specs) + len(mamba_specs) == len(kv_cache_spec)
++        )
++        if supported_mixed_model:
++            uniform_attention = UniformTypeKVCacheSpecs.from_specs(
++                full_attention_specs
++            )
++            has_mixed_attention_pages = len(
++                {spec.page_size_bytes for spec in full_attention_specs.values()}
++            ) > 1
++            if uniform_attention is not None and has_mixed_attention_pages:
++                unified_mamba_specs = unify_kv_cache_spec_page_size(mamba_specs)
++                mamba_groups = _get_kv_cache_groups_uniform_page_size(
++                    unified_mamba_specs
++                )
++                logger.info(
++                    "Using packed per-layer page groups for %d full-attention "
++                    "layers and %d Mamba layers",
++                    len(full_attention_specs),
++                    len(mamba_specs),
++                )
++                return [
++                    KVCacheGroupSpec(
++                        list(full_attention_specs),
++                        uniform_attention,
++                    ),
++                    *mamba_groups,
++                ]
++
+     # Pull HiddenStateCacheSpec layers out before the general multi-group
+     # path so they don't affect page-size unification or grouping.
+     hidden_specs = {
+@@ -1935,6 +2016,16 @@ def _max_memory_usage_bytes_from_groups(
+             )
+             total_max_mem_usage_bytes += g_max_mem_usage_page_bytes
+         return total_max_mem_usage_bytes
++    elif _use_packed_kv_cache_config(vllm_config, kv_cache_groups):
++        block_stride, _ = _get_packed_kv_cache_layout(kv_cache_groups)
++        blocks_needed = sum(
++            cdiv(
++                group.kv_cache_spec.max_memory_usage_bytes(vllm_config),
++                group.kv_cache_spec.page_size_bytes,
++            )
++            for group in kv_cache_groups
++        )
++        return block_stride * blocks_needed
+ 
+     # General case: group_size pools, each shared by one layer per group
+     # Memory = group_size * page_size * blocks_for_max_len
+diff --git a/vllm/v1/kv_cache_interface.py b/vllm/v1/kv_cache_interface.py
+index cc61f1f..0e20909 100644
+--- a/vllm/v1/kv_cache_interface.py
++++ b/vllm/v1/kv_cache_interface.py
+@@ -44,6 +44,8 @@ class KVQuantMode(IntEnum):
+     INT4_PER_TOKEN_HEAD = 4  # packed 2×int4/byte, RHT + asymmetric zp
+     NVFP4 = 5  # packed fp4 data + fp8 block scales
+     TURBOQUANT = 6  # Hadamard-rotated Lloyd-Max quant, packed K+V per slot
++    INT3_PER_TOKEN_HEAD = 7  # packed 3-bit, ~2.67 values/byte (our extension)
++    INT2_PER_TOKEN_HEAD = 8  # packed 4×int2/byte (our extension)
+ 
+     @property
+     def is_per_token_head(self) -> bool:
+@@ -52,6 +54,8 @@ class KVQuantMode(IntEnum):
+             KVQuantMode.INT8_PER_TOKEN_HEAD,
+             KVQuantMode.FP8_PER_TOKEN_HEAD,
+             KVQuantMode.INT4_PER_TOKEN_HEAD,
++            KVQuantMode.INT3_PER_TOKEN_HEAD,
++            KVQuantMode.INT2_PER_TOKEN_HEAD,
+         )
+ 
+     @property
+@@ -69,6 +73,10 @@ def get_kv_quant_mode(kv_cache_dtype: str) -> KVQuantMode:
+     """Map a ``kv_cache_dtype`` string to a :class:`KVQuantMode`."""
+     if kv_cache_dtype == "int4_per_token_head":
+         return KVQuantMode.INT4_PER_TOKEN_HEAD
++    if kv_cache_dtype == "int3_per_token_head":
++        return KVQuantMode.INT3_PER_TOKEN_HEAD
++    if kv_cache_dtype == "int2_per_token_head":
++        return KVQuantMode.INT2_PER_TOKEN_HEAD
+     if kv_cache_dtype == "int8_per_token_head":
+         return KVQuantMode.INT8_PER_TOKEN_HEAD
+     if kv_cache_dtype == "fp8_per_token_head":
+@@ -343,6 +351,13 @@ class FullAttentionSpec(AttentionSpec):
+             ) + nvfp4_kv_cache_full_dim(self.head_size_v)
+         elif self.kv_quant_mode == KVQuantMode.INT4_PER_TOKEN_HEAD:
+             last_dim = self.head_size // 2 + self.head_size_v // 2
++        elif self.kv_quant_mode == KVQuantMode.INT2_PER_TOKEN_HEAD:
++            last_dim = self.head_size // 4 + self.head_size_v // 4
++        elif self.kv_quant_mode == KVQuantMode.INT3_PER_TOKEN_HEAD:
++            # 3-bit: 8/3 ≈ 2.67 values per byte, align to byte
++            last_dim = (
++                (self.head_size * 3 + 7) // 8 + (self.head_size_v * 3 + 7) // 8
++            )
+         else:
+             last_dim = self.head_size + self.head_size_v
+         return (
+diff --git a/vllm/v1/worker/gpu_model_runner.py b/vllm/v1/worker/gpu_model_runner.py
+index 5083087..93ed15a 100644
+--- a/vllm/v1/worker/gpu_model_runner.py
++++ b/vllm/v1/worker/gpu_model_runner.py
+@@ -7453,9 +7453,24 @@ class GPUModelRunner(
+                     # each block's bytes into its conv/ssm state views. Keeping
+                     # one tensor per layer lets the KV connector register it
+                     # without special-casing Mamba.
+-                    kv_caches[layer_name] = raw_tensor[
+-                        : num_blocks * page_size_bytes
+-                    ].view(num_blocks, 1, 1, page_size_bytes)
++                    if packing is not None:
++                        offset, block_stride = packing
++                        assert offset + page_size_bytes <= block_stride
++                        kv_caches[layer_name] = torch.as_strided(
++                            raw_tensor,
++                            size=(num_blocks, 1, 1, page_size_bytes),
++                            stride=(
++                                block_stride,
++                                page_size_bytes,
++                                page_size_bytes,
++                                1,
++                            ),
++                            storage_offset=offset,
++                        )
++                    else:
++                        kv_caches[layer_name] = raw_tensor[
++                            : num_blocks * page_size_bytes
++                        ].view(num_blocks, 1, 1, page_size_bytes)
+                 else:
+                     raise NotImplementedError
+ 
+-- 
+2.55.0.windows.2
+

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # 唯一实验运行入口：启动实验并固化 provenance bundle
 #
-# 用法: ./scripts/run.sh <experiment_name>
+# 用法: ./scripts/run.sh <experiment_name> [experiment args...]
 #   <experiment_name> 对应 configs/experiments/<name>.yaml
 #
 # 每次运行向 experiments/<name>/ 产出：
@@ -12,9 +12,16 @@
 set -euo pipefail
 
 EXP_NAME="${1:?用法: ./scripts/run.sh <experiment_name>}"
+shift
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 CFG="$ROOT/configs/experiments/$EXP_NAME.yaml"
 RUN_DIR="$ROOT/experiments/$EXP_NAME"
+RUNNER_PYTHON="${RUNNER_PYTHON:-/root/autodl-tmp/MLSys_Research/.venv/bin/python}"
+if [ ! -x "$RUNNER_PYTHON" ]; then
+  RUNNER_PYTHON="${PYTHON:-python3}"
+fi
+RUNNER_BIN="$(dirname "$(command -v "$RUNNER_PYTHON" 2>/dev/null || echo "$RUNNER_PYTHON")")"
+export PATH="$RUNNER_BIN:$PATH"
 
 [ -f "$CFG" ] || { echo "ERROR: 配置不存在: $CFG"; exit 1; }
 
@@ -54,7 +61,15 @@ grep -E "^\s*(seed|seeds):" "$CFG" > "$RUN_DIR/seeds.txt" || true
 echo "=== Provenance bundle 已写入 $RUN_DIR ==="
 echo "  - config:    $(cat "$RUN_DIR/resolved.yaml.sha256" | cut -d' ' -f1)"
 echo "  - git:       $(cat "$RUN_DIR/git_commit")"
-echo "  - seeds:     $(cat "$RUN_DIR/seeds.txt | tr '\n' ' ')"
+echo "  - seeds:     $(tr '\n' ' ' < "$RUN_DIR/seeds.txt")"
 
-echo
-echo "TODO: 在此启动实际实验命令（bench / eval / memory），并确保输出写入 $RUN_DIR/"
+case "$EXP_NAME" in
+  e3_steady_state_2b)
+    exec "$RUNNER_PYTHON" "$ROOT/scripts/bench/run_steady_state.py" \
+      --config "$CFG" "$@"
+    ;;
+  *)
+    echo
+    echo "TODO: 尚未为 $EXP_NAME 注册实际实验命令。"
+    ;;
+esac

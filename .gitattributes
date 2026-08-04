@@ -12,3 +12,6 @@ Makefile text eol=lf
 Dockerfile text eol=lf
 .gitignore text eol=lf
 .gitattributes text eol=lf
+
+# Format-patch files contain significant unified-diff prefixes and signatures.
+vendor/vllm-patches/*.patch -text -diff
