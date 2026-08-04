@@ -86,8 +86,11 @@ def tensor_info(tensor: Any) -> dict[str, Any]:
 def collect_worker_runtime(worker: Any) -> dict[str, Any]:
     """Executed through vLLM collective_rpc on each worker."""
     import torch
+    from vllm.v1.core.kv_cache_utils import get_kv_cache_capacity
 
     model_runner = worker.model_runner
+    kv_cache_config = model_runner.kv_cache_config
+    capacity_tokens, max_concurrency = get_kv_cache_capacity(worker.vllm_config, kv_cache_config)
     forward_context = model_runner.compilation_config.static_forward_context
     layers: dict[str, Any] = {}
     storage_ptrs: set[int] = set()
@@ -115,6 +118,13 @@ def collect_worker_runtime(worker: Any) -> dict[str, Any]:
         "bound_layers": layers,
         "unique_backing_storage_count": len(storage_ptrs),
         "unique_backing_storage_ptrs": sorted(storage_ptrs),
+        "cache_config": cache_config_to_dict(worker.cache_config),
+        "kv_cache_config": kv_cache_config_to_dict(kv_cache_config),
+        "capacity": {
+            "tokens": capacity_tokens,
+            "max_concurrency": max_concurrency,
+            "max_model_len": worker.vllm_config.model_config.max_model_len,
+        },
     }
 
 
@@ -145,6 +155,59 @@ def spec_to_dict(spec: Any) -> dict[str, Any]:
     if inner is not None:
         output["per_layer_specs"] = {layer_name: spec_to_dict(layer_spec) for layer_name, layer_spec in inner.items()}
     return output
+
+
+def cache_config_to_dict(cache_config: Any) -> dict[str, Any]:
+    return {
+        "cache_dtype": json_value(cache_config.cache_dtype),
+        "kv_cache_dtype_per_layer": json_value(cache_config.kv_cache_dtype_per_layer),
+        "enable_per_layer_page_groups": getattr(cache_config, "enable_per_layer_page_groups", None),
+        "num_gpu_blocks": cache_config.num_gpu_blocks,
+        "block_size": cache_config.block_size,
+        "mamba_block_size": cache_config.mamba_block_size,
+        "mamba_page_size_padded": cache_config.mamba_page_size_padded,
+        "mamba_cache_dtype": json_value(cache_config.mamba_cache_dtype),
+        "mamba_ssm_cache_dtype": json_value(cache_config.mamba_ssm_cache_dtype),
+    }
+
+
+def kv_cache_config_to_dict(kv_cache_config: Any) -> dict[str, Any]:
+    return {
+        "num_blocks": kv_cache_config.num_blocks,
+        "groups": [
+            {
+                "group_id": group_id,
+                "layer_names": list(group.layer_names),
+                "spec": spec_to_dict(group.kv_cache_spec),
+            }
+            for group_id, group in enumerate(kv_cache_config.kv_cache_groups)
+        ],
+        "tensors": [
+            {
+                "tensor_id": index,
+                "size": tensor.size,
+                "shared_by": list(tensor.shared_by),
+                "offset": tensor.offset,
+                "block_stride": tensor.block_stride,
+            }
+            for index, tensor in enumerate(kv_cache_config.kv_cache_tensors)
+        ],
+    }
+
+
+def extract_shared_runtime(workers: Sequence[Mapping[str, Any]]) -> dict[str, Any]:
+    if not workers:
+        raise RuntimeError("collective_rpc returned no worker runtime records")
+    first = {
+        "cache_config": workers[0]["cache_config"],
+        "kv_cache_config": workers[0]["kv_cache_config"],
+        "capacity": workers[0]["capacity"],
+    }
+    for worker in workers[1:]:
+        current = {key: worker[key] for key in first}
+        if current != first:
+            raise RuntimeError("worker runtime configuration mismatch")
+    return first
 
 
 def parse_per_layer(value: str | None) -> dict[str, str] | None:
@@ -221,7 +284,6 @@ def main(argv: Sequence[str] | None = None) -> int:
     import torch
     import vllm
     from vllm import LLM, SamplingParams
-    from vllm.v1.core.kv_cache_utils import get_kv_cache_capacity
 
     llm_kwargs: dict[str, Any] = {
         "model": args.model,
@@ -238,31 +300,13 @@ def main(argv: Sequence[str] | None = None) -> int:
         llm_kwargs["enable_per_layer_page_groups"] = True
 
     llm = LLM(**llm_kwargs)
-    engine = llm.llm_engine
-    vllm_config = engine.vllm_config
-    cache_config = vllm_config.cache_config
-    kv_cache_config = engine.model_executor.kv_cache_config
-    capacity_tokens, max_concurrency = get_kv_cache_capacity(vllm_config, kv_cache_config)
-
-    groups = [
-        {
-            "group_id": group_id,
-            "layer_names": list(group.layer_names),
-            "spec": spec_to_dict(group.kv_cache_spec),
-        }
-        for group_id, group in enumerate(kv_cache_config.kv_cache_groups)
-    ]
-    tensors = [
-        {
-            "tensor_id": index,
-            "size": tensor.size,
-            "shared_by": list(tensor.shared_by),
-            "offset": tensor.offset,
-            "block_stride": tensor.block_stride,
-        }
-        for index, tensor in enumerate(kv_cache_config.kv_cache_tensors)
-    ]
-    workers = engine.model_executor.collective_rpc(collect_worker_runtime)
+    workers = llm.collective_rpc(collect_worker_runtime)
+    shared_runtime = extract_shared_runtime(workers)
+    cache_config_report = shared_runtime["cache_config"]
+    kv_cache_config_report = shared_runtime["kv_cache_config"]
+    capacity_report = shared_runtime["capacity"]
+    capacity_tokens = capacity_report["tokens"]
+    max_concurrency = capacity_report["max_concurrency"]
 
     generation: dict[str, Any] | None = None
     if args.generate:
@@ -302,27 +346,9 @@ def main(argv: Sequence[str] | None = None) -> int:
             "gpu_memory_utilization": args.gpu_memory_utilization,
             "enforce_eager": args.enforce_eager,
         },
-        "cache_config": {
-            "cache_dtype": json_value(cache_config.cache_dtype),
-            "kv_cache_dtype_per_layer": json_value(cache_config.kv_cache_dtype_per_layer),
-            "enable_per_layer_page_groups": getattr(cache_config, "enable_per_layer_page_groups", None),
-            "num_gpu_blocks": cache_config.num_gpu_blocks,
-            "block_size": cache_config.block_size,
-            "mamba_block_size": cache_config.mamba_block_size,
-            "mamba_page_size_padded": cache_config.mamba_page_size_padded,
-            "mamba_cache_dtype": json_value(cache_config.mamba_cache_dtype),
-            "mamba_ssm_cache_dtype": json_value(cache_config.mamba_ssm_cache_dtype),
-        },
-        "kv_cache_config": {
-            "num_blocks": kv_cache_config.num_blocks,
-            "groups": groups,
-            "tensors": tensors,
-        },
-        "capacity": {
-            "tokens": capacity_tokens,
-            "max_concurrency": max_concurrency,
-            "max_model_len": vllm_config.model_config.max_model_len,
-        },
+        "cache_config": cache_config_report,
+        "kv_cache_config": kv_cache_config_report,
+        "capacity": capacity_report,
         "workers": workers,
         "generation": generation,
     }
