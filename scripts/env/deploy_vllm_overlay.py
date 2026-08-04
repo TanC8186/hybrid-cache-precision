@@ -81,6 +81,11 @@ def detect_target_root(python: Path) -> Path:
     return Path(output).resolve()
 
 
+def absolute_preserving_symlinks(path: Path) -> Path:
+    """Make a path absolute without resolving a venv interpreter symlink."""
+    return Path(os.path.abspath(path.expanduser()))
+
+
 def atomic_copy(source: Path, target: Path) -> None:
     target.parent.mkdir(parents=True, exist_ok=True)
     tmp = target.with_name(f".{target.name}.tmp-{os.getpid()}-{uuid.uuid4().hex[:8]}")
@@ -102,7 +107,7 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
 def main(argv: Sequence[str] | None = None) -> int:
     args = parse_args(argv)
     source_root = args.source_root.resolve()
-    python = args.python.resolve()
+    python = absolute_preserving_symlinks(args.python)
     target_root = args.target_root.resolve() if args.target_root else detect_target_root(python)
     manifest_dir = args.manifest_dir.resolve()
     source_commit = run_capture(["git", "rev-parse", "HEAD"], cwd=source_root)

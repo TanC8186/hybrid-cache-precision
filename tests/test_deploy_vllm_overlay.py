@@ -1,6 +1,12 @@
 from pathlib import Path
 
-from scripts.env.deploy_vllm_overlay import RUNTIME_FILES, atomic_copy
+import pytest
+
+from scripts.env.deploy_vllm_overlay import (
+    RUNTIME_FILES,
+    absolute_preserving_symlinks,
+    atomic_copy,
+)
 
 
 def test_runtime_overlay_file_set_excludes_tests() -> None:
@@ -19,3 +25,18 @@ def test_atomic_copy_replaces_target(tmp_path: Path) -> None:
     atomic_copy(source, target)
 
     assert target.read_text(encoding="utf-8") == "new\n"
+
+
+def test_absolute_path_preserves_symlink(tmp_path: Path) -> None:
+    target = tmp_path / "real-python"
+    target.write_text("", encoding="utf-8")
+    link = tmp_path / "venv-python"
+    try:
+        link.symlink_to(target)
+    except OSError as exc:
+        pytest.skip(f"symlink creation unavailable: {exc}")
+
+    normalized = absolute_preserving_symlinks(link)
+
+    assert normalized == link.absolute()
+    assert normalized != link.resolve()
