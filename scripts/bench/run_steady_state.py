@@ -19,7 +19,7 @@ import subprocess
 import sys
 import time
 import uuid
-from collections.abc import Iterable, Mapping, Sequence
+from collections.abc import Callable, Iterable, Mapping, Sequence
 from pathlib import Path
 from typing import Any
 from urllib.error import URLError
@@ -692,6 +692,37 @@ class ServerSession:
                 f"server log does not prove allocation {self.allocation_name!r}; missing substrings: {missing}"
             )
 
+    def assert_healthy(self) -> None:
+        assert self.process is not None
+        assert self.session_dir is not None
+        returncode = self.process.poll()
+        if returncode is not None:
+            self.log_handle.flush()
+            tail = (self.session_dir / "server.log").read_text(
+                encoding="utf-8",
+                errors="replace",
+            )[-8000:]
+            raise ExperimentError(
+                f"server exited during benchmark with rc={returncode}\n{tail}"
+            )
+
+        server = self.config["server"]
+        health_url = (
+            f"http://{server['host']}:{server['port']}"
+            f"{server.get('health_path', '/health')}"
+        )
+        try:
+            with urlopen(health_url, timeout=2) as response:
+                if not 200 <= response.status < 300:
+                    raise ExperimentError(
+                        f"server health check failed after benchmark: "
+                        f"url={health_url} status={response.status}"
+                    )
+        except (OSError, URLError) as exc:
+            raise ExperimentError(
+                f"server health check failed after benchmark: url={health_url} error={exc}"
+            ) from exc
+
     def __exit__(self, exc_type, exc, traceback) -> None:
         if self.process is not None:
             terminate_process_group(
@@ -730,6 +761,7 @@ def run_sample(
     attempt_id: str,
     git_commit: str,
     vllm_source_commit: str | None,
+    post_benchmark_check: Callable[[], None] | None = None,
 ) -> dict[str, Any]:
     sample_dir = attempt_dir / "samples" / sample["sample_id"]
     existing = load_sample_status(sample_dir)
@@ -813,6 +845,24 @@ def run_sample(
             f"sample {sample['sample_id']} failed: timeout={timed_out}, "
             f"returncode={returncode}, result_exists={raw_result.exists()}"
         )
+
+    if post_benchmark_check is not None:
+        try:
+            post_benchmark_check()
+        except Exception as exc:
+            atomic_write_json(
+                sample_dir / "status.json",
+                {
+                    "status": "failed",
+                    "timed_out": False,
+                    "returncode": returncode,
+                    "duration_s": duration_s,
+                    "failure_stage": "server_health_check",
+                    "error": str(exc),
+                    "finished_at": utc_timestamp(),
+                },
+            )
+            raise
 
     try:
         with raw_result.open(encoding="utf-8") as handle:
@@ -1038,7 +1088,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             if not allocation_samples:
                 continue
             print(f"starting allocation={allocation_name} samples={len(allocation_samples)}")
-            with ServerSession(config, allocation_name, repo_root, attempt_dir):
+            with ServerSession(config, allocation_name, repo_root, attempt_dir) as server_session:
                 for sample in allocation_samples:
                     print(f"running sample={sample['sample_id']} prompts={sample['num_prompts']}")
                     outcome = run_sample(
@@ -1049,6 +1099,7 @@ def main(argv: Sequence[str] | None = None) -> int:
                         attempt_id=attempt_id,
                         git_commit=root_git["commit"],
                         vllm_source_commit=vllm_source_commit,
+                        post_benchmark_check=server_session.assert_healthy,
                     )
                     results.append(outcome)
                     summary = collect_attempt_summary(attempt_dir, plan)
