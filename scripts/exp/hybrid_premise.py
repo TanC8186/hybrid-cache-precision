@@ -13,6 +13,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import math
 import time
 from pathlib import Path
@@ -265,7 +266,8 @@ def run_serving_metrics(
 
 
 def run_bits(
-    model, tokenizer, ids_list, attn_indices, bits_list, evict_budgets, chunk_size, out_path: Path
+    model, tokenizer, ids_list, attn_indices, bits_list, evict_budgets, chunk_size, out_path: Path,
+    layer_bits: dict[int, int] | None = None,
 ) -> None:
     import csv
     import math
@@ -281,7 +283,7 @@ def run_bits(
         for ids in ids_list:
             ppl, qb, fb = chunked_ppl(
                 model, tokenizer, ids,
-                lambda b=bits, e=eb: make_cache(b, e, attn_indices, model),
+                lambda b=bits, e=eb, lb=layer_bits: make_cache(b, e, attn_indices, model, layer_bits=lb),
                 chunk_size,
                 attn_indices=attn_indices,
             )
@@ -419,15 +421,21 @@ def main() -> None:
     ap.add_argument("--hetero", action="store_true", help="异构预算验证模式")
     ap.add_argument("--serving", action="store_true", help="serving 指标模式（显存+速度+容量前沿）")
     ap.add_argument("--seeds", default="42", help="逗号分隔 seed 列表（多 seed 聚合 mean±std）")
+    ap.add_argument("--layer-bits", type=str, default=None,
+                    help='per-layer 位宽 JSON，如 {"23":16}（未列出的层用 --bits 默认值）')
+    ap.add_argument("--model", type=str, default=str(MODEL_PATH), help="模型目录")
     args = ap.parse_args()
 
     bits_list = [int(b) for b in args.bits.split(",")]
+    layer_bits = json.loads(args.layer_bits) if args.layer_bits else None
+    if layer_bits is not None:
+        layer_bits = {int(k): int(v) for k, v in layer_bits.items()}
 
-    print(f"加载模型: {MODEL_PATH}")
+    print(f"加载模型: {args.model}")
     from transformers import AutoModelForCausalLM, AutoTokenizer
-    tokenizer = AutoTokenizer.from_pretrained(str(MODEL_PATH))
+    tokenizer = AutoTokenizer.from_pretrained(args.model)
     model = AutoModelForCausalLM.from_pretrained(
-        str(MODEL_PATH), torch_dtype=torch.float16, attn_implementation="eager"
+        args.model, torch_dtype=torch.float16, attn_implementation="eager"
     ).cuda()
     model.eval()
 
@@ -466,13 +474,16 @@ def main() -> None:
     import statistics
     seeds = [int(s) for s in args.seeds.split(",")]
     all_rows: dict[tuple[int, int], list[float]] = {}
+    seed_rows: list[tuple[int, int, int, float]] = []
     for seed in seeds:
         s_ids = tokenize_corpus(tokenizer, corpus, max_len, num_seqs, seed=seed)
         print(f"\n=== seed={seed}（{len(s_ids)} 条序列） ===")
         for bits, evict, ppl, qbytes, fbytes, _t in run_bits(
-            model, tokenizer, s_ids, attn_indices, bits_list, evict_budgets, chunk, out
+            model, tokenizer, s_ids, attn_indices, bits_list, evict_budgets, chunk, out,
+            layer_bits=layer_bits,
         ):
             all_rows.setdefault((bits, evict), []).append(ppl)
+            seed_rows.append((bits, evict, seed, ppl))
 
     import csv
     with open(out, "w", newline="") as f:
@@ -484,6 +495,12 @@ def main() -> None:
             w.writerow([bits, evict, f"{mean:.4f}", f"{std:.4f}", len(ppls)])
             print(f"bits={bits} evict={evict}: PPL={mean:.4f}±{std:.4f} ({len(ppls)} seeds)")
     print(f"→ {out}")
+    seeds_out = Path(str(out) + ".seeds.csv")
+    with open(seeds_out, "w", newline="") as f:
+        w = csv.writer(f)
+        w.writerow(["bits", "evict_budget", "seed", "ppl"])
+        w.writerows(seed_rows)
+    print(f"→ {seeds_out}")
 
 
 if __name__ == "__main__":

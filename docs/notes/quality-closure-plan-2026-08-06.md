@@ -16,9 +16,17 @@
 - 分配：fp16（`kv_cache_dtype=auto`）、uniform int4（`int4_per_token_head`）、
   packed per-layer（`int4_per_token_head` + `--kv-cache-dtype-per-layer {"23":"auto",...}` +
   `--enable-per-layer-page-groups`）。
-- 种子：{7, 42, 2026}；Wikitext-2：5×2048，chunk=128（与 `byte_budget_3seed.log` 同协议）。
-- Retrieval：NIAH（seed 化、3 种深度×3 种长度，4K/8K/16K）+ LongBench 子集（2–3 个任务：
-  建议 Single-Doc QA 与 Multi-Doc QA 各 1 个），greedy。
+- 种子：{7, 42, 2026}。
+- **PPL 协议（transformers 路径，与 `byte_budget_3seed.log` 完全一致）**：
+  Wikitext-2 test、5×2048、chunk=128、seed 化起始位置；
+  入口 `scripts/exp/hybrid_premise.py --seeds 7,42,2026 --num-seqs 5 --max-len 2048
+  --corpus data/wikitext2_test.txt`，fp16=`--bits 16`、uniform=`--bits 4`、
+  packed=`--bits 4 --layer-bits '{"23":16}'`；每 seed 输出一份 PPL（`.seeds.csv`），
+  用配对 t-CI 比较（`scripts/eval/analyze_r4_quality.py`）。
+- **Retrieval 协议（vLLM 离线贪婪，入口 `scripts/eval/kv_quality_retrieval.py`）**：
+  NIAH seed 化合成上下文，depths {25,50,75} × lengths {2048,4096} × 3 needles/样本；
+  配置生效用 engine `vllm_config.cache_config` + KV group 结构校验；
+  精确匹配 needle code 计 accuracy。LongBench 子集在 NIAH 通过后追加。
 - 成功判据（预声明）：PPL 配对 Δ 的 95% CI 上界 ≤ +2% 相对 FP16；retrieval 准确率差 ≤ 1 分；
   敏感度排序方向不变。
 
@@ -27,7 +35,7 @@
 1. **MVEx**：packed/seed7/单任务单样本，验证命令、config 生效（日志含
    `enable_per_layer_page_groups` + `CUDAGraphMode`/eager 选择）、PPL 与 retrieval schema、
    哈希链；注入断连复测。
-2. **Pilot**：3 alloc × 3 seeds × Wikitext（3 样本）+ 1 个 retrieval 任务（9 样本）；
+2. **Pilot**：3 alloc × 3 seeds × Wikitext（3 个 PPL 进程）+ NIAH 单 (depth,length)（9 样本）；
    任一 schema 漂移或静默排除即阻断。
 3. **Formal**：3 alloc × 3 seeds × {Wikitext, NIAH×3, LongBench×2}；短切片 + `--resume`，
    每样本独立不可变 attempt。
