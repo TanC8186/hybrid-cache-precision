@@ -93,6 +93,8 @@ def engine_kwargs(allocation: str, args: argparse.Namespace) -> dict[str, Any]:
         kwargs["kv_cache_dtype"] = "int4_per_token_head"
         kwargs["kv_cache_dtype_per_layer"] = dict(PER_LAYER)
         kwargs["enable_per_layer_page_groups"] = True
+    elif allocation in ("turboquant_k8v4", "turboquant_4bit_nc"):
+        kwargs["kv_cache_dtype"] = allocation
     return kwargs
 
 
@@ -139,6 +141,8 @@ def verify_config_effect(llm, allocation: str) -> dict[str, Any]:
             checks["ok"] = checks["ok"] and any(
                 g["type"] == "UniformTypeKVCacheSpecs" for g in checks["detail"]["groups"]
             )
+    elif allocation in ("turboquant_k8v4", "turboquant_4bit_nc"):
+        checks["ok"] = dtype == allocation and not per_layer and not a2
     if not checks["ok"]:
         checks["reason"] = "allocation did not take effect (config mismatch)"
     return checks
@@ -146,7 +150,11 @@ def verify_config_effect(llm, allocation: str) -> dict[str, Any]:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--allocation", required=True, choices=["fp16", "uniform_int4", "packed_per_layer"])
+    ap.add_argument(
+        "--allocation",
+        required=True,
+        choices=["fp16", "uniform_int4", "packed_per_layer", "turboquant_k8v4", "turboquant_4bit_nc"],
+    )
     ap.add_argument("--seed", type=int, required=True)
     ap.add_argument("--depth-pct", type=int, required=True, choices=[25, 50, 75])
     ap.add_argument("--max-len", type=int, required=True)
