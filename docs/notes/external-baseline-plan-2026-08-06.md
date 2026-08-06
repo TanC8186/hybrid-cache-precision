@@ -7,7 +7,7 @@
 
 | 候选 | 形态 | 可执行性 | 备注 |
 |---|---|---|---|
-| TurboQuant（k8v4 / 4bit_nc / 3bit_nc） | vLLM 原生 KV dtype（本 fork 校验器已列出 `turboquant_k8v4`、`turboquant_4bit_nc`、`turboquant_3bit_nc`） | **待可行性 MVEx**：引擎启动+生成通过即进入 serving 矩阵；失败则降级 int8 同栈对照 | ICLR 2026；最接近“同栈系统对照” |
+| TurboQuant（k8v4 / 4bit_nc / 3bit_nc） | vLLM 原生 KV dtype（本 fork 校验器已列出 `turboquant_k8v4`、`turboquant_4bit_nc`、`turboquant_3bit_nc`） | **可行性 MVEx 已 PASSED（2026-08-06）**：`turboquant_k8v4` 与 `turboquant_4bit_nc` 均引擎启动+贪婪生成成功（NIAH acc=1.00） | ICLR 2026；最接近“同栈系统对照” |
 | int8/fp8 + 驱逐（byte-equivalent） | vLLM 原生 dtype + 自定义驱逐 | 高（自研已有 transformers 路径） | 作为“同栈字节等价”对照，论文可明确标注非外部系统 |
 | KIVI / KVQuant | 研究型 kernel，无官方 vLLM serving 集成 | 低：仅 transformers 路径 PPL/质量对照，需明确标注协议差异 | 用于质量表对照，不进入 serving SLO 表 |
 | MiniKV / HqeKV / ARKV | 论文代码库，集成成本高 | 低 | 若时间允许再评估；不作为第一轮 blocking |
@@ -25,7 +25,8 @@
 
 1. **可行性 MVEx（2026-08-06 已确认 dtype 字符串存在）**：确认
    `kv_cache_dtype=turboquant_k8v4 / turboquant_4bit_nc` 对 Qwen3.5-2B 引擎启动+贪婪生成可用；
-   记录日志中的生效证明；失败则降级为 `int8_per_token_head`/fp8 同栈对照并报告。
+   记录日志中的生效证明；**结果：两者均通过（NIAH acc=1.00，seed7/d50/L2048，config effect 校验通过）**；
+   失败则降级为 `int8_per_token_head`/fp8 同栈对照并报告。
 2. **Pilot**：TurboQuant × Random/ShareGPT × rates {30,40} × seed 7，12 样本；
    请求守恒、到达窗口、schema 全部通过才放行。
 3. **Formal**：3 alloc（fp16/int4/TurboQuant）或（fp16/int4/byte-equivalent）×
