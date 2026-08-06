@@ -319,7 +319,12 @@ PPL Δ = **−0.083 [−0.177, +0.012]** (−0.71%); NIAH Δ = **+0.019 [−0.05
 recovery of packed per-layer (0.833× of uniform int4) therefore does **not** come at a quality
 cost on these metrics; point estimates favor packed (L23 protection). Status: ANALYZED —
 the samples are complete and self-validated, but an independent reproduction of this quality
-matrix has not yet run; the LongBench subset is a planned extension.
+matrix has not yet run; the LongBench subset is a planned extension. NIAH uses a 32-token greedy
+budget; all observed misses (28/162 needles) are reasoning-token (`<think>`) truncation rather
+than retrieval failures, so the absolute accuracies are protocol-dependent while the paired
+comparisons remain valid. `max_len`/depth are word-count approximations; the runtime packed
+layout is verified by engine logs (“Using packed per-layer page groups …”, 17/18 archived
+sample logs plus the MVEx transcript).
 
 ---
 

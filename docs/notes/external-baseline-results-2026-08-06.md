@@ -23,6 +23,11 @@
 结论：TurboQuant 两个 dtype 在 NIAH 上与 fp16 无显著差异（CI 均含 0），点估计略低；
 packed per-layer 点估计最高。外部 baseline 质量证据成立（ANALYZED）。
 
+**方法学披露（幻觉审计后补充）**：NIAH 为 32-token 贪婪生成，miss 全部是 Qwen3.5
+`<think>` 推理被截断（0 个真实检索失败）；accuracy 绝对值是协议伪影，配对比较仍公平。
+config-effect 由引擎日志验证（36/36 有 `kv_cache_dtype=turboquant_*` 标记）。
+详见 `docs/notes/audit-no-hallucination-2026-08-06.md`。
+
 ## 3. 论文使用规则
 
 - TurboQuant 行必须标注 dtype（`k8v4` / `4bit_nc`）、协议与状态（ANALYZED）；

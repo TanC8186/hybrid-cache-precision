@@ -128,6 +128,7 @@ def verify_config_effect(llm, allocation: str) -> dict[str, Any]:
             }
             for g in getattr(kv, "kv_cache_groups", [])
         ]
+    checks["group_structure_verified"] = "groups" in checks["detail"]
     dtype = checks["detail"].get("cache_dtype")
     per_layer = checks["detail"].get("per_layer")
     a2 = checks["detail"].get("a2_flag")
@@ -196,7 +197,7 @@ def main() -> int:
         outputs = llm.generate([prompt], SamplingParams(max_tokens=32, temperature=0.0), use_tqdm=False)
         answer = outputs[0].outputs[0].text
         hit = code in answer.upper().replace(" ", "")
-        cases.append({"code": code, "answer": answer, "hit": hit})
+        cases.append({"code": code, "answer": answer, "hit": hit, "prompt_words": len(prompt.split())})
 
     from vllm import __version__ as vllm_version
 
@@ -211,6 +212,7 @@ def main() -> int:
         "num_needles": args.num_needles,
         "accuracy": sum(1 for c in cases if c["hit"]) / len(cases),
         "cases": cases,
+        "context_length_note": "max_len counts filler words, not tokens; actual prompt_words per case recorded",
         "engine": {"model": args.model, "kwargs": {k: v for k, v in kwargs.items() if k != "model"}, "vllm_version": vllm_version},
         "config_effect": effect,
         "elapsed_s": round(time.time() - t0, 1),

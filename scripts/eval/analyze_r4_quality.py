@@ -90,6 +90,11 @@ def main() -> None:
 
     niah_cells = {a: {cell_key(r): r["accuracy"] for r in recs} for a, recs in niah.items()}
     cells = sorted(set(niah_cells["fp16"]) & set(niah_cells["uniform_int4"]) & set(niah_cells["packed_per_layer"]))
+    for a in allocs:
+        if len(niah_cells[a]) != 18:
+            raise SystemExit(f"{a} NIAH cells incomplete: {len(niah_cells[a])}/18")
+    if len(cells) != 18:
+        raise SystemExit(f"NIAH cell intersection incomplete: {len(cells)}/18")
 
     def paired_niah(a: str, b: str) -> dict:
         diffs = [niah_cells[a][c] - niah_cells[b][c] for c in cells]

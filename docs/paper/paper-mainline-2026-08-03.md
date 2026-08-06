@@ -435,7 +435,8 @@ The A2 mechanism is validated on Qwen3.5-2B (runtime/capacity) and Qwen3.5-9B (l
 ratio only; packed 9B capacity not yet probed), on a single RTX 5090, in a vLLM fork. The flag is
 opt-in and not yet upstreamed. The quality closure is complete: 3-seed Wikitext-2 PPL and a
 seeded NIAH matrix show packed per-layer is not worse than uniform int4 (paired PPL Δ −0.71%
-with 95% CI upper bound +0.1%; NIAH Δ +0.019 [−0.051, +0.088]; Eval §6, ANALYZED). The
+with 95% CI upper bound +0.1%; NIAH Δ +0.019 [−0.051, +0.088] under a 32-token greedy budget
+whose misses are reasoning-token truncation, not retrieval failures; Eval §6, ANALYZED). The
 independent serving-boundary reproduction is still required before the serving boundaries may be
 used as headline claims (currently ANALYZED).
 

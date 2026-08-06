@@ -6,7 +6,9 @@
 ## 1. PPL（Wikitext-2，3 seeds，transformers canonical 协议）
 
 入口：`scripts/exp/hybrid_premise.py --seeds 7,42,2026 --num-seqs 5 --max-len 2048`。
-与 `byte_budget_3seed.log` 同协议；fp16 均值 11.4827 与 canonical 11.4832 一致。
+与 `byte_budget_3seed.log` 同协议；fp16 均值 11.4827 与 canonical 11.4832 一致
+（差异 <0.01%，corpus 为本次 fetch 的 800 篇快照，sha256
+`f7c3d825fe137ae727909932428eec25ff1b05e685b713eefc4efb289bfd49d0`）。
 
 | 分配 | 每 seed PPL (7/42/2026) | mean ± SD |
 |---|---:|---:|
@@ -46,6 +48,20 @@
 
 结论：**packed per-layer 在 PPL 与 NIAH 上均不劣于 uniform int4（点估计更优）**，
 容量恢复（0.833× uniform）没有质量回退。证据状态：ANALYZED（尚未做独立复现）。
+
+## 2.5 方法学披露（幻觉审计后补充，2026-08-06）
+
+- **NIAH accuracy 是 32-token 上限 + Qwen3.5 thinking 输出的协议伪影**：全部 28 个 miss
+  （fp16 5 / uniform 5 / packed 4 / k8v4 8 / 4bit_nc 6）均为 `<think>` 推理被截断，
+  0 个真实检索失败。配对比较公平（同 cell 的 code/prompt/生成条件一致），但绝对值
+  0.85–0.93 不能解读为检索能力差异；后续应 max_tokens≥128 或禁用 thinking 重跑。
+- **length/depth 为词数近似**，非 token 数；JSON 未记录实际 token 长度。
+- **config-effect**：JSON 内 packed 样本缺 KV group 结构（内省路径失效）；
+  引擎日志 `logs/r4-20260806.niah.log` 有 17/18 条 “Using packed per-layer page groups
+  for 6 full-attention layers and 18 Mamba layers in 2 Mamba groups”；第 18 个样本
+  （seed7/d50/L2048）为前台 MVEx，日志在会话记录中。R5 TurboQuant 36/36 有
+  `kv_cache_dtype=turboquant_*` 引擎日志标记。
+- 详细审计：`docs/notes/audit-no-hallucination-2026-08-06.md`。
 
 ## 3. 论文使用规则
 
