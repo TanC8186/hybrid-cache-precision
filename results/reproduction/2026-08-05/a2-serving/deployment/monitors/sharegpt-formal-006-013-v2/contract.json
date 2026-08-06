@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "frozen_at": "2026-08-06",
+  "attempt_id": "a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01",
+  "orchestrator": "sharegpt-formal-slices-006-013-v2",
+  "monitor_name": "sharegpt-formal-006-013-v2",
+  "monitor_interval_s": 60,
+  "read_only": true,
+  "monitor_script_sha256": "774edd649896e75cc755299c9a73701e45104c130d2c63a05a42a660c5ca427f",
+  "exit_policy": {
+    "0": "v2 orchestrator completed with PASSED",
+    "2": "v2 orchestrator wrote a failure marker",
+    "3": "v2 orchestrator stopped without PASSED or failure marker"
+  }
+}

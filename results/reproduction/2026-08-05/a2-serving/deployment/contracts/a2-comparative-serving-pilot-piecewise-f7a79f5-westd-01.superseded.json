@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "attempt_id": "a2-comparative-serving-pilot-piecewise-f7a79f5-westd-01",
+  "status": "SUPERSEDED_PRECOMPUTE",
+  "launched": false,
+  "scientific_attempt_created": false,
+  "parent_attempt": "a2-comparative-serving-mvex-piecewise-f7a79f5-westd-01",
+  "reason": "The comparative MVEx showed that ShareGPT rate 20 was already below the 0.95 goodput/offered sustainability threshold for all three PIECEWISE allocations. The planned ShareGPT rates 20, 30, and 40 could not bracket a sustainable boundary.",
+  "replacement_attempt": "a2-comparative-serving-pilot-piecewise-f7a79f5-westd-02",
+  "replacement_change": {
+    "random_rates": [30, 40, 50],
+    "old_sharegpt_rates": [20, 30, 40],
+    "new_sharegpt_rates": [10, 15, 20, 30]
+  },
+  "evidence_boundary": "This precompute plan contains no measured sample and contributes zero rows to any denominator."
+}

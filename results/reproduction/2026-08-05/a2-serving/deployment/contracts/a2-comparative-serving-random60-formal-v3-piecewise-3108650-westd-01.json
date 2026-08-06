@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "frozen_at": "2026-08-05",
+  "attempt_id": "a2-comparative-serving-random60-formal-v3-piecewise-3108650-westd-01",
+  "parent_attempt": "a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01",
+  "objective": "Run the three-allocation, three-seed protocol-v3 Random formal matrix in independently resumable slices.",
+  "classification": "comparative_random60_three_seed_formal",
+  "code_commit": "310865011daf2a9d8d694eddded0411fd956fd95",
+  "vllm_source_commit": "55f47685a553ad8d776c464c59785399a98c7185",
+  "config_path": "/root/autodl-tmp/MLSys_Serving_f7a79f5/experiments/configs/a2_comparative_piecewise_protocol_v3_random60_formal.yaml",
+  "config_sha256": "0523188ff20210a376ae35c86d0c3a624990892ac7f5199ca26d86cef091fe02",
+  "working_directory": "/root/autodl-tmp/MLSys_Serving_f7a79f5",
+  "output_root": "/root/autodl-tmp/a2-serving-20260805-f7a79f5",
+  "phase": "comparative_random60_formal_v3",
+  "allocations": [
+    "fp16",
+    "int4",
+    "packed_per_layer"
+  ],
+  "workloads": {
+    "random": {
+      "request_rates": [30, 35, 40, 45, 50],
+      "random_input_len": 1024,
+      "random_output_len": 128,
+      "measurement_window_s": 60
+    }
+  },
+  "seeds": [7, 42, 2026],
+  "warmup_requests_per_server_session": 120,
+  "expected_samples": 45,
+  "expected_requests": 108000,
+  "slice_max_samples": 5,
+  "slice_001": {
+    "resume": false,
+    "expected_samples": [
+      "fp16__random__r30__s7",
+      "fp16__random__r30__s42",
+      "fp16__random__r30__s2026",
+      "fp16__random__r35__s7",
+      "fp16__random__r35__s42"
+    ],
+    "expected_requests": 9600,
+    "timeout_s": 3600
+  },
+  "failure_policy": "Any failed or incomplete sample invalidates this attempt; retries require a new attempt ID and parent linkage.",
+  "evidence_status_on_completion": "ANALYZED",
+  "promotion_gate": "The Random and linked ShareGPT formal attempts must both complete, then an independent reproduction must pass before quantitative paper promotion."
+}

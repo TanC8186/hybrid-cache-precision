@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "frozen_at": "2026-08-06",
+  "attempt_id": "a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01",
+  "parent_attempt": "a2-comparative-serving-random60-formal-v3-piecewise-3108650-westd-01",
+  "supersedes_orchestrator": "sharegpt-formal-slices-003-013",
+  "supersession_reason": "The v1 postcheck counted one server session per slice and did not account for allocation transitions inside slice-005 and slice-009. No formal sample failed.",
+  "start_slice": 6,
+  "end_slice": 13,
+  "resume": true,
+  "expected_start_completed_samples": 25,
+  "expected_start_completed_requests": 246000,
+  "expected_start_server_sessions": 6,
+  "expected_final_completed_samples": 63,
+  "expected_final_completed_requests": 661500,
+  "slice_max_samples": 5,
+  "slice_timeout_s": 5400,
+  "code_commit": "310865011daf2a9d8d694eddded0411fd956fd95",
+  "config_sha256": "13888902c80bda29ce282969ac3200789006554f4373fd1340ee48d8b991aca8",
+  "run_impl_sha256": "e125465ae8eb7a17dd79bef14982f6c782516165c1f41f2f8bbbfd4d6831676a",
+  "failure_policy": "Start only after an independent corrected precheck passes for 25 completed samples. Stop on any subsequent precheck, runner, postcheck, hash, server, graph-mode, request-conservation, or frozen-state failure. Never rerun completed samples."
+}

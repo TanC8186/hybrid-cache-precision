@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "attempt_id": "a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01",
+  "parent_attempt": "a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01",
+  "objective": "Run the ShareGPT component of the single-seed protocol-v3 three-allocation comparative pilot using the validated 300-second arrival window.",
+  "classification": "comparative_sharegpt300_single_seed_pilot",
+  "code_commit": "fc078681a6bd789fddb076ca20ac67f2ffc8635c",
+  "vllm_source_commit": "55f47685a553ad8d776c464c59785399a98c7185",
+  "config_path": "/root/autodl-tmp/MLSys_Serving_f7a79f5/experiments/configs/a2_comparative_piecewise_protocol_v3_sharegpt300_pilot.yaml",
+  "config_sha256": "96dd2dcb807a494d96f5c481a4293ad6321f6ada28557ff09b474f908d049c18",
+  "working_directory": "/root/autodl-tmp/MLSys_Serving_f7a79f5",
+  "output_root": "/root/autodl-tmp/a2-serving-20260805-f7a79f5",
+  "phase": "comparative_sharegpt300_pilot_v3",
+  "allocations": [
+    "fp16",
+    "int4",
+    "packed_per_layer"
+  ],
+  "workloads": {
+    "sharegpt": {
+      "request_rates": [
+        30,
+        40,
+        50
+      ],
+      "num_prompts": [
+        9000,
+        12000,
+        15000
+      ],
+      "ignore_eos": true,
+      "sharegpt_output_len": null,
+      "no_oversample": true
+    }
+  },
+  "seed": 7,
+  "warmup_requests_per_allocation": 120,
+  "measurement_window_s_per_sample": 300,
+  "expected_samples": 9,
+  "expected_requests": 108000,
+  "soft_nofile_target": 65535,
+  "timeout_s": 7200,
+  "success_criteria": [
+    "the dry-run contains exactly 9 ShareGPT samples for fp16, int4, and packed_per_layer at rates 30, 40, and 50",
+    "all 9 samples publish completed_validated",
+    "108000 successful requests and zero failed requests",
+    "the supervisor records soft nofile 65535 before launching Python",
+    "every allocation log proves CUDAGraphMode.PIECEWISE",
+    "the server process and /health pass after every benchmark",
+    "all metrics are finite and all runner artifacts and sidecar hashes are present",
+    "for every allocation, rate 30 is sustainable and rate 50 is unsustainable at all five tested TTFT thresholds"
+  ],
+  "evidence_status_on_completion": "UNVERIFIED",
+  "promotion_gate": "The protocol-v3 comparative pilot passes only if this ShareGPT attempt and its Random parent both pass their frozen criteria; neither denominator is pooled with MVEx or historical pilot attempts."
+}

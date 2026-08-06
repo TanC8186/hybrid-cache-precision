@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "attempt_id": "a2-comparative-serving-sharegpt300-upper50-piecewise-b3bd79a-westd-01",
+  "parent_attempt": "a2-comparative-serving-sharegpt300-upper-piecewise-934d7de-westd-01",
+  "objective": "Complete the protocol-v3 ShareGPT bracket with an independently preserved 300-second rate-50 upper-neighbor point after rate 40 remained sustainable for at least one threshold in every allocation.",
+  "classification": "sharegpt_long_window_rate50_upper_neighbor_minimum_viable_execution",
+  "code_commit": "b3bd79a142b87d602e2de9a35e2702c3ca721924",
+  "vllm_source_commit": "55f47685a553ad8d776c464c59785399a98c7185",
+  "config_path": "/root/autodl-tmp/MLSys_Serving_f7a79f5/experiments/configs/a2_comparative_piecewise_sharegpt300_upper50.yaml",
+  "config_sha256": "709a7d5037ec4762e704586e138344744d9d3d65fcb71551248dd855616a5338",
+  "working_directory": "/root/autodl-tmp/MLSys_Serving_f7a79f5",
+  "output_root": "/root/autodl-tmp/a2-serving-20260805-f7a79f5",
+  "phase": "sharegpt_upper_neighbor_r50_mvex",
+  "allocations": [
+    "fp16",
+    "int4",
+    "packed_per_layer"
+  ],
+  "workloads": {
+    "sharegpt": {
+      "request_rates": [
+        50
+      ],
+      "num_prompts": [
+        15000
+      ],
+      "ignore_eos": true,
+      "sharegpt_output_len": null,
+      "no_oversample": true
+    }
+  },
+  "seed": 7,
+  "warmup_requests_per_allocation": 120,
+  "measurement_window_s_per_sample": 300,
+  "expected_samples": 3,
+  "expected_requests": 45000,
+  "soft_nofile_target": 65535,
+  "timeout_s": 5400,
+  "success_criteria": [
+    "the dry-run contains exactly fp16__sharegpt__r50__s7, int4__sharegpt__r50__s7, and packed_per_layer__sharegpt__r50__s7",
+    "all 3 samples publish completed_validated",
+    "45000 successful requests and zero failed requests",
+    "the supervisor records soft nofile 65535 before launching Python",
+    "every allocation log proves CUDAGraphMode.PIECEWISE",
+    "the server process and /health pass after every benchmark",
+    "all metrics are finite and all runner artifacts and sidecar hashes are present",
+    "rate 50 is unsustainable at all five tested TTFT thresholds for every allocation"
+  ],
+  "evidence_status_on_completion": "UNVERIFIED",
+  "promotion_gate": "Only a successful linked audit of the FD MVEx, the quarantined rate-20/30 and rate-40 MVEx attempts, and this independent rate-50 upper-neighbor MVEx permits a new comparative pilot; request denominators remain independent."
+}

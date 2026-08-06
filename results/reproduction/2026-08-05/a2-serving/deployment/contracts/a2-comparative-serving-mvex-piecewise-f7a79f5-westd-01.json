@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "attempt_id": "a2-comparative-serving-mvex-piecewise-f7a79f5-westd-01",
+  "parent_attempt": "a2-packed-serving-pilot-piecewise-f7a79f5-westd-01",
+  "objective": "Exercise fp16, uniform int4, and packed L23-protected serving under the same PIECEWISE graph mode on both Random and ShareGPT.",
+  "classification": "comparative_minimum_viable_execution",
+  "code_commit": "f7a79f5d268aae66211926ac773b76e1bf443465",
+  "vllm_source_commit": "55f47685a553ad8d776c464c59785399a98c7185",
+  "config_path": "/root/autodl-tmp/MLSys_Serving_f7a79f5/experiments/configs/a2_comparative_piecewise_serving_f7a79f5.yaml",
+  "working_directory": "/root/autodl-tmp/MLSys_Serving_f7a79f5",
+  "output_root": "/root/autodl-tmp/a2-serving-20260805-f7a79f5",
+  "allocations": ["fp16", "int4", "packed_per_layer"],
+  "workloads": {
+    "random": {
+      "request_rate": 30,
+      "num_prompts": 1800
+    },
+    "sharegpt": {
+      "request_rate": 20,
+      "num_prompts": 1200,
+      "ignore_eos": true
+    }
+  },
+  "seed": 7,
+  "warmup_requests_per_sample": 120,
+  "measurement_window_s_per_sample": 60,
+  "expected_samples": 6,
+  "expected_requests": 9000,
+  "timeout_s": 3600,
+  "monitor_interval_s": 30,
+  "success_criteria": [
+    "all 6 samples publish completed_validated",
+    "9000 successful requests and zero failed requests",
+    "every allocation log proves CUDAGraphMode.PIECEWISE",
+    "server process and /health pass after every benchmark",
+    "all runner artifacts and sidecar hashes are present"
+  ],
+  "evidence_status_on_completion": "UNVERIFIED",
+  "promotion_gate": "A successful comparative MVEx permits the linked single-seed comparative pilot."
+}

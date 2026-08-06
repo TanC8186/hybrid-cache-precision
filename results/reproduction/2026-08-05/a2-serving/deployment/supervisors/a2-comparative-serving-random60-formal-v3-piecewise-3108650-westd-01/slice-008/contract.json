@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "frozen_at": "2026-08-05",
+  "attempt_id": "a2-comparative-serving-random60-formal-v3-piecewise-3108650-westd-01",
+  "slice_id": "slice-008",
+  "resume": true,
+  "max_samples": 5,
+  "expected_samples": [
+    "packed_per_layer__random__r35__s2026",
+    "packed_per_layer__random__r40__s7",
+    "packed_per_layer__random__r40__s42",
+    "packed_per_layer__random__r40__s2026",
+    "packed_per_layer__random__r45__s7"
+  ],
+  "expected_slice_requests": 12000,
+  "expected_cumulative_completed_samples": 40,
+  "expected_cumulative_requests": 93600,
+  "timeout_s": 3600,
+  "code_commit": "310865011daf2a9d8d694eddded0411fd956fd95",
+  "config_sha256": "0523188ff20210a376ae35c86d0c3a624990892ac7f5199ca26d86cef091fe02",
+  "failure_policy": "Do not resume this attempt if any prior or current sample is failed or incomplete."
+}

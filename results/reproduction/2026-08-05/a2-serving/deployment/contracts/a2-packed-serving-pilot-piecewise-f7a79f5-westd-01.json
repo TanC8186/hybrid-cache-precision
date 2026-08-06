@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "attempt_id": "a2-packed-serving-pilot-piecewise-f7a79f5-westd-01",
+  "parent_attempt": "a2-packed-serving-mvex-piecewise-f7a79f5-westd-01",
+  "objective": "Pilot packed per-layer serving stability and finite SLO measurements at rates 30, 40, and 50 with piecewise-only CUDA graphs.",
+  "classification": "pilot",
+  "code_commit": "f7a79f5d268aae66211926ac773b76e1bf443465",
+  "vllm_source_commit": "55f47685a553ad8d776c464c59785399a98c7185",
+  "config_path": "/root/autodl-tmp/MLSys_Serving_f7a79f5/experiments/configs/a2_packed_piecewise_serving_f7a79f5.yaml",
+  "working_directory": "/root/autodl-tmp/MLSys_Serving_f7a79f5",
+  "output_root": "/root/autodl-tmp/a2-serving-20260805-f7a79f5",
+  "workload": {
+    "allocation": "packed_per_layer",
+    "dataset": "random",
+    "input_tokens": 1024,
+    "output_tokens": 128,
+    "request_rates": [30, 40, 50],
+    "measurement_window_s_per_rate": 60,
+    "num_prompts_per_rate": [1800, 2400, 3000],
+    "seed": 7,
+    "warmup_requests_per_rate": 120
+  },
+  "timeout_s": 3600,
+  "monitor_interval_s": 30,
+  "success_criteria": [
+    "supervisor exit code is 0",
+    "7200 successful requests and zero failed requests across all three rate points",
+    "all three samples publish completed_validated",
+    "server process and /health pass after every benchmark",
+    "all metrics are finite and all runner artifacts and sidecar hashes are present"
+  ],
+  "evidence_status_on_completion": "UNVERIFIED",
+  "promotion_gate": "A successful pilot permits design of an independently frozen comparative formal matrix; pilot rows are not formal efficacy evidence."
+}

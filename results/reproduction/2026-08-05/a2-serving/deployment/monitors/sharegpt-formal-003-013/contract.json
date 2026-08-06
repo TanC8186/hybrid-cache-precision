@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "frozen_at": "2026-08-06",
+  "attempt_id": "a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01",
+  "orchestrator": "sharegpt-formal-slices-003-013",
+  "monitor_interval_s": 60,
+  "read_only": true,
+  "recorded_fields": [
+    "timestamp",
+    "orchestrator process state",
+    "orchestrator status or failure",
+    "attempt summary counts",
+    "active sample",
+    "runner/server/benchmark processes",
+    "GPU utilization, memory, temperature, and power"
+  ],
+  "monitor_script_sha256": "cb8814bca4a36fe5b696cd820d6494859cac67673941950990f7c9b2443ffc91",
+  "exit_policy": {
+    "0": "orchestrator completed with PASSED",
+    "2": "orchestrator wrote a failure marker",
+    "3": "orchestrator stopped without PASSED or failure marker"
+  }
+}

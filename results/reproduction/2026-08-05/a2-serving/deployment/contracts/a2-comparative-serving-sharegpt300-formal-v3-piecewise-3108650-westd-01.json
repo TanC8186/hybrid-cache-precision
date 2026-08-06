@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "frozen_at": "2026-08-05",
+  "attempt_id": "a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01",
+  "parent_attempt": "a2-comparative-serving-random60-formal-v3-piecewise-3108650-westd-01",
+  "objective": "Run the three-allocation, three-seed protocol-v3 ShareGPT formal matrix in independently resumable slices.",
+  "classification": "comparative_sharegpt300_three_seed_formal",
+  "code_commit": "310865011daf2a9d8d694eddded0411fd956fd95",
+  "vllm_source_commit": "55f47685a553ad8d776c464c59785399a98c7185",
+  "config_path": "/root/autodl-tmp/MLSys_Serving_f7a79f5/experiments/configs/a2_comparative_piecewise_protocol_v3_sharegpt300_formal.yaml",
+  "config_sha256": "13888902c80bda29ce282969ac3200789006554f4373fd1340ee48d8b991aca8",
+  "working_directory": "/root/autodl-tmp/MLSys_Serving_f7a79f5",
+  "output_root": "/root/autodl-tmp/a2-serving-20260805-f7a79f5",
+  "phase": "comparative_sharegpt300_formal_v3",
+  "allocations": [
+    "fp16",
+    "int4",
+    "packed_per_layer"
+  ],
+  "workloads": {
+    "sharegpt": {
+      "request_rates": [20, 25, 30, 35, 40, 45, 50],
+      "ignore_eos": true,
+      "no_oversample": true,
+      "measurement_window_s": 300
+    }
+  },
+  "seeds": [7, 42, 2026],
+  "warmup_requests_per_server_session": 120,
+  "expected_samples": 63,
+  "expected_requests": 661500,
+  "slice_max_samples": 5,
+  "failure_policy": "Any failed or incomplete sample invalidates this attempt; retries require a new attempt ID and parent linkage.",
+  "evidence_status_on_completion": "ANALYZED",
+  "promotion_gate": "This attempt may start only after the linked Random formal attempt completes; independent reproduction is required before quantitative paper promotion."
+}

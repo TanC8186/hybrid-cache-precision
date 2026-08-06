@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "attempt_id": "a2-comparative-serving-sharegpt300-mvex-piecewise-37ce9e3-westd-01",
+  "parent_attempt": "a2-comparative-serving-fd-mvex-piecewise-f7a79f5-westd-03",
+  "objective": "Test whether a 300-second arrival window removes ShareGPT terminal-drain bias while preserving real completion lengths and bracketing the PIECEWISE serving boundary for all three allocations.",
+  "classification": "sharegpt_long_window_minimum_viable_execution",
+  "code_commit": "37ce9e3d46eb4de6e8607071eee2446d54a52c26",
+  "vllm_source_commit": "55f47685a553ad8d776c464c59785399a98c7185",
+  "config_path": "/root/autodl-tmp/MLSys_Serving_f7a79f5/experiments/configs/a2_comparative_piecewise_sharegpt300.yaml",
+  "config_sha256": "7eb66ae17a361eaf823313f2c11d210b1f67bcc7254e927fa236edaf9184327c",
+  "working_directory": "/root/autodl-tmp/MLSys_Serving_f7a79f5",
+  "output_root": "/root/autodl-tmp/a2-serving-20260805-f7a79f5",
+  "phase": "sharegpt_window_mvex",
+  "allocations": ["fp16", "int4", "packed_per_layer"],
+  "workloads": {
+    "sharegpt": {
+      "request_rates": [20, 30],
+      "num_prompts": [6000, 9000],
+      "ignore_eos": true,
+      "sharegpt_output_len": null,
+      "no_oversample": true
+    }
+  },
+  "seed": 7,
+  "warmup_requests_per_allocation": 120,
+  "measurement_window_s_per_sample": 300,
+  "expected_samples": 6,
+  "expected_requests": 45000,
+  "soft_nofile_target": 65535,
+  "timeout_s": 5400,
+  "success_criteria": [
+    "all 6 samples publish completed_validated",
+    "45000 successful requests and zero failed requests",
+    "the supervisor records soft nofile 65535 before launching Python",
+    "every allocation log proves CUDAGraphMode.PIECEWISE",
+    "the server process and /health pass after every benchmark",
+    "all metrics are finite and all runner artifacts and sidecar hashes are present",
+    "for every allocation, ShareGPT rates 20 and 30 contain at least one sustainable and one unsustainable point under at least one tested TTFT threshold"
+  ],
+  "evidence_status_on_completion": "UNVERIFIED",
+  "promotion_gate": "A successful long-window MVEx permits a new comparative pilot under protocol v3; prior pilot rows remain quarantined."
+}

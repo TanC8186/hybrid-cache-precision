@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "attempt_id": "a2-comparative-serving-fd-mvex-piecewise-f7a79f5-westd-03",
+  "parent_attempt": "a2-comparative-serving-pilot-piecewise-f7a79f5-westd-02",
+  "objective": "Verify that raising the inherited soft nofile limit removes the fp16 random rate-50 benchmark-client failures without changing the frozen serving protocol.",
+  "classification": "client_fd_limit_minimum_viable_execution",
+  "code_commit": "f7a79f5d268aae66211926ac773b76e1bf443465",
+  "vllm_source_commit": "55f47685a553ad8d776c464c59785399a98c7185",
+  "config_path": "/root/autodl-tmp/MLSys_Serving_f7a79f5/experiments/configs/a2_comparative_piecewise_serving_f7a79f5_v2.yaml",
+  "config_sha256": "3c821db7f155a072bdd4a545c3f4f4de2a8ea6f5a087c36c4a515e54ac84e792",
+  "working_directory": "/root/autodl-tmp/MLSys_Serving_f7a79f5",
+  "output_root": "/root/autodl-tmp/a2-serving-20260805-f7a79f5",
+  "phase": "comparative_pilot_v2",
+  "filters": {
+    "allocations": ["fp16"],
+    "workloads": ["random"],
+    "rates": [50]
+  },
+  "seed": 7,
+  "warmup_requests": 120,
+  "measurement_window_s": 60,
+  "expected_samples": 1,
+  "expected_requests": 3000,
+  "soft_nofile_before": 1024,
+  "soft_nofile_target": 65535,
+  "timeout_s": 1800,
+  "success_criteria": [
+    "the dry-run contains exactly fp16__random__r50__s7",
+    "the supervisor records soft nofile 65535 before launching Python",
+    "the sample publishes completed_validated",
+    "3000 successful requests and zero failed requests",
+    "the server log proves CUDAGraphMode.PIECEWISE",
+    "the server process and /health pass after the benchmark",
+    "all runner artifacts and sidecar hashes are present"
+  ],
+  "evidence_status_on_completion": "UNVERIFIED",
+  "promotion_gate": "A successful FD MVEx permits a separate ShareGPT long-window MVEx; it does not rescue or amend the parent pilot."
+}

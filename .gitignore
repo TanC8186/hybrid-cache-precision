@@ -54,3 +54,5 @@ vendor/vllm/
 
 # deep-path raw server dumps (source of truth on server, Windows path-length exceeded)
 results/reproduction/**/raw/
+AIVR*.exe
+tmp/

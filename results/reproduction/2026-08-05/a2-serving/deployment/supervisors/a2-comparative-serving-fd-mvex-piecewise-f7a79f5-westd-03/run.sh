@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+set -uo pipefail
+
+ROOT=/root/autodl-tmp/MLSys_Serving_f7a79f5
+BASE=/root/autodl-tmp/a2-serving-20260805-f7a79f5
+ATTEMPT=a2-comparative-serving-fd-mvex-piecewise-f7a79f5-westd-03
+CONFIG="$ROOT/experiments/configs/a2_comparative_piecewise_serving_f7a79f5_v2.yaml"
+SUPERVISOR="$BASE/supervisors/$ATTEMPT"
+
+cd "$ROOT"
+printf '%s\n' "$$" > "$SUPERVISOR/supervisor.pid"
+date -u +%Y-%m-%dT%H:%M:%SZ > "$SUPERVISOR/started_at.txt"
+ulimit -Sn > "$SUPERVISOR/soft_nofile_before.txt"
+ulimit -n 65535
+ulimit -Sn > "$SUPERVISOR/soft_nofile_after.txt"
+timeout --signal=TERM --kill-after=30s 1800s bash -lc \
+  "ulimit -n 65535; PYTHONPATH=. /root/autodl-tmp/MLSys_Research/.venv/bin/python scripts/bench/run_steady_state.py \
+    --config '$CONFIG' \
+    --phase comparative_pilot_v2 \
+    --attempt-id '$ATTEMPT' \
+    --parent-attempt a2-comparative-serving-pilot-piecewise-f7a79f5-westd-02 \
+    --output-root '$BASE/attempts' \
+    --allocations fp16 \
+    --workloads random \
+    --rates 50" \
+  > "$SUPERVISOR/stdout.log" \
+  2> "$SUPERVISOR/stderr.log"
+ec=$?
+printf '%s\n' "$ec" > "$SUPERVISOR/exit_code.txt"
+date -u +%Y-%m-%dT%H:%M:%SZ > "$SUPERVISOR/finished_at.txt"
+exit "$ec"

@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "frozen_at": "2026-08-06",
+  "attempt_id": "a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01",
+  "slice_id": "slice-002",
+  "resume": true,
+  "max_samples": 5,
+  "expected_samples": [
+    "fp16__sharegpt__r25__s2026",
+    "fp16__sharegpt__r30__s7",
+    "fp16__sharegpt__r30__s42",
+    "fp16__sharegpt__r30__s2026",
+    "fp16__sharegpt__r35__s7"
+  ],
+  "expected_slice_requests": 45000,
+  "expected_cumulative_completed_samples": 10,
+  "expected_cumulative_requests": 78000,
+  "timeout_s": 5400,
+  "code_commit": "310865011daf2a9d8d694eddded0411fd956fd95",
+  "config_sha256": "13888902c80bda29ce282969ac3200789006554f4373fd1340ee48d8b991aca8",
+  "failure_policy": "Do not resume this attempt if any prior or current sample is failed or incomplete."
+}

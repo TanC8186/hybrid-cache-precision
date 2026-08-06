@@ -1,0 +1,540 @@
+{
+  "schema_version": 1,
+  "experiment": "a2_comparative_piecewise_protocol_v3_sharegpt300_formal_2b",
+  "phase": {
+    "name": "comparative_sharegpt300_formal_v3",
+    "allocations": [
+      "fp16",
+      "int4",
+      "packed_per_layer"
+    ],
+    "seeds": [
+      7,
+      42,
+      2026
+    ],
+    "workload_rates": {
+      "sharegpt": [
+        20.0,
+        25.0,
+        30.0,
+        35.0,
+        40.0,
+        45.0,
+        50.0
+      ]
+    }
+  },
+  "attempt_id": "a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01",
+  "parent_attempt": "a2-comparative-serving-random60-formal-v3-piecewise-3108650-westd-01",
+  "config_path": "/root/autodl-tmp/MLSys_Serving_f7a79f5/experiments/configs/a2_comparative_piecewise_protocol_v3_sharegpt300_formal.yaml",
+  "config_sha256": "13888902c80bda29ce282969ac3200789006554f4373fd1340ee48d8b991aca8",
+  "git_commit": "310865011daf2a9d8d694eddded0411fd956fd95",
+  "vllm_source_commit": "55f47685a553ad8d776c464c59785399a98c7185",
+  "plan": [
+    {
+      "sample_id": "fp16__sharegpt__r20__s7",
+      "allocation": "fp16",
+      "workload": "sharegpt",
+      "request_rate": 20.0,
+      "seed": 7,
+      "num_prompts": 6000
+    },
+    {
+      "sample_id": "fp16__sharegpt__r20__s42",
+      "allocation": "fp16",
+      "workload": "sharegpt",
+      "request_rate": 20.0,
+      "seed": 42,
+      "num_prompts": 6000
+    },
+    {
+      "sample_id": "fp16__sharegpt__r20__s2026",
+      "allocation": "fp16",
+      "workload": "sharegpt",
+      "request_rate": 20.0,
+      "seed": 2026,
+      "num_prompts": 6000
+    },
+    {
+      "sample_id": "fp16__sharegpt__r25__s7",
+      "allocation": "fp16",
+      "workload": "sharegpt",
+      "request_rate": 25.0,
+      "seed": 7,
+      "num_prompts": 7500
+    },
+    {
+      "sample_id": "fp16__sharegpt__r25__s42",
+      "allocation": "fp16",
+      "workload": "sharegpt",
+      "request_rate": 25.0,
+      "seed": 42,
+      "num_prompts": 7500
+    },
+    {
+      "sample_id": "fp16__sharegpt__r25__s2026",
+      "allocation": "fp16",
+      "workload": "sharegpt",
+      "request_rate": 25.0,
+      "seed": 2026,
+      "num_prompts": 7500
+    },
+    {
+      "sample_id": "fp16__sharegpt__r30__s7",
+      "allocation": "fp16",
+      "workload": "sharegpt",
+      "request_rate": 30.0,
+      "seed": 7,
+      "num_prompts": 9000
+    },
+    {
+      "sample_id": "fp16__sharegpt__r30__s42",
+      "allocation": "fp16",
+      "workload": "sharegpt",
+      "request_rate": 30.0,
+      "seed": 42,
+      "num_prompts": 9000
+    },
+    {
+      "sample_id": "fp16__sharegpt__r30__s2026",
+      "allocation": "fp16",
+      "workload": "sharegpt",
+      "request_rate": 30.0,
+      "seed": 2026,
+      "num_prompts": 9000
+    },
+    {
+      "sample_id": "fp16__sharegpt__r35__s7",
+      "allocation": "fp16",
+      "workload": "sharegpt",
+      "request_rate": 35.0,
+      "seed": 7,
+      "num_prompts": 10500
+    },
+    {
+      "sample_id": "fp16__sharegpt__r35__s42",
+      "allocation": "fp16",
+      "workload": "sharegpt",
+      "request_rate": 35.0,
+      "seed": 42,
+      "num_prompts": 10500
+    },
+    {
+      "sample_id": "fp16__sharegpt__r35__s2026",
+      "allocation": "fp16",
+      "workload": "sharegpt",
+      "request_rate": 35.0,
+      "seed": 2026,
+      "num_prompts": 10500
+    },
+    {
+      "sample_id": "fp16__sharegpt__r40__s7",
+      "allocation": "fp16",
+      "workload": "sharegpt",
+      "request_rate": 40.0,
+      "seed": 7,
+      "num_prompts": 12000
+    },
+    {
+      "sample_id": "fp16__sharegpt__r40__s42",
+      "allocation": "fp16",
+      "workload": "sharegpt",
+      "request_rate": 40.0,
+      "seed": 42,
+      "num_prompts": 12000
+    },
+    {
+      "sample_id": "fp16__sharegpt__r40__s2026",
+      "allocation": "fp16",
+      "workload": "sharegpt",
+      "request_rate": 40.0,
+      "seed": 2026,
+      "num_prompts": 12000
+    },
+    {
+      "sample_id": "fp16__sharegpt__r45__s7",
+      "allocation": "fp16",
+      "workload": "sharegpt",
+      "request_rate": 45.0,
+      "seed": 7,
+      "num_prompts": 13500
+    },
+    {
+      "sample_id": "fp16__sharegpt__r45__s42",
+      "allocation": "fp16",
+      "workload": "sharegpt",
+      "request_rate": 45.0,
+      "seed": 42,
+      "num_prompts": 13500
+    },
+    {
+      "sample_id": "fp16__sharegpt__r45__s2026",
+      "allocation": "fp16",
+      "workload": "sharegpt",
+      "request_rate": 45.0,
+      "seed": 2026,
+      "num_prompts": 13500
+    },
+    {
+      "sample_id": "fp16__sharegpt__r50__s7",
+      "allocation": "fp16",
+      "workload": "sharegpt",
+      "request_rate": 50.0,
+      "seed": 7,
+      "num_prompts": 15000
+    },
+    {
+      "sample_id": "fp16__sharegpt__r50__s42",
+      "allocation": "fp16",
+      "workload": "sharegpt",
+      "request_rate": 50.0,
+      "seed": 42,
+      "num_prompts": 15000
+    },
+    {
+      "sample_id": "fp16__sharegpt__r50__s2026",
+      "allocation": "fp16",
+      "workload": "sharegpt",
+      "request_rate": 50.0,
+      "seed": 2026,
+      "num_prompts": 15000
+    },
+    {
+      "sample_id": "int4__sharegpt__r20__s7",
+      "allocation": "int4",
+      "workload": "sharegpt",
+      "request_rate": 20.0,
+      "seed": 7,
+      "num_prompts": 6000
+    },
+    {
+      "sample_id": "int4__sharegpt__r20__s42",
+      "allocation": "int4",
+      "workload": "sharegpt",
+      "request_rate": 20.0,
+      "seed": 42,
+      "num_prompts": 6000
+    },
+    {
+      "sample_id": "int4__sharegpt__r20__s2026",
+      "allocation": "int4",
+      "workload": "sharegpt",
+      "request_rate": 20.0,
+      "seed": 2026,
+      "num_prompts": 6000
+    },
+    {
+      "sample_id": "int4__sharegpt__r25__s7",
+      "allocation": "int4",
+      "workload": "sharegpt",
+      "request_rate": 25.0,
+      "seed": 7,
+      "num_prompts": 7500
+    },
+    {
+      "sample_id": "int4__sharegpt__r25__s42",
+      "allocation": "int4",
+      "workload": "sharegpt",
+      "request_rate": 25.0,
+      "seed": 42,
+      "num_prompts": 7500
+    },
+    {
+      "sample_id": "int4__sharegpt__r25__s2026",
+      "allocation": "int4",
+      "workload": "sharegpt",
+      "request_rate": 25.0,
+      "seed": 2026,
+      "num_prompts": 7500
+    },
+    {
+      "sample_id": "int4__sharegpt__r30__s7",
+      "allocation": "int4",
+      "workload": "sharegpt",
+      "request_rate": 30.0,
+      "seed": 7,
+      "num_prompts": 9000
+    },
+    {
+      "sample_id": "int4__sharegpt__r30__s42",
+      "allocation": "int4",
+      "workload": "sharegpt",
+      "request_rate": 30.0,
+      "seed": 42,
+      "num_prompts": 9000
+    },
+    {
+      "sample_id": "int4__sharegpt__r30__s2026",
+      "allocation": "int4",
+      "workload": "sharegpt",
+      "request_rate": 30.0,
+      "seed": 2026,
+      "num_prompts": 9000
+    },
+    {
+      "sample_id": "int4__sharegpt__r35__s7",
+      "allocation": "int4",
+      "workload": "sharegpt",
+      "request_rate": 35.0,
+      "seed": 7,
+      "num_prompts": 10500
+    },
+    {
+      "sample_id": "int4__sharegpt__r35__s42",
+      "allocation": "int4",
+      "workload": "sharegpt",
+      "request_rate": 35.0,
+      "seed": 42,
+      "num_prompts": 10500
+    },
+    {
+      "sample_id": "int4__sharegpt__r35__s2026",
+      "allocation": "int4",
+      "workload": "sharegpt",
+      "request_rate": 35.0,
+      "seed": 2026,
+      "num_prompts": 10500
+    },
+    {
+      "sample_id": "int4__sharegpt__r40__s7",
+      "allocation": "int4",
+      "workload": "sharegpt",
+      "request_rate": 40.0,
+      "seed": 7,
+      "num_prompts": 12000
+    },
+    {
+      "sample_id": "int4__sharegpt__r40__s42",
+      "allocation": "int4",
+      "workload": "sharegpt",
+      "request_rate": 40.0,
+      "seed": 42,
+      "num_prompts": 12000
+    },
+    {
+      "sample_id": "int4__sharegpt__r40__s2026",
+      "allocation": "int4",
+      "workload": "sharegpt",
+      "request_rate": 40.0,
+      "seed": 2026,
+      "num_prompts": 12000
+    },
+    {
+      "sample_id": "int4__sharegpt__r45__s7",
+      "allocation": "int4",
+      "workload": "sharegpt",
+      "request_rate": 45.0,
+      "seed": 7,
+      "num_prompts": 13500
+    },
+    {
+      "sample_id": "int4__sharegpt__r45__s42",
+      "allocation": "int4",
+      "workload": "sharegpt",
+      "request_rate": 45.0,
+      "seed": 42,
+      "num_prompts": 13500
+    },
+    {
+      "sample_id": "int4__sharegpt__r45__s2026",
+      "allocation": "int4",
+      "workload": "sharegpt",
+      "request_rate": 45.0,
+      "seed": 2026,
+      "num_prompts": 13500
+    },
+    {
+      "sample_id": "int4__sharegpt__r50__s7",
+      "allocation": "int4",
+      "workload": "sharegpt",
+      "request_rate": 50.0,
+      "seed": 7,
+      "num_prompts": 15000
+    },
+    {
+      "sample_id": "int4__sharegpt__r50__s42",
+      "allocation": "int4",
+      "workload": "sharegpt",
+      "request_rate": 50.0,
+      "seed": 42,
+      "num_prompts": 15000
+    },
+    {
+      "sample_id": "int4__sharegpt__r50__s2026",
+      "allocation": "int4",
+      "workload": "sharegpt",
+      "request_rate": 50.0,
+      "seed": 2026,
+      "num_prompts": 15000
+    },
+    {
+      "sample_id": "packed_per_layer__sharegpt__r20__s7",
+      "allocation": "packed_per_layer",
+      "workload": "sharegpt",
+      "request_rate": 20.0,
+      "seed": 7,
+      "num_prompts": 6000
+    },
+    {
+      "sample_id": "packed_per_layer__sharegpt__r20__s42",
+      "allocation": "packed_per_layer",
+      "workload": "sharegpt",
+      "request_rate": 20.0,
+      "seed": 42,
+      "num_prompts": 6000
+    },
+    {
+      "sample_id": "packed_per_layer__sharegpt__r20__s2026",
+      "allocation": "packed_per_layer",
+      "workload": "sharegpt",
+      "request_rate": 20.0,
+      "seed": 2026,
+      "num_prompts": 6000
+    },
+    {
+      "sample_id": "packed_per_layer__sharegpt__r25__s7",
+      "allocation": "packed_per_layer",
+      "workload": "sharegpt",
+      "request_rate": 25.0,
+      "seed": 7,
+      "num_prompts": 7500
+    },
+    {
+      "sample_id": "packed_per_layer__sharegpt__r25__s42",
+      "allocation": "packed_per_layer",
+      "workload": "sharegpt",
+      "request_rate": 25.0,
+      "seed": 42,
+      "num_prompts": 7500
+    },
+    {
+      "sample_id": "packed_per_layer__sharegpt__r25__s2026",
+      "allocation": "packed_per_layer",
+      "workload": "sharegpt",
+      "request_rate": 25.0,
+      "seed": 2026,
+      "num_prompts": 7500
+    },
+    {
+      "sample_id": "packed_per_layer__sharegpt__r30__s7",
+      "allocation": "packed_per_layer",
+      "workload": "sharegpt",
+      "request_rate": 30.0,
+      "seed": 7,
+      "num_prompts": 9000
+    },
+    {
+      "sample_id": "packed_per_layer__sharegpt__r30__s42",
+      "allocation": "packed_per_layer",
+      "workload": "sharegpt",
+      "request_rate": 30.0,
+      "seed": 42,
+      "num_prompts": 9000
+    },
+    {
+      "sample_id": "packed_per_layer__sharegpt__r30__s2026",
+      "allocation": "packed_per_layer",
+      "workload": "sharegpt",
+      "request_rate": 30.0,
+      "seed": 2026,
+      "num_prompts": 9000
+    },
+    {
+      "sample_id": "packed_per_layer__sharegpt__r35__s7",
+      "allocation": "packed_per_layer",
+      "workload": "sharegpt",
+      "request_rate": 35.0,
+      "seed": 7,
+      "num_prompts": 10500
+    },
+    {
+      "sample_id": "packed_per_layer__sharegpt__r35__s42",
+      "allocation": "packed_per_layer",
+      "workload": "sharegpt",
+      "request_rate": 35.0,
+      "seed": 42,
+      "num_prompts": 10500
+    },
+    {
+      "sample_id": "packed_per_layer__sharegpt__r35__s2026",
+      "allocation": "packed_per_layer",
+      "workload": "sharegpt",
+      "request_rate": 35.0,
+      "seed": 2026,
+      "num_prompts": 10500
+    },
+    {
+      "sample_id": "packed_per_layer__sharegpt__r40__s7",
+      "allocation": "packed_per_layer",
+      "workload": "sharegpt",
+      "request_rate": 40.0,
+      "seed": 7,
+      "num_prompts": 12000
+    },
+    {
+      "sample_id": "packed_per_layer__sharegpt__r40__s42",
+      "allocation": "packed_per_layer",
+      "workload": "sharegpt",
+      "request_rate": 40.0,
+      "seed": 42,
+      "num_prompts": 12000
+    },
+    {
+      "sample_id": "packed_per_layer__sharegpt__r40__s2026",
+      "allocation": "packed_per_layer",
+      "workload": "sharegpt",
+      "request_rate": 40.0,
+      "seed": 2026,
+      "num_prompts": 12000
+    },
+    {
+      "sample_id": "packed_per_layer__sharegpt__r45__s7",
+      "allocation": "packed_per_layer",
+      "workload": "sharegpt",
+      "request_rate": 45.0,
+      "seed": 7,
+      "num_prompts": 13500
+    },
+    {
+      "sample_id": "packed_per_layer__sharegpt__r45__s42",
+      "allocation": "packed_per_layer",
+      "workload": "sharegpt",
+      "request_rate": 45.0,
+      "seed": 42,
+      "num_prompts": 13500
+    },
+    {
+      "sample_id": "packed_per_layer__sharegpt__r45__s2026",
+      "allocation": "packed_per_layer",
+      "workload": "sharegpt",
+      "request_rate": 45.0,
+      "seed": 2026,
+      "num_prompts": 13500
+    },
+    {
+      "sample_id": "packed_per_layer__sharegpt__r50__s7",
+      "allocation": "packed_per_layer",
+      "workload": "sharegpt",
+      "request_rate": 50.0,
+      "seed": 7,
+      "num_prompts": 15000
+    },
+    {
+      "sample_id": "packed_per_layer__sharegpt__r50__s42",
+      "allocation": "packed_per_layer",
+      "workload": "sharegpt",
+      "request_rate": 50.0,
+      "seed": 42,
+      "num_prompts": 15000
+    },
+    {
+      "sample_id": "packed_per_layer__sharegpt__r50__s2026",
+      "allocation": "packed_per_layer",
+      "workload": "sharegpt",
+      "request_rate": 50.0,
+      "seed": 2026,
+      "num_prompts": 15000
+    }
+  ]
+}
