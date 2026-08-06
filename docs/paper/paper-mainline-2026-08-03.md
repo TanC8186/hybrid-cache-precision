@@ -149,30 +149,32 @@ quality) and the quantified legacy limitation are in the companion Evaluation dr
 ### 2.1 KV-cache quantization
 
 Quantized KV caches reduce the bytes stored per token per layer. Practical schemes span int8 and
-fp8 KV caches used in production serving systems, and sub-4-bit methods. KIVI [*KIVI*] introduced
-grouped 2-bit quantization with a small FP16 residual; KVQuant [*KVQuant*] applied per-channel /
+fp8 KV caches used in production serving systems, and sub-4-bit methods. KIVI [kivi] introduced
+grouped 2-bit quantization with a small FP16 residual; KVQuant [kvquant] applied per-channel /
 per-token scales with non-uniform quantization and showed 3-bit KV within ≈1 PPL point. TurboQuant
-[*TurboQuant*] demonstrated int3/int4 KV backends on recent models and explicitly identified the
+[turboquant] demonstrated int3/int4 KV backends on recent models and explicitly identified the
 2-bit *value* cache as the quality bottleneck. For the Qwen3.5 family specifically, RotorQuant and
-llama.cpp's q4_0 path report near-lossless 4-bit KV **[VERIFY — informal/community sources]** —
-which matches our own measurement that 4-bit is within +1.7% PPL on Qwen3.5-2B (Eval §6). In the
-serving stack, vLLM ships `int4_per_token_head` / `int8_per_token_head` and TurboQuant backends
-natively; we build on the vLLM mechanism directly rather than introducing a new quantizer. All of
-these methods quantize *attention* KV and assume every layer participates; none addresses the
-hybrid case where most layers carry no quantizable KV and instead hold a per-sequence recurrent
-state.
+llama.cpp's q4_0 path report near-lossless 4-bit KV [rotorquant, llamacpp] (community sources, not
+peer-reviewed) — consistent with our own measurement that 4-bit is within +1.7% PPL on
+Qwen3.5-2B (Eval §6). In the serving stack, vLLM [vllm] ships `int4_per_token_head` /
+`int8_per_token_head` and TurboQuant backends natively; we build on the vLLM mechanism directly
+rather than introducing a new quantizer. All of these methods quantize *attention* KV and assume
+every layer participates; none addresses the hybrid case where most layers carry no quantizable KV
+and instead hold a per-sequence recurrent state.
 
 ### 2.2 Eviction, compression, and joint byte-budget allocation
 
-A complementary line reduces the *number* of cached tokens. H2O [*H2O*] retains heavy-hitter tokens
-by attention score; StreamingLLM [*StreamingLLM*] and SnapKV [*SnapKV*] keep attention sinks and
+A complementary line reduces the *number* of cached tokens. H2O [h2o] retains heavy-hitter tokens
+by attention score; StreamingLLM [streamingllm] and SnapKV [snapkv] keep attention sinks and
 recent windows / clustered tokens. More recent work fuses quantization and eviction into a single
-byte-budget allocation: QPruningKV [*QPruningKV*, EMNLP 2025 Findings, arXiv:2412.12706] argues via
+byte-budget allocation: QPruningKV [qpruningkv] argues via
 a budget-equivalence protocol (1×16 vs 2×8 vs 4×4) that "keep more tokens at lower precision"
-dominates both pure eviction and pure quantization; RDKV [arXiv:2605.08317] treats eviction as
-0-bit quantization under rate-distortion water-filling; ARKV [arXiv:2603.08727] allocates bytes
-across FP16 / low-bit / evicted states on Qwen3/LLaMA3; MiniKV / HqeKV / ThinKV and KV-Pareto /
-MiKV push joint schemes further. The literature due-diligence we performed
+dominates both pure eviction and pure quantization; RDKV [rdkv] treats eviction as
+0-bit quantization under rate-distortion water-filling; ARKV [arkv] allocates bytes
+across FP16 / low-bit / evicted states on Qwen3/LLaMA3; MiniKV [minikv] and HqeKV [hqekv]
+push joint schemes further (additional joint-scheme works reviewed in
+`docs/notes/lit-due-diligence-2026-08-02.md` are omitted here until their metadata is
+verifiable). The literature due-diligence we performed
 (`docs/notes/lit-due-diligence-2026-08-02.md`) found that **every one of these joint schemes is
 validated only on standard Transformers** (LLaMA3, Qwen3, Mistral). None exploits the hybrid
 architecture's structural properties: a minority of quantizable attention layers, linear layers that
@@ -181,15 +183,16 @@ absorb quantization noise, and per-layer heterogeneity.
 ### 2.3 Linear-attention and hybrid serving
 
 Linear-attention models replace (a subset of) full attention with recurrent state-space layers:
-Mamba and Mamba-2 [*Mamba*, *Mamba-2*], Gated DeltaNet [*GatedDeltaNet*], and the DeltaNet
-ecosystem; hybrids such as Jamba, Zamba, and RecurrentGemma interleave such layers with full
-attention. These models advertise very long contexts (Qwen3.5-2B advertises 262K tokens
-**[VERIFY]**), which makes their KV behavior *more* not less consequential — yet hybrid serving
+Mamba and Mamba-2 [mamba, mamba2], Gated DeltaNet [gateddeltanet], and the DeltaNet
+ecosystem; hybrids such as Jamba [jamba], Zamba [zamba], and RecurrentGemma [recurrentgemma]
+interleave such layers with full attention. These models advertise very long contexts
+(Qwen3.5-2B advertises 262K tokens, per its model card [qwen35]), which makes their KV behavior
+*more* not less consequential — yet hybrid serving
 work has focused on fusing the recurrent kernel into the scheduler (e.g., vLLM's
 `LinearAttentionBackend` and per-sequence state management), not on compressing the attention KV
 that remains. The only hybrid-specific KV-quantization observations we found are community
 measurements that q4 KV is effectively lossless on Qwen3.5 (consistent with our 4-bit result) and
-TurboQuant's note that decode must dequantize the full history — a bandwidth cost our serving
+TurboQuant's note [turboquant] that decode must dequantize the full history — a bandwidth cost our serving
 evaluation measures directly as a +8–10% TPOT p50 overhead (Eval §5).
 
 ### 2.4 Positioning
