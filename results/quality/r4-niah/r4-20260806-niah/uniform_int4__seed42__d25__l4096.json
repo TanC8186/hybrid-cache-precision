@@ -1,0 +1,52 @@
+{
+  "accuracy": 1.0,
+  "allocation": "uniform_int4",
+  "attempt_id": "r4-20260806-niah",
+  "cases": [
+    {
+      "answer": "\n\nPFGFEEML",
+      "code": "PFGFEEML",
+      "hit": true
+    },
+    {
+      "answer": "\n\nWX7XFTCZ",
+      "code": "WX7XFTCZ",
+      "hit": true
+    },
+    {
+      "answer": "\n\n9NLXBJDJ",
+      "code": "9NLXBJDJ",
+      "hit": true
+    }
+  ],
+  "config_effect": {
+    "allocation": "uniform_int4",
+    "detail": {
+      "a2_flag": false,
+      "cache_dtype": "int4_per_token_head",
+      "per_layer": {}
+    },
+    "ok": true
+  },
+  "created_at_utc": "2026-08-06T14:07:51Z",
+  "depth_pct": 25,
+  "elapsed_s": 56.5,
+  "engine": {
+    "kwargs": {
+      "disable_log_stats": true,
+      "enforce_eager": true,
+      "gpu_memory_utilization": 0.85,
+      "kv_cache_dtype": "int4_per_token_head",
+      "max_model_len": 16384,
+      "seed": 42
+    },
+    "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master",
+    "vllm_version": "0.26.1rc1.dev245+ge2fa28594"
+  },
+  "host": "autodl-container-ca6c40b13f-016bd465",
+  "max_len": 4096,
+  "num_needles": 3,
+  "schema_version": 1,
+  "seed": 42,
+  "status": "completed_validated"
+}
