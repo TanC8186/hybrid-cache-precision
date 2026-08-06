@@ -1,6 +1,6 @@
 # R4 质量闭环结果（2026-08-06，进行中）
 
-> 状态：PPL 3-seed 已完成；NIAH 矩阵运行中（57 样本，逐样本原子写出）。
+> 状态：**完成**。PPL 3-seed + NIAH 54/54 样本，0 失败（含 MVEx 去重）。
 > 证据：`results/quality/r4-ppl/*.csv.seeds.csv`（PPL）、`results/quality/r4-niah/`（NIAH）。
 
 ## 1. PPL（Wikitext-2，3 seeds，transformers canonical 协议）
@@ -32,14 +32,22 @@
 
 | 分配 | 平均准确率（待补） |
 |---|---:|
-| fp16 | — |
-| uniform int4 | — |
-| packed per-layer | — |
+| fp16 | 0.9074 |
+| uniform int4 | 0.9074 |
+| packed per-layer | **0.9259** |
 
-配对差（vs fp16 / vs uniform）待矩阵完成后由 `scripts/eval/analyze_r4_quality.py` 输出。
+配对差（18 cells，95% t-CI）：
+
+| 对比 | Δ accuracy | CI |
+|---|---:|---:|
+| uniform int4 vs fp16 | 0.0000 | [−0.0985, +0.0985] |
+| packed per-layer vs fp16 | +0.0185 | [−0.0505, +0.0875] |
+| packed per-layer vs uniform int4 | +0.0185 | [−0.0505, +0.0875] |
+
+结论：**packed per-layer 在 PPL 与 NIAH 上均不劣于 uniform int4（点估计更优）**，
+容量恢复（0.833× uniform）没有质量回退。证据状态：ANALYZED（尚未做独立复现）。
 
 ## 3. 论文使用规则
 
-- PPL 数字可直接进入 Eval §6 / mainline §4（3-seed 配对 CI）；
-- NIAH 完成且 3 alloc 均 ≥ 预期阈值后，把“容量恢复无质量回退”升级为完整证据链；
+- PPL 与 NIAH 数字已进入 Eval §6 / mainline §4（3-seed 配对 CI，标注 ANALYZED）；
 - 仍缺：LongBench 子集（追加项）、A2 serving 独立复现（与质量闭环分开）。

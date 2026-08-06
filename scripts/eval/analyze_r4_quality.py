@@ -11,11 +11,18 @@ from pathlib import Path
 
 
 def t_half(n: int, sd: float) -> float:
-    table = {1: 12.706, 2: 4.303, 3: 3.182, 4: 2.776, 5: 2.571, 6: 2.447}
     df = n - 1
-    if df not in table:
+    if df <= 0:
         raise ValueError(f"unsupported df={df}")
-    return table[df] * sd / math.sqrt(n)
+    table = {
+        1: 12.706, 2: 4.303, 3: 3.182, 4: 2.776, 5: 2.571, 6: 2.447,
+        7: 2.365, 8: 2.306, 9: 2.262, 10: 2.228, 11: 2.201, 12: 2.179,
+        13: 2.160, 14: 2.145, 15: 2.131, 16: 2.120, 17: 2.110, 18: 2.101,
+        19: 2.093, 20: 2.086, 21: 2.080, 22: 2.074, 23: 2.069, 24: 2.064,
+        25: 2.060, 26: 2.056, 27: 2.052, 28: 2.048, 29: 2.045, 30: 2.042,
+    }
+    crit = table.get(df, 1.96)
+    return crit * sd / math.sqrt(n)
 
 
 def load_ppl_seeds(base: Path, allocs: list[str]) -> dict[str, dict[int, float]]:
@@ -25,9 +32,11 @@ def load_ppl_seeds(base: Path, allocs: list[str]) -> dict[str, dict[int, float]]
         if not path.exists():
             raise FileNotFoundError(path)
         rows = {}
+        target_bits = 16 if alloc == "fp16" else 4
         with path.open(newline="", encoding="utf-8") as f:
             for r in csv.DictReader(f):
-                rows[int(r["seed"])] = float(r["ppl"])
+                if int(r["bits"]) == target_bits and int(r["evict_budget"]) == 0:
+                    rows[int(r["seed"])] = float(r["ppl"])
         out[alloc] = rows
     return out
 

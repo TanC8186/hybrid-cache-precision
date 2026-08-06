@@ -1,0 +1,209 @@
+{
+  "schema_version": 1,
+  "ppl": {
+    "rows": [
+      {
+        "allocation": "fp16",
+        "mean_ppl": 11.4827,
+        "std_ppl": 1.5732,
+        "seeds": [
+          7,
+          42,
+          2026
+        ]
+      },
+      {
+        "allocation": "uniform_int4",
+        "mean_ppl": 11.6811,
+        "std_ppl": 1.5861,
+        "seeds": [
+          7,
+          42,
+          2026
+        ]
+      },
+      {
+        "allocation": "packed_per_layer",
+        "mean_ppl": 11.5985,
+        "std_ppl": 1.5534,
+        "seeds": [
+          7,
+          42,
+          2026
+        ]
+      }
+    ],
+    "paired": {
+      "uniform_int4_vs_fp16": {
+        "vs": "fp16",
+        "mean_diff": 0.1984,
+        "sd_diff": 0.0179,
+        "ci95": [
+          0.1541,
+          0.2428
+        ],
+        "rel_pct": 1.73
+      },
+      "packed_per_layer_vs_fp16": {
+        "vs": "fp16",
+        "mean_diff": 0.1158,
+        "sd_diff": 0.021,
+        "ci95": [
+          0.0637,
+          0.1679
+        ],
+        "rel_pct": 1.01
+      },
+      "packed_per_layer_vs_uniform_int4": {
+        "vs": "uniform_int4",
+        "mean_diff": -0.0826,
+        "sd_diff": 0.0379,
+        "ci95": [
+          -0.1767,
+          0.0115
+        ],
+        "rel_pct": -0.71
+      }
+    }
+  },
+  "niah": {
+    "cells": [
+      {
+        "seed": 7,
+        "depth_pct": 25,
+        "max_len": 2048
+      },
+      {
+        "seed": 7,
+        "depth_pct": 25,
+        "max_len": 4096
+      },
+      {
+        "seed": 7,
+        "depth_pct": 50,
+        "max_len": 2048
+      },
+      {
+        "seed": 7,
+        "depth_pct": 50,
+        "max_len": 4096
+      },
+      {
+        "seed": 7,
+        "depth_pct": 75,
+        "max_len": 2048
+      },
+      {
+        "seed": 7,
+        "depth_pct": 75,
+        "max_len": 4096
+      },
+      {
+        "seed": 42,
+        "depth_pct": 25,
+        "max_len": 2048
+      },
+      {
+        "seed": 42,
+        "depth_pct": 25,
+        "max_len": 4096
+      },
+      {
+        "seed": 42,
+        "depth_pct": 50,
+        "max_len": 2048
+      },
+      {
+        "seed": 42,
+        "depth_pct": 50,
+        "max_len": 4096
+      },
+      {
+        "seed": 42,
+        "depth_pct": 75,
+        "max_len": 2048
+      },
+      {
+        "seed": 42,
+        "depth_pct": 75,
+        "max_len": 4096
+      },
+      {
+        "seed": 2026,
+        "depth_pct": 25,
+        "max_len": 2048
+      },
+      {
+        "seed": 2026,
+        "depth_pct": 25,
+        "max_len": 4096
+      },
+      {
+        "seed": 2026,
+        "depth_pct": 50,
+        "max_len": 2048
+      },
+      {
+        "seed": 2026,
+        "depth_pct": 50,
+        "max_len": 4096
+      },
+      {
+        "seed": 2026,
+        "depth_pct": 75,
+        "max_len": 2048
+      },
+      {
+        "seed": 2026,
+        "depth_pct": 75,
+        "max_len": 4096
+      }
+    ],
+    "rows": [
+      {
+        "allocation": "fp16",
+        "mean_accuracy": 0.9074,
+        "n_cells": 18
+      },
+      {
+        "allocation": "uniform_int4",
+        "mean_accuracy": 0.9074,
+        "n_cells": 18
+      },
+      {
+        "allocation": "packed_per_layer",
+        "mean_accuracy": 0.9259,
+        "n_cells": 18
+      }
+    ],
+    "paired": {
+      "uniform_int4_vs_fp16": {
+        "vs": "fp16",
+        "n_cells": 18,
+        "mean_diff": 0.0,
+        "ci95": [
+          -0.0985,
+          0.0985
+        ]
+      },
+      "packed_per_layer_vs_fp16": {
+        "vs": "fp16",
+        "n_cells": 18,
+        "mean_diff": 0.0185,
+        "ci95": [
+          -0.0505,
+          0.0875
+        ]
+      },
+      "packed_per_layer_vs_uniform_int4": {
+        "vs": "uniform_int4",
+        "n_cells": 18,
+        "mean_diff": 0.0185,
+        "ci95": [
+          -0.0505,
+          0.0875
+        ]
+      }
+    }
+  }
+}

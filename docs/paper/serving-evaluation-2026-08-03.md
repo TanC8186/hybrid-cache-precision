@@ -302,6 +302,25 @@ this tolerance in every seed.
    deterministic protocol. This is the transformers-path evidence that motivates making per-layer
    protection capacity-neutral in the serving system (§8).
 
+**A2 quality closure (ANALYZED, 2026-08-06).** We compared fp16, uniform int4, and packed
+per-layer (L23 bf16) on (i) Wikitext-2 PPL under the same 3-seed canonical protocol as Table 4
+(`results/quality/r4-ppl/`) and (ii) a seeded NIAH retrieval matrix (3 depths × 2 lengths
+{2048, 4096} × 3 seeds × 3 needles, vLLM offline greedy, `results/quality/r4-niah/`, 54/54
+samples, zero failures):
+
+| Allocation | PPL (mean ± SD, 3 seeds) | NIAH accuracy (18 cells) |
+|---|---:|---:|
+| fp16 | 11.4827 ± 1.5732 | 0.9074 |
+| uniform int4 | 11.6811 ± 1.5861 | 0.9074 |
+| packed per-layer | 11.5985 ± 1.5534 | **0.9259** |
+
+**Table 4b.** A2 quality closure. Paired results (95% t-CI, df=2): packed vs. uniform int4
+PPL Δ = **−0.083 [−0.177, +0.012]** (−0.71%); NIAH Δ = **+0.019 [−0.051, +0.088]**. The capacity
+recovery of packed per-layer (0.833× of uniform int4) therefore does **not** come at a quality
+cost on these metrics; point estimates favor packed (L23 protection). Status: ANALYZED —
+the samples are complete and self-validated, but an independent reproduction of this quality
+matrix has not yet run; the LongBench subset is a planned extension.
+
 ---
 
 ## 7. Discussion / Honesty

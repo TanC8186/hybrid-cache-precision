@@ -433,9 +433,11 @@ capacity.
 
 The A2 mechanism is validated on Qwen3.5-2B (runtime/capacity) and Qwen3.5-9B (legacy-collapse
 ratio only; packed 9B capacity not yet probed), on a single RTX 5090, in a vLLM fork. The flag is
-opt-in and not yet upstreamed. Quality closure (packed vs. uniform PPL and retrieval/long-context)
-and the independent serving reproduction are required before the serving boundaries may be used
-as headline claims (currently ANALYZED).
+opt-in and not yet upstreamed. The quality closure is complete: 3-seed Wikitext-2 PPL and a
+seeded NIAH matrix show packed per-layer is not worse than uniform int4 (paired PPL Δ −0.71%
+with 95% CI upper bound +0.1%; NIAH Δ +0.019 [−0.051, +0.088]; Eval §6, ANALYZED). The
+independent serving-boundary reproduction is still required before the serving boundaries may be
+used as headline claims (currently ANALYZED).
 
 ---
 

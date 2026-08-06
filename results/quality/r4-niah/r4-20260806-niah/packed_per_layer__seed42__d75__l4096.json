@@ -1,0 +1,68 @@
+{
+  "accuracy": 1.0,
+  "allocation": "packed_per_layer",
+  "attempt_id": "r4-20260806-niah",
+  "cases": [
+    {
+      "answer": "\n\n689HWCHW",
+      "code": "689HWCHW",
+      "hit": true
+    },
+    {
+      "answer": "\n\n8WNVYNXV",
+      "code": "8WNVYNXV",
+      "hit": true
+    },
+    {
+      "answer": "\n\nZWUUV48M",
+      "code": "ZWUUV48M",
+      "hit": true
+    }
+  ],
+  "config_effect": {
+    "allocation": "packed_per_layer",
+    "detail": {
+      "a2_flag": true,
+      "cache_dtype": "int4_per_token_head",
+      "per_layer": {
+        "11": "int4_per_token_head",
+        "15": "int4_per_token_head",
+        "19": "int4_per_token_head",
+        "23": "auto",
+        "3": "int4_per_token_head",
+        "7": "int4_per_token_head"
+      }
+    },
+    "ok": true
+  },
+  "created_at_utc": "2026-08-06T14:31:06Z",
+  "depth_pct": 75,
+  "elapsed_s": 54.2,
+  "engine": {
+    "kwargs": {
+      "disable_log_stats": true,
+      "enable_per_layer_page_groups": true,
+      "enforce_eager": true,
+      "gpu_memory_utilization": 0.85,
+      "kv_cache_dtype": "int4_per_token_head",
+      "kv_cache_dtype_per_layer": {
+        "11": "int4_per_token_head",
+        "15": "int4_per_token_head",
+        "19": "int4_per_token_head",
+        "23": "auto",
+        "3": "int4_per_token_head",
+        "7": "int4_per_token_head"
+      },
+      "max_model_len": 16384,
+      "seed": 42
+    },
+    "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master",
+    "vllm_version": "0.26.1rc1.dev245+ge2fa28594"
+  },
+  "host": "autodl-container-ca6c40b13f-016bd465",
+  "max_len": 4096,
+  "num_needles": 3,
+  "schema_version": 1,
+  "seed": 42,
+  "status": "completed_validated"
+}
