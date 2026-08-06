@@ -306,9 +306,10 @@ absolute terms; the system-level ratio lands close to the 2B value.
 
 **Per-layer heterogeneity (quality side).** The 6 GQA layers are far from interchangeable. With the
 per-layer knob exposed on the transformers path, we force each layer to 2-bit (others 8-bit) and
-measure Wikitext-2 PPL (Eval §6): layer 23 is the most sensitive, costing +28.7% of the 2-bit
-sensitivity range (PPL 15.76 vs 13.63), while layer 3 is essentially free (−5.9%, PPL 13.20).
-Sensitivity-guided allocations then dominate uniform ones at equal bytes: `sens_guided`
+measure Wikitext-2 PPL (Eval §6; deterministic single-protocol sweep with anchors 8-bit 13.63 and
+2-bit 21.07; 3-seed replication pending): layer 23 is the most sensitive, costing +28.7% of the
+2-bit sensitivity range (PPL 15.76 vs 13.63), while layer 3 is essentially free (−5.9%, PPL
+13.20). Sensitivity-guided allocations then dominate uniform ones at equal bytes: `sens_guided`
 {3:2-bit, middle 3-bit, 23:4-bit} → **PPL 14.63 @ 4.87 MB** vs uniform 3-bit 15.87 @ 4.85 MB, and
 `only_layer3_2bit` {3:2-bit, others 4-bit} → **PPL 13.39 @ 5.92 MB** — better quality *and* fewer
 bytes than uniform 4-bit (13.86 @ 6.44 MB). This is the evidence that per-layer protection is

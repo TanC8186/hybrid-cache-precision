@@ -255,45 +255,52 @@ warmup gap in §7.**
 
 ## 6. Quality under a Byte Budget
 
-The serving gains rest on int4 quality. Table 4 reports per-token quantized-KV PPL on
-Wikitext-2 (5 × 2048-token sequences, greedy, deterministic) across bit-widths and eviction
-retention, plus the sensitivity-guided per-layer allocation (§1).
+The serving gains rest on int4 quality. Table 4 reports the **canonical 3-seed** Wikitext-2 PPL
+(seeds {7, 42, 2026}; 5 × 2048-token sequences per seed; chunk 128; greedy, deterministic) across
+bit-widths and eviction retention. Paired differences are computed per seed against the FP16
+run of the same seed; 95% CIs are t-based over n = 3 seeds. The canonical source is
+`results/ablations/byte_budget_3seed.csv` (final harness). An earlier 3-sequence/seed file and a
+single-seed byte-budget file are retired from headline use (the single-seed file remains only as
+the anchor protocol for the deterministic sensitivity tables below).
 
-| bits | keep (tokens) | KV bytes | PPL | vs FP16 |
+| bits | keep (tokens) | KV bytes | PPL (mean ± SD) | vs FP16: paired Δ [95% CI] |
 |---|---|---|---|---|
-| 2 | 2048 (full) | 3,366,816 | 21.07 | +55% |
-| 3 | 2048 (full) | 4,852,176 | 15.87 | +16% |
-| **4** | **2048 (full)** | 6,436,560 | **13.86** | **+1.7%** |
-| 8 | 2048 (full) | 12,774,096 | 13.63 | ≈0 (lossless) |
-| FP16 | — | 25,350,144 | 13.63 | baseline |
-| 4 | 1024 | 3,194,880 | **14.10** | — |
-| 2 | 2048 (full) | 3,366,816 | **21.07** | — |
-| 4 | 1536 | 4,792,320 | 13.89 | — |
-| 3 | 2048 (full) | 4,852,176 | 15.87 | — |
+| 2 | 2048 (full) | 3,366,816 | 19.00 ± 3.19 | +7.52 [+3.50, +11.54] |
+| 3 | 2048 (full) | 4,852,176 | 13.53 ± 1.87 | +2.05 [+1.15, +2.95] |
+| **4** | **2048 (full)** | 6,436,560 | **11.67 ± 1.61** | **+0.19 [+0.09, +0.30]** |
+| 8 | 2048 (full) | 12,774,096 | 11.48 ± 1.57 | −0.00 [−0.01, +0.01] |
+| FP16 | — | 25,350,144 | 11.48 ± 1.57 | baseline |
+| 4 | 1024 | 3,194,880 | 11.85 ± 1.66 | vs 2-bit full: −7.15 [−10.97, −3.34] |
+| 4 | 1536 | 4,792,320 | 11.71 ± 1.62 | vs 3-bit full: −1.82 [−2.65, −0.99] |
 
-**Table 4.** Quality (Wikitext-2 PPL) from `results/ablations/byte_budget_ordering.csv`.
-Bottom four rows are equal-byte-budget comparisons.
+**Table 4.** Canonical 3-seed quality (Wikitext-2 PPL), `byte_budget_3seed.csv`. Byte budgets
+use the packed per-token theoretical bytes (as in §6.1 of the design note); equal-byte pairs are
+not byte-exact (tolerance ≤ 5.4% at ≈3.2 MB, 1.3% at ≈4.8 MB), and the ordering is robust within
+this tolerance in every seed.
 
 **Findings.**
 
-1. **8-bit is lossless** (13.63 = FP16 baseline); **4-bit is near-lossless** (13.86, **+1.7%**);
-   3-bit +16% (15.87); 2-bit +55% (21.07). The sub-4-bit region is the tension zone.
+1. **8-bit is lossless** (paired Δ ≈ 0, CI includes 0); **4-bit is near-lossless but measurably
+   nonzero**: +0.19 PPL, **+1.7%** [95% CI 0.8%–2.6%] vs. FP16. The tension zone is below 4 bits:
+   3-bit +17.8% [10.0%–25.7%], 2-bit +65.5% [30.4%–100.5%]. With n = 3 seeds the CIs are wide;
+   "near-lossless" is reported with this uncertainty, not as a statistical equivalence claim.
 2. **Equal-byte-budget ordering: high precision + eviction beats low precision + full
-   retention.** At ≈ 3.2 MB, 4-bit with keep-1024 eviction scores **PPL 14.10 vs 2-bit full
-   retention 21.07**; at ≈ 4.8 MB, 4-bit keep-1536 (13.89) beats 3-bit full retention (15.87).
-   Under a fixed byte budget, *evict tokens before dropping below 4-bit*.
-3. **Layer heterogeneity (quality level).** The 6 GQA layers are highly heterogeneous: forcing
-   layer 23 to 2-bit costs +28.7% of the 2-bit sensitivity range (PPL 15.76 vs 13.63) — the most
-   sensitive layer — while layer 3 is essentially free (−5.9%). This motivates sensitivity-guided
-   per-layer protection; however, as §8 shows, the current vLLM V1 KV manager cannot host
-   mixed-dtype layers without a 4× page-unification capacity penalty, so the serving mainline
-   uses uniform int4.
-4. **Sensitivity-guided allocation beats uniform at equal bytes (quality level).**
-   `sens_guided` {3:2bit, middle 3bit, 23:4bit} → **PPL 14.63 @ 4.87 MB** vs uniform 3-bit
-   15.87 @ 4.85 MB; `only_layer3_2bit` {3:2bit, others 4bit} → PPL 13.39 @ 5.92 MB — better
-   quality *and* fewer bytes than uniform 4-bit (13.86 @ 6.44 MB). This is the valid,
-   transformers-path evidence that motivates making per-layer protection capacity-neutral in the
-   serving system (§8, future work).
+   retention.** At ≈3.2 MB, 4-bit keep-1024 (11.85 ± 1.66) beats 2-bit full retention
+   (19.00 ± 3.19), paired Δ −7.15 [−10.97, −3.34]; at ≈4.8 MB, 4-bit keep-1536 (11.71 ± 1.62)
+   beats 3-bit full retention (13.53 ± 1.87), paired Δ −1.82 [−2.65, −0.99]. Under a fixed byte
+   budget, *evict tokens before dropping below 4-bit*.
+3. **Layer heterogeneity (deterministic single-protocol, 3-seed replication pending).** The
+   sensitivity sweep (results/ablations/layer_sensitivity.csv) anchors on the deterministic
+   single-seed protocol (all-8-bit 13.63, all-2-bit 21.07): forcing layer 23 to 2-bit costs
+   +28.7% of the 2-bit sensitivity range (PPL 15.76 vs 13.63) — the most sensitive layer — while
+   layer 3 is essentially free (−5.9%). This motivates sensitivity-guided per-layer protection;
+   the 3-seed replication of these anchors is pending (Remaining Gaps).
+4. **Sensitivity-guided allocation beats uniform at equal bytes (deterministic
+   single-protocol).** `sens_guided` {3:2bit, middle 3bit, 23:4bit} → PPL 14.63 @ 4.87 MB vs
+   uniform 3-bit 15.87 @ 4.85 MB; `only_layer3_2bit` {3:2bit, others 4bit} → PPL 13.39 @ 5.92 MB
+   — better quality *and* fewer bytes than uniform 4-bit (13.86 @ 6.44 MB) on the same
+   deterministic protocol. This is the transformers-path evidence that motivates making per-layer
+   protection capacity-neutral in the serving system (§8).
 
 ---
 
