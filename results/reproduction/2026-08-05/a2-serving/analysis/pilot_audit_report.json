@@ -1,0 +1,109 @@
+{
+  "a2_overall_status": "PASSED_NOT_VERIFIED_SERVING_QUALITY_PENDING",
+  "created_at": "2026-08-05T05:11:34Z",
+  "evidence_status": "QUARANTINED",
+  "interpretation": "The packed serving MVEx passed once, but the subsequent pilot hit a CUDA illegal instruction during the rate-30 sample. All requests were accounted for, yet the server-session fatal error quarantines the full pilot and blocks expansion.",
+  "mvex": {
+    "attempt_id": "a2-packed-serving-mvex-d1d52c4-westd-01",
+    "fatal_signatures": {
+      "CUDA error: an illegal instruction was encountered": false,
+      "EngineCore encountered a fatal error": false
+    },
+    "sample": {
+      "accounting": {
+        "completed": 1800,
+        "detail_lengths": {
+          "errors": 1800,
+          "itls": 1800,
+          "output_lens": 1800,
+          "start_times": 1800,
+          "ttfts": 1800
+        },
+        "detailed_failures": 0,
+        "expected": 1800,
+        "failed": 0,
+        "request_conservation": true
+      },
+      "arrival_span_over_target": 1.000014901937296,
+      "reported_tpot_p99_ms": 17.03277156666273,
+      "reported_ttft_p99_ms": 229.40291866660118,
+      "sample_id": "packed_per_layer__random__r30__s7",
+      "status": "completed_validated",
+      "sustainable_thresholds": [
+        "1000",
+        "2000",
+        "250",
+        "3000",
+        "500"
+      ]
+    },
+    "supervisor_exit_code": 0
+  },
+  "pilot": {
+    "attempt_id": "a2-packed-serving-pilot-d1d52c4-westd-01",
+    "fatal_signatures": {
+      "CUDA error: an illegal instruction was encountered": true,
+      "EngineCore encountered a fatal error": true
+    },
+    "pilot_gate_passed": false,
+    "rate30": {
+      "accounting": {
+        "completed": 611,
+        "detail_lengths": {
+          "errors": 1800,
+          "itls": 1800,
+          "output_lens": 1800,
+          "start_times": 1800,
+          "ttfts": 1800
+        },
+        "detailed_failures": 1189,
+        "expected": 1800,
+        "failed": 1189,
+        "request_conservation": true
+      },
+      "arrival_span_over_target": 1.0000135995447637,
+      "reported_tpot_p99_ms": 32.419255424290895,
+      "reported_ttft_p99_ms": 250.21754950284947,
+      "sample_id": "packed_per_layer__random__r30__s7",
+      "status": "completed_validated",
+      "sustainable_thresholds": []
+    },
+    "rate40": {
+      "accounting": {
+        "completed": 0,
+        "detail_lengths": {
+          "errors": 2400,
+          "itls": 2400,
+          "output_lens": 2400,
+          "start_times": 2400,
+          "ttfts": 2400
+        },
+        "detailed_failures": 2400,
+        "expected": 2400,
+        "failed": 2400,
+        "request_conservation": true
+      },
+      "error": "result has no successful requests for latency analysis",
+      "failure_stage": "result_validation",
+      "raw_result_path": "E:\\MLSys_Research\\results\\reproduction\\2026-08-05\\a2-serving\\raw\\attempts\\a2-packed-serving-pilot-d1d52c4-westd-01\\samples\\packed_per_layer__random__r40__s7\\work\\result.json",
+      "raw_result_sha256": "8a87251b8424a19edc8a88e0fd34ff1c7bc238de9580e7a523ad3ec4c0bd5a69",
+      "returncode": 0,
+      "sample_id": "packed_per_layer__random__r40__s7",
+      "status": "failed"
+    },
+    "rate50_status": "not_started",
+    "request_conservation": true,
+    "server_log_path": "E:\\MLSys_Research\\results\\reproduction\\2026-08-05\\a2-serving\\raw\\attempts\\a2-packed-serving-pilot-d1d52c4-westd-01\\servers\\packed_per_layer\\20260805T045810Z-44ec5859\\server.log",
+    "server_log_sha256": "2d45d188b407a8d0622a442094e22ee0cc768e94c287c81566e7eaf8947e2a9b",
+    "silent_exclusions": 0,
+    "summary_counts": {
+      "completed_validated": 1,
+      "failed": 1,
+      "not_started": 1
+    },
+    "supervisor_exit_code": 2,
+    "verdict": "PILOT_FAILED_RUNTIME_CUDA_ILLEGAL_INSTRUCTION"
+  },
+  "schema_version": 1,
+  "verification_status": "ANALYZED"
+}

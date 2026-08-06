@@ -1,0 +1,262 @@
+{
+  "attempt_id": "a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01",
+  "completed_samples": 5,
+  "created_at": "2026-08-05T17:17:05Z",
+  "evidence_status": "UNVERIFIED",
+  "graph_mode_proven": true,
+  "next_gate": "Continue the same ShareGPT formal attempt with slice-002 and --resume.",
+  "partial_attempt": true,
+  "planned_samples": 63,
+  "samples": [
+    {
+      "accounting": {
+        "completed": 6000,
+        "detail_lengths": {
+          "errors": 6000,
+          "itls": 6000,
+          "output_lens": 6000,
+          "start_times": 6000,
+          "ttfts": 6000
+        },
+        "detailed_failures": 0,
+        "expected": 6000,
+        "failed": 0,
+        "request_conservation": true
+      },
+      "allocation": "fp16",
+      "arrival_span_over_target": 1.0000440626901885,
+      "benchmark_duration_s": 303.60564509779215,
+      "drain_after_arrival_window_s": 3.6056450977921486,
+      "fd_limit_failures": 0,
+      "goodput_over_offered": {
+        "1000": 0.9881239194461264,
+        "2000": 0.9881239194461264,
+        "250": 0.9881239194461264,
+        "3000": 0.9881239194461264,
+        "500": 0.9881239194461264
+      },
+      "offered_rate": 20.0,
+      "reported_tpot_p99_ms": 14.834856243338438,
+      "reported_ttft_p99_ms": 118.81638200953608,
+      "request_throughput": 19.762478388922528,
+      "request_throughput_over_offered": 0.9881239194461264,
+      "sample_id": "fp16__sharegpt__r20__s7",
+      "seed": 7,
+      "sustainable_ttft_thresholds_ms": [
+        250,
+        500,
+        1000,
+        2000,
+        3000
+      ],
+      "workload": "sharegpt"
+    },
+    {
+      "accounting": {
+        "completed": 6000,
+        "detail_lengths": {
+          "errors": 6000,
+          "itls": 6000,
+          "output_lens": 6000,
+          "start_times": 6000,
+          "ttfts": 6000
+        },
+        "detailed_failures": 0,
+        "expected": 6000,
+        "failed": 0,
+        "request_conservation": true
+      },
+      "allocation": "fp16",
+      "arrival_span_over_target": 1.00003490962709,
+      "benchmark_duration_s": 304.88079893775284,
+      "drain_after_arrival_window_s": 4.880798937752843,
+      "fd_limit_failures": 0,
+      "goodput_over_offered": {
+        "1000": 0.9839911238924911,
+        "2000": 0.9839911238924911,
+        "250": 0.9839911238924911,
+        "3000": 0.9839911238924911,
+        "500": 0.9839911238924911
+      },
+      "offered_rate": 20.0,
+      "reported_tpot_p99_ms": 13.891016276021094,
+      "reported_ttft_p99_ms": 125.26772281154993,
+      "request_throughput": 19.67982247784982,
+      "request_throughput_over_offered": 0.9839911238924911,
+      "sample_id": "fp16__sharegpt__r20__s42",
+      "seed": 42,
+      "sustainable_ttft_thresholds_ms": [
+        250,
+        500,
+        1000,
+        2000,
+        3000
+      ],
+      "workload": "sharegpt"
+    },
+    {
+      "accounting": {
+        "completed": 6000,
+        "detail_lengths": {
+          "errors": 6000,
+          "itls": 6000,
+          "output_lens": 6000,
+          "start_times": 6000,
+          "ttfts": 6000
+        },
+        "detailed_failures": 0,
+        "expected": 6000,
+        "failed": 0,
+        "request_conservation": true
+      },
+      "allocation": "fp16",
+      "arrival_span_over_target": 1.0000304534907143,
+      "benchmark_duration_s": 305.3881911672652,
+      "drain_after_arrival_window_s": 5.388191167265177,
+      "fd_limit_failures": 0,
+      "goodput_over_offered": {
+        "1000": 0.9823562556670241,
+        "2000": 0.9823562556670241,
+        "250": 0.9823562556670241,
+        "3000": 0.9823562556670241,
+        "500": 0.9823562556670241
+      },
+      "offered_rate": 20.0,
+      "reported_tpot_p99_ms": 14.213293093360132,
+      "reported_ttft_p99_ms": 122.17010747641325,
+      "request_throughput": 19.647125113340483,
+      "request_throughput_over_offered": 0.9823562556670241,
+      "sample_id": "fp16__sharegpt__r20__s2026",
+      "seed": 2026,
+      "sustainable_ttft_thresholds_ms": [
+        250,
+        500,
+        1000,
+        2000,
+        3000
+      ],
+      "workload": "sharegpt"
+    },
+    {
+      "accounting": {
+        "completed": 7500,
+        "detail_lengths": {
+          "errors": 7500,
+          "itls": 7500,
+          "output_lens": 7500,
+          "start_times": 7500,
+          "ttfts": 7500
+        },
+        "detailed_failures": 0,
+        "expected": 7500,
+        "failed": 0,
+        "request_conservation": true
+      },
+      "allocation": "fp16",
+      "arrival_span_over_target": 1.0000808299519122,
+      "benchmark_duration_s": 304.91730008274317,
+      "drain_after_arrival_window_s": 4.917300082743168,
+      "fd_limit_failures": 0,
+      "goodput_over_offered": {
+        "1000": 0.9838733319447313,
+        "2000": 0.9838733319447313,
+        "250": 0.9838733319447313,
+        "3000": 0.9838733319447313,
+        "500": 0.9838733319447313
+      },
+      "offered_rate": 25.0,
+      "reported_tpot_p99_ms": 17.120199820456605,
+      "reported_ttft_p99_ms": 143.05672520771623,
+      "request_throughput": 24.596833298618282,
+      "request_throughput_over_offered": 0.9838733319447313,
+      "sample_id": "fp16__sharegpt__r25__s7",
+      "seed": 7,
+      "sustainable_ttft_thresholds_ms": [
+        250,
+        500,
+        1000,
+        2000,
+        3000
+      ],
+      "workload": "sharegpt"
+    },
+    {
+      "accounting": {
+        "completed": 7500,
+        "detail_lengths": {
+          "errors": 7500,
+          "itls": 7500,
+          "output_lens": 7500,
+          "start_times": 7500,
+          "ttfts": 7500
+        },
+        "detailed_failures": 0,
+        "expected": 7500,
+        "failed": 0,
+        "request_conservation": true
+      },
+      "allocation": "fp16",
+      "arrival_span_over_target": 1.000025280000021,
+      "benchmark_duration_s": 309.4535230677575,
+      "drain_after_arrival_window_s": 9.453523067757487,
+      "fd_limit_failures": 0,
+      "goodput_over_offered": {
+        "1000": 0.9694509114840888,
+        "2000": 0.9694509114840888,
+        "250": 0.9694509114840888,
+        "3000": 0.9694509114840888,
+        "500": 0.9694509114840888
+      },
+      "offered_rate": 25.0,
+      "reported_tpot_p99_ms": 16.596466662391794,
+      "reported_ttft_p99_ms": 149.2678690515459,
+      "request_throughput": 24.23627278710222,
+      "request_throughput_over_offered": 0.9694509114840888,
+      "sample_id": "fp16__sharegpt__r25__s42",
+      "seed": 42,
+      "sustainable_ttft_thresholds_ms": [
+        250,
+        500,
+        1000,
+        2000,
+        3000
+      ],
+      "workload": "sharegpt"
+    }
+  ],
+  "schema_version": 1,
+  "servers": [
+    {
+      "allocation": "fp16",
+      "exception": null,
+      "graph_mode_proven": true,
+      "returncode": 0,
+      "runtime_faults": {
+        "CUDA error: an illegal instruction was encountered": false,
+        "EngineCore encountered a fatal error": false,
+        "server health check failed after benchmark": false
+      },
+      "server_log_sha256": "1f7cbec1d620a26e9e8438b58b6490c616ac3e7db248651ff39183af6065fdbd",
+      "status": "stopped"
+    }
+  ],
+  "servers_clean": true,
+  "sidecars_verified": 19,
+  "slice_id": "slice-001",
+  "summary_passed": true,
+  "supervisors": [
+    {
+      "exit_code": 0,
+      "slice_id": "slice-001",
+      "soft_nofile_after": 65535,
+      "soft_nofile_before": 1024
+    }
+  ],
+  "totals": {
+    "completed": 33000,
+    "expected": 33000,
+    "failed": 0
+  },
+  "verdict": "PROTOCOL_V3_SHAREGPT_FORMAL_SLICE_001_PASSED",
+  "verification_status": "ANALYZED"
+}

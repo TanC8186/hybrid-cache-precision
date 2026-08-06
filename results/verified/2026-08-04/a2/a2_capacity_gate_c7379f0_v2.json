@@ -1,0 +1,426 @@
+{
+  "baselines": {
+    "legacy": {
+      "attempt_id": "a2-capacity-legacy-c7379f0-01",
+      "capacity_tokens": 705604,
+      "config_checks": {
+        "eighteen_individual_mamba_groups": true,
+        "expected_per_layer_map": true,
+        "no_uniform_packed_attention_group": true,
+        "packed_flag_disabled": true,
+        "six_individual_full_attention_groups": true
+      },
+      "contract_sha256": "3cdeb78051b8e818c3c8ba934deb647c42111acb876574981df3ba44d464ce1a",
+      "enable_per_layer_page_groups": false,
+      "exit_code": 0,
+      "groups": [
+        {
+          "layer_count": 1,
+          "layer_names": [
+            "language_model.model.layers.0.linear_attn"
+          ],
+          "type": "MambaSpec"
+        },
+        {
+          "layer_count": 1,
+          "layer_names": [
+            "language_model.model.layers.1.linear_attn"
+          ],
+          "type": "MambaSpec"
+        },
+        {
+          "layer_count": 1,
+          "layer_names": [
+            "language_model.model.layers.2.linear_attn"
+          ],
+          "type": "MambaSpec"
+        },
+        {
+          "layer_count": 1,
+          "layer_names": [
+            "language_model.model.layers.4.linear_attn"
+          ],
+          "type": "MambaSpec"
+        },
+        {
+          "layer_count": 1,
+          "layer_names": [
+            "language_model.model.layers.5.linear_attn"
+          ],
+          "type": "MambaSpec"
+        },
+        {
+          "layer_count": 1,
+          "layer_names": [
+            "language_model.model.layers.6.linear_attn"
+          ],
+          "type": "MambaSpec"
+        },
+        {
+          "layer_count": 1,
+          "layer_names": [
+            "language_model.model.layers.8.linear_attn"
+          ],
+          "type": "MambaSpec"
+        },
+        {
+          "layer_count": 1,
+          "layer_names": [
+            "language_model.model.layers.9.linear_attn"
+          ],
+          "type": "MambaSpec"
+        },
+        {
+          "layer_count": 1,
+          "layer_names": [
+            "language_model.model.layers.10.linear_attn"
+          ],
+          "type": "MambaSpec"
+        },
+        {
+          "layer_count": 1,
+          "layer_names": [
+            "language_model.model.layers.12.linear_attn"
+          ],
+          "type": "MambaSpec"
+        },
+        {
+          "layer_count": 1,
+          "layer_names": [
+            "language_model.model.layers.13.linear_attn"
+          ],
+          "type": "MambaSpec"
+        },
+        {
+          "layer_count": 1,
+          "layer_names": [
+            "language_model.model.layers.14.linear_attn"
+          ],
+          "type": "MambaSpec"
+        },
+        {
+          "layer_count": 1,
+          "layer_names": [
+            "language_model.model.layers.16.linear_attn"
+          ],
+          "type": "MambaSpec"
+        },
+        {
+          "layer_count": 1,
+          "layer_names": [
+            "language_model.model.layers.17.linear_attn"
+          ],
+          "type": "MambaSpec"
+        },
+        {
+          "layer_count": 1,
+          "layer_names": [
+            "language_model.model.layers.18.linear_attn"
+          ],
+          "type": "MambaSpec"
+        },
+        {
+          "layer_count": 1,
+          "layer_names": [
+            "language_model.model.layers.20.linear_attn"
+          ],
+          "type": "MambaSpec"
+        },
+        {
+          "layer_count": 1,
+          "layer_names": [
+            "language_model.model.layers.21.linear_attn"
+          ],
+          "type": "MambaSpec"
+        },
+        {
+          "layer_count": 1,
+          "layer_names": [
+            "language_model.model.layers.22.linear_attn"
+          ],
+          "type": "MambaSpec"
+        },
+        {
+          "layer_count": 1,
+          "layer_names": [
+            "language_model.model.layers.3.self_attn.attn"
+          ],
+          "type": "FullAttentionSpec"
+        },
+        {
+          "layer_count": 1,
+          "layer_names": [
+            "language_model.model.layers.7.self_attn.attn"
+          ],
+          "type": "FullAttentionSpec"
+        },
+        {
+          "layer_count": 1,
+          "layer_names": [
+            "language_model.model.layers.11.self_attn.attn"
+          ],
+          "type": "FullAttentionSpec"
+        },
+        {
+          "layer_count": 1,
+          "layer_names": [
+            "language_model.model.layers.15.self_attn.attn"
+          ],
+          "type": "FullAttentionSpec"
+        },
+        {
+          "layer_count": 1,
+          "layer_names": [
+            "language_model.model.layers.19.self_attn.attn"
+          ],
+          "type": "FullAttentionSpec"
+        },
+        {
+          "layer_count": 1,
+          "layer_names": [
+            "language_model.model.layers.23.self_attn.attn"
+          ],
+          "type": "FullAttentionSpec"
+        }
+      ],
+      "mamba_ssm_cache_dtype": "float32",
+      "max_concurrency": 172.26666666666668,
+      "recorded_report_sha256": "d771d6935c4260e49d9601596b242a44a7fa0a9c353e42c6445b7c0d72575f65",
+      "report_hash_match": true,
+      "report_sha256": "d771d6935c4260e49d9601596b242a44a7fa0a9c353e42c6445b7c0d72575f65",
+      "requested": {
+        "enable_per_layer_page_groups": false,
+        "enforce_eager": true,
+        "gpu_memory_utilization": 0.85,
+        "kv_cache_dtype": "int4_per_token_head",
+        "kv_cache_dtype_per_layer": {
+          "11": "int4_per_token_head",
+          "15": "int4_per_token_head",
+          "19": "int4_per_token_head",
+          "23": "auto",
+          "3": "int4_per_token_head",
+          "7": "int4_per_token_head"
+        },
+        "max_model_len": 4096
+      },
+      "verification": {
+        "checks": {},
+        "passed": null
+      }
+    },
+    "packed": {
+      "attempt_id": "a2-capacity-packed-c7379f0-01",
+      "capacity_tokens": 2280448,
+      "config_checks": {
+        "expected_per_layer_map": true,
+        "one_six_layer_uniform_attention_group": true,
+        "packed_flag_enabled": true,
+        "packed_verification_passed": true,
+        "two_nine_layer_mamba_groups": true
+      },
+      "contract_sha256": "5585a1cf6999360bffa0e755c773758362ff6bd206543c585ae7a26e803fb331",
+      "enable_per_layer_page_groups": true,
+      "exit_code": 0,
+      "groups": [
+        {
+          "layer_count": 6,
+          "layer_names": [
+            "language_model.model.layers.3.self_attn.attn",
+            "language_model.model.layers.7.self_attn.attn",
+            "language_model.model.layers.11.self_attn.attn",
+            "language_model.model.layers.15.self_attn.attn",
+            "language_model.model.layers.19.self_attn.attn",
+            "language_model.model.layers.23.self_attn.attn"
+          ],
+          "type": "UniformTypeKVCacheSpecs"
+        },
+        {
+          "layer_count": 9,
+          "layer_names": [
+            "language_model.model.layers.0.linear_attn",
+            "language_model.model.layers.2.linear_attn",
+            "language_model.model.layers.5.linear_attn",
+            "language_model.model.layers.8.linear_attn",
+            "language_model.model.layers.10.linear_attn",
+            "language_model.model.layers.13.linear_attn",
+            "language_model.model.layers.16.linear_attn",
+            "language_model.model.layers.18.linear_attn",
+            "language_model.model.layers.21.linear_attn"
+          ],
+          "type": "MambaSpec"
+        },
+        {
+          "layer_count": 9,
+          "layer_names": [
+            "language_model.model.layers.1.linear_attn",
+            "language_model.model.layers.4.linear_attn",
+            "language_model.model.layers.6.linear_attn",
+            "language_model.model.layers.9.linear_attn",
+            "language_model.model.layers.12.linear_attn",
+            "language_model.model.layers.14.linear_attn",
+            "language_model.model.layers.17.linear_attn",
+            "language_model.model.layers.20.linear_attn",
+            "language_model.model.layers.22.linear_attn"
+          ],
+          "type": "MambaSpec"
+        }
+      ],
+      "mamba_ssm_cache_dtype": "float32",
+      "max_concurrency": 556.75,
+      "recorded_report_sha256": "0633c49399762bd066582971da760ef0d99b6fca2576102e814abb9f2af4485d",
+      "report_hash_match": true,
+      "report_sha256": "0633c49399762bd066582971da760ef0d99b6fca2576102e814abb9f2af4485d",
+      "requested": {
+        "enable_per_layer_page_groups": true,
+        "enforce_eager": true,
+        "gpu_memory_utilization": 0.85,
+        "kv_cache_dtype": "int4_per_token_head",
+        "kv_cache_dtype_per_layer": {
+          "11": "int4_per_token_head",
+          "15": "int4_per_token_head",
+          "19": "int4_per_token_head",
+          "23": "auto",
+          "3": "int4_per_token_head",
+          "7": "int4_per_token_head"
+        },
+        "max_model_len": 4096
+      },
+      "verification": {
+        "attention_kv_quant_modes": [
+          "INT4_PER_TOKEN_HEAD",
+          "NONE"
+        ],
+        "checks": {
+          "all_layout_entries_are_packed": true,
+          "attention_group_is_mixed_precision": true,
+          "flag_enabled": true,
+          "generation_completed": true,
+          "mamba_ssm_cache_dtype_is_float32": true,
+          "one_backing_storage_per_worker": true,
+          "one_packed_attention_group": true,
+          "positive_capacity": true
+        },
+        "passed": true,
+        "worker_backing_storage_counts": [
+          1
+        ]
+      }
+    },
+    "uniform": {
+      "attempt_id": "a2-capacity-uniform-c7379f0-01",
+      "capacity_tokens": 2736947,
+      "config_checks": {
+        "eighteen_mamba_layers_present": true,
+        "empty_per_layer_map": true,
+        "packed_flag_disabled": true,
+        "six_attention_layers_present": true
+      },
+      "contract_sha256": "6e04ffd512bd30c8aa1834fba1501d19c57514fa737cd94cf3e24cbf905cd865",
+      "enable_per_layer_page_groups": false,
+      "exit_code": 0,
+      "groups": [
+        {
+          "layer_count": 6,
+          "layer_names": [
+            "language_model.model.layers.0.linear_attn",
+            "language_model.model.layers.4.linear_attn",
+            "language_model.model.layers.8.linear_attn",
+            "language_model.model.layers.12.linear_attn",
+            "language_model.model.layers.16.linear_attn",
+            "language_model.model.layers.20.linear_attn"
+          ],
+          "type": "MambaSpec"
+        },
+        {
+          "layer_count": 6,
+          "layer_names": [
+            "language_model.model.layers.1.linear_attn",
+            "language_model.model.layers.5.linear_attn",
+            "language_model.model.layers.9.linear_attn",
+            "language_model.model.layers.13.linear_attn",
+            "language_model.model.layers.17.linear_attn",
+            "language_model.model.layers.21.linear_attn"
+          ],
+          "type": "MambaSpec"
+        },
+        {
+          "layer_count": 6,
+          "layer_names": [
+            "language_model.model.layers.2.linear_attn",
+            "language_model.model.layers.6.linear_attn",
+            "language_model.model.layers.10.linear_attn",
+            "language_model.model.layers.14.linear_attn",
+            "language_model.model.layers.18.linear_attn",
+            "language_model.model.layers.22.linear_attn"
+          ],
+          "type": "MambaSpec"
+        },
+        {
+          "layer_count": 6,
+          "layer_names": [
+            "language_model.model.layers.3.self_attn.attn",
+            "language_model.model.layers.7.self_attn.attn",
+            "language_model.model.layers.11.self_attn.attn",
+            "language_model.model.layers.15.self_attn.attn",
+            "language_model.model.layers.19.self_attn.attn",
+            "language_model.model.layers.23.self_attn.attn"
+          ],
+          "type": "FullAttentionSpec"
+        }
+      ],
+      "mamba_ssm_cache_dtype": "float32",
+      "max_concurrency": 668.2,
+      "recorded_report_sha256": "3d441fc6a56e604ef7f0551eae680e99d958212d3abff767dce921010ce5819d",
+      "report_hash_match": true,
+      "report_sha256": "3d441fc6a56e604ef7f0551eae680e99d958212d3abff767dce921010ce5819d",
+      "requested": {
+        "enable_per_layer_page_groups": false,
+        "enforce_eager": true,
+        "gpu_memory_utilization": 0.85,
+        "kv_cache_dtype": "int4_per_token_head",
+        "kv_cache_dtype_per_layer": {},
+        "max_model_len": 4096
+      },
+      "verification": {
+        "checks": {},
+        "passed": null
+      }
+    }
+  },
+  "correction_record": {
+    "path": "/root/autodl-tmp/formal-artifacts-c7379f0/a2_capacity_gate_c7379f0_v1_diagnosis.json",
+    "sha256": "2ea431d6b324a2a493648fa7cdbb08e7f40b266d62ddc708eac4ad463fa12b65"
+  },
+  "created_at": "2026-08-04T07:49:38Z",
+  "deployment_manifest_sha256": "e61b194839f562e0635b4f762574ac519a33bb5aea43ce8120499c78e44310ed",
+  "gate_thresholds": {
+    "packed_over_legacy": ">= 3.0",
+    "packed_over_uniform": "[0.80, 0.92]"
+  },
+  "gates": {
+    "all_baseline_exit_codes_zero": true,
+    "all_report_hashes_match": true,
+    "legacy_config_valid": true,
+    "packed_config_valid": true,
+    "packed_over_legacy_at_least_3x": true,
+    "packed_over_uniform_in_range": true,
+    "uniform_config_valid": true
+  },
+  "gpu_memory_utilization": 0.85,
+  "interpretation": "A2 capacity gate uses only the three independent current-commit probes. Failed launcher attempts, the invalid v1 analysis predicate, and historical measurements are excluded from the efficacy denominator.",
+  "max_model_len": 4096,
+  "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master",
+  "ratios": {
+    "packed_over_legacy": 3.231909116161473,
+    "packed_over_uniform": 0.8332086810595893,
+    "uniform_over_legacy": 3.878871151524084
+  },
+  "root_commit": "c7379f0c68a67a4eeb838573fdfe5560c1a42bd9",
+  "schema_version": 2,
+  "status": "PASSED",
+  "supersedes_analysis_artifact": {
+    "path": "/root/autodl-tmp/formal-artifacts-c7379f0/a2_capacity_gate_c7379f0.json",
+    "sha256": "c40eb3bdd0021a43006e5f2157ca331f631b26460bb27c0f3df5759592d4ea4a"
+  },
+  "vllm_commit": "55f47685a553ad8d776c464c59785399a98c7185"
+}

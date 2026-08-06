@@ -1,0 +1,2356 @@
+{
+  "cache_config": {
+    "block_size": 2064,
+    "cache_dtype": "int4_per_token_head",
+    "enable_per_layer_page_groups": true,
+    "kv_cache_dtype_per_layer": {
+      "11": "int4_per_token_head",
+      "15": "int4_per_token_head",
+      "19": "int4_per_token_head",
+      "23": "auto",
+      "3": "int4_per_token_head",
+      "7": "int4_per_token_head"
+    },
+    "mamba_block_size": 4096,
+    "mamba_cache_dtype": "auto",
+    "mamba_page_size_padded": 1089792,
+    "mamba_ssm_cache_dtype": "float32",
+    "num_gpu_blocks": 2227
+  },
+  "capacity": {
+    "max_concurrency": 556.75,
+    "max_model_len": 4096,
+    "tokens": 2280448
+  },
+  "captured_at": "2026-08-04T07:35:08Z",
+  "environment": {
+    "cuda_runtime": "13.0",
+    "gpu": "NVIDIA GeForce RTX 5090",
+    "hostname": "autodl-container-tzss9fvw93-6d7c8f8a",
+    "model_config_sha256": "ed1c1723241f23f7f4e23430759cbd7dcfb4103cbdfe052bfe7626b57c2615b4",
+    "model_path": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master",
+    "python": "3.12.13 (main, Jul 23 2026, 14:43:28) [Clang 22.1.3 ]",
+    "torch": "2.13.0+cu130",
+    "vllm": "0.26.1rc1.dev245+ge2fa28594",
+    "vllm_file": "/root/autodl-tmp/MLSys_Research/.venv/lib/python3.12/site-packages/vllm/__init__.py"
+  },
+  "generation": {
+    "finish_reason": "length",
+    "output_token_count": 16,
+    "prompt": "State one reason KV-cache capacity matters for LLM serving.",
+    "text": "\n\n<think>\n\n</think>\n\nKV-cache capacity matters because it directly determines the **maximum",
+    "token_ids": [
+      271,
+      248068,
+      271,
+      248069,
+      271,
+      79852,
+      35464,
+      8390,
+      12482,
+      1521,
+      424,
+      5774,
+      25721,
+      279,
+      2972,
+      37890
+    ]
+  },
+  "kv_cache_config": {
+    "groups": [
+      {
+        "group_id": 0,
+        "layer_names": [
+          "language_model.model.layers.3.self_attn.attn",
+          "language_model.model.layers.7.self_attn.attn",
+          "language_model.model.layers.11.self_attn.attn",
+          "language_model.model.layers.15.self_attn.attn",
+          "language_model.model.layers.19.self_attn.attn",
+          "language_model.model.layers.23.self_attn.attn"
+        ],
+        "spec": {
+          "block_size": 2064,
+          "page_size_bytes": 9676032,
+          "per_layer_specs": {
+            "language_model.model.layers.11.self_attn.attn": {
+              "attention_chunk_size": null,
+              "block_size": 2064,
+              "dtype": "torch.uint8",
+              "head_size": 256,
+              "head_size_v": 256,
+              "kv_quant_mode": "INT4_PER_TOKEN_HEAD",
+              "num_kv_heads": 2,
+              "page_size_bytes": 1089792,
+              "page_size_padded": null,
+              "sliding_window": null,
+              "type": "FullAttentionSpec"
+            },
+            "language_model.model.layers.15.self_attn.attn": {
+              "attention_chunk_size": null,
+              "block_size": 2064,
+              "dtype": "torch.uint8",
+              "head_size": 256,
+              "head_size_v": 256,
+              "kv_quant_mode": "INT4_PER_TOKEN_HEAD",
+              "num_kv_heads": 2,
+              "page_size_bytes": 1089792,
+              "page_size_padded": null,
+              "sliding_window": null,
+              "type": "FullAttentionSpec"
+            },
+            "language_model.model.layers.19.self_attn.attn": {
+              "attention_chunk_size": null,
+              "block_size": 2064,
+              "dtype": "torch.uint8",
+              "head_size": 256,
+              "head_size_v": 256,
+              "kv_quant_mode": "INT4_PER_TOKEN_HEAD",
+              "num_kv_heads": 2,
+              "page_size_bytes": 1089792,
+              "page_size_padded": null,
+              "sliding_window": null,
+              "type": "FullAttentionSpec"
+            },
+            "language_model.model.layers.23.self_attn.attn": {
+              "attention_chunk_size": null,
+              "block_size": 2064,
+              "dtype": "torch.bfloat16",
+              "head_size": 256,
+              "head_size_v": 256,
+              "kv_quant_mode": "NONE",
+              "num_kv_heads": 2,
+              "page_size_bytes": 4227072,
+              "page_size_padded": null,
+              "sliding_window": null,
+              "type": "FullAttentionSpec"
+            },
+            "language_model.model.layers.3.self_attn.attn": {
+              "attention_chunk_size": null,
+              "block_size": 2064,
+              "dtype": "torch.uint8",
+              "head_size": 256,
+              "head_size_v": 256,
+              "kv_quant_mode": "INT4_PER_TOKEN_HEAD",
+              "num_kv_heads": 2,
+              "page_size_bytes": 1089792,
+              "page_size_padded": null,
+              "sliding_window": null,
+              "type": "FullAttentionSpec"
+            },
+            "language_model.model.layers.7.self_attn.attn": {
+              "attention_chunk_size": null,
+              "block_size": 2064,
+              "dtype": "torch.uint8",
+              "head_size": 256,
+              "head_size_v": 256,
+              "kv_quant_mode": "INT4_PER_TOKEN_HEAD",
+              "num_kv_heads": 2,
+              "page_size_bytes": 1089792,
+              "page_size_padded": null,
+              "sliding_window": null,
+              "type": "FullAttentionSpec"
+            }
+          },
+          "type": "UniformTypeKVCacheSpecs"
+        }
+      },
+      {
+        "group_id": 1,
+        "layer_names": [
+          "language_model.model.layers.0.linear_attn",
+          "language_model.model.layers.2.linear_attn",
+          "language_model.model.layers.5.linear_attn",
+          "language_model.model.layers.8.linear_attn",
+          "language_model.model.layers.10.linear_attn",
+          "language_model.model.layers.13.linear_attn",
+          "language_model.model.layers.16.linear_attn",
+          "language_model.model.layers.18.linear_attn",
+          "language_model.model.layers.21.linear_attn"
+        ],
+        "spec": {
+          "block_size": 4096,
+          "dtypes": [
+            "torch.bfloat16",
+            "torch.float32"
+          ],
+          "mamba_cache_mode": "none",
+          "mamba_type": "GDN_ATTN",
+          "page_size_bytes": 1089792,
+          "page_size_padded": 1089792,
+          "shapes": [
+            [
+              3,
+              6144
+            ],
+            [
+              16,
+              128,
+              128
+            ]
+          ],
+          "type": "MambaSpec"
+        }
+      },
+      {
+        "group_id": 2,
+        "layer_names": [
+          "language_model.model.layers.1.linear_attn",
+          "language_model.model.layers.4.linear_attn",
+          "language_model.model.layers.6.linear_attn",
+          "language_model.model.layers.9.linear_attn",
+          "language_model.model.layers.12.linear_attn",
+          "language_model.model.layers.14.linear_attn",
+          "language_model.model.layers.17.linear_attn",
+          "language_model.model.layers.20.linear_attn",
+          "language_model.model.layers.22.linear_attn"
+        ],
+        "spec": {
+          "block_size": 4096,
+          "dtypes": [
+            "torch.bfloat16",
+            "torch.float32"
+          ],
+          "mamba_cache_mode": "none",
+          "mamba_type": "GDN_ATTN",
+          "page_size_bytes": 1089792,
+          "page_size_padded": 1089792,
+          "shapes": [
+            [
+              3,
+              6144
+            ],
+            [
+              16,
+              128,
+              128
+            ]
+          ],
+          "type": "MambaSpec"
+        }
+      }
+    ],
+    "num_blocks": 2227,
+    "tensors": [
+      {
+        "block_stride": 9808128,
+        "offset": 0,
+        "shared_by": [
+          "language_model.model.layers.3.self_attn.attn",
+          "language_model.model.layers.0.linear_attn",
+          "language_model.model.layers.1.linear_attn"
+        ],
+        "size": 21842701056,
+        "tensor_id": 0
+      },
+      {
+        "block_stride": 9808128,
+        "offset": 1089792,
+        "shared_by": [
+          "language_model.model.layers.7.self_attn.attn",
+          "language_model.model.layers.2.linear_attn",
+          "language_model.model.layers.4.linear_attn"
+        ],
+        "size": 21842701056,
+        "tensor_id": 1
+      },
+      {
+        "block_stride": 9808128,
+        "offset": 2179584,
+        "shared_by": [
+          "language_model.model.layers.11.self_attn.attn",
+          "language_model.model.layers.5.linear_attn",
+          "language_model.model.layers.6.linear_attn"
+        ],
+        "size": 21842701056,
+        "tensor_id": 2
+      },
+      {
+        "block_stride": 9808128,
+        "offset": 3269376,
+        "shared_by": [
+          "language_model.model.layers.15.self_attn.attn",
+          "language_model.model.layers.8.linear_attn",
+          "language_model.model.layers.9.linear_attn"
+        ],
+        "size": 21842701056,
+        "tensor_id": 3
+      },
+      {
+        "block_stride": 9808128,
+        "offset": 4359168,
+        "shared_by": [
+          "language_model.model.layers.19.self_attn.attn",
+          "language_model.model.layers.10.linear_attn",
+          "language_model.model.layers.12.linear_attn"
+        ],
+        "size": 21842701056,
+        "tensor_id": 4
+      },
+      {
+        "block_stride": 9808128,
+        "offset": 5448960,
+        "shared_by": [
+          "language_model.model.layers.23.self_attn.attn",
+          "language_model.model.layers.13.linear_attn",
+          "language_model.model.layers.14.linear_attn"
+        ],
+        "size": 21842701056,
+        "tensor_id": 5
+      },
+      {
+        "block_stride": 9808128,
+        "offset": 6538752,
+        "shared_by": [
+          "language_model.model.layers.16.linear_attn",
+          "language_model.model.layers.17.linear_attn"
+        ],
+        "size": 21842701056,
+        "tensor_id": 6
+      },
+      {
+        "block_stride": 9808128,
+        "offset": 7628544,
+        "shared_by": [
+          "language_model.model.layers.18.linear_attn",
+          "language_model.model.layers.20.linear_attn"
+        ],
+        "size": 21842701056,
+        "tensor_id": 7
+      },
+      {
+        "block_stride": 9808128,
+        "offset": 8718336,
+        "shared_by": [
+          "language_model.model.layers.21.linear_attn",
+          "language_model.model.layers.22.linear_attn"
+        ],
+        "size": 21842701056,
+        "tensor_id": 8
+      }
+    ]
+  },
+  "requested": {
+    "enable_per_layer_page_groups": true,
+    "enforce_eager": true,
+    "gpu_memory_utilization": 0.85,
+    "kv_cache_dtype": "int4_per_token_head",
+    "kv_cache_dtype_per_layer": {
+      "11": "int4_per_token_head",
+      "15": "int4_per_token_head",
+      "19": "int4_per_token_head",
+      "23": "auto",
+      "3": "int4_per_token_head",
+      "7": "int4_per_token_head"
+    },
+    "max_model_len": 4096
+  },
+  "schema_version": 1,
+  "verification": {
+    "attention_kv_quant_modes": [
+      "INT4_PER_TOKEN_HEAD",
+      "NONE"
+    ],
+    "checks": {
+      "all_layout_entries_are_packed": true,
+      "attention_group_is_mixed_precision": true,
+      "flag_enabled": true,
+      "generation_completed": true,
+      "mamba_ssm_cache_dtype_is_float32": true,
+      "one_backing_storage_per_worker": true,
+      "one_packed_attention_group": true,
+      "positive_capacity": true
+    },
+    "passed": true,
+    "worker_backing_storage_counts": [
+      1
+    ]
+  },
+  "workers": [
+    {
+      "bound_layers": {
+        "language_model.model.layers.0.linear_attn": {
+          "cache_tensors": [
+            {
+              "data_ptr": 140255109840896,
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "element_size": 2,
+              "is_contiguous": false,
+              "logical_nbytes": 82096128,
+              "numel": 41048064,
+              "shape": [
+                2227,
+                3,
+                6144
+              ],
+              "storage_data_ptr": 140255109840896,
+              "storage_nbytes": 21842701056,
+              "storage_offset": 0,
+              "stride": [
+                4904064,
+                6144,
+                1
+              ]
+            },
+            {
+              "data_ptr": 140255109877760,
+              "device": "cuda:0",
+              "dtype": "torch.float32",
+              "element_size": 4,
+              "is_contiguous": false,
+              "logical_nbytes": 2335178752,
+              "numel": 583794688,
+              "shape": [
+                2227,
+                16,
+                128,
+                128
+              ],
+              "storage_data_ptr": 140255109840896,
+              "storage_nbytes": 21842701056,
+              "storage_offset": 9216,
+              "stride": [
+                2452032,
+                16384,
+                128,
+                1
+              ]
+            }
+          ],
+          "layer_type": "QwenGatedDeltaNetAttention"
+        },
+        "language_model.model.layers.1.linear_attn": {
+          "cache_tensors": [
+            {
+              "data_ptr": 140255109840896,
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "element_size": 2,
+              "is_contiguous": false,
+              "logical_nbytes": 82096128,
+              "numel": 41048064,
+              "shape": [
+                2227,
+                3,
+                6144
+              ],
+              "storage_data_ptr": 140255109840896,
+              "storage_nbytes": 21842701056,
+              "storage_offset": 0,
+              "stride": [
+                4904064,
+                6144,
+                1
+              ]
+            },
+            {
+              "data_ptr": 140255109877760,
+              "device": "cuda:0",
+              "dtype": "torch.float32",
+              "element_size": 4,
+              "is_contiguous": false,
+              "logical_nbytes": 2335178752,
+              "numel": 583794688,
+              "shape": [
+                2227,
+                16,
+                128,
+                128
+              ],
+              "storage_data_ptr": 140255109840896,
+              "storage_nbytes": 21842701056,
+              "storage_offset": 9216,
+              "stride": [
+                2452032,
+                16384,
+                128,
+                1
+              ]
+            }
+          ],
+          "layer_type": "QwenGatedDeltaNetAttention"
+        },
+        "language_model.model.layers.10.linear_attn": {
+          "cache_tensors": [
+            {
+              "data_ptr": 140255114200064,
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "element_size": 2,
+              "is_contiguous": false,
+              "logical_nbytes": 82096128,
+              "numel": 41048064,
+              "shape": [
+                2227,
+                3,
+                6144
+              ],
+              "storage_data_ptr": 140255109840896,
+              "storage_nbytes": 21842701056,
+              "storage_offset": 2179584,
+              "stride": [
+                4904064,
+                6144,
+                1
+              ]
+            },
+            {
+              "data_ptr": 140255114236928,
+              "device": "cuda:0",
+              "dtype": "torch.float32",
+              "element_size": 4,
+              "is_contiguous": false,
+              "logical_nbytes": 2335178752,
+              "numel": 583794688,
+              "shape": [
+                2227,
+                16,
+                128,
+                128
+              ],
+              "storage_data_ptr": 140255109840896,
+              "storage_nbytes": 21842701056,
+              "storage_offset": 1099008,
+              "stride": [
+                2452032,
+                16384,
+                128,
+                1
+              ]
+            }
+          ],
+          "layer_type": "QwenGatedDeltaNetAttention"
+        },
+        "language_model.model.layers.11.self_attn.attn": {
+          "cache_tensors": [
+            {
+              "data_ptr": 140255112020480,
+              "device": "cuda:0",
+              "dtype": "torch.uint8",
+              "element_size": 1,
+              "is_contiguous": false,
+              "logical_nbytes": 2426966784,
+              "numel": 2426966784,
+              "shape": [
+                2227,
+                2,
+                2064,
+                264
+              ],
+              "storage_data_ptr": 140255109840896,
+              "storage_nbytes": 21842701056,
+              "storage_offset": 2179584,
+              "stride": [
+                9808128,
+                264,
+                528,
+                1
+              ]
+            }
+          ],
+          "layer_type": "Attention"
+        },
+        "language_model.model.layers.12.linear_attn": {
+          "cache_tensors": [
+            {
+              "data_ptr": 140255114200064,
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "element_size": 2,
+              "is_contiguous": false,
+              "logical_nbytes": 82096128,
+              "numel": 41048064,
+              "shape": [
+                2227,
+                3,
+                6144
+              ],
+              "storage_data_ptr": 140255109840896,
+              "storage_nbytes": 21842701056,
+              "storage_offset": 2179584,
+              "stride": [
+                4904064,
+                6144,
+                1
+              ]
+            },
+            {
+              "data_ptr": 140255114236928,
+              "device": "cuda:0",
+              "dtype": "torch.float32",
+              "element_size": 4,
+              "is_contiguous": false,
+              "logical_nbytes": 2335178752,
+              "numel": 583794688,
+              "shape": [
+                2227,
+                16,
+                128,
+                128
+              ],
+              "storage_data_ptr": 140255109840896,
+              "storage_nbytes": 21842701056,
+              "storage_offset": 1099008,
+              "stride": [
+                2452032,
+                16384,
+                128,
+                1
+              ]
+            }
+          ],
+          "layer_type": "QwenGatedDeltaNetAttention"
+        },
+        "language_model.model.layers.13.linear_attn": {
+          "cache_tensors": [
+            {
+              "data_ptr": 140255115289856,
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "element_size": 2,
+              "is_contiguous": false,
+              "logical_nbytes": 82096128,
+              "numel": 41048064,
+              "shape": [
+                2227,
+                3,
+                6144
+              ],
+              "storage_data_ptr": 140255109840896,
+              "storage_nbytes": 21842701056,
+              "storage_offset": 2724480,
+              "stride": [
+                4904064,
+                6144,
+                1
+              ]
+            },
+            {
+              "data_ptr": 140255115326720,
+              "device": "cuda:0",
+              "dtype": "torch.float32",
+              "element_size": 4,
+              "is_contiguous": false,
+              "logical_nbytes": 2335178752,
+              "numel": 583794688,
+              "shape": [
+                2227,
+                16,
+                128,
+                128
+              ],
+              "storage_data_ptr": 140255109840896,
+              "storage_nbytes": 21842701056,
+              "storage_offset": 1371456,
+              "stride": [
+                2452032,
+                16384,
+                128,
+                1
+              ]
+            }
+          ],
+          "layer_type": "QwenGatedDeltaNetAttention"
+        },
+        "language_model.model.layers.14.linear_attn": {
+          "cache_tensors": [
+            {
+              "data_ptr": 140255115289856,
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "element_size": 2,
+              "is_contiguous": false,
+              "logical_nbytes": 82096128,
+              "numel": 41048064,
+              "shape": [
+                2227,
+                3,
+                6144
+              ],
+              "storage_data_ptr": 140255109840896,
+              "storage_nbytes": 21842701056,
+              "storage_offset": 2724480,
+              "stride": [
+                4904064,
+                6144,
+                1
+              ]
+            },
+            {
+              "data_ptr": 140255115326720,
+              "device": "cuda:0",
+              "dtype": "torch.float32",
+              "element_size": 4,
+              "is_contiguous": false,
+              "logical_nbytes": 2335178752,
+              "numel": 583794688,
+              "shape": [
+                2227,
+                16,
+                128,
+                128
+              ],
+              "storage_data_ptr": 140255109840896,
+              "storage_nbytes": 21842701056,
+              "storage_offset": 1371456,
+              "stride": [
+                2452032,
+                16384,
+                128,
+                1
+              ]
+            }
+          ],
+          "layer_type": "QwenGatedDeltaNetAttention"
+        },
+        "language_model.model.layers.15.self_attn.attn": {
+          "cache_tensors": [
+            {
+              "data_ptr": 140255113110272,
+              "device": "cuda:0",
+              "dtype": "torch.uint8",
+              "element_size": 1,
+              "is_contiguous": false,
+              "logical_nbytes": 2426966784,
+              "numel": 2426966784,
+              "shape": [
+                2227,
+                2,
+                2064,
+                264
+              ],
+              "storage_data_ptr": 140255109840896,
+              "storage_nbytes": 21842701056,
+              "storage_offset": 3269376,
+              "stride": [
+                9808128,
+                264,
+                528,
+                1
+              ]
+            }
+          ],
+          "layer_type": "Attention"
+        },
+        "language_model.model.layers.16.linear_attn": {
+          "cache_tensors": [
+            {
+              "data_ptr": 140255116379648,
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "element_size": 2,
+              "is_contiguous": false,
+              "logical_nbytes": 82096128,
+              "numel": 41048064,
+              "shape": [
+                2227,
+                3,
+                6144
+              ],
+              "storage_data_ptr": 140255109840896,
+              "storage_nbytes": 21842701056,
+              "storage_offset": 3269376,
+              "stride": [
+                4904064,
+                6144,
+                1
+              ]
+            },
+            {
+              "data_ptr": 140255116416512,
+              "device": "cuda:0",
+              "dtype": "torch.float32",
+              "element_size": 4,
+              "is_contiguous": false,
+              "logical_nbytes": 2335178752,
+              "numel": 583794688,
+              "shape": [
+                2227,
+                16,
+                128,
+                128
+              ],
+              "storage_data_ptr": 140255109840896,
+              "storage_nbytes": 21842701056,
+              "storage_offset": 1643904,
+              "stride": [
+                2452032,
+                16384,
+                128,
+                1
+              ]
+            }
+          ],
+          "layer_type": "QwenGatedDeltaNetAttention"
+        },
+        "language_model.model.layers.17.linear_attn": {
+          "cache_tensors": [
+            {
+              "data_ptr": 140255116379648,
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "element_size": 2,
+              "is_contiguous": false,
+              "logical_nbytes": 82096128,
+              "numel": 41048064,
+              "shape": [
+                2227,
+                3,
+                6144
+              ],
+              "storage_data_ptr": 140255109840896,
+              "storage_nbytes": 21842701056,
+              "storage_offset": 3269376,
+              "stride": [
+                4904064,
+                6144,
+                1
+              ]
+            },
+            {
+              "data_ptr": 140255116416512,
+              "device": "cuda:0",
+              "dtype": "torch.float32",
+              "element_size": 4,
+              "is_contiguous": false,
+              "logical_nbytes": 2335178752,
+              "numel": 583794688,
+              "shape": [
+                2227,
+                16,
+                128,
+                128
+              ],
+              "storage_data_ptr": 140255109840896,
+              "storage_nbytes": 21842701056,
+              "storage_offset": 1643904,
+              "stride": [
+                2452032,
+                16384,
+                128,
+                1
+              ]
+            }
+          ],
+          "layer_type": "QwenGatedDeltaNetAttention"
+        },
+        "language_model.model.layers.18.linear_attn": {
+          "cache_tensors": [
+            {
+              "data_ptr": 140255117469440,
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "element_size": 2,
+              "is_contiguous": false,
+              "logical_nbytes": 82096128,
+              "numel": 41048064,
+              "shape": [
+                2227,
+                3,
+                6144
+              ],
+              "storage_data_ptr": 140255109840896,
+              "storage_nbytes": 21842701056,
+              "storage_offset": 3814272,
+              "stride": [
+                4904064,
+                6144,
+                1
+              ]
+            },
+            {
+              "data_ptr": 140255117506304,
+              "device": "cuda:0",
+              "dtype": "torch.float32",
+              "element_size": 4,
+              "is_contiguous": false,
+              "logical_nbytes": 2335178752,
+              "numel": 583794688,
+              "shape": [
+                2227,
+                16,
+                128,
+                128
+              ],
+              "storage_data_ptr": 140255109840896,
+              "storage_nbytes": 21842701056,
+              "storage_offset": 1916352,
+              "stride": [
+                2452032,
+                16384,
+                128,
+                1
+              ]
+            }
+          ],
+          "layer_type": "QwenGatedDeltaNetAttention"
+        },
+        "language_model.model.layers.19.self_attn.attn": {
+          "cache_tensors": [
+            {
+              "data_ptr": 140255114200064,
+              "device": "cuda:0",
+              "dtype": "torch.uint8",
+              "element_size": 1,
+              "is_contiguous": false,
+              "logical_nbytes": 2426966784,
+              "numel": 2426966784,
+              "shape": [
+                2227,
+                2,
+                2064,
+                264
+              ],
+              "storage_data_ptr": 140255109840896,
+              "storage_nbytes": 21842701056,
+              "storage_offset": 4359168,
+              "stride": [
+                9808128,
+                264,
+                528,
+                1
+              ]
+            }
+          ],
+          "layer_type": "Attention"
+        },
+        "language_model.model.layers.2.linear_attn": {
+          "cache_tensors": [
+            {
+              "data_ptr": 140255110930688,
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "element_size": 2,
+              "is_contiguous": false,
+              "logical_nbytes": 82096128,
+              "numel": 41048064,
+              "shape": [
+                2227,
+                3,
+                6144
+              ],
+              "storage_data_ptr": 140255109840896,
+              "storage_nbytes": 21842701056,
+              "storage_offset": 544896,
+              "stride": [
+                4904064,
+                6144,
+                1
+              ]
+            },
+            {
+              "data_ptr": 140255110967552,
+              "device": "cuda:0",
+              "dtype": "torch.float32",
+              "element_size": 4,
+              "is_contiguous": false,
+              "logical_nbytes": 2335178752,
+              "numel": 583794688,
+              "shape": [
+                2227,
+                16,
+                128,
+                128
+              ],
+              "storage_data_ptr": 140255109840896,
+              "storage_nbytes": 21842701056,
+              "storage_offset": 281664,
+              "stride": [
+                2452032,
+                16384,
+                128,
+                1
+              ]
+            }
+          ],
+          "layer_type": "QwenGatedDeltaNetAttention"
+        },
+        "language_model.model.layers.20.linear_attn": {
+          "cache_tensors": [
+            {
+              "data_ptr": 140255117469440,
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "element_size": 2,
+              "is_contiguous": false,
+              "logical_nbytes": 82096128,
+              "numel": 41048064,
+              "shape": [
+                2227,
+                3,
+                6144
+              ],
+              "storage_data_ptr": 140255109840896,
+              "storage_nbytes": 21842701056,
+              "storage_offset": 3814272,
+              "stride": [
+                4904064,
+                6144,
+                1
+              ]
+            },
+            {
+              "data_ptr": 140255117506304,
+              "device": "cuda:0",
+              "dtype": "torch.float32",
+              "element_size": 4,
+              "is_contiguous": false,
+              "logical_nbytes": 2335178752,
+              "numel": 583794688,
+              "shape": [
+                2227,
+                16,
+                128,
+                128
+              ],
+              "storage_data_ptr": 140255109840896,
+              "storage_nbytes": 21842701056,
+              "storage_offset": 1916352,
+              "stride": [
+                2452032,
+                16384,
+                128,
+                1
+              ]
+            }
+          ],
+          "layer_type": "QwenGatedDeltaNetAttention"
+        },
+        "language_model.model.layers.21.linear_attn": {
+          "cache_tensors": [
+            {
+              "data_ptr": 140255118559232,
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "element_size": 2,
+              "is_contiguous": false,
+              "logical_nbytes": 82096128,
+              "numel": 41048064,
+              "shape": [
+                2227,
+                3,
+                6144
+              ],
+              "storage_data_ptr": 140255109840896,
+              "storage_nbytes": 21842701056,
+              "storage_offset": 4359168,
+              "stride": [
+                4904064,
+                6144,
+                1
+              ]
+            },
+            {
+              "data_ptr": 140255118596096,
+              "device": "cuda:0",
+              "dtype": "torch.float32",
+              "element_size": 4,
+              "is_contiguous": false,
+              "logical_nbytes": 2335178752,
+              "numel": 583794688,
+              "shape": [
+                2227,
+                16,
+                128,
+                128
+              ],
+              "storage_data_ptr": 140255109840896,
+              "storage_nbytes": 21842701056,
+              "storage_offset": 2188800,
+              "stride": [
+                2452032,
+                16384,
+                128,
+                1
+              ]
+            }
+          ],
+          "layer_type": "QwenGatedDeltaNetAttention"
+        },
+        "language_model.model.layers.22.linear_attn": {
+          "cache_tensors": [
+            {
+              "data_ptr": 140255118559232,
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "element_size": 2,
+              "is_contiguous": false,
+              "logical_nbytes": 82096128,
+              "numel": 41048064,
+              "shape": [
+                2227,
+                3,
+                6144
+              ],
+              "storage_data_ptr": 140255109840896,
+              "storage_nbytes": 21842701056,
+              "storage_offset": 4359168,
+              "stride": [
+                4904064,
+                6144,
+                1
+              ]
+            },
+            {
+              "data_ptr": 140255118596096,
+              "device": "cuda:0",
+              "dtype": "torch.float32",
+              "element_size": 4,
+              "is_contiguous": false,
+              "logical_nbytes": 2335178752,
+              "numel": 583794688,
+              "shape": [
+                2227,
+                16,
+                128,
+                128
+              ],
+              "storage_data_ptr": 140255109840896,
+              "storage_nbytes": 21842701056,
+              "storage_offset": 2188800,
+              "stride": [
+                2452032,
+                16384,
+                128,
+                1
+              ]
+            }
+          ],
+          "layer_type": "QwenGatedDeltaNetAttention"
+        },
+        "language_model.model.layers.23.self_attn.attn": {
+          "cache_tensors": [
+            {
+              "data_ptr": 140255115289856,
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "element_size": 2,
+              "is_contiguous": false,
+              "logical_nbytes": 9413689344,
+              "numel": 4706844672,
+              "shape": [
+                2227,
+                2,
+                2064,
+                512
+              ],
+              "storage_data_ptr": 140255109840896,
+              "storage_nbytes": 21842701056,
+              "storage_offset": 2724480,
+              "stride": [
+                4904064,
+                512,
+                1024,
+                1
+              ]
+            }
+          ],
+          "layer_type": "Attention"
+        },
+        "language_model.model.layers.3.self_attn.attn": {
+          "cache_tensors": [
+            {
+              "data_ptr": 140255109840896,
+              "device": "cuda:0",
+              "dtype": "torch.uint8",
+              "element_size": 1,
+              "is_contiguous": false,
+              "logical_nbytes": 2426966784,
+              "numel": 2426966784,
+              "shape": [
+                2227,
+                2,
+                2064,
+                264
+              ],
+              "storage_data_ptr": 140255109840896,
+              "storage_nbytes": 21842701056,
+              "storage_offset": 0,
+              "stride": [
+                9808128,
+                264,
+                528,
+                1
+              ]
+            }
+          ],
+          "layer_type": "Attention"
+        },
+        "language_model.model.layers.4.linear_attn": {
+          "cache_tensors": [
+            {
+              "data_ptr": 140255110930688,
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "element_size": 2,
+              "is_contiguous": false,
+              "logical_nbytes": 82096128,
+              "numel": 41048064,
+              "shape": [
+                2227,
+                3,
+                6144
+              ],
+              "storage_data_ptr": 140255109840896,
+              "storage_nbytes": 21842701056,
+              "storage_offset": 544896,
+              "stride": [
+                4904064,
+                6144,
+                1
+              ]
+            },
+            {
+              "data_ptr": 140255110967552,
+              "device": "cuda:0",
+              "dtype": "torch.float32",
+              "element_size": 4,
+              "is_contiguous": false,
+              "logical_nbytes": 2335178752,
+              "numel": 583794688,
+              "shape": [
+                2227,
+                16,
+                128,
+                128
+              ],
+              "storage_data_ptr": 140255109840896,
+              "storage_nbytes": 21842701056,
+              "storage_offset": 281664,
+              "stride": [
+                2452032,
+                16384,
+                128,
+                1
+              ]
+            }
+          ],
+          "layer_type": "QwenGatedDeltaNetAttention"
+        },
+        "language_model.model.layers.5.linear_attn": {
+          "cache_tensors": [
+            {
+              "data_ptr": 140255112020480,
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "element_size": 2,
+              "is_contiguous": false,
+              "logical_nbytes": 82096128,
+              "numel": 41048064,
+              "shape": [
+                2227,
+                3,
+                6144
+              ],
+              "storage_data_ptr": 140255109840896,
+              "storage_nbytes": 21842701056,
+              "storage_offset": 1089792,
+              "stride": [
+                4904064,
+                6144,
+                1
+              ]
+            },
+            {
+              "data_ptr": 140255112057344,
+              "device": "cuda:0",
+              "dtype": "torch.float32",
+              "element_size": 4,
+              "is_contiguous": false,
+              "logical_nbytes": 2335178752,
+              "numel": 583794688,
+              "shape": [
+                2227,
+                16,
+                128,
+                128
+              ],
+              "storage_data_ptr": 140255109840896,
+              "storage_nbytes": 21842701056,
+              "storage_offset": 554112,
+              "stride": [
+                2452032,
+                16384,
+                128,
+                1
+              ]
+            }
+          ],
+          "layer_type": "QwenGatedDeltaNetAttention"
+        },
+        "language_model.model.layers.6.linear_attn": {
+          "cache_tensors": [
+            {
+              "data_ptr": 140255112020480,
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "element_size": 2,
+              "is_contiguous": false,
+              "logical_nbytes": 82096128,
+              "numel": 41048064,
+              "shape": [
+                2227,
+                3,
+                6144
+              ],
+              "storage_data_ptr": 140255109840896,
+              "storage_nbytes": 21842701056,
+              "storage_offset": 1089792,
+              "stride": [
+                4904064,
+                6144,
+                1
+              ]
+            },
+            {
+              "data_ptr": 140255112057344,
+              "device": "cuda:0",
+              "dtype": "torch.float32",
+              "element_size": 4,
+              "is_contiguous": false,
+              "logical_nbytes": 2335178752,
+              "numel": 583794688,
+              "shape": [
+                2227,
+                16,
+                128,
+                128
+              ],
+              "storage_data_ptr": 140255109840896,
+              "storage_nbytes": 21842701056,
+              "storage_offset": 554112,
+              "stride": [
+                2452032,
+                16384,
+                128,
+                1
+              ]
+            }
+          ],
+          "layer_type": "QwenGatedDeltaNetAttention"
+        },
+        "language_model.model.layers.7.self_attn.attn": {
+          "cache_tensors": [
+            {
+              "data_ptr": 140255110930688,
+              "device": "cuda:0",
+              "dtype": "torch.uint8",
+              "element_size": 1,
+              "is_contiguous": false,
+              "logical_nbytes": 2426966784,
+              "numel": 2426966784,
+              "shape": [
+                2227,
+                2,
+                2064,
+                264
+              ],
+              "storage_data_ptr": 140255109840896,
+              "storage_nbytes": 21842701056,
+              "storage_offset": 1089792,
+              "stride": [
+                9808128,
+                264,
+                528,
+                1
+              ]
+            }
+          ],
+          "layer_type": "Attention"
+        },
+        "language_model.model.layers.8.linear_attn": {
+          "cache_tensors": [
+            {
+              "data_ptr": 140255113110272,
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "element_size": 2,
+              "is_contiguous": false,
+              "logical_nbytes": 82096128,
+              "numel": 41048064,
+              "shape": [
+                2227,
+                3,
+                6144
+              ],
+              "storage_data_ptr": 140255109840896,
+              "storage_nbytes": 21842701056,
+              "storage_offset": 1634688,
+              "stride": [
+                4904064,
+                6144,
+                1
+              ]
+            },
+            {
+              "data_ptr": 140255113147136,
+              "device": "cuda:0",
+              "dtype": "torch.float32",
+              "element_size": 4,
+              "is_contiguous": false,
+              "logical_nbytes": 2335178752,
+              "numel": 583794688,
+              "shape": [
+                2227,
+                16,
+                128,
+                128
+              ],
+              "storage_data_ptr": 140255109840896,
+              "storage_nbytes": 21842701056,
+              "storage_offset": 826560,
+              "stride": [
+                2452032,
+                16384,
+                128,
+                1
+              ]
+            }
+          ],
+          "layer_type": "QwenGatedDeltaNetAttention"
+        },
+        "language_model.model.layers.9.linear_attn": {
+          "cache_tensors": [
+            {
+              "data_ptr": 140255113110272,
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "element_size": 2,
+              "is_contiguous": false,
+              "logical_nbytes": 82096128,
+              "numel": 41048064,
+              "shape": [
+                2227,
+                3,
+                6144
+              ],
+              "storage_data_ptr": 140255109840896,
+              "storage_nbytes": 21842701056,
+              "storage_offset": 1634688,
+              "stride": [
+                4904064,
+                6144,
+                1
+              ]
+            },
+            {
+              "data_ptr": 140255113147136,
+              "device": "cuda:0",
+              "dtype": "torch.float32",
+              "element_size": 4,
+              "is_contiguous": false,
+              "logical_nbytes": 2335178752,
+              "numel": 583794688,
+              "shape": [
+                2227,
+                16,
+                128,
+                128
+              ],
+              "storage_data_ptr": 140255109840896,
+              "storage_nbytes": 21842701056,
+              "storage_offset": 826560,
+              "stride": [
+                2452032,
+                16384,
+                128,
+                1
+              ]
+            }
+          ],
+          "layer_type": "QwenGatedDeltaNetAttention"
+        }
+      },
+      "cache_config": {
+        "block_size": 2064,
+        "cache_dtype": "int4_per_token_head",
+        "enable_per_layer_page_groups": true,
+        "kv_cache_dtype_per_layer": {
+          "11": "int4_per_token_head",
+          "15": "int4_per_token_head",
+          "19": "int4_per_token_head",
+          "23": "auto",
+          "3": "int4_per_token_head",
+          "7": "int4_per_token_head"
+        },
+        "mamba_block_size": 4096,
+        "mamba_cache_dtype": "auto",
+        "mamba_page_size_padded": 1089792,
+        "mamba_ssm_cache_dtype": "float32",
+        "num_gpu_blocks": 2227
+      },
+      "capacity": {
+        "max_concurrency": 556.75,
+        "max_model_len": 4096,
+        "tokens": 2280448
+      },
+      "device": "cuda:0",
+      "kernel_block_sizes": [
+        2064,
+        4096,
+        4096
+      ],
+      "kv_cache_config": {
+        "groups": [
+          {
+            "group_id": 0,
+            "layer_names": [
+              "language_model.model.layers.3.self_attn.attn",
+              "language_model.model.layers.7.self_attn.attn",
+              "language_model.model.layers.11.self_attn.attn",
+              "language_model.model.layers.15.self_attn.attn",
+              "language_model.model.layers.19.self_attn.attn",
+              "language_model.model.layers.23.self_attn.attn"
+            ],
+            "spec": {
+              "block_size": 2064,
+              "page_size_bytes": 9676032,
+              "per_layer_specs": {
+                "language_model.model.layers.11.self_attn.attn": {
+                  "attention_chunk_size": null,
+                  "block_size": 2064,
+                  "dtype": "torch.uint8",
+                  "head_size": 256,
+                  "head_size_v": 256,
+                  "kv_quant_mode": "INT4_PER_TOKEN_HEAD",
+                  "num_kv_heads": 2,
+                  "page_size_bytes": 1089792,
+                  "page_size_padded": null,
+                  "sliding_window": null,
+                  "type": "FullAttentionSpec"
+                },
+                "language_model.model.layers.15.self_attn.attn": {
+                  "attention_chunk_size": null,
+                  "block_size": 2064,
+                  "dtype": "torch.uint8",
+                  "head_size": 256,
+                  "head_size_v": 256,
+                  "kv_quant_mode": "INT4_PER_TOKEN_HEAD",
+                  "num_kv_heads": 2,
+                  "page_size_bytes": 1089792,
+                  "page_size_padded": null,
+                  "sliding_window": null,
+                  "type": "FullAttentionSpec"
+                },
+                "language_model.model.layers.19.self_attn.attn": {
+                  "attention_chunk_size": null,
+                  "block_size": 2064,
+                  "dtype": "torch.uint8",
+                  "head_size": 256,
+                  "head_size_v": 256,
+                  "kv_quant_mode": "INT4_PER_TOKEN_HEAD",
+                  "num_kv_heads": 2,
+                  "page_size_bytes": 1089792,
+                  "page_size_padded": null,
+                  "sliding_window": null,
+                  "type": "FullAttentionSpec"
+                },
+                "language_model.model.layers.23.self_attn.attn": {
+                  "attention_chunk_size": null,
+                  "block_size": 2064,
+                  "dtype": "torch.bfloat16",
+                  "head_size": 256,
+                  "head_size_v": 256,
+                  "kv_quant_mode": "NONE",
+                  "num_kv_heads": 2,
+                  "page_size_bytes": 4227072,
+                  "page_size_padded": null,
+                  "sliding_window": null,
+                  "type": "FullAttentionSpec"
+                },
+                "language_model.model.layers.3.self_attn.attn": {
+                  "attention_chunk_size": null,
+                  "block_size": 2064,
+                  "dtype": "torch.uint8",
+                  "head_size": 256,
+                  "head_size_v": 256,
+                  "kv_quant_mode": "INT4_PER_TOKEN_HEAD",
+                  "num_kv_heads": 2,
+                  "page_size_bytes": 1089792,
+                  "page_size_padded": null,
+                  "sliding_window": null,
+                  "type": "FullAttentionSpec"
+                },
+                "language_model.model.layers.7.self_attn.attn": {
+                  "attention_chunk_size": null,
+                  "block_size": 2064,
+                  "dtype": "torch.uint8",
+                  "head_size": 256,
+                  "head_size_v": 256,
+                  "kv_quant_mode": "INT4_PER_TOKEN_HEAD",
+                  "num_kv_heads": 2,
+                  "page_size_bytes": 1089792,
+                  "page_size_padded": null,
+                  "sliding_window": null,
+                  "type": "FullAttentionSpec"
+                }
+              },
+              "type": "UniformTypeKVCacheSpecs"
+            }
+          },
+          {
+            "group_id": 1,
+            "layer_names": [
+              "language_model.model.layers.0.linear_attn",
+              "language_model.model.layers.2.linear_attn",
+              "language_model.model.layers.5.linear_attn",
+              "language_model.model.layers.8.linear_attn",
+              "language_model.model.layers.10.linear_attn",
+              "language_model.model.layers.13.linear_attn",
+              "language_model.model.layers.16.linear_attn",
+              "language_model.model.layers.18.linear_attn",
+              "language_model.model.layers.21.linear_attn"
+            ],
+            "spec": {
+              "block_size": 4096,
+              "dtypes": [
+                "torch.bfloat16",
+                "torch.float32"
+              ],
+              "mamba_cache_mode": "none",
+              "mamba_type": "GDN_ATTN",
+              "page_size_bytes": 1089792,
+              "page_size_padded": 1089792,
+              "shapes": [
+                [
+                  3,
+                  6144
+                ],
+                [
+                  16,
+                  128,
+                  128
+                ]
+              ],
+              "type": "MambaSpec"
+            }
+          },
+          {
+            "group_id": 2,
+            "layer_names": [
+              "language_model.model.layers.1.linear_attn",
+              "language_model.model.layers.4.linear_attn",
+              "language_model.model.layers.6.linear_attn",
+              "language_model.model.layers.9.linear_attn",
+              "language_model.model.layers.12.linear_attn",
+              "language_model.model.layers.14.linear_attn",
+              "language_model.model.layers.17.linear_attn",
+              "language_model.model.layers.20.linear_attn",
+              "language_model.model.layers.22.linear_attn"
+            ],
+            "spec": {
+              "block_size": 4096,
+              "dtypes": [
+                "torch.bfloat16",
+                "torch.float32"
+              ],
+              "mamba_cache_mode": "none",
+              "mamba_type": "GDN_ATTN",
+              "page_size_bytes": 1089792,
+              "page_size_padded": 1089792,
+              "shapes": [
+                [
+                  3,
+                  6144
+                ],
+                [
+                  16,
+                  128,
+                  128
+                ]
+              ],
+              "type": "MambaSpec"
+            }
+          }
+        ],
+        "num_blocks": 2227,
+        "tensors": [
+          {
+            "block_stride": 9808128,
+            "offset": 0,
+            "shared_by": [
+              "language_model.model.layers.3.self_attn.attn",
+              "language_model.model.layers.0.linear_attn",
+              "language_model.model.layers.1.linear_attn"
+            ],
+            "size": 21842701056,
+            "tensor_id": 0
+          },
+          {
+            "block_stride": 9808128,
+            "offset": 1089792,
+            "shared_by": [
+              "language_model.model.layers.7.self_attn.attn",
+              "language_model.model.layers.2.linear_attn",
+              "language_model.model.layers.4.linear_attn"
+            ],
+            "size": 21842701056,
+            "tensor_id": 1
+          },
+          {
+            "block_stride": 9808128,
+            "offset": 2179584,
+            "shared_by": [
+              "language_model.model.layers.11.self_attn.attn",
+              "language_model.model.layers.5.linear_attn",
+              "language_model.model.layers.6.linear_attn"
+            ],
+            "size": 21842701056,
+            "tensor_id": 2
+          },
+          {
+            "block_stride": 9808128,
+            "offset": 3269376,
+            "shared_by": [
+              "language_model.model.layers.15.self_attn.attn",
+              "language_model.model.layers.8.linear_attn",
+              "language_model.model.layers.9.linear_attn"
+            ],
+            "size": 21842701056,
+            "tensor_id": 3
+          },
+          {
+            "block_stride": 9808128,
+            "offset": 4359168,
+            "shared_by": [
+              "language_model.model.layers.19.self_attn.attn",
+              "language_model.model.layers.10.linear_attn",
+              "language_model.model.layers.12.linear_attn"
+            ],
+            "size": 21842701056,
+            "tensor_id": 4
+          },
+          {
+            "block_stride": 9808128,
+            "offset": 5448960,
+            "shared_by": [
+              "language_model.model.layers.23.self_attn.attn",
+              "language_model.model.layers.13.linear_attn",
+              "language_model.model.layers.14.linear_attn"
+            ],
+            "size": 21842701056,
+            "tensor_id": 5
+          },
+          {
+            "block_stride": 9808128,
+            "offset": 6538752,
+            "shared_by": [
+              "language_model.model.layers.16.linear_attn",
+              "language_model.model.layers.17.linear_attn"
+            ],
+            "size": 21842701056,
+            "tensor_id": 6
+          },
+          {
+            "block_stride": 9808128,
+            "offset": 7628544,
+            "shared_by": [
+              "language_model.model.layers.18.linear_attn",
+              "language_model.model.layers.20.linear_attn"
+            ],
+            "size": 21842701056,
+            "tensor_id": 7
+          },
+          {
+            "block_stride": 9808128,
+            "offset": 8718336,
+            "shared_by": [
+              "language_model.model.layers.21.linear_attn",
+              "language_model.model.layers.22.linear_attn"
+            ],
+            "size": 21842701056,
+            "tensor_id": 8
+          }
+        ]
+      },
+      "local_rank": 0,
+      "rank": 0,
+      "raw_runner_cache_count": 24,
+      "raw_runner_caches": [
+        {
+          "data_ptr": 140255109840896,
+          "device": "cuda:0",
+          "dtype": "torch.int8",
+          "element_size": 1,
+          "is_contiguous": false,
+          "logical_nbytes": 2426966784,
+          "numel": 2426966784,
+          "shape": [
+            2227,
+            1,
+            1,
+            1089792
+          ],
+          "storage_data_ptr": 140255109840896,
+          "storage_nbytes": 21842701056,
+          "storage_offset": 0,
+          "stride": [
+            9808128,
+            1089792,
+            1089792,
+            1
+          ]
+        },
+        {
+          "data_ptr": 140255109840896,
+          "device": "cuda:0",
+          "dtype": "torch.int8",
+          "element_size": 1,
+          "is_contiguous": false,
+          "logical_nbytes": 2426966784,
+          "numel": 2426966784,
+          "shape": [
+            2227,
+            1,
+            1,
+            1089792
+          ],
+          "storage_data_ptr": 140255109840896,
+          "storage_nbytes": 21842701056,
+          "storage_offset": 0,
+          "stride": [
+            9808128,
+            1089792,
+            1089792,
+            1
+          ]
+        },
+        {
+          "data_ptr": 140255110930688,
+          "device": "cuda:0",
+          "dtype": "torch.int8",
+          "element_size": 1,
+          "is_contiguous": false,
+          "logical_nbytes": 2426966784,
+          "numel": 2426966784,
+          "shape": [
+            2227,
+            1,
+            1,
+            1089792
+          ],
+          "storage_data_ptr": 140255109840896,
+          "storage_nbytes": 21842701056,
+          "storage_offset": 1089792,
+          "stride": [
+            9808128,
+            1089792,
+            1089792,
+            1
+          ]
+        },
+        {
+          "data_ptr": 140255109840896,
+          "device": "cuda:0",
+          "dtype": "torch.uint8",
+          "element_size": 1,
+          "is_contiguous": false,
+          "logical_nbytes": 2426966784,
+          "numel": 2426966784,
+          "shape": [
+            2227,
+            2,
+            2064,
+            264
+          ],
+          "storage_data_ptr": 140255109840896,
+          "storage_nbytes": 21842701056,
+          "storage_offset": 0,
+          "stride": [
+            9808128,
+            264,
+            528,
+            1
+          ]
+        },
+        {
+          "data_ptr": 140255110930688,
+          "device": "cuda:0",
+          "dtype": "torch.int8",
+          "element_size": 1,
+          "is_contiguous": false,
+          "logical_nbytes": 2426966784,
+          "numel": 2426966784,
+          "shape": [
+            2227,
+            1,
+            1,
+            1089792
+          ],
+          "storage_data_ptr": 140255109840896,
+          "storage_nbytes": 21842701056,
+          "storage_offset": 1089792,
+          "stride": [
+            9808128,
+            1089792,
+            1089792,
+            1
+          ]
+        },
+        {
+          "data_ptr": 140255112020480,
+          "device": "cuda:0",
+          "dtype": "torch.int8",
+          "element_size": 1,
+          "is_contiguous": false,
+          "logical_nbytes": 2426966784,
+          "numel": 2426966784,
+          "shape": [
+            2227,
+            1,
+            1,
+            1089792
+          ],
+          "storage_data_ptr": 140255109840896,
+          "storage_nbytes": 21842701056,
+          "storage_offset": 2179584,
+          "stride": [
+            9808128,
+            1089792,
+            1089792,
+            1
+          ]
+        },
+        {
+          "data_ptr": 140255112020480,
+          "device": "cuda:0",
+          "dtype": "torch.int8",
+          "element_size": 1,
+          "is_contiguous": false,
+          "logical_nbytes": 2426966784,
+          "numel": 2426966784,
+          "shape": [
+            2227,
+            1,
+            1,
+            1089792
+          ],
+          "storage_data_ptr": 140255109840896,
+          "storage_nbytes": 21842701056,
+          "storage_offset": 2179584,
+          "stride": [
+            9808128,
+            1089792,
+            1089792,
+            1
+          ]
+        },
+        {
+          "data_ptr": 140255110930688,
+          "device": "cuda:0",
+          "dtype": "torch.uint8",
+          "element_size": 1,
+          "is_contiguous": false,
+          "logical_nbytes": 2426966784,
+          "numel": 2426966784,
+          "shape": [
+            2227,
+            2,
+            2064,
+            264
+          ],
+          "storage_data_ptr": 140255109840896,
+          "storage_nbytes": 21842701056,
+          "storage_offset": 1089792,
+          "stride": [
+            9808128,
+            264,
+            528,
+            1
+          ]
+        },
+        {
+          "data_ptr": 140255113110272,
+          "device": "cuda:0",
+          "dtype": "torch.int8",
+          "element_size": 1,
+          "is_contiguous": false,
+          "logical_nbytes": 2426966784,
+          "numel": 2426966784,
+          "shape": [
+            2227,
+            1,
+            1,
+            1089792
+          ],
+          "storage_data_ptr": 140255109840896,
+          "storage_nbytes": 21842701056,
+          "storage_offset": 3269376,
+          "stride": [
+            9808128,
+            1089792,
+            1089792,
+            1
+          ]
+        },
+        {
+          "data_ptr": 140255113110272,
+          "device": "cuda:0",
+          "dtype": "torch.int8",
+          "element_size": 1,
+          "is_contiguous": false,
+          "logical_nbytes": 2426966784,
+          "numel": 2426966784,
+          "shape": [
+            2227,
+            1,
+            1,
+            1089792
+          ],
+          "storage_data_ptr": 140255109840896,
+          "storage_nbytes": 21842701056,
+          "storage_offset": 3269376,
+          "stride": [
+            9808128,
+            1089792,
+            1089792,
+            1
+          ]
+        },
+        {
+          "data_ptr": 140255114200064,
+          "device": "cuda:0",
+          "dtype": "torch.int8",
+          "element_size": 1,
+          "is_contiguous": false,
+          "logical_nbytes": 2426966784,
+          "numel": 2426966784,
+          "shape": [
+            2227,
+            1,
+            1,
+            1089792
+          ],
+          "storage_data_ptr": 140255109840896,
+          "storage_nbytes": 21842701056,
+          "storage_offset": 4359168,
+          "stride": [
+            9808128,
+            1089792,
+            1089792,
+            1
+          ]
+        },
+        {
+          "data_ptr": 140255112020480,
+          "device": "cuda:0",
+          "dtype": "torch.uint8",
+          "element_size": 1,
+          "is_contiguous": false,
+          "logical_nbytes": 2426966784,
+          "numel": 2426966784,
+          "shape": [
+            2227,
+            2,
+            2064,
+            264
+          ],
+          "storage_data_ptr": 140255109840896,
+          "storage_nbytes": 21842701056,
+          "storage_offset": 2179584,
+          "stride": [
+            9808128,
+            264,
+            528,
+            1
+          ]
+        },
+        {
+          "data_ptr": 140255114200064,
+          "device": "cuda:0",
+          "dtype": "torch.int8",
+          "element_size": 1,
+          "is_contiguous": false,
+          "logical_nbytes": 2426966784,
+          "numel": 2426966784,
+          "shape": [
+            2227,
+            1,
+            1,
+            1089792
+          ],
+          "storage_data_ptr": 140255109840896,
+          "storage_nbytes": 21842701056,
+          "storage_offset": 4359168,
+          "stride": [
+            9808128,
+            1089792,
+            1089792,
+            1
+          ]
+        },
+        {
+          "data_ptr": 140255115289856,
+          "device": "cuda:0",
+          "dtype": "torch.int8",
+          "element_size": 1,
+          "is_contiguous": false,
+          "logical_nbytes": 2426966784,
+          "numel": 2426966784,
+          "shape": [
+            2227,
+            1,
+            1,
+            1089792
+          ],
+          "storage_data_ptr": 140255109840896,
+          "storage_nbytes": 21842701056,
+          "storage_offset": 5448960,
+          "stride": [
+            9808128,
+            1089792,
+            1089792,
+            1
+          ]
+        },
+        {
+          "data_ptr": 140255115289856,
+          "device": "cuda:0",
+          "dtype": "torch.int8",
+          "element_size": 1,
+          "is_contiguous": false,
+          "logical_nbytes": 2426966784,
+          "numel": 2426966784,
+          "shape": [
+            2227,
+            1,
+            1,
+            1089792
+          ],
+          "storage_data_ptr": 140255109840896,
+          "storage_nbytes": 21842701056,
+          "storage_offset": 5448960,
+          "stride": [
+            9808128,
+            1089792,
+            1089792,
+            1
+          ]
+        },
+        {
+          "data_ptr": 140255113110272,
+          "device": "cuda:0",
+          "dtype": "torch.uint8",
+          "element_size": 1,
+          "is_contiguous": false,
+          "logical_nbytes": 2426966784,
+          "numel": 2426966784,
+          "shape": [
+            2227,
+            2,
+            2064,
+            264
+          ],
+          "storage_data_ptr": 140255109840896,
+          "storage_nbytes": 21842701056,
+          "storage_offset": 3269376,
+          "stride": [
+            9808128,
+            264,
+            528,
+            1
+          ]
+        },
+        {
+          "data_ptr": 140255116379648,
+          "device": "cuda:0",
+          "dtype": "torch.int8",
+          "element_size": 1,
+          "is_contiguous": false,
+          "logical_nbytes": 2426966784,
+          "numel": 2426966784,
+          "shape": [
+            2227,
+            1,
+            1,
+            1089792
+          ],
+          "storage_data_ptr": 140255109840896,
+          "storage_nbytes": 21842701056,
+          "storage_offset": 6538752,
+          "stride": [
+            9808128,
+            1089792,
+            1089792,
+            1
+          ]
+        },
+        {
+          "data_ptr": 140255116379648,
+          "device": "cuda:0",
+          "dtype": "torch.int8",
+          "element_size": 1,
+          "is_contiguous": false,
+          "logical_nbytes": 2426966784,
+          "numel": 2426966784,
+          "shape": [
+            2227,
+            1,
+            1,
+            1089792
+          ],
+          "storage_data_ptr": 140255109840896,
+          "storage_nbytes": 21842701056,
+          "storage_offset": 6538752,
+          "stride": [
+            9808128,
+            1089792,
+            1089792,
+            1
+          ]
+        },
+        {
+          "data_ptr": 140255117469440,
+          "device": "cuda:0",
+          "dtype": "torch.int8",
+          "element_size": 1,
+          "is_contiguous": false,
+          "logical_nbytes": 2426966784,
+          "numel": 2426966784,
+          "shape": [
+            2227,
+            1,
+            1,
+            1089792
+          ],
+          "storage_data_ptr": 140255109840896,
+          "storage_nbytes": 21842701056,
+          "storage_offset": 7628544,
+          "stride": [
+            9808128,
+            1089792,
+            1089792,
+            1
+          ]
+        },
+        {
+          "data_ptr": 140255114200064,
+          "device": "cuda:0",
+          "dtype": "torch.uint8",
+          "element_size": 1,
+          "is_contiguous": false,
+          "logical_nbytes": 2426966784,
+          "numel": 2426966784,
+          "shape": [
+            2227,
+            2,
+            2064,
+            264
+          ],
+          "storage_data_ptr": 140255109840896,
+          "storage_nbytes": 21842701056,
+          "storage_offset": 4359168,
+          "stride": [
+            9808128,
+            264,
+            528,
+            1
+          ]
+        },
+        {
+          "data_ptr": 140255117469440,
+          "device": "cuda:0",
+          "dtype": "torch.int8",
+          "element_size": 1,
+          "is_contiguous": false,
+          "logical_nbytes": 2426966784,
+          "numel": 2426966784,
+          "shape": [
+            2227,
+            1,
+            1,
+            1089792
+          ],
+          "storage_data_ptr": 140255109840896,
+          "storage_nbytes": 21842701056,
+          "storage_offset": 7628544,
+          "stride": [
+            9808128,
+            1089792,
+            1089792,
+            1
+          ]
+        },
+        {
+          "data_ptr": 140255118559232,
+          "device": "cuda:0",
+          "dtype": "torch.int8",
+          "element_size": 1,
+          "is_contiguous": false,
+          "logical_nbytes": 2426966784,
+          "numel": 2426966784,
+          "shape": [
+            2227,
+            1,
+            1,
+            1089792
+          ],
+          "storage_data_ptr": 140255109840896,
+          "storage_nbytes": 21842701056,
+          "storage_offset": 8718336,
+          "stride": [
+            9808128,
+            1089792,
+            1089792,
+            1
+          ]
+        },
+        {
+          "data_ptr": 140255118559232,
+          "device": "cuda:0",
+          "dtype": "torch.int8",
+          "element_size": 1,
+          "is_contiguous": false,
+          "logical_nbytes": 2426966784,
+          "numel": 2426966784,
+          "shape": [
+            2227,
+            1,
+            1,
+            1089792
+          ],
+          "storage_data_ptr": 140255109840896,
+          "storage_nbytes": 21842701056,
+          "storage_offset": 8718336,
+          "stride": [
+            9808128,
+            1089792,
+            1089792,
+            1
+          ]
+        },
+        {
+          "data_ptr": 140255115289856,
+          "device": "cuda:0",
+          "dtype": "torch.bfloat16",
+          "element_size": 2,
+          "is_contiguous": false,
+          "logical_nbytes": 9413689344,
+          "numel": 4706844672,
+          "shape": [
+            2227,
+            2,
+            2064,
+            512
+          ],
+          "storage_data_ptr": 140255109840896,
+          "storage_nbytes": 21842701056,
+          "storage_offset": 2724480,
+          "stride": [
+            4904064,
+            512,
+            1024,
+            1
+          ]
+        }
+      ],
+      "torch_cuda_device": "NVIDIA GeForce RTX 5090",
+      "unique_backing_storage_count": 1,
+      "unique_backing_storage_ptrs": [
+        140255109840896
+      ]
+    }
+  ]
+}

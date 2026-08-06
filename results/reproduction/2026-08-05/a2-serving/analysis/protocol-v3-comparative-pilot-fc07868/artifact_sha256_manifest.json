@@ -1,0 +1,1060 @@
+{
+  "created_at": "2026-08-05T14:11:28Z",
+  "files": [
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/attempt_contract.json",
+      "sha256": "1662aba840e6110736b529f18cc49e1419825056a9f54bbc738753e0d686ccea",
+      "size": 2646
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/attempt_contract.json.sha256",
+      "sha256": "a31d4c6ae6d1e5451a805c825d7d4cf35637e394761552fbae0d84c297908560",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/environment.json",
+      "sha256": "459ca0ef8440c3dadbf0063de436fe24f3ffb3f70f7ce8e95000b89f5abc520c",
+      "size": 11865
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/environment.json.sha256",
+      "sha256": "b4e8fcdd26b8d9b96165a720274ebdf4f68eeb28f13afb36a44753c8e143c34c",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/invocations/20260805T124440Z-28d4b6bf.json",
+      "sha256": "72f651d90dbc0c091923ed6efe1fd8ea0e506d47abe456612c74f918ea4d69c2",
+      "size": 611
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/fp16__random__r30__s7/analysis.json",
+      "sha256": "e731a7def549bd8223b7656761a18b0ce2b6e4173c439aa2a33967d51762b3c9",
+      "size": 2011
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/fp16__random__r30__s7/analysis.json.sha256",
+      "sha256": "e1511d3ae3422df41fb6fb1c145687fd30d7211f761ea9b1dcad007463b0a501",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/fp16__random__r30__s7/bench.log",
+      "sha256": "008c5d8e618b34ed7d69ef7772e19ac2a8bcd5264e4af0c29ffb472abee7a044",
+      "size": 5274
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/fp16__random__r30__s7/contract.json",
+      "sha256": "1729c4719e4f5f9f4daefa0d68e328c0da1f11a755cc3c55bf1f0e87d992caba",
+      "size": 2884
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/fp16__random__r30__s7/contract.json.sha256",
+      "sha256": "2e4910330b95b6ed383118f7ceca1761f8aa477f61519b097b8ba8f5278d70ec",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/fp16__random__r30__s7/result.json",
+      "sha256": "062e98de88c8da2d382551c21725d3b6d8e98a292a01ad09de8a60c9d93ffdc9",
+      "size": 5695815
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/fp16__random__r30__s7/result.json.sha256",
+      "sha256": "1b32aed0068f5aa65330b0c7a9fcce0eb00aeed6732b10e23fc2a7679c17dc4b",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/fp16__random__r30__s7/status.json",
+      "sha256": "93c5551f0d26b9eb3b7197159a16642e4ddea95946fbccac97dd33a97a049ac1",
+      "size": 349
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/fp16__random__r40__s7/analysis.json",
+      "sha256": "7bf8d5aa7facc762088241a32c33ddf2560f56553a3aae41688765336f6f49a5",
+      "size": 2010
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/fp16__random__r40__s7/analysis.json.sha256",
+      "sha256": "528ecbccf740a991c6d11dc98f495230517b2b5629b30daca4ef3648736a1ded",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/fp16__random__r40__s7/bench.log",
+      "sha256": "cbaa70874a592e4ee7192e12dce5f39e3b7ad0b6d4d8aa8e86417a569bee77b7",
+      "size": 5274
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/fp16__random__r40__s7/contract.json",
+      "sha256": "45e1ef5f6b5c203462d14bc9c13fa73436079b710d34d6050d8f3cb577358311",
+      "size": 2884
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/fp16__random__r40__s7/contract.json.sha256",
+      "sha256": "9ae981d8df17b055237f28ee7bc2bc1cd45cabcc69aab95cc16f00a7c0bdcea0",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/fp16__random__r40__s7/result.json",
+      "sha256": "05dc38350532832c50c24ff2bfaf663b7f5804538efdb86b8187bf82de82ff08",
+      "size": 7771884
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/fp16__random__r40__s7/result.json.sha256",
+      "sha256": "249883b2ac5f95149aa743d99aa4c5fdcc1766e147d2bde477fa8df6a43de565",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/fp16__random__r40__s7/status.json",
+      "sha256": "3492ff8652a475c4f1c4a68816e7e3af83bd417fd8fc1b1c383535b8b8b8edd1",
+      "size": 351
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/fp16__random__r50__s7/analysis.json",
+      "sha256": "9e53e18357073a0bb0824494c3d531c9dec10b3429eca66347d54ee3fb4533ac",
+      "size": 2010
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/fp16__random__r50__s7/analysis.json.sha256",
+      "sha256": "12fd393d51ad49235b4ccac8fda351f5fc3e6f39b81e39a7c97e8b20bbaeac1e",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/fp16__random__r50__s7/bench.log",
+      "sha256": "c3984a78269ad5f35121d0613cd8cc23e91513e82617aca2ebad73749c20eca6",
+      "size": 5274
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/fp16__random__r50__s7/contract.json",
+      "sha256": "2ecd31483a8e36133d8362a94d63a09e09fce6b46bb16e152b30c54c4d9537e1",
+      "size": 2884
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/fp16__random__r50__s7/contract.json.sha256",
+      "sha256": "11f8ef1994f808ea162564da627d63652d0f032162dac155756120ed316052f5",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/fp16__random__r50__s7/result.json",
+      "sha256": "1cba60a8e5b42cdac46400ae569d96b8afb1dce2dc45c6a3000f02ebcfb04ee3",
+      "size": 9749919
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/fp16__random__r50__s7/result.json.sha256",
+      "sha256": "f5d6eed49e4ff7ab336a3de63762ada8f6607317820528b7fe4bd0bc04205e20",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/fp16__random__r50__s7/status.json",
+      "sha256": "5f0f0fc8d301551cf0114b18313ab8d614803a4e967893335b9d1bc08bfce742",
+      "size": 352
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/int4__random__r30__s7/analysis.json",
+      "sha256": "1c66f7311dded0b674bce95b1b6274a820b630dc0268220859bde898255d6bad",
+      "size": 2012
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/int4__random__r30__s7/analysis.json.sha256",
+      "sha256": "40c476906ab1182d3c7616809ee61300391d20830d393dd80b61a0d53797f598",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/int4__random__r30__s7/bench.log",
+      "sha256": "4b94b1268eb39d8decd516d9c00af2288b253052885356dff3ad506e66904a80",
+      "size": 5274
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/int4__random__r30__s7/contract.json",
+      "sha256": "cc21c06e7abf9a6a57fb3b95cf8f6f7e90d845eb1ac30afdac2e7a7a62df2b17",
+      "size": 2928
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/int4__random__r30__s7/contract.json.sha256",
+      "sha256": "e8cc0a94b1e3f00197866350bdc003bb5e47ecfede5272a85ab491919e3b83e5",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/int4__random__r30__s7/result.json",
+      "sha256": "25af385d94c953aba035923de582d3068395736e4252046e616ad4204b8bb564",
+      "size": 5873883
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/int4__random__r30__s7/result.json.sha256",
+      "sha256": "4aaad42a695fdfae62868a8bbfc72b0328c860e6f3f6a9d288a1195f91299458",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/int4__random__r30__s7/status.json",
+      "sha256": "b8fdb367390aa366a8b91fa7a52bf1e763c76b72a2f5094cb3fde58f6bdd22f9",
+      "size": 351
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/int4__random__r40__s7/analysis.json",
+      "sha256": "e41836d4e2ba7267cf474fc6dee7c8487e33c25a60a303aac7101506f961a93f",
+      "size": 2006
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/int4__random__r40__s7/analysis.json.sha256",
+      "sha256": "b8a246a810f8130017ae47373bbd68fd3ca5126b94c9e498464b50e2536ff7a0",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/int4__random__r40__s7/bench.log",
+      "sha256": "6cbf97ba9cad2bd51f6e9af93cb353830654797374ff77c97870b7c82d834611",
+      "size": 5274
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/int4__random__r40__s7/contract.json",
+      "sha256": "115abc56ece3d0835a0181199d561e4528ade03f7cbc076a3ce4c91b315a608b",
+      "size": 2928
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/int4__random__r40__s7/contract.json.sha256",
+      "sha256": "acbbf29952811ea8c678edf802439aa5d47e51bd671baf2663aac1b7fa8a29bd",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/int4__random__r40__s7/result.json",
+      "sha256": "8ae589f0d6dd8f515d0462d37fe8f45741bd45a7a68ea74fbc4dce66ae6c4610",
+      "size": 7823976
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/int4__random__r40__s7/result.json.sha256",
+      "sha256": "77c15a4c1ce9c1a1b097de29b4d9fb7646f6ed6f925cb93c4a00600c25cc6c89",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/int4__random__r40__s7/status.json",
+      "sha256": "c4f90253029598f02130483e807239c66d5f4a4b84fed560c841d0109b429545",
+      "size": 350
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/int4__random__r50__s7/analysis.json",
+      "sha256": "3bd06e81430f242a8c8edad0072cd782dd7fc4d67a4ec4c4206e945f180befc5",
+      "size": 2012
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/int4__random__r50__s7/analysis.json.sha256",
+      "sha256": "35209126986a9b624103e873efe3cf53e67071e7d24ce50c04067f69df9709b6",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/int4__random__r50__s7/bench.log",
+      "sha256": "53602ef0eed16fde5718057c4750612e10d90914e6c7ce1b22a925873ce0b026",
+      "size": 5274
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/int4__random__r50__s7/contract.json",
+      "sha256": "9a0dffc4ce08c7eaea3df7eb899f2825f82553081a887238cf8d0509297afb3e",
+      "size": 2928
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/int4__random__r50__s7/contract.json.sha256",
+      "sha256": "920a3f45daf5c7794a9b503a4c5d9129e9702829b38b4fd863720c93f8eaaaeb",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/int4__random__r50__s7/result.json",
+      "sha256": "af1450d9507b7abd70a522f633ec70a143fdb0e5182aa40656bb14d4ec167643",
+      "size": 9792818
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/int4__random__r50__s7/result.json.sha256",
+      "sha256": "10e1c30b8555107d8b944afa23ff95eadfadf7e958f9b74d14eac1343803ad08",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/int4__random__r50__s7/status.json",
+      "sha256": "528193eb37e4cc65a98ec268004e811d522a5ac74697504d2b71cf4ed1c43c74",
+      "size": 352
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/packed_per_layer__random__r30__s7/analysis.json",
+      "sha256": "f02a056748f696b6120c02be13989b0b793dccbfe0468c31bd7929ea6868e2dc",
+      "size": 2023
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/packed_per_layer__random__r30__s7/analysis.json.sha256",
+      "sha256": "e1c4cd10d96f0b685120f26004baa9b9a66993b3f2ba1ed56c502db2cf171787",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/packed_per_layer__random__r30__s7/bench.log",
+      "sha256": "361cecf9847675e88f6d4a307f5deb88cae71c0fb68c85a9120000f7f234c19f",
+      "size": 5322
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/packed_per_layer__random__r30__s7/contract.json",
+      "sha256": "37b632de5165aff8387f6512310adc066f141bf70cdd7820151a608ac3bec3d8",
+      "size": 3299
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/packed_per_layer__random__r30__s7/contract.json.sha256",
+      "sha256": "a27ecb96741ef0a1b1ed4ec791fa2bb8428c92a908504724d91205afc0749215",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/packed_per_layer__random__r30__s7/result.json",
+      "sha256": "f9f7b5a4235750e9a3f6464cb2040c34a0a975b9914bd0b8a0557cb19478818a",
+      "size": 5864963
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/packed_per_layer__random__r30__s7/result.json.sha256",
+      "sha256": "56536b9088b9312be85136eaed61fce90a1dab905b45a111373a421cfe2c8598",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/packed_per_layer__random__r30__s7/status.json",
+      "sha256": "dbdb94ca9b58fe1040394b702986f05297510a05981afcc9b7d06dffdb55da26",
+      "size": 351
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/packed_per_layer__random__r40__s7/analysis.json",
+      "sha256": "622b24719f3c694e812c222091991c1ef48c39fae5ae3824babb5dfe41cab9d4",
+      "size": 2021
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/packed_per_layer__random__r40__s7/analysis.json.sha256",
+      "sha256": "358e3dfd1920db33066e04f92f4d96737df60bcb89999f71965c64fb67b9f173",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/packed_per_layer__random__r40__s7/bench.log",
+      "sha256": "41c731af3480cbeb34252d1b2a075ca68bdc344c9e121d902826d7667cf018fa",
+      "size": 5322
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/packed_per_layer__random__r40__s7/contract.json",
+      "sha256": "9c1aa93ea2257f18c337b3bb83948786fd83b8d2a1e6cc8f4deeb023ac8975f2",
+      "size": 3299
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/packed_per_layer__random__r40__s7/contract.json.sha256",
+      "sha256": "8b5c4b9035478302986625caaf9e0f307791181b3a67b7354d8d32f38a92c091",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/packed_per_layer__random__r40__s7/result.json",
+      "sha256": "aac90aeb5a5c5c82dd7d5167500dd1b9d7abe4eba58b41c3b6e3663e866e5f44",
+      "size": 7822976
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/packed_per_layer__random__r40__s7/result.json.sha256",
+      "sha256": "ae2d9acd9f5f95ca39a8a33eef0fdb2c389e767c6802300d16d36e1f3a0b26b0",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/packed_per_layer__random__r40__s7/status.json",
+      "sha256": "8317c23b582ad94997b9f80eae3f22107995dc3f5da0338dc9046d122fc5d058",
+      "size": 351
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/packed_per_layer__random__r50__s7/analysis.json",
+      "sha256": "b130abdf535f6287f8f6fbfccb8815f619569c3e7b8b07adaeba212012c8d715",
+      "size": 2026
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/packed_per_layer__random__r50__s7/analysis.json.sha256",
+      "sha256": "da2219e0196572bc1fdf08c55b4560eacf510fd694e9802eff4b34bf662fa8d8",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/packed_per_layer__random__r50__s7/bench.log",
+      "sha256": "614b735b160a6deb96cf08bec6325def77d89dcd21329921a6196c4c77c5d285",
+      "size": 5322
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/packed_per_layer__random__r50__s7/contract.json",
+      "sha256": "1611b5cf488fe3197e28d41314498242b797b0d5187658f3bafb55eda96db725",
+      "size": 3299
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/packed_per_layer__random__r50__s7/contract.json.sha256",
+      "sha256": "138143ffbe186fbba6758f87b37b890cf2d75c5b4cd79110fd94ec5d83043c7a",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/packed_per_layer__random__r50__s7/result.json",
+      "sha256": "3825b1af3c17427ff674d4a6c8c2a2c7ea0162e457eb887493a2f75fc31ae8a5",
+      "size": 9758026
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/packed_per_layer__random__r50__s7/result.json.sha256",
+      "sha256": "bde889767617d6ac9ce42be698180aea6e5bea12bfdcd739a4d03191efd4f679",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/samples/packed_per_layer__random__r50__s7/status.json",
+      "sha256": "b659be28d47f342f0b15c400fec934f99d744ac75830fb5bb5a301deeadb6c20",
+      "size": 352
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/servers/fp16/20260805T124440Z-4a0f2078/contract.json",
+      "sha256": "74a42a529111c33656e104e3bf679456a04cb51936b91976e010ff6df8bdea55",
+      "size": 576
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/servers/fp16/20260805T124440Z-4a0f2078/contract.json.sha256",
+      "sha256": "5539070a6dc1cc4e2e27d598c5b1ef1250302a38e2f169238bafda6c9a6f393c",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/servers/fp16/20260805T124440Z-4a0f2078/server.log",
+      "sha256": "9c6df5abe961798e1d9ce54f2f821b304fd3ac369b54ff938d9aea1c27608867",
+      "size": 703254
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/servers/fp16/20260805T124440Z-4a0f2078/status.json",
+      "sha256": "ac51bad27ecc1fb76fe657513f7a3bafdd938159e2d1e6b152c15234a2004d80",
+      "size": 106
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/servers/int4/20260805T125104Z-14555b73/contract.json",
+      "sha256": "9c1060efa9c81dae31ba246896998a68bee3f8393a02fdb904fbff77ae94a6fe",
+      "size": 591
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/servers/int4/20260805T125104Z-14555b73/contract.json.sha256",
+      "sha256": "1bcfa8bc4370fbe399325fd19fb588652b8803bc91480cbcc8c995401675b174",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/servers/int4/20260805T125104Z-14555b73/server.log",
+      "sha256": "04f3f0e644f2a057b3ef0d201c23e60ca3aa4b5d5b52ff56a26b7cef206e83af",
+      "size": 702442
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/servers/int4/20260805T125104Z-14555b73/status.json",
+      "sha256": "36eb578dcb10b92c3c2a224f2cd54037f9608bf7ab5bab64da41da34f11ff4c4",
+      "size": 106
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/servers/packed_per_layer/20260805T125707Z-c0794a1f/contract.json",
+      "sha256": "c008c4d2808173a98fcc2fe2bbf23c4b4713745dc5717c5b87037ddbe9df14d2",
+      "size": 853
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/servers/packed_per_layer/20260805T125707Z-c0794a1f/contract.json.sha256",
+      "sha256": "0531311a731c4ac4e0d9dcee3cc296c4ac4c4adb3a494749533edde2899a1560",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/servers/packed_per_layer/20260805T125707Z-c0794a1f/server.log",
+      "sha256": "620ee2df5a90fb088125c26cafb362d8ec65ba3e3444c1234c584bf5bdc593ed",
+      "size": 705082
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/servers/packed_per_layer/20260805T125707Z-c0794a1f/status.json",
+      "sha256": "c65c13b3924b1df2e9c03e0bad3447ab6d71ec7279b5cef46185b4ddebbbdf80",
+      "size": 106
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/summary.json",
+      "sha256": "c8a75fe90c964fa87f443ad51f72cb9c91b9235d058c5898436388412fa46503",
+      "size": 1024
+    },
+    {
+      "path": "attempts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/summary.json.sha256",
+      "sha256": "bf13a46bdcf407db042ef0618d05d30e9dfb6d0fe88c33e4c22858cf6ec430e3",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/attempt_contract.json",
+      "sha256": "6d2b3b15278a49694bea2ff93586cebea7123b168843da9fcbc4d06b98126cf8",
+      "size": 2700
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/attempt_contract.json.sha256",
+      "sha256": "1f830d8b682c0f8b20d2bbfa0724e3fa1c096dcb227a2f12cbd4ccb821c6909a",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/environment.json",
+      "sha256": "f9ecf12b3c6920a10434c2d3489ceeef3ad859dcbe55582eb3d7bb799713f79d",
+      "size": 12098
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/environment.json.sha256",
+      "sha256": "7a385159337b2f64fa7ddd68461a587076c1aec1fa429917f6b3f1411c940558",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/invocations/20260805T130932Z-03c62bb6.json",
+      "sha256": "62d3dad3b88aee5d3c4e98081a8819035ea529ef5b317bc1e924ed5e76409d7f",
+      "size": 618
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/fp16__sharegpt__r30__s7/analysis.json",
+      "sha256": "bfa9c9368679ade876716d0e871e67d44d00da820f672c11553d61bfc4dfb7bc",
+      "size": 2012
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/fp16__sharegpt__r30__s7/analysis.json.sha256",
+      "sha256": "c774d12c2d4cb4e4a02e4b1723bb4d2f15bf1923e31635eacfddb77302c5c541",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/fp16__sharegpt__r30__s7/bench.log",
+      "sha256": "12919ca9310de990dac0df8e76348ca7d6b9b4a71b00336ee538cdae08e045fb",
+      "size": 5341
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/fp16__sharegpt__r30__s7/contract.json",
+      "sha256": "bb5f7e8dea860f93b90b689a1ad19a663a5d13d3d4a8c8cf5db169d163cf3ccb",
+      "size": 3105
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/fp16__sharegpt__r30__s7/contract.json.sha256",
+      "sha256": "34644f8211028a9ab1bf4910ae244ab840a0e8af77cd706c6940d92e135cae60",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/fp16__sharegpt__r30__s7/result.json",
+      "sha256": "97bbbeff60feae4de67f5daa07f9914b3340e417489036819627e327db823ff6",
+      "size": 47910984
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/fp16__sharegpt__r30__s7/result.json.sha256",
+      "sha256": "b31735b3eeb52695d8220cc559b81124c8673485e5fb8bec86a54644d66c96c3",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/fp16__sharegpt__r30__s7/status.json",
+      "sha256": "090b1036aa6ad3d3195da94ec25aff43614058e22f399a743dfed658fb4003a8",
+      "size": 350
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/fp16__sharegpt__r40__s7/analysis.json",
+      "sha256": "c830bed6be27700b71f162e0fde288af65fc115e110631b66d7d86862855d325",
+      "size": 2020
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/fp16__sharegpt__r40__s7/analysis.json.sha256",
+      "sha256": "2c80525e7d93dd12df4dfb300ee4b14cbe613af1945e5c0efce22d39cf486316",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/fp16__sharegpt__r40__s7/bench.log",
+      "sha256": "4df6a998e501c7909b2a1c2be8f06743585f60039bdac01de25ccd55490257c5",
+      "size": 5343
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/fp16__sharegpt__r40__s7/contract.json",
+      "sha256": "d845fa8d828f472f81b210708268ad4016b8e4c9e1dd35d763a013f3fe96a931",
+      "size": 3107
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/fp16__sharegpt__r40__s7/contract.json.sha256",
+      "sha256": "969882f41eac72eb4184ad2be1b9fc7f72a56375e883af5a9bfeb419e622d776",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/fp16__sharegpt__r40__s7/result.json",
+      "sha256": "cc650a71f6465cacfc6adfb3f7829e2ccd80542fbb7116f1f7219d4f63e57691",
+      "size": 61601387
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/fp16__sharegpt__r40__s7/result.json.sha256",
+      "sha256": "24847589fe0b74644a8191f60b31a1a6e688465091aa351ffe4d72bd261e9ad4",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/fp16__sharegpt__r40__s7/status.json",
+      "sha256": "eb6fb5c7817bbce874c2bf7cecf87e834f800f0b1e624c27d4ae10e652cc7626",
+      "size": 351
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/fp16__sharegpt__r50__s7/analysis.json",
+      "sha256": "5ece6d954990a3ad606ea8bd5bb3f5b05f3789da9995be89b4100a6c3b32f0a9",
+      "size": 2015
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/fp16__sharegpt__r50__s7/analysis.json.sha256",
+      "sha256": "c823b73c06c5a7eea1b66ecfea1195ce6d1a669e29de81fdd5950ed693034d40",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/fp16__sharegpt__r50__s7/bench.log",
+      "sha256": "8e002fdedd77aeaf3d2f6bcc857ec251564ea12b5be3d080b6b92b2ff68a181f",
+      "size": 5343
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/fp16__sharegpt__r50__s7/contract.json",
+      "sha256": "1eeb057902fbf967317d708b215375ff7bc1a126db01ad99baff42f0683d93c6",
+      "size": 3107
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/fp16__sharegpt__r50__s7/contract.json.sha256",
+      "sha256": "a902479f8227c828cfb1119bb7225d585c1d9a18c296b6c0e57f83825255ceb4",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/fp16__sharegpt__r50__s7/result.json",
+      "sha256": "e5a60c713dbc2a08ba079bd1adf0339f87ac7e2eec36ca3a1df3b95713658ce4",
+      "size": 79532897
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/fp16__sharegpt__r50__s7/result.json.sha256",
+      "sha256": "a03e392766bca3374fcf58d6e98f2f0b45ec70c146cb5a0e9505f02f2d9dea15",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/fp16__sharegpt__r50__s7/status.json",
+      "sha256": "d29d73b42e06341d1fd0f90c77b899ce446bb255e7fb146d8cf5af95b45dc7c0",
+      "size": 352
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/int4__sharegpt__r30__s7/analysis.json",
+      "sha256": "e28e36b25b16f6965825084377d927efbecc9001fcb26d0d07a2eb770dfd0972",
+      "size": 2012
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/int4__sharegpt__r30__s7/analysis.json.sha256",
+      "sha256": "b20c5b07ac4c6bb80e23764f4569c1ac0d3d0e7e48a0c02f1776a3054d040087",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/int4__sharegpt__r30__s7/bench.log",
+      "sha256": "3410c5d15b0764716f13e25015550af7defe1d70aa6b1e52bc271afe205b07c7",
+      "size": 5341
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/int4__sharegpt__r30__s7/contract.json",
+      "sha256": "fc5872a73dd3cf30357e871b72a49e4fcee6958f3c795cdb2172a4bac2c62514",
+      "size": 3149
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/int4__sharegpt__r30__s7/contract.json.sha256",
+      "sha256": "6d7f5311a571761573d74e36653ed58ca4df667ff43fd1a2922b8cfde72cd019",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/int4__sharegpt__r30__s7/result.json",
+      "sha256": "c5eab9f83951dbc9da8e8d1005de43f059e05f45e9bb9e38e826b9ff3890b077",
+      "size": 48069728
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/int4__sharegpt__r30__s7/result.json.sha256",
+      "sha256": "f1617a7e5bfa64973299274a254058821385b88d8112d73743f1c95f744a6100",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/int4__sharegpt__r30__s7/status.json",
+      "sha256": "59150a5cce4433bf086882f2050be800b9c2285229e16c90fbf4ccd7d18f86ab",
+      "size": 351
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/int4__sharegpt__r40__s7/analysis.json",
+      "sha256": "fb1411d1e2efc5e1d6142c8606b1d5af3bd0ae92617ebc810c93d038bdde0afb",
+      "size": 2014
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/int4__sharegpt__r40__s7/analysis.json.sha256",
+      "sha256": "dff46c858e6816b1749a7607890dec397c48a45e2b53c9dbadbb151fc36defe5",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/int4__sharegpt__r40__s7/bench.log",
+      "sha256": "6ca4bcd6c16c4d60cea61ae916f032a34eb19c5661884ca18718454579a9c33a",
+      "size": 5343
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/int4__sharegpt__r40__s7/contract.json",
+      "sha256": "3aec150997603bbfe9eca945fd364a9f105db10a15f22cfe31a4949b24490a17",
+      "size": 3151
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/int4__sharegpt__r40__s7/contract.json.sha256",
+      "sha256": "13043d6a6e2796872ff80f3a2e38fa09764ee36df9cd85652ad81f1076c3a039",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/int4__sharegpt__r40__s7/result.json",
+      "sha256": "42189d4a14a37770ebaae03b8f6427b09a54790e6372a789065c86215a802a0f",
+      "size": 63588237
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/int4__sharegpt__r40__s7/result.json.sha256",
+      "sha256": "a508a59de3e131396ce81557062f9a93b13be23762a3c06f0b99f46b987ee4e4",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/int4__sharegpt__r40__s7/status.json",
+      "sha256": "fc14b67b262951ffb31ae48eb1b0f0779f80cf6d8cf68ebaf4c7d9f283538fe1",
+      "size": 352
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/int4__sharegpt__r50__s7/analysis.json",
+      "sha256": "5ddd5ff3d84860db669ff95cdcb4e49930695131c790ad6e26c444d3fd23670f",
+      "size": 2021
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/int4__sharegpt__r50__s7/analysis.json.sha256",
+      "sha256": "60747d2d698809a899fff0ac894dc3e42814fd762cd7fc5ef803854313b295f6",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/int4__sharegpt__r50__s7/bench.log",
+      "sha256": "5b3456dd757a5512730a4333e1982e038ec7822b229fe2d45a443cac0acd8b2d",
+      "size": 5343
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/int4__sharegpt__r50__s7/contract.json",
+      "sha256": "e94d5224fcad67d8c5ae10b3652b87714626bd43831e9437634647108a37c0cb",
+      "size": 3151
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/int4__sharegpt__r50__s7/contract.json.sha256",
+      "sha256": "ea133097c72f150c24603704a39013d79861f58694dec37577060000c1729a67",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/int4__sharegpt__r50__s7/result.json",
+      "sha256": "abc5426eac2c8a8c6d832686137d94a9f1c915956fe2f6ab8442c7872c7fe44c",
+      "size": 79187801
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/int4__sharegpt__r50__s7/result.json.sha256",
+      "sha256": "8777c7f11b5ad0db5c2346bd349688c42607c7a738af0ef348c4f21b0d10ddaa",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/int4__sharegpt__r50__s7/status.json",
+      "sha256": "1185842e593711a4040842db9690b22c005cc36eb3db884f1c4f850d08a2a75d",
+      "size": 352
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/packed_per_layer__sharegpt__r30__s7/analysis.json",
+      "sha256": "56e9a17fb9c93c62fb514ed8c6a4b02efca079d2e351cd5b3df3a849e9839a4c",
+      "size": 2025
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/packed_per_layer__sharegpt__r30__s7/analysis.json.sha256",
+      "sha256": "aca03e166798b9a00f6bd112d04611e9aaa00aff3f2102f40a789b552305a7db",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/packed_per_layer__sharegpt__r30__s7/bench.log",
+      "sha256": "394ab8ff1d3d068533bedc695196453436afbfec33bf9dc16138d2840e7c00d0",
+      "size": 5389
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/packed_per_layer__sharegpt__r30__s7/contract.json",
+      "sha256": "1d0f9f274cef2fa6235f8e4d7fdb1290928b619c85865360fdb0606f7ae13400",
+      "size": 3520
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/packed_per_layer__sharegpt__r30__s7/contract.json.sha256",
+      "sha256": "6bbe0c00ab8fe12f4bb338a421d699c6ff203f5d0a61ab4cb562560247ad47bc",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/packed_per_layer__sharegpt__r30__s7/result.json",
+      "sha256": "20a32b75dff65182c2c3d742d6c70a11f87fc521b419ee652832d6f19ceb5d3f",
+      "size": 48087247
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/packed_per_layer__sharegpt__r30__s7/result.json.sha256",
+      "sha256": "df17a7ff5f77c259a836d67dd907af97e4bea23b1071ec923467da63c0693aad",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/packed_per_layer__sharegpt__r30__s7/status.json",
+      "sha256": "258bec088567fc6ac88c7b2b37e6e1670f88e66389e7628f7db59c21e2c76233",
+      "size": 352
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/packed_per_layer__sharegpt__r40__s7/analysis.json",
+      "sha256": "1fa46fdeec3ce453954c4e106ac2a2758b8fea2af6e638bced4eb7472afdf822",
+      "size": 2023
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/packed_per_layer__sharegpt__r40__s7/analysis.json.sha256",
+      "sha256": "5e25255bb51fe022331a2e79f752f5ba81c0a7d926bf1a6d4023dc7b8e3274f9",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/packed_per_layer__sharegpt__r40__s7/bench.log",
+      "sha256": "475f3fef3d5f1497b8f575477c84224cd35a0bca44489bda84e1d8f8559f76c1",
+      "size": 5391
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/packed_per_layer__sharegpt__r40__s7/contract.json",
+      "sha256": "cd7688a27b2c8eb3714acaecd5da86c0316acc524fe12e0c0dd4e2893573524a",
+      "size": 3522
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/packed_per_layer__sharegpt__r40__s7/contract.json.sha256",
+      "sha256": "006a4685e1f308bd8115bcf2671ed5627405b3215ae6f1a6d54aa22cffe22c97",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/packed_per_layer__sharegpt__r40__s7/result.json",
+      "sha256": "7d0aa55ab51892171cd2400c6fa844b076d8c8ccd96c5ca53785e861dee81024",
+      "size": 63533171
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/packed_per_layer__sharegpt__r40__s7/result.json.sha256",
+      "sha256": "3142b42d731703c8c00c56ffd59eb8c2fb3acf88580dbefe32c1a11a74dc11a2",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/packed_per_layer__sharegpt__r40__s7/status.json",
+      "sha256": "de29d4ab4918de1ed0a1069fc2130d12e5a14c3cd7cd5053ee3d7fe12bf3862f",
+      "size": 352
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/packed_per_layer__sharegpt__r50__s7/analysis.json",
+      "sha256": "c3cf31fe826be30bfd73a98160e40b38c496abee6e11e2e9dfbe96e8187137c9",
+      "size": 2029
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/packed_per_layer__sharegpt__r50__s7/analysis.json.sha256",
+      "sha256": "4ae17ea09b4dff6cb610193f562cbb06bb1ea86c39e2e475ee6d03757b1f22b4",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/packed_per_layer__sharegpt__r50__s7/bench.log",
+      "sha256": "016e7cf9d3d4b7c1eecfd7f07516443cdec0090ee42e04ffb3c35cd9eefda727",
+      "size": 5391
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/packed_per_layer__sharegpt__r50__s7/contract.json",
+      "sha256": "cfc0b838df2d4d36674d2ceb45496940b177941a5adf5d365c4c0c400c1a85c6",
+      "size": 3522
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/packed_per_layer__sharegpt__r50__s7/contract.json.sha256",
+      "sha256": "292edca001581bbaa505b0c684b4d040440161e152aa22f142b3624dece9fe3b",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/packed_per_layer__sharegpt__r50__s7/result.json",
+      "sha256": "1b4a1c3b7000510c3888994b5413dd664f13c899d709c3c56e8d352f7bdda076",
+      "size": 79365786
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/packed_per_layer__sharegpt__r50__s7/result.json.sha256",
+      "sha256": "fcb1c2205cf95f87e78cb64bc148de88d2e82c3b3f8c9fadd819c70418fe7dd6",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/samples/packed_per_layer__sharegpt__r50__s7/status.json",
+      "sha256": "441e074f138620c0e5be1decc2c10513c42db654ef474ac5607991dde06a8c89",
+      "size": 351
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/servers/fp16/20260805T130932Z-7361d1cf/contract.json",
+      "sha256": "24db1dbfe1119f84892f5cb1da8392697cf3291ffbf4bc971e8691edbf53fea8",
+      "size": 576
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/servers/fp16/20260805T130932Z-7361d1cf/contract.json.sha256",
+      "sha256": "5beb9687f71df4d40a76f17368338c9076ad8ebf792f0a40977b1e03cca145b4",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/servers/fp16/20260805T130932Z-7361d1cf/server.log",
+      "sha256": "fabef5538f3fc2de6d45a64c054c44bbee1b2249b9752d98608bad0bffefe4ef",
+      "size": 3283766
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/servers/fp16/20260805T130932Z-7361d1cf/status.json",
+      "sha256": "230c885d710f4aa7f15eb9b64216cc755e6e070cf4c270f4d51cefdc8b888de4",
+      "size": 106
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/servers/int4/20260805T132819Z-b53bfb25/contract.json",
+      "sha256": "3bfc3c8f4dba5e0ee6e9bb9401ac6a5baab026a9c6001cefcfd2afcbc78bf8db",
+      "size": 591
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/servers/int4/20260805T132819Z-b53bfb25/contract.json.sha256",
+      "sha256": "62b9149b8834352a7decb9e2ec2672d471da6d67c55046452c4f930009f8500b",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/servers/int4/20260805T132819Z-b53bfb25/server.log",
+      "sha256": "76a6506a2484027d992d8a0dd5a1e92145a3d67dfd157a0798209ee186332abd",
+      "size": 3286231
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/servers/int4/20260805T132819Z-b53bfb25/status.json",
+      "sha256": "59726b4c0ca0b1d112d3ff59d60b02d73b7c9728b032c3cfde363737ccd54ca4",
+      "size": 106
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/servers/packed_per_layer/20260805T134806Z-1af72d2d/contract.json",
+      "sha256": "80facd27df1657d146ad34c54ae4e1ad8382560e157f66fefcd186403c100278",
+      "size": 853
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/servers/packed_per_layer/20260805T134806Z-1af72d2d/contract.json.sha256",
+      "sha256": "ad1993a84f60ff1d3ee1ab3dbc11cb68a4e25b1992a548d6abf67a0f4c8f27de",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/servers/packed_per_layer/20260805T134806Z-1af72d2d/server.log",
+      "sha256": "2f9392c04e1bd53b7ed0af3b8ae799e50df91fab697b8f23495d564da70d249f",
+      "size": 3287852
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/servers/packed_per_layer/20260805T134806Z-1af72d2d/status.json",
+      "sha256": "e378b89806fdd6444e67bbdd88a89213cfea3d7c0312b8f3f0543edcf44e3a31",
+      "size": 106
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/summary.json",
+      "sha256": "4ee6b2f94fdf5c52ba09be4d0a98aa2bb2bba55e833c2f1d30ccea1a6bdf5575",
+      "size": 1042
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/summary.json.sha256",
+      "sha256": "baaaf849aa4bd1a7f50d82fddf089c47a736c10ed31dfc7848d2b59d4d6d0505",
+      "size": 65
+    },
+    {
+      "path": "contracts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01.dry-run.json",
+      "sha256": "e80b5701cb62903435ea4dadf3a10a3dbbc92d4eb39e6a8e3e5fd048379a484d",
+      "size": 2646
+    },
+    {
+      "path": "contracts/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01.json",
+      "sha256": "f27e3df8ad028365fde594ba3dacb0e2168d7da1c1491e8f9244aabc19be35f9",
+      "size": 2353
+    },
+    {
+      "path": "contracts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01.dry-run.json",
+      "sha256": "2ddb65036241f58d767ebe5f5b0dce31b389e81a0759c4d9da67479ccfd27c43",
+      "size": 2700
+    },
+    {
+      "path": "contracts/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01.json",
+      "sha256": "91c1d015a6a51f1306a3e6378c89d8a266adaf54a02a5fc2239418346c691d0a",
+      "size": 2434
+    },
+    {
+      "path": "deployment/a2-comparative-pilot-v3-fc07868.bundle",
+      "sha256": "2340c936fa1c89cd23d4efbf4fcdc9d7cf971bb051d52e4a78ab6865934919ed",
+      "size": 1239800
+    },
+    {
+      "path": "deployment/a2-comparative-pilot-v3-fc07868.bundle.sha256",
+      "sha256": "fdcc6df182db2bee724b88e9427593b979f9ab67928778fffa386d42633dd4a1",
+      "size": 161
+    },
+    {
+      "path": "experiments/configs/a2_comparative_piecewise_protocol_v3_random60_pilot.yaml",
+      "sha256": "dcc63f7a2ad17f0a64753cc7c3d906dce45033ffba31734d2d8cb00410c31496",
+      "size": 2317
+    },
+    {
+      "path": "experiments/configs/a2_comparative_piecewise_protocol_v3_sharegpt300_pilot.yaml",
+      "sha256": "96dd2dcb807a494d96f5c481a4293ad6321f6ada28557ff09b474f908d049c18",
+      "size": 2445
+    },
+    {
+      "path": "supervisors/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/exit_code.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "size": 2
+    },
+    {
+      "path": "supervisors/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/finished_at.txt",
+      "sha256": "38e73a6bf9424a3d255137fb8da098ccf88dadd4fe1c20b7e6ab20927bdf05fd",
+      "size": 21
+    },
+    {
+      "path": "supervisors/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/run.sh",
+      "sha256": "acc27ae92fa97b6fcda64a4b6106cbfd62819a909bad33c52676bc0e750e81e9",
+      "size": 1168
+    },
+    {
+      "path": "supervisors/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/soft_nofile_after.txt",
+      "sha256": "7e89837e8791c415126e88fced677ddb237a7e2deecf18a2d7052d31ecae47fd",
+      "size": 6
+    },
+    {
+      "path": "supervisors/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/soft_nofile_before.txt",
+      "sha256": "4f71bb761ace37c88826cd8cc1c948e1cf5b5d0cd153dc651a6efdb3dfb9f2b1",
+      "size": 5
+    },
+    {
+      "path": "supervisors/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/started_at.txt",
+      "sha256": "7d9489bf161fac3a46247cc751ed395cff4c4be28197511ced12055fca3377c0",
+      "size": 21
+    },
+    {
+      "path": "supervisors/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "supervisors/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/stdout.log",
+      "sha256": "330082be0d433d4626fc3d1a16b5545ad7be23b7082945f95623d6f85070f032",
+      "size": 1406
+    },
+    {
+      "path": "supervisors/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/supervisor.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "supervisors/a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01/supervisor.pid",
+      "sha256": "55f339c7cd961cd929be9febb794b34c9a7b7869b8ff7ab3f45776b6e414db5a",
+      "size": 6
+    },
+    {
+      "path": "supervisors/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/exit_code.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "size": 2
+    },
+    {
+      "path": "supervisors/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/finished_at.txt",
+      "sha256": "993392db0ded22c37b00735e5d55e8df000a976f50bf1512b895b25fbdd93dab",
+      "size": 21
+    },
+    {
+      "path": "supervisors/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/run.sh",
+      "sha256": "3272c0a078a5d12d53940a054be8df9724ae038f27ef2365ab58b815b93dde56",
+      "size": 1175
+    },
+    {
+      "path": "supervisors/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/soft_nofile_after.txt",
+      "sha256": "7e89837e8791c415126e88fced677ddb237a7e2deecf18a2d7052d31ecae47fd",
+      "size": 6
+    },
+    {
+      "path": "supervisors/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/soft_nofile_before.txt",
+      "sha256": "4f71bb761ace37c88826cd8cc1c948e1cf5b5d0cd153dc651a6efdb3dfb9f2b1",
+      "size": 5
+    },
+    {
+      "path": "supervisors/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/started_at.txt",
+      "sha256": "3be4d33b7066bd02a2db7930e37d6ed379cc28715b542da3e030bf62f8c73cde",
+      "size": 21
+    },
+    {
+      "path": "supervisors/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "supervisors/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/stdout.log",
+      "sha256": "c7f80877209c7067ab6b425a6e2fea1e553d6e897da04c8d171086288b1aa974",
+      "size": 1454
+    },
+    {
+      "path": "supervisors/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/supervisor.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "supervisors/a2-comparative-serving-sharegpt300-pilot-v3-piecewise-fc07868-westd-01/supervisor.pid",
+      "sha256": "0098140ef06fe4240ec53dc092d9ec5887f016b3e5ae775033b07434364616c4",
+      "size": 6
+    }
+  ],
+  "generated": {
+    "protocol_v3_pilot_audit_report.json": "7852fa228b2cc3c248eecbed14ef2a20dc7a7f58b26c8271b8a0679d05fc43e4",
+    "protocol_v3_pilot_validation_report.md": "5615794005b7aa3cdba9b42cf74057a002df20970e2e8b0ce2519d764e0cb777"
+  },
+  "schema_version": 1
+}

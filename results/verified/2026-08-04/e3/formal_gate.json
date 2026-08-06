@@ -1,0 +1,50 @@
+{
+  "arrival_window": {
+    "max_ratio": 1.0004265561661063,
+    "min_ratio": 0.9996610483814341,
+    "target_s": 60.0,
+    "tolerance_fraction": 0.1
+  },
+  "attempt_id": "e3-v2-formal-d1d52c4-01",
+  "audited_at_utc": "2026-08-04T13:32:32+00:00",
+  "denominator": {
+    "completed_requests": 160200,
+    "expected_requests": 160200,
+    "expected_samples": 72,
+    "failed_requests": 0,
+    "request_failure_samples": [],
+    "validated_samples": 72
+  },
+  "duration_s": {
+    "max": 80.69543762295507,
+    "min": 60.60373580083251
+  },
+  "evidence_status": "ANALYZED",
+  "gate_status": "passed",
+  "launch": {
+    "exit_code": 0,
+    "supervisor_status": {
+      "completed_validated": 72,
+      "failed": 0,
+      "last_returncode": 0,
+      "not_started": 0,
+      "schema_version": 1,
+      "slice_number": 15,
+      "status": "completed",
+      "updated_at": "2026-08-04T13:30:06Z"
+    }
+  },
+  "parent_attempt": "e3-v2-pilot-d1d52c4-01",
+  "promotion_blocker": "Independent boundary reproducibility attempts are required before VERIFIED.",
+  "provenance": {
+    "aggregate_sha256": "0502f9da7972dbcc77f94d55f9177bfcf82455109b88db65897548c2521dd805",
+    "attempt_contract_sha256": "a77db54e1a51a62558b1470b0fba7116f156f59e3563a6c0982db85688558b98",
+    "environment_sha256": "52563c76b5adaf66d4a0b59525ff2642171681e561a6eaa4437c363cc047fa40",
+    "git_commit": "d1d52c49de57ab61776dfeb7cabd16ff8b6bd40c",
+    "summary_sha256": "9ad8ef6b2b9b4a94d81450f6b9f4e00ea5833828bd51ff8c2a771bec1a31a93f",
+    "validation_md_sha256": "22d9c72ea52b713e6b56c21da05075fb3f2c143ba77b54c3db03d902b977fb49",
+    "vllm_source_commit": "55f47685a553ad8d776c464c59785399a98c7185"
+  },
+  "sample_artifact_count": 72,
+  "schema_version": 1
+}

@@ -1,0 +1,325 @@
+{
+  "created_at": "2026-08-05T04:30:00Z",
+  "files": [
+    {
+      "path": "attempt_contract.json",
+      "sha256": "962a534e2b769a4dea91f3292708704ae139c7a0910c5bc119af147f14e77eb4",
+      "size": 6280
+    },
+    {
+      "path": "attempt_contract.json.sha256",
+      "sha256": "aeb518bdfba4d2e494a14fa8fb6a57e94964b6bf82abb977ca6ba63eeeb2a1bc",
+      "size": 65
+    },
+    {
+      "path": "attempt_contract_westd_02.json",
+      "sha256": "ebc991855af3ad263829fdb5dfe07de57933b4d8e1120dd419d4f6643cbb014a",
+      "size": 7216
+    },
+    {
+      "path": "attempt_contract_westd_02.json.sha256",
+      "sha256": "69627a5915bb0842103c5dca2e0ebca6913177dcc0e89255a5999515e74cf7dc",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-repro-capacity-legacy-c7379f0-westd-02/a2_capacity.json",
+      "sha256": "66e0dfb2f194843b2720fa982fcb97bd05d9e2670c8c72d71c8b7d193738704a",
+      "size": 84736
+    },
+    {
+      "path": "attempts/a2-repro-capacity-legacy-c7379f0-westd-02/a2_capacity.json.sha256",
+      "sha256": "57879da495b99051fe4d21c0efd79ff8a9c71e4a166949b65c282d5f38a2f133",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-repro-capacity-legacy-c7379f0-westd-02/exit_code.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "size": 2
+    },
+    {
+      "path": "attempts/a2-repro-capacity-legacy-c7379f0-westd-02/finished_at.txt",
+      "sha256": "abb5e32d7e5b47403c790e3af9df1668cfbd3cfe050262ddec0a7ab77f08f468",
+      "size": 21
+    },
+    {
+      "path": "attempts/a2-repro-capacity-legacy-c7379f0-westd-02/launch.json",
+      "sha256": "ecb01fa96a546f4074a6a7cb82824d728795e0d5d733424d23054fb1d4f48971",
+      "size": 971
+    },
+    {
+      "path": "attempts/a2-repro-capacity-legacy-c7379f0-westd-02/run_wrapper.sh",
+      "sha256": "744a21a9c372a5145585cf9b78611774e4e22dc3e7f3afe8b6d61abc8f8a0c9f",
+      "size": 1487
+    },
+    {
+      "path": "attempts/a2-repro-capacity-legacy-c7379f0-westd-02/started_at.txt",
+      "sha256": "7d08ca0de18f5ecbba67f92e5e54b0352ced3a94b332b11fa86334f461312480",
+      "size": 21
+    },
+    {
+      "path": "attempts/a2-repro-capacity-legacy-c7379f0-westd-02/stderr.log",
+      "sha256": "7d702a8c40c21f0e6b8daef260bd7f9b040858e040558c98ee7b4e9451febc48",
+      "size": 759
+    },
+    {
+      "path": "attempts/a2-repro-capacity-legacy-c7379f0-westd-02/stdout.log",
+      "sha256": "b6e8bbc5946e205a9b3fe9d13f30728947dc3e5b596b906cc5bc688c2462f34f",
+      "size": 12393
+    },
+    {
+      "path": "attempts/a2-repro-capacity-legacy-c7379f0-westd-02/supervisor.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "attempts/a2-repro-capacity-legacy-c7379f0-westd-02/supervisor.pid",
+      "sha256": "0862965f10db597be0c3c9d0ccc001d93e830e78ff18270a536983d7e02f659f",
+      "size": 5
+    },
+    {
+      "path": "attempts/a2-repro-capacity-packed-c7379f0-westd-02/a2_capacity.json",
+      "sha256": "4c93f71fd8d333029835a55417f6e901029ce46b35a2f4a35891a765e21fb693",
+      "size": 67942
+    },
+    {
+      "path": "attempts/a2-repro-capacity-packed-c7379f0-westd-02/a2_capacity.json.sha256",
+      "sha256": "7115f1aa25460ec29f636735ef6f5eca3d0fb997f3b512a1daa2fa44d51faf6d",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-repro-capacity-packed-c7379f0-westd-02/exit_code.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "size": 2
+    },
+    {
+      "path": "attempts/a2-repro-capacity-packed-c7379f0-westd-02/finished_at.txt",
+      "sha256": "e325fd9a8a33f788395cf853a910ce192aad1d2b099230f672f5d93a3a385537",
+      "size": 21
+    },
+    {
+      "path": "attempts/a2-repro-capacity-packed-c7379f0-westd-02/launch.json",
+      "sha256": "f061fe81a5430903e2433362890d552629c6f2ce530a983afd5c80908a850611",
+      "size": 1028
+    },
+    {
+      "path": "attempts/a2-repro-capacity-packed-c7379f0-westd-02/run_wrapper.sh",
+      "sha256": "9572d2ecb13953ad4f1e88e33595d8afe87e72518dbddb2d0f487318d712a42e",
+      "size": 1544
+    },
+    {
+      "path": "attempts/a2-repro-capacity-packed-c7379f0-westd-02/started_at.txt",
+      "sha256": "1ac7e67266ffb999cd59e0e417df2f77bdc204daa44cf578ec32c6543e9597c6",
+      "size": 21
+    },
+    {
+      "path": "attempts/a2-repro-capacity-packed-c7379f0-westd-02/stderr.log",
+      "sha256": "749b6567b8ba8a9def6c9d385a4f020f17c18ab5739d085c5f1f75170fbfcf6b",
+      "size": 759
+    },
+    {
+      "path": "attempts/a2-repro-capacity-packed-c7379f0-westd-02/stdout.log",
+      "sha256": "8244528ef8e8c2a78de5051f1a67ca995faf6cda80a8c6a04b23be3f82a7af8c",
+      "size": 13275
+    },
+    {
+      "path": "attempts/a2-repro-capacity-packed-c7379f0-westd-02/supervisor.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "attempts/a2-repro-capacity-packed-c7379f0-westd-02/supervisor.pid",
+      "sha256": "1165451fff20583f9e77d3c5bb8bebbc5ff2db72a22310f6a209c00813def80e",
+      "size": 5
+    },
+    {
+      "path": "attempts/a2-repro-capacity-uniform-c7379f0-westd-02/a2_capacity.json",
+      "sha256": "c7842f315a07e2d6e89152982c990bb6a5f43292d412fa03e7855a1ebe453f98",
+      "size": 60770
+    },
+    {
+      "path": "attempts/a2-repro-capacity-uniform-c7379f0-westd-02/a2_capacity.json.sha256",
+      "sha256": "de910cbb9603d6ff338b336d7b9bf9a6d7451bc03f5d66c7a83b9b587758fbee",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-repro-capacity-uniform-c7379f0-westd-02/exit_code.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "size": 2
+    },
+    {
+      "path": "attempts/a2-repro-capacity-uniform-c7379f0-westd-02/finished_at.txt",
+      "sha256": "3c4fd63b9d5e853efbeff4f77fb82bebfedbc177b5f546641eec2ac0976be121",
+      "size": 21
+    },
+    {
+      "path": "attempts/a2-repro-capacity-uniform-c7379f0-westd-02/launch.json",
+      "sha256": "57f73a7d32cbdea4a02e9c7eec1e59fc099038f0701634471fab3f4ca0323bcf",
+      "size": 806
+    },
+    {
+      "path": "attempts/a2-repro-capacity-uniform-c7379f0-westd-02/run_wrapper.sh",
+      "sha256": "c00872274ccf274b992c471ca099f457349479ccbdcf467bf32cce89de4ffa16",
+      "size": 1349
+    },
+    {
+      "path": "attempts/a2-repro-capacity-uniform-c7379f0-westd-02/started_at.txt",
+      "sha256": "6adad892337abb93173e9025e9fa7f13dbef4237c4e9a2073bbdf0ca8133fa19",
+      "size": 21
+    },
+    {
+      "path": "attempts/a2-repro-capacity-uniform-c7379f0-westd-02/stderr.log",
+      "sha256": "cfe7d80ff051a3db44364369c431fda70aab2400631079286782c6204ea52fcf",
+      "size": 759
+    },
+    {
+      "path": "attempts/a2-repro-capacity-uniform-c7379f0-westd-02/stdout.log",
+      "sha256": "e7f03b2cd30058af1b6c0e800b9127237a8b31a44e7636cb3308e88ba27e96c3",
+      "size": 10927
+    },
+    {
+      "path": "attempts/a2-repro-capacity-uniform-c7379f0-westd-02/supervisor.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "attempts/a2-repro-capacity-uniform-c7379f0-westd-02/supervisor.pid",
+      "sha256": "a334c3300d9a482bb068884dc25b528c3f0e210d4265458b283a96ecdd44e1b2",
+      "size": 5
+    },
+    {
+      "path": "attempts/a2-repro-mvex-c7379f0-westd-01/exit_code.txt",
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "size": 2
+    },
+    {
+      "path": "attempts/a2-repro-mvex-c7379f0-westd-01/finished_at.txt",
+      "sha256": "0e540537d27e97e41f033d6914f855aae41d832b19ed6c75c997f453d94ac0bd",
+      "size": 21
+    },
+    {
+      "path": "attempts/a2-repro-mvex-c7379f0-westd-01/launch.json",
+      "sha256": "22d73eb2eb7365dd41a1f7e7181d1a8bd9549174a9263556a9f580204ffc7197",
+      "size": 985
+    },
+    {
+      "path": "attempts/a2-repro-mvex-c7379f0-westd-01/run_wrapper.sh",
+      "sha256": "982e2b5bd32300721b84318d8f6715aa208061dd1d46becad2eccd8b5d863dd7",
+      "size": 1468
+    },
+    {
+      "path": "attempts/a2-repro-mvex-c7379f0-westd-01/started_at.txt",
+      "sha256": "327d2c1fe1f8b32e465241993d9584455a843f1c2f5621a8b32c6e06be19223d",
+      "size": 21
+    },
+    {
+      "path": "attempts/a2-repro-mvex-c7379f0-westd-01/stderr.log",
+      "sha256": "b891962e5567206bba0672e565544225a96ae3f065301d362404693558a0e6a1",
+      "size": 3029
+    },
+    {
+      "path": "attempts/a2-repro-mvex-c7379f0-westd-01/stdout.log",
+      "sha256": "4fcfc0c033747b03d963c4bcef15a9c397a0008ed3f75a60b22663e02822f593",
+      "size": 12727
+    },
+    {
+      "path": "attempts/a2-repro-mvex-c7379f0-westd-01/supervisor.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "attempts/a2-repro-mvex-c7379f0-westd-01/supervisor.pid",
+      "sha256": "e085d0141aabeda37de279250dd8ee362f0f7b338b32c20bf6ff3d55493defdd",
+      "size": 5
+    },
+    {
+      "path": "attempts/a2-repro-mvex-c7379f0-westd-02/a2_runtime.json",
+      "sha256": "1521097e44abebcf6dcf5f81896243524116985e0bb8075b2c5e4d2e211525a0",
+      "size": 68414
+    },
+    {
+      "path": "attempts/a2-repro-mvex-c7379f0-westd-02/a2_runtime.json.sha256",
+      "sha256": "bb6c46f4f530e9b48c5602e07a9e1c728562ed60d44d1ae5692ec12ef3bbbbae",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-repro-mvex-c7379f0-westd-02/exit_code.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "size": 2
+    },
+    {
+      "path": "attempts/a2-repro-mvex-c7379f0-westd-02/finished_at.txt",
+      "sha256": "f0977ed9a8d19dc59831951a06033998ee1f80b9f076ce67d8d5cefc2ffdeaf3",
+      "size": 21
+    },
+    {
+      "path": "attempts/a2-repro-mvex-c7379f0-westd-02/launch.json",
+      "sha256": "d709622ef34121b1441d9e57aff658565e546ea7336978bf63928ee5593e0147",
+      "size": 1033
+    },
+    {
+      "path": "attempts/a2-repro-mvex-c7379f0-westd-02/run_wrapper.sh",
+      "sha256": "d883fa444980c0178e244ea24c45e636f2ca441e6b0c259483302da870c78617",
+      "size": 1504
+    },
+    {
+      "path": "attempts/a2-repro-mvex-c7379f0-westd-02/started_at.txt",
+      "sha256": "58389721738fc058f68c71c1682db21d50e5246119cb42d3d472cfd4270ad8bb",
+      "size": 21
+    },
+    {
+      "path": "attempts/a2-repro-mvex-c7379f0-westd-02/stderr.log",
+      "sha256": "221cda3cd91a3def16a3c540f57e3dec7acdc554c9d18b944aebbfbe51fd5c6c",
+      "size": 1426
+    },
+    {
+      "path": "attempts/a2-repro-mvex-c7379f0-westd-02/stdout.log",
+      "sha256": "edd60b1d29575fb4f5428e7470baad1d939cb20685d3fb59f41785962463a70b",
+      "size": 14607
+    },
+    {
+      "path": "attempts/a2-repro-mvex-c7379f0-westd-02/supervisor.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "attempts/a2-repro-mvex-c7379f0-westd-02/supervisor.pid",
+      "sha256": "fabcc1cc9ef693f9e8e2bdd96693753367ecf8fe1f5a64d714de57adfe8451bc",
+      "size": 5
+    },
+    {
+      "path": "deployment-dryrun-westd-01/deployment.json",
+      "sha256": "597ea831079755fc58e047d4fdada0b19b73016f6925b26ac1e4c4243aae367e",
+      "size": 3728
+    },
+    {
+      "path": "deployment-dryrun-westd-01/deployment.json.sha256",
+      "sha256": "c08e0a6a3f944724f3d63b1ef4eb18d5bcf015c9fd2a10fed12c58a81d8cbc94",
+      "size": 65
+    },
+    {
+      "path": "deployment-westd-01/deployment.json",
+      "sha256": "fcc75cb6f47e5777c5da656b7a3e210f65d1d34f41310ec9012f148ffa762c1d",
+      "size": 5411
+    },
+    {
+      "path": "deployment-westd-01/deployment.json.sha256",
+      "sha256": "7f03e5b72a0335e9c6e64dad6caf711e812f5fa82801c7715cfb8f5118dbd749",
+      "size": 65
+    },
+    {
+      "path": "suite_westd_01_failure.json",
+      "sha256": "cb84ba27f1438209caa4dd43253b4b7e32232fbc8d63cdeb5b0f1efff989e2a9",
+      "size": 851
+    },
+    {
+      "path": "suite_westd_01_failure.json.sha256",
+      "sha256": "4248391c8353d0dd9fccb8e8a7766204b50970ff5676757f36f39d6bc6e6a723",
+      "size": 65
+    }
+  ],
+  "generated": {
+    "reproducibility_report.json": "b0ec6369e36b799e2914fbbb75377f61464c14f28da339877920eb2520e94cfa",
+    "validation_report.md": "4d264f2041422b07673507d9b4acbb63f47120ed89b2ca666b0ae6ceb94b2b92"
+  },
+  "schema_version": 1
+}

@@ -1,0 +1,1552 @@
+{
+  "a2_overall_status": "PASSED_NOT_VERIFIED_SERVING_QUALITY_PENDING",
+  "created_at": "2026-08-05T10:41:15Z",
+  "fallacy_scan": [
+    {
+      "detail": "Random and ShareGPT saturation behavior differs; workloads are not pooled.",
+      "fallacy": "Simpson's Paradox",
+      "severity": "CAUTION"
+    },
+    {
+      "detail": "Inference stays at the allocation-workload-rate attempt level.",
+      "fallacy": "Ecological Fallacy",
+      "severity": "NOTE"
+    },
+    {
+      "detail": "No outcome-conditioned correlation sample is analyzed.",
+      "fallacy": "Berkson's Paradox",
+      "severity": "NOTE"
+    },
+    {
+      "detail": "No post-treatment covariate adjustment is performed.",
+      "fallacy": "Collider Bias",
+      "severity": "NOTE"
+    },
+    {
+      "detail": "No diagnostic probability is reported.",
+      "fallacy": "Base Rate Neglect",
+      "severity": "NOTE"
+    },
+    {
+      "detail": "The pilot has one seed and cannot establish boundary stability.",
+      "fallacy": "Regression to the Mean",
+      "severity": "CAUTION"
+    },
+    {
+      "detail": "All 35,100 issued requests remain in the denominator, including eight client failures.",
+      "fallacy": "Survivorship Bias",
+      "severity": "SOLID"
+    },
+    {
+      "detail": "All frozen rates and all five TTFT thresholds are reported.",
+      "fallacy": "Look-Elsewhere Effect",
+      "severity": "SOLID"
+    },
+    {
+      "detail": "The replacement rate grid is parent-linked; any protocol correction must use another new attempt.",
+      "fallacy": "Garden of Forking Paths",
+      "severity": "CAUTION"
+    },
+    {
+      "detail": "The FD error is directly observed, but the short-window drain diagnosis still requires a new MVEx.",
+      "fallacy": "Correlation != Causation",
+      "severity": "CAUTION"
+    },
+    {
+      "detail": "Not applicable to the controlled serving configuration comparison.",
+      "fallacy": "Reverse Causality",
+      "severity": "NOTE"
+    }
+  ],
+  "mvex": {
+    "attempt_id": "a2-comparative-serving-mvex-piecewise-f7a79f5-westd-01",
+    "evidence_status": "UNVERIFIED",
+    "parent_attempt": "a2-packed-serving-pilot-piecewise-f7a79f5-westd-01",
+    "samples": [
+      {
+        "accounting": {
+          "completed": 1800,
+          "detail_lengths": {
+            "errors": 1800,
+            "itls": 1800,
+            "output_lens": 1800,
+            "start_times": 1800,
+            "ttfts": 1800
+          },
+          "detailed_failures": 0,
+          "expected": 1800,
+          "failed": 0,
+          "request_conservation": true
+        },
+        "allocation": "fp16",
+        "arrival_span_over_target": 1.0000199006559949,
+        "benchmark_duration_s": 61.10261526890099,
+        "drain_after_arrival_window_s": 1.1026152689009905,
+        "fd_limit_failures": 0,
+        "goodput_over_offered": {
+          "1000": 0.9819546959807107,
+          "2000": 0.9819546959807107,
+          "250": 0.9677709059276559,
+          "3000": 0.9819546959807107,
+          "500": 0.9819546959807107
+        },
+        "offered_rate": 30.0,
+        "output_lengths": {
+          "max": 128,
+          "mean": 128.0,
+          "median": 128,
+          "min": 128,
+          "p99": 128
+        },
+        "reported_tpot_p99_ms": 21.91532552242279,
+        "reported_ttft_p99_ms": 261.83112528175116,
+        "request_throughput": 29.45864087942132,
+        "request_throughput_over_offered": 0.9819546959807107,
+        "sample_id": "fp16__random__r30__s7",
+        "seed": 7,
+        "sustainable_ttft_thresholds_ms": [
+          250,
+          500,
+          1000,
+          2000,
+          3000
+        ],
+        "workload": "random"
+      },
+      {
+        "accounting": {
+          "completed": 1200,
+          "detail_lengths": {
+            "errors": 1200,
+            "itls": 1200,
+            "output_lens": 1200,
+            "start_times": 1200,
+            "ttfts": 1200
+          },
+          "detailed_failures": 0,
+          "expected": 1200,
+          "failed": 0,
+          "request_conservation": true
+        },
+        "allocation": "fp16",
+        "arrival_span_over_target": 0.9999848039199909,
+        "benchmark_duration_s": 64.05418353527784,
+        "drain_after_arrival_window_s": 4.0541835352778435,
+        "fd_limit_failures": 0,
+        "goodput_over_offered": {
+          "1000": 0.9367069672655338,
+          "2000": 0.9367069672655338,
+          "250": 0.9367069672655338,
+          "3000": 0.9367069672655338,
+          "500": 0.9367069672655338
+        },
+        "offered_rate": 20.0,
+        "output_lengths": {
+          "max": 1521,
+          "mean": 200.55,
+          "median": 129,
+          "min": 4,
+          "p99": 854
+        },
+        "reported_tpot_p99_ms": 14.009864850901062,
+        "reported_ttft_p99_ms": 121.07132237404585,
+        "request_throughput": 18.734139345310677,
+        "request_throughput_over_offered": 0.9367069672655338,
+        "sample_id": "fp16__sharegpt__r20__s7",
+        "seed": 7,
+        "sustainable_ttft_thresholds_ms": [],
+        "workload": "sharegpt"
+      },
+      {
+        "accounting": {
+          "completed": 1800,
+          "detail_lengths": {
+            "errors": 1800,
+            "itls": 1800,
+            "output_lens": 1800,
+            "start_times": 1800,
+            "ttfts": 1800
+          },
+          "detailed_failures": 0,
+          "expected": 1800,
+          "failed": 0,
+          "request_conservation": true
+        },
+        "allocation": "int4",
+        "arrival_span_over_target": 1.0000256868079305,
+        "benchmark_duration_s": 61.337501995265484,
+        "drain_after_arrival_window_s": 1.3375019952654839,
+        "fd_limit_failures": 0,
+        "goodput_over_offered": {
+          "1000": 0.9781943843202365,
+          "2000": 0.9781943843202365,
+          "250": 0.966782116503167,
+          "3000": 0.9781943843202365,
+          "500": 0.9781943843202365
+        },
+        "offered_rate": 30.0,
+        "output_lengths": {
+          "max": 128,
+          "mean": 128.0,
+          "median": 128,
+          "min": 128,
+          "p99": 128
+        },
+        "reported_tpot_p99_ms": 31.19468189262616,
+        "reported_ttft_p99_ms": 251.26339415088296,
+        "request_throughput": 29.345831529607096,
+        "request_throughput_over_offered": 0.9781943843202365,
+        "sample_id": "int4__random__r30__s7",
+        "seed": 7,
+        "sustainable_ttft_thresholds_ms": [
+          250,
+          500,
+          1000,
+          2000,
+          3000
+        ],
+        "workload": "random"
+      },
+      {
+        "accounting": {
+          "completed": 1200,
+          "detail_lengths": {
+            "errors": 1200,
+            "itls": 1200,
+            "output_lens": 1200,
+            "start_times": 1200,
+            "ttfts": 1200
+          },
+          "detailed_failures": 0,
+          "expected": 1200,
+          "failed": 0,
+          "request_conservation": true
+        },
+        "allocation": "int4",
+        "arrival_span_over_target": 1.0000850781798363,
+        "benchmark_duration_s": 66.9452722556889,
+        "drain_after_arrival_window_s": 6.945272255688906,
+        "fd_limit_failures": 0,
+        "goodput_over_offered": {
+          "1000": 0.8962544774011475,
+          "2000": 0.8962544774011475,
+          "250": 0.8962544774011475,
+          "3000": 0.8962544774011475,
+          "500": 0.8962544774011475
+        },
+        "offered_rate": 20.0,
+        "output_lengths": {
+          "max": 1521,
+          "mean": 200.55,
+          "median": 129,
+          "min": 4,
+          "p99": 854
+        },
+        "reported_tpot_p99_ms": 21.456275740017492,
+        "reported_ttft_p99_ms": 147.21913307905197,
+        "request_throughput": 17.92508954802295,
+        "request_throughput_over_offered": 0.8962544774011475,
+        "sample_id": "int4__sharegpt__r20__s7",
+        "seed": 7,
+        "sustainable_ttft_thresholds_ms": [],
+        "workload": "sharegpt"
+      },
+      {
+        "accounting": {
+          "completed": 1800,
+          "detail_lengths": {
+            "errors": 1800,
+            "itls": 1800,
+            "output_lens": 1800,
+            "start_times": 1800,
+            "ttfts": 1800
+          },
+          "detailed_failures": 0,
+          "expected": 1800,
+          "failed": 0,
+          "request_conservation": true
+        },
+        "allocation": "packed_per_layer",
+        "arrival_span_over_target": 1.000040757469833,
+        "benchmark_duration_s": 61.264757324010134,
+        "drain_after_arrival_window_s": 1.2647573240101337,
+        "fd_limit_failures": 0,
+        "goodput_over_offered": {
+          "1000": 0.9793558747434316,
+          "2000": 0.9793558747434316,
+          "250": 0.9695623159959973,
+          "3000": 0.9793558747434316,
+          "500": 0.9793558747434316
+        },
+        "offered_rate": 30.0,
+        "output_lengths": {
+          "max": 128,
+          "mean": 128.0,
+          "median": 128,
+          "min": 128,
+          "p99": 128
+        },
+        "reported_tpot_p99_ms": 24.240729540117144,
+        "reported_ttft_p99_ms": 248.82220661267635,
+        "request_throughput": 29.380676242302947,
+        "request_throughput_over_offered": 0.9793558747434316,
+        "sample_id": "packed_per_layer__random__r30__s7",
+        "seed": 7,
+        "sustainable_ttft_thresholds_ms": [
+          250,
+          500,
+          1000,
+          2000,
+          3000
+        ],
+        "workload": "random"
+      },
+      {
+        "accounting": {
+          "completed": 1200,
+          "detail_lengths": {
+            "errors": 1200,
+            "itls": 1200,
+            "output_lens": 1200,
+            "start_times": 1200,
+            "ttfts": 1200
+          },
+          "detailed_failures": 0,
+          "expected": 1200,
+          "failed": 0,
+          "request_conservation": true
+        },
+        "allocation": "packed_per_layer",
+        "arrival_span_over_target": 0.9999794767859082,
+        "benchmark_duration_s": 65.98691661283374,
+        "drain_after_arrival_window_s": 5.986916612833738,
+        "fd_limit_failures": 0,
+        "goodput_over_offered": {
+          "1000": 0.9092711567664103,
+          "2000": 0.9092711567664103,
+          "250": 0.9092711567664103,
+          "3000": 0.9092711567664103,
+          "500": 0.9092711567664103
+        },
+        "offered_rate": 20.0,
+        "output_lengths": {
+          "max": 1521,
+          "mean": 200.55,
+          "median": 129,
+          "min": 4,
+          "p99": 854
+        },
+        "reported_tpot_p99_ms": 16.819146065041423,
+        "reported_ttft_p99_ms": 126.06065934523939,
+        "request_throughput": 18.185423135328207,
+        "request_throughput_over_offered": 0.9092711567664103,
+        "sample_id": "packed_per_layer__sharegpt__r20__s7",
+        "seed": 7,
+        "sustainable_ttft_thresholds_ms": [],
+        "workload": "sharegpt"
+      }
+    ],
+    "servers": [
+      {
+        "allocation": "fp16",
+        "exception": null,
+        "graph_mode_proven": true,
+        "returncode": 0,
+        "runtime_faults": {
+          "CUDA error: an illegal instruction was encountered": false,
+          "EngineCore encountered a fatal error": false,
+          "server health check failed after benchmark": false
+        },
+        "server_log_sha256": "0d57831b8ab4fd88e78f5c8b2711a957c40fd40e858693a95ac65a769e4ec030",
+        "status": "stopped"
+      },
+      {
+        "allocation": "int4",
+        "exception": null,
+        "graph_mode_proven": true,
+        "returncode": 0,
+        "runtime_faults": {
+          "CUDA error: an illegal instruction was encountered": false,
+          "EngineCore encountered a fatal error": false,
+          "server health check failed after benchmark": false
+        },
+        "server_log_sha256": "0e7eb16165ef3a0dc1da05f824dac999fe23589c4e7d691236e5b08f5a1ccd45",
+        "status": "stopped"
+      },
+      {
+        "allocation": "packed_per_layer",
+        "exception": null,
+        "graph_mode_proven": true,
+        "returncode": 0,
+        "runtime_faults": {
+          "CUDA error: an illegal instruction was encountered": false,
+          "EngineCore encountered a fatal error": false,
+          "server health check failed after benchmark": false
+        },
+        "server_log_sha256": "732d9aba1c1f97616611edab8db927100bfaf74469a79e74efc64e76fd9a5a79",
+        "status": "stopped"
+      }
+    ],
+    "sidecars_verified": 24,
+    "supervisor_exit_code": 0,
+    "total_completed": 9000,
+    "total_expected": 9000,
+    "total_failed": 0
+  },
+  "next_gate": {
+    "formal_blocked": true,
+    "preserve_sharegpt_completion_distribution": true,
+    "required_soft_nofile": 65535,
+    "sharegpt_measurement_window_s_to_mvex": 300
+  },
+  "pilot": {
+    "attempt_id": "a2-comparative-serving-pilot-piecewise-f7a79f5-westd-02",
+    "evidence_status": "QUARANTINED",
+    "failed_sample": {
+      "accounting": {
+        "completed": 2992,
+        "detail_lengths": {
+          "errors": 3000,
+          "itls": 3000,
+          "output_lens": 3000,
+          "start_times": 3000,
+          "ttfts": 3000
+        },
+        "detailed_failures": 8,
+        "expected": 3000,
+        "failed": 8,
+        "request_conservation": true
+      },
+      "allocation": "fp16",
+      "arrival_span_over_target": 1.0002077442593873,
+      "benchmark_duration_s": 82.82485923543572,
+      "drain_after_arrival_window_s": 22.824859235435724,
+      "fd_limit_failures": 8,
+      "goodput_over_offered": {
+        "1000": 0.06254160946142355,
+        "2000": 0.10842155462617441,
+        "250": 0.03066712124170189,
+        "3000": 0.13739836209864864,
+        "500": 0.04249931762629553
+      },
+      "offered_rate": 50.0,
+      "output_lengths": {
+        "max": 128,
+        "mean": 128.0,
+        "median": 128,
+        "min": 128,
+        "p99": 128
+      },
+      "reported_tpot_p99_ms": 49.49156007062146,
+      "reported_ttft_p99_ms": 21554.760531373322,
+      "request_throughput": 36.124419982351206,
+      "request_throughput_over_offered": 0.7224883996470242,
+      "sample_id": "fp16__random__r50__s7",
+      "seed": 7,
+      "sustainable_ttft_thresholds_ms": [],
+      "workload": "random"
+    },
+    "gate_passed": false,
+    "parent_attempt": "a2-comparative-serving-mvex-piecewise-f7a79f5-westd-01",
+    "samples": [
+      {
+        "accounting": {
+          "completed": 1800,
+          "detail_lengths": {
+            "errors": 1800,
+            "itls": 1800,
+            "output_lens": 1800,
+            "start_times": 1800,
+            "ttfts": 1800
+          },
+          "detailed_failures": 0,
+          "expected": 1800,
+          "failed": 0,
+          "request_conservation": true
+        },
+        "allocation": "fp16",
+        "arrival_span_over_target": 1.0000860934145748,
+        "benchmark_duration_s": 61.070298517122865,
+        "drain_after_arrival_window_s": 1.0702985171228647,
+        "fd_limit_failures": 0,
+        "goodput_over_offered": {
+          "1000": 0.9824743198721588,
+          "2000": 0.9824743198721588,
+          "250": 0.9753786720064156,
+          "3000": 0.9824743198721588,
+          "500": 0.9824743198721588
+        },
+        "offered_rate": 30.0,
+        "output_lengths": {
+          "max": 128,
+          "mean": 128.0,
+          "median": 128,
+          "min": 128,
+          "p99": 128
+        },
+        "reported_tpot_p99_ms": 24.377189755703757,
+        "reported_ttft_p99_ms": 244.4304676912725,
+        "request_throughput": 29.474229596164765,
+        "request_throughput_over_offered": 0.9824743198721588,
+        "sample_id": "fp16__random__r30__s7",
+        "seed": 7,
+        "sustainable_ttft_thresholds_ms": [
+          250,
+          500,
+          1000,
+          2000,
+          3000
+        ],
+        "workload": "random"
+      },
+      {
+        "accounting": {
+          "completed": 2400,
+          "detail_lengths": {
+            "errors": 2400,
+            "itls": 2400,
+            "output_lens": 2400,
+            "start_times": 2400,
+            "ttfts": 2400
+          },
+          "detailed_failures": 0,
+          "expected": 2400,
+          "failed": 0,
+          "request_conservation": true
+        },
+        "allocation": "fp16",
+        "arrival_span_over_target": 1.000103080396851,
+        "benchmark_duration_s": 66.5008717160672,
+        "drain_after_arrival_window_s": 6.500871716067195,
+        "fd_limit_failures": 0,
+        "goodput_over_offered": {
+          "1000": 0.3278152517019251,
+          "2000": 0.4353326393014097,
+          "250": 0.11992324001480976,
+          "3000": 0.631570668416553,
+          "500": 0.2244331482408822
+        },
+        "offered_rate": 40.0,
+        "output_lengths": {
+          "max": 128,
+          "mean": 128.0,
+          "median": 128,
+          "min": 128,
+          "p99": 128
+        },
+        "reported_tpot_p99_ms": 49.29173792793056,
+        "reported_ttft_p99_ms": 5257.979727126658,
+        "request_throughput": 36.08975248094588,
+        "request_throughput_over_offered": 0.9022438120236471,
+        "sample_id": "fp16__random__r40__s7",
+        "seed": 7,
+        "sustainable_ttft_thresholds_ms": [],
+        "workload": "random"
+      },
+      {
+        "accounting": {
+          "completed": 2992,
+          "detail_lengths": {
+            "errors": 3000,
+            "itls": 3000,
+            "output_lens": 3000,
+            "start_times": 3000,
+            "ttfts": 3000
+          },
+          "detailed_failures": 8,
+          "expected": 3000,
+          "failed": 8,
+          "request_conservation": true
+        },
+        "allocation": "fp16",
+        "arrival_span_over_target": 1.0002077442593873,
+        "benchmark_duration_s": 82.82485923543572,
+        "drain_after_arrival_window_s": 22.824859235435724,
+        "fd_limit_failures": 8,
+        "goodput_over_offered": {
+          "1000": 0.06254160946142355,
+          "2000": 0.10842155462617441,
+          "250": 0.03066712124170189,
+          "3000": 0.13739836209864864,
+          "500": 0.04249931762629553
+        },
+        "offered_rate": 50.0,
+        "output_lengths": {
+          "max": 128,
+          "mean": 128.0,
+          "median": 128,
+          "min": 128,
+          "p99": 128
+        },
+        "reported_tpot_p99_ms": 49.49156007062146,
+        "reported_ttft_p99_ms": 21554.760531373322,
+        "request_throughput": 36.124419982351206,
+        "request_throughput_over_offered": 0.7224883996470242,
+        "sample_id": "fp16__random__r50__s7",
+        "seed": 7,
+        "sustainable_ttft_thresholds_ms": [],
+        "workload": "random"
+      },
+      {
+        "accounting": {
+          "completed": 600,
+          "detail_lengths": {
+            "errors": 600,
+            "itls": 600,
+            "output_lens": 600,
+            "start_times": 600,
+            "ttfts": 600
+          },
+          "detailed_failures": 0,
+          "expected": 600,
+          "failed": 0,
+          "request_conservation": true
+        },
+        "allocation": "fp16",
+        "arrival_span_over_target": 0.9998790032540759,
+        "benchmark_duration_s": 67.87585725262761,
+        "drain_after_arrival_window_s": 7.875857252627611,
+        "fd_limit_failures": 0,
+        "goodput_over_offered": {
+          "1000": 0.8839667361649017,
+          "2000": 0.8839667361649017,
+          "250": 0.8839667361649017,
+          "3000": 0.8839667361649017,
+          "500": 0.8839667361649017
+        },
+        "offered_rate": 10.0,
+        "output_lengths": {
+          "max": 1521,
+          "mean": 194.45833333333334,
+          "median": 123,
+          "min": 4,
+          "p99": 839
+        },
+        "reported_tpot_p99_ms": 12.503780694678422,
+        "reported_ttft_p99_ms": 92.28714989498258,
+        "request_throughput": 8.839667361649017,
+        "request_throughput_over_offered": 0.8839667361649017,
+        "sample_id": "fp16__sharegpt__r10__s7",
+        "seed": 7,
+        "sustainable_ttft_thresholds_ms": [],
+        "workload": "sharegpt"
+      },
+      {
+        "accounting": {
+          "completed": 900,
+          "detail_lengths": {
+            "errors": 900,
+            "itls": 900,
+            "output_lens": 900,
+            "start_times": 900,
+            "ttfts": 900
+          },
+          "detailed_failures": 0,
+          "expected": 900,
+          "failed": 0,
+          "request_conservation": true
+        },
+        "allocation": "fp16",
+        "arrival_span_over_target": 0.9999467250580589,
+        "benchmark_duration_s": 66.46198879554868,
+        "drain_after_arrival_window_s": 6.4619887955486774,
+        "fd_limit_failures": 0,
+        "goodput_over_offered": {
+          "1000": 0.9027716607243407,
+          "2000": 0.9027716607243407,
+          "250": 0.9027716607243407,
+          "3000": 0.9027716607243407,
+          "500": 0.9027716607243407
+        },
+        "offered_rate": 15.0,
+        "output_lengths": {
+          "max": 1521,
+          "mean": 198.17666666666668,
+          "median": 129,
+          "min": 4,
+          "p99": 854
+        },
+        "reported_tpot_p99_ms": 14.960789753124118,
+        "reported_ttft_p99_ms": 108.55216834694147,
+        "request_throughput": 13.54157491086511,
+        "request_throughput_over_offered": 0.9027716607243407,
+        "sample_id": "fp16__sharegpt__r15__s7",
+        "seed": 7,
+        "sustainable_ttft_thresholds_ms": [],
+        "workload": "sharegpt"
+      },
+      {
+        "accounting": {
+          "completed": 1200,
+          "detail_lengths": {
+            "errors": 1200,
+            "itls": 1200,
+            "output_lens": 1200,
+            "start_times": 1200,
+            "ttfts": 1200
+          },
+          "detailed_failures": 0,
+          "expected": 1200,
+          "failed": 0,
+          "request_conservation": true
+        },
+        "allocation": "fp16",
+        "arrival_span_over_target": 0.9999876810858647,
+        "benchmark_duration_s": 64.32556832581758,
+        "drain_after_arrival_window_s": 4.325568325817585,
+        "fd_limit_failures": 0,
+        "goodput_over_offered": {
+          "1000": 0.9327550702092828,
+          "2000": 0.9327550702092828,
+          "250": 0.9327550702092828,
+          "3000": 0.9327550702092828,
+          "500": 0.9327550702092828
+        },
+        "offered_rate": 20.0,
+        "output_lengths": {
+          "max": 1521,
+          "mean": 200.55,
+          "median": 129,
+          "min": 4,
+          "p99": 854
+        },
+        "reported_tpot_p99_ms": 16.56034672446549,
+        "reported_ttft_p99_ms": 121.5502429753542,
+        "request_throughput": 18.655101404185658,
+        "request_throughput_over_offered": 0.9327550702092828,
+        "sample_id": "fp16__sharegpt__r20__s7",
+        "seed": 7,
+        "sustainable_ttft_thresholds_ms": [],
+        "workload": "sharegpt"
+      },
+      {
+        "accounting": {
+          "completed": 1800,
+          "detail_lengths": {
+            "errors": 1800,
+            "itls": 1800,
+            "output_lens": 1800,
+            "start_times": 1800,
+            "ttfts": 1800
+          },
+          "detailed_failures": 0,
+          "expected": 1800,
+          "failed": 0,
+          "request_conservation": true
+        },
+        "allocation": "fp16",
+        "arrival_span_over_target": 1.000091196782887,
+        "benchmark_duration_s": 70.53946961276233,
+        "drain_after_arrival_window_s": 10.539469612762332,
+        "fd_limit_failures": 0,
+        "goodput_over_offered": {
+          "1000": 0.8505876260394296,
+          "2000": 0.8505876260394296,
+          "250": 0.8505876260394296,
+          "3000": 0.8505876260394296,
+          "500": 0.8505876260394296
+        },
+        "offered_rate": 30.0,
+        "output_lengths": {
+          "max": 1798,
+          "mean": 205.19833333333332,
+          "median": 145,
+          "min": 4,
+          "p99": 856
+        },
+        "reported_tpot_p99_ms": 23.205885130446404,
+        "reported_ttft_p99_ms": 162.82580258324742,
+        "request_throughput": 25.51762878118289,
+        "request_throughput_over_offered": 0.8505876260394296,
+        "sample_id": "fp16__sharegpt__r30__s7",
+        "seed": 7,
+        "sustainable_ttft_thresholds_ms": [],
+        "workload": "sharegpt"
+      },
+      {
+        "accounting": {
+          "completed": 1800,
+          "detail_lengths": {
+            "errors": 1800,
+            "itls": 1800,
+            "output_lens": 1800,
+            "start_times": 1800,
+            "ttfts": 1800
+          },
+          "detailed_failures": 0,
+          "expected": 1800,
+          "failed": 0,
+          "request_conservation": true
+        },
+        "allocation": "int4",
+        "arrival_span_over_target": 1.0000660767468312,
+        "benchmark_duration_s": 61.333671286702156,
+        "drain_after_arrival_window_s": 1.333671286702156,
+        "fd_limit_failures": 0,
+        "goodput_over_offered": {
+          "1000": 0.9782554792706285,
+          "2000": 0.9782554792706285,
+          "250": 0.9483643396262481,
+          "3000": 0.9782554792706285,
+          "500": 0.9782554792706285
+        },
+        "offered_rate": 30.0,
+        "output_lengths": {
+          "max": 128,
+          "mean": 128.0,
+          "median": 128,
+          "min": 128,
+          "p99": 128
+        },
+        "reported_tpot_p99_ms": 26.20902606660104,
+        "reported_ttft_p99_ms": 277.67317280173296,
+        "request_throughput": 29.347664378118854,
+        "request_throughput_over_offered": 0.9782554792706285,
+        "sample_id": "int4__random__r30__s7",
+        "seed": 7,
+        "sustainable_ttft_thresholds_ms": [
+          500,
+          1000,
+          2000,
+          3000
+        ],
+        "workload": "random"
+      },
+      {
+        "accounting": {
+          "completed": 2400,
+          "detail_lengths": {
+            "errors": 2400,
+            "itls": 2400,
+            "output_lens": 2400,
+            "start_times": 2400,
+            "ttfts": 2400
+          },
+          "detailed_failures": 0,
+          "expected": 2400,
+          "failed": 0,
+          "request_conservation": true
+        },
+        "allocation": "int4",
+        "arrival_span_over_target": 1.000210257464399,
+        "benchmark_duration_s": 62.13007606938481,
+        "drain_after_arrival_window_s": 2.1300760693848133,
+        "fd_limit_failures": 0,
+        "goodput_over_offered": {
+          "1000": 0.9657158625235545,
+          "2000": 0.9657158625235545,
+          "250": 0.24987897942796972,
+          "3000": 0.9657158625235545,
+          "500": 0.7637202946123776
+        },
+        "offered_rate": 40.0,
+        "output_lengths": {
+          "max": 128,
+          "mean": 128.0,
+          "median": 128,
+          "min": 128,
+          "p99": 128
+        },
+        "reported_tpot_p99_ms": 44.564689156694676,
+        "reported_ttft_p99_ms": 708.1860972195861,
+        "request_throughput": 38.62863450094218,
+        "request_throughput_over_offered": 0.9657158625235545,
+        "sample_id": "int4__random__r40__s7",
+        "seed": 7,
+        "sustainable_ttft_thresholds_ms": [
+          1000,
+          2000,
+          3000
+        ],
+        "workload": "random"
+      },
+      {
+        "accounting": {
+          "completed": 3000,
+          "detail_lengths": {
+            "errors": 3000,
+            "itls": 3000,
+            "output_lens": 3000,
+            "start_times": 3000,
+            "ttfts": 3000
+          },
+          "detailed_failures": 0,
+          "expected": 3000,
+          "failed": 0,
+          "request_conservation": true
+        },
+        "allocation": "int4",
+        "arrival_span_over_target": 1.000258777818332,
+        "benchmark_duration_s": 75.85711797140539,
+        "drain_after_arrival_window_s": 15.857117971405387,
+        "fd_limit_failures": 0,
+        "goodput_over_offered": {
+          "1000": 0.08568741040821243,
+          "2000": 0.154764645875756,
+          "250": 0.03401131059279817,
+          "3000": 0.198531138576566,
+          "500": 0.04930321768103299
+        },
+        "offered_rate": 50.0,
+        "output_lengths": {
+          "max": 128,
+          "mean": 128.0,
+          "median": 128,
+          "min": 128,
+          "p99": 128
+        },
+        "reported_tpot_p99_ms": 44.77659211237364,
+        "reported_ttft_p99_ms": 14334.481849707663,
+        "request_throughput": 39.54803557302112,
+        "request_throughput_over_offered": 0.7909607114604223,
+        "sample_id": "int4__random__r50__s7",
+        "seed": 7,
+        "sustainable_ttft_thresholds_ms": [],
+        "workload": "random"
+      },
+      {
+        "accounting": {
+          "completed": 600,
+          "detail_lengths": {
+            "errors": 600,
+            "itls": 600,
+            "output_lens": 600,
+            "start_times": 600,
+            "ttfts": 600
+          },
+          "detailed_failures": 0,
+          "expected": 600,
+          "failed": 0,
+          "request_conservation": true
+        },
+        "allocation": "int4",
+        "arrival_span_over_target": 0.9998956478821734,
+        "benchmark_duration_s": 71.06573093682528,
+        "drain_after_arrival_window_s": 11.065730936825275,
+        "fd_limit_failures": 0,
+        "goodput_over_offered": {
+          "1000": 0.8442887902375578,
+          "2000": 0.8442887902375578,
+          "250": 0.8442887902375578,
+          "3000": 0.8442887902375578,
+          "500": 0.8442887902375578
+        },
+        "offered_rate": 10.0,
+        "output_lengths": {
+          "max": 1521,
+          "mean": 194.45833333333334,
+          "median": 123,
+          "min": 4,
+          "p99": 839
+        },
+        "reported_tpot_p99_ms": 14.85904407487916,
+        "reported_ttft_p99_ms": 98.71848894283175,
+        "request_throughput": 8.442887902375578,
+        "request_throughput_over_offered": 0.8442887902375578,
+        "sample_id": "int4__sharegpt__r10__s7",
+        "seed": 7,
+        "sustainable_ttft_thresholds_ms": [],
+        "workload": "sharegpt"
+      },
+      {
+        "accounting": {
+          "completed": 900,
+          "detail_lengths": {
+            "errors": 900,
+            "itls": 900,
+            "output_lens": 900,
+            "start_times": 900,
+            "ttfts": 900
+          },
+          "detailed_failures": 0,
+          "expected": 900,
+          "failed": 0,
+          "request_conservation": true
+        },
+        "allocation": "int4",
+        "arrival_span_over_target": 0.9999447888073821,
+        "benchmark_duration_s": 69.16779876500368,
+        "drain_after_arrival_window_s": 9.167798765003681,
+        "fd_limit_failures": 0,
+        "goodput_over_offered": {
+          "1000": 0.867455681275168,
+          "2000": 0.867455681275168,
+          "250": 0.867455681275168,
+          "3000": 0.867455681275168,
+          "500": 0.867455681275168
+        },
+        "offered_rate": 15.0,
+        "output_lengths": {
+          "max": 1521,
+          "mean": 198.17666666666668,
+          "median": 129,
+          "min": 4,
+          "p99": 854
+        },
+        "reported_tpot_p99_ms": 17.715337398861134,
+        "reported_ttft_p99_ms": 109.11618683487175,
+        "request_throughput": 13.011835219127521,
+        "request_throughput_over_offered": 0.867455681275168,
+        "sample_id": "int4__sharegpt__r15__s7",
+        "seed": 7,
+        "sustainable_ttft_thresholds_ms": [],
+        "workload": "sharegpt"
+      },
+      {
+        "accounting": {
+          "completed": 1200,
+          "detail_lengths": {
+            "errors": 1200,
+            "itls": 1200,
+            "output_lens": 1200,
+            "start_times": 1200,
+            "ttfts": 1200
+          },
+          "detailed_failures": 0,
+          "expected": 1200,
+          "failed": 0,
+          "request_conservation": true
+        },
+        "allocation": "int4",
+        "arrival_span_over_target": 1.0000253685439626,
+        "benchmark_duration_s": 66.41786830499768,
+        "drain_after_arrival_window_s": 6.417868304997683,
+        "fd_limit_failures": 0,
+        "goodput_over_offered": {
+          "1000": 0.9033713597141334,
+          "2000": 0.9033713597141334,
+          "250": 0.9033713597141334,
+          "3000": 0.9033713597141334,
+          "500": 0.9033713597141334
+        },
+        "offered_rate": 20.0,
+        "output_lengths": {
+          "max": 1521,
+          "mean": 200.55,
+          "median": 129,
+          "min": 4,
+          "p99": 854
+        },
+        "reported_tpot_p99_ms": 21.18102608771439,
+        "reported_ttft_p99_ms": 141.41637906432152,
+        "request_throughput": 18.06742719428267,
+        "request_throughput_over_offered": 0.9033713597141334,
+        "sample_id": "int4__sharegpt__r20__s7",
+        "seed": 7,
+        "sustainable_ttft_thresholds_ms": [],
+        "workload": "sharegpt"
+      },
+      {
+        "accounting": {
+          "completed": 1800,
+          "detail_lengths": {
+            "errors": 1800,
+            "itls": 1800,
+            "output_lens": 1800,
+            "start_times": 1800,
+            "ttfts": 1800
+          },
+          "detailed_failures": 0,
+          "expected": 1800,
+          "failed": 0,
+          "request_conservation": true
+        },
+        "allocation": "int4",
+        "arrival_span_over_target": 1.0000934935795764,
+        "benchmark_duration_s": 74.40998039208353,
+        "drain_after_arrival_window_s": 14.409980392083526,
+        "fd_limit_failures": 0,
+        "goodput_over_offered": {
+          "1000": 0.8063434459174162,
+          "2000": 0.8063434459174162,
+          "250": 0.8063434459174162,
+          "3000": 0.8063434459174162,
+          "500": 0.8063434459174162
+        },
+        "offered_rate": 30.0,
+        "output_lengths": {
+          "max": 1798,
+          "mean": 205.19833333333332,
+          "median": 145,
+          "min": 4,
+          "p99": 856
+        },
+        "reported_tpot_p99_ms": 26.09607459391866,
+        "reported_ttft_p99_ms": 181.78893879055977,
+        "request_throughput": 24.190303377522486,
+        "request_throughput_over_offered": 0.8063434459174162,
+        "sample_id": "int4__sharegpt__r30__s7",
+        "seed": 7,
+        "sustainable_ttft_thresholds_ms": [],
+        "workload": "sharegpt"
+      },
+      {
+        "accounting": {
+          "completed": 1800,
+          "detail_lengths": {
+            "errors": 1800,
+            "itls": 1800,
+            "output_lens": 1800,
+            "start_times": 1800,
+            "ttfts": 1800
+          },
+          "detailed_failures": 0,
+          "expected": 1800,
+          "failed": 0,
+          "request_conservation": true
+        },
+        "allocation": "packed_per_layer",
+        "arrival_span_over_target": 1.0000216982327401,
+        "benchmark_duration_s": 61.265856916084886,
+        "drain_after_arrival_window_s": 1.2658569160848856,
+        "fd_limit_failures": 0,
+        "goodput_over_offered": {
+          "1000": 0.9793382973844842,
+          "2000": 0.9793382973844842,
+          "250": 0.9602956082686748,
+          "3000": 0.9793382973844842,
+          "500": 0.9793382973844842
+        },
+        "offered_rate": 30.0,
+        "output_lengths": {
+          "max": 128,
+          "mean": 128.0,
+          "median": 128,
+          "min": 128,
+          "p99": 128
+        },
+        "reported_tpot_p99_ms": 24.639355534995637,
+        "reported_ttft_p99_ms": 262.0361707173288,
+        "request_throughput": 29.380148921534527,
+        "request_throughput_over_offered": 0.9793382973844842,
+        "sample_id": "packed_per_layer__random__r30__s7",
+        "seed": 7,
+        "sustainable_ttft_thresholds_ms": [
+          250,
+          500,
+          1000,
+          2000,
+          3000
+        ],
+        "workload": "random"
+      },
+      {
+        "accounting": {
+          "completed": 2400,
+          "detail_lengths": {
+            "errors": 2400,
+            "itls": 2400,
+            "output_lens": 2400,
+            "start_times": 2400,
+            "ttfts": 2400
+          },
+          "detailed_failures": 0,
+          "expected": 2400,
+          "failed": 0,
+          "request_conservation": true
+        },
+        "allocation": "packed_per_layer",
+        "arrival_span_over_target": 1.0002628737750152,
+        "benchmark_duration_s": 63.01430667936802,
+        "drain_after_arrival_window_s": 3.014306679368019,
+        "fd_limit_failures": 0,
+        "goodput_over_offered": {
+          "1000": 0.7018247494974033,
+          "2000": 0.9521647251519318,
+          "250": 0.1813080330810137,
+          "3000": 0.9521647251519318,
+          "500": 0.37769200764359967
+        },
+        "offered_rate": 40.0,
+        "output_lengths": {
+          "max": 128,
+          "mean": 128.0,
+          "median": 128,
+          "min": 128,
+          "p99": 128
+        },
+        "reported_tpot_p99_ms": 45.83778370582448,
+        "reported_ttft_p99_ms": 1643.2806424610308,
+        "request_throughput": 38.086589006077276,
+        "request_throughput_over_offered": 0.9521647251519318,
+        "sample_id": "packed_per_layer__random__r40__s7",
+        "seed": 7,
+        "sustainable_ttft_thresholds_ms": [
+          2000,
+          3000
+        ],
+        "workload": "random"
+      },
+      {
+        "accounting": {
+          "completed": 3000,
+          "detail_lengths": {
+            "errors": 3000,
+            "itls": 3000,
+            "output_lens": 3000,
+            "start_times": 3000,
+            "ttfts": 3000
+          },
+          "detailed_failures": 0,
+          "expected": 3000,
+          "failed": 0,
+          "request_conservation": true
+        },
+        "allocation": "packed_per_layer",
+        "arrival_span_over_target": 1.0000955816358328,
+        "benchmark_duration_s": 77.74508990347385,
+        "drain_after_arrival_window_s": 17.745089903473854,
+        "fd_limit_failures": 0,
+        "goodput_over_offered": {
+          "1000": 0.07537453499990306,
+          "2000": 0.14328879179162457,
+          "250": 0.032156371586989356,
+          "3000": 0.1746734104605262,
+          "500": 0.04656242605796059
+        },
+        "offered_rate": 50.0,
+        "output_lengths": {
+          "max": 128,
+          "mean": 128.0,
+          "median": 128,
+          "min": 128,
+          "p99": 128
+        },
+        "reported_tpot_p99_ms": 46.11598919197095,
+        "reported_ttft_p99_ms": 16246.183463856574,
+        "request_throughput": 38.58764590438723,
+        "request_throughput_over_offered": 0.7717529180877446,
+        "sample_id": "packed_per_layer__random__r50__s7",
+        "seed": 7,
+        "sustainable_ttft_thresholds_ms": [],
+        "workload": "random"
+      },
+      {
+        "accounting": {
+          "completed": 600,
+          "detail_lengths": {
+            "errors": 600,
+            "itls": 600,
+            "output_lens": 600,
+            "start_times": 600,
+            "ttfts": 600
+          },
+          "detailed_failures": 0,
+          "expected": 600,
+          "failed": 0,
+          "request_conservation": true
+        },
+        "allocation": "packed_per_layer",
+        "arrival_span_over_target": 0.9998988250270486,
+        "benchmark_duration_s": 70.91664485819638,
+        "drain_after_arrival_window_s": 10.916644858196378,
+        "fd_limit_failures": 0,
+        "goodput_over_offered": {
+          "1000": 0.8460637149427317,
+          "2000": 0.8460637149427317,
+          "250": 0.8460637149427317,
+          "3000": 0.8460637149427317,
+          "500": 0.8460637149427317
+        },
+        "offered_rate": 10.0,
+        "output_lengths": {
+          "max": 1521,
+          "mean": 194.45833333333334,
+          "median": 123,
+          "min": 4,
+          "p99": 839
+        },
+        "reported_tpot_p99_ms": 14.176172165067067,
+        "reported_ttft_p99_ms": 97.84317906945944,
+        "request_throughput": 8.460637149427317,
+        "request_throughput_over_offered": 0.8460637149427317,
+        "sample_id": "packed_per_layer__sharegpt__r10__s7",
+        "seed": 7,
+        "sustainable_ttft_thresholds_ms": [],
+        "workload": "sharegpt"
+      },
+      {
+        "accounting": {
+          "completed": 900,
+          "detail_lengths": {
+            "errors": 900,
+            "itls": 900,
+            "output_lens": 900,
+            "start_times": 900,
+            "ttfts": 900
+          },
+          "detailed_failures": 0,
+          "expected": 900,
+          "failed": 0,
+          "request_conservation": true
+        },
+        "allocation": "packed_per_layer",
+        "arrival_span_over_target": 0.9999559376699229,
+        "benchmark_duration_s": 68.97320246882737,
+        "drain_after_arrival_window_s": 8.973202468827367,
+        "fd_limit_failures": 0,
+        "goodput_over_offered": {
+          "1000": 0.8699030616581442,
+          "2000": 0.8699030616581442,
+          "250": 0.8699030616581442,
+          "3000": 0.8699030616581442,
+          "500": 0.8699030616581442
+        },
+        "offered_rate": 15.0,
+        "output_lengths": {
+          "max": 1521,
+          "mean": 198.17666666666668,
+          "median": 129,
+          "min": 4,
+          "p99": 854
+        },
+        "reported_tpot_p99_ms": 19.416560823605817,
+        "reported_ttft_p99_ms": 114.94322614744303,
+        "request_throughput": 13.048545924872164,
+        "request_throughput_over_offered": 0.8699030616581442,
+        "sample_id": "packed_per_layer__sharegpt__r15__s7",
+        "seed": 7,
+        "sustainable_ttft_thresholds_ms": [],
+        "workload": "sharegpt"
+      },
+      {
+        "accounting": {
+          "completed": 1200,
+          "detail_lengths": {
+            "errors": 1200,
+            "itls": 1200,
+            "output_lens": 1200,
+            "start_times": 1200,
+            "ttfts": 1200
+          },
+          "detailed_failures": 0,
+          "expected": 1200,
+          "failed": 0,
+          "request_conservation": true
+        },
+        "allocation": "packed_per_layer",
+        "arrival_span_over_target": 0.9999879166483879,
+        "benchmark_duration_s": 66.0985108409077,
+        "drain_after_arrival_window_s": 6.098510840907693,
+        "fd_limit_failures": 0,
+        "goodput_over_offered": {
+          "1000": 0.9077360327286922,
+          "2000": 0.9077360327286922,
+          "250": 0.9077360327286922,
+          "3000": 0.9077360327286922,
+          "500": 0.9077360327286922
+        },
+        "offered_rate": 20.0,
+        "output_lengths": {
+          "max": 1521,
+          "mean": 200.55,
+          "median": 129,
+          "min": 4,
+          "p99": 854
+        },
+        "reported_tpot_p99_ms": 20.551882313564416,
+        "reported_ttft_p99_ms": 130.7339117862284,
+        "request_throughput": 18.154720654573843,
+        "request_throughput_over_offered": 0.9077360327286922,
+        "sample_id": "packed_per_layer__sharegpt__r20__s7",
+        "seed": 7,
+        "sustainable_ttft_thresholds_ms": [],
+        "workload": "sharegpt"
+      },
+      {
+        "accounting": {
+          "completed": 1800,
+          "detail_lengths": {
+            "errors": 1800,
+            "itls": 1800,
+            "output_lens": 1800,
+            "start_times": 1800,
+            "ttfts": 1800
+          },
+          "detailed_failures": 0,
+          "expected": 1800,
+          "failed": 0,
+          "request_conservation": true
+        },
+        "allocation": "packed_per_layer",
+        "arrival_span_over_target": 1.0000583247902493,
+        "benchmark_duration_s": 73.88004055432975,
+        "drain_after_arrival_window_s": 13.880040554329753,
+        "fd_limit_failures": 0,
+        "goodput_over_offered": {
+          "1000": 0.812127328975643,
+          "2000": 0.812127328975643,
+          "250": 0.812127328975643,
+          "3000": 0.812127328975643,
+          "500": 0.812127328975643
+        },
+        "offered_rate": 30.0,
+        "output_lengths": {
+          "max": 1798,
+          "mean": 205.19833333333332,
+          "median": 145,
+          "min": 4,
+          "p99": 856
+        },
+        "reported_tpot_p99_ms": 25.247901472603044,
+        "reported_ttft_p99_ms": 181.3458490744233,
+        "request_throughput": 24.36381986926929,
+        "request_throughput_over_offered": 0.812127328975643,
+        "sample_id": "packed_per_layer__sharegpt__r30__s7",
+        "seed": 7,
+        "sustainable_ttft_thresholds_ms": [],
+        "workload": "sharegpt"
+      }
+    ],
+    "servers": [
+      {
+        "allocation": "fp16",
+        "exception": null,
+        "graph_mode_proven": true,
+        "returncode": 0,
+        "runtime_faults": {
+          "CUDA error: an illegal instruction was encountered": false,
+          "EngineCore encountered a fatal error": false,
+          "server health check failed after benchmark": false
+        },
+        "server_log_sha256": "c2866d9d42409f59dc5bcd320fe951f8482a0f93d544e99c77fd5bcd7dc2a830",
+        "status": "stopped"
+      },
+      {
+        "allocation": "int4",
+        "exception": null,
+        "graph_mode_proven": true,
+        "returncode": 0,
+        "runtime_faults": {
+          "CUDA error: an illegal instruction was encountered": false,
+          "EngineCore encountered a fatal error": false,
+          "server health check failed after benchmark": false
+        },
+        "server_log_sha256": "44abe0e5658b2ccec94110a67ef6457ae9089e83beb82d4fdaf7dc404e4b11e4",
+        "status": "stopped"
+      },
+      {
+        "allocation": "packed_per_layer",
+        "exception": null,
+        "graph_mode_proven": true,
+        "returncode": 0,
+        "runtime_faults": {
+          "CUDA error: an illegal instruction was encountered": false,
+          "EngineCore encountered a fatal error": false,
+          "server health check failed after benchmark": false
+        },
+        "server_log_sha256": "aca74e05f8ec3edc1fca5f18e4cb065d12df3f701188a1b58c58530b7d995b8d",
+        "status": "stopped"
+      }
+    ],
+    "sharegpt_bracket_report": {
+      "fp16": {
+        "1000": {
+          "has_sustainable": false,
+          "has_unsustainable": true
+        },
+        "2000": {
+          "has_sustainable": false,
+          "has_unsustainable": true
+        },
+        "250": {
+          "has_sustainable": false,
+          "has_unsustainable": true
+        },
+        "3000": {
+          "has_sustainable": false,
+          "has_unsustainable": true
+        },
+        "500": {
+          "has_sustainable": false,
+          "has_unsustainable": true
+        }
+      },
+      "int4": {
+        "1000": {
+          "has_sustainable": false,
+          "has_unsustainable": true
+        },
+        "2000": {
+          "has_sustainable": false,
+          "has_unsustainable": true
+        },
+        "250": {
+          "has_sustainable": false,
+          "has_unsustainable": true
+        },
+        "3000": {
+          "has_sustainable": false,
+          "has_unsustainable": true
+        },
+        "500": {
+          "has_sustainable": false,
+          "has_unsustainable": true
+        }
+      },
+      "packed_per_layer": {
+        "1000": {
+          "has_sustainable": false,
+          "has_unsustainable": true
+        },
+        "2000": {
+          "has_sustainable": false,
+          "has_unsustainable": true
+        },
+        "250": {
+          "has_sustainable": false,
+          "has_unsustainable": true
+        },
+        "3000": {
+          "has_sustainable": false,
+          "has_unsustainable": true
+        },
+        "500": {
+          "has_sustainable": false,
+          "has_unsustainable": true
+        }
+      }
+    },
+    "sharegpt_bracketed": false,
+    "sidecars_verified": 69,
+    "silent_exclusions": 0,
+    "supervisor_exit_code": 0,
+    "total_completed": 35092,
+    "total_expected": 35100,
+    "total_failed": 8,
+    "verdict": "PILOT_FAILED_CLIENT_FD_LIMIT_AND_SHAREGPT_WINDOW_BRACKETING"
+  },
+  "root_commit": "f7a79f5d268aae66211926ac773b76e1bf443465",
+  "schema_version": 1,
+  "superseded_precompute": {
+    "attempt_id": "a2-comparative-serving-pilot-piecewise-f7a79f5-westd-01",
+    "evidence_boundary": "This precompute plan contains no measured sample and contributes zero rows to any denominator.",
+    "launched": false,
+    "parent_attempt": "a2-comparative-serving-mvex-piecewise-f7a79f5-westd-01",
+    "reason": "The comparative MVEx showed that ShareGPT rate 20 was already below the 0.95 goodput/offered sustainability threshold for all three PIECEWISE allocations. The planned ShareGPT rates 20, 30, and 40 could not bracket a sustainable boundary.",
+    "replacement_attempt": "a2-comparative-serving-pilot-piecewise-f7a79f5-westd-02",
+    "replacement_change": {
+      "new_sharegpt_rates": [
+        10,
+        15,
+        20,
+        30
+      ],
+      "old_sharegpt_rates": [
+        20,
+        30,
+        40
+      ],
+      "random_rates": [
+        30,
+        40,
+        50
+      ]
+    },
+    "schema_version": 1,
+    "scientific_attempt_created": false,
+    "status": "SUPERSEDED_PRECOMPUTE"
+  },
+  "verification_status": "ANALYZED",
+  "vllm_commit": "55f47685a553ad8d776c464c59785399a98c7185"
+}

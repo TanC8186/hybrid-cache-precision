@@ -1,0 +1,139 @@
+{
+  "a2_overall_status": "PASSED_NOT_VERIFIED_SERVING_QUALITY_PENDING",
+  "capacity_comparison": {
+    "legacy": {
+      "confirmed_tokens": 706560,
+      "discovered_tokens": 706560,
+      "exact_discovery_repeat": true,
+      "original_tokens": 705604,
+      "symmetric_relative_difference": 0.0013530344202898551,
+      "within_protocol_tolerance": true
+    },
+    "packed": {
+      "confirmed_tokens": 2283520,
+      "discovered_tokens": 2283520,
+      "exact_discovery_repeat": true,
+      "original_tokens": 2280448,
+      "symmetric_relative_difference": 0.0013452914798206279,
+      "within_protocol_tolerance": true
+    },
+    "uniform": {
+      "confirmed_tokens": 2740224,
+      "discovered_tokens": 2740224,
+      "exact_discovery_repeat": true,
+      "original_tokens": 2736947,
+      "symmetric_relative_difference": 0.0011958876354633782,
+      "within_protocol_tolerance": true
+    }
+  },
+  "created_at": "2026-08-05T04:43:26Z",
+  "discovery_report": {
+    "path": "E:\\MLSys_Research\\results\\reproduction\\2026-08-05\\a2\\analysis\\reproducibility_report.json",
+    "sha256": "b0ec6369e36b799e2914fbbb75377f61464c14f28da339877920eb2520e94cfa",
+    "verdict": "PARTIALLY_REPRODUCIBLE"
+  },
+  "fallacy_scan": [
+    {
+      "detail": "Not applicable; no subgroup aggregation.",
+      "fallacy": "Simpson's Paradox",
+      "severity": "NOTE"
+    },
+    {
+      "detail": "Not applicable; inference stays at the host/configuration level.",
+      "fallacy": "Ecological Fallacy",
+      "severity": "NOTE"
+    },
+    {
+      "detail": "Not applicable; no selected correlation sample.",
+      "fallacy": "Berkson's Paradox",
+      "severity": "NOTE"
+    },
+    {
+      "detail": "Not applicable; no covariate adjustment.",
+      "fallacy": "Collider Bias",
+      "severity": "NOTE"
+    },
+    {
+      "detail": "Not applicable; no diagnostic probabilities.",
+      "fallacy": "Base Rate Neglect",
+      "severity": "NOTE"
+    },
+    {
+      "detail": "Not applicable; no extreme-score selection.",
+      "fallacy": "Regression to the Mean",
+      "severity": "NOTE"
+    },
+    {
+      "detail": "The failed suite is preserved and excluded; all four replacement attempts are reported.",
+      "fallacy": "Survivorship Bias",
+      "severity": "SOLID"
+    },
+    {
+      "detail": "All predeclared capacities and structural checks are reported.",
+      "fallacy": "Look-Elsewhere Effect",
+      "severity": "SOLID"
+    },
+    {
+      "detail": "Protocol-v2 tolerances were frozen before westd-03, and westd-02 was excluded from the confirmatory verdict.",
+      "fallacy": "Garden of Forking Paths",
+      "severity": "SOLID"
+    },
+    {
+      "detail": "The common block-count increase supports, but does not prove, the memory-profile drift explanation.",
+      "fallacy": "Correlation != Causation",
+      "severity": "CAUTION"
+    },
+    {
+      "detail": "Not applicable to the controlled cache-layout comparison.",
+      "fallacy": "Reverse Causality",
+      "severity": "NOTE"
+    }
+  ],
+  "fallacy_scan_coverage": "11/11",
+  "interpretation": "A fresh suite confirmed all structural checks, exactly repeated the replacement-host capacities, and passed the prospectively frozen capacity and ratio tolerances. The A2 runtime/capacity sub-scope is verified; serving and quality scopes remain pending.",
+  "parent_suite": "a2-repro-suite-c7379f0-westd-02",
+  "protocol_checks": {
+    "capacity_within_1_percent": true,
+    "exact_repeat_of_discovery_suite": true,
+    "four_attempts_complete": true,
+    "generation_nonempty": true,
+    "ratio_gate_passed": true,
+    "ratios_within_0_1_percent": true,
+    "suite_exit_zero": true
+  },
+  "ratios": {
+    "confirmed": {
+      "packed_over_legacy": 3.2318840579710146,
+      "packed_over_uniform": 0.8333333333333334
+    },
+    "gate_checks": {
+      "packed_over_legacy_at_least_3x": true,
+      "packed_over_uniform_in_range": true
+    },
+    "original": {
+      "packed_over_legacy": 3.231909116161473,
+      "packed_over_uniform": 0.8332086810595893
+    },
+    "symmetric_relative_difference": {
+      "packed_over_legacy": 7.753371013084987e-06,
+      "packed_over_uniform": 0.00014958272849283639
+    }
+  },
+  "schema_version": 1,
+  "structural_checks": {
+    "legacy_has_24_independent_groups": true,
+    "legacy_requested_map_and_flag": true,
+    "mamba_ssm_cache_dtype_float32": true,
+    "packed_eight_of_eight": true,
+    "packed_has_mixed_attention_group": true,
+    "runtime_and_capacity_packed_agree": true,
+    "runtime_eight_of_eight": true,
+    "runtime_generation_nonempty": true,
+    "uniform_has_one_attention_group": true,
+    "uniform_requested_map_and_flag": true
+  },
+  "suite_id": "a2-repro-v2-suite-c7379f0-westd-03",
+  "verdict": "REPRODUCIBLE",
+  "verification_scope": "A2 runtime/capacity mechanism and capacity ratios",
+  "verification_status": "VERIFIED"
+}

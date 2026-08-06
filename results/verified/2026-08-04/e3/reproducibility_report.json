@@ -1,0 +1,1800 @@
+{
+  "attempt_audits": [
+    {
+      "arrival_window": {
+        "max_ratio": 1.0004265561661063,
+        "min_ratio": 0.9996610483814341,
+        "target_s": 60.0
+      },
+      "attempt_id": "e3-v2-formal-d1d52c4-01",
+      "denominator": {
+        "completed_requests": 160200,
+        "expected_requests": 160200,
+        "expected_samples": 72,
+        "failed_requests": 0,
+        "validated_samples": 72
+      },
+      "duration_s": {
+        "max": 80.69543762295507,
+        "min": 60.60373580083251
+      },
+      "parent_attempt": "e3-v2-pilot-d1d52c4-01",
+      "provenance": {
+        "aggregate_sha256": "0502f9da7972dbcc77f94d55f9177bfcf82455109b88db65897548c2521dd805",
+        "attempt_contract_sha256": "a77db54e1a51a62558b1470b0fba7116f156f59e3563a6c0982db85688558b98",
+        "config_sha256": "6000a6d7a3c004e235327f64ff177bc1202dd42315e865d76d817b17095ad431",
+        "git_commit": "d1d52c49de57ab61776dfeb7cabd16ff8b6bd40c",
+        "validation_md_sha256": "22d9c72ea52b713e6b56c21da05075fb3f2c143ba77b54c3db03d902b977fb49",
+        "vllm_source_commit": "55f47685a553ad8d776c464c59785399a98c7185"
+      },
+      "role": "formal",
+      "sha_audit": {
+        "files_hashed": 665,
+        "sidecars_verified": 236
+      },
+      "source_evidence_status": "ANALYZED",
+      "source_path": "/root/autodl-tmp/formal-artifacts-c7379f0/e3-attempts/e3-v2-formal-d1d52c4-01"
+    },
+    {
+      "arrival_window": {
+        "max_ratio": 1.0002916485187598,
+        "min_ratio": 0.9998395572144848,
+        "target_s": 60.0
+      },
+      "attempt_id": "e3-v2-repro-random-d1d52c4-02",
+      "denominator": {
+        "completed_requests": 43200,
+        "expected_requests": 43200,
+        "expected_samples": 18,
+        "failed_requests": 0,
+        "validated_samples": 18
+      },
+      "duration_s": {
+        "max": 72.7317308629863,
+        "min": 60.59297958482057
+      },
+      "parent_attempt": "e3-v2-formal-d1d52c4-01",
+      "provenance": {
+        "aggregate_sha256": "6b7765cb74ae850ee8a49e98b95a70126cfe3ebc938bd0f7f434c0deeadf10c6",
+        "attempt_contract_sha256": "7a667af50ff2caf599cd27095e19ec0de2003a35723be15cee7c16308121121e",
+        "config_sha256": "6000a6d7a3c004e235327f64ff177bc1202dd42315e865d76d817b17095ad431",
+        "git_commit": "d1d52c49de57ab61776dfeb7cabd16ff8b6bd40c",
+        "validation_md_sha256": "0ac27840049b9d60af9d1b125b346cd8d711768221d228f53ea8323637c9e924",
+        "vllm_source_commit": "55f47685a553ad8d776c464c59785399a98c7185"
+      },
+      "role": "random_reproduction",
+      "sha_audit": {
+        "files_hashed": 176,
+        "sidecars_verified": 62
+      },
+      "source_evidence_status": "ANALYZED",
+      "source_path": "/root/autodl-tmp/formal-artifacts-c7379f0/e3-attempts/e3-v2-repro-random-d1d52c4-02"
+    },
+    {
+      "arrival_window": {
+        "max_ratio": 1.0002393452334217,
+        "min_ratio": 0.9996725590511536,
+        "target_s": 60.0
+      },
+      "attempt_id": "e3-v2-repro-sharegpt-d1d52c4-02",
+      "denominator": {
+        "completed_requests": 39600,
+        "expected_requests": 39600,
+        "expected_samples": 24,
+        "failed_requests": 0,
+        "validated_samples": 24
+      },
+      "duration_s": {
+        "max": 66.19184013805352,
+        "min": 61.873548394069076
+      },
+      "parent_attempt": "e3-v2-formal-d1d52c4-01",
+      "provenance": {
+        "aggregate_sha256": "5f9da51f6a7839d5eb1116de11495bf8affefb2259bf2f459c8674f5803b3272",
+        "attempt_contract_sha256": "1955a2ed88d24c4ac8e0a7e581dfa217b8e6b75e0bd3d6f38b66878571ba40f9",
+        "config_sha256": "6000a6d7a3c004e235327f64ff177bc1202dd42315e865d76d817b17095ad431",
+        "git_commit": "d1d52c49de57ab61776dfeb7cabd16ff8b6bd40c",
+        "validation_md_sha256": "5ce0975af59593a10fcc772254521460aa7791fafdc90d958471291081a7e4e9",
+        "vllm_source_commit": "55f47685a553ad8d776c464c59785399a98c7185"
+      },
+      "role": "sharegpt_reproduction",
+      "sha_audit": {
+        "files_hashed": 229,
+        "sidecars_verified": 81
+      },
+      "source_evidence_status": "ANALYZED",
+      "source_path": "/root/autodl-tmp/formal-artifacts-c7379f0/e3-attempts/e3-v2-repro-sharegpt-d1d52c4-02"
+    },
+    {
+      "arrival_window": {
+        "max_ratio": 1.0001828119507992,
+        "min_ratio": 0.9999020002006243,
+        "target_s": 60.0
+      },
+      "attempt_id": "e3-v2-repro-sharegpt-upper-d1d52c4-01",
+      "denominator": {
+        "completed_requests": 14400,
+        "expected_requests": 14400,
+        "expected_samples": 6,
+        "failed_requests": 0,
+        "validated_samples": 6
+      },
+      "duration_s": {
+        "max": 65.7662808590103,
+        "min": 63.56876987521537
+      },
+      "parent_attempt": "e3-v2-repro-sharegpt-d1d52c4-02",
+      "provenance": {
+        "aggregate_sha256": "645366dfc51d565b7142184801bb9ae919f92cd4a9dc675b738ed7242ffd981e",
+        "attempt_contract_sha256": "e3f57bc06ca55561b93059fe376a1e8978341f39ad25efc57f43ea8be7a92af0",
+        "config_sha256": "6000a6d7a3c004e235327f64ff177bc1202dd42315e865d76d817b17095ad431",
+        "git_commit": "d1d52c49de57ab61776dfeb7cabd16ff8b6bd40c",
+        "validation_md_sha256": "9f735d8280dd227e580f89f6734ed472731e37f593d271e0586a86f01626235d",
+        "vllm_source_commit": "55f47685a553ad8d776c464c59785399a98c7185"
+      },
+      "role": "sharegpt_upper_neighbor",
+      "sha_audit": {
+        "files_hashed": 70,
+        "sidecars_verified": 24
+      },
+      "source_evidence_status": "ANALYZED",
+      "source_path": "/root/autodl-tmp/formal-artifacts-c7379f0/e3-attempts/e3-v2-repro-sharegpt-upper-d1d52c4-01"
+    }
+  ],
+  "claim_boundary": [
+    "Do not pool formal, reproduction, or upper-neighbor denominators.",
+    "Do not claim that INT4 generally increases SLO capacity.",
+    "Report Random and ShareGPT separately because their effect directions reverse.",
+    "Retain n=3, 5 req/s grid, and wide ShareGPT uncertainty as limitations."
+  ],
+  "comparison": {
+    "boundaries": {
+      "count": 60,
+      "details": [
+        {
+          "allocation": "fp16",
+          "exact_match": true,
+          "formal_boundary_req_s": 35.0,
+          "reproduced_boundary_req_s": 35.0,
+          "reproduced_right_censored": false,
+          "seed": 7,
+          "ttft_threshold_ms": 250.0,
+          "workload": "random"
+        },
+        {
+          "allocation": "fp16",
+          "exact_match": true,
+          "formal_boundary_req_s": 35.0,
+          "reproduced_boundary_req_s": 35.0,
+          "reproduced_right_censored": false,
+          "seed": 7,
+          "ttft_threshold_ms": 500.0,
+          "workload": "random"
+        },
+        {
+          "allocation": "fp16",
+          "exact_match": true,
+          "formal_boundary_req_s": 35.0,
+          "reproduced_boundary_req_s": 35.0,
+          "reproduced_right_censored": false,
+          "seed": 7,
+          "ttft_threshold_ms": 1000.0,
+          "workload": "random"
+        },
+        {
+          "allocation": "fp16",
+          "exact_match": true,
+          "formal_boundary_req_s": 35.0,
+          "reproduced_boundary_req_s": 35.0,
+          "reproduced_right_censored": false,
+          "seed": 7,
+          "ttft_threshold_ms": 2000.0,
+          "workload": "random"
+        },
+        {
+          "allocation": "fp16",
+          "exact_match": true,
+          "formal_boundary_req_s": 35.0,
+          "reproduced_boundary_req_s": 35.0,
+          "reproduced_right_censored": false,
+          "seed": 7,
+          "ttft_threshold_ms": 3000.0,
+          "workload": "random"
+        },
+        {
+          "allocation": "fp16",
+          "exact_match": true,
+          "formal_boundary_req_s": 35.0,
+          "reproduced_boundary_req_s": 35.0,
+          "reproduced_right_censored": false,
+          "seed": 42,
+          "ttft_threshold_ms": 250.0,
+          "workload": "random"
+        },
+        {
+          "allocation": "fp16",
+          "exact_match": true,
+          "formal_boundary_req_s": 35.0,
+          "reproduced_boundary_req_s": 35.0,
+          "reproduced_right_censored": false,
+          "seed": 42,
+          "ttft_threshold_ms": 500.0,
+          "workload": "random"
+        },
+        {
+          "allocation": "fp16",
+          "exact_match": true,
+          "formal_boundary_req_s": 35.0,
+          "reproduced_boundary_req_s": 35.0,
+          "reproduced_right_censored": false,
+          "seed": 42,
+          "ttft_threshold_ms": 1000.0,
+          "workload": "random"
+        },
+        {
+          "allocation": "fp16",
+          "exact_match": true,
+          "formal_boundary_req_s": 35.0,
+          "reproduced_boundary_req_s": 35.0,
+          "reproduced_right_censored": false,
+          "seed": 42,
+          "ttft_threshold_ms": 2000.0,
+          "workload": "random"
+        },
+        {
+          "allocation": "fp16",
+          "exact_match": true,
+          "formal_boundary_req_s": 35.0,
+          "reproduced_boundary_req_s": 35.0,
+          "reproduced_right_censored": false,
+          "seed": 42,
+          "ttft_threshold_ms": 3000.0,
+          "workload": "random"
+        },
+        {
+          "allocation": "fp16",
+          "exact_match": true,
+          "formal_boundary_req_s": 35.0,
+          "reproduced_boundary_req_s": 35.0,
+          "reproduced_right_censored": false,
+          "seed": 2026,
+          "ttft_threshold_ms": 250.0,
+          "workload": "random"
+        },
+        {
+          "allocation": "fp16",
+          "exact_match": true,
+          "formal_boundary_req_s": 35.0,
+          "reproduced_boundary_req_s": 35.0,
+          "reproduced_right_censored": false,
+          "seed": 2026,
+          "ttft_threshold_ms": 500.0,
+          "workload": "random"
+        },
+        {
+          "allocation": "fp16",
+          "exact_match": true,
+          "formal_boundary_req_s": 35.0,
+          "reproduced_boundary_req_s": 35.0,
+          "reproduced_right_censored": false,
+          "seed": 2026,
+          "ttft_threshold_ms": 1000.0,
+          "workload": "random"
+        },
+        {
+          "allocation": "fp16",
+          "exact_match": true,
+          "formal_boundary_req_s": 35.0,
+          "reproduced_boundary_req_s": 35.0,
+          "reproduced_right_censored": false,
+          "seed": 2026,
+          "ttft_threshold_ms": 2000.0,
+          "workload": "random"
+        },
+        {
+          "allocation": "fp16",
+          "exact_match": true,
+          "formal_boundary_req_s": 35.0,
+          "reproduced_boundary_req_s": 35.0,
+          "reproduced_right_censored": false,
+          "seed": 2026,
+          "ttft_threshold_ms": 3000.0,
+          "workload": "random"
+        },
+        {
+          "allocation": "int4",
+          "exact_match": true,
+          "formal_boundary_req_s": 35.0,
+          "reproduced_boundary_req_s": 35.0,
+          "reproduced_right_censored": false,
+          "seed": 7,
+          "ttft_threshold_ms": 250.0,
+          "workload": "random"
+        },
+        {
+          "allocation": "int4",
+          "exact_match": true,
+          "formal_boundary_req_s": 40.0,
+          "reproduced_boundary_req_s": 40.0,
+          "reproduced_right_censored": false,
+          "seed": 7,
+          "ttft_threshold_ms": 500.0,
+          "workload": "random"
+        },
+        {
+          "allocation": "int4",
+          "exact_match": true,
+          "formal_boundary_req_s": 40.0,
+          "reproduced_boundary_req_s": 40.0,
+          "reproduced_right_censored": false,
+          "seed": 7,
+          "ttft_threshold_ms": 1000.0,
+          "workload": "random"
+        },
+        {
+          "allocation": "int4",
+          "exact_match": true,
+          "formal_boundary_req_s": 40.0,
+          "reproduced_boundary_req_s": 40.0,
+          "reproduced_right_censored": false,
+          "seed": 7,
+          "ttft_threshold_ms": 2000.0,
+          "workload": "random"
+        },
+        {
+          "allocation": "int4",
+          "exact_match": true,
+          "formal_boundary_req_s": 40.0,
+          "reproduced_boundary_req_s": 40.0,
+          "reproduced_right_censored": false,
+          "seed": 7,
+          "ttft_threshold_ms": 3000.0,
+          "workload": "random"
+        },
+        {
+          "allocation": "int4",
+          "exact_match": true,
+          "formal_boundary_req_s": 35.0,
+          "reproduced_boundary_req_s": 35.0,
+          "reproduced_right_censored": false,
+          "seed": 42,
+          "ttft_threshold_ms": 250.0,
+          "workload": "random"
+        },
+        {
+          "allocation": "int4",
+          "exact_match": true,
+          "formal_boundary_req_s": 35.0,
+          "reproduced_boundary_req_s": 35.0,
+          "reproduced_right_censored": false,
+          "seed": 42,
+          "ttft_threshold_ms": 500.0,
+          "workload": "random"
+        },
+        {
+          "allocation": "int4",
+          "exact_match": true,
+          "formal_boundary_req_s": 40.0,
+          "reproduced_boundary_req_s": 40.0,
+          "reproduced_right_censored": false,
+          "seed": 42,
+          "ttft_threshold_ms": 1000.0,
+          "workload": "random"
+        },
+        {
+          "allocation": "int4",
+          "exact_match": true,
+          "formal_boundary_req_s": 40.0,
+          "reproduced_boundary_req_s": 40.0,
+          "reproduced_right_censored": false,
+          "seed": 42,
+          "ttft_threshold_ms": 2000.0,
+          "workload": "random"
+        },
+        {
+          "allocation": "int4",
+          "exact_match": true,
+          "formal_boundary_req_s": 40.0,
+          "reproduced_boundary_req_s": 40.0,
+          "reproduced_right_censored": false,
+          "seed": 42,
+          "ttft_threshold_ms": 3000.0,
+          "workload": "random"
+        },
+        {
+          "allocation": "int4",
+          "exact_match": true,
+          "formal_boundary_req_s": 35.0,
+          "reproduced_boundary_req_s": 35.0,
+          "reproduced_right_censored": false,
+          "seed": 2026,
+          "ttft_threshold_ms": 250.0,
+          "workload": "random"
+        },
+        {
+          "allocation": "int4",
+          "exact_match": true,
+          "formal_boundary_req_s": 35.0,
+          "reproduced_boundary_req_s": 35.0,
+          "reproduced_right_censored": false,
+          "seed": 2026,
+          "ttft_threshold_ms": 500.0,
+          "workload": "random"
+        },
+        {
+          "allocation": "int4",
+          "exact_match": true,
+          "formal_boundary_req_s": 40.0,
+          "reproduced_boundary_req_s": 40.0,
+          "reproduced_right_censored": false,
+          "seed": 2026,
+          "ttft_threshold_ms": 1000.0,
+          "workload": "random"
+        },
+        {
+          "allocation": "int4",
+          "exact_match": true,
+          "formal_boundary_req_s": 40.0,
+          "reproduced_boundary_req_s": 40.0,
+          "reproduced_right_censored": false,
+          "seed": 2026,
+          "ttft_threshold_ms": 2000.0,
+          "workload": "random"
+        },
+        {
+          "allocation": "int4",
+          "exact_match": true,
+          "formal_boundary_req_s": 40.0,
+          "reproduced_boundary_req_s": 40.0,
+          "reproduced_right_censored": false,
+          "seed": 2026,
+          "ttft_threshold_ms": 3000.0,
+          "workload": "random"
+        },
+        {
+          "allocation": "fp16",
+          "exact_match": true,
+          "formal_boundary_req_s": 35.0,
+          "reproduced_boundary_req_s": 35.0,
+          "reproduced_right_censored": false,
+          "seed": 7,
+          "ttft_threshold_ms": 250.0,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "fp16",
+          "exact_match": true,
+          "formal_boundary_req_s": 35.0,
+          "reproduced_boundary_req_s": 35.0,
+          "reproduced_right_censored": false,
+          "seed": 7,
+          "ttft_threshold_ms": 500.0,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "fp16",
+          "exact_match": true,
+          "formal_boundary_req_s": 35.0,
+          "reproduced_boundary_req_s": 35.0,
+          "reproduced_right_censored": false,
+          "seed": 7,
+          "ttft_threshold_ms": 1000.0,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "fp16",
+          "exact_match": true,
+          "formal_boundary_req_s": 35.0,
+          "reproduced_boundary_req_s": 35.0,
+          "reproduced_right_censored": false,
+          "seed": 7,
+          "ttft_threshold_ms": 2000.0,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "fp16",
+          "exact_match": true,
+          "formal_boundary_req_s": 35.0,
+          "reproduced_boundary_req_s": 35.0,
+          "reproduced_right_censored": false,
+          "seed": 7,
+          "ttft_threshold_ms": 3000.0,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "fp16",
+          "exact_match": true,
+          "formal_boundary_req_s": 25.0,
+          "reproduced_boundary_req_s": 25.0,
+          "reproduced_right_censored": false,
+          "seed": 42,
+          "ttft_threshold_ms": 250.0,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "fp16",
+          "exact_match": true,
+          "formal_boundary_req_s": 25.0,
+          "reproduced_boundary_req_s": 25.0,
+          "reproduced_right_censored": false,
+          "seed": 42,
+          "ttft_threshold_ms": 500.0,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "fp16",
+          "exact_match": true,
+          "formal_boundary_req_s": 25.0,
+          "reproduced_boundary_req_s": 25.0,
+          "reproduced_right_censored": false,
+          "seed": 42,
+          "ttft_threshold_ms": 1000.0,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "fp16",
+          "exact_match": true,
+          "formal_boundary_req_s": 25.0,
+          "reproduced_boundary_req_s": 25.0,
+          "reproduced_right_censored": false,
+          "seed": 42,
+          "ttft_threshold_ms": 2000.0,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "fp16",
+          "exact_match": true,
+          "formal_boundary_req_s": 25.0,
+          "reproduced_boundary_req_s": 25.0,
+          "reproduced_right_censored": false,
+          "seed": 42,
+          "ttft_threshold_ms": 3000.0,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "fp16",
+          "exact_match": true,
+          "formal_boundary_req_s": 25.0,
+          "reproduced_boundary_req_s": 25.0,
+          "reproduced_right_censored": false,
+          "seed": 2026,
+          "ttft_threshold_ms": 250.0,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "fp16",
+          "exact_match": true,
+          "formal_boundary_req_s": 25.0,
+          "reproduced_boundary_req_s": 25.0,
+          "reproduced_right_censored": false,
+          "seed": 2026,
+          "ttft_threshold_ms": 500.0,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "fp16",
+          "exact_match": true,
+          "formal_boundary_req_s": 25.0,
+          "reproduced_boundary_req_s": 25.0,
+          "reproduced_right_censored": false,
+          "seed": 2026,
+          "ttft_threshold_ms": 1000.0,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "fp16",
+          "exact_match": true,
+          "formal_boundary_req_s": 25.0,
+          "reproduced_boundary_req_s": 25.0,
+          "reproduced_right_censored": false,
+          "seed": 2026,
+          "ttft_threshold_ms": 2000.0,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "fp16",
+          "exact_match": true,
+          "formal_boundary_req_s": 25.0,
+          "reproduced_boundary_req_s": 25.0,
+          "reproduced_right_censored": false,
+          "seed": 2026,
+          "ttft_threshold_ms": 3000.0,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "int4",
+          "exact_match": true,
+          "formal_boundary_req_s": 20.0,
+          "reproduced_boundary_req_s": 20.0,
+          "reproduced_right_censored": false,
+          "seed": 7,
+          "ttft_threshold_ms": 250.0,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "int4",
+          "exact_match": true,
+          "formal_boundary_req_s": 20.0,
+          "reproduced_boundary_req_s": 20.0,
+          "reproduced_right_censored": false,
+          "seed": 7,
+          "ttft_threshold_ms": 500.0,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "int4",
+          "exact_match": true,
+          "formal_boundary_req_s": 20.0,
+          "reproduced_boundary_req_s": 20.0,
+          "reproduced_right_censored": false,
+          "seed": 7,
+          "ttft_threshold_ms": 1000.0,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "int4",
+          "exact_match": true,
+          "formal_boundary_req_s": 20.0,
+          "reproduced_boundary_req_s": 20.0,
+          "reproduced_right_censored": false,
+          "seed": 7,
+          "ttft_threshold_ms": 2000.0,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "int4",
+          "exact_match": true,
+          "formal_boundary_req_s": 20.0,
+          "reproduced_boundary_req_s": 20.0,
+          "reproduced_right_censored": false,
+          "seed": 7,
+          "ttft_threshold_ms": 3000.0,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "int4",
+          "exact_match": true,
+          "formal_boundary_req_s": 25.0,
+          "reproduced_boundary_req_s": 25.0,
+          "reproduced_right_censored": false,
+          "seed": 42,
+          "ttft_threshold_ms": 250.0,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "int4",
+          "exact_match": true,
+          "formal_boundary_req_s": 25.0,
+          "reproduced_boundary_req_s": 25.0,
+          "reproduced_right_censored": false,
+          "seed": 42,
+          "ttft_threshold_ms": 500.0,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "int4",
+          "exact_match": true,
+          "formal_boundary_req_s": 25.0,
+          "reproduced_boundary_req_s": 25.0,
+          "reproduced_right_censored": false,
+          "seed": 42,
+          "ttft_threshold_ms": 1000.0,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "int4",
+          "exact_match": true,
+          "formal_boundary_req_s": 25.0,
+          "reproduced_boundary_req_s": 25.0,
+          "reproduced_right_censored": false,
+          "seed": 42,
+          "ttft_threshold_ms": 2000.0,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "int4",
+          "exact_match": true,
+          "formal_boundary_req_s": 25.0,
+          "reproduced_boundary_req_s": 25.0,
+          "reproduced_right_censored": false,
+          "seed": 42,
+          "ttft_threshold_ms": 3000.0,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "int4",
+          "exact_match": true,
+          "formal_boundary_req_s": 25.0,
+          "reproduced_boundary_req_s": 25.0,
+          "reproduced_right_censored": false,
+          "seed": 2026,
+          "ttft_threshold_ms": 250.0,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "int4",
+          "exact_match": true,
+          "formal_boundary_req_s": 25.0,
+          "reproduced_boundary_req_s": 25.0,
+          "reproduced_right_censored": false,
+          "seed": 2026,
+          "ttft_threshold_ms": 500.0,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "int4",
+          "exact_match": true,
+          "formal_boundary_req_s": 25.0,
+          "reproduced_boundary_req_s": 25.0,
+          "reproduced_right_censored": false,
+          "seed": 2026,
+          "ttft_threshold_ms": 1000.0,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "int4",
+          "exact_match": true,
+          "formal_boundary_req_s": 25.0,
+          "reproduced_boundary_req_s": 25.0,
+          "reproduced_right_censored": false,
+          "seed": 2026,
+          "ttft_threshold_ms": 2000.0,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "int4",
+          "exact_match": true,
+          "formal_boundary_req_s": 25.0,
+          "reproduced_boundary_req_s": 25.0,
+          "reproduced_right_censored": false,
+          "seed": 2026,
+          "ttft_threshold_ms": 3000.0,
+          "workload": "sharegpt"
+        }
+      ],
+      "exact_matches": 60
+    },
+    "cell_means": {
+      "count": 80,
+      "details": [
+        {
+          "allocation": "fp16",
+          "formal_mean_goodput_req_s": 33.935547520596295,
+          "reproduction_mean_goodput_req_s": 34.03655821399794,
+          "request_rate": 35.0,
+          "symmetric_relative_difference": 0.0029677117400226985,
+          "ttft_threshold_ms": 250.0,
+          "within_tolerance": true,
+          "workload": "random"
+        },
+        {
+          "allocation": "fp16",
+          "formal_mean_goodput_req_s": 34.62239896187784,
+          "reproduction_mean_goodput_req_s": 34.63011303818309,
+          "request_rate": 35.0,
+          "symmetric_relative_difference": 0.00022275631317584255,
+          "ttft_threshold_ms": 500.0,
+          "within_tolerance": true,
+          "workload": "random"
+        },
+        {
+          "allocation": "fp16",
+          "formal_mean_goodput_req_s": 34.62239896187784,
+          "reproduction_mean_goodput_req_s": 34.63011303818309,
+          "request_rate": 35.0,
+          "symmetric_relative_difference": 0.00022275631317584255,
+          "ttft_threshold_ms": 1000.0,
+          "within_tolerance": true,
+          "workload": "random"
+        },
+        {
+          "allocation": "fp16",
+          "formal_mean_goodput_req_s": 34.62239896187784,
+          "reproduction_mean_goodput_req_s": 34.63011303818309,
+          "request_rate": 35.0,
+          "symmetric_relative_difference": 0.00022275631317584255,
+          "ttft_threshold_ms": 2000.0,
+          "within_tolerance": true,
+          "workload": "random"
+        },
+        {
+          "allocation": "fp16",
+          "formal_mean_goodput_req_s": 34.62239896187784,
+          "reproduction_mean_goodput_req_s": 34.63011303818309,
+          "request_rate": 35.0,
+          "symmetric_relative_difference": 0.00022275631317584255,
+          "ttft_threshold_ms": 3000.0,
+          "within_tolerance": true,
+          "workload": "random"
+        },
+        {
+          "allocation": "fp16",
+          "formal_mean_goodput_req_s": 7.087703790521687,
+          "reproduction_mean_goodput_req_s": 7.298206271557927,
+          "request_rate": 40.0,
+          "symmetric_relative_difference": 0.028843043510101394,
+          "ttft_threshold_ms": 250.0,
+          "within_tolerance": true,
+          "workload": "random"
+        },
+        {
+          "allocation": "fp16",
+          "formal_mean_goodput_req_s": 11.595922176749953,
+          "reproduction_mean_goodput_req_s": 11.74367461115041,
+          "request_rate": 40.0,
+          "symmetric_relative_difference": 0.012581448251313875,
+          "ttft_threshold_ms": 500.0,
+          "within_tolerance": true,
+          "workload": "random"
+        },
+        {
+          "allocation": "fp16",
+          "formal_mean_goodput_req_s": 14.638269237307,
+          "reproduction_mean_goodput_req_s": 15.385545055315612,
+          "request_rate": 40.0,
+          "symmetric_relative_difference": 0.04856999315408932,
+          "ttft_threshold_ms": 1000.0,
+          "within_tolerance": true,
+          "workload": "random"
+        },
+        {
+          "allocation": "fp16",
+          "formal_mean_goodput_req_s": 26.549397709544944,
+          "reproduction_mean_goodput_req_s": 26.6783086272472,
+          "request_rate": 40.0,
+          "symmetric_relative_difference": 0.004832049868806034,
+          "ttft_threshold_ms": 2000.0,
+          "within_tolerance": true,
+          "workload": "random"
+        },
+        {
+          "allocation": "fp16",
+          "formal_mean_goodput_req_s": 34.73366105104188,
+          "reproduction_mean_goodput_req_s": 34.65332227076547,
+          "request_rate": 40.0,
+          "symmetric_relative_difference": 0.0023129948829277397,
+          "ttft_threshold_ms": 3000.0,
+          "within_tolerance": true,
+          "workload": "random"
+        },
+        {
+          "allocation": "fp16",
+          "formal_mean_goodput_req_s": 2.3727855378226392,
+          "reproduction_mean_goodput_req_s": 2.4261717396865765,
+          "request_rate": 45.0,
+          "symmetric_relative_difference": 0.02200429631203022,
+          "ttft_threshold_ms": 250.0,
+          "within_tolerance": true,
+          "workload": "random"
+        },
+        {
+          "allocation": "fp16",
+          "formal_mean_goodput_req_s": 4.039326303500623,
+          "reproduction_mean_goodput_req_s": 4.072868977056969,
+          "request_rate": 45.0,
+          "symmetric_relative_difference": 0.008235637764263207,
+          "ttft_threshold_ms": 500.0,
+          "within_tolerance": true,
+          "workload": "random"
+        },
+        {
+          "allocation": "fp16",
+          "formal_mean_goodput_req_s": 6.067756583717173,
+          "reproduction_mean_goodput_req_s": 6.0815864005837765,
+          "request_rate": 45.0,
+          "symmetric_relative_difference": 0.0022740475848991607,
+          "ttft_threshold_ms": 1000.0,
+          "within_tolerance": true,
+          "workload": "random"
+        },
+        {
+          "allocation": "fp16",
+          "formal_mean_goodput_req_s": 9.226686007193596,
+          "reproduction_mean_goodput_req_s": 9.196330710072344,
+          "request_rate": 45.0,
+          "symmetric_relative_difference": 0.0032899458264414373,
+          "ttft_threshold_ms": 2000.0,
+          "within_tolerance": true,
+          "workload": "random"
+        },
+        {
+          "allocation": "fp16",
+          "formal_mean_goodput_req_s": 11.99948747540592,
+          "reproduction_mean_goodput_req_s": 11.976018389530031,
+          "request_rate": 45.0,
+          "symmetric_relative_difference": 0.0019558406910287,
+          "ttft_threshold_ms": 3000.0,
+          "within_tolerance": true,
+          "workload": "random"
+        },
+        {
+          "allocation": "int4",
+          "formal_mean_goodput_req_s": 34.05566759060704,
+          "reproduction_mean_goodput_req_s": 33.918423688536016,
+          "request_rate": 35.0,
+          "symmetric_relative_difference": 0.00402998712933391,
+          "ttft_threshold_ms": 250.0,
+          "within_tolerance": true,
+          "workload": "random"
+        },
+        {
+          "allocation": "int4",
+          "formal_mean_goodput_req_s": 34.60486989496074,
+          "reproduction_mean_goodput_req_s": 34.61629209433917,
+          "request_rate": 35.0,
+          "symmetric_relative_difference": 0.0003299659983022182,
+          "ttft_threshold_ms": 500.0,
+          "within_tolerance": true,
+          "workload": "random"
+        },
+        {
+          "allocation": "int4",
+          "formal_mean_goodput_req_s": 34.60486989496074,
+          "reproduction_mean_goodput_req_s": 34.61629209433917,
+          "request_rate": 35.0,
+          "symmetric_relative_difference": 0.0003299659983022182,
+          "ttft_threshold_ms": 1000.0,
+          "within_tolerance": true,
+          "workload": "random"
+        },
+        {
+          "allocation": "int4",
+          "formal_mean_goodput_req_s": 34.60486989496074,
+          "reproduction_mean_goodput_req_s": 34.61629209433917,
+          "request_rate": 35.0,
+          "symmetric_relative_difference": 0.0003299659983022182,
+          "ttft_threshold_ms": 2000.0,
+          "within_tolerance": true,
+          "workload": "random"
+        },
+        {
+          "allocation": "int4",
+          "formal_mean_goodput_req_s": 34.60486989496074,
+          "reproduction_mean_goodput_req_s": 34.61629209433917,
+          "request_rate": 35.0,
+          "symmetric_relative_difference": 0.0003299659983022182,
+          "ttft_threshold_ms": 3000.0,
+          "within_tolerance": true,
+          "workload": "random"
+        },
+        {
+          "allocation": "int4",
+          "formal_mean_goodput_req_s": 26.25991654900704,
+          "reproduction_mean_goodput_req_s": 25.378199810863382,
+          "request_rate": 40.0,
+          "symmetric_relative_difference": 0.033576524757730014,
+          "ttft_threshold_ms": 250.0,
+          "within_tolerance": true,
+          "workload": "random"
+        },
+        {
+          "allocation": "int4",
+          "formal_mean_goodput_req_s": 37.95038518394771,
+          "reproduction_mean_goodput_req_s": 37.562094940611665,
+          "request_rate": 40.0,
+          "symmetric_relative_difference": 0.010231523117722758,
+          "ttft_threshold_ms": 500.0,
+          "within_tolerance": true,
+          "workload": "random"
+        },
+        {
+          "allocation": "int4",
+          "formal_mean_goodput_req_s": 39.12864113793702,
+          "reproduction_mean_goodput_req_s": 39.10894773186788,
+          "request_rate": 40.0,
+          "symmetric_relative_difference": 0.000503299002889317,
+          "ttft_threshold_ms": 1000.0,
+          "within_tolerance": true,
+          "workload": "random"
+        },
+        {
+          "allocation": "int4",
+          "formal_mean_goodput_req_s": 39.12864113793702,
+          "reproduction_mean_goodput_req_s": 39.10894773186788,
+          "request_rate": 40.0,
+          "symmetric_relative_difference": 0.000503299002889317,
+          "ttft_threshold_ms": 2000.0,
+          "within_tolerance": true,
+          "workload": "random"
+        },
+        {
+          "allocation": "int4",
+          "formal_mean_goodput_req_s": 39.12864113793702,
+          "reproduction_mean_goodput_req_s": 39.10894773186788,
+          "request_rate": 40.0,
+          "symmetric_relative_difference": 0.000503299002889317,
+          "ttft_threshold_ms": 3000.0,
+          "within_tolerance": true,
+          "workload": "random"
+        },
+        {
+          "allocation": "int4",
+          "formal_mean_goodput_req_s": 3.6208159561926077,
+          "reproduction_mean_goodput_req_s": 3.811090271483289,
+          "request_rate": 45.0,
+          "symmetric_relative_difference": 0.04992647818248235,
+          "ttft_threshold_ms": 250.0,
+          "within_tolerance": true,
+          "workload": "random"
+        },
+        {
+          "allocation": "int4",
+          "formal_mean_goodput_req_s": 7.181588776703076,
+          "reproduction_mean_goodput_req_s": 7.190566543947342,
+          "request_rate": 45.0,
+          "symmetric_relative_difference": 0.001248547967590004,
+          "ttft_threshold_ms": 500.0,
+          "within_tolerance": true,
+          "workload": "random"
+        },
+        {
+          "allocation": "int4",
+          "formal_mean_goodput_req_s": 10.605107681084563,
+          "reproduction_mean_goodput_req_s": 10.573328191003426,
+          "request_rate": 45.0,
+          "symmetric_relative_difference": 0.0029966211599924803,
+          "ttft_threshold_ms": 1000.0,
+          "within_tolerance": true,
+          "workload": "random"
+        },
+        {
+          "allocation": "int4",
+          "formal_mean_goodput_req_s": 17.773020657026716,
+          "reproduction_mean_goodput_req_s": 17.670259305439863,
+          "request_rate": 45.0,
+          "symmetric_relative_difference": 0.0057818731868870855,
+          "ttft_threshold_ms": 2000.0,
+          "within_tolerance": true,
+          "workload": "random"
+        },
+        {
+          "allocation": "int4",
+          "formal_mean_goodput_req_s": 26.043852782707358,
+          "reproduction_mean_goodput_req_s": 26.019696919528105,
+          "request_rate": 45.0,
+          "symmetric_relative_difference": 0.0009275072847628727,
+          "ttft_threshold_ms": 3000.0,
+          "within_tolerance": true,
+          "workload": "random"
+        },
+        {
+          "allocation": "fp16",
+          "formal_mean_goodput_req_s": 19.19113713144806,
+          "reproduction_mean_goodput_req_s": 19.190729143393792,
+          "request_rate": 20.0,
+          "symmetric_relative_difference": 2.1259191233558236e-05,
+          "ttft_threshold_ms": 250.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "fp16",
+          "formal_mean_goodput_req_s": 19.19113713144806,
+          "reproduction_mean_goodput_req_s": 19.190729143393792,
+          "request_rate": 20.0,
+          "symmetric_relative_difference": 2.1259191233558236e-05,
+          "ttft_threshold_ms": 500.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "fp16",
+          "formal_mean_goodput_req_s": 19.19113713144806,
+          "reproduction_mean_goodput_req_s": 19.190729143393792,
+          "request_rate": 20.0,
+          "symmetric_relative_difference": 2.1259191233558236e-05,
+          "ttft_threshold_ms": 1000.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "fp16",
+          "formal_mean_goodput_req_s": 19.19113713144806,
+          "reproduction_mean_goodput_req_s": 19.190729143393792,
+          "request_rate": 20.0,
+          "symmetric_relative_difference": 2.1259191233558236e-05,
+          "ttft_threshold_ms": 2000.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "fp16",
+          "formal_mean_goodput_req_s": 19.19113713144806,
+          "reproduction_mean_goodput_req_s": 19.190729143393792,
+          "request_rate": 20.0,
+          "symmetric_relative_difference": 2.1259191233558236e-05,
+          "ttft_threshold_ms": 3000.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "fp16",
+          "formal_mean_goodput_req_s": 24.06659987946735,
+          "reproduction_mean_goodput_req_s": 24.06239811668698,
+          "request_rate": 25.0,
+          "symmetric_relative_difference": 0.00017458896567923971,
+          "ttft_threshold_ms": 250.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "fp16",
+          "formal_mean_goodput_req_s": 24.06659987946735,
+          "reproduction_mean_goodput_req_s": 24.06239811668698,
+          "request_rate": 25.0,
+          "symmetric_relative_difference": 0.00017458896567923971,
+          "ttft_threshold_ms": 500.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "fp16",
+          "formal_mean_goodput_req_s": 24.06659987946735,
+          "reproduction_mean_goodput_req_s": 24.06239811668698,
+          "request_rate": 25.0,
+          "symmetric_relative_difference": 0.00017458896567923971,
+          "ttft_threshold_ms": 1000.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "fp16",
+          "formal_mean_goodput_req_s": 24.06659987946735,
+          "reproduction_mean_goodput_req_s": 24.06239811668698,
+          "request_rate": 25.0,
+          "symmetric_relative_difference": 0.00017458896567923971,
+          "ttft_threshold_ms": 2000.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "fp16",
+          "formal_mean_goodput_req_s": 24.06659987946735,
+          "reproduction_mean_goodput_req_s": 24.06239811668698,
+          "request_rate": 25.0,
+          "symmetric_relative_difference": 0.00017458896567923971,
+          "ttft_threshold_ms": 3000.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "fp16",
+          "formal_mean_goodput_req_s": 27.65794034878567,
+          "reproduction_mean_goodput_req_s": 27.65855826718581,
+          "request_rate": 30.0,
+          "symmetric_relative_difference": 2.2340947571186446e-05,
+          "ttft_threshold_ms": 250.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "fp16",
+          "formal_mean_goodput_req_s": 27.65794034878567,
+          "reproduction_mean_goodput_req_s": 27.65855826718581,
+          "request_rate": 30.0,
+          "symmetric_relative_difference": 2.2340947571186446e-05,
+          "ttft_threshold_ms": 500.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "fp16",
+          "formal_mean_goodput_req_s": 27.65794034878567,
+          "reproduction_mean_goodput_req_s": 27.65855826718581,
+          "request_rate": 30.0,
+          "symmetric_relative_difference": 2.2340947571186446e-05,
+          "ttft_threshold_ms": 1000.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "fp16",
+          "formal_mean_goodput_req_s": 27.65794034878567,
+          "reproduction_mean_goodput_req_s": 27.65855826718581,
+          "request_rate": 30.0,
+          "symmetric_relative_difference": 2.2340947571186446e-05,
+          "ttft_threshold_ms": 2000.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "fp16",
+          "formal_mean_goodput_req_s": 27.65794034878567,
+          "reproduction_mean_goodput_req_s": 27.65855826718581,
+          "request_rate": 30.0,
+          "symmetric_relative_difference": 2.2340947571186446e-05,
+          "ttft_threshold_ms": 3000.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "fp16",
+          "formal_mean_goodput_req_s": 32.82406719516151,
+          "reproduction_mean_goodput_req_s": 32.830462091921824,
+          "request_rate": 35.0,
+          "symmetric_relative_difference": 0.00019478546303757248,
+          "ttft_threshold_ms": 250.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "fp16",
+          "formal_mean_goodput_req_s": 32.82406719516151,
+          "reproduction_mean_goodput_req_s": 32.830462091921824,
+          "request_rate": 35.0,
+          "symmetric_relative_difference": 0.00019478546303757248,
+          "ttft_threshold_ms": 500.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "fp16",
+          "formal_mean_goodput_req_s": 32.82406719516151,
+          "reproduction_mean_goodput_req_s": 32.830462091921824,
+          "request_rate": 35.0,
+          "symmetric_relative_difference": 0.00019478546303757248,
+          "ttft_threshold_ms": 1000.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "fp16",
+          "formal_mean_goodput_req_s": 32.82406719516151,
+          "reproduction_mean_goodput_req_s": 32.830462091921824,
+          "request_rate": 35.0,
+          "symmetric_relative_difference": 0.00019478546303757248,
+          "ttft_threshold_ms": 2000.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "fp16",
+          "formal_mean_goodput_req_s": 32.82406719516151,
+          "reproduction_mean_goodput_req_s": 32.830462091921824,
+          "request_rate": 35.0,
+          "symmetric_relative_difference": 0.00019478546303757248,
+          "ttft_threshold_ms": 3000.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "int4",
+          "formal_mean_goodput_req_s": 19.124596694142905,
+          "reproduction_mean_goodput_req_s": 19.118687850503132,
+          "request_rate": 20.0,
+          "symmetric_relative_difference": 0.0003089656599965109,
+          "ttft_threshold_ms": 250.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "int4",
+          "formal_mean_goodput_req_s": 19.124596694142905,
+          "reproduction_mean_goodput_req_s": 19.118687850503132,
+          "request_rate": 20.0,
+          "symmetric_relative_difference": 0.0003089656599965109,
+          "ttft_threshold_ms": 500.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "int4",
+          "formal_mean_goodput_req_s": 19.124596694142905,
+          "reproduction_mean_goodput_req_s": 19.118687850503132,
+          "request_rate": 20.0,
+          "symmetric_relative_difference": 0.0003089656599965109,
+          "ttft_threshold_ms": 1000.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "int4",
+          "formal_mean_goodput_req_s": 19.124596694142905,
+          "reproduction_mean_goodput_req_s": 19.118687850503132,
+          "request_rate": 20.0,
+          "symmetric_relative_difference": 0.0003089656599965109,
+          "ttft_threshold_ms": 2000.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "int4",
+          "formal_mean_goodput_req_s": 19.124596694142905,
+          "reproduction_mean_goodput_req_s": 19.118687850503132,
+          "request_rate": 20.0,
+          "symmetric_relative_difference": 0.0003089656599965109,
+          "ttft_threshold_ms": 3000.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "int4",
+          "formal_mean_goodput_req_s": 23.973311466629116,
+          "reproduction_mean_goodput_req_s": 23.96819277266412,
+          "request_rate": 25.0,
+          "symmetric_relative_difference": 0.00021351635013462498,
+          "ttft_threshold_ms": 250.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "int4",
+          "formal_mean_goodput_req_s": 23.973311466629116,
+          "reproduction_mean_goodput_req_s": 23.96819277266412,
+          "request_rate": 25.0,
+          "symmetric_relative_difference": 0.00021351635013462498,
+          "ttft_threshold_ms": 500.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "int4",
+          "formal_mean_goodput_req_s": 23.973311466629116,
+          "reproduction_mean_goodput_req_s": 23.96819277266412,
+          "request_rate": 25.0,
+          "symmetric_relative_difference": 0.00021351635013462498,
+          "ttft_threshold_ms": 1000.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "int4",
+          "formal_mean_goodput_req_s": 23.973311466629116,
+          "reproduction_mean_goodput_req_s": 23.96819277266412,
+          "request_rate": 25.0,
+          "symmetric_relative_difference": 0.00021351635013462498,
+          "ttft_threshold_ms": 2000.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "int4",
+          "formal_mean_goodput_req_s": 23.973311466629116,
+          "reproduction_mean_goodput_req_s": 23.96819277266412,
+          "request_rate": 25.0,
+          "symmetric_relative_difference": 0.00021351635013462498,
+          "ttft_threshold_ms": 3000.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "int4",
+          "formal_mean_goodput_req_s": 27.48104995623568,
+          "reproduction_mean_goodput_req_s": 27.47150443630031,
+          "request_rate": 30.0,
+          "symmetric_relative_difference": 0.00034734917154075897,
+          "ttft_threshold_ms": 250.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "int4",
+          "formal_mean_goodput_req_s": 27.48104995623568,
+          "reproduction_mean_goodput_req_s": 27.47150443630031,
+          "request_rate": 30.0,
+          "symmetric_relative_difference": 0.00034734917154075897,
+          "ttft_threshold_ms": 500.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "int4",
+          "formal_mean_goodput_req_s": 27.48104995623568,
+          "reproduction_mean_goodput_req_s": 27.47150443630031,
+          "request_rate": 30.0,
+          "symmetric_relative_difference": 0.00034734917154075897,
+          "ttft_threshold_ms": 1000.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "int4",
+          "formal_mean_goodput_req_s": 27.48104995623568,
+          "reproduction_mean_goodput_req_s": 27.47150443630031,
+          "request_rate": 30.0,
+          "symmetric_relative_difference": 0.00034734917154075897,
+          "ttft_threshold_ms": 2000.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "int4",
+          "formal_mean_goodput_req_s": 27.48104995623568,
+          "reproduction_mean_goodput_req_s": 27.47150443630031,
+          "request_rate": 30.0,
+          "symmetric_relative_difference": 0.00034734917154075897,
+          "ttft_threshold_ms": 3000.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "int4",
+          "formal_mean_goodput_req_s": 32.4628586861595,
+          "reproduction_mean_goodput_req_s": 32.43278720688233,
+          "request_rate": 35.0,
+          "symmetric_relative_difference": 0.000926334909931685,
+          "ttft_threshold_ms": 250.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "int4",
+          "formal_mean_goodput_req_s": 32.4628586861595,
+          "reproduction_mean_goodput_req_s": 32.43278720688233,
+          "request_rate": 35.0,
+          "symmetric_relative_difference": 0.000926334909931685,
+          "ttft_threshold_ms": 500.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "int4",
+          "formal_mean_goodput_req_s": 32.4628586861595,
+          "reproduction_mean_goodput_req_s": 32.43278720688233,
+          "request_rate": 35.0,
+          "symmetric_relative_difference": 0.000926334909931685,
+          "ttft_threshold_ms": 1000.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "int4",
+          "formal_mean_goodput_req_s": 32.4628586861595,
+          "reproduction_mean_goodput_req_s": 32.43278720688233,
+          "request_rate": 35.0,
+          "symmetric_relative_difference": 0.000926334909931685,
+          "ttft_threshold_ms": 2000.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "int4",
+          "formal_mean_goodput_req_s": 32.4628586861595,
+          "reproduction_mean_goodput_req_s": 32.43278720688233,
+          "request_rate": 35.0,
+          "symmetric_relative_difference": 0.000926334909931685,
+          "ttft_threshold_ms": 3000.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "fp16",
+          "formal_mean_goodput_req_s": 37.51902634531849,
+          "reproduction_mean_goodput_req_s": 37.473906837996786,
+          "request_rate": 40.0,
+          "symmetric_relative_difference": 0.0012025767115177459,
+          "ttft_threshold_ms": 250.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "fp16",
+          "formal_mean_goodput_req_s": 37.51902634531849,
+          "reproduction_mean_goodput_req_s": 37.473906837996786,
+          "request_rate": 40.0,
+          "symmetric_relative_difference": 0.0012025767115177459,
+          "ttft_threshold_ms": 500.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "fp16",
+          "formal_mean_goodput_req_s": 37.51902634531849,
+          "reproduction_mean_goodput_req_s": 37.473906837996786,
+          "request_rate": 40.0,
+          "symmetric_relative_difference": 0.0012025767115177459,
+          "ttft_threshold_ms": 1000.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "fp16",
+          "formal_mean_goodput_req_s": 37.51902634531849,
+          "reproduction_mean_goodput_req_s": 37.473906837996786,
+          "request_rate": 40.0,
+          "symmetric_relative_difference": 0.0012025767115177459,
+          "ttft_threshold_ms": 2000.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "fp16",
+          "formal_mean_goodput_req_s": 37.51902634531849,
+          "reproduction_mean_goodput_req_s": 37.473906837996786,
+          "request_rate": 40.0,
+          "symmetric_relative_difference": 0.0012025767115177459,
+          "ttft_threshold_ms": 3000.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "int4",
+          "formal_mean_goodput_req_s": 36.987306516924626,
+          "reproduction_mean_goodput_req_s": 36.89809898508503,
+          "request_rate": 40.0,
+          "symmetric_relative_difference": 0.0024118417976388374,
+          "ttft_threshold_ms": 250.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "int4",
+          "formal_mean_goodput_req_s": 36.987306516924626,
+          "reproduction_mean_goodput_req_s": 36.89809898508503,
+          "request_rate": 40.0,
+          "symmetric_relative_difference": 0.0024118417976388374,
+          "ttft_threshold_ms": 500.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "int4",
+          "formal_mean_goodput_req_s": 36.987306516924626,
+          "reproduction_mean_goodput_req_s": 36.89809898508503,
+          "request_rate": 40.0,
+          "symmetric_relative_difference": 0.0024118417976388374,
+          "ttft_threshold_ms": 1000.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "int4",
+          "formal_mean_goodput_req_s": 36.987306516924626,
+          "reproduction_mean_goodput_req_s": 36.89809898508503,
+          "request_rate": 40.0,
+          "symmetric_relative_difference": 0.0024118417976388374,
+          "ttft_threshold_ms": 2000.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        },
+        {
+          "allocation": "int4",
+          "formal_mean_goodput_req_s": 36.987306516924626,
+          "reproduction_mean_goodput_req_s": 36.89809898508503,
+          "request_rate": 40.0,
+          "symmetric_relative_difference": 0.0024118417976388374,
+          "ttft_threshold_ms": 3000.0,
+          "within_tolerance": true,
+          "workload": "sharegpt"
+        }
+      ],
+      "max_relative_difference": 0.04992647818248235,
+      "within_tolerance": 80
+    },
+    "sharegpt_upper_neighbor": {
+      "all_unsustainable": true,
+      "samples": 6,
+      "threshold_checks": 30
+    }
+  },
+  "comparison_tolerance": {
+    "metric": "cell mean SLO goodput",
+    "symmetric_relative_difference_max": 0.1,
+    "timing_metrics_compared": false
+  },
+  "determinism_class": "environment_sensitive_seeded",
+  "excluded_evidence": [
+    {
+      "attempt_id": "e3-formal-c7379f0-01",
+      "reason": "protocol-v1 request denominator failure; never pooled",
+      "status": "QUARANTINED"
+    },
+    {
+      "attempt_id": "e3-formal-c7379f0-02",
+      "reason": "protocol-v1 request denominator failure; never pooled",
+      "status": "QUARANTINED"
+    },
+    {
+      "attempt_id": "e3-v2-repro-suite-d1d52c4-01",
+      "reason": "supervisor precompute failure; zero scientific samples",
+      "status": "FAILED_PRECOMPUTE"
+    }
+  ],
+  "fallacy_scan": [
+    {
+      "fallacy": "Simpson's paradox",
+      "finding": "Random and ShareGPT effects have opposite signs; pooling workloads would be misleading.",
+      "severity": "CAUTION"
+    },
+    {
+      "fallacy": "Ecological fallacy",
+      "finding": "Inference stays at the seed-by-cell level; requests are not treated as independent replicates.",
+      "severity": "NOTE"
+    },
+    {
+      "fallacy": "Berkson's paradox",
+      "finding": "No outcome-conditioned sample selection was used; workloads and rates were frozen in advance.",
+      "severity": "NOTE"
+    },
+    {
+      "fallacy": "Collider bias",
+      "finding": "No post-treatment control variable is used in the boundary comparison.",
+      "severity": "NOTE"
+    },
+    {
+      "fallacy": "Base rate neglect",
+      "finding": "Not applicable to the offered-rate and SLO-goodput measurements.",
+      "severity": "NOTE"
+    },
+    {
+      "fallacy": "Regression to the mean",
+      "finding": "Independent attempts reproduce the same discrete boundary; no pre/post extreme-group inference is made.",
+      "severity": "NOTE"
+    },
+    {
+      "fallacy": "Survivorship bias",
+      "finding": "All planned samples and requests are accounted for; failed historical attempts remain excluded and preserved.",
+      "severity": "NOTE"
+    },
+    {
+      "fallacy": "Look-elsewhere effect",
+      "finding": "Five TTFT thresholds are evaluated; all are reported and no threshold is selected as uniquely confirmatory.",
+      "severity": "CAUTION"
+    },
+    {
+      "fallacy": "Garden of forking paths",
+      "finding": "Protocol v2 followed documented v1 failures; v1 attempts are quarantined and v2 gates were rerun before formal execution.",
+      "severity": "CAUTION"
+    },
+    {
+      "fallacy": "Correlation is not causation",
+      "finding": "The allocation comparison is controlled, but conclusions are limited to this model, stack, hardware, and workload.",
+      "severity": "CAUTION"
+    },
+    {
+      "fallacy": "Reverse causality",
+      "finding": "Not applicable to the controlled serving configuration comparison.",
+      "severity": "NOTE"
+    }
+  ],
+  "fallacy_scan_coverage": "11/11",
+  "formal_attempt_id": "e3-v2-formal-d1d52c4-01",
+  "generated_at_utc": "2026-08-04T15:23:37Z",
+  "launch_audits": [
+    {
+      "exit_code": 0,
+      "gpu_compute_started": true,
+      "provenance": {
+        "config_sha256": "6000a6d7a3c004e235327f64ff177bc1202dd42315e865d76d817b17095ad431",
+        "git_commit": "d1d52c49de57ab61776dfeb7cabd16ff8b6bd40c",
+        "launch_contract_sha256": "c767898ff13cfb60f8c7af0a2583948fe408427b71f5fa235eb913c536fab4ec",
+        "vllm_source_commit": "55f47685a553ad8d776c464c59785399a98c7185"
+      },
+      "role": "successful_reproduction_suite",
+      "samples_started": 42,
+      "scientific_attempts_created": true,
+      "sha_audit": {
+        "files_hashed": 97,
+        "sidecars_verified": 22
+      },
+      "source_path": "/root/autodl-tmp/formal-artifacts-c7379f0/e3-launch/e3-v2-repro-suite-d1d52c4-02",
+      "status": "COMPLETED",
+      "suite_id": "e3-v2-repro-suite-d1d52c4-02"
+    },
+    {
+      "exit_code": 1,
+      "gpu_compute_started": false,
+      "provenance": {
+        "config_sha256": "6000a6d7a3c004e235327f64ff177bc1202dd42315e865d76d817b17095ad431",
+        "git_commit": "d1d52c49de57ab61776dfeb7cabd16ff8b6bd40c",
+        "launch_contract_sha256": "ea55225576c6ea8af314cca95b859dbfe20590bd447c5b36e747c72be09aa1a7",
+        "vllm_source_commit": "55f47685a553ad8d776c464c59785399a98c7185"
+      },
+      "role": "preserved_failed_precompute_suite",
+      "samples_started": 0,
+      "scientific_attempts_created": false,
+      "sha_audit": {
+        "files_hashed": 17,
+        "sidecars_verified": 5
+      },
+      "source_path": "/root/autodl-tmp/formal-artifacts-c7379f0/e3-launch/e3-v2-repro-suite-d1d52c4-01",
+      "status": "FAILED_PRECOMPUTE",
+      "suite_id": "e3-v2-repro-suite-d1d52c4-01"
+    }
+  ],
+  "overall_confidence": "CAUTION",
+  "primary_results": {
+    "boundary_summary": [
+      {
+        "fp16_mean_boundary_req_s": 35.0,
+        "int4_mean_boundary_req_s": 35.0,
+        "int4_relative_change": 0.0,
+        "ttft_threshold_ms": 250.0,
+        "workload": "random"
+      },
+      {
+        "fp16_mean_boundary_req_s": 35.0,
+        "int4_mean_boundary_req_s": 36.666666666666664,
+        "int4_relative_change": 0.04761904761904745,
+        "ttft_threshold_ms": 500.0,
+        "workload": "random"
+      },
+      {
+        "fp16_mean_boundary_req_s": 35.0,
+        "int4_mean_boundary_req_s": 40.0,
+        "int4_relative_change": 0.1428571428571428,
+        "ttft_threshold_ms": 1000.0,
+        "workload": "random"
+      },
+      {
+        "fp16_mean_boundary_req_s": 35.0,
+        "int4_mean_boundary_req_s": 40.0,
+        "int4_relative_change": 0.1428571428571428,
+        "ttft_threshold_ms": 2000.0,
+        "workload": "random"
+      },
+      {
+        "fp16_mean_boundary_req_s": 35.0,
+        "int4_mean_boundary_req_s": 40.0,
+        "int4_relative_change": 0.1428571428571428,
+        "ttft_threshold_ms": 3000.0,
+        "workload": "random"
+      },
+      {
+        "fp16_mean_boundary_req_s": 28.333333333333332,
+        "int4_mean_boundary_req_s": 23.333333333333332,
+        "int4_relative_change": -0.17647058823529416,
+        "ttft_threshold_ms": 250.0,
+        "workload": "sharegpt"
+      },
+      {
+        "fp16_mean_boundary_req_s": 28.333333333333332,
+        "int4_mean_boundary_req_s": 23.333333333333332,
+        "int4_relative_change": -0.17647058823529416,
+        "ttft_threshold_ms": 500.0,
+        "workload": "sharegpt"
+      },
+      {
+        "fp16_mean_boundary_req_s": 28.333333333333332,
+        "int4_mean_boundary_req_s": 23.333333333333332,
+        "int4_relative_change": -0.17647058823529416,
+        "ttft_threshold_ms": 1000.0,
+        "workload": "sharegpt"
+      },
+      {
+        "fp16_mean_boundary_req_s": 28.333333333333332,
+        "int4_mean_boundary_req_s": 23.333333333333332,
+        "int4_relative_change": -0.17647058823529416,
+        "ttft_threshold_ms": 2000.0,
+        "workload": "sharegpt"
+      },
+      {
+        "fp16_mean_boundary_req_s": 28.333333333333332,
+        "int4_mean_boundary_req_s": 23.333333333333332,
+        "int4_relative_change": -0.17647058823529416,
+        "ttft_threshold_ms": 3000.0,
+        "workload": "sharegpt"
+      }
+    ],
+    "random_rate40_ttft2000_paired_goodput": {
+      "formal": {
+        "mean_int4_minus_fp16_goodput_req_s": 12.57924342839207,
+        "n": 3,
+        "request_rate": 40.0,
+        "sample_std": 1.0426301677920093,
+        "ttft_threshold_ms": 2000.0,
+        "workload": "random"
+      },
+      "reproduction": {
+        "mean_int4_minus_fp16_goodput_req_s": 12.430639104620676,
+        "n": 3,
+        "request_rate": 40.0,
+        "sample_std": 0.7135005636542155,
+        "ttft_threshold_ms": 2000.0,
+        "workload": "random"
+      }
+    }
+  },
+  "reproducibility_verdict": "REPRODUCIBLE",
+  "schema_version": 1,
+  "source_artifact_manifest": {
+    "file_count": 1254,
+    "path": "/root/autodl-tmp/formal-artifacts-c7379f0/e3-launch/e3-v2-repro-suite-d1d52c4-02/artifact_sha256_manifest.json",
+    "sha256": "54f159bacdaf56bbab158607016f44e729d49b6ec2a08231bfc51a1682700c54"
+  },
+  "verification_status": "VERIFIED",
+  "verification_tool": {
+    "path": "/root/autodl-tmp/formal-artifacts-c7379f0/e3-launch/e3-v2-repro-suite-d1d52c4-02/verify_e3_reproducibility.py",
+    "sha256": "19b3ea7f1ae49449b3cefec9b1921e468b1233200164ea822c9cee4c1bfb9e2b"
+  }
+}

@@ -51,3 +51,6 @@ Thumbs.db
 
 # vLLM 工作副本（镜像浅克隆，不入库；provenance 记录 SHA）
 vendor/vllm/
+
+# deep-path raw server dumps (source of truth on server, Windows path-length exceeded)
+results/reproduction/**/raw/

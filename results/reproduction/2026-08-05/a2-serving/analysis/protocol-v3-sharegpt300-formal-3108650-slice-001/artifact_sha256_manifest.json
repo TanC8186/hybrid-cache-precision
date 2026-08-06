@@ -1,0 +1,345 @@
+{
+  "created_at": "2026-08-05T17:17:05Z",
+  "files": [
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/attempt_contract.json",
+      "sha256": "b533d26fbecad7624e558e8731fc5e33e18e534bb01b26066a98bc4896e2e47a",
+      "size": 13565
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/attempt_contract.json.sha256",
+      "sha256": "ec962cb57b3d45606c42cca5b4c0c348e427251ccd50f9a5f82f962129939655",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/environment.json",
+      "sha256": "97ca5b560bc4d2e9c604268e5874c62d54b1e7c7cd9bbe7a3028080e7e754caf",
+      "size": 12098
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/environment.json.sha256",
+      "sha256": "827a1194bea530dcc4dcf042bfd0e3ce9f0dc2e9c36bba1a5e0f58c634a44614",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/invocations/20260805T164508Z-de9cd460.json",
+      "sha256": "e051ff5efef5fdca17ca2bb2ff921d96e7a9be26c977863b23a0b9edcbbd57bf",
+      "size": 649
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/samples/fp16__sharegpt__r20__s2026/analysis.json",
+      "sha256": "01738d0e49a106cdc8083de10299b6107488a897b857c920497cc641b43d786c",
+      "size": 2019
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/samples/fp16__sharegpt__r20__s2026/analysis.json.sha256",
+      "sha256": "bf724f92456563935ab90188854227a230a9dbff5f4c055af74e05eb5e8146db",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/samples/fp16__sharegpt__r20__s2026/bench.log",
+      "sha256": "1660b2f872e94f73aaa7d6f1a992e4c825b4df1e15d907f1ad94991fa1973051",
+      "size": 5358
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/samples/fp16__sharegpt__r20__s2026/contract.json",
+      "sha256": "5fe99c362f9d4d390c1155e0930ba5034a4e8afc3f03349283a8f6c95d7018fd",
+      "size": 3129
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/samples/fp16__sharegpt__r20__s2026/contract.json.sha256",
+      "sha256": "0ecdefe6e3b4f7e3d35c96af495ff5e388af66669df6bfffc07db3381b81e465",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/samples/fp16__sharegpt__r20__s2026/result.json",
+      "sha256": "67039cd7b2c8de8e6116e0a6311c7121147d4d06a4520563573b43832d49dfeb",
+      "size": 33380000
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/samples/fp16__sharegpt__r20__s2026/result.json.sha256",
+      "sha256": "fcec3f6bbcf82b7f9ea77a47340e71060d1bf0506034ac76f9507ef7bb51b82b",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/samples/fp16__sharegpt__r20__s2026/status.json",
+      "sha256": "486c81e4fb9feb7b36b20715b146c46ecc411decd844b3fbbb64588247e07db7",
+      "size": 351
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/samples/fp16__sharegpt__r20__s42/analysis.json",
+      "sha256": "2df5825b91503ff156e9bccb699b7f0bc2c4d018435da67ca2949ab97a09cd88",
+      "size": 2010
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/samples/fp16__sharegpt__r20__s42/analysis.json.sha256",
+      "sha256": "f8e5dd6aa4e17aa049fdc48173cbff2b78278811cd0ee73a3c465f38ff24bd99",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/samples/fp16__sharegpt__r20__s42/bench.log",
+      "sha256": "d06bac4c9aad79b55b6095f4b2c128dd86a729e2066375f2c71421c66f40a6b5",
+      "size": 5348
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/samples/fp16__sharegpt__r20__s42/contract.json",
+      "sha256": "9f5fad609bf623849755eb1122c1fda5dabe868c3d2fc31356e5f7a1c9f12f43",
+      "size": 3115
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/samples/fp16__sharegpt__r20__s42/contract.json.sha256",
+      "sha256": "8c76e4bf8b73b536387eb55d9769d38b922ab8023fbb050381a9d2ad6ec6de34",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/samples/fp16__sharegpt__r20__s42/result.json",
+      "sha256": "85b68eb08b316ef88f4c8708bf0b0f765b107eed4069ac3216d4d0c335bd3a31",
+      "size": 33616461
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/samples/fp16__sharegpt__r20__s42/result.json.sha256",
+      "sha256": "381bbe2961e82c5454fda8328ef70d47a674165de71ea47335644f5a4bd9687f",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/samples/fp16__sharegpt__r20__s42/status.json",
+      "sha256": "ed5f31e6ff38136ed65a09f5d5b468e7e1b127065de2fe2beb414a7fe26e8192",
+      "size": 352
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/samples/fp16__sharegpt__r20__s7/analysis.json",
+      "sha256": "ef9190b9f7dd81f88d2c9fea95870e9b8298874ac36261a40d4df24b3f61eaaa",
+      "size": 2018
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/samples/fp16__sharegpt__r20__s7/analysis.json.sha256",
+      "sha256": "ce64b8bbab26fa6e4eab8715894f150cd027e2f599683ed7c87f36a0e01d025a",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/samples/fp16__sharegpt__r20__s7/bench.log",
+      "sha256": "749cce589a53893a3f55c9fc38690961932380f47954550f5ad927f8030499b5",
+      "size": 5343
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/samples/fp16__sharegpt__r20__s7/contract.json",
+      "sha256": "9cef7e42a6cf02caa0afecbd1ccb9f05687151b8a06831ad9db45791f6a6cad8",
+      "size": 3108
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/samples/fp16__sharegpt__r20__s7/contract.json.sha256",
+      "sha256": "3da8492f24b6fb5fbb5c8aeaab9806cbb4561418ae12ead18e3be300761c1150",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/samples/fp16__sharegpt__r20__s7/result.json",
+      "sha256": "7b1d5cfd42c5c31ceadb0ef675b4b839e4bd2a3b7d64d9a753d024ee55be3cda",
+      "size": 32743349
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/samples/fp16__sharegpt__r20__s7/result.json.sha256",
+      "sha256": "a8b97b88eff8c4797c42acaa7584986fd3b845d00302d73448d608af7a9af28c",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/samples/fp16__sharegpt__r20__s7/status.json",
+      "sha256": "1aa8c610dcd4ab02e6a83028abe87d4e29021ade49ca470f57f3fb836c045a29",
+      "size": 351
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/samples/fp16__sharegpt__r25__s42/analysis.json",
+      "sha256": "9750286c24aed08040c3d69893dda3050afb55d22a59e45e6ed4344fa5dcfaf3",
+      "size": 2007
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/samples/fp16__sharegpt__r25__s42/analysis.json.sha256",
+      "sha256": "a53e528ddafa595236e560c3a4cf7b771a054442c4d2d8f4ec675dd90e2ce8a5",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/samples/fp16__sharegpt__r25__s42/bench.log",
+      "sha256": "6c4bcc63931f5297bab912145643fc68b8adea178271b5e7a42ea87150a71622",
+      "size": 5348
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/samples/fp16__sharegpt__r25__s42/contract.json",
+      "sha256": "1a6fdd58228f6d3748f26da23289debe738bfbb4131e58fd2fdab5cd50d62fa9",
+      "size": 3115
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/samples/fp16__sharegpt__r25__s42/contract.json.sha256",
+      "sha256": "2a257708006a89b17599e93814c2352f04de318541dac24ecb44c35be06f62d7",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/samples/fp16__sharegpt__r25__s42/result.json",
+      "sha256": "3899824f03a2563744389fd4582d9ede84a2bab48044d278f6e35bdd7c33dc0a",
+      "size": 41548408
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/samples/fp16__sharegpt__r25__s42/result.json.sha256",
+      "sha256": "e4d6a22d8050994221b27b5c5f2b2c270d3f72e254d1826a7e51c75fd21244cb",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/samples/fp16__sharegpt__r25__s42/status.json",
+      "sha256": "7a19388c87cfe30830abaed4e3277d4956275dea94e9959b4b8a7e6fc1efc50d",
+      "size": 352
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/samples/fp16__sharegpt__r25__s7/analysis.json",
+      "sha256": "46e05dd7643a3311ce3b42d0ed376e4286ead8b8402804bd19f40887c7c96b6b",
+      "size": 2017
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/samples/fp16__sharegpt__r25__s7/analysis.json.sha256",
+      "sha256": "3759a576edf766b0210ecdf4df9408bb6c884a0f34c13037d5edbdcd6796397d",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/samples/fp16__sharegpt__r25__s7/bench.log",
+      "sha256": "765ced30f3772db353e60a2cf071f73cbd15284e8faab91bf15d74a1304539a3",
+      "size": 5343
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/samples/fp16__sharegpt__r25__s7/contract.json",
+      "sha256": "4dabd412898cef605b7bfc5a7ba6f48fbd57e0fe412f318b4c573e280c048b3f",
+      "size": 3108
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/samples/fp16__sharegpt__r25__s7/contract.json.sha256",
+      "sha256": "3d7ca8a25215d1896bd875347954a3f930d7e9ee511ad3b3d63e70cf647aca58",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/samples/fp16__sharegpt__r25__s7/result.json",
+      "sha256": "43bf98972388dd1e1cd2226c60b4a1019d6ca0b0bd07b3286acec39aa053746c",
+      "size": 40604823
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/samples/fp16__sharegpt__r25__s7/result.json.sha256",
+      "sha256": "489e40654b03678e242598552723a05d79699c75c3103e1654601075297eeb5b",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/samples/fp16__sharegpt__r25__s7/status.json",
+      "sha256": "d62b5d23ada70f30d6438d44ceb769a169871afbee414480cf1ef5f9b630ed69",
+      "size": 351
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/servers/fp16/20260805T164508Z-32b7b4ec/contract.json",
+      "sha256": "9649e66daba08719eede053d280eae4dfa54dba9a331551a0ddefeffdec46c62",
+      "size": 576
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/servers/fp16/20260805T164508Z-32b7b4ec/contract.json.sha256",
+      "sha256": "b3a8fb680b1d8c33631caf2f1b9964c48b1e3f7e05b66da75349d491bf5f3cda",
+      "size": 65
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/servers/fp16/20260805T164508Z-32b7b4ec/server.log",
+      "sha256": "1f7cbec1d620a26e9e8438b58b6490c616ac3e7db248651ff39183af6065fdbd",
+      "size": 3053469
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/servers/fp16/20260805T164508Z-32b7b4ec/status.json",
+      "sha256": "f4847d5e1215db76c5d6d84c17dccf6191a890507c644f95a007864f127d2484",
+      "size": 106
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/summary.json",
+      "sha256": "14cfcec991fb6ca8a64a5a4c5f56e49357563c8decdef036e05de3f3009ceb61",
+      "size": 6139
+    },
+    {
+      "path": "attempts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/summary.json.sha256",
+      "sha256": "a040f64553d7995caeb8acb353b8542506273244754cdc8bc61116c4b126de7a",
+      "size": 65
+    },
+    {
+      "path": "contracts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01.dry-run.json",
+      "sha256": "3ec3e37147a20cc1f37c8320d3ec3755d89178b2dd36f7208ffa348a91049071",
+      "size": 13565
+    },
+    {
+      "path": "contracts/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01.json",
+      "sha256": "ce51238c238ba699b1c2a0604c9e717c97c32972705e5574b8c073ee3f4ea497",
+      "size": 1731
+    },
+    {
+      "path": "deployment/a2-comparative-formal-v3-3108650.bundle",
+      "sha256": "51536e0842ad9c5d8674a5aa70a2873f233380588ebf4d34c183535160d102d5",
+      "size": 1240181
+    },
+    {
+      "path": "deployment/a2-comparative-formal-v3-3108650.bundle.sha256",
+      "sha256": "b20bd4ce5f08b1bae77244a67812398d063a06e8065bf017548169f01b15aa1b",
+      "size": 161
+    },
+    {
+      "path": "experiments/configs/a2_comparative_piecewise_protocol_v3_sharegpt300_formal.yaml",
+      "sha256": "13888902c80bda29ce282969ac3200789006554f4373fd1340ee48d8b991aca8",
+      "size": 2473
+    },
+    {
+      "path": "supervisors/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/slice-001/contract.json",
+      "sha256": "10c402cdfcd237eaaad5832d479857c8290f449e21791e6271879e98ef3b1edc",
+      "size": 798
+    },
+    {
+      "path": "supervisors/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/slice-001/exit_code.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "size": 2
+    },
+    {
+      "path": "supervisors/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/slice-001/finished_at.txt",
+      "sha256": "b6b13a01ed4265c96affc98deb0a44dfcb5474d6ebb56dd24fe2dd39fc91e00c",
+      "size": 21
+    },
+    {
+      "path": "supervisors/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/slice-001/run.sh",
+      "sha256": "f172f6af0cbcecd2f849386d647ed41d872fd3600e756fcf7d60e6a9e1ec6561",
+      "size": 1211
+    },
+    {
+      "path": "supervisors/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/slice-001/soft_nofile_after.txt",
+      "sha256": "7e89837e8791c415126e88fced677ddb237a7e2deecf18a2d7052d31ecae47fd",
+      "size": 6
+    },
+    {
+      "path": "supervisors/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/slice-001/soft_nofile_before.txt",
+      "sha256": "4f71bb761ace37c88826cd8cc1c948e1cf5b5d0cd153dc651a6efdb3dfb9f2b1",
+      "size": 5
+    },
+    {
+      "path": "supervisors/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/slice-001/started_at.txt",
+      "sha256": "9c69ab0cc0ba066de939169c2be32dee9e8432354d6cfa037b1352d83da87321",
+      "size": 21
+    },
+    {
+      "path": "supervisors/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/slice-001/stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "supervisors/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/slice-001/stdout.log",
+      "sha256": "7321da7826aa14f05c28147259c9a98e7a5149a0ad6714859f2deb95fa631aa1",
+      "size": 846
+    },
+    {
+      "path": "supervisors/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/slice-001/supervisor.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    {
+      "path": "supervisors/a2-comparative-serving-sharegpt300-formal-v3-piecewise-3108650-westd-01/slice-001/supervisor.pid",
+      "sha256": "ea78fe32898c12abaca9222edc14de2d5ff182286101884dc836aa2127144ba8",
+      "size": 6
+    }
+  ],
+  "generated": {
+    "protocol_v3_sharegpt_formal_slice_001_audit_report.json": "d13e9b85efd5d57f92ab5afee12cdd2b2de331a691b6ddf68049d71eeab3f1fc",
+    "protocol_v3_sharegpt_formal_slice_001_validation_report.md": "27a4bc723d7cb3f2a1d83dfa82cd34e56b7f4a2c4a0203bca7f85565f7fdab4b"
+  },
+  "schema_version": 1
+}

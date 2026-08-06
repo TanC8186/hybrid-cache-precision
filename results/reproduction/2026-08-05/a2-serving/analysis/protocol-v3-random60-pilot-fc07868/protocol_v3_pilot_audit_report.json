@@ -1,0 +1,573 @@
+{
+  "component": "random",
+  "created_at": "2026-08-05T13:08:03Z",
+  "evidence_status": "UNVERIFIED",
+  "fallacy_scan": [
+    {
+      "detail": "This MVEx contains only ShareGPT and does not pool workloads.",
+      "fallacy": "Simpson's Paradox",
+      "severity": "NOTE"
+    },
+    {
+      "detail": "Inference stays at the allocation-rate sample level.",
+      "fallacy": "Ecological Fallacy",
+      "severity": "NOTE"
+    },
+    {
+      "detail": "No outcome-conditioned correlation sample is analyzed.",
+      "fallacy": "Berkson's Paradox",
+      "severity": "NOTE"
+    },
+    {
+      "detail": "No post-treatment covariate adjustment is performed.",
+      "fallacy": "Collider Bias",
+      "severity": "NOTE"
+    },
+    {
+      "detail": "No diagnostic probabilities are reported.",
+      "fallacy": "Base Rate Neglect",
+      "severity": "NOTE"
+    },
+    {
+      "detail": "The MVEx has one seed and cannot establish boundary stability.",
+      "fallacy": "Regression to the Mean",
+      "severity": "CAUTION"
+    },
+    {
+      "detail": "Every issued request is retained in its attempt denominator.",
+      "fallacy": "Survivorship Bias",
+      "severity": "SOLID"
+    },
+    {
+      "detail": "Both frozen rates and all five TTFT thresholds are reported.",
+      "fallacy": "Look-Elsewhere Effect",
+      "severity": "SOLID"
+    },
+    {
+      "detail": "Protocol v3 follows a preserved failed pilot and uses a new commit and attempt chain.",
+      "fallacy": "Garden of Forking Paths",
+      "severity": "CAUTION"
+    },
+    {
+      "detail": "The controlled protocol change supports the drain-bias diagnosis but remains an MVEx.",
+      "fallacy": "Correlation != Causation",
+      "severity": "CAUTION"
+    },
+    {
+      "detail": "Not applicable to the controlled serving protocol intervention.",
+      "fallacy": "Reverse Causality",
+      "severity": "NOTE"
+    }
+  ],
+  "gate_passed": true,
+  "next_gate": "Run the linked ShareGPT-300 pilot under the same commit.",
+  "random": {
+    "attempt_id": "a2-comparative-serving-random60-pilot-v3-piecewise-fc07868-westd-01",
+    "bracket_report": {
+      "fp16": {
+        "1000": {
+          "bracketed": true,
+          "rate30_sustainable": true,
+          "rate50_unsustainable": true
+        },
+        "2000": {
+          "bracketed": true,
+          "rate30_sustainable": true,
+          "rate50_unsustainable": true
+        },
+        "250": {
+          "bracketed": true,
+          "rate30_sustainable": true,
+          "rate50_unsustainable": true
+        },
+        "3000": {
+          "bracketed": true,
+          "rate30_sustainable": true,
+          "rate50_unsustainable": true
+        },
+        "500": {
+          "bracketed": true,
+          "rate30_sustainable": true,
+          "rate50_unsustainable": true
+        }
+      },
+      "int4": {
+        "1000": {
+          "bracketed": true,
+          "rate30_sustainable": true,
+          "rate50_unsustainable": true
+        },
+        "2000": {
+          "bracketed": true,
+          "rate30_sustainable": true,
+          "rate50_unsustainable": true
+        },
+        "250": {
+          "bracketed": true,
+          "rate30_sustainable": true,
+          "rate50_unsustainable": true
+        },
+        "3000": {
+          "bracketed": true,
+          "rate30_sustainable": true,
+          "rate50_unsustainable": true
+        },
+        "500": {
+          "bracketed": true,
+          "rate30_sustainable": true,
+          "rate50_unsustainable": true
+        }
+      },
+      "packed_per_layer": {
+        "1000": {
+          "bracketed": true,
+          "rate30_sustainable": true,
+          "rate50_unsustainable": true
+        },
+        "2000": {
+          "bracketed": true,
+          "rate30_sustainable": true,
+          "rate50_unsustainable": true
+        },
+        "250": {
+          "bracketed": true,
+          "rate30_sustainable": true,
+          "rate50_unsustainable": true
+        },
+        "3000": {
+          "bracketed": true,
+          "rate30_sustainable": true,
+          "rate50_unsustainable": true
+        },
+        "500": {
+          "bracketed": true,
+          "rate30_sustainable": true,
+          "rate50_unsustainable": true
+        }
+      }
+    },
+    "bracketed": true,
+    "graph_mode_proven": true,
+    "parent_attempt": "a2-comparative-serving-sharegpt300-upper50-piecewise-b3bd79a-westd-01",
+    "requests_passed": true,
+    "samples": [
+      {
+        "accounting": {
+          "completed": 1800,
+          "detail_lengths": {
+            "errors": 1800,
+            "itls": 1800,
+            "output_lens": 1800,
+            "start_times": 1800,
+            "ttfts": 1800
+          },
+          "detailed_failures": 0,
+          "expected": 1800,
+          "failed": 0,
+          "request_conservation": true
+        },
+        "allocation": "fp16",
+        "arrival_span_over_target": 1.0000227753383417,
+        "benchmark_duration_s": 60.93945664353669,
+        "drain_after_arrival_window_s": 0.9394566435366869,
+        "fd_limit_failures": 0,
+        "goodput_over_offered": {
+          "1000": 0.9845837705932954,
+          "2000": 0.9845837705932954,
+          "250": 0.9785668697730031,
+          "3000": 0.9845837705932954,
+          "500": 0.9845837705932954
+        },
+        "offered_rate": 30.0,
+        "reported_tpot_p99_ms": 19.73920685613132,
+        "reported_ttft_p99_ms": 238.50344561040401,
+        "request_throughput": 29.537513117798863,
+        "request_throughput_over_offered": 0.9845837705932954,
+        "sample_id": "fp16__random__r30__s7",
+        "seed": 7,
+        "sustainable_ttft_thresholds_ms": [
+          250,
+          500,
+          1000,
+          2000,
+          3000
+        ],
+        "workload": "random"
+      },
+      {
+        "accounting": {
+          "completed": 2400,
+          "detail_lengths": {
+            "errors": 2400,
+            "itls": 2400,
+            "output_lens": 2400,
+            "start_times": 2400,
+            "ttfts": 2400
+          },
+          "detailed_failures": 0,
+          "expected": 2400,
+          "failed": 0,
+          "request_conservation": true
+        },
+        "allocation": "fp16",
+        "arrival_span_over_target": 1.000079229194671,
+        "benchmark_duration_s": 66.21420648507774,
+        "drain_after_arrival_window_s": 6.214206485077739,
+        "fd_limit_failures": 0,
+        "goodput_over_offered": {
+          "1000": 0.3398062318404537,
+          "2000": 0.47308578721787614,
+          "250": 0.14989230448962237,
+          "3000": 0.6573362773713666,
+          "500": 0.2367316748488494
+        },
+        "offered_rate": 40.0,
+        "reported_tpot_p99_ms": 49.167019245251424,
+        "reported_ttft_p99_ms": 5041.063459273428,
+        "request_throughput": 36.24599806298173,
+        "request_throughput_over_offered": 0.9061499515745431,
+        "sample_id": "fp16__random__r40__s7",
+        "seed": 7,
+        "sustainable_ttft_thresholds_ms": [],
+        "workload": "random"
+      },
+      {
+        "accounting": {
+          "completed": 3000,
+          "detail_lengths": {
+            "errors": 3000,
+            "itls": 3000,
+            "output_lens": 3000,
+            "start_times": 3000,
+            "ttfts": 3000
+          },
+          "detailed_failures": 0,
+          "expected": 3000,
+          "failed": 0,
+          "request_conservation": true
+        },
+        "allocation": "fp16",
+        "arrival_span_over_target": 1.000090912450105,
+        "benchmark_duration_s": 82.99823472835124,
+        "drain_after_arrival_window_s": 22.998234728351235,
+        "fd_limit_failures": 0,
+        "goodput_over_offered": {
+          "1000": 0.062410965931430494,
+          "2000": 0.10795410323274464,
+          "250": 0.03132596745593036,
+          "3000": 0.13735231884523313,
+          "500": 0.042651509536151336
+        },
+        "offered_rate": 50.0,
+        "reported_tpot_p99_ms": 49.47087253612562,
+        "reported_ttft_p99_ms": 21647.43003070354,
+        "request_throughput": 36.14534706453503,
+        "request_throughput_over_offered": 0.7229069412907007,
+        "sample_id": "fp16__random__r50__s7",
+        "seed": 7,
+        "sustainable_ttft_thresholds_ms": [],
+        "workload": "random"
+      },
+      {
+        "accounting": {
+          "completed": 1800,
+          "detail_lengths": {
+            "errors": 1800,
+            "itls": 1800,
+            "output_lens": 1800,
+            "start_times": 1800,
+            "ttfts": 1800
+          },
+          "detailed_failures": 0,
+          "expected": 1800,
+          "failed": 0,
+          "request_conservation": true
+        },
+        "allocation": "int4",
+        "arrival_span_over_target": 1.000030482467264,
+        "benchmark_duration_s": 61.29601638391614,
+        "drain_after_arrival_window_s": 1.2960163839161396,
+        "fd_limit_failures": 0,
+        "goodput_over_offered": {
+          "1000": 0.9788564337395307,
+          "2000": 0.9788564337395307,
+          "250": 0.9728745333111225,
+          "3000": 0.9788564337395307,
+          "500": 0.9788564337395307
+        },
+        "offered_rate": 30.0,
+        "reported_tpot_p99_ms": 24.32538839497083,
+        "reported_ttft_p99_ms": 239.11201404407618,
+        "request_throughput": 29.365693012185922,
+        "request_throughput_over_offered": 0.9788564337395307,
+        "sample_id": "int4__random__r30__s7",
+        "seed": 7,
+        "sustainable_ttft_thresholds_ms": [
+          250,
+          500,
+          1000,
+          2000,
+          3000
+        ],
+        "workload": "random"
+      },
+      {
+        "accounting": {
+          "completed": 2400,
+          "detail_lengths": {
+            "errors": 2400,
+            "itls": 2400,
+            "output_lens": 2400,
+            "start_times": 2400,
+            "ttfts": 2400
+          },
+          "detailed_failures": 0,
+          "expected": 2400,
+          "failed": 0,
+          "request_conservation": true
+        },
+        "allocation": "int4",
+        "arrival_span_over_target": 1.000193020918717,
+        "benchmark_duration_s": 62.046005975455046,
+        "drain_after_arrival_window_s": 2.0460059754550457,
+        "fd_limit_failures": 0,
+        "goodput_over_offered": {
+          "1000": 0.9670243725879079,
+          "2000": 0.9670243725879079,
+          "250": 0.2606936537768235,
+          "3000": 0.9670243725879079,
+          "500": 0.780469254042824
+        },
+        "offered_rate": 40.0,
+        "reported_tpot_p99_ms": 44.64789976167867,
+        "reported_ttft_p99_ms": 711.683367155492,
+        "request_throughput": 38.680974903516315,
+        "request_throughput_over_offered": 0.9670243725879079,
+        "sample_id": "int4__random__r40__s7",
+        "seed": 7,
+        "sustainable_ttft_thresholds_ms": [
+          1000,
+          2000,
+          3000
+        ],
+        "workload": "random"
+      },
+      {
+        "accounting": {
+          "completed": 3000,
+          "detail_lengths": {
+            "errors": 3000,
+            "itls": 3000,
+            "output_lens": 3000,
+            "start_times": 3000,
+            "ttfts": 3000
+          },
+          "detailed_failures": 0,
+          "expected": 3000,
+          "failed": 0,
+          "request_conservation": true
+        },
+        "allocation": "int4",
+        "arrival_span_over_target": 1.0002412112429737,
+        "benchmark_duration_s": 75.85684674791992,
+        "drain_after_arrival_window_s": 15.856846747919917,
+        "fd_limit_failures": 0,
+        "goodput_over_offered": {
+          "1000": 0.08542406226736138,
+          "2000": 0.15476519923129978,
+          "250": 0.03664797733075072,
+          "3000": 0.19879550293083478,
+          "500": 0.050358012015635875
+        },
+        "offered_rate": 50.0,
+        "reported_tpot_p99_ms": 44.812796491484235,
+        "reported_ttft_p99_ms": 14354.936393219976,
+        "request_throughput": 39.54817697563026,
+        "request_throughput_over_offered": 0.7909635395126052,
+        "sample_id": "int4__random__r50__s7",
+        "seed": 7,
+        "sustainable_ttft_thresholds_ms": [],
+        "workload": "random"
+      },
+      {
+        "accounting": {
+          "completed": 1800,
+          "detail_lengths": {
+            "errors": 1800,
+            "itls": 1800,
+            "output_lens": 1800,
+            "start_times": 1800,
+            "ttfts": 1800
+          },
+          "detailed_failures": 0,
+          "expected": 1800,
+          "failed": 0,
+          "request_conservation": true
+        },
+        "allocation": "packed_per_layer",
+        "arrival_span_over_target": 1.0000209454757472,
+        "benchmark_duration_s": 61.25990441069007,
+        "drain_after_arrival_window_s": 1.2599044106900692,
+        "fd_limit_failures": 0,
+        "goodput_over_offered": {
+          "1000": 0.9794334577761729,
+          "2000": 0.9794334577761729,
+          "250": 0.9718156419934694,
+          "3000": 0.9794334577761729,
+          "500": 0.9794334577761729
+        },
+        "offered_rate": 30.0,
+        "reported_tpot_p99_ms": 22.66750060872534,
+        "reported_ttft_p99_ms": 242.52932511270046,
+        "request_throughput": 29.383003733285186,
+        "request_throughput_over_offered": 0.9794334577761729,
+        "sample_id": "packed_per_layer__random__r30__s7",
+        "seed": 7,
+        "sustainable_ttft_thresholds_ms": [
+          250,
+          500,
+          1000,
+          2000,
+          3000
+        ],
+        "workload": "random"
+      },
+      {
+        "accounting": {
+          "completed": 2400,
+          "detail_lengths": {
+            "errors": 2400,
+            "itls": 2400,
+            "output_lens": 2400,
+            "start_times": 2400,
+            "ttfts": 2400
+          },
+          "detailed_failures": 0,
+          "expected": 2400,
+          "failed": 0,
+          "request_conservation": true
+        },
+        "allocation": "packed_per_layer",
+        "arrival_span_over_target": 1.0000575494021178,
+        "benchmark_duration_s": 62.77441912703216,
+        "drain_after_arrival_window_s": 2.7744191270321608,
+        "fd_limit_failures": 0,
+        "goodput_over_offered": {
+          "1000": 0.7749972150526862,
+          "2000": 0.9558033484719666,
+          "250": 0.1768236194673138,
+          "3000": 0.9558033484719666,
+          "500": 0.38988811589752304
+        },
+        "offered_rate": 40.0,
+        "reported_tpot_p99_ms": 45.68042407736299,
+        "reported_ttft_p99_ms": 1489.1965611651533,
+        "request_throughput": 38.23213393887866,
+        "request_throughput_over_offered": 0.9558033484719666,
+        "sample_id": "packed_per_layer__random__r40__s7",
+        "seed": 7,
+        "sustainable_ttft_thresholds_ms": [
+          2000,
+          3000
+        ],
+        "workload": "random"
+      },
+      {
+        "accounting": {
+          "completed": 3000,
+          "detail_lengths": {
+            "errors": 3000,
+            "itls": 3000,
+            "output_lens": 3000,
+            "start_times": 3000,
+            "ttfts": 3000
+          },
+          "detailed_failures": 0,
+          "expected": 3000,
+          "failed": 0,
+          "request_conservation": true
+        },
+        "allocation": "packed_per_layer",
+        "arrival_span_over_target": 1.0008618300470213,
+        "benchmark_duration_s": 77.35692863538861,
+        "drain_after_arrival_window_s": 17.356928635388613,
+        "fd_limit_failures": 0,
+        "goodput_over_offered": {
+          "1000": 0.07678691624375865,
+          "2000": 0.14452486929380837,
+          "250": 0.033610434719490316,
+          "3000": 0.17632551137455688,
+          "500": 0.04705460860728644
+        },
+        "offered_rate": 50.0,
+        "reported_tpot_p99_ms": 45.81785012285892,
+        "reported_ttft_p99_ms": 15931.283055189997,
+        "request_throughput": 38.781270830181136,
+        "request_throughput_over_offered": 0.7756254166036227,
+        "sample_id": "packed_per_layer__random__r50__s7",
+        "seed": 7,
+        "sustainable_ttft_thresholds_ms": [],
+        "workload": "random"
+      }
+    ],
+    "servers": [
+      {
+        "allocation": "fp16",
+        "exception": null,
+        "graph_mode_proven": true,
+        "returncode": 0,
+        "runtime_faults": {
+          "CUDA error: an illegal instruction was encountered": false,
+          "EngineCore encountered a fatal error": false,
+          "server health check failed after benchmark": false
+        },
+        "server_log_sha256": "9c6df5abe961798e1d9ce54f2f821b304fd3ac369b54ff938d9aea1c27608867",
+        "status": "stopped"
+      },
+      {
+        "allocation": "int4",
+        "exception": null,
+        "graph_mode_proven": true,
+        "returncode": 0,
+        "runtime_faults": {
+          "CUDA error: an illegal instruction was encountered": false,
+          "EngineCore encountered a fatal error": false,
+          "server health check failed after benchmark": false
+        },
+        "server_log_sha256": "04f3f0e644f2a057b3ef0d201c23e60ca3aa4b5d5b52ff56a26b7cef206e83af",
+        "status": "stopped"
+      },
+      {
+        "allocation": "packed_per_layer",
+        "exception": null,
+        "graph_mode_proven": true,
+        "returncode": 0,
+        "runtime_faults": {
+          "CUDA error: an illegal instruction was encountered": false,
+          "EngineCore encountered a fatal error": false,
+          "server health check failed after benchmark": false
+        },
+        "server_log_sha256": "620ee2df5a90fb088125c26cafb362d8ec65ba3e3444c1234c584bf5bdc593ed",
+        "status": "stopped"
+      }
+    ],
+    "servers_clean": true,
+    "sidecars_verified": 33,
+    "supervisor": {
+      "exit_code": 0,
+      "soft_nofile_after": 65535,
+      "soft_nofile_before": 1024
+    },
+    "totals": {
+      "completed": 21600,
+      "expected": 21600,
+      "failed": 0
+    },
+    "window_s": 60.0,
+    "workload": "random"
+  },
+  "schema_version": 1,
+  "sharegpt": null,
+  "verdict": "PROTOCOL_V3_RANDOM_PILOT_COMPONENT_PASSED",
+  "verification_status": "ANALYZED"
+}

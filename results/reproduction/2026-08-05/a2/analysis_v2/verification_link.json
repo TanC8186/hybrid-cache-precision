@@ -1,0 +1,11 @@
+{
+  "confirmation_contract_sha256": "ad3cf4e4304cd186ef7135d5062378621d4910aeb6d8d55348d2c2fb8d553bac",
+  "created_at": "2026-08-05T04:43:26Z",
+  "discovery_report_sha256": "b0ec6369e36b799e2914fbbb75377f61464c14f28da339877920eb2520e94cfa",
+  "overall_a2_status": "PASSED_NOT_VERIFIED_SERVING_QUALITY_PENDING",
+  "protocol_v2_report_sha256": "97b3d21767d4af8d887bbdccfbea40a7666bbb7fdd8797882fe8804f65e22b6d",
+  "schema_version": 1,
+  "scope": "A2 runtime/capacity mechanism and capacity ratios",
+  "validation_report_sha256": "02dead57d8132e8e1d06e775a89f932128debded330eb7496a2e41279ff7bf7a",
+  "verification_status": "VERIFIED"
+}

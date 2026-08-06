@@ -1,0 +1,30 @@
+{
+  "claim_boundary": [
+    "Do not pool formal, reproduction, or upper-neighbor denominators.",
+    "Do not claim that INT4 generally increases SLO capacity.",
+    "Report Random and ShareGPT separately because their effect directions reverse.",
+    "Retain n=3, 5 req/s grid, and wide ShareGPT uncertainty as limitations."
+  ],
+  "formal_attempt_id": "e3-v2-formal-d1d52c4-01",
+  "linked_at_utc": "2026-08-04T15:23:37Z",
+  "overall_confidence": "CAUTION",
+  "reports": {
+    "artifact_sha256_manifest": {
+      "path": "/root/autodl-tmp/formal-artifacts-c7379f0/e3-launch/e3-v2-repro-suite-d1d52c4-02/artifact_sha256_manifest.json",
+      "sha256": "54f159bacdaf56bbab158607016f44e729d49b6ec2a08231bfc51a1682700c54"
+    },
+    "reproducibility_report": {
+      "path": "/root/autodl-tmp/formal-artifacts-c7379f0/e3-launch/e3-v2-repro-suite-d1d52c4-02/reproducibility_report.json",
+      "sha256": "e716bac1a0806cb80dcffb0fb0a8f247c59cbd1220e3b7a2fde823d81547dc48"
+    },
+    "validation_report": {
+      "path": "/root/autodl-tmp/formal-artifacts-c7379f0/e3-launch/e3-v2-repro-suite-d1d52c4-02/validation_report.md",
+      "sha256": "e3a2720508ee55d2e4492a066139bbec83cff1cbf6b55780e2224ef5f40b0845"
+    }
+  },
+  "reproducibility_verdict": "REPRODUCIBLE",
+  "schema_version": 1,
+  "source_artifacts_preserved": true,
+  "source_evidence_status": "ANALYZED",
+  "verification_scope_status": "VERIFIED"
+}

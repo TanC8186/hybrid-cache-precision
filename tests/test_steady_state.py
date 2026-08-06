@@ -12,6 +12,7 @@ from scripts.bench.run_steady_state import (
     build_sample_plan,
     load_config,
     resolve_phase,
+    ServerSession,
 )
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -202,3 +203,29 @@ def test_config_is_json_serializable_after_resolution() -> None:
     assert config["protocol"]["protocol_version"] == 2
     assert config["protocol"]["request_failure_policy"] == "count_as_slo_miss"
     assert config["environment"]["env"]["VLLM_HTTP_TIMEOUT_KEEP_ALIVE"] == "75"
+
+
+class ExitedProcess:
+    returncode = 1
+
+    def poll(self) -> int:
+        return self.returncode
+
+
+class FlushableLog:
+    def flush(self) -> None:
+        pass
+
+
+def test_server_session_fails_closed_when_server_exits(tmp_path: Path) -> None:
+    session = ServerSession.__new__(ServerSession)
+    session.process = ExitedProcess()
+    session.session_dir = tmp_path
+    session.log_handle = FlushableLog()
+    (tmp_path / "server.log").write_text(
+        "EngineCore encountered a fatal error\n",
+        encoding="utf-8",
+    )
+
+    with pytest.raises(ExperimentError, match="server exited during benchmark"):
+        session.assert_healthy()

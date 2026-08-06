@@ -1,0 +1,1560 @@
+{
+  "attempt_id": "a2-comparative-serving-random60-formal-v3-piecewise-3108650-westd-01",
+  "completed_samples": 35,
+  "created_at": "2026-08-05T16:12:21Z",
+  "evidence_status": "UNVERIFIED",
+  "graph_mode_proven": true,
+  "next_gate": "Continue the same Random formal attempt with slice-008 and --resume.",
+  "partial_attempt": true,
+  "planned_samples": 45,
+  "samples": [
+    {
+      "accounting": {
+        "completed": 1800,
+        "detail_lengths": {
+          "errors": 1800,
+          "itls": 1800,
+          "output_lens": 1800,
+          "start_times": 1800,
+          "ttfts": 1800
+        },
+        "detailed_failures": 0,
+        "expected": 1800,
+        "failed": 0,
+        "request_conservation": true
+      },
+      "allocation": "fp16",
+      "arrival_span_over_target": 0.9999880067072808,
+      "benchmark_duration_s": 61.03675154969096,
+      "drain_after_arrival_window_s": 1.0367515496909618,
+      "fd_limit_failures": 0,
+      "goodput_over_offered": {
+        "1000": 0.9830143065715592,
+        "2000": 0.9830143065715592,
+        "250": 0.980283711275527,
+        "3000": 0.9830143065715592,
+        "500": 0.9830143065715592
+      },
+      "offered_rate": 30.0,
+      "reported_tpot_p99_ms": 20.71486052287024,
+      "reported_ttft_p99_ms": 226.6670326516032,
+      "request_throughput": 29.490429197146774,
+      "request_throughput_over_offered": 0.9830143065715592,
+      "sample_id": "fp16__random__r30__s7",
+      "seed": 7,
+      "sustainable_ttft_thresholds_ms": [
+        250,
+        500,
+        1000,
+        2000,
+        3000
+      ],
+      "workload": "random"
+    },
+    {
+      "accounting": {
+        "completed": 1800,
+        "detail_lengths": {
+          "errors": 1800,
+          "itls": 1800,
+          "output_lens": 1800,
+          "start_times": 1800,
+          "ttfts": 1800
+        },
+        "detailed_failures": 0,
+        "expected": 1800,
+        "failed": 0,
+        "request_conservation": true
+      },
+      "allocation": "fp16",
+      "arrival_span_over_target": 0.9997758730004231,
+      "benchmark_duration_s": 61.03197102062404,
+      "drain_after_arrival_window_s": 1.0319710206240416,
+      "fd_limit_failures": 0,
+      "goodput_over_offered": {
+        "1000": 0.9830913043874117,
+        "2000": 0.9830913043874117,
+        "250": 0.9716219058362252,
+        "3000": 0.9830913043874117,
+        "500": 0.9830913043874117
+      },
+      "offered_rate": 30.0,
+      "reported_tpot_p99_ms": 24.111516407918273,
+      "reported_ttft_p99_ms": 255.11046357452867,
+      "request_throughput": 29.49273913162235,
+      "request_throughput_over_offered": 0.9830913043874117,
+      "sample_id": "fp16__random__r30__s42",
+      "seed": 42,
+      "sustainable_ttft_thresholds_ms": [
+        250,
+        500,
+        1000,
+        2000,
+        3000
+      ],
+      "workload": "random"
+    },
+    {
+      "accounting": {
+        "completed": 1800,
+        "detail_lengths": {
+          "errors": 1800,
+          "itls": 1800,
+          "output_lens": 1800,
+          "start_times": 1800,
+          "ttfts": 1800
+        },
+        "detailed_failures": 0,
+        "expected": 1800,
+        "failed": 0,
+        "request_conservation": true
+      },
+      "allocation": "fp16",
+      "arrival_span_over_target": 0.999961409252137,
+      "benchmark_duration_s": 60.95877281948924,
+      "drain_after_arrival_window_s": 0.9587728194892406,
+      "fd_limit_failures": 0,
+      "goodput_over_offered": {
+        "1000": 0.9842717827944412,
+        "2000": 0.9842717827944412,
+        "250": 0.9809908768517931,
+        "3000": 0.9842717827944412,
+        "500": 0.9842717827944412
+      },
+      "offered_rate": 30.0,
+      "reported_tpot_p99_ms": 21.62491249360555,
+      "reported_ttft_p99_ms": 224.2495572566986,
+      "request_throughput": 29.528153483833236,
+      "request_throughput_over_offered": 0.9842717827944412,
+      "sample_id": "fp16__random__r30__s2026",
+      "seed": 2026,
+      "sustainable_ttft_thresholds_ms": [
+        250,
+        500,
+        1000,
+        2000,
+        3000
+      ],
+      "workload": "random"
+    },
+    {
+      "accounting": {
+        "completed": 2100,
+        "detail_lengths": {
+          "errors": 2100,
+          "itls": 2100,
+          "output_lens": 2100,
+          "start_times": 2100,
+          "ttfts": 2100
+        },
+        "detailed_failures": 0,
+        "expected": 2100,
+        "failed": 0,
+        "request_conservation": true
+      },
+      "allocation": "fp16",
+      "arrival_span_over_target": 1.0000248106196523,
+      "benchmark_duration_s": 60.96252813376486,
+      "drain_after_arrival_window_s": 0.962528133764863,
+      "fd_limit_failures": 0,
+      "goodput_over_offered": {
+        "1000": 0.9842111512886593,
+        "2000": 0.9842111512886593,
+        "250": 0.891882771858247,
+        "3000": 0.9842111512886593,
+        "500": 0.9842111512886593
+      },
+      "offered_rate": 35.0,
+      "reported_tpot_p99_ms": 28.725841055646185,
+      "reported_ttft_p99_ms": 323.08849005028594,
+      "request_throughput": 34.44739029510308,
+      "request_throughput_over_offered": 0.9842111512886593,
+      "sample_id": "fp16__random__r35__s7",
+      "seed": 7,
+      "sustainable_ttft_thresholds_ms": [
+        500,
+        1000,
+        2000,
+        3000
+      ],
+      "workload": "random"
+    },
+    {
+      "accounting": {
+        "completed": 2100,
+        "detail_lengths": {
+          "errors": 2100,
+          "itls": 2100,
+          "output_lens": 2100,
+          "start_times": 2100,
+          "ttfts": 2100
+        },
+        "detailed_failures": 0,
+        "expected": 2100,
+        "failed": 0,
+        "request_conservation": true
+      },
+      "allocation": "fp16",
+      "arrival_span_over_target": 0.999874321402361,
+      "benchmark_duration_s": 61.10588892176747,
+      "drain_after_arrival_window_s": 1.1058889217674732,
+      "fd_limit_failures": 0,
+      "goodput_over_offered": {
+        "1000": 0.9819020892866265,
+        "2000": 0.9819020892866265,
+        "250": 0.8659441282661106,
+        "3000": 0.9819020892866265,
+        "500": 0.9819020892866265
+      },
+      "offered_rate": 35.0,
+      "reported_tpot_p99_ms": 40.598482173522854,
+      "reported_ttft_p99_ms": 390.4459125362336,
+      "request_throughput": 34.36657312503193,
+      "request_throughput_over_offered": 0.9819020892866265,
+      "sample_id": "fp16__random__r35__s42",
+      "seed": 42,
+      "sustainable_ttft_thresholds_ms": [
+        500,
+        1000,
+        2000,
+        3000
+      ],
+      "workload": "random"
+    },
+    {
+      "accounting": {
+        "completed": 2100,
+        "detail_lengths": {
+          "errors": 2100,
+          "itls": 2100,
+          "output_lens": 2100,
+          "start_times": 2100,
+          "ttfts": 2100
+        },
+        "detailed_failures": 0,
+        "expected": 2100,
+        "failed": 0,
+        "request_conservation": true
+      },
+      "allocation": "fp16",
+      "arrival_span_over_target": 0.9999351770617068,
+      "benchmark_duration_s": 61.05765379965305,
+      "drain_after_arrival_window_s": 1.0576537996530533,
+      "fd_limit_failures": 0,
+      "goodput_over_offered": {
+        "1000": 0.9826777851123546,
+        "2000": 0.9826777851123546,
+        "250": 0.8806664721816434,
+        "3000": 0.9826777851123546,
+        "500": 0.9826777851123546
+      },
+      "offered_rate": 35.0,
+      "reported_tpot_p99_ms": 35.59192626436395,
+      "reported_ttft_p99_ms": 312.22328726202244,
+      "request_throughput": 34.39372247893241,
+      "request_throughput_over_offered": 0.9826777851123546,
+      "sample_id": "fp16__random__r35__s2026",
+      "seed": 2026,
+      "sustainable_ttft_thresholds_ms": [
+        500,
+        1000,
+        2000,
+        3000
+      ],
+      "workload": "random"
+    },
+    {
+      "accounting": {
+        "completed": 2400,
+        "detail_lengths": {
+          "errors": 2400,
+          "itls": 2400,
+          "output_lens": 2400,
+          "start_times": 2400,
+          "ttfts": 2400
+        },
+        "detailed_failures": 0,
+        "expected": 2400,
+        "failed": 0,
+        "request_conservation": true
+      },
+      "allocation": "fp16",
+      "arrival_span_over_target": 1.0000802189732592,
+      "benchmark_duration_s": 66.16049902699888,
+      "drain_after_arrival_window_s": 6.1604990269988775,
+      "fd_limit_failures": 0,
+      "goodput_over_offered": {
+        "1000": 0.3374369953118035,
+        "2000": 0.46591244705425944,
+        "250": 0.12696397583960356,
+        "3000": 0.6582477556922304,
+        "500": 0.2274771233792897
+      },
+      "offered_rate": 40.0,
+      "reported_tpot_p99_ms": 49.003121194789024,
+      "reported_ttft_p99_ms": 4949.451476857065,
+      "request_throughput": 36.27542166845816,
+      "request_throughput_over_offered": 0.906885541711454,
+      "sample_id": "fp16__random__r40__s7",
+      "seed": 7,
+      "sustainable_ttft_thresholds_ms": [],
+      "workload": "random"
+    },
+    {
+      "accounting": {
+        "completed": 2400,
+        "detail_lengths": {
+          "errors": 2400,
+          "itls": 2400,
+          "output_lens": 2400,
+          "start_times": 2400,
+          "ttfts": 2400
+        },
+        "detailed_failures": 0,
+        "expected": 2400,
+        "failed": 0,
+        "request_conservation": true
+      },
+      "allocation": "fp16",
+      "arrival_span_over_target": 0.999874807925274,
+      "benchmark_duration_s": 66.24473089165986,
+      "drain_after_arrival_window_s": 6.244730891659856,
+      "fd_limit_failures": 0,
+      "goodput_over_offered": {
+        "1000": 0.286815264312472,
+        "2000": 0.452488818303492,
+        "250": 0.09547929193559923,
+        "3000": 0.658920330907337,
+        "500": 0.1732213241045061
+      },
+      "offered_rate": 40.0,
+      "reported_tpot_p99_ms": 49.11240254961482,
+      "reported_ttft_p99_ms": 4972.115548122672,
+      "request_throughput": 36.2292965447333,
+      "request_throughput_over_offered": 0.9057324136183326,
+      "sample_id": "fp16__random__r40__s42",
+      "seed": 42,
+      "sustainable_ttft_thresholds_ms": [],
+      "workload": "random"
+    },
+    {
+      "accounting": {
+        "completed": 2400,
+        "detail_lengths": {
+          "errors": 2400,
+          "itls": 2400,
+          "output_lens": 2400,
+          "start_times": 2400,
+          "ttfts": 2400
+        },
+        "detailed_failures": 0,
+        "expected": 2400,
+        "failed": 0,
+        "request_conservation": true
+      },
+      "allocation": "fp16",
+      "arrival_span_over_target": 1.0000001154529552,
+      "benchmark_duration_s": 66.62196027487516,
+      "drain_after_arrival_window_s": 6.621960274875164,
+      "fd_limit_failures": 0,
+      "goodput_over_offered": {
+        "1000": 0.2589236331207957,
+        "2000": 0.435667156598904,
+        "250": 0.0986911818996656,
+        "3000": 0.6139116866458286,
+        "500": 0.21952221068937025
+      },
+      "offered_rate": 40.0,
+      "reported_tpot_p99_ms": 49.16343479292599,
+      "reported_ttft_p99_ms": 5482.831636685877,
+      "request_throughput": 36.024157651588965,
+      "request_throughput_over_offered": 0.9006039412897241,
+      "sample_id": "fp16__random__r40__s2026",
+      "seed": 2026,
+      "sustainable_ttft_thresholds_ms": [],
+      "workload": "random"
+    },
+    {
+      "accounting": {
+        "completed": 2700,
+        "detail_lengths": {
+          "errors": 2700,
+          "itls": 2700,
+          "output_lens": 2700,
+          "start_times": 2700,
+          "ttfts": 2700
+        },
+        "detailed_failures": 0,
+        "expected": 2700,
+        "failed": 0,
+        "request_conservation": true
+      },
+      "allocation": "fp16",
+      "arrival_span_over_target": 1.0000607534001271,
+      "benchmark_duration_s": 74.55855912901461,
+      "drain_after_arrival_window_s": 14.558559129014611,
+      "fd_limit_failures": 0,
+      "goodput_over_offered": {
+        "1000": 0.11296117200506224,
+        "2000": 0.18061865497379345,
+        "250": 0.04560173962209636,
+        "3000": 0.22979700162507383,
+        "500": 0.06735943238296586
+      },
+      "offered_rate": 45.0,
+      "reported_tpot_p99_ms": 49.18969204649329,
+      "reported_ttft_p99_ms": 13422.192160375414,
+      "request_throughput": 36.21314617048829,
+      "request_throughput_over_offered": 0.8047365815664064,
+      "sample_id": "fp16__random__r45__s7",
+      "seed": 7,
+      "sustainable_ttft_thresholds_ms": [],
+      "workload": "random"
+    },
+    {
+      "accounting": {
+        "completed": 2700,
+        "detail_lengths": {
+          "errors": 2700,
+          "itls": 2700,
+          "output_lens": 2700,
+          "start_times": 2700,
+          "ttfts": 2700
+        },
+        "detailed_failures": 0,
+        "expected": 2700,
+        "failed": 0,
+        "request_conservation": true
+      },
+      "allocation": "fp16",
+      "arrival_span_over_target": 1.0001295579597353,
+      "benchmark_duration_s": 73.88011699542403,
+      "drain_after_arrival_window_s": 13.880116995424032,
+      "fd_limit_failures": 0,
+      "goodput_over_offered": {
+        "1000": 0.10046305452767405,
+        "2000": 0.1897969682843183,
+        "250": 0.038500811315994844,
+        "3000": 0.23311038101481252,
+        "500": 0.06557169427255372
+      },
+      "offered_rate": 45.0,
+      "reported_tpot_p99_ms": 48.73229958410338,
+      "reported_ttft_p99_ms": 12481.42984753474,
+      "request_throughput": 36.54569199135448,
+      "request_throughput_over_offered": 0.8121264886967663,
+      "sample_id": "fp16__random__r45__s42",
+      "seed": 42,
+      "sustainable_ttft_thresholds_ms": [],
+      "workload": "random"
+    },
+    {
+      "accounting": {
+        "completed": 2700,
+        "detail_lengths": {
+          "errors": 2700,
+          "itls": 2700,
+          "output_lens": 2700,
+          "start_times": 2700,
+          "ttfts": 2700
+        },
+        "detailed_failures": 0,
+        "expected": 2700,
+        "failed": 0,
+        "request_conservation": true
+      },
+      "allocation": "fp16",
+      "arrival_span_over_target": 0.9999992526757221,
+      "benchmark_duration_s": 74.58429140411317,
+      "drain_after_arrival_window_s": 14.584291404113173,
+      "fd_limit_failures": 0,
+      "goodput_over_offered": {
+        "1000": 0.11322014710431036,
+        "2000": 0.18293992190012254,
+        "250": 0.059589551107531766,
+        "3000": 0.22912182400845965,
+        "500": 0.07657257317317832
+      },
+      "offered_rate": 45.0,
+      "reported_tpot_p99_ms": 49.261641702284734,
+      "reported_ttft_p99_ms": 13272.819257322699,
+      "request_throughput": 36.20065229782555,
+      "request_throughput_over_offered": 0.8044589399516788,
+      "sample_id": "fp16__random__r45__s2026",
+      "seed": 2026,
+      "sustainable_ttft_thresholds_ms": [],
+      "workload": "random"
+    },
+    {
+      "accounting": {
+        "completed": 3000,
+        "detail_lengths": {
+          "errors": 3000,
+          "itls": 3000,
+          "output_lens": 3000,
+          "start_times": 3000,
+          "ttfts": 3000
+        },
+        "detailed_failures": 0,
+        "expected": 3000,
+        "failed": 0,
+        "request_conservation": true
+      },
+      "allocation": "fp16",
+      "arrival_span_over_target": 1.000160570939382,
+      "benchmark_duration_s": 82.78140542842448,
+      "drain_after_arrival_window_s": 22.781405428424478,
+      "fd_limit_failures": 0,
+      "goodput_over_offered": {
+        "1000": 0.060641637744849076,
+        "2000": 0.10872006767004815,
+        "250": 0.03140801954912502,
+        "3000": 0.1379536858657722,
+        "500": 0.04324642691764138
+      },
+      "offered_rate": 50.0,
+      "reported_tpot_p99_ms": 49.32869285477076,
+      "reported_ttft_p99_ms": 21430.959592778232,
+      "request_throughput": 36.24002255668272,
+      "request_throughput_over_offered": 0.7248004511336543,
+      "sample_id": "fp16__random__r50__s7",
+      "seed": 7,
+      "sustainable_ttft_thresholds_ms": [],
+      "workload": "random"
+    },
+    {
+      "accounting": {
+        "completed": 3000,
+        "detail_lengths": {
+          "errors": 3000,
+          "itls": 3000,
+          "output_lens": 3000,
+          "start_times": 3000,
+          "ttfts": 3000
+        },
+        "detailed_failures": 0,
+        "expected": 3000,
+        "failed": 0,
+        "request_conservation": true
+      },
+      "allocation": "fp16",
+      "arrival_span_over_target": 0.9999459037867685,
+      "benchmark_duration_s": 82.70776074007154,
+      "drain_after_arrival_window_s": 22.707760740071535,
+      "fd_limit_failures": 0,
+      "goodput_over_offered": {
+        "1000": 0.05706840516253007,
+        "2000": 0.08632805357213234,
+        "250": 0.02369789705901672,
+        "3000": 0.14291282818243758,
+        "500": 0.03917407473021132
+      },
+      "offered_rate": 50.0,
+      "reported_tpot_p99_ms": 49.28109879392808,
+      "reported_ttft_p99_ms": 21376.950432863083,
+      "request_throughput": 36.27229141686233,
+      "request_throughput_over_offered": 0.7254458283372466,
+      "sample_id": "fp16__random__r50__s42",
+      "seed": 42,
+      "sustainable_ttft_thresholds_ms": [],
+      "workload": "random"
+    },
+    {
+      "accounting": {
+        "completed": 3000,
+        "detail_lengths": {
+          "errors": 3000,
+          "itls": 3000,
+          "output_lens": 3000,
+          "start_times": 3000,
+          "ttfts": 3000
+        },
+        "detailed_failures": 0,
+        "expected": 3000,
+        "failed": 0,
+        "request_conservation": true
+      },
+      "allocation": "fp16",
+      "arrival_span_over_target": 1.0000338942433398,
+      "benchmark_duration_s": 82.75467274524271,
+      "drain_after_arrival_window_s": 22.754672745242715,
+      "fd_limit_failures": 0,
+      "goodput_over_offered": {
+        "1000": 0.06887828579235937,
+        "2000": 0.10102148582879372,
+        "250": 0.037460120343212985,
+        "3000": 0.1399316753465827,
+        "500": 0.05196081208897286
+      },
+      "offered_rate": 50.0,
+      "reported_tpot_p99_ms": 49.16619431315444,
+      "reported_ttft_p99_ms": 21385.555561743677,
+      "request_throughput": 36.251729364399665,
+      "request_throughput_over_offered": 0.7250345872879933,
+      "sample_id": "fp16__random__r50__s2026",
+      "seed": 2026,
+      "sustainable_ttft_thresholds_ms": [],
+      "workload": "random"
+    },
+    {
+      "accounting": {
+        "completed": 1800,
+        "detail_lengths": {
+          "errors": 1800,
+          "itls": 1800,
+          "output_lens": 1800,
+          "start_times": 1800,
+          "ttfts": 1800
+        },
+        "detailed_failures": 0,
+        "expected": 1800,
+        "failed": 0,
+        "request_conservation": true
+      },
+      "allocation": "int4",
+      "arrival_span_over_target": 1.0000662030341725,
+      "benchmark_duration_s": 61.29295999370515,
+      "drain_after_arrival_window_s": 1.2929599937051535,
+      "fd_limit_failures": 0,
+      "goodput_over_offered": {
+        "1000": 0.978905244683273,
+        "2000": 0.978905244683273,
+        "250": 0.9658531747541625,
+        "3000": 0.978905244683273,
+        "500": 0.978905244683273
+      },
+      "offered_rate": 30.0,
+      "reported_tpot_p99_ms": 23.343657108801086,
+      "reported_ttft_p99_ms": 258.0948556214571,
+      "request_throughput": 29.36715734049819,
+      "request_throughput_over_offered": 0.978905244683273,
+      "sample_id": "int4__random__r30__s7",
+      "seed": 7,
+      "sustainable_ttft_thresholds_ms": [
+        250,
+        500,
+        1000,
+        2000,
+        3000
+      ],
+      "workload": "random"
+    },
+    {
+      "accounting": {
+        "completed": 1800,
+        "detail_lengths": {
+          "errors": 1800,
+          "itls": 1800,
+          "output_lens": 1800,
+          "start_times": 1800,
+          "ttfts": 1800
+        },
+        "detailed_failures": 0,
+        "expected": 1800,
+        "failed": 0,
+        "request_conservation": true
+      },
+      "allocation": "int4",
+      "arrival_span_over_target": 0.9998918409769734,
+      "benchmark_duration_s": 61.34044565074146,
+      "drain_after_arrival_window_s": 1.340445650741458,
+      "fd_limit_failures": 0,
+      "goodput_over_offered": {
+        "1000": 0.9781474419280608,
+        "2000": 0.9781474419280608,
+        "250": 0.9596713235805308,
+        "3000": 0.9781474419280608,
+        "500": 0.9781474419280608
+      },
+      "offered_rate": 30.0,
+      "reported_tpot_p99_ms": 27.310115399029776,
+      "reported_ttft_p99_ms": 262.3297575302422,
+      "request_throughput": 29.344423257841825,
+      "request_throughput_over_offered": 0.9781474419280608,
+      "sample_id": "int4__random__r30__s42",
+      "seed": 42,
+      "sustainable_ttft_thresholds_ms": [
+        250,
+        500,
+        1000,
+        2000,
+        3000
+      ],
+      "workload": "random"
+    },
+    {
+      "accounting": {
+        "completed": 1800,
+        "detail_lengths": {
+          "errors": 1800,
+          "itls": 1800,
+          "output_lens": 1800,
+          "start_times": 1800,
+          "ttfts": 1800
+        },
+        "detailed_failures": 0,
+        "expected": 1800,
+        "failed": 0,
+        "request_conservation": true
+      },
+      "allocation": "int4",
+      "arrival_span_over_target": 0.9999347584322095,
+      "benchmark_duration_s": 61.38133574463427,
+      "drain_after_arrival_window_s": 1.3813357446342707,
+      "fd_limit_failures": 0,
+      "goodput_over_offered": {
+        "1000": 0.977495834395311,
+        "2000": 0.977495834395311,
+        "250": 0.9400251607434906,
+        "3000": 0.977495834395311,
+        "500": 0.977495834395311
+      },
+      "offered_rate": 30.0,
+      "reported_tpot_p99_ms": 31.296274902108387,
+      "reported_ttft_p99_ms": 306.1173123680055,
+      "request_throughput": 29.324875031859328,
+      "request_throughput_over_offered": 0.977495834395311,
+      "sample_id": "int4__random__r30__s2026",
+      "seed": 2026,
+      "sustainable_ttft_thresholds_ms": [
+        500,
+        1000,
+        2000,
+        3000
+      ],
+      "workload": "random"
+    },
+    {
+      "accounting": {
+        "completed": 2100,
+        "detail_lengths": {
+          "errors": 2100,
+          "itls": 2100,
+          "output_lens": 2100,
+          "start_times": 2100,
+          "ttfts": 2100
+        },
+        "detailed_failures": 0,
+        "expected": 2100,
+        "failed": 0,
+        "request_conservation": true
+      },
+      "allocation": "int4",
+      "arrival_span_over_target": 1.0000240521505475,
+      "benchmark_duration_s": 61.25429527089,
+      "drain_after_arrival_window_s": 1.2542952708899975,
+      "fd_limit_failures": 0,
+      "goodput_over_offered": {
+        "1000": 0.9795231458407443,
+        "2000": 0.9795231458407443,
+        "250": 0.8787721936971249,
+        "3000": 0.9795231458407443,
+        "500": 0.9795231458407443
+      },
+      "offered_rate": 35.0,
+      "reported_tpot_p99_ms": 29.863344275018598,
+      "reported_ttft_p99_ms": 346.6519888490434,
+      "request_throughput": 34.28331010442605,
+      "request_throughput_over_offered": 0.9795231458407443,
+      "sample_id": "int4__random__r35__s7",
+      "seed": 7,
+      "sustainable_ttft_thresholds_ms": [
+        500,
+        1000,
+        2000,
+        3000
+      ],
+      "workload": "random"
+    },
+    {
+      "accounting": {
+        "completed": 2100,
+        "detail_lengths": {
+          "errors": 2100,
+          "itls": 2100,
+          "output_lens": 2100,
+          "start_times": 2100,
+          "ttfts": 2100
+        },
+        "detailed_failures": 0,
+        "expected": 2100,
+        "failed": 0,
+        "request_conservation": true
+      },
+      "allocation": "int4",
+      "arrival_span_over_target": 0.9998468991058568,
+      "benchmark_duration_s": 61.33120326884091,
+      "drain_after_arrival_window_s": 1.331203268840909,
+      "fd_limit_failures": 0,
+      "goodput_over_offered": {
+        "1000": 0.9782948450724882,
+        "2000": 0.9782948450724882,
+        "250": 0.8972361293379105,
+        "3000": 0.9782948450724882,
+        "500": 0.9782948450724882
+      },
+      "offered_rate": 35.0,
+      "reported_tpot_p99_ms": 34.96909279918929,
+      "reported_ttft_p99_ms": 327.1273027732968,
+      "request_throughput": 34.240319577537086,
+      "request_throughput_over_offered": 0.9782948450724882,
+      "sample_id": "int4__random__r35__s42",
+      "seed": 42,
+      "sustainable_ttft_thresholds_ms": [
+        500,
+        1000,
+        2000,
+        3000
+      ],
+      "workload": "random"
+    },
+    {
+      "accounting": {
+        "completed": 2100,
+        "detail_lengths": {
+          "errors": 2100,
+          "itls": 2100,
+          "output_lens": 2100,
+          "start_times": 2100,
+          "ttfts": 2100
+        },
+        "detailed_failures": 0,
+        "expected": 2100,
+        "failed": 0,
+        "request_conservation": true
+      },
+      "allocation": "int4",
+      "arrival_span_over_target": 0.9999583416618407,
+      "benchmark_duration_s": 61.29147840104997,
+      "drain_after_arrival_window_s": 1.2914784010499716,
+      "fd_limit_failures": 0,
+      "goodput_over_offered": {
+        "1000": 0.9789289076598966,
+        "2000": 0.9789289076598966,
+        "250": 0.871246727817308,
+        "3000": 0.9789289076598966,
+        "500": 0.9789289076598966
+      },
+      "offered_rate": 35.0,
+      "reported_tpot_p99_ms": 31.0812685848397,
+      "reported_ttft_p99_ms": 343.2969530113035,
+      "request_throughput": 34.26251176809638,
+      "request_throughput_over_offered": 0.9789289076598966,
+      "sample_id": "int4__random__r35__s2026",
+      "seed": 2026,
+      "sustainable_ttft_thresholds_ms": [
+        500,
+        1000,
+        2000,
+        3000
+      ],
+      "workload": "random"
+    },
+    {
+      "accounting": {
+        "completed": 2400,
+        "detail_lengths": {
+          "errors": 2400,
+          "itls": 2400,
+          "output_lens": 2400,
+          "start_times": 2400,
+          "ttfts": 2400
+        },
+        "detailed_failures": 0,
+        "expected": 2400,
+        "failed": 0,
+        "request_conservation": true
+      },
+      "allocation": "int4",
+      "arrival_span_over_target": 1.000054089166224,
+      "benchmark_duration_s": 62.00852141715586,
+      "drain_after_arrival_window_s": 2.008521417155862,
+      "fd_limit_failures": 0,
+      "goodput_over_offered": {
+        "1000": 0.9676089451699108,
+        "2000": 0.9676089451699108,
+        "250": 0.28262244606837805,
+        "3000": 0.9676089451699108,
+        "500": 0.8027122540972051
+      },
+      "offered_rate": 40.0,
+      "reported_tpot_p99_ms": 44.45715317883947,
+      "reported_ttft_p99_ms": 685.4401068016884,
+      "request_throughput": 38.70435780679643,
+      "request_throughput_over_offered": 0.9676089451699108,
+      "sample_id": "int4__random__r40__s7",
+      "seed": 7,
+      "sustainable_ttft_thresholds_ms": [
+        1000,
+        2000,
+        3000
+      ],
+      "workload": "random"
+    },
+    {
+      "accounting": {
+        "completed": 2400,
+        "detail_lengths": {
+          "errors": 2400,
+          "itls": 2400,
+          "output_lens": 2400,
+          "start_times": 2400,
+          "ttfts": 2400
+        },
+        "detailed_failures": 0,
+        "expected": 2400,
+        "failed": 0,
+        "request_conservation": true
+      },
+      "allocation": "int4",
+      "arrival_span_over_target": 0.9998911213129759,
+      "benchmark_duration_s": 62.08360647037625,
+      "drain_after_arrival_window_s": 2.083606470376253,
+      "fd_limit_failures": 0,
+      "goodput_over_offered": {
+        "1000": 0.9555662657630473,
+        "2000": 0.9664387011509961,
+        "250": 0.30764965319973375,
+        "3000": 0.9664387011509961,
+        "500": 0.8001307079945954
+      },
+      "offered_rate": 40.0,
+      "reported_tpot_p99_ms": 44.47070543588264,
+      "reported_ttft_p99_ms": 1007.2661210224014,
+      "request_throughput": 38.65754804603984,
+      "request_throughput_over_offered": 0.9664387011509961,
+      "sample_id": "int4__random__r40__s42",
+      "seed": 42,
+      "sustainable_ttft_thresholds_ms": [
+        1000,
+        2000,
+        3000
+      ],
+      "workload": "random"
+    },
+    {
+      "accounting": {
+        "completed": 2400,
+        "detail_lengths": {
+          "errors": 2400,
+          "itls": 2400,
+          "output_lens": 2400,
+          "start_times": 2400,
+          "ttfts": 2400
+        },
+        "detailed_failures": 0,
+        "expected": 2400,
+        "failed": 0,
+        "request_conservation": true
+      },
+      "allocation": "int4",
+      "arrival_span_over_target": 1.0000112510596713,
+      "benchmark_duration_s": 62.26809588447213,
+      "drain_after_arrival_window_s": 2.2680958844721317,
+      "fd_limit_failures": 0,
+      "goodput_over_offered": {
+        "1000": 0.9487201938791194,
+        "2000": 0.9635753132923769,
+        "250": 0.27461896428832744,
+        "3000": 0.9635753132923769,
+        "500": 0.7808974934806971
+      },
+      "offered_rate": 40.0,
+      "reported_tpot_p99_ms": 44.7984658551263,
+      "reported_ttft_p99_ms": 1029.4651285558937,
+      "request_throughput": 38.54301253169508,
+      "request_throughput_over_offered": 0.9635753132923769,
+      "sample_id": "int4__random__r40__s2026",
+      "seed": 2026,
+      "sustainable_ttft_thresholds_ms": [
+        2000,
+        3000
+      ],
+      "workload": "random"
+    },
+    {
+      "accounting": {
+        "completed": 2700,
+        "detail_lengths": {
+          "errors": 2700,
+          "itls": 2700,
+          "output_lens": 2700,
+          "start_times": 2700,
+          "ttfts": 2700
+        },
+        "detailed_failures": 0,
+        "expected": 2700,
+        "failed": 0,
+        "request_conservation": true
+      },
+      "allocation": "int4",
+      "arrival_span_over_target": 1.000106910119454,
+      "benchmark_duration_s": 68.60974486917257,
+      "drain_after_arrival_window_s": 8.609744869172573,
+      "fd_limit_failures": 0,
+      "goodput_over_offered": {
+        "1000": 0.19887035683432638,
+        "2000": 0.3051072901269307,
+        "250": 0.051499001199768565,
+        "3000": 0.4223565884559636,
+        "500": 0.1292333426333815
+      },
+      "offered_rate": 45.0,
+      "reported_tpot_p99_ms": 44.89009075424098,
+      "reported_ttft_p99_ms": 7424.498108383267,
+      "request_throughput": 39.353010350766546,
+      "request_throughput_over_offered": 0.8745113411281454,
+      "sample_id": "int4__random__r45__s7",
+      "seed": 7,
+      "sustainable_ttft_thresholds_ms": [],
+      "workload": "random"
+    },
+    {
+      "accounting": {
+        "completed": 2700,
+        "detail_lengths": {
+          "errors": 2700,
+          "itls": 2700,
+          "output_lens": 2700,
+          "start_times": 2700,
+          "ttfts": 2700
+        },
+        "detailed_failures": 0,
+        "expected": 2700,
+        "failed": 0,
+        "request_conservation": true
+      },
+      "allocation": "int4",
+      "arrival_span_over_target": 0.9998918923859795,
+      "benchmark_duration_s": 67.83703781291842,
+      "drain_after_arrival_window_s": 7.837037812918425,
+      "fd_limit_failures": 0,
+      "goodput_over_offered": {
+        "1000": 0.20539418852218758,
+        "2000": 0.2908932047969738,
+        "250": 0.04324088179414475,
+        "3000": 0.4920288216273137,
+        "500": 0.0897575879666338
+      },
+      "offered_rate": 45.0,
+      "reported_tpot_p99_ms": 44.313727278174376,
+      "reported_ttft_p99_ms": 6294.3380591087025,
+      "request_throughput": 39.80126619688323,
+      "request_throughput_over_offered": 0.8844725821529608,
+      "sample_id": "int4__random__r45__s42",
+      "seed": 42,
+      "sustainable_ttft_thresholds_ms": [],
+      "workload": "random"
+    },
+    {
+      "accounting": {
+        "completed": 2700,
+        "detail_lengths": {
+          "errors": 2700,
+          "itls": 2700,
+          "output_lens": 2700,
+          "start_times": 2700,
+          "ttfts": 2700
+        },
+        "detailed_failures": 0,
+        "expected": 2700,
+        "failed": 0,
+        "request_conservation": true
+      },
+      "allocation": "int4",
+      "arrival_span_over_target": 0.9999946480306486,
+      "benchmark_duration_s": 68.64029074087739,
+      "drain_after_arrival_window_s": 8.64029074087739,
+      "fd_limit_failures": 0,
+      "goodput_over_offered": {
+        "1000": 0.1913356308893376,
+        "2000": 0.2683878815689693,
+        "250": 0.06313104572490835,
+        "3000": 0.441593571121923,
+        "500": 0.09647718782575737
+      },
+      "offered_rate": 45.0,
+      "reported_tpot_p99_ms": 44.78723736069217,
+      "reported_ttft_p99_ms": 7242.291134689003,
+      "request_throughput": 39.33549772090443,
+      "request_throughput_over_offered": 0.874122171575654,
+      "sample_id": "int4__random__r45__s2026",
+      "seed": 2026,
+      "sustainable_ttft_thresholds_ms": [],
+      "workload": "random"
+    },
+    {
+      "accounting": {
+        "completed": 3000,
+        "detail_lengths": {
+          "errors": 3000,
+          "itls": 3000,
+          "output_lens": 3000,
+          "start_times": 3000,
+          "ttfts": 3000
+        },
+        "detailed_failures": 0,
+        "expected": 3000,
+        "failed": 0,
+        "request_conservation": true
+      },
+      "allocation": "int4",
+      "arrival_span_over_target": 1.000101944990456,
+      "benchmark_duration_s": 75.93000837787986,
+      "drain_after_arrival_window_s": 15.930008377879858,
+      "fd_limit_failures": 0,
+      "goodput_over_offered": {
+        "1000": 0.08534175273300473,
+        "2000": 0.15435267623932336,
+        "250": 0.0352956631673538,
+        "3000": 0.19834055496281652,
+        "500": 0.049519288622854596
+      },
+      "offered_rate": 50.0,
+      "reported_tpot_p99_ms": 44.86933505470593,
+      "reported_ttft_p99_ms": 14469.862721469253,
+      "request_throughput": 39.51007070972441,
+      "request_throughput_over_offered": 0.7902014141944882,
+      "sample_id": "int4__random__r50__s7",
+      "seed": 7,
+      "sustainable_ttft_thresholds_ms": [],
+      "workload": "random"
+    },
+    {
+      "accounting": {
+        "completed": 3000,
+        "detail_lengths": {
+          "errors": 3000,
+          "itls": 3000,
+          "output_lens": 3000,
+          "start_times": 3000,
+          "ttfts": 3000
+        },
+        "detailed_failures": 0,
+        "expected": 3000,
+        "failed": 0,
+        "request_conservation": true
+      },
+      "allocation": "int4",
+      "arrival_span_over_target": 1.0002223311302563,
+      "benchmark_duration_s": 75.99705557711422,
+      "drain_after_arrival_window_s": 15.997055577114224,
+      "fd_limit_failures": 0,
+      "goodput_over_offered": {
+        "1000": 0.0784240909695822,
+        "2000": 0.15763768621067026,
+        "250": 0.022895623873669974,
+        "3000": 0.1852703357133754,
+        "500": 0.04421223920432822
+      },
+      "offered_rate": 50.0,
+      "reported_tpot_p99_ms": 44.877539296583166,
+      "reported_ttft_p99_ms": 14525.976865403354,
+      "request_throughput": 39.475213575293054,
+      "request_throughput_over_offered": 0.7895042715058611,
+      "sample_id": "int4__random__r50__s42",
+      "seed": 42,
+      "sustainable_ttft_thresholds_ms": [],
+      "workload": "random"
+    },
+    {
+      "accounting": {
+        "completed": 3000,
+        "detail_lengths": {
+          "errors": 3000,
+          "itls": 3000,
+          "output_lens": 3000,
+          "start_times": 3000,
+          "ttfts": 3000
+        },
+        "detailed_failures": 0,
+        "expected": 3000,
+        "failed": 0,
+        "request_conservation": true
+      },
+      "allocation": "int4",
+      "arrival_span_over_target": 1.0000068174675107,
+      "benchmark_duration_s": 76.11715932562947,
+      "drain_after_arrival_window_s": 16.117159325629473,
+      "fd_limit_failures": 0,
+      "goodput_over_offered": {
+        "1000": 0.08408090970159275,
+        "2000": 0.15160839030568443,
+        "250": 0.04361697190770124,
+        "3000": 0.18550350702913898,
+        "500": 0.05859388394829745
+      },
+      "offered_rate": 50.0,
+      "reported_tpot_p99_ms": 44.924072708171884,
+      "reported_ttft_p99_ms": 14635.70667348802,
+      "request_throughput": 39.4129264226216,
+      "request_throughput_over_offered": 0.788258528452432,
+      "sample_id": "int4__random__r50__s2026",
+      "seed": 2026,
+      "sustainable_ttft_thresholds_ms": [],
+      "workload": "random"
+    },
+    {
+      "accounting": {
+        "completed": 1800,
+        "detail_lengths": {
+          "errors": 1800,
+          "itls": 1800,
+          "output_lens": 1800,
+          "start_times": 1800,
+          "ttfts": 1800
+        },
+        "detailed_failures": 0,
+        "expected": 1800,
+        "failed": 0,
+        "request_conservation": true
+      },
+      "allocation": "packed_per_layer",
+      "arrival_span_over_target": 1.0000184700513879,
+      "benchmark_duration_s": 61.200270311906934,
+      "drain_after_arrival_window_s": 1.2002703119069338,
+      "fd_limit_failures": 0,
+      "goodput_over_offered": {
+        "1000": 0.9803878266257688,
+        "2000": 0.9803878266257688,
+        "250": 0.9722179280705541,
+        "3000": 0.9803878266257688,
+        "500": 0.9803878266257688
+      },
+      "offered_rate": 30.0,
+      "reported_tpot_p99_ms": 21.997810015674883,
+      "reported_ttft_p99_ms": 245.69437006488442,
+      "request_throughput": 29.411634798773065,
+      "request_throughput_over_offered": 0.9803878266257688,
+      "sample_id": "packed_per_layer__random__r30__s7",
+      "seed": 7,
+      "sustainable_ttft_thresholds_ms": [
+        250,
+        500,
+        1000,
+        2000,
+        3000
+      ],
+      "workload": "random"
+    },
+    {
+      "accounting": {
+        "completed": 1800,
+        "detail_lengths": {
+          "errors": 1800,
+          "itls": 1800,
+          "output_lens": 1800,
+          "start_times": 1800,
+          "ttfts": 1800
+        },
+        "detailed_failures": 0,
+        "expected": 1800,
+        "failed": 0,
+        "request_conservation": true
+      },
+      "allocation": "packed_per_layer",
+      "arrival_span_over_target": 0.9998135200701654,
+      "benchmark_duration_s": 61.24839218892157,
+      "drain_after_arrival_window_s": 1.2483921889215708,
+      "fd_limit_failures": 0,
+      "goodput_over_offered": {
+        "1000": 0.979617551672689,
+        "2000": 0.979617551672689,
+        "250": 0.9692771441828107,
+        "3000": 0.979617551672689,
+        "500": 0.979617551672689
+      },
+      "offered_rate": 30.0,
+      "reported_tpot_p99_ms": 25.085656254398305,
+      "reported_ttft_p99_ms": 250.37651393562555,
+      "request_throughput": 29.38852655018067,
+      "request_throughput_over_offered": 0.979617551672689,
+      "sample_id": "packed_per_layer__random__r30__s42",
+      "seed": 42,
+      "sustainable_ttft_thresholds_ms": [
+        250,
+        500,
+        1000,
+        2000,
+        3000
+      ],
+      "workload": "random"
+    },
+    {
+      "accounting": {
+        "completed": 1800,
+        "detail_lengths": {
+          "errors": 1800,
+          "itls": 1800,
+          "output_lens": 1800,
+          "start_times": 1800,
+          "ttfts": 1800
+        },
+        "detailed_failures": 0,
+        "expected": 1800,
+        "failed": 0,
+        "request_conservation": true
+      },
+      "allocation": "packed_per_layer",
+      "arrival_span_over_target": 0.9999364613244931,
+      "benchmark_duration_s": 61.204201297834516,
+      "drain_after_arrival_window_s": 1.2042012978345156,
+      "fd_limit_failures": 0,
+      "goodput_over_offered": {
+        "1000": 0.9803248588773411,
+        "2000": 0.9803248588773411,
+        "250": 0.9765124844261515,
+        "3000": 0.9803248588773411,
+        "500": 0.9803248588773411
+      },
+      "offered_rate": 30.0,
+      "reported_tpot_p99_ms": 23.53361605351248,
+      "reported_ttft_p99_ms": 236.44168769940734,
+      "request_throughput": 29.409745766320235,
+      "request_throughput_over_offered": 0.9803248588773411,
+      "sample_id": "packed_per_layer__random__r30__s2026",
+      "seed": 2026,
+      "sustainable_ttft_thresholds_ms": [
+        250,
+        500,
+        1000,
+        2000,
+        3000
+      ],
+      "workload": "random"
+    },
+    {
+      "accounting": {
+        "completed": 2100,
+        "detail_lengths": {
+          "errors": 2100,
+          "itls": 2100,
+          "output_lens": 2100,
+          "start_times": 2100,
+          "ttfts": 2100
+        },
+        "detailed_failures": 0,
+        "expected": 2100,
+        "failed": 0,
+        "request_conservation": true
+      },
+      "allocation": "packed_per_layer",
+      "arrival_span_over_target": 1.0000329537317156,
+      "benchmark_duration_s": 61.23989692889154,
+      "drain_after_arrival_window_s": 1.2398969288915396,
+      "fd_limit_failures": 0,
+      "goodput_over_offered": {
+        "1000": 0.979753445203684,
+        "2000": 0.979753445203684,
+        "250": 0.848186553990618,
+        "3000": 0.979753445203684,
+        "500": 0.979753445203684
+      },
+      "offered_rate": 35.0,
+      "reported_tpot_p99_ms": 31.329210833976358,
+      "reported_ttft_p99_ms": 356.72506770119065,
+      "request_throughput": 34.29137058212894,
+      "request_throughput_over_offered": 0.979753445203684,
+      "sample_id": "packed_per_layer__random__r35__s7",
+      "seed": 7,
+      "sustainable_ttft_thresholds_ms": [
+        500,
+        1000,
+        2000,
+        3000
+      ],
+      "workload": "random"
+    },
+    {
+      "accounting": {
+        "completed": 2100,
+        "detail_lengths": {
+          "errors": 2100,
+          "itls": 2100,
+          "output_lens": 2100,
+          "start_times": 2100,
+          "ttfts": 2100
+        },
+        "detailed_failures": 0,
+        "expected": 2100,
+        "failed": 0,
+        "request_conservation": true
+      },
+      "allocation": "packed_per_layer",
+      "arrival_span_over_target": 0.9998179843959709,
+      "benchmark_duration_s": 61.286568842828274,
+      "drain_after_arrival_window_s": 1.2865688428282738,
+      "fd_limit_failures": 0,
+      "goodput_over_offered": {
+        "1000": 0.979007327916697,
+        "2000": 0.979007327916697,
+        "250": 0.8932276382325673,
+        "3000": 0.979007327916697,
+        "500": 0.979007327916697
+      },
+      "offered_rate": 35.0,
+      "reported_tpot_p99_ms": 36.49513888913462,
+      "reported_ttft_p99_ms": 322.3243240080764,
+      "request_throughput": 34.26525647708439,
+      "request_throughput_over_offered": 0.979007327916697,
+      "sample_id": "packed_per_layer__random__r35__s42",
+      "seed": 42,
+      "sustainable_ttft_thresholds_ms": [
+        500,
+        1000,
+        2000,
+        3000
+      ],
+      "workload": "random"
+    }
+  ],
+  "schema_version": 1,
+  "servers": [
+    {
+      "allocation": "fp16",
+      "exception": null,
+      "graph_mode_proven": true,
+      "returncode": 0,
+      "runtime_faults": {
+        "CUDA error: an illegal instruction was encountered": false,
+        "EngineCore encountered a fatal error": false,
+        "server health check failed after benchmark": false
+      },
+      "server_log_sha256": "90b298158cb8ffe1aa9b1e6f5b6a4de2906fa74959fab4cce6c55cd9869d8e5e",
+      "status": "stopped"
+    },
+    {
+      "allocation": "fp16",
+      "exception": null,
+      "graph_mode_proven": true,
+      "returncode": 0,
+      "runtime_faults": {
+        "CUDA error: an illegal instruction was encountered": false,
+        "EngineCore encountered a fatal error": false,
+        "server health check failed after benchmark": false
+      },
+      "server_log_sha256": "125c81d508d014e37c3436c5bd26a31ce152db34b9c1d9732c64be4688f185da",
+      "status": "stopped"
+    },
+    {
+      "allocation": "fp16",
+      "exception": null,
+      "graph_mode_proven": true,
+      "returncode": 0,
+      "runtime_faults": {
+        "CUDA error: an illegal instruction was encountered": false,
+        "EngineCore encountered a fatal error": false,
+        "server health check failed after benchmark": false
+      },
+      "server_log_sha256": "4f4cf16430e6c97911e1bb396e1f5772fc45b97655a036623eda8d0b94cb0b51",
+      "status": "stopped"
+    },
+    {
+      "allocation": "int4",
+      "exception": null,
+      "graph_mode_proven": true,
+      "returncode": 0,
+      "runtime_faults": {
+        "CUDA error: an illegal instruction was encountered": false,
+        "EngineCore encountered a fatal error": false,
+        "server health check failed after benchmark": false
+      },
+      "server_log_sha256": "ae6bc9debf4b58631f61372cbd429e3064caf45ef11fb1870b7b27b9efd7f5b4",
+      "status": "stopped"
+    },
+    {
+      "allocation": "int4",
+      "exception": null,
+      "graph_mode_proven": true,
+      "returncode": 0,
+      "runtime_faults": {
+        "CUDA error: an illegal instruction was encountered": false,
+        "EngineCore encountered a fatal error": false,
+        "server health check failed after benchmark": false
+      },
+      "server_log_sha256": "78ef2bb7414f6b6739260b670077ee22a124601ac368dc7dcba7dbfa2209f045",
+      "status": "stopped"
+    },
+    {
+      "allocation": "int4",
+      "exception": null,
+      "graph_mode_proven": true,
+      "returncode": 0,
+      "runtime_faults": {
+        "CUDA error: an illegal instruction was encountered": false,
+        "EngineCore encountered a fatal error": false,
+        "server health check failed after benchmark": false
+      },
+      "server_log_sha256": "46ea840c05c8367485692adebcd19227d19a23aa602b03c5cbd8c536cd45edce",
+      "status": "stopped"
+    },
+    {
+      "allocation": "packed_per_layer",
+      "exception": null,
+      "graph_mode_proven": true,
+      "returncode": 0,
+      "runtime_faults": {
+        "CUDA error: an illegal instruction was encountered": false,
+        "EngineCore encountered a fatal error": false,
+        "server health check failed after benchmark": false
+      },
+      "server_log_sha256": "dcff0665fecdb518355f6270c3e0b41b62d2018978718761c01d88d2cd6ebe77",
+      "status": "stopped"
+    }
+  ],
+  "servers_clean": true,
+  "sidecars_verified": 115,
+  "slice_id": "slice-007",
+  "summary_passed": true,
+  "supervisors": [
+    {
+      "exit_code": 0,
+      "slice_id": "slice-001",
+      "soft_nofile_after": 65535,
+      "soft_nofile_before": 1024
+    },
+    {
+      "exit_code": 0,
+      "slice_id": "slice-002",
+      "soft_nofile_after": 65535,
+      "soft_nofile_before": 1024
+    },
+    {
+      "exit_code": 0,
+      "slice_id": "slice-003",
+      "soft_nofile_after": 65535,
+      "soft_nofile_before": 1024
+    },
+    {
+      "exit_code": 0,
+      "slice_id": "slice-004",
+      "soft_nofile_after": 65535,
+      "soft_nofile_before": 1024
+    },
+    {
+      "exit_code": 0,
+      "slice_id": "slice-005",
+      "soft_nofile_after": 65535,
+      "soft_nofile_before": 1024
+    },
+    {
+      "exit_code": 0,
+      "slice_id": "slice-006",
+      "soft_nofile_after": 65535,
+      "soft_nofile_before": 1024
+    },
+    {
+      "exit_code": 0,
+      "slice_id": "slice-007",
+      "soft_nofile_after": 65535,
+      "soft_nofile_before": 1024
+    }
+  ],
+  "totals": {
+    "completed": 81600,
+    "expected": 81600,
+    "failed": 0
+  },
+  "verdict": "PROTOCOL_V3_RANDOM_FORMAL_SLICE_007_PASSED",
+  "verification_status": "ANALYZED"
+}

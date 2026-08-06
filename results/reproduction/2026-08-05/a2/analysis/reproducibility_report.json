@@ -1,0 +1,133 @@
+{
+  "a2_evidence_status": "PASSED_NOT_VERIFIED",
+  "capacity_comparison": {
+    "legacy": {
+      "absolute_difference_tokens": 956,
+      "exact_match": false,
+      "original_tokens": 705604,
+      "reproduced_tokens": 706560,
+      "signed_relative_change_percent": 0.13548676027913675,
+      "symmetric_relative_difference": 0.0013530344202898551,
+      "within_environment_tolerance": true
+    },
+    "packed": {
+      "absolute_difference_tokens": 3072,
+      "exact_match": false,
+      "original_tokens": 2280448,
+      "reproduced_tokens": 2283520,
+      "signed_relative_change_percent": 0.1347103726986978,
+      "symmetric_relative_difference": 0.0013452914798206279,
+      "within_environment_tolerance": true
+    },
+    "uniform": {
+      "absolute_difference_tokens": 3277,
+      "exact_match": false,
+      "original_tokens": 2736947,
+      "reproduced_tokens": 2740224,
+      "signed_relative_change_percent": 0.11973194950431996,
+      "symmetric_relative_difference": 0.0011958876354633782,
+      "within_environment_tolerance": true
+    }
+  },
+  "created_at": "2026-08-05T04:30:00Z",
+  "environment_sensitive_verdict": "REPRODUCIBLE",
+  "failed_suite_preserved_and_excluded": true,
+  "fallacy_scan": [
+    {
+      "detail": "Not applicable; no subgroup aggregation.",
+      "fallacy": "Simpson's Paradox",
+      "severity": "NOTE"
+    },
+    {
+      "detail": "Not applicable; inference stays at the host/configuration level.",
+      "fallacy": "Ecological Fallacy",
+      "severity": "NOTE"
+    },
+    {
+      "detail": "Not applicable; no selected correlation sample.",
+      "fallacy": "Berkson's Paradox",
+      "severity": "NOTE"
+    },
+    {
+      "detail": "Not applicable; no covariate adjustment.",
+      "fallacy": "Collider Bias",
+      "severity": "NOTE"
+    },
+    {
+      "detail": "Not applicable; no diagnostic probabilities.",
+      "fallacy": "Base Rate Neglect",
+      "severity": "NOTE"
+    },
+    {
+      "detail": "Not applicable; no extreme-score selection.",
+      "fallacy": "Regression to the Mean",
+      "severity": "NOTE"
+    },
+    {
+      "detail": "The failed suite is preserved and excluded; all four replacement attempts are reported.",
+      "fallacy": "Survivorship Bias",
+      "severity": "SOLID"
+    },
+    {
+      "detail": "All predeclared capacities and structural checks are reported.",
+      "fallacy": "Look-Elsewhere Effect",
+      "severity": "SOLID"
+    },
+    {
+      "detail": "A transport environment variable was added only under a new linked suite; numerical criteria were not changed.",
+      "fallacy": "Garden of Forking Paths",
+      "severity": "CAUTION"
+    },
+    {
+      "detail": "The common block-count increase supports, but does not prove, the memory-profile drift explanation.",
+      "fallacy": "Correlation != Causation",
+      "severity": "CAUTION"
+    },
+    {
+      "detail": "Not applicable to the controlled cache-layout comparison.",
+      "fallacy": "Reverse Causality",
+      "severity": "NOTE"
+    }
+  ],
+  "fallacy_scan_coverage": "11/11",
+  "interpretation": "The packed mechanism, generation path, cache structure, dtype state, and ratio gates reproduced. Absolute capacities increased by about 0.12%-0.14% because the new host profiled a few additional GPU cache blocks. The frozen exact-capacity gate therefore failed, so A2 must not be promoted to VERIFIED.",
+  "parent_suite": "a2-repro-suite-c7379f0-westd-01",
+  "promotion_gate_passed": false,
+  "ratio_checks": {
+    "packed_over_legacy_at_least_3x": true,
+    "packed_over_uniform_in_range": true
+  },
+  "ratios": {
+    "original": {
+      "packed_over_legacy": 3.231909116161473,
+      "packed_over_uniform": 0.8332086810595893,
+      "uniform_over_legacy": 3.878871151524084
+    },
+    "reproduced": {
+      "packed_over_legacy": 3.2318840579710146,
+      "packed_over_uniform": 0.8333333333333334,
+      "uniform_over_legacy": 3.878260869565217
+    },
+    "symmetric_relative_difference": {
+      "packed_over_legacy": 7.753371013084987e-06,
+      "packed_over_uniform": 0.00014958272849283639,
+      "uniform_over_legacy": 0.00015733493973552819
+    }
+  },
+  "schema_version": 1,
+  "structural_checks": {
+    "legacy_has_24_independent_groups": true,
+    "legacy_requested_map_and_flag": true,
+    "mamba_ssm_cache_dtype_float32": true,
+    "packed_eight_of_eight": true,
+    "packed_has_mixed_attention_group": true,
+    "runtime_and_capacity_packed_agree": true,
+    "runtime_eight_of_eight": true,
+    "runtime_generation_nonempty": true,
+    "uniform_has_one_attention_group": true,
+    "uniform_requested_map_and_flag": true
+  },
+  "suite_id": "a2-repro-suite-c7379f0-westd-02",
+  "verdict": "PARTIALLY_REPRODUCIBLE",
+  "verification_status": "ANALYZED"
+}

@@ -1,0 +1,264 @@
+{
+  "a2_overall_status": "PASSED_NOT_VERIFIED_SERVING_QUALITY_PENDING",
+  "created_at": "2026-08-05T05:59:51Z",
+  "diagnostic": {
+    "attempt_id": "a2-packed-serving-debug-piecewise-f7a79f5-westd-01",
+    "parent_attempt": "a2-packed-serving-pilot-d1d52c4-westd-01",
+    "sample": {
+      "accounting": {
+        "completed": 1800,
+        "detail_lengths": {
+          "errors": 1800,
+          "itls": 1800,
+          "output_lens": 1800,
+          "start_times": 1800,
+          "ttfts": 1800
+        },
+        "detailed_failures": 0,
+        "expected": 1800,
+        "failed": 0,
+        "request_conservation": true
+      },
+      "arrival_span_over_target": 1.0000132190684476,
+      "goodput_over_offered": {
+        "1000": 0.9790932173343501,
+        "2000": 0.9790932173343501,
+        "250": 0.9747416919239752,
+        "3000": 0.9790932173343501,
+        "500": 0.9790932173343501
+      },
+      "offered_rate": 30.0,
+      "reported_tpot_p99_ms": 22.63304683387162,
+      "reported_ttft_p99_ms": 235.37310427054763,
+      "request_goodput": 29.3727965200305,
+      "request_throughput": 29.3727965200305,
+      "sample_id": "packed_per_layer__random__r30__s7",
+      "sustainable_ttft_thresholds_ms": [
+        250,
+        500,
+        1000,
+        2000,
+        3000
+      ]
+    },
+    "server_log_sha256": "6b1af3593c2e506da5dd0a16fbc5cbbb571d4deaa5bd5e07a4ea25197b800e3c"
+  },
+  "evidence_status": "UNVERIFIED",
+  "fallacy_scan": [
+    {
+      "detail": "No workload or allocation aggregation is used.",
+      "fallacy": "Simpson's Paradox",
+      "severity": "NOTE"
+    },
+    {
+      "detail": "Inference stays at the attempt and rate-point level.",
+      "fallacy": "Ecological Fallacy",
+      "severity": "NOTE"
+    },
+    {
+      "detail": "No selected correlation sample is analyzed.",
+      "fallacy": "Berkson's Paradox",
+      "severity": "NOTE"
+    },
+    {
+      "detail": "No covariate adjustment is performed.",
+      "fallacy": "Collider Bias",
+      "severity": "NOTE"
+    },
+    {
+      "detail": "No diagnostic probabilities are reported.",
+      "fallacy": "Base Rate Neglect",
+      "severity": "NOTE"
+    },
+    {
+      "detail": "Only one pilot seed is available; no efficacy stability claim is made.",
+      "fallacy": "Regression to the Mean",
+      "severity": "CAUTION"
+    },
+    {
+      "detail": "The failed default-graph pilot remains quarantined and parent-linked.",
+      "fallacy": "Survivorship Bias",
+      "severity": "SOLID"
+    },
+    {
+      "detail": "All predeclared rate points and SLO thresholds are reported.",
+      "fallacy": "Look-Elsewhere Effect",
+      "severity": "SOLID"
+    },
+    {
+      "detail": "PIECEWISE was selected after diagnostics and is labeled as a new linked chain.",
+      "fallacy": "Garden of Forking Paths",
+      "severity": "CAUTION"
+    },
+    {
+      "detail": "The graph-mode boundary is strongly isolated but not yet verified across seeds and allocations.",
+      "fallacy": "Correlation != Causation",
+      "severity": "CAUTION"
+    },
+    {
+      "detail": "Not applicable to the controlled graph-mode intervention.",
+      "fallacy": "Reverse Causality",
+      "severity": "NOTE"
+    }
+  ],
+  "mvex": {
+    "attempt_id": "a2-packed-serving-mvex-piecewise-f7a79f5-westd-01",
+    "parent_attempt": "a2-packed-serving-debug-piecewise-f7a79f5-westd-01",
+    "sample": {
+      "accounting": {
+        "completed": 1800,
+        "detail_lengths": {
+          "errors": 1800,
+          "itls": 1800,
+          "output_lens": 1800,
+          "start_times": 1800,
+          "ttfts": 1800
+        },
+        "detailed_failures": 0,
+        "expected": 1800,
+        "failed": 0,
+        "request_conservation": true
+      },
+      "arrival_span_over_target": 1.0001247888430953,
+      "goodput_over_offered": {
+        "1000": 0.9780576075775707,
+        "2000": 0.9780576075775707,
+        "250": 0.9601265514386484,
+        "3000": 0.9780576075775707,
+        "500": 0.9780576075775707
+      },
+      "offered_rate": 30.0,
+      "reported_tpot_p99_ms": 23.96216421879417,
+      "reported_ttft_p99_ms": 258.1611705943942,
+      "request_goodput": 29.34172822732712,
+      "request_throughput": 29.34172822732712,
+      "sample_id": "packed_per_layer__random__r30__s7",
+      "sustainable_ttft_thresholds_ms": [
+        250,
+        500,
+        1000,
+        2000,
+        3000
+      ]
+    },
+    "server_log_sha256": "fb57cf389b9e7739686c09011a8cf8b70988ea3ff099b25abc60cafb4051565e"
+  },
+  "next_gate": "Run fp16, uniform int4, and packed L23-protected under the same PIECEWISE graph mode on Random and ShareGPT before formal expansion.",
+  "pilot": {
+    "attempt_id": "a2-packed-serving-pilot-piecewise-f7a79f5-westd-01",
+    "parent_attempt": "a2-packed-serving-mvex-piecewise-f7a79f5-westd-01",
+    "samples": [
+      {
+        "accounting": {
+          "completed": 1800,
+          "detail_lengths": {
+            "errors": 1800,
+            "itls": 1800,
+            "output_lens": 1800,
+            "start_times": 1800,
+            "ttfts": 1800
+          },
+          "detailed_failures": 0,
+          "expected": 1800,
+          "failed": 0,
+          "request_conservation": true
+        },
+        "arrival_span_over_target": 1.000021608111759,
+        "goodput_over_offered": {
+          "1000": 0.9801360379134114,
+          "2000": 0.9801360379134114,
+          "250": 0.9697901575132144,
+          "3000": 0.9801360379134114,
+          "500": 0.9801360379134114
+        },
+        "offered_rate": 30.0,
+        "reported_tpot_p99_ms": 22.641921405218483,
+        "reported_ttft_p99_ms": 251.94908350706103,
+        "request_goodput": 29.404081137402343,
+        "request_throughput": 29.404081137402343,
+        "sample_id": "packed_per_layer__random__r30__s7",
+        "sustainable_ttft_thresholds_ms": [
+          250,
+          500,
+          1000,
+          2000,
+          3000
+        ]
+      },
+      {
+        "accounting": {
+          "completed": 2400,
+          "detail_lengths": {
+            "errors": 2400,
+            "itls": 2400,
+            "output_lens": 2400,
+            "start_times": 2400,
+            "ttfts": 2400
+          },
+          "detailed_failures": 0,
+          "expected": 2400,
+          "failed": 0,
+          "request_conservation": true
+        },
+        "arrival_span_over_target": 1.0001578096921244,
+        "goodput_over_offered": {
+          "1000": 0.7675147234614002,
+          "2000": 0.9554125188316185,
+          "250": 0.17675131598384944,
+          "3000": 0.9554125188316185,
+          "500": 0.40804076325100375
+        },
+        "offered_rate": 40.0,
+        "reported_tpot_p99_ms": 45.72581273144272,
+        "reported_ttft_p99_ms": 1509.458756633103,
+        "request_goodput": 38.21650075326474,
+        "request_throughput": 38.21650075326474,
+        "sample_id": "packed_per_layer__random__r40__s7",
+        "sustainable_ttft_thresholds_ms": [
+          2000,
+          3000
+        ]
+      },
+      {
+        "accounting": {
+          "completed": 3000,
+          "detail_lengths": {
+            "errors": 3000,
+            "itls": 3000,
+            "output_lens": 3000,
+            "start_times": 3000,
+            "ttfts": 3000
+          },
+          "detailed_failures": 0,
+          "expected": 3000,
+          "failed": 0,
+          "request_conservation": true
+        },
+        "arrival_span_over_target": 1.0001085861896475,
+        "goodput_over_offered": {
+          "1000": 0.07680920432302171,
+          "2000": 0.14382394634981918,
+          "250": 0.03402286902898949,
+          "3000": 0.17604257232424103,
+          "500": 0.046910319418758235
+        },
+        "offered_rate": 50.0,
+        "reported_tpot_p99_ms": 45.89134379356043,
+        "reported_ttft_p99_ms": 16129.633911214767,
+        "request_goodput": 8.802128616212052,
+        "request_throughput": 38.662351169306234,
+        "sample_id": "packed_per_layer__random__r50__s7",
+        "sustainable_ttft_thresholds_ms": []
+      }
+    ],
+    "server_log_sha256": "6f052417d6feb1aa3553fa8874be18b98d1182a7a7ee7091167eeb86d7fecaf8"
+  },
+  "root_commit": "f7a79f5d268aae66211926ac773b76e1bf443465",
+  "schema_version": 1,
+  "total_completed": 7200,
+  "total_expected": 7200,
+  "total_failed": 0,
+  "verdict": "PILOT_PASSED_PIECEWISE_RUNTIME_INTEGRITY",
+  "verification_status": "ANALYZED",
+  "vllm_commit": "55f47685a553ad8d776c464c59785399a98c7185"
+}

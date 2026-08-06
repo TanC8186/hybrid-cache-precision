@@ -1,0 +1,519 @@
+{
+  "a2_overall_status": "PASSED_NOT_VERIFIED_SERVING_QUALITY_PENDING",
+  "created_at": "2026-08-05T11:35:50Z",
+  "evidence_status": "QUARANTINED",
+  "fallacy_scan": [
+    {
+      "detail": "This MVEx contains only ShareGPT and does not pool workloads.",
+      "fallacy": "Simpson's Paradox",
+      "severity": "NOTE"
+    },
+    {
+      "detail": "Inference stays at the allocation-rate sample level.",
+      "fallacy": "Ecological Fallacy",
+      "severity": "NOTE"
+    },
+    {
+      "detail": "No outcome-conditioned correlation sample is analyzed.",
+      "fallacy": "Berkson's Paradox",
+      "severity": "NOTE"
+    },
+    {
+      "detail": "No post-treatment covariate adjustment is performed.",
+      "fallacy": "Collider Bias",
+      "severity": "NOTE"
+    },
+    {
+      "detail": "No diagnostic probabilities are reported.",
+      "fallacy": "Base Rate Neglect",
+      "severity": "NOTE"
+    },
+    {
+      "detail": "The MVEx has one seed and cannot establish boundary stability.",
+      "fallacy": "Regression to the Mean",
+      "severity": "CAUTION"
+    },
+    {
+      "detail": "Every issued request is retained in its attempt denominator.",
+      "fallacy": "Survivorship Bias",
+      "severity": "SOLID"
+    },
+    {
+      "detail": "Both frozen rates and all five TTFT thresholds are reported.",
+      "fallacy": "Look-Elsewhere Effect",
+      "severity": "SOLID"
+    },
+    {
+      "detail": "Protocol v3 follows a preserved failed pilot and uses a new commit and attempt chain.",
+      "fallacy": "Garden of Forking Paths",
+      "severity": "CAUTION"
+    },
+    {
+      "detail": "The controlled protocol change supports the drain-bias diagnosis but remains an MVEx.",
+      "fallacy": "Correlation != Causation",
+      "severity": "CAUTION"
+    },
+    {
+      "detail": "Not applicable to the controlled serving protocol intervention.",
+      "fallacy": "Reverse Causality",
+      "severity": "NOTE"
+    }
+  ],
+  "fd_mvex": {
+    "attempt_id": "a2-comparative-serving-fd-mvex-piecewise-f7a79f5-westd-03",
+    "parent_attempt": "a2-comparative-serving-pilot-piecewise-f7a79f5-westd-02",
+    "root_commit": "f7a79f5d268aae66211926ac773b76e1bf443465",
+    "samples": [
+      {
+        "accounting": {
+          "completed": 3000,
+          "detail_lengths": {
+            "errors": 3000,
+            "itls": 3000,
+            "output_lens": 3000,
+            "start_times": 3000,
+            "ttfts": 3000
+          },
+          "detailed_failures": 0,
+          "expected": 3000,
+          "failed": 0,
+          "request_conservation": true
+        },
+        "allocation": "fp16",
+        "arrival_span_over_target": 1.0001008490721384,
+        "benchmark_duration_s": 82.0942646227777,
+        "drain_after_arrival_window_s": 22.0942646227777,
+        "fd_limit_failures": 0,
+        "goodput_over_offered": {
+          "1000": 0.06455993027470854,
+          "2000": 0.11060455979138746,
+          "250": 0.03264539870494696,
+          "3000": 0.14300633611793928,
+          "500": 0.043608405732727645
+        },
+        "offered_rate": 50.0,
+        "reported_tpot_p99_ms": 48.84241410978432,
+        "reported_ttft_p99_ms": 20761.374439261854,
+        "request_throughput": 36.54335675926898,
+        "request_throughput_over_offered": 0.7308671351853796,
+        "sample_id": "fp16__random__r50__s7",
+        "seed": 7,
+        "sustainable_ttft_thresholds_ms": [],
+        "workload": "random"
+      }
+    ],
+    "servers": [
+      {
+        "allocation": "fp16",
+        "exception": null,
+        "graph_mode_proven": true,
+        "returncode": 0,
+        "runtime_faults": {
+          "CUDA error: an illegal instruction was encountered": false,
+          "EngineCore encountered a fatal error": false,
+          "server health check failed after benchmark": false
+        },
+        "server_log_sha256": "3f7813fe49981a567942b0545ef25088221a82d59546c2153d17867e9e6d3b6c",
+        "status": "stopped"
+      }
+    ],
+    "sidecars_verified": 7,
+    "supervisor": {
+      "exit_code": 0,
+      "soft_nofile_after": 65535,
+      "soft_nofile_before": 1024
+    },
+    "total_completed": 3000,
+    "total_expected": 3000,
+    "total_failed": 0
+  },
+  "gate_passed": false,
+  "next_gate": "Do not start a comparative pilot. Preserve this MVEx as a negative bracketing result and freeze a linked upper-neighbor MVEx under a new attempt ID.",
+  "schema_version": 1,
+  "sharegpt_mvex": {
+    "attempt_id": "a2-comparative-serving-sharegpt300-mvex-piecewise-37ce9e3-westd-01",
+    "parent_attempt": "a2-comparative-serving-fd-mvex-piecewise-f7a79f5-westd-03",
+    "root_commit": "37ce9e3d46eb4de6e8607071eee2446d54a52c26",
+    "samples": [
+      {
+        "accounting": {
+          "completed": 6000,
+          "detail_lengths": {
+            "errors": 6000,
+            "itls": 6000,
+            "output_lens": 6000,
+            "start_times": 6000,
+            "ttfts": 6000
+          },
+          "detailed_failures": 0,
+          "expected": 6000,
+          "failed": 0,
+          "request_conservation": true
+        },
+        "allocation": "fp16",
+        "arrival_span_over_target": 1.000072881548355,
+        "benchmark_duration_s": 303.9943163115531,
+        "drain_after_arrival_window_s": 3.9943163115531206,
+        "fd_limit_failures": 0,
+        "goodput_over_offered": {
+          "1000": 0.9868605559471728,
+          "2000": 0.9868605559471728,
+          "250": 0.9868605559471728,
+          "3000": 0.9868605559471728,
+          "500": 0.9868605559471728
+        },
+        "offered_rate": 20.0,
+        "reported_tpot_p99_ms": 14.409684357840742,
+        "reported_ttft_p99_ms": 124.87546190619472,
+        "request_throughput": 19.737211118943456,
+        "request_throughput_over_offered": 0.9868605559471728,
+        "sample_id": "fp16__sharegpt__r20__s7",
+        "seed": 7,
+        "sustainable_ttft_thresholds_ms": [
+          250,
+          500,
+          1000,
+          2000,
+          3000
+        ],
+        "workload": "sharegpt"
+      },
+      {
+        "accounting": {
+          "completed": 9000,
+          "detail_lengths": {
+            "errors": 9000,
+            "itls": 9000,
+            "output_lens": 9000,
+            "start_times": 9000,
+            "ttfts": 9000
+          },
+          "detailed_failures": 0,
+          "expected": 9000,
+          "failed": 0,
+          "request_conservation": true
+        },
+        "allocation": "fp16",
+        "arrival_span_over_target": 1.0000907904095948,
+        "benchmark_duration_s": 305.4722341224551,
+        "drain_after_arrival_window_s": 5.47223412245512,
+        "fd_limit_failures": 0,
+        "goodput_over_offered": {
+          "1000": 0.982085985201976,
+          "2000": 0.982085985201976,
+          "250": 0.982085985201976,
+          "3000": 0.982085985201976,
+          "500": 0.982085985201976
+        },
+        "offered_rate": 30.0,
+        "reported_tpot_p99_ms": 19.44791097776035,
+        "reported_ttft_p99_ms": 162.16957593336707,
+        "request_throughput": 29.46257955605928,
+        "request_throughput_over_offered": 0.982085985201976,
+        "sample_id": "fp16__sharegpt__r30__s7",
+        "seed": 7,
+        "sustainable_ttft_thresholds_ms": [
+          250,
+          500,
+          1000,
+          2000,
+          3000
+        ],
+        "workload": "sharegpt"
+      },
+      {
+        "accounting": {
+          "completed": 6000,
+          "detail_lengths": {
+            "errors": 6000,
+            "itls": 6000,
+            "output_lens": 6000,
+            "start_times": 6000,
+            "ttfts": 6000
+          },
+          "detailed_failures": 0,
+          "expected": 6000,
+          "failed": 0,
+          "request_conservation": true
+        },
+        "allocation": "int4",
+        "arrival_span_over_target": 1.0000568685866893,
+        "benchmark_duration_s": 305.98841663077474,
+        "drain_after_arrival_window_s": 5.988416630774736,
+        "fd_limit_failures": 0,
+        "goodput_over_offered": {
+          "1000": 0.9804292701772409,
+          "2000": 0.9804292701772409,
+          "250": 0.9804292701772409,
+          "3000": 0.9804292701772409,
+          "500": 0.9804292701772409
+        },
+        "offered_rate": 20.0,
+        "reported_tpot_p99_ms": 19.35958029236645,
+        "reported_ttft_p99_ms": 134.25518559291964,
+        "request_throughput": 19.60858540354482,
+        "request_throughput_over_offered": 0.9804292701772409,
+        "sample_id": "int4__sharegpt__r20__s7",
+        "seed": 7,
+        "sustainable_ttft_thresholds_ms": [
+          250,
+          500,
+          1000,
+          2000,
+          3000
+        ],
+        "workload": "sharegpt"
+      },
+      {
+        "accounting": {
+          "completed": 9000,
+          "detail_lengths": {
+            "errors": 9000,
+            "itls": 9000,
+            "output_lens": 9000,
+            "start_times": 9000,
+            "ttfts": 9000
+          },
+          "detailed_failures": 0,
+          "expected": 9000,
+          "failed": 0,
+          "request_conservation": true
+        },
+        "allocation": "int4",
+        "arrival_span_over_target": 1.0001025804753105,
+        "benchmark_duration_s": 307.81692111864686,
+        "drain_after_arrival_window_s": 7.81692111864686,
+        "fd_limit_failures": 0,
+        "goodput_over_offered": {
+          "1000": 0.9746052910598965,
+          "2000": 0.9746052910598965,
+          "250": 0.9746052910598965,
+          "3000": 0.9746052910598965,
+          "500": 0.9746052910598965
+        },
+        "offered_rate": 30.0,
+        "reported_tpot_p99_ms": 25.874554604358444,
+        "reported_ttft_p99_ms": 192.94048946350813,
+        "request_throughput": 29.238158731796894,
+        "request_throughput_over_offered": 0.9746052910598965,
+        "sample_id": "int4__sharegpt__r30__s7",
+        "seed": 7,
+        "sustainable_ttft_thresholds_ms": [
+          250,
+          500,
+          1000,
+          2000,
+          3000
+        ],
+        "workload": "sharegpt"
+      },
+      {
+        "accounting": {
+          "completed": 6000,
+          "detail_lengths": {
+            "errors": 6000,
+            "itls": 6000,
+            "output_lens": 6000,
+            "start_times": 6000,
+            "ttfts": 6000
+          },
+          "detailed_failures": 0,
+          "expected": 6000,
+          "failed": 0,
+          "request_conservation": true
+        },
+        "allocation": "packed_per_layer",
+        "arrival_span_over_target": 1.000012217493107,
+        "benchmark_duration_s": 305.53143235109746,
+        "drain_after_arrival_window_s": 5.531432351097465,
+        "fd_limit_failures": 0,
+        "goodput_over_offered": {
+          "1000": 0.9818957011770196,
+          "2000": 0.9818957011770196,
+          "250": 0.9818957011770196,
+          "3000": 0.9818957011770196,
+          "500": 0.9818957011770196
+        },
+        "offered_rate": 20.0,
+        "reported_tpot_p99_ms": 18.728344016191038,
+        "reported_ttft_p99_ms": 130.56343285366896,
+        "request_throughput": 19.637914023540393,
+        "request_throughput_over_offered": 0.9818957011770196,
+        "sample_id": "packed_per_layer__sharegpt__r20__s7",
+        "seed": 7,
+        "sustainable_ttft_thresholds_ms": [
+          250,
+          500,
+          1000,
+          2000,
+          3000
+        ],
+        "workload": "sharegpt"
+      },
+      {
+        "accounting": {
+          "completed": 9000,
+          "detail_lengths": {
+            "errors": 9000,
+            "itls": 9000,
+            "output_lens": 9000,
+            "start_times": 9000,
+            "ttfts": 9000
+          },
+          "detailed_failures": 0,
+          "expected": 9000,
+          "failed": 0,
+          "request_conservation": true
+        },
+        "allocation": "packed_per_layer",
+        "arrival_span_over_target": 1.0001008488486212,
+        "benchmark_duration_s": 307.3806241005659,
+        "drain_after_arrival_window_s": 7.38062410056591,
+        "fd_limit_failures": 0,
+        "goodput_over_offered": {
+          "1000": 0.9759886488546161,
+          "2000": 0.9759886488546161,
+          "250": 0.9759886488546161,
+          "3000": 0.9759886488546161,
+          "500": 0.9759886488546161
+        },
+        "offered_rate": 30.0,
+        "reported_tpot_p99_ms": 23.708022232167426,
+        "reported_ttft_p99_ms": 179.42469049245125,
+        "request_throughput": 29.279659465638485,
+        "request_throughput_over_offered": 0.9759886488546161,
+        "sample_id": "packed_per_layer__sharegpt__r30__s7",
+        "seed": 7,
+        "sustainable_ttft_thresholds_ms": [
+          250,
+          500,
+          1000,
+          2000,
+          3000
+        ],
+        "workload": "sharegpt"
+      }
+    ],
+    "servers": [
+      {
+        "allocation": "fp16",
+        "exception": null,
+        "graph_mode_proven": true,
+        "returncode": 0,
+        "runtime_faults": {
+          "CUDA error: an illegal instruction was encountered": false,
+          "EngineCore encountered a fatal error": false,
+          "server health check failed after benchmark": false
+        },
+        "server_log_sha256": "ecabdff28aef68017dec9afda49fa5a3c826c777725cb2d46f4f437fa7185cd9",
+        "status": "stopped"
+      },
+      {
+        "allocation": "int4",
+        "exception": null,
+        "graph_mode_proven": true,
+        "returncode": 0,
+        "runtime_faults": {
+          "CUDA error: an illegal instruction was encountered": false,
+          "EngineCore encountered a fatal error": false,
+          "server health check failed after benchmark": false
+        },
+        "server_log_sha256": "37abfa1b7ed827c93b2c5a1b48a12fdec2542ca5bd54ee5651a3d9e595efd29a",
+        "status": "stopped"
+      },
+      {
+        "allocation": "packed_per_layer",
+        "exception": null,
+        "graph_mode_proven": true,
+        "returncode": 0,
+        "runtime_faults": {
+          "CUDA error: an illegal instruction was encountered": false,
+          "EngineCore encountered a fatal error": false,
+          "server health check failed after benchmark": false
+        },
+        "server_log_sha256": "b44e37b076c4898768c16f1d23068494677d69337176586d9c02e12fa33620cc",
+        "status": "stopped"
+      }
+    ],
+    "sharegpt_bracket_report": {
+      "fp16": {
+        "1000": {
+          "has_sustainable": true,
+          "has_unsustainable": false
+        },
+        "2000": {
+          "has_sustainable": true,
+          "has_unsustainable": false
+        },
+        "250": {
+          "has_sustainable": true,
+          "has_unsustainable": false
+        },
+        "3000": {
+          "has_sustainable": true,
+          "has_unsustainable": false
+        },
+        "500": {
+          "has_sustainable": true,
+          "has_unsustainable": false
+        }
+      },
+      "int4": {
+        "1000": {
+          "has_sustainable": true,
+          "has_unsustainable": false
+        },
+        "2000": {
+          "has_sustainable": true,
+          "has_unsustainable": false
+        },
+        "250": {
+          "has_sustainable": true,
+          "has_unsustainable": false
+        },
+        "3000": {
+          "has_sustainable": true,
+          "has_unsustainable": false
+        },
+        "500": {
+          "has_sustainable": true,
+          "has_unsustainable": false
+        }
+      },
+      "packed_per_layer": {
+        "1000": {
+          "has_sustainable": true,
+          "has_unsustainable": false
+        },
+        "2000": {
+          "has_sustainable": true,
+          "has_unsustainable": false
+        },
+        "250": {
+          "has_sustainable": true,
+          "has_unsustainable": false
+        },
+        "3000": {
+          "has_sustainable": true,
+          "has_unsustainable": false
+        },
+        "500": {
+          "has_sustainable": true,
+          "has_unsustainable": false
+        }
+      }
+    },
+    "sharegpt_bracketed": false,
+    "sidecars_verified": 24,
+    "supervisor": {
+      "exit_code": 0,
+      "soft_nofile_after": 65535,
+      "soft_nofile_before": 1024
+    },
+    "total_completed": 45000,
+    "total_expected": 45000,
+    "total_failed": 0
+  },
+  "verdict": "PROTOCOL_V3_MVEX_CHAIN_REVIEW_REQUIRED",
+  "verification_status": "ANALYZED"
+}
