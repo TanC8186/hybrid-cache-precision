@@ -468,7 +468,10 @@ packed capacity, other hybrid families, multi-GPU); (iv) upstream integration of
   matrix yet);
 - A2 quality closure (packed vs. uniform PPL + retrieval/long-context) and independent serving
   reproduction (ANALYZED → VERIFIED);
-- external baselines (KIVI/KVQuant/TurboQuant) under the same hardware/model/SLO protocol;
+- external baselines: TurboQuant (k8v4 / 4bit_nc) is executable in this fork and its NIAH
+  quality baseline is complete (ANALYZED; mean accuracy 0.8519 / 0.8889 vs fp16 0.9074,
+  paired CIs include zero); the same-protocol serving SLO matrix is pending; KIVI/KVQuant
+  remain transformers-path-only;
 - 3-seed re-run of the sensitivity/heterogeneous-budget PPL tables under the canonical harness
   (currently single deterministic protocol);
 - figure relabeling and regeneration from 3-seed / VERIFIED data;

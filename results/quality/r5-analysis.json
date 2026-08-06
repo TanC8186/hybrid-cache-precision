@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "fp16_baseline": {
+    "mean_accuracy": 0.9074,
+    "n_cells": 18
+  },
+  "rows": [
+    {
+      "allocation": "turboquant_k8v4",
+      "mean_accuracy": 0.8519,
+      "n_cells": 18
+    },
+    {
+      "allocation": "turboquant_4bit_nc",
+      "mean_accuracy": 0.8889,
+      "n_cells": 18
+    }
+  ],
+  "paired": {
+    "turboquant_k8v4": {
+      "vs": "fp16",
+      "n_cells": 18,
+      "mean_diff": -0.0556,
+      "sd_diff": 0.1715,
+      "ci95": [
+        -0.1408,
+        0.0297
+      ]
+    },
+    "turboquant_4bit_nc": {
+      "vs": "fp16",
+      "n_cells": 18,
+      "mean_diff": -0.0185,
+      "sd_diff": 0.1387,
+      "ci95": [
+        -0.0875,
+        0.0505
+      ]
+    }
+  },
+  "source": {
+    "base_dir": "E:\\MLSys_Research\\results\\quality\\r4-niah\\r4-20260806-niah",
+    "turbo_dir": "E:\\MLSys_Research\\results\\quality\\r5-turboquant\\r5-turboquant-20260806"
+  }
+}

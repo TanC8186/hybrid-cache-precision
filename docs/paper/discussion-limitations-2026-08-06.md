@@ -32,9 +32,12 @@ system-level compression ratio improves with context length (2.245× → 3.155×
 vLLM dtype and a configuration/layout mechanism. We do not compress the GDN recurrent state, which
 is the largest single per-sequence item (≈60% of the KV budget at int4 peak concurrency); its
 compressibility is an open question that bounds the headroom of attention-only KV quantization.
-We do not yet provide executable external baselines (KIVI/KVQuant/TurboQuant) under the same
-protocol; until then, the capacity ratios should be read as "vs. fp16/bf16 serving on this stack",
-not as "vs. state-of-the-art KV quantizers".
+We provide executable TurboQuant baselines (`turboquant_k8v4` and `turboquant_4bit_nc`) in this
+fork: engine startup, greedy generation, and an 18-cell NIAH quality matrix completed with zero
+failures (mean accuracy 0.8519 / 0.8889 vs. fp16 0.9074; paired 95% CIs include zero; ANALYZED).
+The same-protocol serving SLO matrix for TurboQuant is pending; KIVI/KVQuant remain
+transformers-path-only. Until the serving matrix is complete, the capacity ratios should be read
+as "vs. fp16/bf16 serving on this stack", not as "vs. state-of-the-art KV quantizers" in serving.
 
 ## 10. Limitations
 
