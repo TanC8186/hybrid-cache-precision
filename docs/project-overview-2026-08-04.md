@@ -100,18 +100,35 @@
 2. **诚实披露**：ShareGPT 下 fp16 仍最高（45）——量化 TPOT 开销（+8%）在真实流量下压低边界（与 E3 v2 方向一致）；Random 250ms 严格阈值下 int4 甚至无 3-seed 全可持续点
 3. **论文口径**：Random 与 ShareGPT 必须分开报告；A2 的价值主张 = 容量恢复（3.232x legacy）+ ShareGPT 下优于 uniform int4 的 SLO 边界
 
+### 3.1c 🎯 审稿修复进展（ARS 审稿 2 之后，2026-08-06）
+| Revision | 状态 | 证据 |
+|---|---|---|
+| **R3 PPL canonical** | ✅ 完成 | 三文件矛盾解决：canonical = `byte_budget_3seed.csv`（4-bit 11.6749±1.61，+1.7% [0.8,2.6]）；13.86 保留为确定性敏感度锚点；11.03 退役。`docs/notes/ppl-canonical-2026-08-06.md` |
+| **R4 质量闭环** | ✅ 完成 | PPL 3-seed：packed vs fp16 **+1.01%**、vs uniform int4 **−0.71%**（CI [−0.18,+0.01]）；NIAH 54/54：**packed 0.9259 > fp16/uniform 0.9074** → **容量恢复无质量回退**。`docs/notes/quality-closure-results-2026-08-06.md` + `results/quality/` |
+| **R5 external baseline** | 🔄 进行中 | **TurboQuant**（k8v4/4bit_nc）可行性 MVEx PASSED（NIAH acc=1.00，同栈 vLLM 原生 dtype）；NIAH 质量矩阵 36 样本**服务器运行中**（GPU 占用，`--resume`，本地已回传 26/36）。`docs/notes/external-baseline-plan-2026-08-06.md` |
+| **R8 Discussion/Limitations/Data-Availability** | ✅ 草稿 | commit `6a90d4e`（含 GDN state 敏感性、多 GPU 局限、artifact 声明）|
+| R1/R2 部分 | 🔶 | Eval 删 stale future work + 指向 A2 §8（`63d59cd`）；A2 完整方法章节与全文 +25% 替换未完成 |
+| R6 references.bib / R7 标注 | ❌ | 未做 |
+
 ### 3.2 🔄 进行中 / 待办（按优先级）
-1. **[A2] 质量闭环**：packed vs uniform 多 seed PPL + retrieval/long-context（验证容量恢复未以质量回退为代价）
-2. **[baseline] 外部系统对比**：KIVI/KVQuant/TurboQuant 或可执行等价 baseline，同硬件/模型/SLO 协议
-3. **[审稿] 统一 canonical**：表/图切换到 VERIFIED E3 + A2 serving formal 数据；删除旧 +25%；解决 PPL 三文件矛盾（13.86/11.67/11.03）
-4. **[审稿] 完成手稿**：references.bib、收窄 'first' claim、9B 16384 补进、Discussion/Limitations、A2 系统贡献章节
-5. **int2/int3 Triton 内核**：仅在上述 blocking 项完成后扩展
+1. **[R5] TurboQuant serving formal**：NIAH 矩阵完成后，TurboQuant × Random/ShareGPT 同协议 serving 3-seed（external baseline 的 serving 对比）
+2. **[R1] 全文切换 VERIFIED 数据**：Abstract/Intro/Eval 主表删 +25%、换 workload-specific 边界（3-seed + A2 formal）
+3. **[R2] A2 方法章节入文**：packed per-layer page group 完整方法 + 与 DeepSeek V4 packed 布局的增量论证（改前/改后 diff）
+4. **[R6] references.bib**：全部占位符替换 + 'first' claim 收窄 + [VERIFY] 核验
+5. **[R7] 证据状态标注**：A2 serving formal 边界标 ANALYZED（独立复现后 VERIFIED）；9B E2 标 scale-check
+6. **int2/int3 Triton 内核**：仅 blocking 项完成后扩展
 
 ---
 
-## 四、审稿人意见（2026-08-04 最大强度对抗审稿）
+## 四、审稿人意见
 
-### 4.1 决策与评分：**REJECT**（6/4/4/5.5）
+### 4.0 第二轮 ARS 审稿（2026-08-06，5 审稿人 panel：EIC+R1+R2+R3+DA）
+- **决策：REJECT（Resubmit Encouraged）**——加权 54-57（Major Revision 档），F1 block 升级。全文：`docs/notes/mlsys-review-ars-2026-08-06.md`
+- **核心批评**：C1 论文文本仍写已撤回的 +25%（与自身 VERIFIED 证据冲突，最致命）；C2 PPL 三文件矛盾；C3 A2 未入正文仍为 future work；M1 GDN state 压缩替代路径未讨论；M2 A2 复用 DeepSeek V4 packed 布局增量未证；M3 'first' 声明过强；M4 serving formal 仅 ANALYZED
+- **Revision Roadmap**：R1-R8 Required + S1-S6 Suggested（6-8 周）。**R3/R4 已完成，R5 进行中，R8 草稿完成**（见 §3.1c）
+- 附录含外部核验（Qwen3.5 架构、KIVI/KVQuant/TurboQuant、DeepSeek V4 PR #44454/#46252 等全部属实）
+
+### 4.1 第一轮审稿（2026-08-04）：**REJECT**（6/4/4/5.5）
 data-audit 6/10 · method 4/10 · novelty 4/10 · clarity 5.5/10
 
 ### 4.2 一致确认的强项
