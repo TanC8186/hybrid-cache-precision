@@ -1,0 +1,52 @@
+{
+  "accuracy": 1.0,
+  "allocation": "turboquant_4bit_nc",
+  "attempt_id": "r5-turboquant-20260806",
+  "cases": [
+    {
+      "answer": "\n\nH7N9NM37",
+      "code": "H7N9NM37",
+      "hit": true
+    },
+    {
+      "answer": "\n\nTE62Q942",
+      "code": "TE62Q942",
+      "hit": true
+    },
+    {
+      "answer": "\n\nML4KGLZW",
+      "code": "ML4KGLZW",
+      "hit": true
+    }
+  ],
+  "config_effect": {
+    "allocation": "turboquant_4bit_nc",
+    "detail": {
+      "a2_flag": false,
+      "cache_dtype": "turboquant_4bit_nc",
+      "per_layer": {}
+    },
+    "ok": true
+  },
+  "created_at_utc": "2026-08-06T15:31:36Z",
+  "depth_pct": 75,
+  "elapsed_s": 54.1,
+  "engine": {
+    "kwargs": {
+      "disable_log_stats": true,
+      "enforce_eager": true,
+      "gpu_memory_utilization": 0.85,
+      "kv_cache_dtype": "turboquant_4bit_nc",
+      "max_model_len": 16384,
+      "seed": 7
+    },
+    "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master",
+    "vllm_version": "0.26.1rc1.dev245+ge2fa28594"
+  },
+  "host": "autodl-container-ca6c40b13f-016bd465",
+  "max_len": 4096,
+  "num_needles": 3,
+  "schema_version": 1,
+  "seed": 7,
+  "status": "completed_validated"
+}
