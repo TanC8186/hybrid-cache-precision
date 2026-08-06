@@ -336,12 +336,13 @@ We state the caveats that qualify every claim above.
 
 ---
 
-## 8. Limitation & Discussion: Mixed-dtype per-layer KV allocation collapses capacity
+## 8. Legacy Limitation and Its Fix: Packed Per-Layer Page Groups (A2)
 
 Sensitivity-guided per-layer allocation (protecting the most sensitive attention layer in full
-precision) is attractive at the quality level (§6). In the current vLLM V1 KV manager, however,
-it is **not deployable without a catastrophic capacity penalty** — a system-level finding that
-constrains the design space of heterogeneous KV quantization in hybrid models.
+precision) is attractive at the quality level (§6). In the **legacy** vLLM V1 KV manager it is not
+deployable without a catastrophic capacity penalty — a system-level finding that motivated our
+packed per-layer page-group mechanism (mainline §4). We first quantify the legacy regression, then
+report the fix.
 
 **Quantified regression.** With the per-layer wiring fixed, protecting layer 23 (kept at `auto`
 = bf16, the correct protection dtype for a bf16 model; fp16 protection crashes flash-attn due to
@@ -381,17 +382,68 @@ worse than uniform int4's +8~10% vs fp16). Interestingly, TPOT p99 *improves* (4
 ms) because the bf16-protected layer bypasses the int4 Triton-attention JIT (§5). The capacity
 regression dominates and makes the config unattractive end to end.
 
-**Future work: independent per-dtype page groups.** The loss is not inherent to mixed-dtype
-KV; it is an artifact of the uniform-page KV manager. Allowing **independent page sizes per
-dtype** (separate page groups for int4 and bf16 layers) would avoid the 4× unification and is
-expected to recover roughly the uniform-level ratio (~2×) while keeping layer 23 protected —
-i.e. the quality benefit of §6 at near-uniform capacity. This is a concrete engineering target
-for a follow-up contribution.
+**Fix: packed per-layer page groups (A2).** The loss is not inherent to mixed-dtype KV; it is an
+artifact of the uniform-page configuration layer. We implement `--enable-per-layer-page-groups`
+(mainline §4): the six full-attention layers are merged into one mixed-precision
+`UniformTypeKVCacheSpecs` group (five int4 + one bf16) that shares a block table, while all groups
+are packed into a single backing storage via vLLM's existing `_get_packed_kv_cache_layout`
+(`offset/block_stride`). The Mamba reshape and startup memory accounting are updated for packed
+views; the scheduler, block pool, and coordinator are unchanged. The runtime MVEx passes 8/8
+checks (single backing storage per worker, mixed INT4/NONE attention quantization, GDN temporal
+state fp32, correct non-empty generation).
+
+**Capacity gate (VERIFIED).** Three independent probes at gpu_util 0.85, max-len 4096,
+Qwen3.5-2B:
+
+| Configuration | Capacity (tokens) | Max concurrency | Ratio vs. uniform |
+|---|---:|---:|---:|
+| Legacy per-layer (L23 bf16, others int4) | 705,604 | 172.3 | ×0.258 |
+| Uniform int4 | 2,736,947 | 668.2 | 1.000 |
+| Packed per-layer (A2) | 2,280,448 | 556.8 | **0.833** |
+
+**Table 6.** A2 capacity gate: packed/legacy = **3.232×** (≥ 3× threshold), packed/uniform =
+**0.833** (preset [0.80, 0.92]); gate `PASSED`. An independent-host reproduction (westd-03)
+repeats the three probes within ≤0.1353% capacity and ≤0.0150% ratio difference, upgrading the
+runtime/capacity sub-scope to VERIFIED (REPRODUCIBLE).
+
+**Serving boundaries (ANALYZED).** Protocol-v3 comparative matrix
+(fp16 / uniform int4 / packed per-layer × Random60 + ShareGPT300 × 3 seeds, 300 s ShareGPT
+window, `ignore_eos`; 108/108 samples completed_validated, zero failed requests). Maximum
+sustainable offered rate (all seeds goodput/offered ≥ 0.95):
+
+| Workload | TTFT threshold | fp16 | int4 | packed per-layer |
+|---|---:|---:|---:|---:|
+| ShareGPT300 | 250 ms | 45 | 35 | **40** |
+| ShareGPT300 | 500–3000 ms | 45 | 40 | **40** |
+| Random60 | 250 ms | 30 | none* | 30 |
+| Random60 | 500/1000 ms | 35 | 35 | 35 |
+| Random60 | 2000–3000 ms | 35 | 40 | **40** |
+
+**Table 7.** *None = no 3-seed fully sustainable grid point for uniform int4 at 250 ms. Status:
+ANALYZED — formal samples and slice audits completed, but the independent reproduction gate has
+not run; these boundaries must not be treated as VERIFIED headline numbers.
+
+**Reading.** Packed per-layer meets or exceeds uniform int4 on ShareGPT at every threshold (40 vs
+35 at 250 ms; 40 vs 40 at 500–3000 ms) while restoring capacity to 0.833× of uniform int4; on
+Random60 it is never below uniform int4. FP16 remains highest on ShareGPT (45), consistent with
+the workload-specific E3 result (§4): quantization buys capacity, not universally better SLO
+boundaries.
+
+**Remaining for A2.** (i) Quality closure: packed vs. uniform multi-seed PPL plus
+retrieval/long-context, to show the capacity recovery does not come with a quality regression;
+(ii) independent reproduction of the serving boundaries; (iii) generalization probes (Qwen3.5-9B
+packed capacity, other hybrid families, multi-GPU); (iv) upstream integration of the opt-in flag.
 
 ---
 
 ## Remaining Gaps
 
-9B E2/E3 re-validation (9B capacity probe done: 2.19x @4096, §2) · ShareGPT real-trace SLO
-boundaries · 3-seed per-rate statistics for E2/E3 · figure relabel ("per-layer" → "uniform 4-bit")
-· independent per-dtype page groups to make per-layer protection capacity-neutral (§8).
+- 9B E2/E3 re-validation (9B capacity probes done: 2.19x @4096 and 3.167x @16384, §2; no 9B E3
+  matrix yet);
+- A2 quality closure (packed vs. uniform PPL + retrieval/long-context) and independent serving
+  reproduction (ANALYZED → VERIFIED);
+- external baselines (KIVI/KVQuant/TurboQuant) under the same hardware/model/SLO protocol;
+- 3-seed re-run of the sensitivity/heterogeneous-budget PPL tables under the canonical harness
+  (currently single deterministic protocol);
+- figure relabeling and regeneration from 3-seed / VERIFIED data;
+- full references.bib and Data-Availability/artifact statement.

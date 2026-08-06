@@ -327,10 +327,111 @@ improves TPOT p99 because the bf16-protected layer bypasses the int4 Triton JIT 
 
 We therefore report **uniform int4 as the serving mainline**, and treat sensitivity-guided per-layer
 allocation as (i) a valid quality-side result on the transformers path and (ii) a design target that
-requires **independent per-dtype page groups** — a packed-slab layout already supported by vLLM V1's
-`_get_packed_kv_cache_layout` and expected to recover ≈0.83–0.91 of uniform-int4 capacity while
-keeping layer 23 protected. This is concrete future work; the design is documented in
-`docs/notes/per-layer-page-group-design-2026-08-03.md`.
+requires **independent per-dtype page groups**. We implement this as **packed per-layer page
+groups** (§4): a packed-slab layout that recovers 0.833× of uniform-int4 capacity while keeping
+layer 23 protected, and that we validate end to end in the serving stack. The design rationale is
+documented in `docs/notes/per-layer-page-group-design-2026-08-03.md`.
+
+---
+
+## 4. Packed Per-Layer Page Groups (A2)
+
+### 4.1 Problem restated
+
+In the legacy vLLM V1 KV manager, one global block pool is shared by all KV groups, and the
+configuration layer requires a single uniform page size (`get_uniform_page_size`). Mixing dtypes
+— protecting the most sensitive GQA layer (index 23) in bf16 while quantizing the other five GQA
+layers to int4 — triggers `unify_kv_cache_spec_page_size`, which inflates the int4 `block_size`
+from 16 to 64 tokens (page 2,064 → 8,256 B) and then splits every attention layer into its own
+group (`group_size=1`). The result is a deterministic capacity collapse to **×0.258 of uniform
+int4** on both Qwen3.5-2B (696,456 vs 2,701,721 tokens) and Qwen3.5-9B (84,787 vs 328,499),
+below even the fp16 baseline (Eval §8). The collapse is an artifact of the uniform-page
+configuration layer, not of mixed-precision KV itself: vLLM V1 already ships a packed layout
+(`_get_packed_kv_cache_layout`, `KVCacheTensor(offset, block_stride)`) that lays out multiple
+groups with different page sizes into one backing storage (used upstream for DeepSeek V4).
+
+### 4.2 Mechanism
+
+We add a flag, `--enable-per-layer-page-groups`, that changes two things on the configuration
+path only (the scheduler, block pool, and coordinator are untouched):
+
+1. **Grouping.** All full-attention layers are extracted before the uniform-page unification step
+   and merged into a single `UniformTypeKVCacheSpecs` group with mixed precision: five int4 GQA
+   layers plus the bf16-protected layer 23 share one block table and one `block_size` (16 tokens),
+   while each layer keeps its own physical page size (int4 2,064 B, bf16 8,256 B). The 18 GDN
+   Mamba groups are unchanged.
+2. **Packed backing storage.** The mixed group and the Mamba groups are laid out through the
+   existing packed path (`_get_packed_kv_cache_layout`): one backing tensor per worker with a
+   `block_stride` equal to the maximum per-block byte footprint across groups, and per-layer
+   `(offset, block_stride)` views. The Mamba reshape on the worker is fixed to honor
+   `(offset, block_stride)` instead of assuming offset-0 contiguous pages, and
+   `_max_memory_usage_bytes_from_groups` gains a packed branch so startup memory accounting
+   matches the runtime layout.
+
+The resulting configuration for Qwen3.5-2B is: one mixed-precision attention group
+(`UniformTypeKVCacheSpecs`, 6 layers) + two 9-layer Mamba groups. The runtime MVEx confirms a
+single backing storage per worker, mixed `INT4_PER_TOKEN_HEAD`/`NONE` attention quantization
+modes, GDN temporal state in fp32, and a correct non-empty generation (8/8 checks).
+
+**Relationship to existing vLLM infrastructure.** The packed `offset/block_stride` tensor layout
+is the mechanism already used for DeepSeek V4; our contribution is (i) extending its trigger from
+the DSV4/cross-layer paths to a mixed-precision full-attention group coexisting with Mamba
+groups, (ii) the grouping branch that avoids page-size unification for GQA layers, (iii) the Mamba
+reshape fix, and (iv) memory-accounting alignment. The flag is opt-in; the default path is
+unchanged.
+
+### 4.3 Verification
+
+**Runtime and capacity (VERIFIED).** Three independent probes at `gpu_memory_utilization=0.85`,
+`max_model_len=4096`, Qwen3.5-2B:
+
+| Configuration | Capacity (tokens) | Max concurrency | Ratio vs. uniform |
+|---|---:|---:|---:|
+| Legacy per-layer (L23 bf16, others int4) | 705,604 | 172.3 | ×0.258 |
+| Uniform int4 | 2,736,947 | 668.2 | 1.000 |
+| Packed per-layer (A2) | 2,280,448 | 556.8 | **0.833** |
+
+**Table 3 (mainline).** A2 capacity gate: packed/legacy = **3.232×** (threshold ≥ 3×),
+packed/uniform = **0.833** (preset [0.80, 0.92]); gate `PASSED`
+(`results/verified/2026-08-04/a2/a2_capacity_gate_c7379f0_v2.json`). On an independently
+deployed host (westd-03, frozen root commit + vLLM commit, SHA-verified overlay), the three
+probes reproduce within ≤0.1353% absolute capacity and ≤0.0150% ratio difference; the
+runtime/capacity sub-scope is VERIFIED (REPRODUCIBLE).
+
+**Serving (ANALYZED, independent reproduction pending).** We compared fp16, uniform int4, and
+packed per-layer under the protocol-v3 steady-state matrix (3 allocations × Random60/ShareGPT300
+workloads × 3 seeds; 300 s ShareGPT window, `ignore_eos` pairing; 108/108 samples
+`completed_validated`, zero failed requests; slice audits PASSED). The maximum sustainable
+offered rate (all 3 seeds ≥ 0.95 goodput/offered):
+
+| Workload | TTFT threshold | fp16 | int4 | packed per-layer |
+|---|---:|---:|---:|---:|
+| ShareGPT300 | 250 ms | 45 | 35 | **40** |
+| ShareGPT300 | 500–3000 ms | 45 | 40 | **40** |
+| Random60 | 250 ms | 30 | none* | 30 |
+| Random60 | 500/1000 ms | 35 | 35 | 35 |
+| Random60 | 2000–3000 ms | 35 | 40 | **40** |
+
+**Table 4 (mainline).** *None = no 3-seed fully sustainable point in the tested grid. These
+boundaries are ANALYZED: the formal samples and slice audits completed, but the independent
+reproduction gate has not yet run, so they must not be treated as VERIFIED paper headline
+numbers.
+
+**Reading.** On ShareGPT, packed per-layer **always meets or exceeds uniform int4** (250 ms: 40 vs
+35 req/s) — the quality benefit of protecting layer 23 translates into an SLO boundary advantage —
+while restoring capacity to 0.833× of uniform int4 (3.232× vs. legacy). On Random60 the packed
+boundary is at least as high as uniform int4 at every threshold where uniform int4 has a point.
+FP16 remains the highest-boundary allocation on ShareGPT (45), consistent with the honest
+workload-specific E3 result in §3/Eval §4: quantization trades SLO boundary on real traffic for
+capacity.
+
+### 4.4 Scope and status
+
+The A2 mechanism is validated on Qwen3.5-2B (runtime/capacity) and Qwen3.5-9B (legacy-collapse
+ratio only; packed 9B capacity not yet probed), on a single RTX 5090, in a vLLM fork. The flag is
+opt-in and not yet upstreamed. Quality closure (packed vs. uniform PPL and retrieval/long-context)
+and the independent serving reproduction are required before the serving boundaries may be used
+as headline claims (currently ANALYZED).
 
 ---
 
@@ -338,4 +439,5 @@ keeping layer 23 protected. This is concrete future work; the design is document
 > Experiment setup and platform (Eval §1); E1 KV-cache capacity incl. the 16K / 9B probes (Eval §2);
 > E2 throughput–latency matrix (Eval §3); E3 SLO-constrained capacity (Eval §4); TPOT per-token cost
 > and warmup protocol (Eval §5); quality under a byte budget (Eval §6); honesty statements and
-> provenance (Eval §7); limitation: mixed-dtype per-layer capacity collapse + future work (Eval §8).
+> provenance (Eval §7); legacy mixed-dtype capacity collapse + A2 packed per-layer page groups,
+> capacity gate, and serving boundaries (Eval §8).
