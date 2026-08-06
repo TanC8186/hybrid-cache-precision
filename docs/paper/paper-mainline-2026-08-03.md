@@ -1,6 +1,6 @@
 # Uniform 4-bit KV Cache Quantization for Hybrid Linear-Attention LLMs
 
-> **Working draft — Abstract / Introduction / Related Work / Method** (2026-08-03).
+> **Working draft — Abstract / Introduction / Related Work / Method** (updated 2026-08-06).
 > These chapters connect to the existing Evaluation draft
 > (`docs/paper/serving-evaluation-2026-08-03.md`, referenced below as **Eval**; its §1–§8
 > map to the paper's Experiments/Limitations sections and should be renumbered when merged).
@@ -8,11 +8,16 @@
 > derived from code or carrying residual uncertainty are marked **[VERIFY]**. No number is invented;
 > where a value is not yet measured we say so explicitly. Language: English (MLSys submission).
 >
-> **Mainline (re-based 2026-08-03).** The serving mainline is **uniform 4-bit** KV quantization
-> (`kv_cache_dtype=int4_per_token_head` applied to every GQA attention layer). Earlier "per-layer"
-> serving numbers were the result of a wiring bug (see Eval §7) and are withdrawn; genuine
-> per-layer mixed-dtype allocation *collapses* capacity under the current vLLM V1 KV manager
-> (Eval §8) and is reported as a limitation with independent per-dtype page groups as future work.
+> **Canonical-data update (2026-08-06).** The serving mainline is **uniform 4-bit** KV quantization
+> (`kv_cache_dtype=int4_per_token_head` applied to every GQA attention layer). The earlier
+> "+25% SLO" headline is **withdrawn**: it was an overloaded-transient artifact of the first
+> single-run matrix. The canonical SLO evidence is the protocol-v2 steady-state matrix
+> (`results/verified/2026-08-04/e3/validation_report.md`, VERIFIED): uniform int4's sustainable
+> boundary is workload-dependent (Random: +0% at 250 ms, +4.8% at 500 ms, +14.3% at 1000–3000 ms;
+> ShareGPT: −17.6%). Genuine per-layer mixed-dtype allocation *collapses* capacity under the
+> legacy uniform-page KV manager (Eval §8), which we address with **packed per-layer page groups**
+> (§4): capacity recovers to 0.833× of uniform int4 (3.232× vs. legacy per-layer), and ShareGPT
+> serving boundaries are at least as high as uniform int4 (Eval §8, ANALYZED).
 
 ---
 
@@ -27,18 +32,21 @@ proliferating (e.g., the Qwen3.5 family), and their structural properties break 
 assumption of prior work: a per-sequence recurrent state that the KV scheme cannot quantize and
 that shares the same GPU memory pool as the quantizable attention KV.
 
-We present, to our knowledge, the first system study of int4 KV-cache quantization on a hybrid
-architecture, using Qwen3.5-2B (18 GDN + 6 GQA layers) served with vLLM on an RTX 5090. Uniform
-int4 per-token-head quantization increases end-to-end KV capacity **2.245× at 4K context** (growing
-to **3.155× at 16K**) and lifts the maximum SLO-compliant offered load by **25%** (50 vs 40 req/s)
-under a TTFT p99 < 2 s SLO. We separate the mechanism-level compression (**3.88×** on the attention
-KV alone) from the system-level ratio, exposing a dilution effect unique to hybrid models: the
-**18.63 MiB per-request GDN state** is non-quantizable and consumes ≈60% of the KV budget at the
-int4 server's maximum concurrency **[VERIFY]**. Under an equal byte budget we find that keeping
-high precision and evicting tokens dominates dropping below 4 bits (PPL 14.10 vs 21.07 at ≈3.2 MB).
-We also honestly characterize a system limitation: heterogeneous per-layer dtypes trigger
-uniform-page-size unification in the vLLM V1 KV manager and collapse capacity to **0.258×** —
-below the fp16 baseline — motivating independent per-dtype page groups as future work.
+We present a system study of int4 KV-cache quantization on a hybrid architecture, using
+Qwen3.5-2B (18 GDN + 6 GQA layers) served with vLLM on an RTX 5090. Uniform int4 per-token-head
+quantization increases end-to-end KV capacity **2.245× at 4K context** (growing to **3.155× at
+16K**). Under a fixed 60 s steady-state Poisson protocol (protocol-v2, VERIFIED), the sustainable
+SLO boundary is workload-dependent: uniform int4 gains **+14.3%** on synthetic random traffic at
+TTFT thresholds 1000–3000 ms, no gain at 250 ms, and loses **−17.6%** on the real ShareGPT trace.
+We separate the mechanism-level compression (**3.88×** on the attention KV alone) from the
+system-level ratio, exposing a dilution effect unique to hybrid models: the **18.63 MiB
+per-request GDN state** is non-quantizable and consumes ≈60% of the KV budget at the int4 server's
+maximum concurrency (code-derived estimate). Under an equal byte budget we find that keeping high
+precision and evicting tokens dominates dropping below 4 bits (3-seed Wikitext-2 PPL 11.85 ± 1.66
+vs 19.00 ± 3.19 at ≈3.2 MB). To make per-layer protection deployable, we implement **packed
+per-layer page groups** (§4): mixed-precision attention layers share a single packed backing
+storage, recovering capacity from **0.258× to 0.833× of uniform int4** (3.232× vs. legacy
+per-layer), with ShareGPT SLO boundaries at least as high as uniform int4 (Eval §8, ANALYZED).
 
 ---
 
@@ -72,8 +80,9 @@ ways, which we exploit and, in one case, are blocked by:
    context — a dilution caused by the 18.63 MiB/request GDN state that no KV bit-width can remove.
 3. **The few attention layers are highly heterogeneous.** Forcing a single attention layer (the
    final GQA layer, index 23) to 2 bits costs +28.7% of the 2-bit sensitivity range, while layer 3
-   is effectively free (−5.9%), motivating per-layer allocation — which the serving system cannot
-   currently host without a catastrophic capacity penalty (Eval §8).
+   is effectively free (−5.9%), motivating per-layer allocation — which the legacy uniform-page KV
+   manager cannot host without a catastrophic capacity penalty, and which we make deployable with
+   packed per-layer page groups (§4; Eval §8).
 
 **Our approach.** We study the hybrid case end to end. We quantize all GQA attention layers to
 uniform int4 (`int4_per_token_head`: 4 bits per token with a per-token scale), deploy it in the
@@ -85,14 +94,14 @@ because reporting only one would either over- or under-sell the method on a hybr
 
 **Contributions.**
 
-**(a) The first system study of KV quantization on a hybrid linear-attention LLM, with real-load
-serving evidence.** Uniform int4 KV quantization on Qwen3.5-2B increases end-to-end KV capacity
+**(a) A system study of KV quantization on a hybrid linear-attention LLM, with real-load serving
+evidence.** Uniform int4 KV quantization on Qwen3.5-2B increases end-to-end KV capacity
 **2.245×** under a fixed GPU budget at 4K context (1,203,106 → 2,701,721 tokens), growing to
-**3.155×** at 16K context; on Qwen3.5-9B it gives **2.19×** @4096. Under a production-style SLO
-(TTFT p99 < 2000 ms, TPOT p99 < 200 ms), int4 raises the maximum compliant offered load by
-**+25%** (50 vs 40 req/s) and pushes the SLO-violation cliff out by a rate tier with more headroom.
-At saturation, int4 sustains +5.2% goodput (38.14 vs 36.26 req/s) — the 2.245× larger cache converts
-into load-bearing capacity.
+**3.155×** at 16K context; on Qwen3.5-9B it gives **2.19×** @4096. Under the protocol-v2
+steady-state SLO protocol (TTFT thresholds 250–3000 ms, TPOT 200 ms, 60 s arrival window,
+3 seeds, VERIFIED), the sustainable boundary is workload-dependent: **+14.3%** for synthetic
+random at 1000–3000 ms thresholds, **+4.8%** at 500 ms, **0%** at 250 ms, and **−17.6%** on the
+ShareGPT trace. The 2.245× larger cache converts into higher saturation goodput (≈+5%, 3-seed).
 
 **(b) A structural insight unique to hybrid models: recurrent-state dilution.** We identify and
 quantify that the GDN per-sequence state (18 layers × 1,085,440 B = **18.63 MiB/request**,
@@ -104,23 +113,33 @@ context length (2.245× @4096 → 3.155× @16384), giving hybrid KV quantization
 advantage* that pure-attention models do not exhibit.
 
 **(c) An equal-byte-budget ordering in the sub-4-bit region.** On this hybrid model, 4-bit KV is
-near-lossless (PPL +1.7% on Wikitext-2) and 8-bit is lossless; the tension zone is below 4 bits
-(3-bit +16%, 2-bit +55%). Under a fixed byte budget, *keeping 4-bit and evicting tokens dominates
-dropping below 4 bits*: at ≈3.2 MB, 4-bit + eviction scores PPL 14.10 vs 21.07 for 2-bit full
-retention. To our knowledge this ordering is verified here for the first time on a hybrid
-architecture.
+near-lossless (paired 3-seed Wikitext-2 PPL **+1.7%** with 95% CI [0.8%, 2.6%] vs. FP16) and 8-bit
+is lossless; the tension zone is below 4 bits (3-bit +17.8%, 2-bit +65.5%). Under a fixed byte
+budget, *keeping 4-bit and evicting tokens dominates dropping below 4 bits*: at ≈3.2 MB, 4-bit +
+eviction scores PPL 11.85 vs 19.00 for 2-bit full retention (paired Δ −7.15, 95% CI [−10.97,
+−3.34]). This ordering, established by QPruningKV on standard Transformers, is verified here on a
+hybrid architecture.
 
-**(d) An honest disclosure of a serving-system limitation.** Sensitivity-guided per-layer
-allocation is attractive at the quality level (it beats uniform 3-bit at equal bytes; Eval §6),
-but in the current vLLM V1 KV manager, mixing dtypes forces uniform-page-size unification and
-collapses capacity to **×0.258 of uniform int4** — below even the fp16 baseline (Eval §8). We
-report this quantified regression and outline independent per-dtype page groups as concrete future
-work.
+**(d) A deployable system contribution: packed per-layer page groups.** Sensitivity-guided
+per-layer allocation is attractive at the quality level (it beats uniform 3-bit at equal bytes;
+Eval §6), but in the legacy vLLM V1 KV manager, mixing dtypes forces uniform-page-size unification
+and collapses capacity to **×0.258 of uniform int4** — below even the fp16 baseline. We implement
+**packed per-layer page groups** (§4): five int4 GQA layers and one bf16-protected layer share a
+single packed backing storage, recovering capacity to **0.833× of uniform int4** (2,280,448 vs
+2,736,947 tokens at 4K; 3.232× vs. legacy per-layer), with the runtime layout and capacity ratios
+reproduced on an independent host (VERIFIED). In ShareGPT serving, packed sustains a boundary at
+least as high as uniform int4 (40 vs 35 req/s at the 250 ms TTFT threshold; ANALYZED, Eval §8).
+
+**(e) Honest disclosure of a serving-system limitation.** We report the quantified legacy
+regression (×0.258) that motivated (d), and we separately report the workload reversal in (a):
+uniform int4 does not universally improve SLO capacity, and Random/ShareGPT results must not be
+pooled.
 
 **Organization.** §2 reviews related work. §3 describes the model, the int4 scheme, the capacity
-model that explains the 3.88×→2.245× dilution, and why the serving mainline is uniform. The
-experimental setup and results (E1 capacity, E2 throughput–latency, E3 SLO, per-token cost,
-byte-budget quality) and the quantified limitation are in the companion Evaluation draft
+model that explains the 3.88×→2.245× dilution, and why the serving mainline is uniform. §4
+presents the packed per-layer page-group mechanism. The experimental setup and results (E1
+capacity, E2 throughput–latency, E3 protocol-v2 steady-state SLO, per-token cost, byte-budget
+quality) and the quantified legacy limitation are in the companion Evaluation draft
 (`docs/paper/serving-evaluation-2026-08-03.md`).
 
 ---
@@ -175,15 +194,19 @@ evaluation measures directly as a +8–10% TPOT p50 overhead (Eval §5).
 
 ### 2.4 Positioning
 
-To our knowledge we are the first to study **quantization × capacity × real-load SLO** for a KV
-cache on a hybrid linear-attention LLM, and the first to report the **recurrent-state dilution**
-mechanism that separates the mechanism-level compression ratio (3.88×) from the end-to-end system
-ratio (2.245×). Our equal-byte-budget ordering (evict before dropping below 4 bits) matches the
-direction of QPruningKV/RDKV/ARKV but is established here on a hybrid architecture where the
-quantizable cache is a small minority of layers — and where the fixed per-sequence state changes
-the byte accounting. We also contribute a serving-system negative result that constrains future
-heterogeneous-KV design in hybrid models: mixed-dtype per-layer allocation collapses capacity under
-uniform-page KV managers (Eval §8).
+To our knowledge this is the first report of an end-to-end **capacity × real-load SLO** study of
+KV quantization on a hybrid linear-attention LLM in the vLLM serving stack, and the first to
+quantify the **recurrent-state dilution** that separates the mechanism-level compression ratio
+(3.88×) from the end-to-end system ratio (2.245×). Community measurements of 4-bit KV quality on
+Qwen3.5 (e.g., llama.cpp q4_0 and RotorQuant) and TurboQuant's sub-4-bit vLLM backends are
+complementary; none reports the hybrid-specific capacity/SLO system behavior studied here. Our
+equal-byte-budget ordering (evict before dropping below 4 bits) matches the direction of
+QPruningKV/RDKV/ARKV but is established here on a hybrid architecture where the quantizable cache
+is a small minority of layers — and where the fixed per-sequence state changes the byte accounting.
+We also contribute a serving-system negative result that constrains heterogeneous-KV design in
+hybrid models: mixed-dtype per-layer allocation collapses capacity under uniform-page KV managers
+(Eval §8), and a positive system mechanism (packed per-layer page groups, §4) that removes the
+collapse.
 
 ---
 

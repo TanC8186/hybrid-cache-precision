@@ -19,6 +19,17 @@
 > the fp16 baseline. We report this as a limitation and discuss independent per-dtype page
 > groups as future work.
 >
+> **Canonical-data update (2026-08-06).** The SLO section (§4) now reports the **protocol-v2
+> steady-state matrix** (`results/verified/2026-08-04/e3/validation_report.md`, VERIFIED:
+> 72/72 formal samples + 48/48 independent reproduction, 160,200 requests, zero failures) with
+> workload-specific sustainable boundaries. The earlier "+25%" SLO reading from the single-run
+> matrix is **withdrawn as a claim** and retained only as historical context. Quality (§6) now
+> uses the canonical 3-seed PPL file (`byte_budget_3seed.csv`, seeds 7/42/2026, 5 × 2048-token
+> sequences, final harness) with paired 95% t-CIs; the single-run byte-budget file is retained
+> for the deterministic sensitivity tables with explicit labels. §8 reports the A2 packed
+> per-layer page-group mechanism and its capacity/serving evidence (runtime/capacity VERIFIED;
+> serving boundaries ANALYZED pending independent reproduction).
+>
 > Figure/table mapping for LaTeX:
 > `\ref{fig:fig1_latency_throughput}` = Figure 1, `\ref{fig:fig2_slo_ttft}` = Figure 2,
 > `\ref{fig:fig3_tpot}` = Figure 3. Tables are inline markdown below; typeset as `table` floats.
@@ -173,25 +184,44 @@ output 128, Poisson, gpu_util=0.85. All points `failed=0`.
 
 ---
 
-## 4. E3 — SLO-Constrained Capacity
+## 4. E3 — SLO-Constrained Capacity (protocol-v2, VERIFIED)
 
-Figure 2 (`fig2_slo_ttft.png`) plots TTFT p99 vs. offered rate for both allocations with the
-SLO bound (2000 ms) as a horizontal line. Table 3 summarizes the SLO reading.
+The canonical SLO evidence is the **protocol-v2 steady-state matrix**: fixed 60 s Poisson arrival
+window, 120-request warmup, `goodput / offered ≥ 0.95` sustainability, seeds {7, 42, 2026},
+TTFT thresholds {250, 500, 1000, 2000, 3000} ms, TPOT 200 ms. The formal matrix completed
+72/72 samples and 160,200/160,200 requests with zero failures; an independent reproduction
+matched 80/80 cell means within 10% (max 4.993%) and 60/60 boundaries exactly
+(`results/verified/2026-08-04/e3/`, verdict REPRODUCIBLE).
 
-| allocation | max SLO-compliant rate | TTFT p99 @ max rate | first violating rate (TTFT p99) |
-|---|---|---|---|
-| fp16 | **40 req/s** | 566.3 ms | 50 (2081.3 ms) |
-| int4 uniform | **50 req/s** | 1574.1 ms | 75 (4036.7 ms) |
+**Sustainable offered-rate boundary (mean over 3 seeds; all seeds must satisfy the criterion):**
 
-**Table 3.** E3 SLO analysis under the `configs/bench/throughput.yaml` SLO (TTFT p99 < 2000 ms
-and TPOT p99 < 200 ms).
+| Workload | TTFT threshold | FP16 boundary | INT4 boundary | Relative change |
+|---|---:|---:|---:|---:|
+| Random | 250 ms | 35.00 | 35.00 | +0.0% |
+| Random | 500 ms | 35.00 | 36.67 | +4.8% |
+| Random | 1000 ms | 35.00 | 40.00 | +14.3% |
+| Random | 2000 ms | 35.00 | 40.00 | +14.3% |
+| Random | 3000 ms | 35.00 | 40.00 | +14.3% |
+| ShareGPT | 250–3000 ms | 28.33 | 23.33 | **−17.6%** |
 
-**Result.** Uniform int4 carries **+25% offered load** (50 vs 40 req/s) while meeting the same
-SLO. The SLO-violation cliff is pushed out by one rate tier and with more headroom: fp16 first
-violates at 1.04x the bound (2081 ms), int4 at 2.02x (4037 ms).
+**Table 3.** Protocol-v2 sustainable SLO boundaries (VERIFIED). Rates are offered req/s; a
+boundary is sustainable when all three seeds achieve goodput/offered ≥ 0.95 at the given TTFT
+threshold with TPOT ≤ 200 ms. Confidence is CAUTION: n = 3 seeds, 5 req/s rate grid, and wide
+ShareGPT intervals.
 
-**TPOT is not binding anywhere.** Across all 20 points, TPOT p99 stays ≤ 49.3 ms (max at fp16
-R=75), far below the 200 ms SLO bound; the SLO is **TTFT-bound** in both allocations.
+**Result.** The SLO effect of uniform int4 is **workload- and threshold-dependent**. On synthetic
+Random traffic the boundary gain is 0% at the strictest 250 ms threshold, +4.8% at 500 ms, and
++14.3% at 1000–3000 ms. On the real ShareGPT trace the boundary is **lower** for int4 (−17.6%),
+reversing the synthetic direction. Therefore no workload-general claim is made; Random and
+ShareGPT are reported separately, and the earlier "+25%" single-run reading is withdrawn
+(it reflected an overloaded transient, not a sustainable boundary).
+
+**TPOT is not binding anywhere.** Across the protocol-v2 matrix TPOT p99 stays far below the
+200 ms bound; the SLO is TTFT-bound in both allocations.
+
+**Historical note.** The original single-run E2/E3 matrix (`bench_lat`, 10 rates, 400
+requests/point, `num_warmups=0`) is retained in the archive as background/exploratory data. It
+produced the withdrawn +25% reading and is not used for any paper claim.
 
 ---
 
@@ -277,24 +307,24 @@ We state the caveats that qualify every claim above.
   took effect (fixed, `vendor/vllm-patches/per-layer-kv-dtype.diff`; server site-packages
   synchronized and re-verified). The uniform-int4 numbers in §2–§5 are therefore real, and the
   per-layer claims in the original draft are withdrawn in favor of §8's limitation framing.
-- **Model scale.** All serving results use **Qwen3.5-2B**. The headline claims (2.245x
-  capacity, +25% SLO load, ~+5% saturation goodput) must be re-validated on **Qwen3.5-9B** (the
-  smallest model in the Qwen3.5 family with 7+ parameters; Qwen3.5-7B does not exist) in the
-  `remote_5090` environment before final submission. A 9B capacity probe already shows uniform
-  int4 at 2.19x @4096 (§2), but the E2/E3 matrix has not yet been re-run at 9B.
-- **Workload.** The E2/E3 matrix uses a synthetic `random` workload with fixed 1024-token
-  inputs / 128-token outputs; it is **not a real trace** (ShareGPT). Variable-length and
-  real-traffic request mixes may shift the SLO boundaries. A preliminary ShareGPT trace
-  (500 req, `hf-mirror` 94K-request subset) matches the synthetic direction: int4 vs fp16
-  throughput −3%, TPOT +8%, TTFT median +8~14%.
-- **Statistics.** The E2/E3 matrix is a **single run per (allocation, rate)** — no 3-seed
-  mean±std. Cross-point comparisons carry scheduler noise; the low-load int4 deficit (§3.3) and
-  the high-load TPOT reversal (§3.4) are single-run observations — direction credible, precise
-  values pending replication. The offline quality/throughput numbers (§5–6) do carry 3-seed
-  mean±std where stated.
-- **Protocol.** The E2/E3 matrix uses `num_warmups=0`; the offline matrix mixes `warmup_n=5`
-  and `warmup_n=120` across allocations, and the JSONs did not record `warmup_n` (provenance
-  gap, R1 fix). §5 shows the warmup protocol can dominate p99 conclusions.
+- **Model scale.** All serving results use **Qwen3.5-2B**. The capacity claims (2.245x @4K,
+  3.155x @16K) and the protocol-v2 E3 boundaries are validated on 2B; Qwen3.5-9B has capacity
+  probes only (2.19x @4096, 3.167x @16384) and a single-run E2 saturation check. A 9B E3 matrix
+  has not yet been run and must not be claimed.
+- **Workload.** The E3 protocol-v2 matrix combines a synthetic `random` workload (1024-token
+  inputs / 128-token outputs) with the real ShareGPT trace (`ignore_eos` paired completion
+  lengths, 300 s window in the A2 serving protocol). The two workloads **reverse direction**
+  (Random +14.3% at loose thresholds vs ShareGPT −17.6%), so all claims are workload-specific.
+- **Statistics.** The E3 boundaries are 3-seed mean values with the all-seeds-satisfy
+  sustainability criterion (VERIFIED, n = 3, CAUTION). The historical E2 matrix remains a
+  **single run per (allocation, rate)** and is retained only as background; its saturation
+  goodput (≈+5%) is directionally consistent with the 3-seed E2 note
+  (`docs/notes/serving-3seed-9b-2026-08-03.md`) but is not used for headline claims.
+- **Protocol.** The protocol-v2 E3 matrix fixes a 60 s arrival window, 120-request warmup, and
+  explicit failure accounting (`completed + failed = expected`; failures stay in the offered
+  denominator as SLO misses). The historical matrix used `num_warmups=0`; the offline matrix
+  mixes `warmup_n=5` and `warmup_n=120` across allocations. §5 shows the warmup protocol can
+  dominate p99 conclusions.
 - **Capacity provenance.** Server startup logs (KV cache size, max concurrency) are archived in
   commit `525020f` + later commits (`2f7ded9`). The **GDN ≈ 60%-of-budget** figure is derived
   from the archived max concurrency and the code-derived per-sequence state size; it is an
