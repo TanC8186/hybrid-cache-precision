@@ -16,8 +16,8 @@
 > valid as the mainline. When the wiring bug is fixed, genuine per-layer protection is **worse**
 > than uniform int4 in capacity under the current vLLM V1 KV manager (§8): mixing dtypes forces
 > the whole KV pool to the largest page size (4×), collapsing capacity to ×0.258 — below even
-> the fp16 baseline. We report this as a limitation and discuss independent per-dtype page
-> groups as future work.
+> the fp16 baseline. We report this legacy collapse as a limitation and address it with packed
+> per-layer page groups (§8).
 >
 > **Canonical-data update (2026-08-06).** The SLO section (§4) now reports the **protocol-v2
 > steady-state matrix** (`results/verified/2026-08-04/e3/validation_report.md`, VERIFIED:
