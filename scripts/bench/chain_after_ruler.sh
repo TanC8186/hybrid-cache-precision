@@ -39,6 +39,7 @@ run_phase() {
       --phase "$phase" \
       --attempt-id "$attempt" \
       --output-root "$OUT_ROOT" \
+      --resume \
       >> "$LOG" 2>&1; then
     echo "[OK] $phase $attempt" >> "$LOG"
   else
@@ -68,6 +69,14 @@ run_phase r5_turboquant_protocol_v3_random60_formal.yaml mvex r5-tq-v3-random60-
 run_phase r5_turboquant_protocol_v3_sharegpt300_formal.yaml mvex r5-tq-v3-sharegpt300-mvex-20260807
 run_phase r5_turboquant_protocol_v3_random60_formal.yaml pilot r5-tq-v3-random60-pilot-20260807
 run_phase r5_turboquant_protocol_v3_sharegpt300_formal.yaml pilot r5-tq-v3-sharegpt300-pilot-20260807
+
+echo "[RUN] fwe-fix (fp16/uniform/packed, max_tokens=256)" >> "$LOG"
+if bash /root/autodl-tmp/MLSys_Research/scripts/eval/run_ruler_fwe_fix.sh ruler-fwe-fixed-20260807 256 >> "$LOG" 2>&1; then
+  echo "[OK] fwe-fix" >> "$LOG"
+else
+  echo "[FAIL] fwe-fix" >> "$LOG"
+  exit 1
+fi
 
 EXTRA_ARGS="" run_capacity_probe fp16 auto
 EXTRA_ARGS="" run_capacity_probe uniform_int4 int4_per_token_head
