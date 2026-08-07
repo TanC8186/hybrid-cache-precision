@@ -9,7 +9,14 @@ RULER_ATTEMPT="${2:-ruler-subset-20260807}"
 MAX_WAIT_S="${3:-21600}"
 WAITED=0
 
-while ! grep -q '\[DONE\] niah-fixed-20260807' "$NIAH_LOG" 2>/dev/null; do
+while true; do
+  if grep -q '\[DONE\] niah-fixed-20260807' "$NIAH_LOG" 2>/dev/null; then
+    break
+  fi
+  if grep -q '\[FAIL\]' "$NIAH_LOG" 2>/dev/null; then
+    echo "NIAH run FAILED; not launching RULER" >&2
+    exit 3
+  fi
   if [ "$WAITED" -ge "$MAX_WAIT_S" ]; then
     echo "timed out waiting for NIAH" >&2
     exit 2

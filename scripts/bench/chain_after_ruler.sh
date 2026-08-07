@@ -9,7 +9,14 @@ OUT_ROOT="${2:-/root/autodl-tmp/r5-serving-20260807}"
 MAX_WAIT_S="${3:-43200}"
 WAITED=0
 
-while ! grep -q '\[DONE\] ruler-subset-20260807' "$RULER_LOG" 2>/dev/null; do
+while true; do
+  if grep -q '\[DONE\] ruler-subset-20260807' "$RULER_LOG" 2>/dev/null; then
+    break
+  fi
+  if grep -q '\[FAIL\]' "$RULER_LOG" 2>/dev/null; then
+    echo "RULER run FAILED; not launching serving gates" >&2
+    exit 3
+  fi
   if [ "$WAITED" -ge "$MAX_WAIT_S" ]; then
     echo "timed out waiting for RULER" >&2
     exit 2
