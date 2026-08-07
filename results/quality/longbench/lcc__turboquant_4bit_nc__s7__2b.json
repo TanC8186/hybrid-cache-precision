@@ -1,0 +1,701 @@
+{
+  "allocation": "turboquant_4bit_nc",
+  "attempt_id": "longbench-20260807",
+  "cases": [
+    {
+      "_id": "28ce5cf5e0beeb47248c6cba20ae17fa71d60d402770d464",
+      "all_classes": null,
+      "answers": [
+        "\t\t\t\tParticipant p = (Participant)m_Participants[i];"
+      ],
+      "length": 5243,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, here is the completion of the `CloseAllGumps` method.\n\nThe method iterates through the participants, closes all gumps associated with them (including `ParticipantGump` and `DuelContextGump`), and then closes the `RulesetGump`.\n\n```csharp\n\t\t\tfor ( int i = 0; i < m_Participants.Count; ++",
+      "prompt_tokens": 12717,
+      "score": 0.0
+    },
+    {
+      "_id": "ca807f49d7c6f84dcae3df694bde685aa7f75a02e9d4f574",
+      "all_classes": null,
+      "answers": [
+        "\t\t\tZ_.add_edge(e_u, e_v, **data.copy())"
+      ],
+      "length": 1069,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, the `next` method is currently incomplete. It returns the edge and distance, but it does not return the updated graph `A` (which is needed for the next iteration of the ranking loop) or the updated `Y` and `Z` graphs (which are required to maintain the state of the branching/arborescence structure).\n\nHere is the completed code for the `next",
+      "prompt_tokens": 3014,
+      "score": 0.0
+    },
+    {
+      "_id": "04429037d9380b6e9c3f7b2070992a5af10745895025113c",
+      "all_classes": null,
+      "answers": [
+        "        rfd, fd, cfilename   = open_tmp_file('rwseektest.wav')"
+      ],
+      "length": 844,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code structure provided, the next line of code should be the implementation of the `test_rw` method. This method is designed to test the read/write pointers and seek functionality of the `Sndfile` class.\n\nHere is the completed code for that section:\n\n```python\n        ofilename = join(TEST_DATA_DIR, 'test.wav')\n        # Open the test file for reading\n       ",
+      "prompt_tokens": 2376,
+      "score": 0.0
+    },
+    {
+      "_id": "9bc1f81e1a4c4b44da11ffc093a0c9fecbe5f99e4eff3aa5",
+      "all_classes": null,
+      "answers": [
+        "            if e.text == language:"
+      ],
+      "length": 462,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, the next logical step in the `video_id()` method is to return the extracted video ID.\n\nHere is the completed code for the `video_id()` method:\n\n```python\n    def video_id(self):\n        page_url = self.browser.current_url\n        url_parts = urlsplit(page_url).path\n        urlfrag = url_parts.split('/')[3]\n        return url",
+      "prompt_tokens": 1817,
+      "score": 0.0
+    },
+    {
+      "_id": "a5da7e173afd5ba71e0185228a1df77238c2949ba3ea2935",
+      "all_classes": null,
+      "answers": [
+        "\t\t\t\t\tOLStyleValue styleValue = (OLStyleValue) value;"
+      ],
+      "length": 570,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, the `xstream` converter for `OLStyleValue` is missing. The code registers converters for `WMCFormat`, `OLBaseClass`, and `WMCExtension`, but it does not handle the conversion of `OLStyleValue` objects (which are used to define the style colors and ramps).\n\nHere is the code to complete the `xstream` converter for `OL",
+      "prompt_tokens": 2479,
+      "score": 0.0
+    },
+    {
+      "_id": "3bd5a501fc0327fd7bcda8389c7d11b3a821c9b5ce5a93cc",
+      "all_classes": null,
+      "answers": [
+        "        longest = max(self.answers)"
+      ],
+      "length": 1229,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, the `Next` button handler is missing. In the `gui_new` base class (which `TriviaGui` inherits from), the `next` button typically triggers the `next_requested` method.\n\nHere is the completed code with the `next_requested` method implemented:\n\n```python\n#!/usr/bin/env python\nimport sys\n#begin dependent modules\n#sys.path.insert",
+      "prompt_tokens": 4113,
+      "score": 0.0
+    },
+    {
+      "_id": "227b063979c62ee1de7436be168450b5a7712a7a637fa6d4",
+      "all_classes": null,
+      "answers": [
+        "                    mob.Target = new SR_NewRuneTarget(RuneAcc);"
+      ],
+      "length": 907,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the context of the `DisplayRunes` method, specifically the `case 2` block, the code is asking the player to select a location to mark. The `Send` method in the same class (`Send(Mobile mob, SR_RuneAccount runeAcc)`) is responsible for handling the response to this prompt.\n\nHere is the completed code for the `case 2` block:\n\n",
+      "prompt_tokens": 2979,
+      "score": 0.0
+    },
+    {
+      "_id": "f652398c3e8be338b4a7873ba6fecc5a686204d99a1a8d10",
+      "all_classes": null,
+      "answers": [
+        "            for (int i = 0; i < chain.length; i++)"
+      ],
+      "length": 1820,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, the `CertificateMsg` class implements the `print` method. It prints a header, then iterates through the certificate chain. For each certificate, it prints the certificate type (if available) and the certificate's encoded data.\n\nHere is the completed code for the `print` method in the `CertificateMsg` class:\n\n```java\n    @Override\n    void print(Print",
+      "prompt_tokens": 3916,
+      "score": 0.0
+    },
+    {
+      "_id": "01b11dc980d93775ce16fd5e630cf5619f66f281ee12947b",
+      "all_classes": null,
+      "answers": [
+        "            sp = new JESpace(name, path);"
+      ],
+      "length": 1096,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, the `getSpace` method is missing the logic to actually create the `JESpace` instance if it doesn't exist yet.\n\nHere is the completed code for the `getSpace` method:\n\n```java\n    public synchronized static JESpace getSpace (String name, String path)\n    {\n        JESpace sp = (JESpace) spaceRegistrar",
+      "prompt_tokens": 2575,
+      "score": 0.0
+    },
+    {
+      "_id": "64d5f26d486a85e85284229e8d254f996cfafd844cd321c5",
+      "all_classes": null,
+      "answers": [
+        "\t\t\t\t\tpos = btnEnergizeAll.bottom();"
+      ],
+      "length": 567,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, the `consumeAlchemize()` method is called in the `onClick` handlers of the buttons. However, this method is **not defined** in the `Alchemize` class.\n\nTo complete the code, you need to implement the `consumeAlchemize()` method. This method should:\n1.  Check if the player has the required ingredients (Arcane Catalyst).",
+      "prompt_tokens": 1827,
+      "score": 0.0
+    },
+    {
+      "_id": "8ae06de3dd26783213ae72552d610c4f1518647b7898d383",
+      "all_classes": null,
+      "answers": [
+        "        length = int(environ['CONTENT_LENGTH'])"
+      ],
+      "length": 1670,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, the `WSGI` handler class (`WSGIISOAPHandler`) is missing the implementation for the `do_post` method.\n\nHere is the completed code for the `WSGIISOAPHandler` class, including the missing `do_post` method and the necessary imports to ensure it works correctly with the `BaseHTTPRequestHandler` logic used in the `SOAPHandler`.\n\n```python",
+      "prompt_tokens": 4716,
+      "score": 0.0
+    },
+    {
+      "_id": "14de6afab15eabeb4fec480f9d6b4db78e93e0493851cc35",
+      "all_classes": null,
+      "answers": [
+        "        mark = \"setRepeated('%s');\" % status_id"
+      ],
+      "length": 686,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the context of the code (handling status updates, favorites, and conversation management in a web-based status column), the next line of code should handle the logic for marking a status as repeated (retweeting).\n\nHere is the completed code for the `__mark_status_as_repeated` method:\n\n```python\n    def __mark_status_as_repeated(self, status_id):\n        # Check if",
+      "prompt_tokens": 2484,
+      "score": 0.23
+    },
+    {
+      "_id": "1712603d3736689b03586a52e0f51eedd1a2bccd03217fde",
+      "all_classes": null,
+      "answers": [
+        "            return {\"error\": False}"
+      ],
+      "length": 958,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the pattern established in your code (specifically the `action_remove_files` method which is the last method defined in your class), here is the completion of the `action_create_archive` method.\n\nThe method needs to:\n1.  Log the start of the operation.\n2.  Create a new `Process` using `self.run_subprocess`.\n3.  Start the process.\n",
+      "prompt_tokens": 3675,
+      "score": 0.0
+    },
+    {
+      "_id": "e212994f82962f98d4e1be7a5678cfd25eacb4f645df2198",
+      "all_classes": null,
+      "answers": [
+        "\t\t\tIPermission result = a.Union (b);"
+      ],
+      "length": 778,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code structure and the pattern used in the previous test methods (specifically `Union_DifferentIdentities`), here is the completion of the code.\n\nThe test is checking that a `ZoneIdentityPermission` created from one zone (e.g., Trusted) is **not** equal to a `ZoneIdentityPermission` created from a different zone (e.g., Untrusted), even though they might share",
+      "prompt_tokens": 2137,
+      "score": 0.0
+    },
+    {
+      "_id": "e6dca363f4644795057dce35d57cdbc53e1e84bea1699bbf",
+      "all_classes": null,
+      "answers": [
+        "        certs = []"
+      ],
+      "length": 713,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, the `getAcceptedIssuers` method in the `CompositeX509TrustManager` class is incomplete. It currently raises a `CertificateException` immediately without checking if any of the underlying trust managers have valid issuers.\n\nHere is the completed code for that specific method, followed by the necessary imports and the full class definition to ensure it works correctly with the existing codebase.",
+      "prompt_tokens": 2229,
+      "score": 0.0
+    },
+    {
+      "_id": "45be6133b10843a59b2ff2272116e322f7dd795025749020",
+      "all_classes": null,
+      "answers": [
+        "        User user = getUser(request);"
+      ],
+      "length": 847,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code structure and the method signature `doDomainInfo`, here is the completion of the method.\n\nThe method retrieves the domain information from the `MailManager`, checks if the domain exists, and then populates the request attributes with the necessary data (domain name, mail address, and mail destinations) to be used by the domain admin page.\n\n```java\n    /**\n     * Prepares the",
+      "prompt_tokens": 2198,
+      "score": 0.0
+    },
+    {
+      "_id": "4b93f91719b36d7aee8a2f7f39b3991d464913e3bc3e77b4",
+      "all_classes": null,
+      "answers": [
+        "            self.__tmp_dir, 'datastream.%s.pipe' % uuid.uuid4().hex)"
+      ],
+      "length": 1276,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, the `__setup_datastream_pipe` method is incomplete. It sets up the address and transport but does not actually create the `DataStreamProtocol` instance or start the data pump task that processes the stream.\n\nHere is the completed code for the `Renderer` class, including the missing implementation of `__setup_datastream_pipe` and the necessary logic to start the data pump:\n\n```",
+      "prompt_tokens": 3785,
+      "score": 0.0
+    },
+    {
+      "_id": "54df7435e6cdeb9cf80f52a45f4c173229b57b7dfcc77ad7",
+      "all_classes": null,
+      "answers": [
+        "\t\t\t\tif(! option1) {"
+      ],
+      "length": 957,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, the logic in `on_button_accept_clicked` is incomplete. It attempts to iterate through the tree store to update the checkboxes, but it does not actually perform the update on the database (the `store`).\n\nHere is the completed code for the `on_button_accept_clicked` method:\n\n```csharp\nprotected void on_button_accept_clicked (object o, EventArgs args)\n{\n",
+      "prompt_tokens": 2711,
+      "score": 0.0
+    },
+    {
+      "_id": "e42bb143aca03ffdde352e012ca3991013aa4f1018e60c8f",
+      "all_classes": null,
+      "answers": [
+        "        if ((args == null) || (args.length == 0)) {"
+      ],
+      "length": 1570,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, here is the completion of the `getArgValues` method.\n\nThe method is responsible for retrieving the actual string values for the arguments passed to a message. It handles both resource-based arguments (which are looked up in the message resources) and non-resource arguments (which are returned directly).\n\n```java\n    private static String[] getArgValues(ServletContext application,\n        HttpServletRequest",
+      "prompt_tokens": 3540,
+      "score": 0.0
+    },
+    {
+      "_id": "04233bb10cad37ee372ddcc1ca95b3e2a853d217fa90929e",
+      "all_classes": null,
+      "answers": [
+        "\t\t\t\tfirms = loadFromFile();"
+      ],
+      "length": 515,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, the `loadToData()` method for the `FIRM` class is incomplete. It currently only calls `super.loadToData()` but does not actually load the data from the file or initialize the map.\n\nHere is the completed code for the `FIRM` class:\n\n```java\n\t\t\t@Override\n\t\t\tpublic void loadToData()\n\t\t\t{\n\t\t\t\t",
+      "prompt_tokens": 1648,
+      "score": 0.0
+    },
+    {
+      "_id": "36799d0d8e06fa5c217eccd67db779ab9866845eb0713e74",
+      "all_classes": null,
+      "answers": [
+        "\t\tPreferencePage generalPage = new FieldEditorPreferencePage() {"
+      ],
+      "length": 925,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, the `showConfigurationDialog` method is currently incomplete. It creates the necessary preference nodes and pages but never actually calls the method to display the dialog or handles the result.\n\nHere is the completed code for the `showConfigurationDialog` method, followed by the necessary imports and the initialization logic to make it functional.\n\n### Completed Code\n\n```java\npackage gui;\nimport java.io",
+      "prompt_tokens": 2733,
+      "score": 0.0
+    },
+    {
+      "_id": "82560c22f3648e5086523b10f22179edb1aebdc379fdfaa5",
+      "all_classes": null,
+      "answers": [
+        "                if (m_Owner.SpellTarget == null)"
+      ],
+      "length": 538,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, the `OnTargetFinish` method is currently incomplete (it ends with `Next line of code:`).\n\nTo complete this method, you need to:\n1.  Check if the target is valid (not the caster).\n2.  Call the parent class's `OnTargetFinish` to handle the target selection logic.\n3.  Call `FinishSequence()` to finalize",
+      "prompt_tokens": 1507,
+      "score": 0.0
+    },
+    {
+      "_id": "52b05f3e84a4fe67c9a1b15719fbecb75dda4932f22567e9",
+      "all_classes": null,
+      "answers": [
+        "        for state, dict_ in states.items():"
+      ],
+      "length": 4268,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, the next line of code in the `Session` class is the implementation of the `no_autoflush` property.\n\nHere is the complete code block for that section:\n\n```python\n    @property\n    @util.contextmanager\n    def no_autoflush(self):\n        \"\"\"Return a context manager that disables autoflush.\n        e.g.::\n            with",
+      "prompt_tokens": 9873,
+      "score": 0.0
+    },
+    {
+      "_id": "1e32291c11bc48e0917860b1de8446dde3fedecd450ef073",
+      "all_classes": null,
+      "answers": [
+        "\t\tfor(IField field : fields) { "
+      ],
+      "length": 1985,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the pattern of the previous methods in the `Strings` class (specifically `instanceNames` and `fieldNames`), here is the completion for the `fieldNames` method:\n\n```java\n\t/**\n\t * Returns a map from each IField in the given set to a unique name.\n\t * The names are constructed from the names of the  fields represented\n\t * by I",
+      "prompt_tokens": 4535,
+      "score": 0.0
+    },
+    {
+      "_id": "d5dde130982bcbe6f095c65d1d5a928669bc3a458df26cc6",
+      "all_classes": null,
+      "answers": [
+        "    like ``r'/foo/?'`` in conjunction with using the decorator."
+      ],
+      "length": 6502,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, the next line of code is:\n\n```python\ndef addslash(method):\n    \"\"\"Use this decorator to add a missing trailing slash to the request path.\n    For example, a request to ``/foo`` would redirect to ``/foo/`` with this\n    decorator. Your request handler mapping should use a regular expression\n    like ``r'/foo/*'``",
+      "prompt_tokens": 14816,
+      "score": 0.33
+    },
+    {
+      "_id": "5dbe65a9966abf6a6fdc04cf78e20977f8d24df06849e8e7",
+      "all_classes": null,
+      "answers": [
+        "\t\t\tif ((Controls.Count == 0) && (initialIndex != -1)) "
+      ],
+      "length": 777,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, the `Render` method is currently incomplete. It starts with the comment `Next line of code:` but does not contain the actual implementation.\n\nTo complete this method, we need to:\n1.  Iterate through the `Views` collection.\n2.  Determine which view is currently active (based on `viewIndex`).\n3.  Set the `Visible` property of",
+      "prompt_tokens": 1776,
+      "score": 0.0
+    },
+    {
+      "_id": "43954d45633ac63acc4badb3892fdb276e080592cc147b1e",
+      "all_classes": null,
+      "answers": [
+        "    args = parser.parse_args()"
+      ],
+      "length": 1225,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, the next line of code is the entry point of the script, which sets up the command-line arguments and executes the main logic.\n\nHere is the complete code block for the final line:\n\n```python\nif __name__ == '__main__':\n    parser = argparse.ArgumentParser(description='Wigle Downloader arguments')\n    parser.add_argument(\n        '-u', '--",
+      "prompt_tokens": 3092,
+      "score": 0.21
+    },
+    {
+      "_id": "9d639220f2ae9cbb3b86c56287371346450159efa5afc251",
+      "all_classes": null,
+      "answers": [
+        "                if (mod >= 156 && mod <= 160)"
+      ],
+      "length": 1845,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code pattern used in the `WhatReplacesWhat` method for weapons and jewels, here is the completion for the `BaseArmor` and `BaseHat` cases.\n\n```csharp\n            if (item is BaseArmor)\n            {\n                BaseArmor i = item as BaseArmor;\n                // HitLower replace HitLower\n                if (mod >= 28 && mod <=",
+      "prompt_tokens": 6350,
+      "score": 0.0
+    },
+    {
+      "_id": "03873ecbb96288a84c3d9ea1f5a2a718188d2c8a0c5920ab",
+      "all_classes": null,
+      "answers": [
+        "        for plat_os in ['Windows', 'Linux', 'Linux 64', 'OS X']:"
+      ],
+      "length": 816,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, here is the completion of the `download_firefox` function.\n\nThe logic currently handles the desktop build (`l_version`) and gathers the `builds` list. It then iterates through the `platforms` list to construct the HTML buttons. The code needs to handle the `simple` parameter (which hides the icon and extra links) and the `check_old_fx` parameter",
+      "prompt_tokens": 2123,
+      "score": 0.0
+    },
+    {
+      "_id": "63fdad7f1feacdf8cca4aaf57dae737d83c351d9ab66db8b",
+      "all_classes": null,
+      "answers": [
+        "\t\tif (projectID==null || issueTypeID==null) {"
+      ],
+      "length": 1101,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, the method `lookupBeanAllowed` is incomplete. It attempts to retrieve a list of state beans, but it does not check if the retrieved list is empty before returning the result.\n\nHere is the completed code for the `lookupBeanAllowed` method:\n\n```java\n\t/**\n\t * Whether the lookupID found by label is allowed in \n\t * the context of serializable",
+      "prompt_tokens": 3075,
+      "score": 0.0
+    },
+    {
+      "_id": "a2ce4aeed86faf7c78539925675910ecdf08f4ca9f5603ee",
+      "all_classes": null,
+      "answers": [
+        "            foreach (ArgumentSyntax argumentSyntax in argumentSyntaxs) {"
+      ],
+      "length": 861,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, the `FixByReferenceCalls` method is currently incomplete. It declares a dictionary to replace arguments but never populates it or returns the result.\n\nHere is the completed code for the `FixByReferenceCalls` method:\n\n```csharp\n        private static NamespaceDeclarationSyntax FixByReferenceCalls( NamespaceDeclarationSyntax finalScript, SyntaxList<MemberDeclarationSyntax> memberList ) {\n",
+      "prompt_tokens": 2602,
+      "score": 0.0
+    },
+    {
+      "_id": "b55c3cd64c946848d39da7e77c7364582b5e7ab71a545f58",
+      "all_classes": null,
+      "answers": [
+        "        split_test = self._update_partition_id(0)"
+      ],
+      "length": 2752,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, the next line of code in the `test_change_user_partition_id` method is:\n\n```python\n        # Verify that the children of the split_test instance are correctly mapped to the new partition.\n        self.assertEqual(2, len(split_test.children))\n        vertical_0 = self.get_item_from_modulestore(split_test.children[0], verify_is_draft=True)\n        vertical",
+      "prompt_tokens": 8502,
+      "score": 0.0
+    },
+    {
+      "_id": "caded4c1338faaf5978525a343ec76e66b5546a6a35088a6",
+      "all_classes": null,
+      "answers": [
+        "            foreach (object o in longTag.Values) {"
+      ],
+      "length": 1490,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, the `Next line of code` corresponds to the implementation of the `AddRangeUni` method (or the logic immediately following the `AddRangeUni` call in the `WriteFont` method).\n\nLooking at the context:\n1.  The `WriteFont` method calls `AddRangeUni(longTag, true, subset)`.\n2.  The `AddRangeUni",
+      "prompt_tokens": 3255,
+      "score": 0.0
+    },
+    {
+      "_id": "341005dfebe6821d4201177ffce38b1e3048f5a0d9c30463",
+      "all_classes": null,
+      "answers": [
+        "\t\t\t\t\t\tGraphNode cgn = graphNodes.get(cell);"
+      ],
+      "length": 1113,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, the next line of code is the initialization of the `GraphNode` object for the current cell being processed. This happens inside the nested `for` loop that iterates over the cells in the current library.\n\nHere is the complete code block for that specific line:\n\n```java\n\t\t\t\t\tGraphNode cgn = new GraphNode();\n\t\t\t\t\tcgn.name = cell.describe(false",
+      "prompt_tokens": 2876,
+      "score": 0.0
+    },
+    {
+      "_id": "32d36e0536e57f991a066ab60778b32884747e7689f3c816",
+      "all_classes": null,
+      "answers": [
+        "        task = new ListenableFutureTask<>(callable);"
+      ],
+      "length": 629,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, the `get()` method in `EmojiPageBitmap` is currently returning `null` if the `bitmapReference` is null or if the cached bitmap is null. It then falls back to creating a new `Callable` to load the page.\n\nTo complete this method and ensure the `EmojiDrawable` is properly initialized with the loaded bitmap, the `get()` method should return a `",
+      "prompt_tokens": 1853,
+      "score": 0.0
+    },
+    {
+      "_id": "1f9066ab085c69885da88c003a539d651c2835d2ed83fd83",
+      "all_classes": null,
+      "answers": [
+        "                else if (ke.getKeyCode() == KeyEvent.VK_DOWN) {"
+      ],
+      "length": 1035,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the pattern established in the `keyReleased` method (which handles the \"Command history down\" functionality) and the structure of the `MainPanel` class, here is the completion of the code.\n\nThe `keyReleased` method currently handles the \"up\" key. To complete the \"down\" key functionality, we need to:\n1.  Check if the key code is `KeyEvent.VK_DOWN",
+      "prompt_tokens": 2495,
+      "score": 0.0
+    },
+    {
+      "_id": "88af654f6cc0799e1844ea6d4158729b1130dc62928ae169",
+      "all_classes": null,
+      "answers": [
+        "    prerequisite = NavigateToSibling('Details')"
+      ],
+      "length": 534,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, the `Next line of code` section is currently empty. To complete the file, I have added the necessary logic to handle the `ManagePolicies` navigation step, which is the final step in the `ManagePolicies` workflow (Selecting Policy Profiles).\n\nHere is the completed code:\n\n```python\n# -*- coding: utf-8 -*-\n# added new list_tbl",
+      "prompt_tokens": 1601,
+      "score": 0.0
+    },
+    {
+      "_id": "08b681d309832c3aa506f61679aefcaed7ca5b6c115d2701",
+      "all_classes": null,
+      "answers": [
+        "\t\tfor (IJRecognitionListener listener : recognitionListeners) {"
+      ],
+      "length": 482,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the pattern of the previous methods (`notifySequenceListeners`, `notifyRecognitionListeners`, `notifyPoseListeners`), the next line of code should be the method that notifies the pose listeners.\n\nHere is the completed code snippet:\n\n```java\n\t@Override\n\tpublic void nextFrame(BigInteger timestamp, FlSkeleton skeleton) {\n\t\tsuper.nextFrame(timestamp, skeleton);\n\t\tnotifySequenceListeners(timestamp, getCurrent",
+      "prompt_tokens": 1630,
+      "score": 0.0
+    },
+    {
+      "_id": "1472d733364caca77c7f2605a8ceaee6c18fb02ebc460475",
+      "all_classes": null,
+      "answers": [
+        "                ScriptManager sm = ScriptManager.GetCurrent(Page);"
+      ],
+      "length": 655,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, the `Render` method in the `ToolbarButton` class is incomplete. It currently checks for design mode but does not actually execute the logic to render the button's HTML (including the image source, text, and any JavaScript) to the output stream.\n\nHere is the completed code for the `Render` method:\n\n```csharp\n        protected override void Render(HtmlTextWriter writer)",
+      "prompt_tokens": 1581,
+      "score": 0.0
+    },
+    {
+      "_id": "2abe780e4777e159876fcba6fb9c21888d8a0782e7499c3e",
+      "all_classes": null,
+      "answers": [
+        "\t\tdamageCooldown = compound.getInteger(\"DamageCooldown\");"
+      ],
+      "length": 475,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, the `readFromNBT` method is incomplete. It calls `super.readFromNBT(compound)` but does not handle the specific data that `TileEntity` expects to read from the NBT tag list (specifically the `ToolDamage` integer and the Enchantment tags).\n\nHere is the completed code for the `readFromNBT` method, followed by the necessary",
+      "prompt_tokens": 1686,
+      "score": 0.0
+    },
+    {
+      "_id": "214bccc94127564a29c72827ff53ccb4c3bd880918d517fa",
+      "all_classes": null,
+      "answers": [
+        "        StringBuilder sb = new StringBuilder(32);"
+      ],
+      "length": 661,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, the `toString()` method is currently incomplete (it ends with `Next line of code:`).\n\nTo complete this method, we need to construct a string representation of the `Effect` object. This typically includes:\n1.  The object ID (ID).\n2.  The probability value.\n3.  The list of scopes.\n4.  The specification (if",
+      "prompt_tokens": 1511,
+      "score": 0.0
+    },
+    {
+      "_id": "492de4fd744409d77007630f3cf7e7c49b13037cb2b2a8c6",
+      "all_classes": null,
+      "answers": [
+        "    i = store.handle_indicators_create(t, {"
+      ],
+      "length": 577,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code snippet provided, the next logical step is to **create a token with the 'private' group** so that the test `test_store_elasticsearch_tokens_groups6` can verify that an admin user can access any group.\n\nHere is the code to complete the test:\n\n```python\n# allow admin to access any group\n@pytest.mark.skipif(DISABLE_TESTS, reason='need to set CIF",
+      "prompt_tokens": 2131,
+      "score": 0.0
+    },
+    {
+      "_id": "a507514e59d02bec9d48f262b48dffcb180b6665ae945f96",
+      "all_classes": null,
+      "answers": [
+        "        p = Person.objects.get(name=\"owner\")"
+      ],
+      "length": 701,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, the next line of code is the final test case for the circular reference delta functionality.\n\nHere is the complete code block:\n\n```python\n    def test_circular_reference_deltas_2(self):\n        self.circular_reference_deltas_2(Document, Document)\n        self.circular_reference_deltas_2(Document, DynamicDocument)\n        self.circular_reference_deltas_2(D",
+      "prompt_tokens": 2929,
+      "score": 0.26
+    },
+    {
+      "_id": "821b5076e7642f35d6db6b0af29ca2ff7694928b53b0dace",
+      "all_classes": null,
+      "answers": [
+        "                    interact(self._plot_line, x_name=widget_x, y_name=widget_y)"
+      ],
+      "length": 1433,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, the next logical step in the `line` method is to handle the case where the user clicks the dropdowns to select variables and then update the plot to display the relationship between the selected variables.\n\nHere is the completed code for the `line` method:\n\n```python\n    def line(self, x=None, y=None, sel_dim=False):\n        \"\"\"\n        Plot two",
+      "prompt_tokens": 4718,
+      "score": 0.0
+    },
+    {
+      "_id": "33a191efb28d5b529c26b622495441d20e705cfb2dc5be9f",
+      "all_classes": null,
+      "answers": [
+        "                if (!ShouldIgnoreChange(path, ignored))"
+      ],
+      "length": 513,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, the `ScanPending` method is currently incomplete. It attempts to clear the `_changedPaths` dictionary and `_tempIgnoredPaths` dictionary, but it does not actually perform the logic to scan the directories or update the `_changedPaths` dictionary with the new results.\n\nHere is the completed code for the `ScanPending` method:\n\n```csharp\n        private void ScanPending",
+      "prompt_tokens": 1613,
+      "score": 0.0
+    },
+    {
+      "_id": "6fac8d0b410c99d32f6421d53dcbd4534f8f4a65b4dcede9",
+      "all_classes": null,
+      "answers": [
+        "\t\treturn read(key, computed);"
+      ],
+      "length": 837,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the pattern established in the previous methods (specifically `computeIfPresent`), here is the completion of the code:\n\n```java\n\t@Override\n\tpublic E computeIfPresent(K key,\n\t\t\t\t\t\t\t  BiFunction<? super K, ? super E, ? extends E> remappingFunction) {\n\t\tI computed = internalMap.computeIfPresent(key, transform(remappingFunction));\n\t\treturn write",
+      "prompt_tokens": 1818,
+      "score": 0.0
+    },
+    {
+      "_id": "b581893ac400757aaad32eed292afd06559e04175e8d6fdf",
+      "all_classes": null,
+      "answers": [
+        "        cat = getToolByName(self.context, 'uid_catalog')"
+      ],
+      "length": 1519,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, the `togglecommentsview` method is incomplete. It defines the parameters to be fetched but does not contain the logic to retrieve the data, process it, and return the result.\n\nHere is the completed code for the `togglecommentsview` method:\n\n```python\n    def togglecommentsview(self):\n        uid = ''\n        itemindex = ''\n        viewtype =",
+      "prompt_tokens": 4990,
+      "score": 0.0
+    },
+    {
+      "_id": "b5474d9a2623627f5e344cff1193ab0629353b34b75b1c81",
+      "all_classes": null,
+      "answers": [
+        "\t\t\tset { m_ID = (ushort)value; }"
+      ],
+      "length": 1528,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, the `Tile` struct is missing the `ID` property getter that was defined inside the `internal` block. In C#, properties must be public to be accessible from outside the class, and the getter needs to be declared as `public` to match the `ID` property defined in the `internal` block.\n\nHere is the completed code for the `Tile` struct:\n\n",
+      "prompt_tokens": 3566,
+      "score": 0.0
+    },
+    {
+      "_id": "c357dc85d4b8de20bfeb7e4f0a5fb6c3f1e2ad3fba2c7691",
+      "all_classes": null,
+      "answers": [
+        "                    channelUri = ChannelUri(scene, land);"
+      ],
+      "length": 1661,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, here is the completion of the `ParcelVoiceInfoRequest` method.\n\nThe method retrieves the land data for the avatar, checks if voice is allowed, and if so, constructs the `channel_uri` and the `LLSDParcelVoiceInfoResponse` object to send back to the client.\n\n```csharp\n                // get channel_uri: check first whether estate\n                // settings",
+      "prompt_tokens": 4416,
+      "score": 0.0
+    },
+    {
+      "_id": "7c3bba0835a61180b3615e5a45405828fb9f896470cd8acb",
+      "all_classes": null,
+      "answers": [
+        "\t\t\t\tMsgBox.Show(this,\"Please fix data entry errors first.\");"
+      ],
+      "length": 576,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, the `butOK_Click` method currently only checks for validation errors. To complete the logic, you need to:\n\n1.  **Validate the dates** (Start, Stop, and Paycheck) to ensure they are not null or empty.\n2.  **Check if the PayPeriod is being edited** (`IsNew` is false).\n3.  **If valid",
+      "prompt_tokens": 2273,
+      "score": 0.0
+    }
+  ],
+  "config_effect": {
+    "allocation": "turboquant_4bit_nc",
+    "detail": {
+      "a2_flag": false,
+      "cache_dtype": "turboquant_4bit_nc",
+      "per_layer": {}
+    },
+    "group_structure_verified": false,
+    "ok": true
+  },
+  "created_at_utc": "2026-08-07T16:03:13Z",
+  "data_sha256": "7668244d638b583c72650abe206e5d23ffefb94eba03158c6f9bc2bfc88d60a9",
+  "data_source": "Xnhyacinth/LongBench parquet mirror (THUDM/LongBench v1)",
+  "elapsed_s": 65.5,
+  "engine": {
+    "kwargs": {
+      "disable_log_stats": true,
+      "enforce_eager": true,
+      "gpu_memory_utilization": 0.85,
+      "kv_cache_dtype": "turboquant_4bit_nc",
+      "max_model_len": 16384,
+      "seed": 7
+    },
+    "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master",
+    "vllm_version": "0.26.1rc1.dev245+ge2fa28594"
+  },
+  "host": "remote_5090",
+  "max_input_tokens": 16300,
+  "max_output_tokens": 84,
+  "max_samples": 50,
+  "metric": "code_sim",
+  "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master",
+  "num_samples": 50,
+  "official_longbench_commit": "4c4b985bcf",
+  "sampling_params": {
+    "max_tokens": 84,
+    "temperature": 0.0
+  },
+  "schema_version": 1,
+  "score": 2.06,
+  "seed": 7,
+  "status": "completed_validated",
+  "task": "lcc",
+  "thinking": "disabled",
+  "truncated_prompts": 0
+}

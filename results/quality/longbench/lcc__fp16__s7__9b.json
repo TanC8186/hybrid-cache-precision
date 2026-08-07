@@ -1,0 +1,700 @@
+{
+  "allocation": "fp16",
+  "attempt_id": "longbench-20260807",
+  "cases": [
+    {
+      "_id": "28ce5cf5e0beeb47248c6cba20ae17fa71d60d402770d464",
+      "all_classes": null,
+      "answers": [
+        "\t\t\t\tParticipant p = (Participant)m_Participants[i];"
+      ],
+      "length": 5243,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "```csharp\n\t\t\t\tParticipant p = (Participant)m_Participants[i];\n\t\t\t\tfor ( int j = 0; j < p.Players.Length; ++j )\n\t\t\t\t{\n\t\t\t\t\tDuelPlayer pl = p.Players[j];\n\t\t\t\t\tif ( pl == null )\n\t\t\t\t\t\tcontinue;\n\t\t\t\t\tpl.Mobile.CloseGump( types[0] );\n\t\t\t\t\tpl.Mobile.CloseGump( types[",
+      "prompt_tokens": 12717,
+      "score": 1.0
+    },
+    {
+      "_id": "ca807f49d7c6f84dcae3df694bde685aa7f75a02e9d4f574",
+      "all_classes": null,
+      "answers": [
+        "\t\t\tZ_.add_edge(e_u, e_v, **data.copy())"
+      ],
+      "length": 1069,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the logic of the `ranking` method and the structure of the `Camerini` class (which implements a variation of the Camerini algorithm for finding minimum weight branchings/arborescences), the code is performing a search where it iteratively improves a solution by adding edges to the set $Y$ (edges that are forbidden or already used in a specific way) and searching for the next",
+      "prompt_tokens": 3014,
+      "score": 0.1
+    },
+    {
+      "_id": "04429037d9380b6e9c3f7b2070992a5af10745895025113c",
+      "all_classes": null,
+      "answers": [
+        "        rfd, fd, cfilename   = open_tmp_file('rwseektest.wav')"
+      ],
+      "length": 844,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "```python\n        rfd, fd, cfilename = open_tmp_file('pysndfiletest.wav')\n        try:\n            # Open the file for writing\n            format = Format('wav', 'pcm16')\n            a = Sndfile(fd, 'w', format, channels=1, samplerate=22050)\n            \n            # Write some data\n           ",
+      "prompt_tokens": 2376,
+      "score": 0.9
+    },
+    {
+      "_id": "9bc1f81e1a4c4b44da11ffc093a0c9fecbe5f99e4eff3aa5",
+      "all_classes": null,
+      "answers": [
+        "            if e.text == language:"
+      ],
+      "length": 462,
+      "max_new_tokens": 84,
+      "output_tokens": 31,
+      "prediction": "```python\n            if e.text == language:\n                return el.find_element_by_css_selector(\"span.tags\").text\n        return None\n```",
+      "prompt_tokens": 1817,
+      "score": 1.0
+    },
+    {
+      "_id": "a5da7e173afd5ba71e0185228a1df77238c2949ba3ea2935",
+      "all_classes": null,
+      "answers": [
+        "\t\t\t\t\tOLStyleValue styleValue = (OLStyleValue) value;"
+      ],
+      "length": 570,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the pattern established in the previous `if` blocks for `OLBaseClass` subclasses (`OLExtent` and `OLDimension`), the next block must handle the `OLStyleValue` instance.\n\nIn the WMC/OL specification, `ol:styleValue` elements typically contain a `name` attribute and a `value` attribute. The code for `OLDimension` used `name` and",
+      "prompt_tokens": 2479,
+      "score": 0.0
+    },
+    {
+      "_id": "3bd5a501fc0327fd7bcda8389c7d11b3a821c9b5ce5a93cc",
+      "all_classes": null,
+      "answers": [
+        "        longest = max(self.answers)"
+      ],
+      "length": 1229,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "```python\n        for a in self.answers:\n            if a.lower() in self.question.lower():\n                ret += a + \" \"\n        return ret\n    def is_correct(self, answer):\n        for a in self.answers:\n            if a.lower() in answer.lower():\n                return True\n        return False\n\nclass _AnagramData(_QAData):\n    def ask_string(self",
+      "prompt_tokens": 4113,
+      "score": 0.71
+    },
+    {
+      "_id": "227b063979c62ee1de7436be168450b5a7712a7a637fa6d4",
+      "all_classes": null,
+      "answers": [
+        "                    mob.Target = new SR_NewRuneTarget(RuneAcc);"
+      ],
+      "length": 907,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the context of the `Staff Runebook` script (which manages runebooks and runes for RunUO), the code is currently handling the \"New Rune\" button (ID 2). The user has been prompted to \"Target a location to mark\".\n\nThe next logical step is to handle the mobile's response to that prompt. In RunUO scripts, this is typically done by checking if the mobile",
+      "prompt_tokens": 2979,
+      "score": 0.0
+    },
+    {
+      "_id": "f652398c3e8be338b4a7873ba6fecc5a686204d99a1a8d10",
+      "all_classes": null,
+      "answers": [
+        "            for (int i = 0; i < chain.length; i++)"
+      ],
+      "length": 1820,
+      "max_new_tokens": 84,
+      "output_tokens": 78,
+      "prediction": "s.println(\"Number of certificates: \" + chain.length);\n        if (debug != null && Debug.isOn(\"verbose\")) {\n            for (int i = 0; i < chain.length; i++) {\n                s.println(\"Certificate \" + i + \": \" + chain[i]);\n            }\n        }\n        s.println(\"***\");\n    }\n}",
+      "prompt_tokens": 3916,
+      "score": 0.43
+    },
+    {
+      "_id": "01b11dc980d93775ce16fd5e630cf5619f66f281ee12947b",
+      "all_classes": null,
+      "answers": [
+        "            sp = new JESpace(name, path);"
+      ],
+      "length": 1096,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the context of the `getSpace` method and the existing `spaceRegistrar` pattern used in the class, the code needs to instantiate a new `JESpace`, register it in the static map, and return it.\n\nHere is the completion of the code:\n\n```java\n            sp = new JESpace(name, path);\n            spaceRegistrar.put(name, sp);\n        }\n",
+      "prompt_tokens": 2575,
+      "score": 0.0
+    },
+    {
+      "_id": "64d5f26d486a85e85284229e8d254f996cfafd844cd321c5",
+      "all_classes": null,
+      "answers": [
+        "\t\t\t\t\tpos = btnEnergizeAll.bottom();"
+      ],
+      "length": 567,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "```java\n\t\t\t\t}\n\t\t\t}\n\t\t\t\n\t\t\t// Add the \"Cancel\" button at the bottom\n\t\t\tRedButton btnCancel = new RedButton(Messages.get(this, \"cancel\")) {\n\t\t\t\t@Override\n\t\t\t\tprotected void onClick() {\n\t\t\t\t\thide();\n\t\t\t\t}\n\t\t\t};\n\t\t\tbtnCancel.setRect(0, pos + GAP, width, BTN_HEIGHT);",
+      "prompt_tokens": 1827,
+      "score": 0.2
+    },
+    {
+      "_id": "8ae06de3dd26783213ae72552d610c4f1518647b7898d383",
+      "all_classes": null,
+      "answers": [
+        "        length = int(environ['CONTENT_LENGTH'])"
+      ],
+      "length": 1670,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "```python\n        content_length = int(environ.get('CONTENT_LENGTH', 0))\n        if content_length == 0:\n            start_response('400 Bad Request', [('Content-Type', 'text/plain')])\n            return ['No content provided']\n        \n        body = environ['wsgi.input'].read(content_length)\n        response = self.dispatcher.dispatch(body)\n        start_response('",
+      "prompt_tokens": 4716,
+      "score": 0.83
+    },
+    {
+      "_id": "14de6afab15eabeb4fec480f9d6b4db78e93e0493851cc35",
+      "all_classes": null,
+      "answers": [
+        "        mark = \"setRepeated('%s');\" % status_id"
+      ],
+      "length": 686,
+      "max_new_tokens": 84,
+      "output_tokens": 22,
+      "prediction": "mark = \"setRepeated('%s')\" % status_id\n        self.webview.execute_javascript(mark)",
+      "prompt_tokens": 2484,
+      "score": 0.89
+    },
+    {
+      "_id": "1712603d3736689b03586a52e0f51eedd1a2bccd03217fde",
+      "all_classes": null,
+      "answers": [
+        "            return {\"error\": False}"
+      ],
+      "length": 958,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the pattern established in the previous methods (specifically `action_create_archive`), the code needs to:\n1.  Log the start of the subprocess.\n2.  Create a `Process` targeting `CreateArchive`.\n3.  Pass the necessary arguments (`logger`, `CreateArchive`, `status_id`, `FM.Action.CREATE_ARCHIVE`, and the decoded parameters).\n4.  Start the",
+      "prompt_tokens": 3675,
+      "score": 0.31
+    },
+    {
+      "_id": "e212994f82962f98d4e1be7a5678cfd25eacb4f645df2198",
+      "all_classes": null,
+      "answers": [
+        "\t\t\tIPermission result = a.Union (b);"
+      ],
+      "length": 778,
+      "max_new_tokens": 84,
+      "output_tokens": 35,
+      "prediction": "```csharp\n\t\t\t// Union of different zones should throw an exception\n\t\t\ta.Union (b);\n\t\t}\n\t}\n}\n```",
+      "prompt_tokens": 2137,
+      "score": 0.59
+    },
+    {
+      "_id": "e6dca363f4644795057dce35d57cdbc53e1e84bea1699bbf",
+      "all_classes": null,
+      "answers": [
+        "        certs = []"
+      ],
+      "length": 713,
+      "max_new_tokens": 84,
+      "output_tokens": 68,
+      "prediction": "```python\n        issuers = []\n        for trust_manager in self.trust_managers:\n            try:\n                issuers.extend(trustManager.getAcceptedIssuers())\n            except Exception:\n                pass\n        if not issuers:\n            return None\n        else:\n            return issuers\n```",
+      "prompt_tokens": 2229,
+      "score": 0.84
+    },
+    {
+      "_id": "45be6133b10843a59b2ff2272116e322f7dd795025749020",
+      "all_classes": null,
+      "answers": [
+        "        User user = getUser(request);"
+      ],
+      "length": 847,
+      "max_new_tokens": 84,
+      "output_tokens": 34,
+      "prediction": "```java\n        DomainInfo domainInfo = manager.getDomainInfo(domain);\n        request.setAttribute(\"domainInfo\", domainInfo);\n    }\n}\n```",
+      "prompt_tokens": 2198,
+      "score": 0.38
+    },
+    {
+      "_id": "4b93f91719b36d7aee8a2f7f39b3991d464913e3bc3e77b4",
+      "all_classes": null,
+      "answers": [
+        "            self.__tmp_dir, 'datastream.%s.pipe' % uuid.uuid4().hex)"
+      ],
+      "length": 1276,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "```python\n            self.__tmp_dir,\n            'datastream_%s' % uuid.uuid4().hex,\n        )\n        self.__datastream_transport, self.__datastream_protocol = await self.__event_loop.create_unix_connection(\n            DataStreamProtocol,\n            path=self.__datastream_address,\n            loop=self.__event_loop,\n        )\n        self.__datastream_fd =",
+      "prompt_tokens": 3785,
+      "score": 0.57
+    },
+    {
+      "_id": "54df7435e6cdeb9cf80f52a45f4c173229b57b7dfcc77ad7",
+      "all_classes": null,
+      "answers": [
+        "\t\t\t\tif(! option1) {"
+      ],
+      "length": 957,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the logic established in the `fillTreeView` method and the partial code provided, the `on_button_accept_clicked` method needs to iterate through the rows, check if \"option 1\" is selected, and if so, update the database with the new weight percentage and kilogram values calculated for the new person weight.\n\nHere is the completed code:\n\n```csharp\n\t\t\t\tif (option1) {",
+      "prompt_tokens": 2711,
+      "score": 0.0
+    },
+    {
+      "_id": "e42bb143aca03ffdde352e012ca3991013aa4f1018e60c8f",
+      "all_classes": null,
+      "answers": [
+        "        if ((args == null) || (args.length == 0)) {"
+      ],
+      "length": 1570,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "```java\n        String[] argValues = new String[args.length];\n        for (int i = 0; i < args.length; i++) {\n            if (args[i] == null) {\n                continue;\n            }\n            if (args[i].isResource()) {\n                argValues[i] = getVarValue(args[i], application, request, false);\n            } else",
+      "prompt_tokens": 3540,
+      "score": 0.58
+    },
+    {
+      "_id": "04233bb10cad37ee372ddcc1ca95b3e2a853d217fa90929e",
+      "all_classes": null,
+      "answers": [
+        "\t\t\t\tfirms = loadFromFile();"
+      ],
+      "length": 515,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "firms = loadFromFile();\n\t\t}), TIMED(new ConfigFile<UUID, TimedData>()\n\t\t{\n\t\t\t@Override\n\t\t\tpublic TimedData create(UUID id, ConfigurationSection conf)\n\t\t\t{\n\t\t\t\treturn new TimedData();\n\t\t\t}\n\t\t\t@Override\n\t\t\tpublic ConcurrentMap<UUID, TimedData> getLoadedData()\n\t\t\t{",
+      "prompt_tokens": 1648,
+      "score": 0.92
+    },
+    {
+      "_id": "36799d0d8e06fa5c217eccd67db779ab9866845eb0713e74",
+      "all_classes": null,
+      "answers": [
+        "\t\tPreferencePage generalPage = new FieldEditorPreferencePage() {"
+      ],
+      "length": 925,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the structure of the existing code (creating `PreferenceNode` and `PreferencePage` objects for playback and shortcuts), the next logical step is to define the **General Preferences** page.\n\nThis page should handle the configurable settings defined in the class that are not yet covered, such as:\n*   File paths (Last Open Audio, Last Open Text, Last Export)\n*   Auto-save settings\n",
+      "prompt_tokens": 2733,
+      "score": 0.0
+    },
+    {
+      "_id": "82560c22f3648e5086523b10f22179edb1aebdc379fdfaa5",
+      "all_classes": null,
+      "answers": [
+        "                if (m_Owner.SpellTarget == null)"
+      ],
+      "length": 538,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the structure of the `InternalSphereTarget` class and the standard pattern used in the provided code (specifically the `OnTargetFinish` method in the `InternalTarget` class which calls `FinishSequence()`), the missing line is:\n\n```csharp\n            m_Owner.Caster.SendAsciiMessage(\"Target selection cancelled.\");\n        }\n    }\n}\n```\n\nHere is the complete",
+      "prompt_tokens": 1507,
+      "score": 0.0
+    },
+    {
+      "_id": "52b05f3e84a4fe67c9a1b15719fbecb75dda4932f22567e9",
+      "all_classes": null,
+      "answers": [
+        "        for state, dict_ in states.items():"
+      ],
+      "length": 4268,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "```python\n        for state in states:\n            if state is not None:\n                state._parent = None\n                state._instance_dict = None\n                state._deleted = False\n                state._new = False\n                state._modified = False\n                state._deleted = False\n                state._deleted_state = None\n                state._deleted_state = None\n                state._deleted_state = None",
+      "prompt_tokens": 9873,
+      "score": 0.79
+    },
+    {
+      "_id": "1e32291c11bc48e0917860b1de8446dde3fedecd450ef073",
+      "all_classes": null,
+      "answers": [
+        "\t\tfor(IField field : fields) { "
+      ],
+      "length": 1985,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "```java\n\t\tfor(IField field : fields) { \n\t\t\tfinal String name = field.getName().toString();\n\t\t\tList<IField> named = name2Field.get(name);\n\t\t\tif (named==null) { \n\t\t\t\tnamed = new ArrayList<IField>(3);\n\t\t\t\tname2Field.put(name, named);\n\t\t\t}\n\t\t\tnamed.add(field);\n\t\t}\n",
+      "prompt_tokens": 4535,
+      "score": 1.0
+    },
+    {
+      "_id": "d5dde130982bcbe6f095c65d1d5a928669bc3a458df26cc6",
+      "all_classes": null,
+      "answers": [
+        "    like ``r'/foo/?'`` in conjunction with using the decorator."
+      ],
+      "length": 6502,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "```python\n        if self.request.path != \"/\" and not self.request.path.endswith(\"/\"):\n            if self.request.method in (\"GET\", \"HEAD\"):\n                uri = self.request.path + \"/\"\n                if self.request.query:\n                    uri += \"?\" + self.request.query\n                self.redirect(uri, permanent=True)\n                return\n            else:\n                raise HTTPError(404)\n       ",
+      "prompt_tokens": 14816,
+      "score": 0.32
+    },
+    {
+      "_id": "5dbe65a9966abf6a6fdc04cf78e20977f8d24df06849e8e7",
+      "all_classes": null,
+      "answers": [
+        "\t\t\tif ((Controls.Count == 0) && (initialIndex != -1)) "
+      ],
+      "length": 777,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the standard implementation of `System.Web.UI.WebControls.MultiView` in the .NET Framework (specifically the version corresponding to the Novell Mono/SharpDevelop era indicated by the comments), the `Render` method iterates through the child `View` controls and renders only the active one.\n\nHere is the completion of the code:\n\n```csharp\n\t\t\tfor (int i = 0; i",
+      "prompt_tokens": 1776,
+      "score": 0.0
+    },
+    {
+      "_id": "43954d45633ac63acc4badb3892fdb276e080592cc147b1e",
+      "all_classes": null,
+      "answers": [
+        "    args = parser.parse_args()"
+      ],
+      "length": 1225,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "```python\n    parser.add_argument(\n        '-o', '--outpath', help='Path to store pickle files.', required=True )\n    args = parser.parse_args()\n    \n    # Initialize the downloader\n    downloader = WigleDownloader(\n        user=args.user,\n        password=args.password,\n        coordfile=args.coordfile,\n        outpath=args.outpath\n    )\n    \n   ",
+      "prompt_tokens": 3092,
+      "score": 0.63
+    },
+    {
+      "_id": "9d639220f2ae9cbb3b86c56287371346450159efa5afc251",
+      "all_classes": null,
+      "answers": [
+        "                if (mod >= 156 && mod <= 160)"
+      ],
+      "length": 1845,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the structure of the `WhatReplacesWhat` method and the logic used for `BaseWeapon` and `BaseJewel`, here is the completion of the code. This section handles the replacement logic for `BaseArmor`, `BaseHat`, and generic items, followed by the helper method `GetNameForAttribute` which is required by the previous blocks.\n\n```csharp\n                // SkillGroup3 replace",
+      "prompt_tokens": 6350,
+      "score": 0.0
+    },
+    {
+      "_id": "03873ecbb96288a84c3d9ea1f5a2a718188d2c8a0c5920ab",
+      "all_classes": null,
+      "answers": [
+        "        for plat_os in ['Windows', 'Linux', 'Linux 64', 'OS X']:"
+      ],
+      "length": 816,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "```python\n        # Gather desktop builds\n        for plat in ['os_windows', 'os_linux', 'os_linux64', 'os_osx']:\n            if plat in platforms:\n                builds.append({\n                    'os': plat,\n                    'os_pretty': {\n                        'os_windows': 'Windows',\n                        'os_linux': 'Linux',\n                        'os_linux64",
+      "prompt_tokens": 2123,
+      "score": 0.79
+    },
+    {
+      "_id": "63fdad7f1feacdf8cca4aaf57dae737d83c351d9ab66db8b",
+      "all_classes": null,
+      "answers": [
+        "\t\tif (projectID==null || issueTypeID==null) {"
+      ],
+      "length": 1101,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the context of the `SystemStateRT` class and the method signature `lookupBeanAllowed`, the code needs to verify if the given state (`objectID`) is allowed for the specific project and issue type context provided in `serializableBeanAllowedContext`.\n\nHere is the completion of the code:\n\n```java\n\t\tif (projectID != null && issueTypeID != null) {\n\t\t\tstateBeans",
+      "prompt_tokens": 3075,
+      "score": 0.0
+    },
+    {
+      "_id": "a2ce4aeed86faf7c78539925675910ecdf08f4ca9f5603ee",
+      "all_classes": null,
+      "answers": [
+        "            foreach (ArgumentSyntax argumentSyntax in argumentSyntaxs) {"
+      ],
+      "length": 861,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the context of the `FixByReferenceCalls` method and the surrounding code (which handles AutoIt to C# conversion, specifically dealing with `ByRef` parameters and `Variant` types), the missing code likely iterates through the arguments, identifies those that need fixing (likely those referencing `Variant` types that should be handled differently or need explicit casting/boxing in the generated C# context), and updates",
+      "prompt_tokens": 2602,
+      "score": 0.23
+    },
+    {
+      "_id": "b55c3cd64c946848d39da7e77c7364582b5e7ab71a545f58",
+      "all_classes": null,
+      "answers": [
+        "        split_test = self._update_partition_id(0)"
+      ],
+      "length": 2752,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "```python\n        split_test = self._update_partition_id(0)\n        self._assert_children(2)\n        # Verify the children are the ones created for partition 0\n        vertical_0 = self.get_item_from_modulestore(split_test.children[0], verify_is_draft=True)\n        vertical_1 = self.get_item_from_modulestore(split_test.children[1], verify_is_draft=True)",
+      "prompt_tokens": 8502,
+      "score": 1.0
+    },
+    {
+      "_id": "caded4c1338faaf5978525a343ec76e66b5546a6a35088a6",
+      "all_classes": null,
+      "answers": [
+        "            foreach (object o in longTag.Values) {"
+      ],
+      "length": 1490,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the structure of the `iTextSharp` library and the logic established in the `TrueTypeFontUnicode` class (specifically the handling of metrics, sorting, and the `GetCIDFontType2` method), here is the completion of the `WriteFont` method:\n\n```csharp\n            ArrayList metrics = new ArrayList();\n            AddRangeUni(longTag, false, subset);\n           ",
+      "prompt_tokens": 3255,
+      "score": 0.0
+    },
+    {
+      "_id": "341005dfebe6821d4201177ffce38b1e3048f5a0d9c30463",
+      "all_classes": null,
+      "answers": [
+        "\t\t\t\t\t\tGraphNode cgn = graphNodes.get(cell);"
+      ],
+      "length": 1113,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the context of the `GraphCells` job, which is building a hierarchical graph of cells by calculating depths and then placing them on a 2D plane, the code needs to continue the nested loop structure.\n\nThe current state is inside a `while (more)` loop that iterates through all libraries and cells to assign coordinates (`x`, `y`) based on their `depth`. The logic likely involves",
+      "prompt_tokens": 2876,
+      "score": 0.0
+    },
+    {
+      "_id": "32d36e0536e57f991a066ab60778b32884747e7689f3c816",
+      "all_classes": null,
+      "answers": [
+        "        task = new ListenableFutureTask<>(callable);"
+      ],
+      "length": 629,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "```java\n        task = new ListenableFutureTask<>(callable);\n        AsyncTask.THREAD_POOL_EXECUTOR.execute(task);\n        return task;\n      }\n    }\n\n    private Bitmap loadPage() throws IOException {\n      InputStream is = context.getResources().getAssets().open(model.getSprite());\n      try {\n        return BitmapUtil.decodeStream(is, EMOJI_RAW_WIDTH, EMOJI",
+      "prompt_tokens": 1853,
+      "score": 1.0
+    },
+    {
+      "_id": "1f9066ab085c69885da88c003a539d651c2835d2ed83fd83",
+      "all_classes": null,
+      "answers": [
+        "                else if (ke.getKeyCode() == KeyEvent.VK_DOWN) {"
+      ],
+      "length": 1035,
+      "max_new_tokens": 84,
+      "output_tokens": 67,
+      "prediction": "```java\n                else if (ke.getKeyCode() == KeyEvent.VK_DOWN) {\n                    final String down = cmdHistory.goDown();\n                    if (!msgTF.getText().equals(down)) {\n                        msgTF.setText(down);\n                    }\n                }\n            }\n        });\n    }\n}\n```",
+      "prompt_tokens": 2495,
+      "score": 1.0
+    },
+    {
+      "_id": "88af654f6cc0799e1844ea6d4158729b1130dc62928ae169",
+      "all_classes": null,
+      "answers": [
+        "    prerequisite = NavigateToSibling('Details')"
+      ],
+      "length": 534,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the pattern established in the previous navigator classes (`EditTags` and `ManagePolicies`), the next line of code should define the `step` method for the `ManagePolicies` navigator. This method typically triggers the UI action to open the policy management form.\n\nHere is the completed code:\n\n```python\n    def step(self):\n        self.prerequisite_view.policy.item_select('Manage Policies",
+      "prompt_tokens": 1601,
+      "score": 0.0
+    },
+    {
+      "_id": "08b681d309832c3aa506f61679aefcaed7ca5b6c115d2701",
+      "all_classes": null,
+      "answers": [
+        "\t\tfor (IJRecognitionListener listener : recognitionListeners) {"
+      ],
+      "length": 482,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the pattern established in the `notifySequenceListeners` method (iterating through a list of objects and extracting a specific property to build a `StringVector`), the next line of code should complete the loop for `notifyRecognitionListeners`.\n\nThe method is currently building a `StringVector` named `sequenceTitles` by iterating through the `sequences` list. The next logical step is to add the title of",
+      "prompt_tokens": 1630,
+      "score": 0.0
+    },
+    {
+      "_id": "1472d733364caca77c7f2605a8ceaee6c18fb02ebc460475",
+      "all_classes": null,
+      "answers": [
+        "                ScriptManager sm = ScriptManager.GetCurrent(Page);"
+      ],
+      "length": 655,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the context of the `Render` method in an ASP.NET Web Control that implements `IScriptControl`, the next line must register the script control with the `ScriptManager` so that the client-side JavaScript and image URLs defined in `GetScriptDescriptors` are correctly emitted to the page.\n\nHere is the completion of the code:\n\n```csharp\n            ScriptManager sm = ScriptManager.GetCurrent(Page);",
+      "prompt_tokens": 1581,
+      "score": 0.0
+    },
+    {
+      "_id": "2abe780e4777e159876fcba6fb9c21888d8a0782e7499c3e",
+      "all_classes": null,
+      "answers": [
+        "\t\tdamageCooldown = compound.getInteger(\"DamageCooldown\");"
+      ],
+      "length": 475,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "```java\n\t\tif (compound.hasKey(\"ToolDamage\"))\n\t\t{\n\t\t\tdamage = compound.getInteger(\"ToolDamage\");\n\t\t}\n\t\t\n\t\tif (compound.hasKey(\"Sharpness\"))\n\t\t{\n\t\t\tsharpness = compound.getInteger(\"Sharpness\");\n\t\t}\n\t\t\n\t\tif (compound.hasKey(\"Fire\"))\n\t\t{\n\t\t\tfire = compound.getInteger",
+      "prompt_tokens": 1686,
+      "score": 0.49
+    },
+    {
+      "_id": "214bccc94127564a29c72827ff53ccb4c3bd880918d517fa",
+      "all_classes": null,
+      "answers": [
+        "        StringBuilder sb = new StringBuilder(32);"
+      ],
+      "length": 661,
+      "max_new_tokens": 84,
+      "output_tokens": 42,
+      "prediction": "return \"Effect{\" +\n    \"id='\" + getId() + '\\'' +\n    \", probability=\" + probability +\n    \", scopes=\" + scopes +\n    '}';\n    }\n}",
+      "prompt_tokens": 1511,
+      "score": 0.18
+    },
+    {
+      "_id": "492de4fd744409d77007630f3cf7e7c49b13037cb2b2a8c6",
+      "all_classes": null,
+      "answers": [
+        "    i = store.handle_indicators_create(t, {"
+      ],
+      "length": 577,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "```python\n    t = store.store.tokens.create({\n        'username': 'admin',\n        'groups': ['everyone'],\n        'read': True,\n        'write': True,\n        'admin': True\n    })\n    i = store.handle_indicators_create(t, {\n        'indicator': 'example.com',\n        'group': 'private',\n        'provider':",
+      "prompt_tokens": 2131,
+      "score": 0.64
+    },
+    {
+      "_id": "a507514e59d02bec9d48f262b48dffcb180b6665ae945f96",
+      "all_classes": null,
+      "answers": [
+        "        p = Person.objects.get(name=\"owner\")"
+      ],
+      "length": 701,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the structure of the provided test file (which tests `mongoengine`'s delta tracking for documents, embedded documents, and circular references), the next logical step is to complete the `test_circular_reference_deltas_2` method.\n\nThe current code sets up the documents and saves them. The subsequent tests in the file (`test_delta`, `test_delta_recursive`) verify that changes to these circular references",
+      "prompt_tokens": 2929,
+      "score": 0.0
+    },
+    {
+      "_id": "821b5076e7642f35d6db6b0af29ca2ff7694928b53b0dace",
+      "all_classes": null,
+      "answers": [
+        "                    interact(self._plot_line, x_name=widget_x, y_name=widget_y)"
+      ],
+      "length": 1433,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "```python\n                    display(widget_x)\n                    display(widget_y)\n                    \n                    def on_plot_change(change):\n                        x_name = widget_x.value\n                        y_name = widget_y.value\n                        dim_name = widget_dim.value\n                        \n                        # Get data\n                        x_data = self._inspector.dataset[x_name][:]\n                        y_data = self._inspector.dataset[y_name][:]\n                        \n                        #",
+      "prompt_tokens": 4718,
+      "score": 0.59
+    },
+    {
+      "_id": "33a191efb28d5b529c26b622495441d20e705cfb2dc5be9f",
+      "all_classes": null,
+      "answers": [
+        "                if (!ShouldIgnoreChange(path, ignored))"
+      ],
+      "length": 513,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the context of the `RootFolderWatchingService` in Radarr (which this code snippet is from), the `ScanPending` method is responsible for processing the list of changed files and triggering a scan for the specific root folder where the change occurred.\n\nThe logic iterates through the collected `pairs` (changed paths and their root folders). For each item, it cleans the path, checks if it's",
+      "prompt_tokens": 1613,
+      "score": 0.0
+    },
+    {
+      "_id": "6fac8d0b410c99d32f6421d53dcbd4534f8f4a65b4dcede9",
+      "all_classes": null,
+      "answers": [
+        "\t\treturn read(key, computed);"
+      ],
+      "length": 837,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "```java\n\t\treturn read(key, computed);\n\t}\n\n\t@Override\n\tpublic E merge(K key, E value, BiFunction<? super E, ? super E, ? extends E> remappingFunction) {\n\t\tI computed = internalMap.merge(key, write(key, value), transform(remappingFunction));\n\t\treturn read(key, computed);\n\t}\n\n\t@Override\n\tpublic E compute",
+      "prompt_tokens": 1818,
+      "score": 1.0
+    },
+    {
+      "_id": "b581893ac400757aaad32eed292afd06559e04175e8d6fdf",
+      "all_classes": null,
+      "answers": [
+        "        cat = getToolByName(self.context, 'uid_catalog')"
+      ],
+      "length": 1519,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "resbrains = cat.searchResults(query)\n        if len(resbrains) == 1:\n            contobj = resbrains[0].getObject()\n            pdt = getToolByName(self.context, 'portal_discussion', None)\n            disc_container = pdt.getDiscussionFor(contobj)\n            allreplies = self.get_replies(pdt, contobj)\n            \n            # Determine the",
+      "prompt_tokens": 4990,
+      "score": 0.28
+    },
+    {
+      "_id": "b5474d9a2623627f5e344cff1193ab0629353b34b75b1c81",
+      "all_classes": null,
+      "answers": [
+        "\t\t\tset { m_ID = (ushort)value; }"
+      ],
+      "length": 1528,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the context of the provided code (which appears to be from a game server implementation, likely for *MapleStory* or a similar MMORPG, handling tile data structures), the `Tile` struct definition is incomplete. It defines internal fields `m_ID` and `m_Z`, and a public property `ID`. The next logical line is the definition of the `Z` property, which corresponds to",
+      "prompt_tokens": 3566,
+      "score": 0.09
+    },
+    {
+      "_id": "c357dc85d4b8de20bfeb7e4f0a5fb6c3f1e2ad3fba2c7691",
+      "all_classes": null,
+      "answers": [
+        "                    channelUri = ChannelUri(scene, land);"
+      ],
+      "length": 1661,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the context of the `OpenSimulator` source code and the logic flow of the `ParcelVoiceInfoRequest` method (which is handling the SLVoice/Vivox protocol), the next line must retrieve the SIP address for the specific parcel the avatar is standing on.\n\nThe code has just checked that `land.Flags` allows voice chat. The next logical step is to look up the SIP address associated with",
+      "prompt_tokens": 4416,
+      "score": 0.0
+    },
+    {
+      "_id": "7c3bba0835a61180b3615e5a45405828fb9f896470cd8acb",
+      "all_classes": null,
+      "answers": [
+        "\t\t\t\tMsgBox.Show(this,\"Please fix data entry errors first.\");"
+      ],
+      "length": 576,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the context of the `butOK_Click` method, the code is checking for validation errors on the date fields. If any error exists, the method should stop execution and return immediately to prevent saving invalid data.\n\nHere is the completed line of code:\n\n```csharp\n\t\t\treturn;\n```\n\n**Full context of the block:**\n```csharp\n\t\tprivate void butOK_Click(object sender",
+      "prompt_tokens": 2273,
+      "score": 0.0
+    }
+  ],
+  "config_effect": {
+    "allocation": "fp16",
+    "detail": {
+      "a2_flag": false,
+      "cache_dtype": "auto",
+      "per_layer": {}
+    },
+    "group_structure_verified": false,
+    "ok": true
+  },
+  "created_at_utc": "2026-08-07T16:18:31Z",
+  "data_sha256": "7668244d638b583c72650abe206e5d23ffefb94eba03158c6f9bc2bfc88d60a9",
+  "data_source": "Xnhyacinth/LongBench parquet mirror (THUDM/LongBench v1)",
+  "elapsed_s": 76.8,
+  "engine": {
+    "kwargs": {
+      "disable_log_stats": true,
+      "enforce_eager": true,
+      "gpu_memory_utilization": 0.85,
+      "max_model_len": 16384,
+      "seed": 7
+    },
+    "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-9B/snapshots/master",
+    "vllm_version": "0.26.1rc1.dev245+ge2fa28594"
+  },
+  "host": "remote_5090",
+  "max_input_tokens": 16300,
+  "max_output_tokens": 84,
+  "max_samples": 50,
+  "metric": "code_sim",
+  "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-9B/snapshots/master",
+  "num_samples": 50,
+  "official_longbench_commit": "4c4b985bcf",
+  "sampling_params": {
+    "max_tokens": 84,
+    "temperature": 0.0
+  },
+  "schema_version": 1,
+  "score": 40.56,
+  "seed": 7,
+  "status": "completed_validated",
+  "task": "lcc",
+  "thinking": "disabled",
+  "truncated_prompts": 0
+}

@@ -1,0 +1,701 @@
+{
+  "allocation": "uniform_int4",
+  "attempt_id": "longbench-20260807",
+  "cases": [
+    {
+      "_id": "fdd371de2668a6f1e7914fe9a67aef33927ecc392fdc2606",
+      "all_classes": null,
+      "answers": [
+        "The industrial designer described the product as a portable device with some energy source, an interface which included some pressing buttons and keys, a processor, some infrared source which could send the information to the main device, and different encryption codes for different TVs. Since the Marketing and the user interface designer mentioned speech recognition, the industrial designer also took that into account. All these components would cost 5 Euros or even less than that. As for gesture recognition and automatic power control, the group gave them up due to price issues. At the end of the meeting, the group also talked about how to enable the users to find the controller."
+      ],
+      "length": 7341,
+      "max_new_tokens": 532,
+      "output_tokens": 147,
+      "prediction": "The discussion focused on designing a universal remote control that balances simplicity, functionality, and cost. Key design decisions included using a portable device with a battery, a keypad, and an infrared LED source to send messages to the main device. The team prioritized a \"simple desires into simple actions\" approach, suggesting a titanium remote with a backlit screen for easy touch interaction. While the initial concept included features like automatic on/off and voice recognition, the final design was limited to essential functions like power, volume, and channel selection to stay within a budget of around €12.50. The speakers were deemed unnecessary for this budget, and the team agreed to focus on the core interface concept rather than complex gestures or personalization.",
+      "prompt_tokens": 10346,
+      "score": 0.2197
+    },
+    {
+      "_id": "ff770653bb3cc4fd9b0921c77d356e3769d01ed91292299e",
+      "all_classes": null,
+      "answers": [
+        "The group found that if they would use the touch screen as well as the voice recognition technique, the cost would up to 17 euros. On the other hand, in order to guarantee the one hundred percent profit, the price would be more than 30, which would risk losing potential consumers. Provided that they would control the cost within 12.5 euros, they would have to cut off some functions, for example, voice recognition. It was really hard to balance between the popular tastes, the cost and the quality."
+      ],
+      "length": 7881,
+      "max_new_tokens": 532,
+      "output_tokens": 88,
+      "prediction": "The group discussed the feasibility of including a touch screen, which was identified as a major cost source potentially exceeding 175 Euro per unit. They decided to temporarily hold off on the touch screen to avoid financial issues, choosing instead to prioritize the voice recognition feature. However, they later agreed to reconsider the touch screen if they could find a cheaper manufacturing method to reduce costs, as the current estimate was too high for their budget constraints.",
+      "prompt_tokens": 10542,
+      "score": 0.224
+    },
+    {
+      "_id": "fb7891826fb3f47e3750d45365e8c0c97e23613752335cc0",
+      "all_classes": null,
+      "answers": [
+        "The group discussed recognition results generated for 20 minutes of close-talking microphone data. Recognition performance was very good, indicating promising results for forced alignment procedures and the ability to analyze other important signal information, e.g. prosody and overlapping speech. It was decided that close-talking data should be downsampled and fed to the SRI recognizer to compare recognition performance, and that data from the far-field microphones should be tested on the recognizer as soon as possible. The group also discussed recording setup and equipment issues. "
+      ],
+      "length": 12783,
+      "max_new_tokens": 532,
+      "output_tokens": 106,
+      "prediction": "The general discussion covered the successful implementation of a new wireless microphone system with adaptive gain and a new speaker form for transcription, the discovery of a significant parsing glitch in the first meeting that was resolved by adjusting the speaker form, and the successful testing of the system on Switchboard telephone data, which showed promising results despite some initial errors. Additionally, the team discussed future plans for expanding the microphone setup to include more hand-held microphones, establishing a baseline for future research, and preparing for a presentation by NIST on transcription standards.",
+      "prompt_tokens": 15849,
+      "score": 0.1705
+    },
+    {
+      "_id": "e408de08efe124bbc147640da859edafe3a9ffd398d76134",
+      "all_classes": null,
+      "answers": [
+        "The Project Manager thought the prototype was basically the same with the former one, and the thickness was not suitable for the target customers. Then the LCD screen might be covered when held by hands, so the users couldn't figure out what happened on the screen. Therefore from this perspective the screen was totally unusable, still needing marketing research."
+      ],
+      "length": 10667,
+      "max_new_tokens": 532,
+      "output_tokens": 180,
+      "prediction": "The Project Manager views the prototype as \"very interesting\" and \"copy paste\" from their own work, but ultimately finds it \"not very interesting\" and \"terrible\" when considering the final design. They believe the current design is too thick and falls over the user's hands, making it unusable, and they are willing to change the titanium back to plastic to reduce costs, even though they admit the current design is \"fancy\" and \"cool.\" Despite the financial constraints and the need to cut costs, the Project Manager maintains that the design is \"pretty good\" and \"great\" for the younger audience, though they acknowledge the \"terrible\" side view and the difficulty of drawing the logo. They decide to keep the titanium back for the older demographic but are forced to drop the L_C_D_ screen to meet the budget, resulting in a compromise between aesthetics and functionality.",
+      "prompt_tokens": 15849,
+      "score": 0.1583
+    },
+    {
+      "_id": "23625b932c93b52caf7504ee1a134d53a4096dc59744d759",
+      "all_classes": null,
+      "answers": [
+        "The final english SmartKom demo will be presented to the whole institute once the system is de-bugged and stabilised."
+      ],
+      "length": 12646,
+      "max_new_tokens": 532,
+      "output_tokens": 111,
+      "prediction": "Based on the transcript, the system is primarily involved in the **SmartKom** project, which is a Siemens virtual touch screen system used for gesture recognition and speech synthesis. Additionally, the group is working on a **belief-net** system to understand spatial reference frames and deixis, and they aim to create a **demo version** of this belief-net system to be presented at EML or other academic conferences. The system is also being used to demonstrate **constructional analysis** for both German and English, specifically focusing on spatial descriptions and reference frames.",
+      "prompt_tokens": 15849,
+      "score": 0.125
+    },
+    {
+      "_id": "e0d4f5b971b7fafacd2c38ac34ac2eb514b590f6e89dbfe9",
+      "all_classes": null,
+      "answers": [
+        "The color of the prototype was yellow and the material was half rubber and half plastic with a company logo. Moreover, it could be curved inside to cover the buttons which were big and blue except the power button. Besides, both the button and joystick could switch the device off and the joystick was especially designed to control the channel and volume to make the device more fashionable. The team agreed that it was overall a good design."
+      ],
+      "length": 4809,
+      "max_new_tokens": 532,
+      "output_tokens": 52,
+      "prediction": "The User Interface introduced the prototype by describing its color scheme, materials, and functionality, specifically noting that it is yellow rubber with hard plastic sides, features large blue buttons (except for the power and mute), and includes a joystick for volume and channel control.",
+      "prompt_tokens": 6919,
+      "score": 0.2637
+    },
+    {
+      "_id": "975d4e997974135de214468ed968e79573563f68e352716a",
+      "all_classes": null,
+      "answers": [
+        "C began by asking some questions about the recording procedure and wanted to know what excising utterances from the transcript would look like. C asked several questions to that end but clarified that the source of inquiry was curiosity and nothing more. Additionally, C wanted A to explain to the meeting participants what the experiment was for."
+      ],
+      "length": 15409,
+      "max_new_tokens": 532,
+      "output_tokens": 86,
+      "prediction": "Professor C did not think much about setting up the recording equipment. He mentioned that the equipment was already on and that everyone was wearing it correctly, but he did not provide specific instructions or feedback on the setup process. Instead, he focused on the content of the meeting, such as reading digit strings and filling out forms. He also noted that the microphone should be about two thumb widths away from the mouth to minimize breath sounds.",
+      "prompt_tokens": 15849,
+      "score": 0.1765
+    },
+    {
+      "_id": "38ad273bc386eca003c3e3998e17a1afb56794f452852d6c",
+      "all_classes": null,
+      "answers": [
+        "The professor generally liked MSG because of its different temporal properties. Nonetheless, he recognized that it might not be practical to explore it further due to time constraints. At this point, he thought that there were no clear solutions to the challenges they were facing, but there was still plenty to do."
+      ],
+      "length": 14015,
+      "max_new_tokens": 532,
+      "output_tokens": 81,
+      "prediction": "The professor thought that adding MSG (Multiscale Grammatical Spectral) to the system did not help in the Italian mismatched condition, as it did not improve the recognition accuracy compared to using PLP alone. However, the professor noted that adding MSG to the multi-English training set did not significantly affect performance, while the addition of delta and the neural network did reduce error rates substantially.",
+      "prompt_tokens": 15849,
+      "score": 0.1978
+    },
+    {
+      "_id": "ad4d80c521d649265c6ac0fb043c614695faad73b5d44372",
+      "all_classes": null,
+      "answers": [
+        "The Marketing thought buttons can be omitted, just like cell phones, because many of the functions of buttons, such as the TV button, are generally not used. But they can set up a menu-style button if they really need to."
+      ],
+      "length": 3979,
+      "max_new_tokens": 532,
+      "output_tokens": 42,
+      "prediction": "The Marketing suggested that the remote control should not have buttons, as most users only use it to turn it on and off, and she compared it to a train that looks pretty but has no extra bits.",
+      "prompt_tokens": 5726,
+      "score": 0.1739
+    },
+    {
+      "_id": "a1a2237c1562561d950bc8e245f0a9612fbb452532c318a1",
+      "all_classes": null,
+      "answers": [
+        "The professor was not too excited about clustering. He thought that the team could identify the bands that were the most promising and weigh them more highly in the model. As it stood, the model was using all bands with equal strength."
+      ],
+      "length": 8187,
+      "max_new_tokens": 532,
+      "output_tokens": 64,
+      "prediction": "The professor suggested that clustering could be a useful direction for analyzing the data, specifically by grouping continuous variables into categories to create binary labels. He noted that while clustering might not be necessary for every new dataset, it could help identify hidden variables and provide robustness by treating information from different bands or features with equal strength.",
+      "prompt_tokens": 11364,
+      "score": 0.3294
+    },
+    {
+      "_id": "8a2a85eefebeb2986e417fd8388c3be0b68e33911dcc98ca",
+      "all_classes": null,
+      "answers": [
+        "Grad F explained that he was focusing on writing his proposal for his qualification exams, which was on the 25th of July. He had to write a paper and pass it around before that date."
+      ],
+      "length": 11886,
+      "max_new_tokens": 532,
+      "output_tokens": 99,
+      "prediction": "Grad F mentioned that he had just finished writing a section on intermediate categories for his proposal and hoped to have a full rough draft done by Monday to give it to Morgan. He also stated that he wanted to start with a reasonable set of features, such as regular phonetic features, to begin the classification process. Additionally, he explained his plan to use TIMIT data for the initial phone recognition task and then move on to the Switchboard data for modeling intermediate categories that span across phonemes.",
+      "prompt_tokens": 15849,
+      "score": 0.3333
+    },
+    {
+      "_id": "ade5c4dcd4a442994f97e0ec271c936e2e00bc66516daeb3",
+      "all_classes": null,
+      "answers": [
+        "Since the marketing and the user interface designer mentioned speech recognition in their previous presentations, the industrial designer suggested putting a simple speech recogniser on the digital signal processing chip and training the speech recogniser for particular users. However, the user interface designer concerned that it would be too complex. Then the industrial designer argued that even some simple mobile devices could have these voice dialers so it wouldn't be so sophisticated, and the marketing also said the product would be good to sell with the speech recogniser."
+      ],
+      "length": 7338,
+      "max_new_tokens": 532,
+      "output_tokens": 120,
+      "prediction": "The group discussed the feasibility and implementation of speech recognition in the remote control, noting that it is particularly relevant for targeting young people who are early adopters. They debated whether to include speech recognition as a core feature, considering that while it could be useful for universal devices, it might be too complex or expensive for a budget of around 12.5 Euros. The team also considered alternative methods like gesture recognition and the potential for automatic on/off controls, ultimately deciding to focus on the basic functions of volume, channel selection, and a simple menu interface for the initial T_V_ remote control.",
+      "prompt_tokens": 10341,
+      "score": 0.2336
+    },
+    {
+      "_id": "10c03d597a3478f601be3286b2671d5f1c27f944488b74be",
+      "all_classes": null,
+      "answers": [
+        "Huw Irranca-Davies mentioned two things that their teams learned from early implementer areas. The first one was how to deal with bureaucracy and the second was about communication with both parents and pilot authorities."
+      ],
+      "length": 12333,
+      "max_new_tokens": 532,
+      "output_tokens": 191,
+      "prediction": "Based on the transcript, the two main lessons learned from the early implementer areas are:\n\n1.  **The administrative burden** of requiring parents to provide complex documentation (such as wage slips and birth certificates) for each pilot area, which creates a significant barrier to entry.\n2.  **The need for a centralized, centralized system** that integrates childcare funding with other government departments (like HM Revenue and Customs) to simplify the process for parents and reduce the administrative load on local authorities.\n\nThe Minister, Huw Irranca-Davies, emphasized that while the pilot areas provided valuable insights into these challenges, the preferred approach for the wider roll-out is to adopt a model similar to the UK's HM Revenue and Customs system, which offers clarity, centralization, and a simpler process for parents. This approach aims to ensure that the childcare offer is accessible to all working parents without the complexity and cost associated with the current pilot model.",
+      "prompt_tokens": 15849,
+      "score": 0.2388
+    },
+    {
+      "_id": "f0060bb96ccf80067f76b7a0f0012a19316d9ef9c381d9c1",
+      "all_classes": null,
+      "answers": [
+        "The User Interface thought it was reasonable to replace the titanium with titanium-coloured plastic. When discussing how to reduce the cost of the product, the user interface designer insisted that if they could only choose to save the titanium exterior or the LCD screen, it would be a better choice to save the LCD screen and dump the titanium cover but replacing it with hard plastics. The result was the major of the group including Marketing agreeed the suggestion."
+      ],
+      "length": 10674,
+      "max_new_tokens": 532,
+      "output_tokens": 127,
+      "prediction": "The User Interface did not think titanium was a problem; instead, they argued that using an advanced chip with a touchscreen would make the device too expensive, costing twelve and a half euros, which they believed was unaffordable for the target market. They suggested that switching to a plastic back would be cheaper and more practical, but the Project Manager insisted on keeping the titanium for the design's appeal, leading to a conflict over the final cost and the decision to scrap the titanium. Ultimately, the User Interface suggested that the titanium was too expensive and that the company should either drop the screen or change the material to plastic to reduce costs.",
+      "prompt_tokens": 15849,
+      "score": 0.2154
+    },
+    {
+      "_id": "f79e91639e07c344b121d73d4bb84afc8ed22412aa24f9c1",
+      "all_classes": null,
+      "answers": [
+        "The marketing put forward three noteworthy aspects in trends. First and foremost, people loved fancy things that they could be identified with. The second point was that as a remote control it had to be technologically innovative. Thirdly, being easy to use was also necessary. From a broader perspective, fruit and vegetables were in fashion this year and being spongy was also popular. Thus, contrary to the industrial designer, the marketing thought rubber was more feasible in terms of sponginess. The group agreed that the product should resemble fruit and vegetable in shape and colour but the specific design was not decided."
+      ],
+      "length": 6957,
+      "max_new_tokens": 532,
+      "output_tokens": 102,
+      "prediction": "The discussion focused on how to incorporate current market trends into the remote control's design, specifically emphasizing that the \"fancy\" and unique appearance is the most critical factor for success. Participants debated between two main aesthetic directions: using titanium with a fruit-like scent and a spongy, fruit-shaped rubber body, versus a chameleon-like color-changing design. Ultimately, the team decided to explore both options, with the goal of creating a distinctive product that stands out from competitors while remaining functional and cost-effective.",
+      "prompt_tokens": 10455,
+      "score": 0.1667
+    },
+    {
+      "_id": "811b75e9dfe2f5e9a4aee66d32892fd0faf154d4e4445646",
+      "all_classes": null,
+      "answers": [
+        "The professor thought it was possible to reduce the effects of reverberation by removing the low-energy segments. He thought a VAD-like approach would work. This would make it so that the model was more likely to keep an echo than throw out speech."
+      ],
+      "length": 11887,
+      "max_new_tokens": 532,
+      "output_tokens": 106,
+      "prediction": "The professor suggested that echoes and reverberation could be removed by setting very low-energy sections to near-zero values, effectively treating them as artifacts rather than part of the speech signal. He also noted that filtering out low-energy reverberation might help improve the signal-to-noise ratio, although he questioned whether simply removing these components would actually make the signals louder. Additionally, he mentioned that the system's performance might be affected by DC offsets introduced by the A-to-D converter, which could influence how reverberation is handled.",
+      "prompt_tokens": 15849,
+      "score": 0.2692
+    },
+    {
+      "_id": "3cf831ee97fdc099975661a966f34810d7cf1874ca6b3639",
+      "all_classes": null,
+      "answers": [
+        "In terms of putting fashion into the electronics, this is both their slogan and their design target. Apart from the company colour of black and red, the Project Manager came up with the idea of providing skins for the users. But the members were not in favour of this idea for that the work would be huge, at the same time, they were inspired to add the logo on the boot-up screen and introduce a dormant mode because most people do not want the remote to be flashing when the TV is on."
+      ],
+      "length": 5336,
+      "max_new_tokens": 532,
+      "output_tokens": 54,
+      "prediction": "The group discussed the appearance of the television remote, with the Industrial Designer suggesting a primary construction of plastic to avoid interference and lawsuits, while the User Interface Developer proposed a sleek design with a touch screen and a logo that appears briefly upon booting to minimize visual clutter.",
+      "prompt_tokens": 6915,
+      "score": 0.1509
+    },
+    {
+      "_id": "f28e420cf7496c7ee50b6ea61704bba189f95823fafc87eb",
+      "all_classes": null,
+      "answers": [
+        "The group needed Dave Johnson to install the some one hundred SUN - Blades that had arrived and would help with storage. But Dave Johnson, the professor informed them, was leaving for ten days. The Professor informed the group that Dave was always busy and the group realized that there was no dedicated person who could help them."
+      ],
+      "length": 12802,
+      "max_new_tokens": 532,
+      "output_tokens": 60,
+      "prediction": "The group did not think Dave leaving was a problem; instead, they acknowledged that he had left for about ten days and that he had previously volunteered for tasks but then retracted that statement. They discussed how this absence might impact the next meeting, but ultimately decided to proceed with the meeting anyway.",
+      "prompt_tokens": 15849,
+      "score": 0.2921
+    },
+    {
+      "_id": "3814c81130c13d1df955f1c6e235e30559ced35bda5f139e",
+      "all_classes": null,
+      "answers": [
+        "Although there were no exact figures,they had seen over recent years that they were only recruiting to about 65 percent of targets. It was partially due to the financial incentives, but that was not all of the problems. Because this issue was not only in Wales, but a common issue in all over the world. For example, in England, despite higher financial incentives to join ITE courses, people still were not getting onto those courses. To solve this problem, they had taken several steps including making sure their ITE provision was world class, embarking on the first national ITE recruitment marketing exercise, etc. In this process, Llyr Gruffydd had a doubt that the level of ambition did not reflect the level of action that was needed actually. Kirsty Williams responded that different statistics told different stories. They obviously understood there were many steps they had to take, but they were trying instead of just sitting back and waiting."
+      ],
+      "length": 13883,
+      "max_new_tokens": 532,
+      "output_tokens": 197,
+      "prediction": "The group discussed that while there is a trend of filling secondary school teacher training places, the primary reasons for low recruitment are not financial incentives alone but broader issues affecting retention across the UK and globally, such as the decline in teacher training numbers in other countries. Kirsty Williams, the Cabinet Secretary for Education, explained that the Welsh Government is addressing this through a \"whole package\" of strategies, including improving the quality of Initial Teacher Education (ITE) provision, implementing financial incentives for priority subjects, launching a national recruitment marketing exercise, and introducing a new part-time PGCE route to allow students to combine employment with learning. She also noted that the recruitment of teachers on the job remains strong, which is a positive sign, and that the government is working with an advisory board to identify specific barriers to recruitment and retention. Additionally, the discussion highlighted the importance of increasing diversity in the teaching workforce and ensuring that Welsh language skills are maintained and utilized by students who have studied in Welsh-medium schools.",
+      "prompt_tokens": 15849,
+      "score": 0.1754
+    },
+    {
+      "_id": "cb5b1672ca426597251b6def8cbab8ec5249c9662a0c9888",
+      "all_classes": null,
+      "answers": [
+        "Efforts by speaker mn005 are in progress to detect overlapping speech. For a single transcribed meeting, speaker mn005 reported approximately 300 cases of overlap. Future work will involve manually deriving time marks from sections of overlapping speech for the same meeting, and then experimenting with different measures, e.g. energy increase, to determine a set of acoustically salient features for identifying speaker overlap. "
+      ],
+      "length": 19653,
+      "max_new_tokens": 532,
+      "output_tokens": 112,
+      "prediction": "Based on the transcript, the researchers defined speech overlap as an \"acoustic event\" consisting of a continuous region where two or more speakers are talking simultaneously. They distinguished between different numbers of speakers (e.g., two people vs. three people) but concluded that the specific number of speakers did not change the classification of the event itself. Instead, they focused on the spectral characteristics of the overlapping zone, noting that while three speakers might have different spectral traits than two, the core definition relies on the presence of multiple voices within a single contiguous period of distortion.",
+      "prompt_tokens": 15849,
+      "score": 0.144
+    },
+    {
+      "_id": "20306b2da31b6657b21ec6ea54742ac7e414bbe24c0aff96",
+      "all_classes": null,
+      "answers": [
+        "Following close-talking microphone recognition procedures, it was decided that data from the far-field microphones (or PZMs) should be tested on the recognizer as soon as possible. Speaker mn017 will compare close-talking microphone recognition results with those obtained for downsampled data. The SRI recognizer will be set up at ICSI to enable researchers to run their own variants."
+      ],
+      "length": 12785,
+      "max_new_tokens": 532,
+      "output_tokens": 167,
+      "prediction": "Based on the transcript, the group decided to use a mix of wireless microphones and hand-held mics for the meeting. Specifically, they ordered nine identical wireless microphones (Crown CM311E headsets) to be used for the main session, while also planning to test a hand-held microphone (a \"Sheriff\" or similar) for the final part of the meeting. Additionally, they discussed using cross-pads to indicate when a speaker is leaving the room and considered using a \"Jerry Springer\" style microphone for the final segment, though they ultimately decided against it due to complexity. They also noted that the wireless microphones would be connected to a receiver in another room, and they planned to have the transcribers discuss the data during a separate \"meta-meeting\" to ensure the recordings were useful.",
+      "prompt_tokens": 15849,
+      "score": 0.1231
+    },
+    {
+      "_id": "4d38c64db46619d4bb446c466b7d13adc863334384f8c3a4",
+      "all_classes": null,
+      "answers": [
+        "The industrial designer recommended to design several simple and perfect shapes so that users could choose the design they like. Also, they should make the colour of the LCD screen changeable to enable users to choose colours for each day depending on their mood."
+      ],
+      "length": 8563,
+      "max_new_tokens": 532,
+      "output_tokens": 83,
+      "prediction": "The industrial designer recommended that the team focus on the \"fanciness\" of the product rather than its usefulness, suggesting that the fruit and vegetable theme would be more attractive than the actual functionality. They also proposed using rubber or sponges for the strawberry elements to ensure safety for children, and suggested configuring the colors of the L_C_D_ display based on the user's mood or day of the week.",
+      "prompt_tokens": 13814,
+      "score": 0.2759
+    },
+    {
+      "_id": "6a093742535636fe9687002f2db47be1d5af18de447655fe",
+      "all_classes": null,
+      "answers": [
+        "The production cost was 12.5 Euros. So, the group decided to have one simple battery, no kinetic energy, no solar, one advanced chip on print, one sample speaker, one single-curved surface which can be folded, push-buttons, the scroll wheel, the LCD display. And they decided to give up the sample sensor as well as the locator."
+      ],
+      "length": 9368,
+      "max_new_tokens": 532,
+      "output_tokens": 130,
+      "prediction": "The project finance discussion revealed that the team initially planned to manufacture the remote control in Wales to cut costs, but this was later changed to the UK due to budget constraints. The team identified a significant cost issue with the sample sensor, which was the most expensive component, and decided to remove it to stay within the £12.50 budget. Consequently, the prototype was modified to use a simple battery and an advanced chip on print rather than a kinetic energy source. Additionally, the team had to remove the locator feature and the spinning wheel to further reduce expenses, resulting in a final cost of £3.50 over the original budget.",
+      "prompt_tokens": 13623,
+      "score": 0.1951
+    },
+    {
+      "_id": "d8c2e34eb8a8ae389bff0935de57bfd74dace1082c7c2cfe",
+      "all_classes": null,
+      "answers": [
+        "While discussing their presentations on the appearance design, both the Industrial Design and the Marketing put forward to use rubber as the material rather than other things like wood. The Industrial Design agreed to choose rubber because it can stand beat, drop and extrusion."
+      ],
+      "length": 7882,
+      "max_new_tokens": 532,
+      "output_tokens": 61,
+      "prediction": "Industrial Designer agreed with Marketing's presentation on the appearance design because they believed that the current market trends favor \"newer, fancier, more exciting\" designs over the \"boring, normal, functional\" ones, and they suggested incorporating natural colors and organic shapes like wood to align with these trends.",
+      "prompt_tokens": 10543,
+      "score": 0.2368
+    },
+    {
+      "_id": "b8c1aabbc14e5638795bf99a0d587884cfaf9d87b524a793",
+      "all_classes": null,
+      "answers": [
+        "Industrial Designer mentioned that they were considering that the remote was more for right-handed people than for left-handed people. Project Manager said that there didn't always have all left-handers or all right-handers in a family. Marketing mentioned that users could use their finger to scroll rather than their thumb and this would negate the whole RSI issue. Project Manager agreed on it and the group would need an investigation."
+      ],
+      "length": 9381,
+      "max_new_tokens": 532,
+      "output_tokens": 43,
+      "prediction": "The Project Manager agreed with Marketing because the remote control was intuitive and easy to use, allowing users to operate it with their fingers rather than their thumbs, which negated the issue of left-handed users having difficulty.",
+      "prompt_tokens": 13634,
+      "score": 0.3488
+    },
+    {
+      "_id": "3a1325d69cc63b4286a3084b9ccb0be1e8161dcdbe803424",
+      "all_classes": null,
+      "answers": [
+        "It was the last meeting of the group and focused on detail design. First, the user interface designer displayed the appearance and the texture of the product with a working prototype. After that, the industrial designer gave some technical specifications on the product. In the product evaluation that included several criteria, the controller got an average score of two point one seven, which implied it was good. When it came to the quotation of product components, the original one was seventeen dot eight dollars, which was apparently over budget. After some discussions about battery and operations on the calculator, the group finally cut the cost down to under twelve dollars. Finally, they did some self-assessment and celebrated the completion of the project."
+      ],
+      "length": 8554,
+      "max_new_tokens": 532,
+      "output_tokens": 158,
+      "prediction": "The meeting was a collaborative session where the team, led by the Project Manager and facilitated by the Industrial Designer, evaluated a prototype remote control featuring a \"strawberry\" design made of titanium. The group discussed various features such as speech recognition, location finding, and color customization, while debating the trade-offs between the device's \"fanciness\" and its practical usability, particularly regarding its weight and the presence of fruit-shaped sensors. After completing a seven-point evaluation scale, the team concluded that the device met the necessary criteria for a celebration party but acknowledged the need to refine the design and cost to stay within a budget of twelve dollars. The meeting ended with a decision to proceed with the project and plan a celebration, highlighting the team's strong collaboration and positive outlook for future iterations.",
+      "prompt_tokens": 13807,
+      "score": 0.1921
+    },
+    {
+      "_id": "c0397164ffe22014a21e40af053ca9703cdc78677d20472d",
+      "all_classes": null,
+      "answers": [
+        "There were two groups, the young and trendy, and the old and rich. For the first group, they would like fruit and vegetables as a theme for clothes, shoes, and also products. And for the material, a spongy feeling one would be better. But the old and rich would like dark colors, simple, and recognizable shapes as well as familiar material, wood especially."
+      ],
+      "length": 6030,
+      "max_new_tokens": 532,
+      "output_tokens": 73,
+      "prediction": "Marketing discussed market trend findings by explaining that young, trendy people prefer soft, spongy materials and fruit/vegetable themes, while older, wealthier groups favor dark colors, simple shapes, and familiar materials like wood. She also noted that trends change quickly, so the company must look beyond current trends to ensure their products remain relevant for a longer period.",
+      "prompt_tokens": 8535,
+      "score": 0.2083
+    },
+    {
+      "_id": "4629a555e4748fcf19fce224d09b3c75040d4c1fa89c0bfb",
+      "all_classes": null,
+      "answers": [
+        "The revised semantic specification and construction formalism are more stable than the previous versions. In the latter, we find both construction types and meaning types along with formal considerations like verb subcategorization, or the ones a \"directed motion\" construction would dictate."
+      ],
+      "length": 24580,
+      "max_new_tokens": 532,
+      "output_tokens": 139,
+      "prediction": "Based on the transcript, the conclusion regarding semantic specification was that the group decided to retain the term \"semantic constraints\" rather than \"semantic bindings,\" despite some initial hesitation and debate about the term's appropriateness. They agreed that the distinction between constraints (used for matching) and bindings (used for verification) should remain decoupled from the formalism's parsing strategy, and they finalized the notation by moving \"semantic constraints\" to the bottom of the notation block while keeping \"meaning bindings\" above it. Additionally, they concluded that the \"designates\" element is important for composition and should be kept as a distinct part of the construct, even though it is not strictly a constraint.",
+      "prompt_tokens": 15849,
+      "score": 0.1053
+    },
+    {
+      "_id": "9dccfe15ecffb6322e27fe271cb907bf0a987cf59115a42f",
+      "all_classes": null,
+      "answers": [
+        "The meeting concerned mostly status updates and logistical affairs. The participants learned that the transcription status was good. The progress on the DARPA demo was also good, except the interface did not look as pretty as they had wanted to. The storage disks, which they had been waiting for, had finally arrived, but the person responsible for installing them was going on break. The participants also decided to schedule less meetings, so they have updates to report when they do. The meeting ended with technical discussion about model performance."
+      ],
+      "length": 12797,
+      "max_new_tokens": 532,
+      "output_tokens": 121,
+      "prediction": "The meeting focused on the ongoing development of the Transcriber system and the evaluation of the ROVER speech recognition system. Key topics included resolving disk space issues by proposing an alternate storage method using Sun Blades servers, discussing the performance of the ROVER system on the Hub-5 test set (which showed a 1.5% improvement when combining two systems), and planning for future enhancements such as adding more read speech data and refining the hybrid system's training approach. The team also addressed the need for more disk space for expanded meetings and considered the feasibility of running additional experiments with the new hybrid system.",
+      "prompt_tokens": 15849,
+      "score": 0.1714
+    },
+    {
+      "_id": "3ea9e37eb926855d2b4d18a264f1ff2e13c99be8c3bb35db",
+      "all_classes": null,
+      "answers": [
+        "The user interface designer stressed that they should design nothing but a remote control because their principle was to make users' simple desires into simple actions. Therefore, the proposed concept for the design included just a few buttons, a screen with a back light which can change colours and titanium, which was accepted by the group."
+      ],
+      "length": 7337,
+      "max_new_tokens": 532,
+      "output_tokens": 139,
+      "prediction": "The discussion focused on designing a universal remote control that balances simplicity, cost-effectiveness, and advanced features. The team agreed on a core concept featuring a portable device with a battery, a keypad, and an infrared LED source to send messages to the main TV. Key technical decisions included implementing a simple speech recognition system for volume control and channel navigation, using a titanium material for durability, and adding automatic on/off and gesture recognition features. However, the group also identified challenges regarding the cost of advanced features like automatic on/off and gesture recognition, which were constrained by a budget of around 12.5 Euros, leading to a compromise where these features were either limited or deferred to future iterations.",
+      "prompt_tokens": 10342,
+      "score": 0.1805
+    },
+    {
+      "_id": "cbbd3e6a889f75b2b93a57e125690b10a6ca00e754965b27",
+      "all_classes": null,
+      "answers": [
+        "The group discussed topics including a potential collaboration with another ICSI member regarding the analysis of inference structures, efforts by speaker mn005 to detect speaker overlap, the current status of recordings and transcriptions, and future efforts to collect meeting data. In addition to weekly meetings by the BMR group, efforts are in progress to record meetings by other ICSI research groups, as well as routine discussions by non-ICSI members."
+      ],
+      "length": 19656,
+      "max_new_tokens": 532,
+      "output_tokens": 112,
+      "prediction": "The main discussion points of the meeting included the challenges of managing data collection, specifically the need to balance the amount of data collected with the time available for transcription. The team debated the feasibility of recording multi-channel audio from radio shows and campus meetings to increase the dataset size. There was also a significant discussion about the technical limitations of echo cancellation and the decision to focus on acoustic features instead. Additionally, the group considered the potential for holding informal meetings to gather more data, while also addressing the importance of maintaining human subject consent and avoiding artificial topics in the research.",
+      "prompt_tokens": 15848,
+      "score": 0.1719
+    },
+    {
+      "_id": "5190386bb6fc900f09a0d14bcd2400d1f556e932722cb09b",
+      "all_classes": null,
+      "answers": [
+        "In this part, the meeting talked about the affordability of £4.50 amount (the universal amount) and add-ups for some cases. The group separately discussed the situation of families of different incomes levels and different areas."
+      ],
+      "length": 12329,
+      "max_new_tokens": 532,
+      "output_tokens": 189,
+      "prediction": "The Minister for Children and Social Care, Huw Irranca-Davies, explained that the proposed hourly rate of £4.50 is a universal amount designed to be affordable for all working parents, including those on lower incomes, and has been welcomed by the childcare sector. He emphasized that while the rate is above the average in England, it is a fixed contribution towards the wraparound childcare element and does not cover additional costs like food, transport, or snacks, which providers may charge separately. The Minister noted that the rate is suitable for the foreseeable future and that the £4.50 figure has been tested in pilot areas, including Cardiff and Newport, where it has been well-received despite higher costs in those regions. He also clarified that the rate is not intended to be raised in the future, and any future adjustments would require a formal review by the committee if the pilot data indicates that the rate is no longer appropriate.",
+      "prompt_tokens": 15849,
+      "score": 0.1221
+    },
+    {
+      "_id": "c129e7ae526a7d43671a93a101e350e5a4c296c911e1b077",
+      "all_classes": null,
+      "answers": [
+        "Kirsty Williams thought this process was independent of the Government, and it would not be very appropriate to comment on it. From the very outset of their ITE reforms, they had made it clear that they expected very high standards in the ITE system, but this process was independent of the Government. More specifically with the concern of the impact on students and staff, Kirsty Williams mentioned that this would be a responsibility of University of South Wales itself."
+      ],
+      "length": 13885,
+      "max_new_tokens": 532,
+      "output_tokens": 114,
+      "prediction": "Kirsty Williams stated that while she does not have a formal policy on mergers or reconfiguration, she is in favor of a \"healthy, strong and sustainable\" Higher Education sector. She explained that the accreditation process is independent of the Welsh Government and that she does not have concerns about the decision, provided that the University of South Wales can ensure that students and staff are able to complete their studies and courses with appropriate support. She emphasized that the process is ongoing and that she will continue to work with the Education Workforce Council to ensure the sector remains sustainable.",
+      "prompt_tokens": 15849,
+      "score": 0.2931
+    },
+    {
+      "_id": "7fb01a4aefc5e0620242bb052bbbb3b3a044e2a51de76db5",
+      "all_classes": null,
+      "answers": [
+        "When it comes to continuing mental health service during the lockdown, Vaughan Gething insisted that it was of great necessity to carry out a mental health recovery plan that with such a system, government can ensure the children could enjoy a healthy mental state during the school lockdown. However, at present they had not yet finished a detailed research in this job for that they were still under the cooperation with health boards to get a whole perspective of the situation."
+      ],
+      "length": 10510,
+      "max_new_tokens": 532,
+      "output_tokens": 105,
+      "prediction": "Vaughan Gething AM stated that the mental health recovery plan would be of \"very real importance\" to him, emphasizing that it is a \"real worry list\" for the Government to ensure that no generation of children and young people grows up with damage due to the pandemic. He noted that while the full picture of the impact on mental health is not fully understood due to limited contact with families, the Government is working alongside health boards to further understand the situation and develop a recovery plan that will inform future support services.",
+      "prompt_tokens": 13173,
+      "score": 0.24
+    },
+    {
+      "_id": "ff786cdb6a86863b5a5c132157cb57abc922c19b049c370d",
+      "all_classes": null,
+      "answers": [
+        "Huw Irranca-Davies thought there would be capacity growth in the next two to three years to deliver the product. The confidence was constructed by the development of roll-out, in which the team was learning live time. Moreover, there was a separate fund into cycle meithrin to address the issue of the Welsh language."
+      ],
+      "length": 12342,
+      "max_new_tokens": 532,
+      "output_tokens": 124,
+      "prediction": "Huw Irranca-Davies expressed confidence that the Welsh Government has the capacity to deliver the childcare offer within the next two to three years, citing a £100 million funding budget, a 10-year workforce development plan, and the successful pilot experience in areas like Gwynedd, Anglesey, Caerphilly, and Flintshire. He noted that while some areas face capacity issues with staff or facilities, the phased roll-out allows the government to learn lessons and adjust strategies, such as identifying specific gaps in Welsh language provision and capital development, rather than assuming a uniform solution across all regions.",
+      "prompt_tokens": 15849,
+      "score": 0.2069
+    },
+    {
+      "_id": "d0e735b5709aecfc3b98bc0e4bf071d35096c7f39c0dcce0",
+      "all_classes": null,
+      "answers": [
+        "The User Interface affirmed their previous efforts at first, but he thought that was not enough, so he went on to propose that they might consider buying another face plate and include a touch screen. In terms of the buttons on the screen, the User Interface found the existing problem that some of the buttons would be stuck in the screen and not so easy to be found and touched, so he suggested making those essential buttons in conspicuous colours like red."
+      ],
+      "length": 7881,
+      "max_new_tokens": 532,
+      "output_tokens": 71,
+      "prediction": "The User Interface thought that the previous suggestions were \"very good ideas\" and \"definitely a good idea,\" but they also noted that the team had to reflect on their market research, which indicated that people wanted \"newer, fancier, more exciting\" features rather than the \"boring, normal, functional\" ones they had previously discussed.",
+      "prompt_tokens": 10542,
+      "score": 0.1961
+    },
+    {
+      "_id": "274323138561357bf8a1fbd2e63863add766d5587fbe69dc",
+      "all_classes": null,
+      "answers": [
+        "When Marketing mentioned about the long battery life, the group came up with the locator that the remote could beep when users clapped. Also, this function should be designed to not beep every five minutes so that users would not like the remote. The group mates agreed on it and thought it was an interesting and excellent idea."
+      ],
+      "length": 8489,
+      "max_new_tokens": 532,
+      "output_tokens": 41,
+      "prediction": "The group thought of the locator because the Marketing team suggested it as a way to solve the problem of users losing their remote control, specifically by allowing them to locate it if it is lost or misplaced.",
+      "prompt_tokens": 11246,
+      "score": 0.2308
+    },
+    {
+      "_id": "e4ff47865e384089993a13d9758a3bf0ba2a6eca511207ef",
+      "all_classes": null,
+      "answers": [
+        "The group discussed recognition results generated for 20 minutes of close-talking microphone data. Recognition performance was very good, indicating promising results for forced alignment procedures and the ability to analyze other important signal information, e.g. prosody and overlapping speech. It was decided that close-talking data should be downsampled and fed to the SRI recognizer to compare recognition performance, and that data from the far-field microphones should be tested on the recognizer as soon as possible."
+      ],
+      "length": 12786,
+      "max_new_tokens": 532,
+      "output_tokens": 398,
+      "prediction": "The transcript describes a meeting focused on improving speech recognition using wireless microphones and new microphone hardware. Key points include:\n\n1.  **Hardware Setup:** The team is setting up a new microphone system, specifically testing wireless microphones and hand-held microphones (Crown CM311AE) to replace lapel mics which are uncomfortable. They are also considering using a third microphone board to handle more people in a meeting.\n2.  **Data Collection:** They are recording a meeting to collect data for a new speaker form and to test the recognition system. The recording is being done with 8 channels (48kHz sampling rate) and is being downsampled to 16kHz for storage.\n3.  **Recognition Performance:** The initial recognition results on the Switchboard dataset were poor (80% error rate) due to a bug in the synchronization time file. However, after fixing the bug and running the system with the new microphone data, the performance improved significantly, showing that the new data is \"reasonably good\" for a baseline.\n4.  **Future Plans:** The team plans to use this data to train a language model and to potentially adapt the system for different microphone types (e.g., hand-held vs. lapel) and to explore using a third microphone board for larger groups. They also plan to have transcribers discuss the data to refine the transcription process.\n5.  **Specific Issues:** The transcript mentions a bug where the system sometimes misaligned the speech segments (one off), which was resolved by checking the synchronization file. There was also a discussion about the cost and logistics of acquiring the new microphones.\n\nIn summary, the meeting involved setting up and testing new microphone hardware to replace lapel mics, collecting data to train a language model, and addressing synchronization bugs to improve recognition accuracy. The results show that the new microphone data is promising for a baseline but requires further tuning and adaptation.",
+      "prompt_tokens": 15849,
+      "score": 0.1435
+    },
+    {
+      "_id": "6099595c582213359f4e7074624c740d1e79642bb85ffb92",
+      "all_classes": null,
+      "answers": [
+        "Although the industrial designer regarded LCD as costly, the user interface designer proposed adding an LCD as a kind of output that only displayed some information or menu and was not touch sensitive, which might reduce the cost."
+      ],
+      "length": 6961,
+      "max_new_tokens": 532,
+      "output_tokens": 86,
+      "prediction": "The user interface designer proposed using a titanium design with simple push buttons instead of liquid crystal displays or rubber, as titanium allows for double-curved shapes which are problematic to manufacture, and push buttons are less expensive and require simpler chip technology. Additionally, they suggested incorporating a titanium case that could smell like fruit to align with current trends, and considered making the remote control color-changing or thermochromic to further appeal to users.",
+      "prompt_tokens": 10457,
+      "score": 0.2366
+    },
+    {
+      "_id": "4ad5fe6d35e79e65991f1993ed17bfde06c89ea5ea0ded0e",
+      "all_classes": null,
+      "answers": [
+        "Huw Irranca-Davies thought £4.50amount was an appropriate and universal amount. As for the add-ons, even low-income families could discriminate between providers. Also, the team would be substantially transparent thus parents can make the decisions."
+      ],
+      "length": 12340,
+      "max_new_tokens": 532,
+      "output_tokens": 143,
+      "prediction": "Huw Irranca-Davies stated that while the £4.50 hourly rate is affordable for the lowest-income working families, he acknowledged that if funding were no object, he would consider a different, more universal offer. He explained that the current rate is a compromise to avoid adding administrative complexity and confusion, noting that parents are accustomed to making their own decisions about which providers charge extra for items like food and transport, and that the current transparent model helps them balance their work and family lives. He also clarified that the £4.50 rate does not cover essential items like transport or food, which are paid for separately by providers, and that the rate is above the average in England despite this.",
+      "prompt_tokens": 15849,
+      "score": 0.1864
+    },
+    {
+      "_id": "0ed01f1232b214fae64b5b538e791e6dc02b3b7c7f9fe598",
+      "all_classes": null,
+      "answers": [
+        "They wanted it to be original, trendy, user-friendly, durable, creative and characteristic, so it can be very intuitive that people could use the product. In addition, the price, cost and expected profit of the remote control were also determined. In the part of creativity, they pointed out that creativity should have its own characteristics and ensure its fashion without affecting its functionality, so as to truly \"introduce fashion into electronics\". In terms of function, it is necessary to simplify the switch and guarantee function."
+      ],
+      "length": 3976,
+      "max_new_tokens": 532,
+      "output_tokens": 105,
+      "prediction": "The group discussed that the remote control should be original, trendy, and user-friendly, with the goal of being intuitive so people can easily use it. They also agreed on the motto \"we put the fashion in electronics\" and aimed for a sleek, stylish design that is functional yet modern, similar to new-generation smartphones. Additionally, they decided to include a menu-based interface to allow users to navigate options without needing physical buttons, and they emphasized the importance of high battery life to avoid a steep learning curve for new users.",
+      "prompt_tokens": 5723,
+      "score": 0.2815
+    },
+    {
+      "_id": "8684df04bd344a18f0767a3276fb4d0848b31db0ee52316b",
+      "all_classes": null,
+      "answers": [
+        "To start with, Bethan Owen first pointed out that figures showed that the percentage of income that had come from research in Wales was smaller than that in England, so the Welsh universities were receiving less of the money that was available, which was a factor that resulted from having less QR as a percentage. To tackle this issue, the government had provided funding in 2017-18 and 2018-19 to WISERD Education, which was a research collaboration between a number of the Welsh universities, specifically looking at educational issues. However, it was still early to see how allocation for 2019-20 would work."
+      ],
+      "length": 10200,
+      "max_new_tokens": 532,
+      "output_tokens": 91,
+      "prediction": "According to the transcript, the 2019-20 allocations contribute to educational research by providing specific funding to the WISERD Education project, a five-partner collaboration between Welsh universities focused on developing the three-to-15 curriculum. Additionally, the sector has committed over £28 million of investment from fee and access plans to student support activities, which includes bursaries designed to help students cope with accommodation and living costs.",
+      "prompt_tokens": 12923,
+      "score": 0.2362
+    },
+    {
+      "_id": "1bcc88ac7d093359f8141e3c134965acf095f900f09113e3",
+      "all_classes": null,
+      "answers": [
+        "Project Manager believed that it could not be heavy. Industrial Designer indicated that fewer and bigger buttons are better and should be bust-free, for instance, rubber could be used on it. Industrial Designer also suggested that when users push a button, they could hear some sort of bleep. User Interface suggested a LED on the corner and not too expensive material like plastic could be used. Marketing added that it should look nice for better sales and should work with as many as possible of existing products listed on their website. Industrial Designer also concluded that it should be battery-saving."
+      ],
+      "length": 1789,
+      "max_new_tokens": 532,
+      "output_tokens": 89,
+      "prediction": "The decision for the remote control's design involves prioritizing a balance between usability and cost-effectiveness. The team decided to use a larger number of big buttons to make the device easier to use, even though this increases the weight and cost. They also chose to avoid complex features like a battery-free system, opting instead for a standard battery replacement schedule. Additionally, the design must be compatible with existing devices and look attractive to ensure market success.",
+      "prompt_tokens": 2736,
+      "score": 0.1746
+    },
+    {
+      "_id": "64e9a41ae14b76f1cad7c04eee382cae6fd178a65b474a9f",
+      "all_classes": null,
+      "answers": [
+        "This meeting is about some final decisions on the design of the remote control. It started with presentations on the conceptual design from Marketing, Industrial Designer, and User Interface, and had a discussion on the decisions about the control. The Project Manager put a file in his folder to place the kind of decisions they should take."
+      ],
+      "length": 11169,
+      "max_new_tokens": 532,
+      "output_tokens": 135,
+      "prediction": "The meeting was a collaborative session where the Project Manager, Marketing, and Industrial Designer discussed the design and specifications for a new consumer remote control. Key decisions included choosing a titanium back with a plastic front for a strong yet trendy look, implementing a fruit-themed color scheme, and integrating a voice recognition feature for a \"gadget\" feel. The team also debated the placement of the L_C_D_ screen, the design of the buttons, and the inclusion of a recording button, ultimately agreeing on a design that balances functionality with a modern, playful aesthetic suitable for younger audiences. The session concluded with the team moving into the conceptual design phase to finalize the specifications and prototype drawings.",
+      "prompt_tokens": 15849,
+      "score": 0.2521
+    },
+    {
+      "_id": "44a8557b3849fca2740af3fc4e5b1d6f262034d38f0302c8",
+      "all_classes": null,
+      "answers": [
+        "The group hoped that it can be applied to children, in particular to ensure their safety during use. Besides, it should be colourful and beautiful to attract the attention of children. The price also should be reasonable and affordable, not too expensive, but the profit can be guaranteed. In terms of function design, unnecessary functions and switches should be removed to enhance their applicability."
+      ],
+      "length": 3239,
+      "max_new_tokens": 532,
+      "output_tokens": 69,
+      "prediction": "The discussion concluded that the remote control should be unbreakable, colorful, and child-proof, with a palm-sized size and a monochrome frame. It was decided to use a universal remote control with at least three buttons to handle standard actions like changing channels and adjusting volume, while also incorporating features such as an undo history and recording capabilities.",
+      "prompt_tokens": 5378,
+      "score": 0.1684
+    },
+    {
+      "_id": "585f667a0717f95cc0c7398ab295818570d6c307c7ed1ade",
+      "all_classes": null,
+      "answers": [
+        "Eluned Morgan said that they would wish to see pay equality in relation to teaching. As for whether all staff should get the increase or only teaching staff but not non-teaching staff, Eluned Morgan thought this should be up to ColegauCymru to negotiate and to discuss, and they should wait for their outcomes."
+      ],
+      "length": 13887,
+      "max_new_tokens": 532,
+      "output_tokens": 88,
+      "prediction": "Eluned Morgan responded by stating that while she would wish to see pay equality in relation to teaching, the specific outcome of negotiations between ColegauCymru and the unions is up to ColegauCymru to negotiate and discuss, and she would wait to see the results before responding formally. She also noted that the issue of pay equality for non-teaching staff is also up to ColegauCymru to negotiate and discuss.",
+      "prompt_tokens": 15849,
+      "score": 0.4578
+    },
+    {
+      "_id": "30051e7f58ab4869cb0d06c302b96d628ef87eec2d64fa4a",
+      "all_classes": null,
+      "answers": [
+        "The group briefly talked about their agreements of the past meetings. They were all concerned with the interchangeable user interfaces and they agreed to make it more natural-looking and multi-faces. The Industrial Design then mentioned the issue of the material. They decided to use a rubber coat in case the remote control would be damaged when being dropped occasionally. After most details were checked, the Project Manager turned to the budget problem. It is quite essential for them to be both environmentally friendly and economic."
+      ],
+      "length": 9188,
+      "max_new_tokens": 532,
+      "output_tokens": 81,
+      "prediction": "The project manager noted that the previous meeting was \"high-powered\" and involved a lot of \"double-clicking,\" while the industrial designer highlighted that the team had previously decided against using touch screens in favor of large buttons. Additionally, the project manager mentioned that the team had \"come to the conclusion that we should develop a remote with uh voice recognition,\" which was a key outcome of the past discussions.",
+      "prompt_tokens": 12979,
+      "score": 0.1513
+    },
+    {
+      "_id": "901c8c1975e2bafb77640f8854a3bcefcde762e1db3b5db7",
+      "all_classes": null,
+      "answers": [
+        "Industrial Designer suggested they should also look up popularity among the 25 to 35 years old age group if they looked into a stylish design. Marketing said it was 70% popular among this age group and thought this age group didn't have much economic burden so the remote price should not be unaffordable. User Interface supplemented that their remote might not function with the old TV. Therefore, the group decided to include both 15 to 25 and 25 to 35 years old age group into consideration."
+      ],
+      "length": 8488,
+      "max_new_tokens": 532,
+      "output_tokens": 59,
+      "prediction": "The group discussed that people between the ages of fifteen and thirty-five have higher disposable income, which makes a stylish remote control more affordable for them. However, they also noted that this age group is the most likely to buy televisions, so targeting them is crucial for the product's success.",
+      "prompt_tokens": 11245,
+      "score": 0.2549
+    },
+    {
+      "_id": "0ffea9decbc25e92599ad21fc51af41c3eda24d9ee355524",
+      "all_classes": null,
+      "answers": [
+        "The team decided that the remote had to be compatible with most of the world's TVS, or at least the ones they made. And the buttons must be internationally recognized.They also thought that the function of the remote control was to change the state of the TV and this could be realized by pressing the button."
+      ],
+      "length": 6395,
+      "max_new_tokens": 532,
+      "output_tokens": 53,
+      "prediction": "The discussion concluded that the group decided to focus on creating a universal remote control compatible with various brands and systems, aiming for a grey or black color scheme to appeal to a wide audience, and planning to finalize the design specifications and market research for the next meeting.",
+      "prompt_tokens": 9625,
+      "score": 0.2469
+    },
+    {
+      "_id": "ec3bcae409bead06e4584f6ab877ab0d19d64f92c2ebd195",
+      "all_classes": null,
+      "answers": [
+        "Because in general the early adopters of a new device were young people and teletext was used less among the young than the elderly. Plus, the young found it very relevant to have speech recognition in their remote control so that they could just tell the controller what they wanted instead of zapping."
+      ],
+      "length": 7341,
+      "max_new_tokens": 532,
+      "output_tokens": 32,
+      "prediction": "The marketing expert suggested aiming at young people because they are considered early adopters of new devices and are more likely to be interested in a new remote control.",
+      "prompt_tokens": 10344,
+      "score": 0.2817
+    }
+  ],
+  "config_effect": {
+    "allocation": "uniform_int4",
+    "detail": {
+      "a2_flag": false,
+      "cache_dtype": "int4_per_token_head",
+      "per_layer": {}
+    },
+    "group_structure_verified": false,
+    "ok": true
+  },
+  "created_at_utc": "2026-08-07T15:31:59Z",
+  "data_sha256": "11e7021d0fe14541c3e246d4f4d5946e26b16838815b81f5fb574b9aa539916d",
+  "data_source": "Xnhyacinth/LongBench parquet mirror (THUDM/LongBench v1)",
+  "elapsed_s": 95.2,
+  "engine": {
+    "kwargs": {
+      "disable_log_stats": true,
+      "enforce_eager": true,
+      "gpu_memory_utilization": 0.85,
+      "kv_cache_dtype": "int4_per_token_head",
+      "max_model_len": 16384,
+      "seed": 7
+    },
+    "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master",
+    "vllm_version": "0.26.1rc1.dev245+ge2fa28594"
+  },
+  "host": "remote_5090",
+  "max_input_tokens": 15852,
+  "max_output_tokens": 532,
+  "max_samples": 50,
+  "metric": "rouge_l",
+  "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master",
+  "num_samples": 50,
+  "official_longbench_commit": "4c4b985bcf",
+  "sampling_params": {
+    "max_tokens": 532,
+    "temperature": 0.0
+  },
+  "schema_version": 1,
+  "score": 21.6568,
+  "seed": 7,
+  "status": "completed_validated",
+  "task": "qmsum",
+  "thinking": "disabled",
+  "truncated_prompts": 23
+}

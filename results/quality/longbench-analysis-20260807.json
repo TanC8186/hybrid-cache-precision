@@ -1,0 +1,229 @@
+{
+  "schema_version": 1,
+  "attempt": "longbench-20260807",
+  "tables": {
+    "2B": [
+      {
+        "task": "TREC",
+        "metric": "classification",
+        "n": 50,
+        "fp16": 72.0,
+        "trunc_fp16": 0,
+        "uniform_int4": 66.0,
+        "trunc_uniform_int4": 0,
+        "packed_per_layer": 66.0,
+        "trunc_packed_per_layer": 0,
+        "turboquant_k8v4": 72.0,
+        "trunc_turboquant_k8v4": 0,
+        "turboquant_4bit_nc": 70.0,
+        "trunc_turboquant_4bit_nc": 0
+      },
+      {
+        "task": "TriviaQA",
+        "metric": "qa_f1",
+        "n": 50,
+        "fp16": 84.5333,
+        "trunc_fp16": 12,
+        "uniform_int4": 82.8667,
+        "trunc_uniform_int4": 12,
+        "packed_per_layer": 82.8667,
+        "trunc_packed_per_layer": 12,
+        "turboquant_k8v4": 84.9333,
+        "trunc_turboquant_k8v4": 12,
+        "turboquant_4bit_nc": 84.5333,
+        "trunc_turboquant_4bit_nc": 12
+      },
+      {
+        "task": "SAMSum",
+        "metric": "rouge_l",
+        "n": 50,
+        "fp16": 32.3639,
+        "trunc_fp16": 5,
+        "uniform_int4": 33.3918,
+        "trunc_uniform_int4": 5,
+        "packed_per_layer": 31.1025,
+        "trunc_packed_per_layer": 5,
+        "turboquant_k8v4": 30.2499,
+        "trunc_turboquant_k8v4": 5,
+        "turboquant_4bit_nc": 31.6159,
+        "trunc_turboquant_4bit_nc": 5
+      },
+      {
+        "task": "LCC",
+        "metric": "code_sim",
+        "n": 50,
+        "fp16": 2.4,
+        "trunc_fp16": 0,
+        "uniform_int4": 3.36,
+        "trunc_uniform_int4": 0,
+        "packed_per_layer": 3.06,
+        "trunc_packed_per_layer": 0,
+        "turboquant_k8v4": 2.62,
+        "trunc_turboquant_k8v4": 0,
+        "turboquant_4bit_nc": 2.06,
+        "trunc_turboquant_4bit_nc": 0
+      },
+      {
+        "task": "RepoBench-P",
+        "metric": "code_sim",
+        "n": 50,
+        "fp16": 0.88,
+        "trunc_fp16": 15,
+        "uniform_int4": 1.1,
+        "trunc_uniform_int4": 15,
+        "packed_per_layer": 1.2,
+        "trunc_packed_per_layer": 15,
+        "turboquant_k8v4": 0.44,
+        "trunc_turboquant_k8v4": 15,
+        "turboquant_4bit_nc": 0.64,
+        "trunc_turboquant_4bit_nc": 15
+      },
+      {
+        "task": "GovReport",
+        "metric": "rouge_l",
+        "n": 50,
+        "fp16": 31.5189,
+        "trunc_fp16": 10,
+        "uniform_int4": 31.3334,
+        "trunc_uniform_int4": 10,
+        "packed_per_layer": 31.2812,
+        "trunc_packed_per_layer": 10,
+        "turboquant_k8v4": 31.3865,
+        "trunc_turboquant_k8v4": 10,
+        "turboquant_4bit_nc": 30.8394,
+        "trunc_turboquant_4bit_nc": 10
+      },
+      {
+        "task": "QMSum",
+        "metric": "rouge_l",
+        "n": 50,
+        "fp16": 22.3004,
+        "trunc_fp16": 23,
+        "uniform_int4": 21.6568,
+        "trunc_uniform_int4": 23,
+        "packed_per_layer": 21.2138,
+        "trunc_packed_per_layer": 23,
+        "turboquant_k8v4": 21.5364,
+        "trunc_turboquant_k8v4": 23,
+        "turboquant_4bit_nc": 22.2548,
+        "trunc_turboquant_4bit_nc": 23
+      },
+      {
+        "task": "MultiNews",
+        "metric": "rouge_l",
+        "n": 50,
+        "fp16": 23.4672,
+        "trunc_fp16": 0,
+        "uniform_int4": 23.0082,
+        "trunc_uniform_int4": 0,
+        "packed_per_layer": 23.2225,
+        "trunc_packed_per_layer": 0,
+        "turboquant_k8v4": 23.9024,
+        "trunc_turboquant_k8v4": 0,
+        "turboquant_4bit_nc": 22.9285,
+        "trunc_turboquant_4bit_nc": 0
+      }
+    ],
+    "9B": [
+      {
+        "task": "TREC",
+        "metric": "classification",
+        "n": 50,
+        "fp16": 72.0,
+        "trunc_fp16": 0,
+        "uniform_int4": 72.0,
+        "trunc_uniform_int4": 0,
+        "packed_per_layer": 74.0,
+        "trunc_packed_per_layer": 0
+      },
+      {
+        "task": "TriviaQA",
+        "metric": "qa_f1",
+        "n": 50,
+        "fp16": 88.2,
+        "trunc_fp16": 12,
+        "uniform_int4": 89.2,
+        "trunc_uniform_int4": 12,
+        "packed_per_layer": 87.5333,
+        "trunc_packed_per_layer": 12
+      },
+      {
+        "task": "SAMSum",
+        "metric": "rouge_l",
+        "n": 50,
+        "fp16": 38.4332,
+        "trunc_fp16": 5,
+        "uniform_int4": 38.1095,
+        "trunc_uniform_int4": 5,
+        "packed_per_layer": 37.6858,
+        "trunc_packed_per_layer": 5
+      },
+      {
+        "task": "LCC",
+        "metric": "code_sim",
+        "n": 50,
+        "fp16": 40.56,
+        "trunc_fp16": 0,
+        "uniform_int4": 38.72,
+        "trunc_uniform_int4": 0,
+        "packed_per_layer": 37.96,
+        "trunc_packed_per_layer": 0
+      },
+      {
+        "task": "RepoBench-P",
+        "metric": "code_sim",
+        "n": 50,
+        "fp16": 37.4,
+        "trunc_fp16": 15,
+        "uniform_int4": 35.36,
+        "trunc_uniform_int4": 15,
+        "packed_per_layer": 32.16,
+        "trunc_packed_per_layer": 15
+      },
+      {
+        "task": "GovReport",
+        "metric": "rouge_l",
+        "n": 50,
+        "fp16": 32.1049,
+        "trunc_fp16": 10,
+        "uniform_int4": 32.1215,
+        "trunc_uniform_int4": 10,
+        "packed_per_layer": 31.8224,
+        "trunc_packed_per_layer": 10
+      },
+      {
+        "task": "QMSum",
+        "metric": "rouge_l",
+        "n": 50,
+        "fp16": 22.5391,
+        "trunc_fp16": 23,
+        "uniform_int4": 21.9411,
+        "trunc_uniform_int4": 23,
+        "packed_per_layer": 21.6684,
+        "trunc_packed_per_layer": 23
+      },
+      {
+        "task": "MultiNews",
+        "metric": "rouge_l",
+        "n": 50,
+        "fp16": 23.3407,
+        "trunc_fp16": 0,
+        "uniform_int4": 22.5277,
+        "trunc_uniform_int4": 0,
+        "packed_per_layer": 22.4626,
+        "trunc_packed_per_layer": 0
+      }
+    ]
+  },
+  "notes": {
+    "data": "Xnhyacinth/LongBench parquet mirror (THUDM/LongBench v1)",
+    "official_commit": "4c4b985bcf",
+    "protocol": "no-think, greedy, seed 7, first 50 samples/task, max_model_len 16384",
+    "metric_legend": {
+      "classification": "official classification_score (TREC)",
+      "qa_f1": "official qa_f1_score (TriviaQA)",
+      "rouge_l": "official rouge_score ROUGE-L F (SAMSum/GovReport/QMSum/MultiNews)",
+      "code_sim": "official code_sim_score fuzzywuzzy ratio (LCC/RepoBench-P)"
+    }
+  }
+}

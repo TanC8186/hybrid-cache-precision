@@ -1,0 +1,701 @@
+{
+  "allocation": "turboquant_k8v4",
+  "attempt_id": "longbench-20260807",
+  "cases": [
+    {
+      "_id": "5da5f97a6782e2f4559618a1ac96a0eaa98ff99ae2f5b189",
+      "all_classes": null,
+      "answers": [
+        "Emilia is still angry."
+      ],
+      "length": 6406,
+      "max_new_tokens": 148,
+      "output_tokens": 15,
+      "prediction": "William is still angry with Emilia, but he is sorry for her.",
+      "prompt_tokens": 9764,
+      "score": 0.4
+    },
+    {
+      "_id": "e5b2529de4edb475662403295e8fb4c639067de48ea3fa13",
+      "all_classes": null,
+      "answers": [
+        "Mico and Jeff will go to the village party. Jeff will drive."
+      ],
+      "length": 1794,
+      "max_new_tokens": 148,
+      "output_tokens": 28,
+      "prediction": "Mico and Jeff decide to attend the village party, but Lia declines due to fatigue and Jim jokes about the lack of English speakers.",
+      "prompt_tokens": 2718,
+      "score": 0.3871
+    },
+    {
+      "_id": "0681192bf437818262545c9d5d410f94fd265b20f23d5111",
+      "all_classes": null,
+      "answers": [
+        "Michael can't leave the office before 8 PM, so he's unable to meet with Tom. Michael will call Tom tomorrow."
+      ],
+      "length": 8984,
+      "max_new_tokens": 148,
+      "output_tokens": 29,
+      "prediction": "Michael is sorry he cannot make it to the office today because he has to stay until 8 PM. Tom agrees to call him tomorrow.",
+      "prompt_tokens": 13485,
+      "score": 0.3
+    },
+    {
+      "_id": "6f9361273f0bb0f4da30c7204050eaf72782a8fdae636bb2",
+      "all_classes": null,
+      "answers": [
+        "Autumn has sewn a dress."
+      ],
+      "length": 5623,
+      "max_new_tokens": 148,
+      "output_tokens": 148,
+      "prediction": "The user wants a summary of the provided dialogue examples.\n\n**Analysis of the Request:**\n1.  **Input:** A list of dialogue examples (pairs of speakers) with their corresponding summaries.\n2.  **Task:** Summarize the *dialogue* into a few short sentences.\n3.  **Constraint:** The output should be a summary of the *entire* provided text, not just one example.\n4.  **Observation:** The provided text is a collection of 30+ distinct dialogue examples, each with a summary already written below it. The user's prompt asks to \"Summarize the dialogue into a few short sentences.\" This implies generating a single, cohesive summary that encaps",
+      "prompt_tokens": 8673,
+      "score": 0.1333
+    },
+    {
+      "_id": "1b992f20e93e0d79de187fa27d695a4a1603ddb06bcaf0d8",
+      "all_classes": null,
+      "answers": [
+        "Sandra and Brenda used to work together in the clothes factory 25 years ago. Sandra still lives in Kings Norton. Brenda lives in Stoke now. Her husband Bill died 5 years ago. They will meet in Birmingham for a lunch next Saturday about 11. They want to organize a reunion for the Lister's girls. "
+      ],
+      "length": 6749,
+      "max_new_tokens": 148,
+      "output_tokens": 31,
+      "prediction": "Brenda and Sandra are reconnecting after 25 years, planning to meet in Birmingham for lunch and a trip down memory lane on Saturday.",
+      "prompt_tokens": 10211,
+      "score": 0.2812
+    },
+    {
+      "_id": "e207f0cd648c4dd4516b519a490faacd3dae921aac636340",
+      "all_classes": null,
+      "answers": [
+        "Kristi needs new trainers. Leah has a link for a discount coupon at an online store."
+      ],
+      "length": 9574,
+      "max_new_tokens": 148,
+      "output_tokens": 43,
+      "prediction": "Kristi will receive a 20% discount coupon for an online shop by providing her ID to the reference code \"Direndia45,\" which will also allow her to accumulate money for future shopping.",
+      "prompt_tokens": 14667,
+      "score": 0.2857
+    },
+    {
+      "_id": "6bdecf495afb4980c3f65777cc45c18bb487f697e8a078f6",
+      "all_classes": null,
+      "answers": [
+        "Peter has been working out at the gym near their office lately to improve his health. Lisa is considering working out and eating better to be healthier."
+      ],
+      "length": 11372,
+      "max_new_tokens": 148,
+      "output_tokens": 89,
+      "prediction": "The dialogue describes a conversation between two friends, Peter and Lisa, discussing their respective health routines. Peter mentions working out, while Lisa suggests improving her diet and sleep. They agree that maintaining a healthy lifestyle requires a consistent regimen.\n\n**Summary:**\nPeter and Lisa discuss their health habits, with Peter working out and Lisa planning to improve her diet and sleep. They agree that maintaining a consistent healthy regimen is essential for long-term well-being.",
+      "prompt_tokens": 16233,
+      "score": 0.1695
+    },
+    {
+      "_id": "a49f56fda8881e78a638c9f488dec798c0a3cc2b18f6b8f0",
+      "all_classes": null,
+      "answers": [
+        "Petra is very sleepy at work today, Andy finds the day boring, and Ezgi is working. "
+      ],
+      "length": 11240,
+      "max_new_tokens": 148,
+      "output_tokens": 148,
+      "prediction": "The dialogue is summarized as follows:\n\n1.  **Rose** plans to reach her destination in 30 minutes, while **Tom** confirms that everything is ready and waiting for her.\n2.  **Jesus** will visit **Maria** tomorrow with a fee slip, as Maria requested him to bring it.\n3.  **Judy** wants to know the meaning of **John's** last message to **Anne**, while **Anne** insists Judy stop reading her messages.\n4.  **Daniel** describes his splendid weekend in Corsica, praising the hotel, staff, and water, and assures **Franck** that they will not be bored for 10 days.\n5.  **Jim",
+      "prompt_tokens": 16233,
+      "score": 0.0909
+    },
+    {
+      "_id": "e3438ab42d3cc8239d1e19c8368ad851df9cdf88b15fd6ec",
+      "all_classes": null,
+      "answers": [
+        "People are photoshopping Timothée Chalamet into artworks. Dominic and Nova agree that he looks like a 19th century man."
+      ],
+      "length": 7689,
+      "max_new_tokens": 148,
+      "output_tokens": 34,
+      "prediction": "Nova and Dominic are discussing a photo of Timothée Chalamet that looks like a 19th-century portrait, with Dominic agreeing that it is accurate.",
+      "prompt_tokens": 11933,
+      "score": 0.4103
+    },
+    {
+      "_id": "77ead33295dc92287fbb9d0b6e86911ef1ef33d35fbb6f68",
+      "all_classes": null,
+      "answers": [
+        "Adele got a new biscuit Labrador Chewy that is 4 months. Her cats keep their distance, and Poppy and Lulu seem to mother Chewy and Speedy wants to play."
+      ],
+      "length": 2113,
+      "max_new_tokens": 148,
+      "output_tokens": 98,
+      "prediction": "Adele is calling Lola to tell her about her new dog, Bones, who is a plump 4-month-old Chihuahua. Lola is surprised by the news and asks if the other dogs are fighting, but Adele explains that they are just keeping their distance because she took them in as adult dogs. She also mentions that girls like to fight and that she had to wean them. Adele is happy to meet the new dog and looks forward to seeing him.",
+      "prompt_tokens": 3171,
+      "score": 0.1463
+    },
+    {
+      "_id": "694acb099ad12bae7161cf4ac8d7fb920d6de7ce1857a246",
+      "all_classes": null,
+      "answers": [
+        "Celine is not at home, but she will call Cara before visiting her."
+      ],
+      "length": 6608,
+      "max_new_tokens": 148,
+      "output_tokens": 20,
+      "prediction": "Cara and Celine agreed to meet later in the evening if Celine decides to drop by.",
+      "prompt_tokens": 10194,
+      "score": 0.0741
+    },
+    {
+      "_id": "838c429ae24c4723861b0f074f871f52db83f0747f772d5d",
+      "all_classes": null,
+      "answers": [
+        "Rachel sends a list of Top 50 films of 2018. Janice watched almost half of them, Deadpool 2 and Avengers included."
+      ],
+      "length": 6582,
+      "max_new_tokens": 148,
+      "output_tokens": 47,
+      "prediction": "The summary is: Rachel and Janice watched the top 50 films of 2018, with Janice noting that her boyfriend forced her to see Deadpool 2 and that she thought it was worse than expected.",
+      "prompt_tokens": 10026,
+      "score": 0.3673
+    },
+    {
+      "_id": "1937c256433911ec3025e6383525c9c4ef22d52b445a0a0c",
+      "all_classes": null,
+      "answers": [
+        "luke and martial want to help the team and play despite their injuries. They will meet at carrington and go to the coach's office."
+      ],
+      "length": 3507,
+      "max_new_tokens": 148,
+      "output_tokens": 24,
+      "prediction": "Luke and Martial are going to meet at Carrington's office very early tomorrow to help the team with the fixtures.",
+      "prompt_tokens": 5259,
+      "score": 0.3684
+    },
+    {
+      "_id": "69f3eb0f9a4c973a0b9785e7795cece732bf7738b5322fce",
+      "all_classes": null,
+      "answers": [
+        "Sally and Rita like Borns' new album very much. Rita is also excited about Florence's new single which comes out tomorrow. Sally didn't know about it."
+      ],
+      "length": 8785,
+      "max_new_tokens": 148,
+      "output_tokens": 29,
+      "prediction": "Rita and Sally are excited about Rita's new album, which she considers her favorite, and are also pumped for Florence's upcoming single.",
+      "prompt_tokens": 13453,
+      "score": 0.2857
+    },
+    {
+      "_id": "4a4c7c55c7fb1952ff95cbf97499ae21eb93ff1c37e68458",
+      "all_classes": null,
+      "answers": [
+        "Martin wrote a short review and won 2 cinema tickets on FB. Martin wants Aggie to go with him this week for the new film with Redford."
+      ],
+      "length": 7565,
+      "max_new_tokens": 148,
+      "output_tokens": 17,
+      "prediction": "Martin and Aggie will meet to review a new Redford film this week.",
+      "prompt_tokens": 11365,
+      "score": 0.3158
+    },
+    {
+      "_id": "719eee42955c9d3602c720f8644ffd10e0af4776be3dc046",
+      "all_classes": null,
+      "answers": [
+        "Jim will check out Max's latest music project when he gets home."
+      ],
+      "length": 6750,
+      "max_new_tokens": 148,
+      "output_tokens": 23,
+      "prediction": "Max is excited to share his latest music project with Jim, who will listen to it when he gets home.",
+      "prompt_tokens": 10158,
+      "score": 0.4516
+    },
+    {
+      "_id": "6b2677b451034aef716068c91304f0ce5e33440ebf8b4620",
+      "all_classes": null,
+      "answers": [
+        "Wanda wants to throw a party. She asks Gina to borrow her father's car and go do groceries together. They set the date for Friday. "
+      ],
+      "length": 3141,
+      "max_new_tokens": 148,
+      "output_tokens": 27,
+      "prediction": "Wanda wants to make a party because she needs to make a list and take her father's car to do groceries with Gina.",
+      "prompt_tokens": 4695,
+      "score": 0.4545
+    },
+    {
+      "_id": "0b61c23fde58a1a29920fd2cf13ba9caf9dec377481563df",
+      "all_classes": null,
+      "answers": [
+        "Madison considers buying flight tickets to Thailand as she has found a cheap offer with 50% discount for children under 12."
+      ],
+      "length": 2154,
+      "max_new_tokens": 148,
+      "output_tokens": 29,
+      "prediction": "Madison and Adam are excited about a ticket offer to Thailand, noting that children under 12 receive a 50% discount.",
+      "prompt_tokens": 3257,
+      "score": 0.3
+    },
+    {
+      "_id": "026af6b27965bf8a6572d64fc70cc2269b01b37509086d74",
+      "all_classes": null,
+      "answers": [
+        "Charlee is attending Portuguese theater as a subject at university. He and other students are preparing a play by Mrożek translated into Portuguese."
+      ],
+      "length": 9666,
+      "max_new_tokens": 148,
+      "output_tokens": 23,
+      "prediction": "Charlee is attending a Portuguese theatre performance at university, and Curtis is asking about the writer of the play.",
+      "prompt_tokens": 14993,
+      "score": 0.3158
+    },
+    {
+      "_id": "3ea532ab0addd3b00ccff7e7f4c09e0644067bf1acf1453a",
+      "all_classes": null,
+      "answers": [
+        "Jesse broke his razor and wants to borrow Stig's."
+      ],
+      "length": 3170,
+      "max_new_tokens": 148,
+      "output_tokens": 15,
+      "prediction": "Jesse broke his razor and is asking Stig to borrow it.",
+      "prompt_tokens": 4913,
+      "score": 0.7
+    },
+    {
+      "_id": "b0a5da20017e4f6d513b2e5058be42e204a1e105698da42e",
+      "all_classes": null,
+      "answers": [
+        "Ann is still at school. She will be home at 7 so she can meet Meg then."
+      ],
+      "length": 11154,
+      "max_new_tokens": 148,
+      "output_tokens": 39,
+      "prediction": "Meg will meet Ann at Ann's home at 7 PM.\n\n**Summary:** Meg is still at school, so she plans to meet Ann at Ann's house at 7 PM.",
+      "prompt_tokens": 16233,
+      "score": 0.4
+    },
+    {
+      "_id": "0c3ce1cd7e7246a98eda4c178e98c100cbe3e275c4b7ce9b",
+      "all_classes": null,
+      "answers": [
+        "Jones and Angelina will meet in town in the afternoon."
+      ],
+      "length": 10825,
+      "max_new_tokens": 148,
+      "output_tokens": 148,
+      "prediction": "The dialogue is summarized as follows:\n\n1.  **Jenna and Eaton** are preparing for a night of Indian-style chicken with rice, with Eaton contributing his own spices.\n2.  **Joanna** asks her mom, Sandy, if she can sleep at Jenny's place after a BTS concert, but Sandy is upset because she doesn't know about the concert and thinks Joanna is lying.\n3.  **Emily** asks her brother for advice on choosing a dress from three options, and he suggests she might wear the blue one to college tomorrow.\n4.  **Sean** plans to join a university party to watch a concert featuring BTS, while **Jackie** is attending an oral exam at 7 PM",
+      "prompt_tokens": 16233,
+      "score": 0.0
+    },
+    {
+      "_id": "5995658a6719fda93e3338b5bdb95ace008a41f8856f0a81",
+      "all_classes": null,
+      "answers": [
+        "Bella wants to talk with Clara and she will come to her place after 7:30."
+      ],
+      "length": 2223,
+      "max_new_tokens": 148,
+      "output_tokens": 18,
+      "prediction": "Clara will pick Bella up from the gym at 7:30 PM.",
+      "prompt_tokens": 3392,
+      "score": 0.24
+    },
+    {
+      "_id": "29fe22e3483ac121e8c349dad5e3755798af025b774a676e",
+      "all_classes": null,
+      "answers": [
+        "Gary is a driver for Uber and he really enjoys it."
+      ],
+      "length": 4803,
+      "max_new_tokens": 148,
+      "output_tokens": 27,
+      "prediction": "Gary and Ellie discuss their experiences with Uber, where Gary claims to enjoy meeting new people despite Ellie's concerns about his awkwardness.",
+      "prompt_tokens": 7173,
+      "score": 0.125
+    },
+    {
+      "_id": "4531b2fb7204ec965ce453b1eddea55b22ba4d798b74c41f",
+      "all_classes": null,
+      "answers": [
+        "Dorothea is having a birthday dinner in the town with Tom. Elena is seeing Dorothea at her party on Saturday. "
+      ],
+      "length": 9481,
+      "max_new_tokens": 148,
+      "output_tokens": 25,
+      "prediction": "Elena and Dorothea are celebrating Dorothea's birthday by meeting Tom to eat in the town.",
+      "prompt_tokens": 14388,
+      "score": 0.3529
+    },
+    {
+      "_id": "a6633d664d9f223bcfaefaac93f16945b776fa27caac6565",
+      "all_classes": null,
+      "answers": [
+        "Camilla has some errands to do on Saturday. Charles is visiting the German markets this weekend. They are talking about Christmas food and drinks."
+      ],
+      "length": 3276,
+      "max_new_tokens": 148,
+      "output_tokens": 28,
+      "prediction": "Charles and Camilla are planning to visit German markets in Birmingham and Manchester this weekend, where they intend to eat sausages and beer.",
+      "prompt_tokens": 4962,
+      "score": 0.3636
+    },
+    {
+      "_id": "9a9571db652927fbef54fe9869dd2f2d3712b5f14e538920",
+      "all_classes": null,
+      "answers": [
+        "Mary ran out of money. Carter is going to lend her some in an hour."
+      ],
+      "length": 6884,
+      "max_new_tokens": 148,
+      "output_tokens": 20,
+      "prediction": "Mary asks Carter to lend her a few boxes of items while she is at the train station.",
+      "prompt_tokens": 10578,
+      "score": 0.3636
+    },
+    {
+      "_id": "05b71aaf6c3df6cb4f09047fc44a4a88139b9f7a6028b9de",
+      "all_classes": null,
+      "answers": [
+        "Chloe will watch the serious recommended by Biwott at the weekend."
+      ],
+      "length": 9214,
+      "max_new_tokens": 148,
+      "output_tokens": 56,
+      "prediction": "The tourist office has offered a stay in Turkey to Janet, Rose, Hannah, and Sophie, but Janet needs to complete a list of participants by the end of the month. Sophie has already joined the group, and they are planning to visit the western part of the country.",
+      "prompt_tokens": 14093,
+      "score": 0.0851
+    },
+    {
+      "_id": "e58fc0df85eb2c2b69f4ccb8250348d128e853debabefa37",
+      "all_classes": null,
+      "answers": [
+        "Iris is trying to remove herself from an expense. Ken has fixed the problem. Julia will be added to the expense again later. Gerardo will ask the people leaving early to stay in the splitwise group until the end of the month. George will stay."
+      ],
+      "length": 6465,
+      "max_new_tokens": 148,
+      "output_tokens": 68,
+      "prediction": "Iris and Ken are trying to fix an expense record involving a person who has left the group, but Iris is unsure of the correct email address. After deleting and re-adding the person, they realize the car rental cost was incorrectly charged to her, so they need to add her back to the group and recalculate the total.",
+      "prompt_tokens": 9795,
+      "score": 0.25
+    },
+    {
+      "_id": "a07252431ca98d95fddb8b54ea5e5b6778bdf97d81be345e",
+      "all_classes": null,
+      "answers": [
+        "Alex will go swimming toghether with Huda in two hours. "
+      ],
+      "length": 12184,
+      "max_new_tokens": 148,
+      "output_tokens": 15,
+      "prediction": "Huda and Alex will meet at 2 hours to go swimming.",
+      "prompt_tokens": 16233,
+      "score": 0.3636
+    },
+    {
+      "_id": "0b17925cad5c3390e9294b318b7049338619abe2362a1b07",
+      "all_classes": null,
+      "answers": [
+        "Tina and Steve are having pasta for dinner. They'll meet in the car park after Steve finishes work. They'll do the shopping together."
+      ],
+      "length": 3776,
+      "max_new_tokens": 148,
+      "output_tokens": 36,
+      "prediction": "Steve and Tina are planning to meet in the car park after work to go shopping together, with Steve admitting he is often forgetful about lists but confident they can handle it.",
+      "prompt_tokens": 5606,
+      "score": 0.4
+    },
+    {
+      "_id": "304f4ae8cfd2d8a77310d0c7e9b9c910713b1c36492ef660",
+      "all_classes": null,
+      "answers": [
+        "Christie and Katie are tired after the party. They both had fun."
+      ],
+      "length": 4381,
+      "max_new_tokens": 148,
+      "output_tokens": 19,
+      "prediction": "Christie and Katie both had a great time at the party despite Katie feeling very tired.",
+      "prompt_tokens": 6610,
+      "score": 0.5185
+    },
+    {
+      "_id": "08a9881a615a3ec040eaf48a7575b320ae0bb1b4d1ab71bb",
+      "all_classes": null,
+      "answers": [
+        "Jess dreamt she was a lion tamer. Lynn believes that dreams mean something. Charlie has read that strangers from our dreams are actually people who we've seen before."
+      ],
+      "length": 4686,
+      "max_new_tokens": 148,
+      "output_tokens": 148,
+      "prediction": "The dialogue is a series of short exchanges between friends discussing various topics, including personal matters, plans, and humorous situations. Key points include:\n\n- **Personal Issues**: Characters like Tom and Ana discuss a doctor's visit, while others talk about missing friends or family.\n- **Plans and Activities**: There are discussions about events like a surprise party, a film festival, and a gallery opening.\n- **Food and Shopping**: Some conversations involve grocery shopping, cooking, and ordering food.\n- **Humor and Jokes**: Several exchanges are lighthearted, with jokes about dreams, cats, and even a royal executioner.\n- **Relationships**: There are mentions of dating, friendships, and family dynamics",
+      "prompt_tokens": 7061,
+      "score": 0.0408
+    },
+    {
+      "_id": "a63b1ff6f29d6d2383c5551b5c7a6bd6552c15c9c95d12f2",
+      "all_classes": null,
+      "answers": [
+        "Tina will make it for the bus that is leaving in 3 minutes."
+      ],
+      "length": 9366,
+      "max_new_tokens": 148,
+      "output_tokens": 29,
+      "prediction": "Tina is almost ready to leave for the bus, but Sophie urgently asks her to hurry up because the bus is departing in three minutes.",
+      "prompt_tokens": 14315,
+      "score": 0.4
+    },
+    {
+      "_id": "2231482e3e63d5eb092d2b33f2a64221fea97ad0ad2b7345",
+      "all_classes": null,
+      "answers": [
+        "Louisa will lend Thelma her red velvet dress."
+      ],
+      "length": 1404,
+      "max_new_tokens": 148,
+      "output_tokens": 11,
+      "prediction": "Thelma is wearing a red velvet dress.",
+      "prompt_tokens": 2128,
+      "score": 0.5333
+    },
+    {
+      "_id": "cc396bb55c72b6520586eae52c8384a611443d89365c691a",
+      "all_classes": null,
+      "answers": [
+        "Trevor will meet Tobias at his place at 9 pm."
+      ],
+      "length": 9804,
+      "max_new_tokens": 148,
+      "output_tokens": 20,
+      "prediction": "Tobias and Trevor plan to grab a beer at Tobias's place at 9 PM.",
+      "prompt_tokens": 15033,
+      "score": 0.3636
+    },
+    {
+      "_id": "977203cd0f8b37190a0b747115061e621f29c73017cdfde4",
+      "all_classes": null,
+      "answers": [
+        "Anna likes a new app in which you can virtually try on clothes. Peter is not quite convinced it is necessary."
+      ],
+      "length": 8710,
+      "max_new_tokens": 148,
+      "output_tokens": 31,
+      "prediction": "Anna and Peter are using an app to help Peter choose clothes quickly, but he finds the app unnecessary since he already knows what to wear every morning.",
+      "prompt_tokens": 13405,
+      "score": 0.1818
+    },
+    {
+      "_id": "6f91e1d2c7e68d45f7a396cc86e746791b71c821d2dd2bdc",
+      "all_classes": null,
+      "answers": [
+        "Annette is sick. James is going to the Jesus bar. Oli couldn't find anyone near the bar."
+      ],
+      "length": 9918,
+      "max_new_tokens": 148,
+      "output_tokens": 36,
+      "prediction": "Peadar, Annette, and Oli are all heading to Jesus Bar for a drink, though Annette is staying home sick and Oli is currently cycling around the bar.",
+      "prompt_tokens": 15189,
+      "score": 0.4211
+    },
+    {
+      "_id": "1ba38eb2067d2b9f260763740f38f625c1e73387123551fc",
+      "all_classes": null,
+      "answers": [
+        "Martin is asexual. Nicole doesn't want to break up for this reason. She wants to give their relationship a try."
+      ],
+      "length": 8423,
+      "max_new_tokens": 148,
+      "output_tokens": 33,
+      "prediction": "Martin and Nicole are trying to resolve a potential breakup, but Martin reveals he is asexual and wants to ensure Nicole remains happy despite his lack of sexual interest.",
+      "prompt_tokens": 12516,
+      "score": 0.2727
+    },
+    {
+      "_id": "baf241ba78d0f6bba3199805902dc2c27e7d98dfdae1cf0c",
+      "all_classes": null,
+      "answers": [
+        "Dan cooked a successful BBQ meal and will split the bill via Splitwise. He invites everyone who did not eat to remove themselves. "
+      ],
+      "length": 2756,
+      "max_new_tokens": 148,
+      "output_tokens": 44,
+      "prediction": "Dan is splitting the BBQ equally using Splitwise, and Ashley, Ken, and Vicky are happy with the food, though Ken and Vicky are jokingly removing themselves from the transaction because they didn't eat.",
+      "prompt_tokens": 4030,
+      "score": 0.1961
+    },
+    {
+      "_id": "9a35b78be7c674cd1dc1974650529208d6c9520d1769011b",
+      "all_classes": null,
+      "answers": [
+        "Andrea's son is sick, she is taking a day off and taking him to the doctor's. "
+      ],
+      "length": 3209,
+      "max_new_tokens": 148,
+      "output_tokens": 14,
+      "prediction": "Patrick is going to take his sick son to the doctor today.",
+      "prompt_tokens": 4908,
+      "score": 0.2308
+    },
+    {
+      "_id": "c5bfa03464d2c2b15aae0ce2028366bc2ba856e115dafe6d",
+      "all_classes": null,
+      "answers": [
+        "Agata has a new job, she's learning to code and she likes it. Guido doesn't understand her Facebook posts because he knows nothing about JavaScript."
+      ],
+      "length": 1220,
+      "max_new_tokens": 148,
+      "output_tokens": 45,
+      "prediction": "Agata and Guido discuss their differing language difficulties with Facebook posts, where Guido mistakenly thinks they are speaking Chinese, while Agata clarifies that she is using JavaScript and finds the concept easy after just one month of coding.",
+      "prompt_tokens": 1826,
+      "score": 0.2
+    },
+    {
+      "_id": "b37b693a6fddf5d33590780ebe83bac0a9132031c3f473d4",
+      "all_classes": null,
+      "answers": [
+        "Jessica posts a lot regarding subjects she does nothing about in reality. Julia posts in a more genuine way. But Hillary thinks she does it to death and lacks real life."
+      ],
+      "length": 4847,
+      "max_new_tokens": 148,
+      "output_tokens": 40,
+      "prediction": "Gail and Julia discuss their social media habits, with Gail explaining that her friends enjoy seeing her posts and that she enjoys spying on others, while Julia defends her active posting style as genuine.",
+      "prompt_tokens": 7241,
+      "score": 0.1852
+    },
+    {
+      "_id": "08218d6182ae58880542773ad86e88dda511567e2044167e",
+      "all_classes": null,
+      "answers": [
+        "Robert texts Gabriel to arrange a get-together with him in the office at 3 pm, before he is meeting Darek. But Gabriel left the office a month ago and is at home now, so they will not meet today."
+      ],
+      "length": 10366,
+      "max_new_tokens": 148,
+      "output_tokens": 25,
+      "prediction": "Robert and Gabriel are catching up over coffee, but Gabriel has quit his office and is currently looking into his next project.",
+      "prompt_tokens": 15851,
+      "score": 0.1923
+    },
+    {
+      "_id": "b481ab4fede445b9584628fbf89b9aaa800e968f15a7cb19",
+      "all_classes": null,
+      "answers": [
+        "Willy and Vinny will car pool with Winny's red Mustang."
+      ],
+      "length": 8314,
+      "max_new_tokens": 148,
+      "output_tokens": 29,
+      "prediction": "Vinny wants to lend Willy a red Mustang for a couple of days a week, and Willy agrees to the carpool arrangement.",
+      "prompt_tokens": 12545,
+      "score": 0.2143
+    },
+    {
+      "_id": "e4bbb70ba476455aa191ff54a99cba302697eb476c1380d7",
+      "all_classes": null,
+      "answers": [
+        "Quinn and Kyle are going out tonight. Kyle is leaving school at Easter to work for his uncle. Quinn's parents want him to retake his GCSEs. Kyle's brother will buy alcohol and cigarettes for them. Their friend, Kirsty, is dating Nathan Baker. Quinn and Kyle will meet around 6 outside the club."
+      ],
+      "length": 7843,
+      "max_new_tokens": 148,
+      "output_tokens": 42,
+      "prediction": "Kyle and Quinn are both unhappy with their school and work situations, but Kyle plans to visit his cousin for a bricklaying apprenticeship while Quinn asks Kyle to ask his uncle Kev for laborers.",
+      "prompt_tokens": 12025,
+      "score": 0.2609
+    },
+    {
+      "_id": "0f77948ea5b4eeda18bcc77696068cf78078bbba56873cdb",
+      "all_classes": null,
+      "answers": [
+        "Jeff and Mark are amazed by his car. They bet 100 dollars who gets to drive it first."
+      ],
+      "length": 1644,
+      "max_new_tokens": 148,
+      "output_tokens": 26,
+      "prediction": "Mark and Jeff are excited to try out Mark's new car, which Jeff claims is so good he would drive it himself.",
+      "prompt_tokens": 2518,
+      "score": 0.2564
+    },
+    {
+      "_id": "8945d44661e272cd436e8834a9d5dd296587dc089dc6b726",
+      "all_classes": null,
+      "answers": [
+        "Mike will refill the hand sanitizer on Grace's request."
+      ],
+      "length": 4912,
+      "max_new_tokens": 148,
+      "output_tokens": 11,
+      "prediction": "Mike will buy hand sanitizer at the restrooms.",
+      "prompt_tokens": 7551,
+      "score": 0.4706
+    },
+    {
+      "_id": "7a85937d2e1ac3215ab2518db4dc4d633fbb81f042776780",
+      "all_classes": null,
+      "answers": [
+        "Jill is bored and has watched YouTube. Nate is at work and will call Jill when he finishes it."
+      ],
+      "length": 1162,
+      "max_new_tokens": 148,
+      "output_tokens": 22,
+      "prediction": "Jill is bored and needs a job, but Nate cannot help her because he is still at work.",
+      "prompt_tokens": 1815,
+      "score": 0.4242
+    },
+    {
+      "_id": "46cbb91f855819d2efe512e789fdd8b396e01410b16a2362",
+      "all_classes": null,
+      "answers": [
+        "Alexa asked Ethan to insult Hunter out of jealousy."
+      ],
+      "length": 7924,
+      "max_new_tokens": 148,
+      "output_tokens": 27,
+      "prediction": "Alexa asked Ethan to insult her, but Hunter explains that she did it out of jealousy and will discuss it with him tomorrow.",
+      "prompt_tokens": 11974,
+      "score": 0.5806
+    }
+  ],
+  "config_effect": {
+    "allocation": "turboquant_k8v4",
+    "detail": {
+      "a2_flag": false,
+      "cache_dtype": "turboquant_k8v4",
+      "per_layer": {}
+    },
+    "group_structure_verified": false,
+    "ok": true
+  },
+  "created_at_utc": "2026-08-07T15:49:38Z",
+  "data_sha256": "bc7ba26d4ee2fffcc07801a53317f7ea7bbc951333a4f493edee5068e2ccfc98",
+  "data_source": "Xnhyacinth/LongBench parquet mirror (THUDM/LongBench v1)",
+  "elapsed_s": 69.5,
+  "engine": {
+    "kwargs": {
+      "disable_log_stats": true,
+      "enforce_eager": true,
+      "gpu_memory_utilization": 0.85,
+      "kv_cache_dtype": "turboquant_k8v4",
+      "max_model_len": 16384,
+      "seed": 7
+    },
+    "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master",
+    "vllm_version": "0.26.1rc1.dev245+ge2fa28594"
+  },
+  "host": "remote_5090",
+  "max_input_tokens": 16236,
+  "max_output_tokens": 148,
+  "max_samples": 50,
+  "metric": "rouge_l",
+  "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master",
+  "num_samples": 50,
+  "official_longbench_commit": "4c4b985bcf",
+  "sampling_params": {
+    "max_tokens": 148,
+    "temperature": 0.0
+  },
+  "schema_version": 1,
+  "score": 30.2499,
+  "seed": 7,
+  "status": "completed_validated",
+  "task": "samsum",
+  "thinking": "disabled",
+  "truncated_prompts": 5
+}

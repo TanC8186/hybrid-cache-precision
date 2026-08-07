@@ -1,0 +1,717 @@
+{
+  "allocation": "packed_per_layer",
+  "attempt_id": "longbench-20260807",
+  "cases": [
+    {
+      "_id": "03b9c503110e4dc8f2d7690f56be9e9b2733744da1a855ff",
+      "all_classes": null,
+      "answers": [
+        "    private transient KademliaRoutingTable routingTable;"
+      ],
+      "length": 6425,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, here is the completion of the `JKademliaNode` class. This class acts as the main entry point for the Kademlia implementation, initializing the DHT, routing table, and message factory, and handling the connection to the bootstrap node.\n\n```java\n    private transient JKademliaRoutingTable routingTable;\n    private transient KademliaDHT dht;\n",
+      "prompt_tokens": 14229,
+      "score": 0.0
+    },
+    {
+      "_id": "cb75af27199120a4d11be40c2968da895ebd2e8795dfc692",
+      "all_classes": null,
+      "answers": [
+        "        mEffects.add(new NoEffect());"
+      ],
+      "length": 8194,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Here is the completed code for the `EffectManager` class, including the necessary imports and the logic to handle the `EffectEventListener` interface.\n\n```java\nimport android.app.Activity;\nimport android.graphics.BitmapFactory;\nimport android.view.Menu;\nimport android.view.MenuItem;\nimport android.view.SubMenu;\nimport android.view.View;\nimport android.view.ViewGroup;\nimport android.widget.Toast;\nimport",
+      "prompt_tokens": 16297,
+      "score": 0.0
+    },
+    {
+      "_id": "348e33db9dd7512c0d821c5d1fc6a5b74a412a1e9be012f7",
+      "all_classes": null,
+      "answers": [
+        "class Encryption1(Encryption):  # noqa: D101"
+      ],
+      "length": 5302,
+      "max_new_tokens": 84,
+      "output_tokens": 33,
+      "prediction": "```python\n    @classmethod\n    def eval(cls, mk):\n        return tuple([mk, mk ^ Constant(1, 8)])\n```",
+      "prompt_tokens": 15549,
+      "score": 0.23
+    },
+    {
+      "_id": "cf3d37ae2215d5f5123fcc3ad041ba23b56d19a3abad67e6",
+      "all_classes": null,
+      "answers": [
+        "    private ImmersiveTouchNavigation mImmersiveTouchNavigation;"
+      ],
+      "length": 8166,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Here is the completed code for the `EffectManager` class, completing the `EffectEventListener` interface implementation and adding the necessary logic to handle effect initialization, parameter updates, and rendering requests.\n\n```java\nimport android.app.Activity;\nimport android.graphics.BitmapFactory;\nimport android.view.Menu;\nimport android.view.MenuItem;\nimport android.view.SubMenu;\nimport android.view.View;\nimport android.view.ViewGroup",
+      "prompt_tokens": 16297,
+      "score": 0.0
+    },
+    {
+      "_id": "2c164c959e45cbd40c80a8618dfe2fbe7d12a613e0ce71c4",
+      "all_classes": null,
+      "answers": [
+        "                new EventCommandHandler<>(SetUpdateFrequencyCommand.class, UpdateFrequencyChangeEvent::fromCommand, this::queueEvent));"
+      ],
+      "length": 6872,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Here is the completed code for `SetStatusCommand.java`.\n\n```java\n@JsonTypeName(\"SetStatus\")\npublic final class SetStatusCommand extends Command {\n    private final Status status;\n\n    public SetStatusCommand(Status status) {\n        super();\n        this.status = status;\n    }\n\n    @JsonCreator\n    private SetStatusCommand(@JsonProperty(\"time\") Instant time,\n                            ",
+      "prompt_tokens": 16297,
+      "score": 0.0
+    },
+    {
+      "_id": "fbea06f3c6f93b8aaf69f52783041ff4c6ce262cc8922060",
+      "all_classes": null,
+      "answers": [
+        "    private LocalRateLimiter localRateLimiter;"
+      ],
+      "length": 5298,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "```java\n    /**\n     * 本地流量限制服务\n     */\n    private LocalRateLimiter localRateLimiter;\n\n    /**\n     * 任务数据\n     */\n    private TaskData taskData;\n\n    /**\n     * 任务运行结果\n     */\n    private Object resultData;\n\n    /**\n     * 任务执行状态\n     */\n    private",
+      "prompt_tokens": 16297,
+      "score": 0.15
+    },
+    {
+      "_id": "47573702c5f1ad33b86b8645ddc49617af39e584b4303008",
+      "all_classes": null,
+      "answers": [
+        "\t\t\tprint(\"Scanning vault structure may take some time. Be patient...\");"
+      ],
+      "length": 924,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code structure provided, specifically the `CheckRunner` class which is a `Runnable` that instantiates `IntegrityCheck` and passes the `Passphrase` to it, the next line of code should be the call to the `run()` method of `IntegrityCheck`.\n\nHere is the completed code for `IntegrityCheck.java`:\n\n```java\npublic class IntegrityCheck {\n\n\tprivate final",
+      "prompt_tokens": 3573,
+      "score": 0.0
+    },
+    {
+      "_id": "6844939b4c4619bf2bb691b26c2beecaad85f0aeb4518366",
+      "all_classes": null,
+      "answers": [
+        "        } catch (RestServiceException e) {"
+      ],
+      "length": 5741,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, here is the completion of the `DeviceRegistrationTask` class.\n\nThe code currently ends inside the `doInBackground` method of the `doInBackground` method. The next line should be the `onPostExecute` method, which handles the result of the asynchronous task (the device registration success/failure and notifying the UI).\n\n```java\n    @Override\n    protected void onPostExecute(Boolean",
+      "prompt_tokens": 16028,
+      "score": 0.0
+    },
+    {
+      "_id": "d60990d706853cd274c7ff6b8b766fcccca25dc8de5ae49c",
+      "all_classes": null,
+      "answers": [
+        "    U2fSignRequest signRequest = u2fServer.getSignRequest(ACCOUNT_NAME, APP_ID_SIGN);"
+      ],
+      "length": 2959,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Here is the completed code for `U2FServer.java`. I have implemented the `getSignRequest` method to generate the U2F sign request based on the provided account name, application ID, and the previously registered keys.\n\n```java\nu2f-ref-code/java/src/com/google/u2f/server/U2FServer.java\npublic interface U2FServer {\n\n  // registration //\n ",
+      "prompt_tokens": 16297,
+      "score": 0.0
+    },
+    {
+      "_id": "3cd8fefa66ffe61edf15dd8ce125f6e4933fb96d398da6b5",
+      "all_classes": null,
+      "answers": [
+        "            self.acctA = RadiusAccounting(self.global_config, 'answer', \\"
+      ],
+      "length": 7126,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Here is the completed code for `sippy/Rtp_proxy_session.py`. I have filled in the missing methods (`update_caller`, `update_callee`, `update_result`, `command_result`, `delete`, `on_caller_sdp_change`, `on_callee_sdp_change`, `on_xxx_sdp_change`, `xxx_sdp_change_finish`) and the `__init__` method to ensure",
+      "prompt_tokens": 16297,
+      "score": 0.22
+    },
+    {
+      "_id": "ea34735f9ac205293023394877d630555a04b487a2cf6036",
+      "all_classes": null,
+      "answers": [
+        "    @sdproperty"
+      ],
+      "length": 1318,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code structure provided, specifically the `Signature` class in `src/leap/mx/vendor/pgpy/packet/subpackets/types.py` and the `__all__` list in `src/leap/mx/vendor/pgpy/constants.py`, the `URI` class is a subclass of `Signature`.\n\nThe `URI` class is used to represent URIs (Uniform Resource Identifiers)",
+      "prompt_tokens": 3859,
+      "score": 0.0
+    },
+    {
+      "_id": "0697cb04cdcd9172485f3f0398a5d0f1a9a8061972ff6197",
+      "all_classes": null,
+      "answers": [
+        "            cstr_node.rhs = Undef(data=None)"
+      ],
+      "length": 1751,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, the next line of code is the implementation of the `__eq__` method for the `Constraint` class.\n\nHere is the complete code block for that specific line:\n\n```python\n  def __eq__(self, obj):\n    return isinstance(obj, Constraint) and self.tree == obj.tree\n```\n\n### Context\nThis method is part of the `Constraint` class",
+      "prompt_tokens": 5395,
+      "score": 0.0
+    },
+    {
+      "_id": "b3e2346d898f5d979d88e1ef30c8d97a9e53c92308800882",
+      "all_classes": null,
+      "answers": [
+        "                intent.setDataAndType(Uri.parse(url), TDConfig.MIME_FLV);"
+      ],
+      "length": 3615,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, specifically the `VideoPlayer.playVideo` method and the `VideoFragment` class, here is the completed code for the `VideoPlayer` class.\n\nThe logic follows this pattern:\n1.  **Check if using an internal player**: If `useInternPlayer` returns true, it creates a `Bundle` with the title and a list of URLs (derived from the `T",
+      "prompt_tokens": 10088,
+      "score": 0.0
+    },
+    {
+      "_id": "31be7d5ae81230c8f97a65a4360e143cd828be77c08f3863",
+      "all_classes": null,
+      "answers": [
+        "        PostLocationDataBody dataBody = new PostLocationDataBody("
+      ],
+      "length": 2035,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, here is the completion of the `postLocationInformation` method.\n\nThis method takes the `Location` object retrieved from the device, converts it to a `PostLocationDataBody` object, and then sends it to the backend using the `NetworkAsyncCheck` task to ensure the internet connection is available before making the API call.\n\n```java\n    /**\n     * Post location",
+      "prompt_tokens": 5443,
+      "score": 0.0
+    },
+    {
+      "_id": "2aae57de553ed5867969af9a6dd8f670c380c829b2abf753",
+      "all_classes": null,
+      "answers": [
+        "        ilp = InterLayerPipeline(self.net['net1'], self.batch_size,"
+      ],
+      "length": 9020,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Here is the completed code for the `TestPipelineFixture` class in `nn_dataflow/tests/pipeline_test/test_pipeline_fixture.py`.\n\n```python\nclass TestPipelineFixture(unittest.TestCase):\n    ''' Base fixture class for layer pipeline tests. '''\n\n    def setUp(self):\n        self.net = {}\n\n        net = Network('net1')\n        # Linear.\n        net.set_input_layer(InputLayer",
+      "prompt_tokens": 16297,
+      "score": 0.0
+    },
+    {
+      "_id": "8857338affe2d9fe32dc189b478b4aa891b3905618953f5b",
+      "all_classes": null,
+      "answers": [
+        "    class Blob(BaseModel):"
+      ],
+      "length": 2045,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, here is the completion of the `test_load_default_init` function.\n\nThe function is testing that when a `BaseModel` is initialized without arguments, the `__init_subclass__` method is called to set up the default attributes (like `id`, `name`, etc.) and the `Meta` class.\n\n```python\ndef test_load_default_init(engine):\n   ",
+      "prompt_tokens": 5176,
+      "score": 0.0
+    },
+    {
+      "_id": "ee505459c8831993d6d076ef9ee075e8cf412a45f09a9dfb",
+      "all_classes": null,
+      "answers": [
+        "            elif isinstance(result, TypedElement):"
+      ],
+      "length": 6293,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided in `elementpath/xpath_nodes.py`, here is the completed code for the `XPath30Parser` class. I have filled in the missing class definition, the `XPath30Parser` class, and the `XPath30Parser` methods that were cut off at the end of the input.\n\n```python\nfrom copy import copy\nfrom ..namespaces import XPATH_FUNCTIONS",
+      "prompt_tokens": 16297,
+      "score": 0.0
+    },
+    {
+      "_id": "054c54050c80c29f3bbf1adf5fba865a2468928d4e19a1fe",
+      "all_classes": null,
+      "answers": [
+        "                    new HSBAdjustTransformation(.5f,.5f,.5f),"
+      ],
+      "length": 5849,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, here is the completion of the `TransformationCategory` enum. This enum is designed to categorize the various image transformations (like exposure, curves, edge detection, etc.) into logical groups.\n\n```java\n    public TransformationCategory(String name, List<Transformation> items) {\n        this.name = name;\n        this.items = items;\n    }\n\n    public String getName",
+      "prompt_tokens": 14370,
+      "score": 0.0
+    },
+    {
+      "_id": "31ce3569263336194441a7715e1766ab4954b250a5082477",
+      "all_classes": null,
+      "answers": [
+        "    private DelegateToActivity<Movie> delegateListener;"
+      ],
+      "length": 1661,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, specifically the `MovieInfoFragment` class which implements `MovieInfoView` and `DelegateToActivity<Movie>`, the next line of code should be the implementation of the `delegateItemClicked` method.\n\nSince `MovieInfoFragment` implements `DelegateToActivity<Movie>`, it needs to handle the click event for a `Movie` object. The method signature is defined in `Delegate",
+      "prompt_tokens": 6095,
+      "score": 0.0
+    },
+    {
+      "_id": "feeef9aaf0fc0be21c3fc0124904f5755baa327e041f60dd",
+      "all_classes": null,
+      "answers": [
+        "                writeResponse(instance, OBJECT_INSTANCE, CREATE_MBEAN, correlationId);"
+      ],
+      "length": 953,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code snippet provided, specifically the `CreateMBeanHandler` class which handles the `CREATE_MBEAN` protocol message, the next line of code should be the call to the MBeanServer's `createMBean` method.\n\nHere is the complete and correct continuation:\n\n```java\n            try {\n                final ObjectInstance instance;\n                switch (paramCount) {\n                    case",
+      "prompt_tokens": 3506,
+      "score": 0.0
+    },
+    {
+      "_id": "f376e7b81aae7316d4e0ecc854e42de8695616f6e8946dfa",
+      "all_classes": null,
+      "answers": [
+        "        await wild_report.add_reaction(MyEmojis.DESPAWNED)"
+      ],
+      "length": 2162,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, here is the completion of the `WildCog` class. The code includes the `__init__` method, the `load_wild_reports` task, and the `load_wild_report` method which handles loading existing reports from the database.\n\n```python\n    async def load_wild_report(self, rcrd):\n        \"\"\"\n        Loads an existing Wild report from",
+      "prompt_tokens": 6998,
+      "score": 0.0
+    },
+    {
+      "_id": "6348b3e17f0fb021c8e9112c4c5f056d8462afedf6a6aa41",
+      "all_classes": null,
+      "answers": [
+        "    data = SNLIData(path=c['data_path'], layout=c['layout'], vocab=vocab)"
+      ],
+      "length": 5411,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Here is the completed code for `dictlearn/retrieval.py` and `dictlearn/extensions.py`, along with the necessary imports and the main training loop logic.\n\n### 1. Completed `dictlearn/retrieval.py`\n\n```python\nimport sys\nimport numpy as np\nimport matplotlib.pylab as plt\nimport os\nimport time\nimport atexit\nimport fuel\nimport signal\nimport",
+      "prompt_tokens": 16297,
+      "score": 0.0
+    },
+    {
+      "_id": "c78bbf3695db2bc16d0daf4cf8bfd6d1c7c13a32ff1383dd",
+      "all_classes": null,
+      "answers": [
+        "  assert isinstance(doppler, DopplerSine)"
+      ],
+      "length": 6517,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Here is the completed code for the `GLONASSL1L2BitEncoder` class, completing the file `peregrine/iqgen/bits/encoder_glo.py`.\n\n```python\nclass GLONASSL1L2BitEncoder(TwoBandsBitEncoder):\n  '''\n  Generic single bit encoder for GLONASS L1 and L2 signals\n  '''\n\n  def",
+      "prompt_tokens": 16297,
+      "score": 0.0
+    },
+    {
+      "_id": "ac6b60475fb35309a7b102618c3472231e77b5bfc8326ece",
+      "all_classes": null,
+      "answers": [
+        "                Intent intent = new Intent(getActivity(), ParticipantFortunateActivity.class);"
+      ],
+      "length": 6652,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Here is the completed code for `MainActivity.java`. I have added the `onCreate` method to initialize the `ActionMode` and the `onCreate` method for `ParticipantDetailActivity` to handle the search functionality.\n\n```java\nimport android.Manifest;\nimport android.app.AlertDialog;\nimport android.app.ProgressDialog;\nimport android.content.DialogInterface;\nimport android.content.Intent;\nimport android.content.pm.PackageManager",
+      "prompt_tokens": 16297,
+      "score": 0.0
+    },
+    {
+      "_id": "c23c39e861f028aa9df65fe01489651a3c7237aeec7f80b4",
+      "all_classes": null,
+      "answers": [
+        "        with self.assertRaises(TooManyExtensions):"
+      ],
+      "length": 2794,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, here is the completion of the `tests/redlock.py` file. The code implements unit tests for the `Redlock` class, covering acquisition, release, extension, and context manager behavior.\n\n```python\n# --------------------------------------------------------------------------- #\n#   test_redlock.py                                                           #\n#                                                                             #\n#   Copyright © 2015-2022, Rajiv",
+      "prompt_tokens": 7739,
+      "score": 0.0
+    },
+    {
+      "_id": "255975e85de5593ce3a5a78f2aeb7341f18b71db96e2d86a",
+      "all_classes": null,
+      "answers": [
+        "        return ConeSettings(self._ptr, self.__class__.__name__)"
+      ],
+      "length": 2866,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided in `pyfmodex/cone_settings.py`, the `Sound` class in `pyfmodex/fmodobject.py` needs to implement the `threed_cone_settings` property to return the `ConeSettings` object.\n\nHere is the completed code for the `Sound` class:\n\n```python\nclass Sound(FmodObject):\n    \"\"\"Container for sample data",
+      "prompt_tokens": 6773,
+      "score": 0.0
+    },
+    {
+      "_id": "06fbfb05b70f3785fce8b643e46a6b1f493921c2580332e3",
+      "all_classes": null,
+      "answers": [
+        "    @calg.register(CompressionAlgorithm)"
+      ],
+      "length": 5356,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided in `src/leap/mx/vendor/pgpy/packet/fields.py`, the class `CompressedData` is defined. The next line of code in the file is the implementation of the `__bytearray__` method for this class.\n\nHere is the code to complete:\n\n```python\n    def __bytearray__(self):\n        _b = bytearray()\n",
+      "prompt_tokens": 15267,
+      "score": 0.0
+    },
+    {
+      "_id": "e7bbb35f55ece95e727c9fe2423d5ad8587353fa646d0b80",
+      "all_classes": null,
+      "answers": [
+        "        csize = findCellSize(imgshape, maxLabel = centers.shape[0], out = out, **parameter);"
+      ],
+      "length": 3561,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code structure and the comment preceding the next line, here is the completed code for the `detectSpots` function.\n\nThe logic follows the standard pipeline:\n1.  **Illumination Correction**: Corrects for lighting variations.\n2.  **Background Removal**: Removes the background (e.g., covers).\n3.  **DoG Filtering**: Enhances edges and local maxima.",
+      "prompt_tokens": 8725,
+      "score": 0.0
+    },
+    {
+      "_id": "443c1278e5d9623fee6148ef1c0cc93d266d7561f4c35d8e",
+      "all_classes": null,
+      "answers": [
+        "            Assets.perfectTapSound.play(GlobalConfiguration.feedbackVolume / 100f);"
+      ],
+      "length": 4505,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code structure provided, specifically the `ResultsScreen.java` and the `processAccuracy` method in `Results.java`, the missing code is the implementation of the `Clicked` event listener for the \"Continue\" button.\n\nThe `ResultsScreen` class implements the `Screen` interface, which requires a `Clicked` method to handle user interactions. The `ResultsScreen` currently has `retryButton` and",
+      "prompt_tokens": 12561,
+      "score": 0.0
+    },
+    {
+      "_id": "19066882a192c514e9f9dd3c6c835142c4c457c6e7dcd833",
+      "all_classes": null,
+      "answers": [
+        "            while (transactionIterator.nextTransactionState() == TransactionState.OK) {\r"
+      ],
+      "length": 2594,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, here is the completion of the `CommandLog` class. The missing part is the `next()` method of the `TransactionIterator` interface, which is called by the `TransactionMonitor` to retrieve the next transaction.\n\n```java\n    /**\n     *\n     * @return <code>Transaction</code> to be returned.\n     * @throws NoSuchElementException Thrown if",
+      "prompt_tokens": 6581,
+      "score": 0.0
+    },
+    {
+      "_id": "53794171ac56dbe5880c3fda119232cddf8f02c7b91371d3",
+      "all_classes": null,
+      "answers": [
+        "            } else if (stmnt instanceof InsertMeta) {//TODO: Handle this."
+      ],
+      "length": 4029,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, specifically the `DCompiler` class and the `DDataSource` class, the next line of code should be the call to the `compileSql` method within the `getCompiledAST` method.\n\nHere is the complete code block for the next line:\n\n```java\n        Program<BaseStatementMeta> pgm = DCompiler.compileSql(preprocessSqlQuery(sqlQuery, namedParams",
+      "prompt_tokens": 11526,
+      "score": 0.0
+    },
+    {
+      "_id": "1aba661e70d8c4cb3564a8a855d5aa403bc1b6580abaa9a6",
+      "all_classes": null,
+      "answers": [
+        "                    UsageEncryption.OSY,"
+      ],
+      "length": 1428,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, specifically the `EncryptionAlgorithmCoded` enum definition and the `EncryptionMechanism` class structure, here is the completed code for the `PinTanDummyEncryptionMechanism` class.\n\nThe implementation follows the pattern of the `EncryptionAlgorithm` class, mapping the `EncryptionAlgorithmCoded` values to the appropriate `EncryptionAlgorithm` objects.\n\n```python\nclass PinTanDummyEncryption",
+      "prompt_tokens": 4375,
+      "score": 0.0
+    },
+    {
+      "_id": "fb3b6309cd6ab41ea9b398d8beb6e4ac5130c90d5aa1164d",
+      "all_classes": null,
+      "answers": [
+        "                            if (bsAt(env.backrefedMem, i)) {"
+      ],
+      "length": 5421,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, specifically the `Analyze` class (which extends `Parser`), the logic for handling the `btMemEnd` (backtracking memory end) is incomplete.\n\nHere is the completed code for the `Analyze` class, specifically filling in the missing logic for `btMemEnd` and the subsequent `setupTree` call:\n\n```java\nimport static org.joni.Bit",
+      "prompt_tokens": 14167,
+      "score": 0.0
+    },
+    {
+      "_id": "0248bac03f920e83efc114d842cbb4fe9c4e0f5ce207cd10",
+      "all_classes": null,
+      "answers": [
+        "    url(r'^workflow-steps$', get_workflow_steps, name=\"ajax-workflow-steps\"),"
+      ],
+      "length": 5212,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided in `dashboard/views.py`, here is the completed code for the `get_target_langs` function.\n\nThis function retrieves the list of available languages for a specific CI pipeline. It uses the `InventoryManager` to fetch the locale language tuples and filters them based on the `ci_pipeline` UUID provided in the request.\n\n```python\ndef get_target_langs(request):\n    \"\"\"",
+      "prompt_tokens": 16297,
+      "score": 0.0
+    },
+    {
+      "_id": "1669bcf267046f0b7b25014a091ffec46e7d9239d98ddddd",
+      "all_classes": null,
+      "answers": [
+        "\t\tpublic ResourceData (MainActivity main)"
+      ],
+      "length": 11715,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "To complete the code, I need to finish the `ResourceData` class inside the `ItemAgeChart` class. Based on the context of the surrounding code (which uses `Meter`, `SRSLevel`, and `Resources`), this class is likely a helper class to store aggregated data for the chart.\n\nHere is the completed code for the `ResourceData` class:\n\n```java\npackage com.w",
+      "prompt_tokens": 16297,
+      "score": 0.0
+    },
+    {
+      "_id": "ad9311699fd6da3dd844b69dd8346276b1b73fb65bf83fd7",
+      "all_classes": null,
+      "answers": [
+        "        if storage_type in STORAGE_TYPES:"
+      ],
+      "length": 2885,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, specifically the `DbExistsMessage` class and the `fetch_response` method, here is the completion of the code.\n\nThe `fetch_response` method currently returns `super(DbExistsMessage, self).fetch_response()[0]`. However, looking at the `DbCloseMessage` implementation, it returns `0`. To be consistent with the existing pattern in the file (where `Db",
+      "prompt_tokens": 7386,
+      "score": 0.0
+    },
+    {
+      "_id": "1e92aed924b1d5384f31de520133e8b0d337033627ce5ee3",
+      "all_classes": null,
+      "answers": [
+        "    public ThenWithoutResult<$SystemUnderTest> when(CheckedBiConsumer<$SystemUnderTest, $Argument> whenStep) {"
+      ],
+      "length": 1226,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, specifically the `AndGivenArgument` interface and the `GivenArgumentWhenSteps` class implementation, the next line of code is the return statement for the `andArgument` method that accepts a `String` description and a `CheckedSupplier`.\n\nHere is the complete code block for that specific method:\n\n```java\n@Override\n$Argument2> AndGivenTwoArguments<$SystemUnderTest,",
+      "prompt_tokens": 4379,
+      "score": 0.0
+    },
+    {
+      "_id": "264e0d85db3f543e14718f9a2e0f0185e816178daee60e35",
+      "all_classes": null,
+      "answers": [
+        "    CommandResult result = awaitResult(process);"
+      ],
+      "length": 7530,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Here is the completed code for `java/com/google/iosdevicecontrol/util/FluentLogger.java`.\n\n```java\nimport static com.google.common.base.Preconditions.checkArgument;\nimport static com.google.common.base.Preconditions.checkNotNull;\nimport static com.google.common.base.Preconditions.checkState;\nimport com.dd.plist.NSArray;\nimport com.dd.plist.NSDictionary;\nimport com.dd.plist.NS",
+      "prompt_tokens": 16297,
+      "score": 0.0
+    },
+    {
+      "_id": "0dc4e35a91336fa30c6d08138f1b924fb6ee8f3390248266",
+      "all_classes": null,
+      "answers": [
+        "\t\tint theme = Themer.theme;"
+      ],
+      "length": 4819,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, here is the completion of the `Themer.java` file. The code currently sets the theme and window decorations, but it does not handle the wallpaper selection logic.\n\n```java\napp/src/main/java/ru/henridellal/emerald/ui/Themer.java\npublic class Themer {\n\n\tpublic static int theme;\n\n\tpublic static final int DEFAULT_THEME = 0;",
+      "prompt_tokens": 14923,
+      "score": 0.0
+    },
+    {
+      "_id": "2765e9a5cf94efddee7fc7b1f7ccf2e8ee97cf3bf122dbb0",
+      "all_classes": null,
+      "answers": [
+        "\t\tMessage msg = XmlUtil.fromXml(Message.class, xml);"
+      ],
+      "length": 2116,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, here is the completed `MessageController.java` file.\n\nI have completed the `onMessageReceived` method to handle the XML messages received from Weixin. The logic involves:\n1.  Parsing the XML using `XmlUtil.fromXml`.\n2.  Extracting the `MsgType` and `MsgId` from the root element.\n3.  Creating the appropriate",
+      "prompt_tokens": 5683,
+      "score": 0.0
+    },
+    {
+      "_id": "1341d46a7843a495a5668f7e4253fbaebba798bd9fcc93ee",
+      "all_classes": null,
+      "answers": [
+        "    file_md5 = genMD5(file_path)"
+      ],
+      "length": 1714,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code structure provided, here is the completion of the `dynamic_main` function. This function serves as the main entry point for the Dynamic Analysis workflow, orchestrating the installation of the APK, running the app, capturing logs, and performing static analysis.\n\n```python\ndef dynamic_main(file_path):\n    \"\"\"\n    Main entry point for Dynamic Analysis.\n    Orchestrates APK installation, execution",
+      "prompt_tokens": 6265,
+      "score": 0.0
+    },
+    {
+      "_id": "b8d1b721ddc2769721908c5b5946467ad861ecb680ea5a67",
+      "all_classes": null,
+      "answers": [
+        "    @raid_checks.raid_party_channel()"
+      ],
+      "length": 4185,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, here is the completion of the `RaidPartyCog` class. The code ends abruptly at the `@command` decorator for `cmd_raidcity`. I will provide the rest of the class, including the `cmd_raidcity` command implementation and the necessary imports.\n\n```python\n    @command(pass_context=True, category='Bot Info', aliases=[\"raid-city\", \"",
+      "prompt_tokens": 13535,
+      "score": 0.0
+    },
+    {
+      "_id": "cacf528493436bc221cd5f738c9bc45b2b94bcfb38479ada",
+      "all_classes": null,
+      "answers": [
+        "        self.assertEqual(date_string_to_date(\"25/11/2015\"), datetime(2015, 11, 25, 0, 0).date())"
+      ],
+      "length": 1248,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided in `modules/date_helper.py`, the function `date_string_to_date` attempts to parse a date string using two formats: `\"%d-%m-%Y\"` (day-month-year) and `\"%d/%m/%Y\"` (day/month/year).\n\nThe logic inside the function is:\n1.  It checks if the separator is a hyphen (`-`) or a slash",
+      "prompt_tokens": 8594,
+      "score": 0.0
+    },
+    {
+      "_id": "d9e850b26e46db1f85cfd5cfccaa9eeaf3ed3a7e82901888",
+      "all_classes": null,
+      "answers": [
+        "        config_actor = ConfigActor(config_file, '')"
+      ],
+      "length": 4341,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, specifically the `beeswarm/server/db/database_actor.py` class, the next line of code in the `beeswarm/server/misc/config_actor.py` file (which is where the `ConfigActor` class is defined) should be the `__init__` method.\n\nHere is the complete code for the `ConfigActor` class, including the missing `__init__` method",
+      "prompt_tokens": 14118,
+      "score": 0.0
+    },
+    {
+      "_id": "08e95c1f144ac0dd144b0a74d05d16910ae0ff82d33ba978",
+      "all_classes": null,
+      "answers": [
+        "                            ShareUtil.sharePicture(mActivity, picture"
+      ],
+      "length": 2796,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code structure and the context of the `PictureAdapter` (which handles displaying comments and pictures), here is the completion of the `onItemClick` method.\n\nThis method handles the click event on the share button (`img_share`) within the picture card. It triggers the `ShareUtil` to share the picture, and it also updates the adapter's data list to reflect the new item added (since the",
+      "prompt_tokens": 9413,
+      "score": 0.0
+    },
+    {
+      "_id": "ca29a391edd0d83b0e2ca7866b46d8472fc032c11c2e0b59",
+      "all_classes": null,
+      "answers": [
+        "\t\t\t\t\t\tsavefunc = savemgh_v2"
+      ],
+      "length": 4046,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, here is the completion of the `run` function. The code currently handles the logic for writing the output files (TMI or MGH) after calculating the P-FWE images.\n\n```python\n\t\t# write out files\n\t\tif opts.concatestats:\n\t\t\twrite_tm_filetype(opts.tmifile[0],\n\t\t\t\timage_array = positive_data,\n",
+      "prompt_tokens": 13759,
+      "score": 0.0
+    },
+    {
+      "_id": "5fe71bf0c2671adff4ef7a94a7ccbc1e3ac7392e1edfd213",
+      "all_classes": null,
+      "answers": [
+        "                OhmletActivity.class,"
+      ],
+      "length": 10623,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Here is the completed code for the `SurveyPromptLoader` class. I have added the missing `@Inject Gson gson;` field declaration and the necessary imports to ensure the class compiles correctly and functions as intended.\n\n```java\nimport android.accounts.AccountManager;\nimport android.content.Context;\nimport android.content.ContentResolver;\nimport android.content.ContentUris;\nimport android.content.Intent;\nimport android",
+      "prompt_tokens": 16297,
+      "score": 0.0
+    },
+    {
+      "_id": "477d6416677bcff0b880215deeb6d3f5f41a361f9bd341ae",
+      "all_classes": null,
+      "answers": [
+        "                PubKeyAlgorithm.ECDSA: ECDSASignature, }"
+      ],
+      "length": 5424,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided in the file `src/leap/mx/vendor/pgpy/packet/fields.py`, the class `SignatureV4` is incomplete. It defines the structure for a Version 4 Signature packet but does not implement the `parse` method to actually decode the packet data according to the NIST SP 800-56A specification.\n\nHere is the completed code for the",
+      "prompt_tokens": 15347,
+      "score": 0.0
+    },
+    {
+      "_id": "485d22985ce1c295b92e7ae9de982863b45748d37ff42a5b",
+      "all_classes": null,
+      "answers": [
+        "            elif is_document_node(context.root):"
+      ],
+      "length": 5575,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, the next line of code is the implementation of the `evaluate` method for the `XPath1Parser` class. This method is responsible for evaluating the XPath expression string into a list of nodes.\n\nHere is the complete code block for that section:\n\n```python\n@method('{')\ndef evaluate_namespace_uri(self, context=None):\n    if self[1].label.endswith('",
+      "prompt_tokens": 14409,
+      "score": 0.0
+    },
+    {
+      "_id": "83dfff0a545002c34c8768ae85f608da63dc855662ffd1ac",
+      "all_classes": null,
+      "answers": [
+        "      'no_members': Counter"
+      ],
+      "length": 1853,
+      "max_new_tokens": 84,
+      "output_tokens": 84,
+      "prediction": "Based on the code provided, specifically the `HeapBalancerSink` class and the `VarzBase` class, here is the completion of the `VarzBase` class.\n\nThe `VarzBase` class is the base class for all metrics in the `scales` library. It defines the structure for metrics like `Gauge`, `Rate`, `Counter`, etc., and provides the core logic for",
+      "prompt_tokens": 5021,
+      "score": 0.0
+    }
+  ],
+  "config_effect": {
+    "allocation": "packed_per_layer",
+    "detail": {
+      "a2_flag": true,
+      "cache_dtype": "int4_per_token_head",
+      "per_layer": {
+        "11": "int4_per_token_head",
+        "15": "int4_per_token_head",
+        "19": "int4_per_token_head",
+        "23": "auto",
+        "3": "int4_per_token_head",
+        "7": "int4_per_token_head"
+      }
+    },
+    "group_structure_verified": false,
+    "ok": true
+  },
+  "created_at_utc": "2026-08-07T15:40:08Z",
+  "data_sha256": "fedace768eddd218d8cd0e5e90c50c4cb2bbf128b95d4243085654f080bcae72",
+  "data_source": "Xnhyacinth/LongBench parquet mirror (THUDM/LongBench v1)",
+  "elapsed_s": 71.6,
+  "engine": {
+    "kwargs": {
+      "disable_log_stats": true,
+      "enable_per_layer_page_groups": true,
+      "enforce_eager": true,
+      "gpu_memory_utilization": 0.85,
+      "kv_cache_dtype": "int4_per_token_head",
+      "kv_cache_dtype_per_layer": {
+        "11": "int4_per_token_head",
+        "15": "int4_per_token_head",
+        "19": "int4_per_token_head",
+        "23": "auto",
+        "3": "int4_per_token_head",
+        "7": "int4_per_token_head"
+      },
+      "max_model_len": 16384,
+      "seed": 7
+    },
+    "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master",
+    "vllm_version": "0.26.1rc1.dev245+ge2fa28594"
+  },
+  "host": "remote_5090",
+  "max_input_tokens": 16300,
+  "max_output_tokens": 84,
+  "max_samples": 50,
+  "metric": "code_sim",
+  "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master",
+  "num_samples": 50,
+  "official_longbench_commit": "4c4b985bcf",
+  "sampling_params": {
+    "max_tokens": 84,
+    "temperature": 0.0
+  },
+  "schema_version": 1,
+  "score": 1.2,
+  "seed": 7,
+  "status": "completed_validated",
+  "task": "repobench-p",
+  "thinking": "disabled",
+  "truncated_prompts": 15
+}

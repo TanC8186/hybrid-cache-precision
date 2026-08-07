@@ -170,3 +170,53 @@ TPOT 相对 fp16 开销、容量-吞吐 Pareto 点。
 
 分析：`results/quality/reasoning-nothink-v2-analysis.json`；
 原始 cell：`results/quality/reasoning/reasoning-20260807-nothink-v2/`。
+
+## 6. LongBench v1 子集（attempt `longbench-20260807`）
+
+状态：**完成 64/64**（2B 全 5 分配 × 8 任务 + 9B 核心 3 分配 × 8 任务；0 失败，
+64 个 JSON 哈希全部匹配）。首次运行曾因 resume 校验缺 model 字段把 9B 当 2B
+跳过，已修复（文件名带模型标签 + 校验 model/max_model_len），9B 重跑完成。
+
+协议：官方 LongBench v1 prompt/指标（THUDM/LongBench@`4c4b985bcf`），数据为
+Xnhyacinth/LongBench parquet 镜像（原 JSONL revision 已下线）；每任务前 50 样本、
+greedy、seed 7、no-think、`max_model_len=16384`（超限中段截断）。指标：
+TREC=classification、TriviaQA=qa_f1、SAMSum/GovReport/QMSum/MultiNews=ROUGE-L F、
+LCC/RepoBench-P=code_sim（fuzzywuzzy）。
+
+**2B 分数表（每任务 n=50）**
+
+| task | fp16 | uniform | packed | k8v4 | 4bit_nc |
+|---|---:|---:|---:|---:|---:|
+| TREC | 72.00 | 66.00 | 66.00 | 72.00 | 70.00 |
+| TriviaQA | 84.53 | 82.87 | 82.87 | 84.93 | 84.53 |
+| SAMSum | 32.36 | 33.39 | 31.10 | 30.25 | 31.62 |
+| LCC | 2.40 | 3.36 | 3.06 | 2.62 | 2.06 |
+| RepoBench-P | 0.88 | 1.10 | 1.20 | 0.44 | 0.64 |
+| GovReport | 31.52 | 31.33 | 31.28 | 31.39 | 30.84 |
+| QMSum | 22.30 | 21.66 | 21.21 | 21.54 | 22.25 |
+| MultiNews | 23.47 | 23.01 | 23.22 | 23.90 | 22.93 |
+
+**9B 分数表（每任务 n=50；仅核心 3 分配）**
+
+| task | fp16 | uniform | packed |
+|---|---:|---:|---:|
+| TREC | 72.00 | 72.00 | 74.00 |
+| TriviaQA | 88.20 | 89.20 | 87.53 |
+| SAMSum | 38.43 | 38.11 | 37.69 |
+| LCC | 40.56 | 38.72 | 37.96 |
+| RepoBench-P | 37.40 | 35.36 | 32.16 |
+| GovReport | 32.10 | 32.12 | 31.82 |
+| QMSum | 22.54 | 21.94 | 21.67 |
+| MultiNews | 23.34 | 22.53 | 22.46 |
+
+结论边界（单 seed、无 CI，全部为点估计）：
+- **2B QA/摘要**：量化列与 fp16 基本持平（多数任务 ±1pt 内）；TREC 上
+  uniform/packed 点估计低 fp16 6pt，与 k8v4 的 72 不齐，需多 seed 确认；
+  LCC/RepoBench-P 对 2B 接近地板（<4），不可解读。
+- **9B**：QA/摘要持平；代码任务量化列点估计一致略低（LCC −1.8/−2.6，
+  RepoBench-P −2.0/−5.2），方向一致但单 seed 不可作统计结论。
+- 截断（prompt 超 15.8K token 中段截断）各分配完全对称：TriviaQA 12/50、
+  SAMSum 5/50、RepoBench-P 15/50、GovReport 10/50、QMSum 23/50、其余 0。
+
+分析：`results/quality/longbench-analysis-20260807.json`；
+原始 cell：`results/quality/longbench/longbench-20260807/`。

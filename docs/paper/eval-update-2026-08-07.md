@@ -60,3 +60,17 @@ GSM8K（前 200）、MMLU（all/test 前 500）、AIME2025（全 30），greedy�
 MMLU 量化列与 fp16 持平或略高（capped 99–118/500 各分配对称，严格最终答案口径
 仍持平）；AIME2025 在 4096 预算下仍有 20–22/30 未完成，各列均近地板，仅报告
 "各列无显著优势"。证据：`results/quality/reasoning-nothink-v2-analysis.json`。
+
+## 5. LongBench v1 子集（2B 全 5 分配 + 9B 核心 3 分配）
+
+LongBench 8 个英文任务（TREC/TriviaQA/SAMSum/LCC/RepoBench-P/GovReport/QMSum/
+MultiNews），每任务前 50 样本、greedy、单 seed、no-think；官方 v1 prompt 与
+指标（GitHub commit `4c4b985bcf`）；数据为 v1 parquet 镜像（原 JSONL revision
+已下线，见 data/MANIFEST.yaml）。分数表见
+`results/quality/longbench-analysis-20260807.json`。
+
+要点：2B 上 QA 与摘要量化列与 fp16 持平（多数 ±1pt 内），TREC 的 uniform/packed
+点估计低 6pt；9B 上 QA/摘要持平，代码任务量化列点估计一致略低（LCC −1.8/−2.6，
+RepoBench-P −2.0/−5.2）。单 seed、无 CI，全部按点估计披露，禁止写成显著退化；
+2B 代码任务接近地板，不用于结论。截断（中段截断至 15.8K token）各分配完全对称。
+证据：`results/quality/longbench-analysis-20260807.json`。
