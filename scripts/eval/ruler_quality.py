@@ -109,6 +109,11 @@ def main() -> int:
         default=0,
         help="generation budget override; 0 = official tokens_to_generate",
     )
+    ap.add_argument(
+        "--disable-thinking",
+        action="store_true",
+        help="wrap prompts with the model chat template using enable_thinking=False",
+    )
     ap.add_argument("--resume", action="store_true")
     args = ap.parse_args()
 
@@ -122,6 +127,7 @@ def main() -> int:
         raise SystemExit(f"unknown ruler task: {args.task}")
     config = tasks_base[task_type]
     effective_max_tokens = args.max_tokens or int(config["tokens_to_generate"])
+    thinking_mode = "disabled" if args.disable_thinking else "default"
 
     out_path = (
         Path(args.out_dir)
@@ -135,6 +141,7 @@ def main() -> int:
             and existing.get("data_sha256") == data_sha
             and existing.get("ruler_commit") == RULER_COMMIT
             and existing.get("max_tokens") == effective_max_tokens
+            and existing.get("thinking") == thinking_mode
         ):
             print(f"resume: skip {out_path}")
             return 0
@@ -169,7 +176,22 @@ def main() -> int:
         print(f"config effect FAILED: {json.dumps(effect, ensure_ascii=False)}", file=sys.stderr)
         return 3
 
-    prompts = [row["input"] + row.get("answer_prefix", "") for row in rows]
+    raw_prompts = [row["input"] + row.get("answer_prefix", "") for row in rows]
+    if args.disable_thinking:
+        from transformers import AutoTokenizer  # noqa: PLC0415
+
+        tokenizer = AutoTokenizer.from_pretrained(args.model, trust_remote_code=True)
+        prompts = [
+            tokenizer.apply_chat_template(
+                [{"role": "user", "content": prompt}],
+                tokenize=False,
+                add_generation_prompt=True,
+                enable_thinking=False,
+            )
+            for prompt in raw_prompts
+        ]
+    else:
+        prompts = raw_prompts
     outputs = llm.generate(
         prompts,
         SamplingParams(max_tokens=effective_max_tokens, temperature=0.0),
@@ -204,6 +226,7 @@ def main() -> int:
         "num_samples": len(rows),
         "tokens_to_generate": config["tokens_to_generate"],
         "max_tokens": effective_max_tokens,
+        "thinking": thinking_mode,
         "accuracy": score,
         "metric": "string_match_all",
         "ruler_commit": RULER_COMMIT,
@@ -216,7 +239,11 @@ def main() -> int:
             "vllm_version": vllm_version,
         },
         "config_effect": effect,
-        "sampling_params": {"max_tokens": effective_max_tokens, "temperature": 0.0},
+        "sampling_params": {
+            "max_tokens": effective_max_tokens,
+            "temperature": 0.0,
+            "thinking": thinking_mode,
+        },
         "elapsed_s": round(time.time() - t0, 1),
         "created_at_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         "host": platform.node(),

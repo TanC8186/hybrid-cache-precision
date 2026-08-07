@@ -30,6 +30,16 @@ if pgrep -f "run_ruler_quality.sh ruler-subset-20260807-v2-256" >/dev/null 2>&1;
   exit 0
 fi
 mkdir -p logs
+
+echo "[RUN] fwe-nothink (fp16/uniform/packed, 256, enable_thinking=False)" >> "$GATES_LOG"
+if bash scripts/eval/run_ruler_fwe_nothink.sh ruler-fwe-fixed-nothink-20260807 256 \
+    >> "$GATES_LOG" 2>&1; then
+  echo "[OK] fwe-nothink" >> "$GATES_LOG"
+else
+  echo "[FAIL] fwe-nothink" >> "$GATES_LOG"
+  exit 1
+fi
+
 setsid nohup bash scripts/eval/run_ruler_quality.sh ruler-subset-20260807-v2-256 256 \
   > logs/ruler-subset-20260807-v2-256.nohup.log 2>&1 < /dev/null &
 echo "launched RULER v2 pid=$!"
