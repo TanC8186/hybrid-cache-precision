@@ -15,7 +15,7 @@
 | 5 | 推理基准（2B；greedy 固定数据 → 单 seed） | `reasoning-20260807` | gsm8k 200 + mmlu 500 + aime25 30，× 5 alloc × 1 seed | 数据已下载，等 9B 完成 |
 
 链式守护：`scripts/eval/chain_after_niah.sh` → `scripts/bench/chain_after_ruler.sh`
-（MVEx+Pilot）→ `scripts/eval/chain_after_serving_gates_9b.sh` → `scripts/eval/chain_after_9b_reasoning.sh`。
+（MVEx+Pilot+6-dtype 容量探针）→ `scripts/eval/chain_after_serving_gates_9b.sh` → `scripts/eval/chain_after_9b_reasoning.sh`。
 任一上游出现 `[FAIL]` 即 fail-fast，不启动下游。
 
 ## 2. 本轮新增/修复内容
@@ -35,6 +35,9 @@
   与 A2 protocol-v3 formal 完全一致（PIECEWISE、60s/300s 窗口、warmup 120、
   TTFT {250..3000}、TPOT 200、goodput≥0.95、3 seeds），allocations 为
   turboquant_k8v4 / turboquant_4bit_nc / fp8。
+- 容量探针：`inspect_kv_config.py` 对 fp16 / uniform_int4 / packed_per_layer /
+  turboquant_k8v4 / turboquant_4bit_nc / fp8 各启动一次（eager，max-len 4096），
+  输出 capacity tokens + max concurrency，落在 `$OUT_ROOT/capacity/`。
 
 ## 3. 数据与溯源
 
