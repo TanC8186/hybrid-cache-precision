@@ -75,7 +75,8 @@ def main() -> int:
     templates = load_templates()
     template = templates["base"].format(task_template=config["template"]) + config["answer_prefix"]
 
-    save_dir = Path(args.save_dir) / f"{args.task}_L{args.length}"
+    data_root = Path(args.save_dir)
+    save_dir = data_root / f"{args.task}_L{args.length}"
     data_file = save_dir / "validation.jsonl"
     if data_file.exists() and not args.force:
         print(f"skip (exists): {data_file} sha256={sha256_file(data_file)}")
@@ -89,7 +90,7 @@ def main() -> int:
         sys.executable,
         str(script),
         "--save_dir",
-        str(save_dir),
+        str(data_root),
         "--save_name",
         f"{args.task}_L{args.length}",
         "--subset",
