@@ -1,5 +1,11 @@
 # 实验矩阵（正式 schema）
 
+> **2026-08-08**：投稿面实验的权威矩阵与状态见
+> [docs/paper/experiment-matrix-plan-2026-08-08.md](paper/experiment-matrix-plan-2026-08-08.md)；
+> 声明-证据映射见
+> [docs/paper/claim-evidence-map-2026-08-08.md](paper/claim-evidence-map-2026-08-08.md)。
+> 本文件保留为字段/schema 规范。
+
 > 目标：论文里出现的**每一个数字**都能追溯到：config + 代码 commit + 环境 + 数据 + seed。
 > 每条实验结果按下面的 schema 记录；缺字段的数字不允许进论文。
 
