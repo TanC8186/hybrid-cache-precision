@@ -3,6 +3,7 @@
 # protocol-v3 serving gates: MVEx (random60 + sharegpt300) then Pilot.
 # Formal is intentionally not auto-launched; review the pilot first.
 set -euo pipefail
+export PATH="/root/autodl-tmp/MLSys_Research/.venv/bin:$PATH"
 
 RULER_LOG="${1:-/root/autodl-tmp/MLSys_Research/logs/ruler-subset-20260807.log}"
 OUT_ROOT="${2:-/root/autodl-tmp/r5-serving-20260807}"
@@ -32,14 +33,20 @@ LOG=/root/autodl-tmp/MLSys_Research/logs/r5-serving-v3-gates-20260807.log
 mkdir -p /root/autodl-tmp/MLSys_Research/logs
 
 run_phase() {
-  local config="$1" phase="$2" attempt="$3"
+  local config="$1" phase="$2" attempt="$3" parent="${4:-}"
   echo "[RUN] $phase $attempt" >> "$LOG"
+  local args=(
+      --config "experiments/configs/$config"
+      --phase "$phase"
+      --attempt-id "$attempt"
+      --output-root "$OUT_ROOT"
+      --resume
+  )
+  if [ -n "$parent" ]; then
+    args+=(--parent-attempt "$parent")
+  fi
   if $PY "$RUNNER" \
-      --config "experiments/configs/$config" \
-      --phase "$phase" \
-      --attempt-id "$attempt" \
-      --output-root "$OUT_ROOT" \
-      --resume \
+      "${args[@]}" \
       >> "$LOG" 2>&1; then
     echo "[OK] $phase $attempt" >> "$LOG"
   else
@@ -65,10 +72,10 @@ run_capacity_probe() {
   fi
 }
 
-run_phase r5_turboquant_protocol_v3_random60_formal.yaml mvex r5-tq-v3-random60-mvex-20260807
-run_phase r5_turboquant_protocol_v3_sharegpt300_formal.yaml mvex r5-tq-v3-sharegpt300-mvex-20260807
-run_phase r5_turboquant_protocol_v3_random60_formal.yaml pilot r5-tq-v3-random60-pilot-20260807
-run_phase r5_turboquant_protocol_v3_sharegpt300_formal.yaml pilot r5-tq-v3-sharegpt300-pilot-20260807
+run_phase r5_turboquant_protocol_v3_random60_formal.yaml mvex r5-tq-v3-random60-mvex-20260807-b r5-tq-v3-random60-mvex-20260807
+run_phase r5_turboquant_protocol_v3_sharegpt300_formal.yaml mvex r5-tq-v3-sharegpt300-mvex-20260807-b
+run_phase r5_turboquant_protocol_v3_random60_formal.yaml pilot r5-tq-v3-random60-pilot-20260807-b
+run_phase r5_turboquant_protocol_v3_sharegpt300_formal.yaml pilot r5-tq-v3-sharegpt300-pilot-20260807-b
 
 echo "[RUN] fwe-fix (fp16/uniform/packed, max_tokens=256)" >> "$LOG"
 if bash /root/autodl-tmp/MLSys_Research/scripts/eval/run_ruler_fwe_fix.sh ruler-fwe-fixed-20260807 256 >> "$LOG" 2>&1; then
