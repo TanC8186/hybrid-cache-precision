@@ -58,6 +58,21 @@
 TurboQuant 在 CWE 4K 出现明显掉分（65.5/67.0 vs 97.5），与 vLLM TurboQuant 研究的
 “推理任务精度回落”方向一致，但其中含 think 截断成分，需 v2 定量。
 
+**FWE 三方法重跑（max_tokens=256，attempt `ruler-fwe-fixed-20260807`，6/6 完成）**：
+
+| 分配 | FWE 4K | FWE 8K |
+|---|---:|---:|
+| fp16 | 15.0 | 41.67 |
+| uniform int4 | 28.33 | 61.67 |
+| packed per-layer | 20.0 | 55.0 |
+
+**解读（必须如实写进论文）**：即使预算提升到 256 token，逐样本抽查显示 miss 仍几乎
+全部是 `<think>` 思考未在预算内输出答案（fp16 4K 20 样本中 19 个如此）；uniform 的部分
+“命中”来自思考文本顺带写出目标词，并非最终答案正确。因此：
+（a）FWE 的绝对分数仍是“思考型模型 + 固定预算”的协议伪影；
+（b）量化列高于 fp16 的排序**不是质量信号**，禁止用于任何结论；
+（c）若需可解读的 FWE，后续应使用更大预算（如 1024）或禁用 thinking 后重跑。
+
 ## 3. TurboQuant/FP8 serving（protocol-v3）
 
 状态：**排队中**（门禁 MVEx+Pilot → 人工审阅 → Formal）。

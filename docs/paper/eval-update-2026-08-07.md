@@ -27,6 +27,11 @@ extraction，长度 4096/8192，每 cell 20 samples、greedy、单 seed。第一
 （已逐样本抽查），v1 保留为协议敏感性数据；第二版以 max_tokens=256 重跑全部 70
 cells（attempt `ruler-subset-20260807-v2-256`）作为主报告协议，待回填。
 
+**FWE 专项重跑（fp16/uniform/packed，max_tokens=256，6/6 完成）**：4K 得分
+15.0 / 28.33 / 20.0，8K 得分 41.67 / 61.67 / 55.0。逐样本审计表明 miss 仍以
+`<think>` 未输出答案为主，量化列“更高”来自思考文本顺带命中目标词，属协议伪影，
+不构成质量结论；FWE 建议从主表格中排除或仅作披露性附注。
+
 ## 3. Serving（TurboQuant/FP8，protocol-v3）
 
 （待回填）在 A2 protocol-v3 相同契约下（PIECEWISE、Random60/ShareGPT300、warmup 120、

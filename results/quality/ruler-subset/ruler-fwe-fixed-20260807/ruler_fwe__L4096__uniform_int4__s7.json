@@ -1,0 +1,369 @@
+{
+  "accuracy": 28.33,
+  "allocation": "uniform_int4",
+  "attempt_id": "ruler-fwe-fixed-20260807",
+  "cases": [
+    {
+      "hits": [
+        false,
+        false,
+        false
+      ],
+      "index": 0,
+      "output_tokens": 256,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A block of text containing coded words separated by spaces, interspersed with dots ('...').\n    *   Task: Track the frequency of each coded word.\n    *   Goal: Identify the three most frequently appeared coded words.\n    *   Constraint: Do not provide any explanation. Ignore the dots '....'.\n    *   Output Format: \"According to the coded text above, the three most frequently appeared words are: [word1], [word2], [word3]\" (implied by the prompt's ending, though the prompt asks \"What are the three most frequently appeared coded words? Answer: ...\"). I need to list the three words.\n\n2.  **Preprocessing:**\n    *   Remove all dots ('...').\n    *   Split the text into words based on whitespace.\n    *   Count the occurrences of each unique word.\n    *   Sort by frequency descending.\n    *   Select the top 3.\n\n3.  **Data Extraction & Counting:**\n    *   I need to go through the text line by line (or mentally) and extract the words.\n",
+      "prompt_tokens": 3961,
+      "references": [
+        "umvpig",
+        "hwumbt",
+        "qgcgoe"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        false
+      ],
+      "index": 1,
+      "output_tokens": 256,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A coded text containing words and dots ('...').\n    *   Task: Track the frequency of each coded word.\n    *   Goal: Find the three most frequently appeared coded words.\n    *   Constraint: Do not provide any explanation. Ignore the dots '....'.\n    *   Output Format: List the three most frequent words.\n\n2.  **Preprocessing:**\n    *   Remove all dots ('...').\n    *   Split the text into words.\n    *   Count the occurrences of each word.\n    *   Sort by frequency (descending).\n    *   Select the top 3.\n\n3.  **Execution (Word Counting):**\n    *   I need to go through the text carefully and count the words.\n    *   Let's list the words and count them.\n\n    *   Text segment 1: `qzizil majhqz uggzux ... ysopsx ... uggzux ... ... ... chflot ... ... uggzux ... ... ... ... ... ... ... ... fubqnf ... ... uggzux uggz",
+      "prompt_tokens": 3991,
+      "references": [
+        "uggzux",
+        "fubqnf",
+        "qbsznp"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        false
+      ],
+      "index": 2,
+      "output_tokens": 256,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A block of text containing coded words and dots ('...').\n    *   Task: Track the frequency of each coded word.\n    *   Goal: Find the three most frequently appeared coded words.\n    *   Constraint: Do not provide any explanation. Ignore the dots '....'.\n    *   Output Format: List the three most frequent words.\n\n2.  **Preprocessing:**\n    *   Remove all dots ('...').\n    *   Identify unique words.\n    *   Count occurrences of each word.\n    *   Sort by frequency (descending).\n    *   Select top 3.\n\n3.  **Data Extraction & Counting:**\n    *   I need to scan the text carefully and count every instance of a word.\n    *   Let's list the words found in the text (excluding dots).\n\n    *   Text segment 1: `sohhes ... szvzzr ... rqyjfy szvzzr ... ... ... szvzzr ... ... ... seezmw ... ... ... ... ... szvzzr ... ... ... ihlsel ... szvzzr",
+      "prompt_tokens": 3946,
+      "references": [
+        "szvzzr",
+        "ihlsel",
+        "pogjgr"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        true,
+        false
+      ],
+      "index": 3,
+      "output_tokens": 256,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A block of text containing coded words separated by spaces, interspersed with dots ('...').\n    *   Task: Track the frequency of each coded word.\n    *   Goal: Identify the three most frequently appeared coded words.\n    *   Constraint: Do not provide any explanation. Ignore the dots '....'.\n    *   Output Format: \"According to the coded text above, the three most frequently appeared words are: [word1], [word2], [word3]\" (implied based on the prompt's ending).\n\n2.  **Preprocessing:**\n    *   Remove all dots ('...').\n    *   Split the text into words based on whitespace.\n    *   Count the frequency of each word.\n    *   Sort by frequency descending.\n    *   Select the top 3.\n\n3.  **Data Extraction & Counting:**\n    *   I need to go through the text character by character (or mentally) and extract the words.\n    *   Let's list the words found:\n        *   jucylg\n        *   iagafb\n        *",
+      "prompt_tokens": 3830,
+      "references": [
+        "tjdoex",
+        "iagafb",
+        "pxcgre"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        false,
+        false
+      ],
+      "index": 4,
+      "output_tokens": 256,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A block of text containing coded words and dots ('...').\n    *   Task: Track the frequency of each coded word.\n    *   Goal: Find the three most frequently appeared coded words.\n    *   Constraint: Do not provide any explanation. Ignore the dots '....'.\n    *   Output Format: \"According to the coded text above, the three most frequently appeared words are: [word1], [word2], [word3]\" (implied based on the prompt's ending).\n\n2.  **Preprocessing:**\n    *   Remove all dots ('...').\n    *   Identify unique words.\n    *   Count occurrences of each word.\n    *   Sort by frequency descending.\n    *   Select top 3.\n\n3.  **Data Extraction & Counting:**\n    *   I need to scan the text carefully, ignoring the dots.\n    *   Let's list the words found.\n\n    Text segments:\n    ... tpnqkp ... uoumno ... rreada uoumno ... ... ... uoumno ... ... ... tkbhrs",
+      "prompt_tokens": 3862,
+      "references": [
+        "uoumno",
+        "gozott",
+        "plquvu"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        false,
+        false
+      ],
+      "index": 5,
+      "output_tokens": 256,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A coded text containing words and dots ('...').\n    *   Task: Track the frequency of each coded word.\n    *   Goal: Find the three most frequently appeared coded words.\n    *   Constraint: Do not provide any explanation. Ignore the dots '....'.\n    *   Output Format: \"According to the coded text above, the three most frequently appeared words are: [word1], [word2], [word3]\" (implied based on the prompt's ending).\n\n2.  **Preprocessing:**\n    *   Remove all dots ('...').\n    *   Extract all alphanumeric strings (words).\n    *   Count the frequency of each unique word.\n    *   Sort by frequency descending.\n    *   Select the top 3.\n\n3.  **Data Extraction & Counting:**\n    *   I need to go through the text character by character (or mentally) and extract words.\n    *   Let's list the words found:\n        *   uudlll\n        *   vkidam\n        *   ucoown\n        *   umxg",
+      "prompt_tokens": 3823,
+      "references": [
+        "vkidam",
+        "hxwlfh",
+        "siafsj"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        false,
+        false
+      ],
+      "index": 6,
+      "output_tokens": 256,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A block of text containing coded words separated by spaces and dots ('...').\n    *   Task: Track the frequency of each coded word.\n    *   Goal: Identify the three most frequently appeared coded words.\n    *   Constraint: Do not provide any explanation. Ignore the dots '....'.\n    *   Output Format: \"According to the coded text above, the three most frequently appeared words are: [word1], [word2], [word3]\" (implied by the prompt's ending, though the prompt asks \"What are the three most frequently appeared coded words? Answer: ...\"). I need to list the three words.\n\n2.  **Preprocessing:**\n    *   Remove all dots ('...') and whitespace (except spaces between words).\n    *   Identify unique words.\n    *   Count occurrences of each unique word.\n    *   Sort by frequency descending.\n    *   Select top 3.\n\n3.  **Data Extraction & Counting:**\n    *   I need to scan the text carefully. The text is a stream of words separated by spaces.\n    *  ",
+      "prompt_tokens": 3934,
+      "references": [
+        "vitpsj",
+        "jucgsa",
+        "sfrakc"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        false,
+        false
+      ],
+      "index": 7,
+      "output_tokens": 256,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A block of text containing coded words and dots ('...').\n    *   Task: Track the frequency of each coded word.\n    *   Goal: Find the three most frequently appeared coded words.\n    *   Constraint: Do not provide any explanation. Ignore the dots '....'.\n    *   Output Format: \"According to the coded text above, the three most frequently appeared words are: [word1], [word2], [word3]\" (implied by the prompt's ending, though the prompt asks me to answer, I should format it clearly).\n\n2.  **Preprocessing:**\n    *   Remove all dots ('...').\n    *   Identify unique words.\n    *   Count occurrences of each unique word.\n    *   Sort by frequency descending.\n    *   Select top 3.\n\n3.  **Data Extraction & Counting:**\n    *   I need to scan the text character by character (or mentally) to extract words.\n    *   Let's list the words found in the text.\n\n    *   Text segment 1: `tjuxvo ... ty",
+      "prompt_tokens": 3843,
+      "references": [
+        "tyetgg",
+        "lcpmyw",
+        "qsxwqv"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        false,
+        false
+      ],
+      "index": 8,
+      "output_tokens": 256,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A block of text containing coded words separated by spaces, interspersed with dots ('...').\n    *   Task: Track the frequency of each coded word.\n    *   Goal: Identify the three most frequently appeared coded words.\n    *   Constraint: Do not provide any explanation. Ignore the dots '....'.\n    *   Output Format: \"According to the coded text above, the three most frequently appeared words are: [word1], [word2], [word3]\" (implied by the prompt's ending, though the prompt asks \"What are the three most frequently appeared words in the above coded text? Answer: According to the coded text above, the three most frequently appeared words are:\").\n\n2.  **Preprocessing:**\n    *   Remove all dots ('...').\n    *   Split the text into words based on whitespace.\n    *   Count the occurrences of each word.\n    *   Sort by frequency descending.\n    *   Select the top 3.\n\n3.  **Execution (Mental or Scratchpad):**\n    *   I need to scan the text carefully. The",
+      "prompt_tokens": 3298,
+      "references": [
+        "volunt",
+        "jencmi",
+        "rfkyye"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        false,
+        false
+      ],
+      "index": 9,
+      "output_tokens": 256,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A block of text containing coded words and dots ('...').\n    *   Task: Track the frequency of each coded word.\n    *   Goal: Find the three most frequently appeared coded words.\n    *   Constraint: Do not provide any explanation. Ignore the dots '....'.\n    *   Output Format: \"According to the coded text above, the three most frequently appeared words are: [word1], [word2], [word3]\" (implied based on the example provided in the prompt, though the prompt ends with \"Answer: According to the coded text above, the three most frequently appeared words are:\"). I need to complete the sentence.\n\n2.  **Preprocessing:**\n    *   Remove all dots ('...').\n    *   Identify unique words.\n    *   Count occurrences of each unique word.\n    *   Sort by frequency descending.\n    *   Select top 3.\n\n3.  **Data Extraction & Counting:**\n    *   I need to scan the text carefully.\n    *   Let's list the words found:\n        *   tzelwu\n",
+      "prompt_tokens": 3896,
+      "references": [
+        "vcpicl",
+        "iqbfdp",
+        "qypmsm"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        false,
+        false
+      ],
+      "index": 10,
+      "output_tokens": 256,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A block of text containing coded words and dots ('...').\n    *   Task: Track the frequency of each coded word.\n    *   Goal: Find the three most frequently appeared coded words.\n    *   Constraint: Do not provide any explanation. Ignore the dots '....'.\n    *   Output Format: \"According to the coded text above, the three most frequently appeared words are: [word1], [word2], [word3]\" (implied based on the prompt's ending).\n\n2.  **Preprocessing:**\n    *   Remove all dots ('...').\n    *   Identify unique words.\n    *   Count occurrences of each unique word.\n    *   Sort by frequency descending.\n    *   Select top 3.\n\n3.  **Data Extraction & Counting:**\n    *   I need to go through the text character by character (or mentally, since it's long) and extract the words.\n    *   Let's list the words found in the text.\n\n    *   Text segment 1: `rziaab` ... `tnlkvs` ... `",
+      "prompt_tokens": 4035,
+      "references": [
+        "tnlkvs",
+        "fjgzar",
+        "qhgtpx"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 11,
+      "output_tokens": 256,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A block of text containing coded words and dots ('...').\n    *   Task: Track the frequency of each coded word.\n    *   Output: Identify the three most frequently appeared coded words.\n    *   Constraint: Do not provide any explanation. Ignore the dots.\n\n2.  **Preprocessing:**\n    *   Remove all dots ('...').\n    *   Extract all alphanumeric strings (words).\n    *   Count the frequency of each unique word.\n    *   Sort by frequency descending.\n    *   Select the top 3.\n\n3.  **Execution (Mental or Scratchpad):**\n    *   I need to scan the text and count occurrences of specific words.\n    *   Let's list the words found in the text.\n    *   Words: `qttwst`, `lwxuyj`, `trnmmh`, `ytyyez`, `bjmbjq`, `gyatvm`, `jhvdhy`, `ltcaml`, `ptqjlz`, `onqhxz`, `rumrno`, `elikto`, `sukxdd",
+      "prompt_tokens": 3881,
+      "references": [
+        "trnmmh",
+        "gyatvm",
+        "ptqjlz"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        false,
+        false
+      ],
+      "index": 12,
+      "output_tokens": 256,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A block of text containing coded words separated by spaces, interspersed with dots ('...').\n    *   Task: Track the frequency of each coded word.\n    *   Goal: Identify the three most frequently appeared coded words.\n    *   Constraint: Do not provide any explanation. Ignore the dots '....'.\n    *   Output Format: \"According to the coded text above, the three most frequently appeared words are: [word1], [word2], [word3]\" (implied by the prompt's ending \"Answer: According to the coded text above, the three most frequently appeared words are:\").\n\n2.  **Preprocessing:**\n    *   Remove all dots ('...').\n    *   Split the text into words based on whitespace.\n    *   Count the occurrences of each word.\n    *   Sort by frequency descending.\n    *   Select the top 3.\n\n3.  **Execution (Mental or Scratchpad):**\n    *   I need to scan the text and count the words.\n    *   Let's list the words and count them.\n\n    *  ",
+      "prompt_tokens": 3894,
+      "references": [
+        "thweli",
+        "gtjlff",
+        "pkylwd"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        false,
+        false
+      ],
+      "index": 13,
+      "output_tokens": 256,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A coded text containing words separated by spaces, with some dots ('...') interspersed.\n    *   Task: Track the frequency of each coded word.\n    *   Goal: Find the three most frequently appeared coded words.\n    *   Constraint: Do not provide any explanation. Ignore the dots '....'.\n    *   Output Format: \"According to the coded text above, the three most frequently appeared words are: [word1], [word2], [word3]\" (implied based on the prompt's ending).\n\n2.  **Preprocessing the Text:**\n    *   Remove all dots ('...').\n    *   Split the text into words.\n    *   Count the frequency of each word.\n    *   Sort by frequency.\n    *   Select the top 3.\n\n3.  **Execution (Mental or Scratchpad):**\n\n    *   *Text Segment:* `tqdolw ... vqrzru ... rlakar vqrzru ... ... ... vqrzru ... ... ... smwskk ... ... ... ... ... vqrzru ... ... ...",
+      "prompt_tokens": 3971,
+      "references": [
+        "vqrzru",
+        "hfvvpc",
+        "pwcone"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        false
+      ],
+      "index": 14,
+      "output_tokens": 256,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A coded text containing words separated by spaces (and some dots '...').\n    *   Task: Track the frequency of each coded word.\n    *   Goal: Find the three most frequently appeared coded words.\n    *   Constraint: Do not provide any explanation. Ignore the dots '....'.\n    *   Output Format: \"According to the coded text above, the three most frequently appeared words are: [word1], [word2], [word3]\" (implied based on the prompt's ending).\n\n2.  **Preprocessing:**\n    *   Remove all dots ('...') as per instructions (\"Ignore the dots '....'\").\n    *   Split the text into words.\n    *   Count the frequency of each word.\n    *   Identify the top 3.\n\n3.  **Execution (Mental or Scratchpad):**\n    *   I need to scan the text and count occurrences.\n    *   Let's list the words found in the text.\n    *   Words: lqxjzf, joirgt, mspazq, trhpoa, rxif",
+      "prompt_tokens": 4001,
+      "references": [
+        "trhpoa",
+        "joirgt",
+        "qkwuql"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        false,
+        false
+      ],
+      "index": 15,
+      "output_tokens": 256,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A block of text containing coded words and dots ('...').\n    *   Task: Track the frequency of each coded word.\n    *   Goal: Find the three most frequently appeared coded words.\n    *   Constraint: Do not provide any explanation. Ignore the dots '....'.\n    *   Output Format: \"According to the coded text above, the three most frequently appeared words are: [word1], [word2], [word3]\" (implied by the prompt's ending, though the prompt asks \"What are the three most frequently appeared coded words in the above coded text? Answer: According to the coded text above, the three most frequently appeared words are:\").\n\n2.  **Preprocessing:**\n    *   Remove all dots ('...').\n    *   Identify unique words.\n    *   Count occurrences of each word.\n    *   Sort by frequency descending.\n    *   Select top 3.\n\n3.  **Data Extraction & Counting:**\n    *   I need to scan the text carefully, ignoring the dots.\n    *   Let's list the words found:\n",
+      "prompt_tokens": 3961,
+      "references": [
+        "ufnlme",
+        "fwmyjj",
+        "pydgpr"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        false,
+        false
+      ],
+      "index": 16,
+      "output_tokens": 256,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A coded text containing words and dots ('...').\n    *   Task: Track the frequency of each coded word.\n    *   Goal: Find the three most frequently appeared coded words.\n    *   Constraint: Do not provide any explanation. Ignore the dots.\n    *   Output Format: A list of the three most frequent words in the format: \"According to the coded text above, the three most frequently appeared words are: [word1], [word2], [word3]\".\n\n2.  **Preprocessing:**\n    *   Remove all dots ('...').\n    *   Split the text into words.\n    *   Count the occurrences of each word.\n    *   Sort by frequency (descending).\n    *   Select the top 3.\n\n3.  **Execution (Word Counting):**\n    *   I need to go through the text carefully and count every word instance.\n\n    *   Text segment 1: `shdisw nbvovq vjqlad ... yxhndm ... vjqlad ... ... ... cyqhmt ... ... vjql",
+      "prompt_tokens": 3830,
+      "references": [
+        "vjqlad",
+        "hhplgm",
+        "rdogxq"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        false,
+        false
+      ],
+      "index": 17,
+      "output_tokens": 256,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A block of text containing coded words separated by spaces and dots ('...').\n    *   Task: Track the frequency of each coded word.\n    *   Goal: Identify the three most frequently appeared coded words.\n    *   Constraint: Do not provide any explanation. Ignore the dots '....'.\n    *   Output Format: \"According to the coded text above, the three most frequently appeared words are: [word1], [word2], [word3]\" (implied by the prompt's ending, though the prompt asks \"What are the three most frequently appeared coded words? Answer: ...\"). I need to list the three words.\n\n2.  **Preprocessing:**\n    *   Remove all dots ('...') and spaces (though the instruction says \"ignore the dots '....'\", usually implies removing them or treating them as separators. The text has spaces between words. I need to count the words themselves).\n    *   Identify unique words.\n    *   Count occurrences.\n\n3.  **Data Extraction & Counting:**\n    *   I will scan the text line by line (or mentally) and extract",
+      "prompt_tokens": 3965,
+      "references": [
+        "uzvcls",
+        "hgarwy",
+        "qacbqp"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        false,
+        false
+      ],
+      "index": 18,
+      "output_tokens": 256,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A coded text containing words and dots ('...').\n    *   Task: Track the frequency of each coded word.\n    *   Goal: Find the three most frequently appeared coded words.\n    *   Constraint: Do not provide any explanation. Ignore the dots '....'.\n    *   Output Format: \"According to the coded text above, the three most frequently appeared words are: [word1], [word2], [word3]\" (implied based on the prompt's ending).\n\n2.  **Preprocessing:**\n    *   Remove all dots ('...').\n    *   Extract all alphanumeric strings (words).\n    *   Count the frequency of each word.\n    *   Sort by frequency descending.\n    *   Select the top 3.\n\n3.  **Data Extraction & Counting:**\n    *   I need to go through the text character by character (or mentally) and extract words.\n    *   Let's list the words found in the text.\n\n    Text segment by segment:\n    1.  supffe\n    2.  vdmzkj\n",
+      "prompt_tokens": 4009,
+      "references": [
+        "vdmzkj",
+        "jyfeeh",
+        "qukyun"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        true,
+        false
+      ],
+      "index": 19,
+      "output_tokens": 256,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A block of text containing coded words separated by spaces, interspersed with dots ('...').\n    *   Task: Track the frequency of each coded word.\n    *   Goal: Find the three most frequently appeared coded words.\n    *   Constraint: Do not provide any explanation. Ignore the dots '....'.\n    *   Output Format: \"According to the coded text above, the three most frequently appeared words are: [word1], [word2], [word3]\" (implied based on the prompt's ending).\n\n2.  **Preprocessing:**\n    *   Remove all dots ('...').\n    *   Split the text into words.\n    *   Count the frequency of each word.\n    *   Sort by frequency descending.\n    *   Select the top 3.\n\n3.  **Data Extraction & Counting:**\n    *   I need to go through the text line by line (or mentally) and extract the words.\n    *   Let's list the words found:\n        *   jowgxi\n        *   hipxzd\n        *   n",
+      "prompt_tokens": 3888,
+      "references": [
+        "wgplrd",
+        "hipxzd",
+        "svduou"
+      ]
+    }
+  ],
+  "config_effect": {
+    "allocation": "uniform_int4",
+    "detail": {
+      "a2_flag": false,
+      "cache_dtype": "int4_per_token_head",
+      "per_layer": {}
+    },
+    "group_structure_verified": false,
+    "ok": true
+  },
+  "created_at_utc": "2026-08-07T09:01:18Z",
+  "data_file": "data/ruler/ruler_fwe_L4096/validation.jsonl",
+  "data_sha256": "d22e21d579e53d976588c63828a8acdf970e04d258a614caede338a8a31e824b",
+  "elapsed_s": 63.0,
+  "engine": {
+    "kwargs": {
+      "disable_log_stats": true,
+      "enforce_eager": true,
+      "gpu_memory_utilization": 0.85,
+      "kv_cache_dtype": "int4_per_token_head",
+      "max_model_len": 16384,
+      "seed": 7
+    },
+    "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master",
+    "vllm_version": "0.26.1rc1.dev245+ge2fa28594"
+  },
+  "host": "autodl-container-ca6c40b13f-016bd465",
+  "length": 4096,
+  "max_tokens": 256,
+  "metric": "string_match_all",
+  "num_samples": 20,
+  "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+  "sampling_params": {
+    "max_tokens": 256,
+    "temperature": 0.0
+  },
+  "schema_version": 1,
+  "seed": 7,
+  "status": "completed_validated",
+  "task": "ruler_fwe",
+  "task_type": "freq_words_extraction",
+  "tokens_to_generate": 50
+}
