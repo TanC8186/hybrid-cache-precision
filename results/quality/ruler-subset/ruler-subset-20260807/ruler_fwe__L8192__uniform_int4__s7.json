@@ -1,0 +1,368 @@
+{
+  "accuracy": 5.0,
+  "allocation": "uniform_int4",
+  "attempt_id": "ruler-subset-20260807",
+  "cases": [
+    {
+      "hits": [
+        false,
+        false,
+        false
+      ],
+      "index": 0,
+      "output_tokens": 50,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A coded text containing repeated words and dots ('...').\n    *   Task: Track the frequency of each coded word.\n    *",
+      "prompt_tokens": 7961,
+      "references": [
+        "mqupjb",
+        "qaxoqh",
+        "guklre"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        false,
+        false
+      ],
+      "index": 1,
+      "output_tokens": 50,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A block of text containing coded words separated by spaces and dots ('...').\n    *   Task: Track the frequency of each coded word",
+      "prompt_tokens": 8106,
+      "references": [
+        "okmnxy",
+        "qgpshy",
+        "gjuekj"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        false,
+        false
+      ],
+      "index": 2,
+      "output_tokens": 50,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A coded text containing repeated words and dots ('...').\n    *   Task: Track the frequency of each coded word.\n    *",
+      "prompt_tokens": 7747,
+      "references": [
+        "qsxwqv",
+        "sxqlzg",
+        "iztaka"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        false,
+        false
+      ],
+      "index": 3,
+      "output_tokens": 50,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A block of text containing coded words separated by spaces and ellipses ('...').\n    *   Task: Track the frequency of each",
+      "prompt_tokens": 7339,
+      "references": [
+        "ottors",
+        "rjrzch",
+        "jencmi"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        false,
+        false
+      ],
+      "index": 4,
+      "output_tokens": 50,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A block of text containing coded words separated by spaces and dots ('...').\n    *   Task: Track the frequency of each coded word",
+      "prompt_tokens": 7815,
+      "references": [
+        "ozncsp",
+        "qxvcpv",
+        "flamts"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        false,
+        false
+      ],
+      "index": 5,
+      "output_tokens": 50,
+      "prediction": "\n\n<think>\nThe user wants to find the three most frequently appeared coded words in the provided text.\nI need to:\n1.  Extract all the coded words (ignoring the dots '....').\n2.  Count the frequency of",
+      "prompt_tokens": 7795,
+      "references": [
+        "nzehtd",
+        "qatmzp",
+        "gizmzh"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        false,
+        false
+      ],
+      "index": 6,
+      "output_tokens": 50,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A block of text containing coded words separated by spaces and ellipses ('...').\n    *   Task: Track the frequency of each",
+      "prompt_tokens": 7255,
+      "references": [
+        "nochfd",
+        "qllesm",
+        "hjhadu"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        false,
+        false
+      ],
+      "index": 7,
+      "output_tokens": 50,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long block of text containing coded words and dots ('...').\n    *   Task: Track the frequency of each coded word.\n",
+      "prompt_tokens": 7723,
+      "references": [
+        "nkskvu",
+        "rbadwf",
+        "gdfnhq"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        false,
+        false
+      ],
+      "index": 8,
+      "output_tokens": 50,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A coded text containing repeated words and dots ('...').\n    *   Task: Track the frequency of each coded word.\n    *",
+      "prompt_tokens": 7895,
+      "references": [
+        "osyuro",
+        "rjmnvc",
+        "hlfvdm"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        false,
+        false
+      ],
+      "index": 9,
+      "output_tokens": 50,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A block of text containing coded words separated by spaces and ellipses ('...').\n    *   Task: Track the frequency of each",
+      "prompt_tokens": 7821,
+      "references": [
+        "pcfist",
+        "spppvb",
+        "hggqua"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        false,
+        false
+      ],
+      "index": 10,
+      "output_tokens": 50,
+      "prediction": "\n\n<think>\nThe user wants to find the three most frequently appearing coded words in the provided text.\nI need to ignore the dots '...' and count the occurrences of each unique word.\n\nLet's list the words found in the text:\n",
+      "prompt_tokens": 7894,
+      "references": [
+        "oedicn",
+        "reudpw",
+        "hcjedi"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        false,
+        false
+      ],
+      "index": 11,
+      "output_tokens": 50,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A block of text containing coded words and dots ('...').\n    *   Task: Track the frequency of each coded word.\n   ",
+      "prompt_tokens": 8131,
+      "references": [
+        "nzcrej",
+        "qixlie",
+        "gqlesw"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        false,
+        false
+      ],
+      "index": 12,
+      "output_tokens": 50,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long block of text containing coded words and dots ('...').\n    *   Task: Track the frequency of each coded word.\n",
+      "prompt_tokens": 7779,
+      "references": [
+        "prepuu",
+        "ruxwxa",
+        "ieqsgz"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 13,
+      "output_tokens": 50,
+      "prediction": "\n\n1. orsavv\n2. rwosvm\n3. xgksjf\n\n(Note: The frequency counts are based on the provided text. The exact counts for 'nuojen', 'fpnnfa', 'vystqd",
+      "prompt_tokens": 7726,
+      "references": [
+        "orsavv",
+        "rwosvm",
+        "fpnnfa"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        false,
+        false
+      ],
+      "index": 14,
+      "output_tokens": 50,
+      "prediction": "\n\n<think>\nThe user wants to find the three most frequently appearing coded words in the provided text.\nI need to count the occurrences of each unique word.\nThe text contains many dots ('...') which should be ignored.\nI will scan",
+      "prompt_tokens": 7714,
+      "references": [
+        "nokjym",
+        "pvtkrb",
+        "golmoz"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        false,
+        false
+      ],
+      "index": 15,
+      "output_tokens": 50,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A block of text containing coded words separated by spaces and ellipses ('...').\n    *   Task: Track the frequency of each",
+      "prompt_tokens": 8019,
+      "references": [
+        "nwlrss",
+        "pvufld",
+        "gbxzrh"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        false,
+        false
+      ],
+      "index": 16,
+      "output_tokens": 50,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A block of text containing coded words separated by spaces and ellipses ('...').\n    *   Task: Track the frequency of each",
+      "prompt_tokens": 7876,
+      "references": [
+        "pyllkp",
+        "sokkla",
+        "jrmazg"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        false,
+        false
+      ],
+      "index": 17,
+      "output_tokens": 50,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long coded text containing repeated words and dots ('...').\n    *   Task: Track the frequency of each coded word.\n   ",
+      "prompt_tokens": 7681,
+      "references": [
+        "ngkflg",
+        "prxxlb",
+        "fqxpeh"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        false,
+        false
+      ],
+      "index": 18,
+      "output_tokens": 50,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long block of text containing coded words separated by spaces and dots ('...').\n    *   Task: Track the frequency of each coded",
+      "prompt_tokens": 7275,
+      "references": [
+        "ochbos",
+        "pifaxv",
+        "gwpagn"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        false,
+        false
+      ],
+      "index": 19,
+      "output_tokens": 50,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A coded text containing repeated words and dots ('...').\n    *   Task: Track the frequency of each coded word.\n    *",
+      "prompt_tokens": 7804,
+      "references": [
+        "mpmsie",
+        "qaduxr",
+        "eseqmc"
+      ]
+    }
+  ],
+  "config_effect": {
+    "allocation": "uniform_int4",
+    "detail": {
+      "a2_flag": false,
+      "cache_dtype": "int4_per_token_head",
+      "per_layer": {}
+    },
+    "group_structure_verified": false,
+    "ok": true
+  },
+  "created_at_utc": "2026-08-07T05:56:22Z",
+  "data_file": "data/ruler/ruler_fwe_L8192/validation.jsonl",
+  "data_sha256": "e40be1cdf0e66524188c79b5546ca82665054daa782b49b65a520b04fee0fa01",
+  "elapsed_s": 58.8,
+  "engine": {
+    "kwargs": {
+      "disable_log_stats": true,
+      "enforce_eager": true,
+      "gpu_memory_utilization": 0.85,
+      "kv_cache_dtype": "int4_per_token_head",
+      "max_model_len": 16384,
+      "seed": 7
+    },
+    "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master",
+    "vllm_version": "0.26.1rc1.dev245+ge2fa28594"
+  },
+  "host": "autodl-container-ca6c40b13f-016bd465",
+  "length": 8192,
+  "metric": "string_match_all",
+  "num_samples": 20,
+  "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+  "sampling_params": {
+    "max_tokens": 50,
+    "temperature": 0.0
+  },
+  "schema_version": 1,
+  "seed": 7,
+  "status": "completed_validated",
+  "task": "ruler_fwe",
+  "task_type": "freq_words_extraction",
+  "tokens_to_generate": 50
+}

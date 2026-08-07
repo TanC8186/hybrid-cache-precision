@@ -1,0 +1,407 @@
+{
+  "accuracy": 100.0,
+  "allocation": "fp16",
+  "attempt_id": "ruler-subset-20260807",
+  "cases": [
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 12989,
+      "output_tokens": 128,
+      "prediction": ": 9153566, 9937326, 2321324, and 5041154.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated phrases (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with specific sentences identifying \"special magic numbers\" for specific categories.\n    *   Task: Memorize the hidden numbers.\n    *   Quiz Question: The user",
+      "prompt_tokens": 3960,
+      "references": [
+        "9153566",
+        "9937326",
+        "2321324",
+        "5041154"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 2894,
+      "output_tokens": 128,
+      "prediction": ": 4374754, 9683481, 6229731, and 7264956.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated phrases (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with specific sentences identifying \"special magic numbers\".\n    *   Task: Memorize the hidden numbers.\n    *   Output: Provide all the special magic numbers for",
+      "prompt_tokens": 3951,
+      "references": [
+        "4374754",
+        "6229731",
+        "9683481",
+        "7264956"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 7885,
+      "output_tokens": 128,
+      "prediction": ": 2191066, 2130789, 1987737, and 4694634.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated phrases (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with specific sentences identifying \"special magic numbers\" for specific entities.\n    *   Task: Memorize the hidden numbers.\n    *   Quiz Question: The user",
+      "prompt_tokens": 3960,
+      "references": [
+        "2191066",
+        "2130789",
+        "1987737",
+        "4694634"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 8361,
+      "output_tokens": 128,
+      "prediction": ": 4194548, 8930103, 3219824, and 8935169.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated phrases (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with specific sentences identifying \"special magic numbers\" for specific topics.\n    *   Task: Memorize the hidden numbers.\n    *   Quiz Question: The user",
+      "prompt_tokens": 3954,
+      "references": [
+        "4194548",
+        "8930103",
+        "3219824",
+        "8935169"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 10587,
+      "output_tokens": 128,
+      "prediction": ": 6692553, 4191175, 5171761, and 7754864.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated phrases (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with specific sentences identifying \"special magic numbers\".\n    *   Task: Memorize the hidden numbers and answer a quiz question about them.\n    *   Constraint:",
+      "prompt_tokens": 3954,
+      "references": [
+        "6692553",
+        "4191175",
+        "5171761",
+        "7754864"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 11398,
+      "output_tokens": 128,
+      "prediction": ": 2642635, 4965789, 8434500, and 1247595.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated phrases (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with specific sentences identifying \"special magic numbers\" for specific terms.\n    *   Task: Memorize the hidden numbers.\n    *   Quiz Question: The user",
+      "prompt_tokens": 3960,
+      "references": [
+        "2642635",
+        "4965789",
+        "8434500",
+        "1247595"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 3707,
+      "output_tokens": 128,
+      "prediction": ": 1036161, 5785687, 9164991, and 5449368.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated phrases (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with specific sentences identifying \"special magic numbers\" for specific entities.\n    *   Task: Memorize the hidden numbers.\n    *   Output: Provide all the",
+      "prompt_tokens": 3963,
+      "references": [
+        "1036161",
+        "5785687",
+        "9164991",
+        "5449368"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 1730,
+      "output_tokens": 128,
+      "prediction": ": 1841248, 9910817, 1954280, and 8999183.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated phrases (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with specific sentences identifying \"special magic numbers\" for specific terms.\n    *   Task: Memorize the hidden numbers.\n    *   Output: Provide all the",
+      "prompt_tokens": 3966,
+      "references": [
+        "1841248",
+        "9910817",
+        "1954280",
+        "8999183"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 7587,
+      "output_tokens": 128,
+      "prediction": ": 2375453, 1666754, 5130808, and 9770838.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated phrases (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with specific sentences identifying \"special magic numbers\" for specific animals.\n    *   Task: Memorize the hidden numbers.\n    *   Quiz Question: The user",
+      "prompt_tokens": 3966,
+      "references": [
+        "2375453",
+        "1666754",
+        "5130808",
+        "9770838"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 3162,
+      "output_tokens": 128,
+      "prediction": ": 6304573, 4576135, 1156287, and 2677407.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated phrases (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with specific sentences identifying \"special magic numbers\" for specific entities.\n    *   Task: Memorize the hidden numbers and answer a quiz question about them.\n   ",
+      "prompt_tokens": 3957,
+      "references": [
+        "6304573",
+        "4576135",
+        "1156287",
+        "2677407"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 2533,
+      "output_tokens": 128,
+      "prediction": ": 8351517, 9874152, 6022741, and 6075395.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated phrases (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with specific sentences identifying \"special magic numbers\" for specific categories.\n    *   Task: Memorize the hidden numbers and answer a quiz question about them.\n   ",
+      "prompt_tokens": 3954,
+      "references": [
+        "8351517",
+        "9874152",
+        "6022741",
+        "6075395"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 10110,
+      "output_tokens": 128,
+      "prediction": ": 5428914, 4533779, 9196204, and 6752576.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated phrases (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with specific sentences identifying \"special magic numbers\" for specific categories.\n    *   Task: Memorize the hidden numbers and answer a quiz question later.\n    *",
+      "prompt_tokens": 3957,
+      "references": [
+        "5428914",
+        "4533779",
+        "9196204",
+        "6752576"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 1903,
+      "output_tokens": 128,
+      "prediction": ": 5394880, 8412769, 1162230, and 8175395.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated phrases (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with specific sentences identifying \"special magic numbers\" for specific categories.\n    *   Task: Memorize the hidden numbers and answer a quiz question about them.\n   ",
+      "prompt_tokens": 3954,
+      "references": [
+        "5394880",
+        "8412769",
+        "1162230",
+        "8175395"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 9682,
+      "output_tokens": 128,
+      "prediction": ": 7117837, 1701771, 7003042, and 5186414.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated phrases (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with specific sentences identifying \"special magic numbers\" for specific entities.\n    *   Task: Memorize the hidden numbers.\n    *   Quiz Question: The user",
+      "prompt_tokens": 3951,
+      "references": [
+        "7117837",
+        "1701771",
+        "7003042",
+        "5186414"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 9056,
+      "output_tokens": 128,
+      "prediction": ": 6573147, 1415846, 3670896, and 5163555.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated phrases (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with specific sentences identifying \"special magic numbers\" for specific categories.\n    *   Task: Memorize the hidden numbers.\n    *   Quiz Question (implied",
+      "prompt_tokens": 3954,
+      "references": [
+        "6573147",
+        "1415846",
+        "3670896",
+        "5163555"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 6649,
+      "output_tokens": 128,
+      "prediction": ": 6507321, 4240180, 1397023, and 4818418.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated phrases (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with specific sentences identifying \"special magic numbers\" for specific terms.\n    *   Task: Memorize the hidden numbers.\n    *   Output: Answer the quiz",
+      "prompt_tokens": 3960,
+      "references": [
+        "6507321",
+        "4240180",
+        "1397023",
+        "4818418"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 7394,
+      "output_tokens": 128,
+      "prediction": ": 5382463, 8290770, 5453786, and 2818692.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated phrases (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with specific sentences identifying \"special magic numbers\" for specific categories.\n    *   Task: Memorize the hidden numbers and answer a quiz question about them.\n   ",
+      "prompt_tokens": 3954,
+      "references": [
+        "5382463",
+        "5453786",
+        "8290770",
+        "2818692"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 7944,
+      "output_tokens": 128,
+      "prediction": ": 4305700, 8235969, 9722815, and 8315831.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated phrases (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with specific sentences identifying \"special magic numbers\" for specific categories.\n    *   Task: Memorize the hidden numbers.\n    *   Quiz Question: Ask for",
+      "prompt_tokens": 3951,
+      "references": [
+        "4305700",
+        "8235969",
+        "9722815",
+        "8315831"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 7189,
+      "output_tokens": 128,
+      "prediction": ": 8053918, 3135534, 7751158, and 5960271.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated phrases (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with specific sentences identifying \"special magic numbers\".\n    *   Task: Memorize the hidden numbers.\n    *   Output: Answer the quiz question asking for all",
+      "prompt_tokens": 3960,
+      "references": [
+        "8053918",
+        "3135534",
+        "7751158",
+        "5960271"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 12082,
+      "output_tokens": 128,
+      "prediction": ": 8411939, 4585314, 6406444, and 4526280.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated phrases (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with specific sentences identifying \"special magic numbers\" for specific phrases.\n    *   Task: Memorize the hidden numbers.\n    *   Quiz Question: Ask for",
+      "prompt_tokens": 3963,
+      "references": [
+        "8411939",
+        "4585314",
+        "6406444",
+        "4526280"
+      ]
+    }
+  ],
+  "config_effect": {
+    "allocation": "fp16",
+    "detail": {
+      "a2_flag": false,
+      "cache_dtype": "auto",
+      "per_layer": {}
+    },
+    "group_structure_verified": false,
+    "ok": true
+  },
+  "created_at_utc": "2026-08-07T05:31:21Z",
+  "data_file": "data/ruler/ruler_niah_multiquery_L4096/validation.jsonl",
+  "data_sha256": "d555e41ef3262675e1582565e497bd528b150714b91840c95b206315e9958a48",
+  "elapsed_s": 60.3,
+  "engine": {
+    "kwargs": {
+      "disable_log_stats": true,
+      "enforce_eager": true,
+      "gpu_memory_utilization": 0.85,
+      "max_model_len": 16384,
+      "seed": 7
+    },
+    "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master",
+    "vllm_version": "0.26.1rc1.dev245+ge2fa28594"
+  },
+  "host": "autodl-container-ca6c40b13f-016bd465",
+  "length": 4096,
+  "metric": "string_match_all",
+  "num_samples": 20,
+  "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+  "sampling_params": {
+    "max_tokens": 128,
+    "temperature": 0.0
+  },
+  "schema_version": 1,
+  "seed": 7,
+  "status": "completed_validated",
+  "task": "ruler_niah_multiquery",
+  "task_type": "niah",
+  "tokens_to_generate": 128
+}
