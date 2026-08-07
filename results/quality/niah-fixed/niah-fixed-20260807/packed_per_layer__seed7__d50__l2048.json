@@ -1,0 +1,90 @@
+{
+  "accuracy": 1.0,
+  "allocation": "packed_per_layer",
+  "attempt_id": "niah-fixed-20260807",
+  "cases": [
+    {
+      "answer": "\n\nMZ5L9HHD",
+      "code": "MZ5L9HHD",
+      "hit": true,
+      "hit_final": true,
+      "hit_think": false,
+      "output_tokens": 8,
+      "prompt_tokens": 2740,
+      "prompt_words": 2069
+    },
+    {
+      "answer": "\n\n2KQMYM3L",
+      "code": "2KQMYM3L",
+      "hit": true,
+      "hit_final": true,
+      "hit_think": false,
+      "output_tokens": 9,
+      "prompt_tokens": 2774,
+      "prompt_words": 2069
+    },
+    {
+      "answer": "\n\nS2ZNUR5L",
+      "code": "S2ZNUR5L",
+      "hit": true,
+      "hit_final": true,
+      "hit_think": false,
+      "output_tokens": 8,
+      "prompt_tokens": 2709,
+      "prompt_words": 2069
+    }
+  ],
+  "config_effect": {
+    "allocation": "packed_per_layer",
+    "detail": {
+      "a2_flag": true,
+      "cache_dtype": "int4_per_token_head",
+      "per_layer": {
+        "11": "int4_per_token_head",
+        "15": "int4_per_token_head",
+        "19": "int4_per_token_head",
+        "23": "auto",
+        "3": "int4_per_token_head",
+        "7": "int4_per_token_head"
+      }
+    },
+    "group_structure_verified": false,
+    "ok": true
+  },
+  "context_length_note": "max_len counts filler words, not tokens; actual prompt_words per case recorded",
+  "created_at_utc": "2026-08-07T04:21:41Z",
+  "depth_pct": 50,
+  "elapsed_s": 54.5,
+  "engine": {
+    "kwargs": {
+      "disable_log_stats": true,
+      "enable_per_layer_page_groups": true,
+      "enforce_eager": true,
+      "gpu_memory_utilization": 0.85,
+      "kv_cache_dtype": "int4_per_token_head",
+      "kv_cache_dtype_per_layer": {
+        "11": "int4_per_token_head",
+        "15": "int4_per_token_head",
+        "19": "int4_per_token_head",
+        "23": "auto",
+        "3": "int4_per_token_head",
+        "7": "int4_per_token_head"
+      },
+      "max_model_len": 16384,
+      "seed": 7
+    },
+    "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master",
+    "vllm_version": "0.26.1rc1.dev245+ge2fa28594"
+  },
+  "host": "autodl-container-ca6c40b13f-016bd465",
+  "max_len": 2048,
+  "max_tokens": 256,
+  "num_needles": 3,
+  "sampling_params": {
+    "max_tokens": 256,
+    "temperature": 0.0
+  },
+  "schema_version": 1,
+  "seed": 7,
+  "status": "completed_validated"
+}

@@ -1,0 +1,90 @@
+{
+  "accuracy": 1.0,
+  "allocation": "packed_per_layer",
+  "attempt_id": "niah-fixed-20260807",
+  "cases": [
+    {
+      "answer": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:** The user has provided a long text that appears to be a list of words, phrases, or sentences (likely a dataset or a generated text) and asked a specific question: \"What is the secret code mentioned in the text? Answer with the exact code.\"\n\n2.  **Scan the Text:** I need to look through the provided text for a specific string that looks like a code, often hidden within the noise or at the end of the text.\n\n    *   The text is a long sequence of words like \"marble\", \"ivory\", \"thunder\", \"harbor\", \"dolphin\", etc.\n    *   It looks like a list of items from a dataset (possibly a dataset for text classification or similar).\n    *   I need to find the specific string \"H7N9NM37\".\n\n3.  **Locate the Code:** Scanning the text...\n    *   ... \"marble ivory thunder harbor dolphin falcon quartz valley drizzle prairie garden underwood anchor nebula ivory umbrella orchard lantern valley dolphin quartz drizzle river falcon equator kernel yellow prairie signal kettle journey nebula lantern vapor ember",
+      "code": "H7N9NM37",
+      "hit": true,
+      "hit_final": false,
+      "hit_think": true,
+      "output_tokens": 256,
+      "prompt_tokens": 5470,
+      "prompt_words": 4117
+    },
+    {
+      "answer": "\n\nTE62Q942",
+      "code": "TE62Q942",
+      "hit": true,
+      "hit_final": true,
+      "hit_think": false,
+      "output_tokens": 9,
+      "prompt_tokens": 5482,
+      "prompt_words": 4117
+    },
+    {
+      "answer": "\n\nML4KGLZW",
+      "code": "ML4KGLZW",
+      "hit": true,
+      "hit_final": true,
+      "hit_think": false,
+      "output_tokens": 7,
+      "prompt_tokens": 5506,
+      "prompt_words": 4117
+    }
+  ],
+  "config_effect": {
+    "allocation": "packed_per_layer",
+    "detail": {
+      "a2_flag": true,
+      "cache_dtype": "int4_per_token_head",
+      "per_layer": {
+        "11": "int4_per_token_head",
+        "15": "int4_per_token_head",
+        "19": "int4_per_token_head",
+        "23": "auto",
+        "3": "int4_per_token_head",
+        "7": "int4_per_token_head"
+      }
+    },
+    "group_structure_verified": false,
+    "ok": true
+  },
+  "context_length_note": "max_len counts filler words, not tokens; actual prompt_words per case recorded",
+  "created_at_utc": "2026-08-07T04:25:14Z",
+  "depth_pct": 75,
+  "elapsed_s": 61.1,
+  "engine": {
+    "kwargs": {
+      "disable_log_stats": true,
+      "enable_per_layer_page_groups": true,
+      "enforce_eager": true,
+      "gpu_memory_utilization": 0.85,
+      "kv_cache_dtype": "int4_per_token_head",
+      "kv_cache_dtype_per_layer": {
+        "11": "int4_per_token_head",
+        "15": "int4_per_token_head",
+        "19": "int4_per_token_head",
+        "23": "auto",
+        "3": "int4_per_token_head",
+        "7": "int4_per_token_head"
+      },
+      "max_model_len": 16384,
+      "seed": 7
+    },
+    "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master",
+    "vllm_version": "0.26.1rc1.dev245+ge2fa28594"
+  },
+  "host": "autodl-container-ca6c40b13f-016bd465",
+  "max_len": 4096,
+  "max_tokens": 256,
+  "num_needles": 3,
+  "sampling_params": {
+    "max_tokens": 256,
+    "temperature": 0.0
+  },
+  "schema_version": 1,
+  "seed": 7,
+  "status": "completed_validated"
+}
