@@ -60,3 +60,9 @@
 - C4/PG19 语料切片：`fetch_extra_corpora.py` 通过 hf-mirror streaming 抓取失败
   （`huggingface_hub` pagination client-closed），待改用 ModelScope parquet 直下或
   本地下载后上传；不影响 GPU 队列。
+- **serving MVEx 首轮 fp8 失败（已修复并保留证据）**：`r5-tq-v3-random60-mvex-20260807`
+  在 fp8 样本上 EngineDeadError，根因是 FlashInfer 为 fp8 预填充内核 JIT 编译时
+  PATH 缺 `ninja`（`FileNotFoundError: ninja`）。修复：venv 安装 ninja + 链脚本
+  PATH 含 `.venv/bin`。失败 attempt 保留隔离，新 attempt
+  `r5-tq-v3-random60-mvex-20260807-b`（`--parent-attempt` 关联）3/3
+  completed_validated，含 fp8（JIT 编译后 104s）。
