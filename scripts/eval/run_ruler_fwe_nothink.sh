@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# FWE rerun for the three core allocations with max_tokens=256 AND
+# FWE rerun for all five allocations with max_tokens=256 AND
 # enable_thinking=False (chat-template wrapped). Removes the <think>
 # budget artifact at the source.
 set -euo pipefail
@@ -10,7 +10,7 @@ MAX_TOKENS="${2:-256}"
 LOGDIR="logs"
 mkdir -p "$LOGDIR"
 
-for alloc in fp16 uniform_int4 packed_per_layer; do
+for alloc in fp16 uniform_int4 packed_per_layer turboquant_k8v4 turboquant_4bit_nc; do
   for length in 4096 8192; do
     if .venv/bin/python scripts/eval/ruler_quality.py \
         --task ruler_fwe --length "$length" --allocation "$alloc" --seed 7 \

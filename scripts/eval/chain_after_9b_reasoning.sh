@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Wait for the Qwen3.5-9B NIAH rerun, then run the 2B reasoning benchmarks.
+# Wait for the Qwen3.5-9B NIAH rerun, then run the FWE disable-thinking
+# matrix (all 5 allocations), then the 2B reasoning benchmarks.
 set -euo pipefail
 
 LOG_9B="${1:-/root/autodl-tmp/MLSys_Research/logs/niah-fixed-9b-20260807.log}"
@@ -23,6 +24,17 @@ while true; do
 done
 
 cd /root/autodl-tmp/MLSys_Research
+
+FWE_LOG=/root/autodl-tmp/MLSys_Research/logs/ruler-fwe-fixed-nothink-20260807.log
+echo "[RUN] fwe-nothink-all (5 allocs, 256, enable_thinking=False)" >> "$FWE_LOG"
+if bash scripts/eval/run_ruler_fwe_nothink.sh ruler-fwe-fixed-nothink-20260807 256 \
+    >> "$FWE_LOG" 2>&1; then
+  echo "[OK] fwe-nothink-all" >> "$FWE_LOG"
+else
+  echo "[FAIL] fwe-nothink-all" >> "$FWE_LOG"
+  exit 1
+fi
+
 if pgrep -f "run_reasoning_bench.sh" >/dev/null 2>&1; then
   echo "reasoning already running"
   exit 0
