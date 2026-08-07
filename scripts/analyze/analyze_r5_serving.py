@@ -39,6 +39,7 @@ def audit_attempt(raw_dir: Path, attempt_id: str) -> dict:
         raise SystemExit(f"missing attempt: {attempt_dir}")
     contract = load_json(attempt_dir / "attempt_contract.json")
     summary = load_json(attempt_dir / "summary.json")
+    plan = {str(item["sample_id"]): item for item in contract["plan"]}
     samples = []
     for sample_dir in sorted((attempt_dir / "samples").glob("*")):
         if not sample_dir.is_dir():
@@ -51,6 +52,12 @@ def audit_attempt(raw_dir: Path, attempt_id: str) -> dict:
         status = load_json(sample_dir / "status.json")
         if status["status"] != "completed_validated":
             continue
+        expected = int(plan[sample_dir.name]["num_prompts"])
+        if int(analysis["completed"]) + int(analysis["failed"]) != expected:
+            raise SystemExit(
+                f"{attempt_id}/{sample_dir.name}: denominator mismatch "
+                f"(completed+failed != plan num_prompts {expected})"
+            )
         samples.append(
             {
                 "sample_id": sample_dir.name,
@@ -60,7 +67,7 @@ def audit_attempt(raw_dir: Path, attempt_id: str) -> dict:
                 "seed": int(sample_contract["seed"]),
                 "completed": int(analysis["completed"]),
                 "failed": int(analysis["failed"]),
-                "expected": int(analysis["completed"]) + int(analysis["failed"]),
+                "expected": expected,
                 "request_throughput_over_offered": float(analysis["request_throughput_over_offered"]),
                 "ttft_p99_ms": float(analysis["reported_ttft_p99_ms"]),
                 "tpot_p99_ms": float(analysis["reported_tpot_p99_ms"]),
