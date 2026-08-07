@@ -24,8 +24,8 @@
 4bit_nc 0.8889 > k8v4 0.8519——与旧协议数值一致，说明旧协议虽截断但配对比较方向仍成立。
 
 **最终答案指标（post-hoc，`hit_last_section`）**：取生成文本中最后一个 `Answer:`
-之后的内容判定 code（无 `Answer:` 时用全文）。对 2B 全部 270 条 needle 与 9B 已完成
-15 条 needle，`hit_last_section` 与 `hit`（任意位置）**零分歧**；9B 的重复输出
+之后的内容判定 code（无 `Answer:` 时用全文）。对 2B 全部 270 条 needle 与 9B 全部
+54 条 needle，`hit_last_section` 与 `hit`（任意位置）**零分歧**；9B 的重复输出
 （先答 code 再重复 Question/Answer）不影响判定，最后一次 Answer 块仍包含正确 code。
 结果：`results/quality/niah-fixed-final-answer.json`、
 `results/quality/niah-fixed-9b-final-answer.json`。
@@ -87,18 +87,20 @@ TurboQuant 研究一致；FWE 仍为 think 伪影（主协议用 no-think 版）
 （c）若需可解读的 FWE，后续应使用更大预算（如 1024）或禁用 thinking 后重跑。
 
 **FWE 禁用 thinking 重跑（`enable_thinking=False` 经 Qwen3.5 chat template 包装，
-max_tokens=256，attempt `ruler-fwe-fixed-nothink-20260807`，6/6 完成）**：
+max_tokens=256，attempt `ruler-fwe-fixed-nothink-20260807`，10/10 完成，全 5 分配）**：
 
 | 分配 | FWE 4K | FWE 8K |
 |---|---:|---:|
 | fp16 | **93.33** | 100.0 |
 | uniform int4 | 88.33 | 100.0 |
 | packed per-layer | 88.33 | 100.0 |
+| turboquant_k8v4 | 93.33 | 100.0 |
+| turboquant_4bit_nc | 96.67 | 100.0 |
 
 解读：禁用 thinking 后 FWE 变为可解读的抽取任务；量化两列与 fp16 在 8K 持平，
-4K 点估计低 5 分（88.33 vs 93.33，20 样本，单 seed）；无显著退化结论需更多样本
-支撑，但方向上 fp16 ≥ 量化，符合预期。此版本作为 FWE 主报告协议（v1/v2-256
-保留为协议敏感性数据）。
+4K 点估计 fp16/k8v4 93.33、4bit_nc 96.67、uniform/packed 88.33（20 样本，单 seed）；
+无显著退化结论需更多样本支撑。此版本作为 FWE 主报告协议（v1/v2-256 保留为
+协议敏感性数据）。
 
 ## 3. TurboQuant/FP8 serving（protocol-v3）
 
@@ -121,7 +123,16 @@ TPOT 相对 fp16 开销、容量-吞吐 Pareto 点。
 
 ## 4. Qwen3.5-9B NIAH 重跑（attempt `niah-fixed-9b-20260807`）
 
-状态：**排队中**（54 cells = 3 alloc × 3 seeds × 3 depths × 2 lengths）。
+状态：**完成 54/54，0 失败**（54 个 JSON 哈希全匹配）。
+
+| 分配 | cell 均值 | 总体 needle | hit_final | Δ vs fp16 [95% CI] |
+|---|---:|---:|---:|---:|
+| fp16 | 1.0000 ± 0.0000 | 1.0000 | 0.8889 | — |
+| uniform int4 | 0.9815 ± 0.0786 | 0.9815 | 0.8519 | −0.0185 [−0.0576, +0.0206] |
+| packed per-layer | 0.9815 ± 0.0786 | 0.9815 | 0.8333 | −0.0185 [−0.0576, +0.0206] |
+
+结论：9B 上量化两列相对 fp16 的配对 95% CI 均包含 0；`hit_last_section` 与 `hit`
+零分歧（重复输出不影响判定）。分析：`results/quality/niah-fixed-9b-analysis.json`。
 
 ## 5. 推理基准（attempt `reasoning-20260807`）
 

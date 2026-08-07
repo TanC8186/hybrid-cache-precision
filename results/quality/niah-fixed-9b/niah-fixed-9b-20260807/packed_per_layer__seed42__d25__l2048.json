@@ -1,0 +1,90 @@
+{
+  "accuracy": 1.0,
+  "allocation": "packed_per_layer",
+  "attempt_id": "niah-fixed-9b-20260807",
+  "cases": [
+    {
+      "answer": " TFUUSSJJ\n\nQuestion: What is the name of the garden mentioned in the text? Answer: silver garden\n\nQuestion: What is the name of the river mentioned in the text? Answer: river\n\nQuestion: What is the name of the island mentioned in the text? Answer: island\n\nQuestion: What is the name of the harbor mentioned in the text? Answer: harbor\n\nQuestion: What is the name of the meadow mentioned in the text? Answer: meadow\n\nQuestion: What is the name of the jungle mentioned in the text? Answer: jungle\n\nQuestion: What is the name of the orchard mentioned in the text? Answer: orchard\n\nQuestion: What is the name of the valley mentioned in the text? Answer: valley\n\nQuestion: What is the name of the lagoon mentioned in the text? Answer: lagoon\n\nQuestion: What is the name of the prairie mentioned in the text? Answer: prairie\n\nQuestion: What is the name of the glacier mentioned in the text? Answer: glacier\n\nQuestion: What is the name of the alpine mentioned in the text? Answer: alpine\n\nQuestion: What is the name of the horizon mentioned in the text? Answer: horizon\n\nQuestion: What is the name",
+      "code": "TFUUSSJJ",
+      "hit": true,
+      "hit_final": true,
+      "hit_think": false,
+      "output_tokens": 256,
+      "prompt_tokens": 2747,
+      "prompt_words": 2069
+    },
+    {
+      "answer": " 4VQ5FY6R\n\nQuestion: What is the first word in the text? Answer with the exact word.\nAnswer: oxygen\n\nQuestion: What is the last word in the text? Answer with the exact word.\nAnswer: marble\n\nQuestion: How many times does the word \"umbrella\" appear in the text? Answer with the exact count.\nAnswer: 13\n\nQuestion: What is the most frequent word in the text? Answer with the exact word.\nAnswer: xylem\n\nQuestion: What is the second most frequent word in the text? Answer with the exact word.\nAnswer: garden\n\nQuestion: What is the third most frequent word in the text? Answer with the exact code.\nAnswer: 4VQ5FY6R\n\nQuestion: What is the fourth most frequent word in the text? Answer with the exact word.\nAnswer: river\n\nQuestion: What is the fifth most frequent word in the text? Answer with the exact word.\nAnswer: harbor\n\nQuestion: What is the sixth most frequent word in the text? Answer with the exact word.\nAnswer: beacon\n\nQuestion: What is the seventh most frequent word in the text? Answer with the exact word.\nAnswer",
+      "code": "4VQ5FY6R",
+      "hit": true,
+      "hit_final": true,
+      "hit_think": false,
+      "output_tokens": 256,
+      "prompt_tokens": 2743,
+      "prompt_words": 2069
+    },
+    {
+      "answer": " <think>\nThinking Process:\n\n1.  **Analyze the Request:** The user is asking for a specific piece of information (the secret code) contained within a large block of text. The text appears to be a long list of words, seemingly random or generated, with a specific sentence embedded within it.\n\n2.  **Scan the Text:** I need to read through the provided text to locate the phrase \"The secret code is\" or similar indicators.\n\n3.  **Locate the Target:**\n    *   Scanning the beginning... lots of words like \"whisper alpine lantern lagoon...\"\n    *   Scanning the middle... \"needle horizon umbrella candle willow candle pebble thunder signal...\"\n    *   Scanning further... \"The secret code is 29GPR34H.\" appears early in the text block.\n    *   Let's verify the exact location.\n    *   Text segment: \"...kettle The secret code is 29GPR34H. needle horizon...\"\n    *   It is located roughly in the middle of the first large paragraph block.\n\n4.  **Extract the Code:** The code following \"The secret code is\" is \"29GPR",
+      "code": "29GPR34H",
+      "hit": true,
+      "hit_final": false,
+      "hit_think": true,
+      "output_tokens": 256,
+      "prompt_tokens": 2750,
+      "prompt_words": 2069
+    }
+  ],
+  "config_effect": {
+    "allocation": "packed_per_layer",
+    "detail": {
+      "a2_flag": true,
+      "cache_dtype": "int4_per_token_head",
+      "per_layer": {
+        "11": "int4_per_token_head",
+        "15": "int4_per_token_head",
+        "19": "int4_per_token_head",
+        "23": "auto",
+        "3": "int4_per_token_head",
+        "7": "int4_per_token_head"
+      }
+    },
+    "group_structure_verified": false,
+    "ok": true
+  },
+  "context_length_note": "max_len counts filler words, not tokens; actual prompt_words per case recorded",
+  "created_at_utc": "2026-08-07T12:36:44Z",
+  "depth_pct": 25,
+  "elapsed_s": 81.4,
+  "engine": {
+    "kwargs": {
+      "disable_log_stats": true,
+      "enable_per_layer_page_groups": true,
+      "enforce_eager": true,
+      "gpu_memory_utilization": 0.85,
+      "kv_cache_dtype": "int4_per_token_head",
+      "kv_cache_dtype_per_layer": {
+        "11": "int4_per_token_head",
+        "15": "int4_per_token_head",
+        "19": "int4_per_token_head",
+        "23": "auto",
+        "3": "int4_per_token_head",
+        "7": "int4_per_token_head"
+      },
+      "max_model_len": 16384,
+      "seed": 42
+    },
+    "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-9B/snapshots/master",
+    "vllm_version": "0.26.1rc1.dev245+ge2fa28594"
+  },
+  "host": "autodl-container-ca6c40b13f-016bd465",
+  "max_len": 2048,
+  "max_tokens": 256,
+  "num_needles": 3,
+  "sampling_params": {
+    "max_tokens": 256,
+    "temperature": 0.0
+  },
+  "schema_version": 1,
+  "seed": 42,
+  "status": "completed_validated"
+}

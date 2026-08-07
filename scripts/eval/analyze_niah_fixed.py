@@ -32,9 +32,14 @@ def main() -> int:
     ap.add_argument("--niah-dir", default="results/quality/niah-fixed")
     ap.add_argument("--attempt", default="niah-fixed-20260807")
     ap.add_argument("--out", default="results/quality/niah-fixed-analysis.json")
+    ap.add_argument(
+        "--allocs",
+        default="fp16,uniform_int4,packed_per_layer,turboquant_k8v4,turboquant_4bit_nc",
+        help="comma-separated allocations",
+    )
     args = ap.parse_args()
 
-    allocs = ["fp16", "uniform_int4", "packed_per_layer", "turboquant_k8v4", "turboquant_4bit_nc"]
+    allocs = [item.strip() for item in args.allocs.split(",") if item.strip()]
     by_alloc: dict[str, list[dict]] = {a: [] for a in allocs}
     for path in sorted((Path(args.niah_dir) / args.attempt).glob("*.json")):
         rec = json.loads(path.read_text(encoding="utf-8"))
@@ -52,8 +57,7 @@ def main() -> int:
         return (rec["seed"], rec["depth_pct"], rec["max_len"])
 
     cells = {a: {cell_key(r): r for r in recs} for a, recs in by_alloc.items()}
-    common = sorted(set(cells["fp16"]) & set(cells["uniform_int4"]) & set(cells["packed_per_layer"])
-                    & set(cells["turboquant_k8v4"]) & set(cells["turboquant_4bit_nc"]))
+    common = sorted(set.intersection(*(set(cells[a]) for a in allocs)))
     if len(common) != 18:
         raise SystemExit(f"matched cells incomplete: {len(common)}/18")
 

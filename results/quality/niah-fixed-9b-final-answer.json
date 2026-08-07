@@ -4,10 +4,26 @@
   "rows": [
     {
       "allocation": "fp16",
-      "n_needles": 15,
+      "n_needles": 54,
       "hit_anywhere": 1.0,
-      "hit_final": 0.9333,
+      "hit_final": 0.8889,
       "hit_last_section": 1.0,
+      "disagreements_hit_vs_last": 0
+    },
+    {
+      "allocation": "packed_per_layer",
+      "n_needles": 54,
+      "hit_anywhere": 0.9815,
+      "hit_final": 0.8333,
+      "hit_last_section": 0.9815,
+      "disagreements_hit_vs_last": 0
+    },
+    {
+      "allocation": "uniform_int4",
+      "n_needles": 54,
+      "hit_anywhere": 0.9815,
+      "hit_final": 0.8519,
+      "hit_last_section": 0.9815,
       "disagreements_hit_vs_last": 0
     }
   ]
