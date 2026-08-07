@@ -1,0 +1,651 @@
+{
+  "accuracy": 97.0,
+  "allocation": "turboquant_4bit_nc",
+  "attempt_id": "ruler-subset-20260807-v2-256",
+  "cases": [
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 0,
+      "output_tokens": 256,
+      "prediction": " 1. neonate 2. stucco 3. permit 4. arrival 5. planning 6. endorsement 7. citizenship 8. insectarium 9. prove 10. subcomponent\n\n<think>\nThe user wants to find the 10 most common words in the provided list.\nI need to count the occurrences of each word in the list and then sort them by frequency in descending order.\nThe list is quite long (1038 words, based on the numbering, though the last number is 1038 in the prompt's implied context, let's check the actual text provided).\nWait, looking at the prompt, the list starts at 1 and ends at 1038.\nLet's count the occurrences of each word.\n\nI will scan through the list and tally the counts.\n\nList items:\n1. survey\n2. tweezers\n3. survey\n4. proof-reader\n5. incandescence\n6. developer\n7. representation\n8. snobbish\n9. super\n10. super\n11. dancing\n12. psychoanalyst\n13. inevitable\n14. super\n15.",
+      "prompt_tokens": 7955,
+      "references": [
+        "neonate",
+        "planning",
+        "stucco",
+        "endorsement",
+        "subcomponent",
+        "prove",
+        "arrival",
+        "citizenship",
+        "insectarium",
+        "permit"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 1,
+      "output_tokens": 256,
+      "prediction": " 1. coconut 2. wholesale 3. juvenile 4. bonnet 5. distribute 6. intentionality 7. makeup 8. wire 9. formal 10. beneficiary\n\n<think>\nThe user wants to identify the 10 most common words from the provided numbered list.\nI need to count the occurrences of each word in the list and then rank them to find the top 10.\n\nLet's go through the list and count the words.\n\n1. rare\n2. precision\n3. rare\n4. candelabra\n5. carry\n6. nondescript\n7. parade\n8. company\n9. draft\n10. draft\n11. gainful\n12. pardon\n13. cow\n14. draft\n15. bidet\n16. precision\n17. motor\n18. rare\n19. pardon\n20. confess\n21. gainful\n22. espalier\n23. final\n24. carry\n25. parade\n26. gate\n27. love\n28. sunset\n29. draft\n30. championship\n31. motor",
+      "prompt_tokens": 7995,
+      "references": [
+        "makeup",
+        "juvenile",
+        "bonnet",
+        "intentionality",
+        "coconut",
+        "wholesale",
+        "beneficiary",
+        "wire",
+        "distribute",
+        "formal"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 2,
+      "output_tokens": 256,
+      "prediction": " 1. head 2. gambling 3. rawhide 4. inevitable 5. supporter 6. loutish 7. grace 8. hum 9. homeland 10. abrasive\n\n<think>\nThe user wants to find the 10 most common words from the provided numbered list.\nI need to count the occurrences of each word in the list and then rank them to find the top 10.\n\nLet's go through the list and count the words.\n\n1. real\n2. obsequious\n3. real\n4. auto\n5. chin\n6. apparatus\n7. sport\n8. fresco\n9. objection\n10. objection\n11. hose\n12. cursor\n13. burrito\n14. objection\n15. region\n16. obsequious\n17. lunch\n18. real\n19. cursor\n20. jalapeño\n21. hose\n22. exist\n23. hops\n24. chin\n25. sport\n26. peak\n27. protection\n28. pacemaker\n29. objection\n30. example\n31. lunch",
+      "prompt_tokens": 8038,
+      "references": [
+        "supporter",
+        "homeland",
+        "hum",
+        "abrasive",
+        "inevitable",
+        "gambling",
+        "rawhide",
+        "loutish",
+        "head",
+        "grace"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 3,
+      "output_tokens": 256,
+      "prediction": " 1. father 2. client 3. fencing 4. granddaughter 5. quarter 6. sable 7. qualification 8. camera 9. happiness 10. niche\n\n<think>\nThe user wants to find the 10 most common words in the provided list.\nI need to count the occurrences of each word in the list and then sort them by frequency in descending order.\nThe list is quite long (1068 words). I will scan through the list and tally the counts.\n\nLet's list the words and count them.\nI will go through the numbered list provided in the prompt.\n\n1. pinch\n2. lay\n3. pinch\n4. wholesale\n5. hog\n6. gondola\n7. checkout\n8. wonderful\n9. meridian\n10. meridian\n11. bottom-line\n12. new\n13. glimpse\n14. meridian\n15. ocelot\n16. lay\n17. nondescript\n18. pinch\n19. new\n20. magnificent\n21. bottom-line\n22. blast\n23. layout\n24. hog\n25.",
+      "prompt_tokens": 7960,
+      "references": [
+        "granddaughter",
+        "qualification",
+        "niche",
+        "happiness",
+        "sable",
+        "camera",
+        "client",
+        "quarter",
+        "father",
+        "fencing"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 4,
+      "output_tokens": 256,
+      "prediction": " 1. wick 2. homely 3. goddess 4. primary 5. departure 6. iridescence 7. mailing 8. eminent 9. burro 10. prefix\n\n<think>\nThe user wants to find the 10 most common words from the provided numbered list.\nI need to count the occurrences of each word in the list and then sort them by frequency in descending order.\nFinally, I need to list the top 10.\n\nLet's go through the list and count the words.\n\n1. palace\n2. ray\n3. palace\n4. lung\n5. trim\n6. tic\n7. possibility\n8. bid\n9. dessert\n10. dessert\n11. important\n12. casement\n13. crack\n14. dessert\n15. atom\n16. ray\n17. codon\n18. palace\n19. casement\n20. people\n21. important\n22. divider\n23. pig\n24. trim\n25. possibility\n26. status\n27. round\n28. conclude\n29. dessert\n3",
+      "prompt_tokens": 7856,
+      "references": [
+        "primary",
+        "prefix",
+        "departure",
+        "eminent",
+        "goddess",
+        "burro",
+        "mailing",
+        "iridescence",
+        "wick",
+        "homely"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 5,
+      "output_tokens": 256,
+      "prediction": " 1. launch 2. exile 3. pregnancy 4. kitty 5. adobe 6. breakdown 7. drudgery 8. okra 9. stupid 10. nationality\n\n<think>\nThe user wants to find the 10 most common words from the provided numbered list.\nI need to count the occurrences of each word in the list and then sort them by frequency to identify the top 10.\n\nLet's go through the list and count the words.\n\n1. arm-rest\n2. coat\n3. aberrant\n4. communist\n5. armrest\n6. octet\n7. attempt\n8. forager\n9. takeover\n10. spelt\n11. stupid\n12. user\n13. pagan\n14. angina\n15. nurture\n16. brilliant\n17. angina\n18. pinworm\n19. satin\n20. civilian\n21. maiden\n22. kitty\n23. noxious\n24. corduroy\n25. surroundings\n26. breakdown\n27. inglenook\n28. exile\n29. neck",
+      "prompt_tokens": 7893,
+      "references": [
+        "kitty",
+        "breakdown",
+        "pregnancy",
+        "nationality",
+        "exile",
+        "stupid",
+        "adobe",
+        "okra",
+        "launch",
+        "drudgery"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 6,
+      "output_tokens": 256,
+      "prediction": " 1. snake 2. hemp 3. counseling 4. describe 5. individual 6. competition 7. sadness 8. freelance 9. hyena 10. landform\n\nBased on the analysis of the provided word lists:\n\n1.  **snake**: Appears 10 times (indices: 202, 265, 288, 390, 425, 438, 561, 625, 638, 643, 647, 653, 719, 728, 740, 743, 791, 849, 887, 931, 1015, 1032, 1036, 1061, 1037, 1058, 1062, 1039, 1029, 1059, 1068, 1024, 1020, 1019, 10",
+      "prompt_tokens": 8065,
+      "references": [
+        "counseling",
+        "describe",
+        "hyena",
+        "competition",
+        "individual",
+        "sadness",
+        "hemp",
+        "freelance",
+        "snake",
+        "landform"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false
+      ],
+      "index": 7,
+      "output_tokens": 256,
+      "prediction": " 1. alight 2. follower 3. detail 4. robin 5. smoking 6. function 7. legislator 8. modern 9. latter 10. alight\n\n<think>\nThe user wants to find the 10 most common words from the provided numbered list.\n\n1.  **Analyze the Request:**\n    *   Input: A numbered list of words (1 to 1038).\n    *   Task: Identify the 10 words that appear most frequently.\n    *   Output: A list of the top 10 words in order of frequency.\n\n2.  **Strategy:**\n    *   I need to count the occurrences of each unique word in the list.\n    *   I will go through the list and tally the counts.\n    *   Then, I will sort the words by count in descending order.\n    *   Finally, I will select the top 10.\n\n3.  **Execution (Counting):**\n    *   I will scan the list and keep a running tally.\n\n    *   1. felony\n    *   2. patent\n    *   3. felony\n    *",
+      "prompt_tokens": 7737,
+      "references": [
+        "detail",
+        "smoking",
+        "legislator",
+        "modern",
+        "alight",
+        "function",
+        "robin",
+        "latter",
+        "follower",
+        "spine"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 8,
+      "output_tokens": 256,
+      "prediction": " 1. midwife 2. economy 3. tall 4. kindhearted 5. gown 6. explorer 7. thermostat 8. air 9. developmental 10. pancake\n\n<think>\nThe user wants to find the 10 most common words from the provided numbered list.\nI need to count the frequency of each word in the list and then identify the top 10.\n\nLet's go through the list and count the occurrences.\n\nList:\n1. log\n2. multimedia\n3. log\n4. briefly\n5. conformation\n6. stride\n7. server\n8. attendance\n9. yoke\n10. yoke\n11. yin\n12. frontier\n13. turnstile\n14. yoke\n15. leap\n16. multimedia\n17. verb\n18. log\n19. frontier\n20. laughable\n21. yin\n22. scotch\n23. marshland\n24. conformation\n25. server\n26. infection\n27. havoc\n28. bottling\n29. yoke\n30.",
+      "prompt_tokens": 7916,
+      "references": [
+        "gown",
+        "pancake",
+        "kindhearted",
+        "thermostat",
+        "economy",
+        "air",
+        "explorer",
+        "tall",
+        "midwife",
+        "developmental"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 9,
+      "output_tokens": 256,
+      "prediction": " 1. ex-wife 2. liner 3. fortune 4. pat 5. hook 6. sovereignty 7. recliner 8. noiseless 9. tightfisted 10. resort\n\nBased on the list provided, here are the 10 most common words:\n\n1. **ex-wife**\n2. **liner**\n3. **fortune**\n4. **pat**\n5. **hook**\n6. **sovereignty**\n7. **recliner**\n8. **noiseless**\n9. **tightfisted**\n10. **resort**\n\n*(Note: The word \"pat\" appears 10 times in the list, while \"sovereignty\" appears 10 times as well. The list above reflects the top 10 based on frequency.)*\n\n**Correction/Verification based on exact count:**\nLet's double-check the counts for the top contenders:\n- **ex-wife**: 13 occurrences (approx)\n- **liner**: 13 occurrences (approx)\n- **fortune**: 13 occurrences (approx)\n- **pat**: 13 occurrences (approx)\n- **hook**: ",
+      "prompt_tokens": 7867,
+      "references": [
+        "sovereignty",
+        "tightfisted",
+        "liner",
+        "pat",
+        "ex-wife",
+        "hook",
+        "fortune",
+        "recliner",
+        "noiseless",
+        "resort"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 10,
+      "output_tokens": 256,
+      "prediction": " 1. command 2. diaphragm 3. ambition 4. connotation 5. chubby 6. incident 7. miscreant 8. burst 9. counterpart 10. implementation\n\n<think>\nThe user wants to find the 10 most common words from the provided numbered list.\n\n1.  **Analyze the Request:**\n    *   Input: A numbered list of words (1 to 1068).\n    *   Task: Identify the 10 words that appear most frequently in this list.\n    *   Output: A list of the top 10 words in order of frequency.\n\n2.  **Strategy:**\n    *   I need to count the occurrences of each unique word in the list.\n    *   I will scan through the list and tally the counts.\n    *   I will then sort the words by count in descending order.\n    *   I will select the top 10.\n\n3.  **Execution (Counting):**\n    *   I will go through the list and keep a running tally.\n\n    *   *Words to watch out for:* \"command\", \"diaphragm\", \"ambition\", \"",
+      "prompt_tokens": 8053,
+      "references": [
+        "chubby",
+        "miscreant",
+        "incident",
+        "command",
+        "burst",
+        "connotation",
+        "ambition",
+        "counterpart",
+        "implementation",
+        "diaphragm"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        true,
+        true,
+        false,
+        true,
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "index": 11,
+      "output_tokens": 256,
+      "prediction": " 1. quiche 2. enter 3. govern 4. voiceless 5. story 6. mix 7. oafish 8. quiche 9. quiche 10. quiche\n\n<think>\nThe user wants to find the 10 most common words from the provided numbered list.\nI need to count the occurrences of each word in the list and then sort them by frequency in descending order.\nThe list is quite long (1000+ items). I will need to process the text carefully.\n\nLet's list the words and count them.\nI will scan through the list and tally the counts.\n\nList items:\n1. papa\n2. obi\n3. papa\n4. glue\n5. quest\n6. arena\n7. meteorology\n8. enthusiastic\n9. tenth\n10. tenth\n11. kidney\n12. danger\n13. exceed\n14. tenth\n15. lettuce\n16. obi\n17. legislature\n18. papa\n19. danger\n20. takeover\n21. kidney\n22. originate\n23. compress\n24. quest\n25",
+      "prompt_tokens": 8063,
+      "references": [
+        "puny",
+        "oafish",
+        "voiceless",
+        "bread",
+        "govern",
+        "quiche",
+        "story",
+        "consulting",
+        "mix",
+        "enter"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 12,
+      "output_tokens": 256,
+      "prediction": " 1. tie 2. idiom 3. mythology 4. gigantism 5. lettuce 6. translate 7. homonym 8. cranberry 9. snarl 10. causeway\n\n<think>\nThe user wants to find the 10 most common words in the provided numbered list.\nI need to count the frequency of each word in the list and then sort them by frequency to identify the top 10.\n\nList of words:\n1. subtract\n2. sauerkraut\n3. subtract\n4. traveler\n5. lap\n6. excellence\n7. range\n8. adviser\n9. hake\n10. hake\n11. cria\n12. refrigerator\n13. belfry\n14. hake\n15. fourths\n16. sauerkraut\n17. analytics\n18. subtract\n19. refrigerator\n20. car\n21. cria\n22. bird\n23. probe\n24. lap\n25. range\n26. pence\n27. negotiation\n28. cloud\n29. hake\n30. scooter\n",
+      "prompt_tokens": 7957,
+      "references": [
+        "lettuce",
+        "tie",
+        "causeway",
+        "homonym",
+        "snarl",
+        "cranberry",
+        "mythology",
+        "idiom",
+        "translate",
+        "gigantism"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 13,
+      "output_tokens": 256,
+      "prediction": " 1. vixen 2. exhaustion 3. everything 4. music 5. carpet 6. hyena 7. pedal 8. weather 9. fairness 10. resemblance\n\n<think>\nThe user wants to find the 10 most common words in the provided list.\nI need to count the occurrences of each word in the list.\nThe list is quite long (1068 items).\nI will scan through the list and tally the counts.\n\nList of words provided:\n1. aid\n2. condemned\n3. aid\n4. juicy\n5. woozy\n6. anywhere\n7. stream\n8. contingency\n9. budget\n10. budget\n11. blister\n12. flee\n13. codling\n14. budget\n15. retouching\n16. condemned\n17. thunder\n18. aid\n19. flee\n20. helicopter\n21. blister\n22. doll\n23. accelerate\n24. woozy\n25. stream\n26. firewall\n27. battle\n28. likelihood\n29. budget\n30. purchase\n",
+      "prompt_tokens": 7998,
+      "references": [
+        "pedal",
+        "everything",
+        "weather",
+        "exhaustion",
+        "fairness",
+        "resemblance",
+        "hyena",
+        "music",
+        "carpet",
+        "vixen"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false
+      ],
+      "index": 14,
+      "output_tokens": 256,
+      "prediction": " 1. guinea 2. college 3. index 4. prison 5. credibility 6. cling 7. believer 8. encirclement 9. sensibility 10. prison\n\n<think>\nThe user wants to find the 10 most common words in the provided list.\nI need to count the occurrences of each word in the list.\nThe list is quite long (1000+ items).\nI will scan through the list and tally the counts.\n\nList of words:\n1. street\n2. keyboarding\n3. street\n4. cover\n5. lumber\n6. excess\n7. enterprise\n8. acupuncture\n9. imprisonment\n10. imprisonment\n11. flame\n12. contribution\n13. grouchy\n14. imprisonment\n15. programming\n16. keyboarding\n17. bead\n18. street\n19. contribution\n20. manufacturing\n21. flame\n22. mobile\n23. nutrient\n24. lumber\n25. enterprise\n26. craft\n27. willing\n28. incandescence\n29. imprisonment\n30.",
+      "prompt_tokens": 8050,
+      "references": [
+        "encirclement",
+        "sensibility",
+        "college",
+        "credibility",
+        "guinea",
+        "index",
+        "believer",
+        "cling",
+        "prison",
+        "precedence"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 15,
+      "output_tokens": 256,
+      "prediction": " 1. website 2. forebear 3. host 4. womanly 5. trace 6. retailer 7. civilization 8. littleneck 9. styling 10. diving\n\n<think>\nThe user wants to find the 10 most common words in the provided list.\nI need to count the occurrences of each word in the list and then sort them by frequency in descending order.\nFinally, I need to list the top 10.\n\nLet's scan the list and count the words.\n\n1. serve\n2. macro\n3. serve\n4. organising\n5. paint\n6. sky\n7. emitter\n8. skean\n9. socialism\n10. socialism\n11. barracks\n12. assault\n13. abrogation\n14. socialism\n15. particular\n16. macro\n17. crowded\n18. serve\n19. assault\n20. boyhood\n21. barracks\n22. mere\n23. function\n24. paint\n25. emitter\n26. trowel\n27. tomography\n28. sticky\n29. socialism\n3",
+      "prompt_tokens": 8046,
+      "references": [
+        "womanly",
+        "website",
+        "trace",
+        "host",
+        "civilization",
+        "littleneck",
+        "forebear",
+        "styling",
+        "retailer",
+        "diving"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 16,
+      "output_tokens": 256,
+      "prediction": " 1. barbeque 2. cash 3. sorrow 4. order 5. product 6. handgun 7. riser 8. bear 9. boasting 10. wanting\n\n<think>\nThe user wants to find the 10 most common words in the provided list.\nI need to count the occurrences of each word in the list and then sort them by frequency in descending order.\nThe list is quite long (1038 words). I will need to go through the list and tally the counts.\n\nLet's start counting. I will read through the list and keep a running tally.\n\n1. oxygen\n2. consolidate\n3. obsequious\n4. total\n5. glass\n6. impossible\n7. dinosaur\n8. pronunciation\n9. keyboard\n10. scrap\n11. cash\n12. outline\n13. dusk\n14. optimist\n15. wooden\n16. brother-in-law\n17. optimist\n18. gum\n19. brake\n20. precision\n21. follow\n22. product\n23. capon\n24. arbitrate\n25. wage\n",
+      "prompt_tokens": 7844,
+      "references": [
+        "product",
+        "boast",
+        "barbeque",
+        "order",
+        "riser",
+        "cash",
+        "wanting",
+        "sorrow",
+        "bear",
+        "handgun"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 17,
+      "output_tokens": 256,
+      "prediction": " 1. cation 2. reorganization 3. stuff 4. swear 5. tooth 6. canoe 7. tapioca 8. clean 9. stalk 10. vulgar\n\nBased on the provided list, here are the 10 most common words:\n\n1. **cation**\n2. **reorganization**\n3. **stuff**\n4. **swear**\n5. **tooth**\n6. **canoe**\n7. **tapioca**\n8. **clean**\n9. **stalk**\n10. **vulgar**\n\n*(Note: The list contains 1000+ words, and the counts for these words are significantly higher than any other words in the dataset.)*\n\n**Word Frequency Analysis:**\n*   **cation**: Appears approximately 100 times.\n*   **reorganization**: Appears approximately 100 times.\n*   **stuff**: Appears approximately 100 times.\n*   **swear**: Appears approximately 100 times.\n*   **tooth**: Appears approximately 100 times.\n*   **canoe**: Appears approximately 100 times",
+      "prompt_tokens": 7823,
+      "references": [
+        "swear",
+        "tooth",
+        "stuff",
+        "clean",
+        "canoe",
+        "tapioca",
+        "vulgar",
+        "reorganization",
+        "stalk",
+        "cation"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 18,
+      "output_tokens": 256,
+      "prediction": " 1. catsup 2. energy 3. station 4. endpoint 5. overflight 6. attach 7. exercise 8. pyridine 9. melted 10. attach\n\n<think>\nThe user wants to find the 10 most common words in the provided list.\nI need to count the occurrences of each word in the list and then sort them by frequency in descending order.\nThe list is quite long (1038 words). I will need to process this carefully.\n\nLet's list the words and count them.\n\n1. trek\n2. carbon\n3. juggernaut\n4. fence\n5. fencing\n6. extension\n7. everyone\n8. houseboat\n9. nestmate\n10. bicycle\n11. attach\n12. principal\n13. realign\n14. cookbook\n15. executor\n16. mine\n17. cookbook\n18. jumper\n19. wannabe\n20. spleen\n21. humor\n22. overflight\n23. dragster\n24. chime\n25. victory\n26. melted\n27. inscription\n2",
+      "prompt_tokens": 7860,
+      "references": [
+        "overflight",
+        "melted",
+        "spotlight",
+        "exercise",
+        "endpoint",
+        "attach",
+        "energy",
+        "station",
+        "catsup",
+        "pyridine"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 19,
+      "output_tokens": 256,
+      "prediction": " 1. nuke 2. playwright 3. spade 4. absent 5. thinking 6. prison 7. bond 8. signet 9. good 10. itinerary\n\n<think>\nThe user wants to find the 10 most common words in the provided list.\nI need to count the occurrences of each word in the list and then sort them by frequency to identify the top 10.\n\nLet's go through the list and count the words.\n\n1. candle\n2. injure\n3. slip\n4. bathtub\n5. plain\n6. analyze\n7. sake\n8. blush\n9. berserk\n10. hand-holding\n11. bond\n12. goodnight\n13. racial\n14. cofactor\n15. gorgeous\n16. eyelid\n17. cofactor\n18. moth\n19. dress\n20. arrogance\n21. chivalrous\n22. signet\n23. mailman\n24. education\n25. harbor\n26. prison\n27. grandmom\n28. nuke\n29. dance\n30",
+      "prompt_tokens": 7761,
+      "references": [
+        "signet",
+        "prison",
+        "playwright",
+        "thinking",
+        "nuke",
+        "bond",
+        "good",
+        "spade",
+        "absent",
+        "itinerary"
+      ]
+    }
+  ],
+  "config_effect": {
+    "allocation": "turboquant_4bit_nc",
+    "detail": {
+      "a2_flag": false,
+      "cache_dtype": "turboquant_4bit_nc",
+      "per_layer": {}
+    },
+    "group_structure_verified": false,
+    "ok": true
+  },
+  "created_at_utc": "2026-08-07T10:47:12Z",
+  "data_file": "data/ruler/ruler_cwe_L8192/validation.jsonl",
+  "data_sha256": "fa7648e65f1a7815c9e9e2367a5ca69f94e47e22d05efd32781b12a98e09e89c",
+  "elapsed_s": 66.1,
+  "engine": {
+    "kwargs": {
+      "disable_log_stats": true,
+      "enforce_eager": true,
+      "gpu_memory_utilization": 0.85,
+      "kv_cache_dtype": "turboquant_4bit_nc",
+      "max_model_len": 16384,
+      "seed": 7
+    },
+    "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master",
+    "vllm_version": "0.26.1rc1.dev245+ge2fa28594"
+  },
+  "host": "autodl-container-ca6c40b13f-016bd465",
+  "length": 8192,
+  "max_tokens": 256,
+  "metric": "string_match_all",
+  "num_samples": 20,
+  "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+  "sampling_params": {
+    "max_tokens": 256,
+    "temperature": 0.0,
+    "thinking": "default"
+  },
+  "schema_version": 1,
+  "seed": 7,
+  "status": "completed_validated",
+  "task": "ruler_cwe",
+  "task_type": "common_words_extraction",
+  "thinking": "default",
+  "tokens_to_generate": 120
+}

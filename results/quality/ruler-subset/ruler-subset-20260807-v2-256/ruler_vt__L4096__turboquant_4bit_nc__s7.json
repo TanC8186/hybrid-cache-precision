@@ -1,0 +1,451 @@
+{
+  "accuracy": 89.0,
+  "allocation": "turboquant_4bit_nc",
+  "attempt_id": "ruler-subset-20260807-v2-256",
+  "cases": [
+    {
+      "hits": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "index": 0,
+      "output_tokens": 256,
+      "prediction": " FUPIL RNUYT YGIUD BZPTL\n\nMemorize and track the chain(s) of variable assignment hidden in the following text.\n\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and text.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and text.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and text.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and text.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and text.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and text.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and text.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and text.\nThe grass is green. The",
+      "prompt_tokens": 4055,
+      "references": [
+        "FUPIL",
+        "RNUYT",
+        "RHRQC",
+        "YGIUD",
+        "BZPTL"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 1,
+      "output_tokens": 256,
+      "prediction": " NOITL VXLXL EWLTV HUMGL SGIXC\n\n<think>\nThe user wants me to identify variables assigned the value 77221 and 51090 based on the provided text.\n\n1.  **Analyze the text for variable assignments.**\n    I need to look for patterns like `VAR Name = Value` or `VAR Name = VAR OtherName`.\n\n    *   **Text Segment 1:** `VAR BKO = 77221`\n        *   Assignment: `BKO` gets value `77221`.\n    *   **Text Segment 2:** `VAR KFK = VAR BKO`\n        *   Assignment: `KFK` gets value of `BKO`. Since `BKO` is 77221, `KFK` is 77221.\n    *   **Text Segment 3:** `VAR XPS = VAR KFK`\n        *   Assignment: `XPS` gets value of `KFK`. Since `KFK` is 77221, `XPS` is 77221.\n    *   **Text Segment 4:**",
+      "prompt_tokens": 4052,
+      "references": [
+        "NOITL",
+        "VXLXL",
+        "EWLTV",
+        "HUMGL",
+        "SGIXC"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 2,
+      "output_tokens": 256,
+      "prediction": " WYKTO PFFLA IRKEM DQAKO AQDMB\n\nMemorize and track the chain(s) of variable assignment hidden in the following text.\n\nVAR WYKTO = 74820\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we assign the value 74820 to WYKTO.\nVAR PFFLA = VAR WYKTO \nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nVAR IRKEM = VAR PFFLA \nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nVAR DQAKO = VAR IRKEM \nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nVAR AQDMB = VAR DQAKO \nThe grass is green.",
+      "prompt_tokens": 4058,
+      "references": [
+        "WYKTO",
+        "PFFLA",
+        "IRKEM",
+        "DQAKO",
+        "AQDMB"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 3,
+      "output_tokens": 256,
+      "prediction": " FADDR OFSTE PTCVZ CAIRY KSBRQ\n\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here",
+      "prompt_tokens": 4052,
+      "references": [
+        "FADDR",
+        "OFSTE",
+        "PTCVZ",
+        "CAIRY",
+        "KSBRQ"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        false,
+        true
+      ],
+      "index": 4,
+      "output_tokens": 256,
+      "prediction": " QXUMV PIGYH LTORI HPWON\n\nMemorize and track the chain(s) of variable assignment hidden in the following text.\n\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and text.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and text.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and text.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and text.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and text.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and text.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and text.\nThe grass is green.",
+      "prompt_tokens": 4058,
+      "references": [
+        "QXUMV",
+        "PIGYH",
+        "LTORI",
+        "MIMJG",
+        "HPWON"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        false,
+        true
+      ],
+      "index": 5,
+      "output_tokens": 256,
+      "prediction": " JLHFS ITYRE THPTP SDBBH\n\n<think>\nThe user wants me to identify variables assigned the value 15311 based on the provided text.\n\n1.  **Analyze the text:** I need to look for variable assignments.\n    *   The text contains a lot of filler sentences (\"The grass is green...\", etc.).\n    *   I need to find lines that look like `VAR Name = Value` or `VAR Name = VAR OtherName`.\n    *   I need to trace the chain of assignments.\n\n2.  **Locate Assignments:**\n    *   `VAR MLE = 93104` (Found near the beginning)\n    *   `VAR BYM = VAR MLE` (Found later)\n    *   `VAR VKB = VAR BYM` (Found later)\n    *   `VAR QBD = VAR VKB` (Found later)\n    *   `VAR OHZ = VAR QBD` (Found later)\n    *   `VAR JLHFS = 15311` (Found later)\n    *   `VAR ITYRE = VAR JLHFS` (Found later)\n   ",
+      "prompt_tokens": 4056,
+      "references": [
+        "JLHFS",
+        "ITYRE",
+        "THPTP",
+        "ZVHJH",
+        "SDBBH"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        false,
+        true,
+        false,
+        true
+      ],
+      "index": 6,
+      "output_tokens": 256,
+      "prediction": " DTPUF HQPTY BALPH\n\n<think>\nThe user wants me to identify variables assigned the value 95305 in the first text block and then identify variables assigned the value 63707 in the second text block.\nI need to trace the variable assignments.\n\n**Text 1 Analysis:**\n1. `VAR RYU = 95305`\n   - RYU is assigned 95305.\n2. `The grass is green...` (repeated)\n3. `VAR QRY = VAR RYU`\n   - QRY is assigned the value of RYU. Since RYU is 95305, QRY is 95305.\n4. `The grass is green...` (repeated)\n5. `VAR LOQ = VAR QRY`\n   - LOQ is assigned the value of QRY. Since QRY is 95305, LOQ is 95305.\n6. `The grass is green...` (repeated)\n7. `VAR XVB = VAR LOQ`\n   - XVB is assigned the value of",
+      "prompt_tokens": 4054,
+      "references": [
+        "DTPUF",
+        "NLLWZ",
+        "HQPTY",
+        "FFREE",
+        "BALPH"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 7,
+      "output_tokens": 256,
+      "prediction": " OHDRS YNMCB LIGCZ VOYZR HBTMQ\n\n<think>\nThe user wants me to identify variables assigned the value 81932 and 38693 based on the provided text.\nThe text contains a lot of filler sentences (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with variable assignments.\nI need to find the specific assignments and trace the chains.\n\n**Step 1: Locate the first set of assignments.**\nScanning the text for variable assignments.\n1. `VAR MKI = 81932`\n   - `MKI` is assigned 81932.\n2. `VAR CEK = VAR MKI`\n   - `CEK` takes the value of `MKI`. Since `MKI` is 81932, `CEK` is 81932.\n3. `VAR MRK = VAR CEK`\n   - `MRK` takes the value of `CEK`. Since `CEK` is 81932, `MRK` is 81",
+      "prompt_tokens": 4058,
+      "references": [
+        "OHDRS",
+        "YNMCB",
+        "LIGCZ",
+        "VOYZR",
+        "HBTMQ"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 8,
+      "output_tokens": 256,
+      "prediction": " WVAWM BNQML BGDHW IAKFV MAQUS\n\n<think>\nThe user wants me to identify variables assigned the value 94478 in the first text block and then identify variables assigned the value 35658 in the second text block.\nThe prompt asks me to \"Memorize and track the chain(s) of variable assignment hidden in the following text.\"\nI need to look for variable assignments like `VAR X = VAR Y` or `VAR X = 94478` or `VAR X = 35658`.\nThe text is repetitive filler text (\"The grass is green...\").\nI need to extract the specific lines containing variable assignments.\n\n**First Text Block:**\n1. `VAR YHS = 94478`\n2. `VAR KMM = VAR YHS`\n3. `VAR LDE = VAR KMM`\n4. `VAR PTD = VAR LDE`\n5. `VAR BUW = VAR PTD`\n\nLet's trace the values:\n- `YHS` is assigned 94478.\n- `KMM` is assigned `YHS` (which is",
+      "prompt_tokens": 4055,
+      "references": [
+        "WVAWM",
+        "BNQML",
+        "BGDHW",
+        "MAQUS",
+        "IAKFV"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 9,
+      "output_tokens": 256,
+      "prediction": " IUGAS VPRWL MITJY WZGJW KIMXJ\n\nQuestion: Find all variables that are assigned the value 12747 in the text above. Answer: According to the chain(s) of variable assignment in the variables are assigned the value 12747, they are:  ZIC VCX ADW ZBU GQK\n\nQuestion: Find all variables that are assigned the value 28431 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assigned the value 28431, they are:  IUGAS VPRWL MITJY WZGJW KIMXJ\n\nQuestion: Find all variables that are assigned the value 12747 in the text above. Answer: According to the chain(s) of variable assignment in the text above, 5 variables are assigned the value 12747, they are:  ZIC VCX ADW ZBU GQK\n\nQuestion: Find all variables that are assigned the value 28431 in the text above. Answer: According to the chain(s) of variable assignment in the",
+      "prompt_tokens": 4061,
+      "references": [
+        "IUGAS",
+        "VPRWL",
+        "MITJY",
+        "WZGJW",
+        "KIMXJ"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 10,
+      "output_tokens": 256,
+      "prediction": " CIRNY QXMOQ GRHFC ZTSCE HAIBJ\n\nMemorize and track the chain(s) of variable assignment hidden in the following text.\n\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is 100000.\nVAR OUE = 100000\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nVAR CWQ = VAR OUE \nThe grass is green. The sky is blue. The sun is yellow. Here we assign the value 100000.\nVAR GXD = VAR CWQ \nThe grass is green. The sky is blue. The sun is yellow. Here we assign the value 100000.\nVAR LGG = VAR GXD \nThe grass is green. The sky is blue. The sun is yellow. Here we assign the value 1 chain.\nVAR AUX = VAR LGG \nThe grass is green. The sky is blue. The sun is yellow. Here we assign the value 1 chain.\nVAR CIRNY",
+      "prompt_tokens": 4052,
+      "references": [
+        "CIRNY",
+        "QXMOQ",
+        "GRHFC",
+        "ZTSCE",
+        "HAIBJ"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "index": 11,
+      "output_tokens": 256,
+      "prediction": " QQR SRV QXQ ILP TCH\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:** The user wants me to identify variables assigned a specific value (45773 or 94654) based on a provided text containing variable assignments hidden within sentences. I need to track the chains of assignments and output the variables that hold the target value.\n\n2.  **Scan the Text for Assignments:** I need to look for patterns like `VAR Name = Value` or `VAR Name = VAR OtherName`.\n\n    *   **Segment 1:**\n        `VAR QQR = 45773`\n        *   Assignment: `QQR` = 45773.\n    *   **Segment 2:**\n        `The grass is green...` (Repeated many times)\n    *   **Segment 3:**\n        `VAR SRV = VAR QQR`\n        *   Assignment: `SRV` = `QQR`. Since `QQR` is 45773, `SRV` is 45773.\n    *   **Segment 4:**\n        `VAR QXQ",
+      "prompt_tokens": 4055,
+      "references": [
+        "RELIP",
+        "QLGVF",
+        "KMGOO",
+        "ZHZRH",
+        "ORTBP"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        false,
+        true
+      ],
+      "index": 12,
+      "output_tokens": 256,
+      "prediction": " TEDOZ NXVGV MUTIC ZZUJU\n\nMemorize and track the chain(s) of variable assignment hidden in the following text.\n\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nVAR OXF = 100000\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nVAR OXF = 100000\nVAR OXF = 100000\nVAR OXF = 100000\nVAR OXF = 100000\nVAR OXF = 100000\nVAR OXF = 100000\nVAR OXF = 100000\nVAR OXF = 100000\nVAR OXF = 100000\nVAR OXF = 100000\nVAR OXF = 100000\nVAR OXF = 100000\nVAR OXF = 100000\nVAR OXF = 10",
+      "prompt_tokens": 4054,
+      "references": [
+        "TEDOZ",
+        "NXVGV",
+        "MUTIC",
+        "ZDZWS",
+        "ZZUJU"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 13,
+      "output_tokens": 256,
+      "prediction": " HKDYH MCXDL YAJLY EKCMK RTYKT\n\n<think>\nThe user wants me to identify variables assigned the value 41551 and 76803 based on the provided text.\n\n1.  **Analyze the text:**\n    *   The text contains a lot of filler sentences (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") repeated many times.\n    *   There are specific lines containing variable assignments.\n    *   I need to find the assignments and trace the chains.\n\n2.  **Locate Assignments:**\n    *   **Assignment 1:** `VAR KED = 41551`\n        *   Value: 41551\n        *   Variable: KED\n    *   **Assignment 2:** `VAR WLR = VAR KED`\n        *   Value: KED's value (41551)\n        *   Variable: WLR\n    *   **Assignment 3:** `VAR QPA = VAR WLR`\n        *   Value: WLR's value (41551)\n       ",
+      "prompt_tokens": 4054,
+      "references": [
+        "HKDYH",
+        "MCXDL",
+        "RTYKT",
+        "EKCMK",
+        "YAJLY"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 14,
+      "output_tokens": 256,
+      "prediction": " FFWID XAWDD GERAA UGIEB TNTMU\n\nMemorize and track the chain(s) of variable assignment hidden in the following text.\n\nVAR YBU = 79092\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nVAR WNL = YBU \nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nVAR ZBM = WNL \nThe grass is green. The sky is same as the previous text.\nVAR KRM = ZBM \nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nVAR XBC = KRM \nThe grass is green. The sky is blue. The sun is yellow. Here we same as the previous text.\nVAR KRM = KRM \nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nVAR XBC = XBC \nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nVAR KRM = K",
+      "prompt_tokens": 4053,
+      "references": [
+        "FFWID",
+        "XAWDD",
+        "GERAA",
+        "UGIEB",
+        "TNTMU"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 15,
+      "output_tokens": 256,
+      "prediction": " PBHQO IZNLP CSWQT LKCLR SFLFI\n\n<think>\nThe user wants me to identify variables assigned the value 51606 in the first text block and then identify variables assigned the value 13890 in the second text block.\n\n**Task 1: Analyze the first text block for value 51606.**\n\n1.  **Scan for assignments:**\n    *   `VAR VCC = 51606`\n    *   `VAR TVO = VAR VCC`\n    *   `VAR POI = VAR TVO`\n    *   `VAR DJR = VAR POI`\n    *   `VAR TWS = VAR DJR`\n\n2.  **Trace the values:**\n    *   `VCC` is explicitly assigned 51606.\n    *   `TVO` is assigned the value of `VCC` (51606).\n    *   `POI` is assigned the value of `TVO` (51606).\n    *   `DJR` is assigned the value of `POI` (51606).\n",
+      "prompt_tokens": 4054,
+      "references": [
+        "PBHQO",
+        "IZNLP",
+        "CSWQT",
+        "SFLFI",
+        "LKCLR"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 16,
+      "output_tokens": 256,
+      "prediction": " ZPJPF RFCVJ TOUVZ VPQAY VGESI\n\n<think>\nThe user wants me to identify variables assigned the value 90038 based on the provided text.\n\n1.  **Analyze the text:**\n    *   The text contains a lot of filler sentences (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with variable assignments.\n    *   I need to scan for variable assignments where the value is explicitly given or where a variable is assigned another variable.\n    *   The target value is 90038.\n\n2.  **Scan for assignments:**\n    *   `VAR ZPJPF = 90038` -> Found one. `ZPJPF` is assigned 90038.\n    *   `VAR RFCVJ = VAR ZPJPF` -> Found one. `RFCVJ` is assigned the value of `ZPJPF`. Since `ZPJPF` is 90038, `RFCVJ` is 90038.\n    *   `VAR TOUVZ = VAR RFCVJ` -> Found",
+      "prompt_tokens": 4053,
+      "references": [
+        "ZPJPF",
+        "RFCVJ",
+        "TOUVZ",
+        "VPQAY",
+        "VGESI"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 17,
+      "output_tokens": 256,
+      "prediction": " EQRHR MLHTC LHRMR BKPAH FDGIA\n\n<think>\nThe user wants me to identify variables assigned the value 18792 in the first text block and the value 20627 in the second text block.\nI need to look for variable assignments like `VAR X = VAR Y` or `VAR X = value`.\nI need to track the chain of assignments.\n\n**Text 1 Analysis:**\n1. `VAR SNV = 18792`\n2. `VAR UBW = VAR SNV`\n3. `VAR BAX = VAR UBW`\n4. `VAR WOO = VAR BAX`\n5. `VAR SKC = VAR WOO`\n\nLet's trace the values:\n- `SNV` is assigned 18792.\n- `UBW` is assigned `SNV` (which is 18792).\n- `BAX` is assigned `UBW` (which is 18792).\n- `WOO` is assigned `BAX` (which is 18792).\n- `SKC` is assigned `WOO",
+      "prompt_tokens": 4054,
+      "references": [
+        "EQRHR",
+        "MLHTC",
+        "LHRMR",
+        "BKPAH",
+        "FDGIA"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 18,
+      "output_tokens": 256,
+      "prediction": " AIUQV XCVGP NKIII ENCNX JSVVG\n\nMemorize and track the chain(s) of variable assignment hidden in the following text.\n\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and text.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and text.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and text.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and text.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and text.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and text.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and text.\nThe grass is",
+      "prompt_tokens": 4053,
+      "references": [
+        "AIUQV",
+        "XCVGP",
+        "NKIII",
+        "ENCNX",
+        "JSVVG"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 19,
+      "output_tokens": 256,
+      "prediction": " BLHHB NILBV BWWPN MOUXL VQIMD\n\n<think>\nThe user wants me to identify variables assigned the value 33897 in the first text block and then the value 86552 in the second text block.\nI need to look for variable assignments like `VAR X = VAR Y` or `VAR X = VALUE`.\n\n**Text 1 Analysis:**\n1. `VAR NEG = 33897`\n2. `VAR LLN = VAR NEG`\n3. `VAR EJH = VAR LLN`\n4. `VAR KIP = VAR EJH`\n5. `VAR UQB = VAR KIP`\n\nLet's trace the values:\n- `NEG` is assigned 33897.\n- `LLN` is assigned `NEG` (33897).\n- `EJH` is assigned `LLN` (33897).\n- `KIP` is assigned `EJH` (33897).\n- `UQB` is assigned `KIP` (33897).\n\nTotal variables assigned 33897: NEG",
+      "prompt_tokens": 4050,
+      "references": [
+        "BLHHB",
+        "NILBV",
+        "BWWPN",
+        "MOUXL",
+        "VQIMD"
+      ]
+    }
+  ],
+  "config_effect": {
+    "allocation": "turboquant_4bit_nc",
+    "detail": {
+      "a2_flag": false,
+      "cache_dtype": "turboquant_4bit_nc",
+      "per_layer": {}
+    },
+    "group_structure_verified": false,
+    "ok": true
+  },
+  "created_at_utc": "2026-08-07T10:43:24Z",
+  "data_file": "data/ruler/ruler_vt_L4096/validation.jsonl",
+  "data_sha256": "af0e68a37000cb0516247053725b58b9b70f90721092e771005f115d82fe8cab",
+  "elapsed_s": 62.6,
+  "engine": {
+    "kwargs": {
+      "disable_log_stats": true,
+      "enforce_eager": true,
+      "gpu_memory_utilization": 0.85,
+      "kv_cache_dtype": "turboquant_4bit_nc",
+      "max_model_len": 16384,
+      "seed": 7
+    },
+    "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master",
+    "vllm_version": "0.26.1rc1.dev245+ge2fa28594"
+  },
+  "host": "autodl-container-ca6c40b13f-016bd465",
+  "length": 4096,
+  "max_tokens": 256,
+  "metric": "string_match_all",
+  "num_samples": 20,
+  "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+  "sampling_params": {
+    "max_tokens": 256,
+    "temperature": 0.0,
+    "thinking": "default"
+  },
+  "schema_version": 1,
+  "seed": 7,
+  "status": "completed_validated",
+  "task": "ruler_vt",
+  "task_type": "variable_tracking",
+  "thinking": "default",
+  "tokens_to_generate": 30
+}

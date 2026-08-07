@@ -1,0 +1,411 @@
+{
+  "accuracy": 95.0,
+  "allocation": "uniform_int4",
+  "attempt_id": "ruler-subset-20260807-v2-256",
+  "cases": [
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 12989,
+      "output_tokens": 256,
+      "prediction": ": 9153566, 9937326, 2321324, and 5041154.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated sentences (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with specific sentences identifying \"special magic numbers\" for specific phrases.\n    *   Task: Memorize the hidden numbers.\n    *   Quiz Question: The user will quiz me about the numbers.\n    *   Current Step: I need to extract the specific numbers associated with the phrases \"bright-urgency\", \"billowy-offence\", \"silky-rubric\", and \"average-pendulum\".\n    *   Output Requirement: The user asks me to answer the quiz question at the end of the text (\"What are all the special magic numbers for bright-urgency, billowy-offence, silky-rubric, and average-pendulum mentioned in the provided text?\").\n\n2.  **Scan the Text for Keywords:**\n    *   I need to look",
+      "prompt_tokens": 3960,
+      "references": [
+        "9153566",
+        "9937326",
+        "2321324",
+        "5041154"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 2894,
+      "output_tokens": 256,
+      "prediction": ": 4374754, 6229731, 9683481, and 7264956.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated phrases (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with specific sentences identifying \"special magic numbers\".\n    *   Task: Memorize the hidden numbers.\n    *   Quiz Context: The user will quiz me about these numbers later.\n    *   Current Step: The user has provided the text and explicitly stated the numbers found within it (\"One of the special magic numbers for royal-attention is: 4374754.\" etc.).\n    *   Final Output Requirement: The user asks, \"What are all the special magic numbers for royal-attention, wide-spume, noxious-tabletop, and massive-liberty mentioned in the provided text?\"\n    *   Constraint: I need to make sure I memorize them correctly based on the text provided.\n\n2.  **Scan the Text for Numbers:**\n   ",
+      "prompt_tokens": 3951,
+      "references": [
+        "4374754",
+        "6229731",
+        "9683481",
+        "7264956"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 7885,
+      "output_tokens": 256,
+      "prediction": ": 2191066, 2130789, 1987737, and 4694634.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated phrases (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with specific sentences identifying \"special magic numbers\" for specific entities.\n    *   Task: Memorize the hidden numbers associated with specific entities.\n    *   Output: Provide the special magic numbers for four specific entities: `abject-tenant`, `flaky-codling`, `wet-lollipop`, and `spectacular-spleen`.\n    *   Constraint: The user claims I have memorized the numbers from the text. I need to verify them and output them correctly.\n\n2.  **Scan the Text for Keywords:**\n    *   Entity: `abject-tenant`\n    *   Entity: `flaky-codling`\n    *   Entity: `wet-lollipop`\n    *   Entity: `spectacular-spleen`\n\n3",
+      "prompt_tokens": 3960,
+      "references": [
+        "2191066",
+        "2130789",
+        "1987737",
+        "4694634"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 8361,
+      "output_tokens": 256,
+      "prediction": ": 4194548, 8930103, 3219824, and 8935169.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated phrases (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with specific sentences containing \"One of the special magic numbers for [topic] is: [number]\".\n    *   Task: Memorize the hidden special magic numbers.\n    *   Output: Answer the quiz question asking for all the special magic numbers for four specific entities: mindless-kilometer, worried-purse, round-webinar, and freezing-milk.\n    *   Constraint: The user explicitly states \"I will quiz you about the numbers afterwards.\" and \"Make sure to memorize it.\" This implies I need to extract the numbers associated with the specific entities from the text provided.\n\n2.  **Scan the Text for Keywords:**\n    *   Entity 1: mindless-kilometer\n    *   Entity 2: worried-purse\n    *  ",
+      "prompt_tokens": 3954,
+      "references": [
+        "4194548",
+        "8930103",
+        "3219824",
+        "8935169"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 10587,
+      "output_tokens": 256,
+      "prediction": ": 6692553, 4191175, 5171761, and 7754864.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated phrases (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with specific sentences containing \"One of the special magic numbers for [keyword] is: [number]\".\n    *   Task: Memorize the hidden special magic numbers.\n    *   Output: Answer the quiz question asking for all special magic numbers for four specific entities: `x-rated-ratepayer`, `eminent-weight`, `coherent-chestnut`, and `axiomatic-watch`.\n    *   Constraint: The user explicitly states \"I will quiz you about the numbers afterwards.\" and \"Make sure to memorize it.\" This implies I need to extract the numbers associated with these specific keywords from the text provided.\n\n2.  **Scan the Text for Keywords:**\n    *   I need to find the numbers associated with:\n        1.  `axiomatic",
+      "prompt_tokens": 3954,
+      "references": [
+        "6692553",
+        "4191175",
+        "5171761",
+        "7754864"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 11398,
+      "output_tokens": 256,
+      "prediction": ": 2642635, 4965789, 8434500, and 1247595.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated phrases (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with specific sentences identifying \"special magic numbers\" for various terms.\n    *   Task: Memorize the hidden numbers.\n    *   Quiz Question: The user will quiz me about the numbers.\n    *   Current Step: I need to extract the specific numbers associated with \"scattered-prize\", \"capricious-foal\", \"boiling-decadence\", and \"aromatic-molding\" from the text.\n    *   Output Requirement: The user explicitly asks at the end: \"What are all the special magic numbers for scattered-prize, capricious-foal, boiling-decadence, and aromatic-molding mentioned in the provided text?\"\n\n2.  **Scan the Text for Keywords:**\n    *   I need to look for the specific terms",
+      "prompt_tokens": 3960,
+      "references": [
+        "2642635",
+        "4965789",
+        "8434500",
+        "1247595"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 3707,
+      "output_tokens": 256,
+      "prediction": ": 1036161, 5785687, 9164991, and 5449368.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated phrases (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with specific sentences identifying \"special magic numbers\" for specific entities.\n    *   Task: Memorize the hidden numbers.\n    *   Quiz Question (implied): The user will quiz me about the numbers.\n    *   Current Step: I need to extract the specific numbers associated with the entities \"loutish-revolution\", \"onerous-shine\", \"nasty-course\", and \"madly-titanium\" from the text.\n    *   Output Requirement: The user explicitly asks at the end: \"What are all the special magic numbers for loutish-revolution, onerous-shine, nasty-course, and madly-titanium mentioned in the provided text? The special magic numbers for loutish-revolution, onerous-shine, nasty-course",
+      "prompt_tokens": 3963,
+      "references": [
+        "1036161",
+        "5785687",
+        "9164991",
+        "5449368"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 1730,
+      "output_tokens": 256,
+      "prediction": ":\n\n1841248, 9910817, 1954280, 8999183\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated phrases (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with specific sentences containing \"One of the special magic numbers for [topic] is: [number]\".\n    *   Task: Memorize the hidden special magic numbers.\n    *   Output: Provide all the special magic numbers for four specific entities: `available-pumpkinseed`, `purring-watercress`, `didactic-recess`, and `somber-minister`.\n    *   Constraint: The user explicitly states \"I will quiz you about the numbers afterwards\" and then asks for the numbers in the final prompt. I need to extract them accurately from the provided text.\n\n2.  **Scan the Text for Keywords:**\n    *   Target 1: `available-pumpkinseed`\n    *   Target 2: `purring-watercress`\n   ",
+      "prompt_tokens": 3966,
+      "references": [
+        "1841248",
+        "9910817",
+        "1954280",
+        "8999183"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "index": 7587,
+      "output_tokens": 256,
+      "prediction": ":\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input text: A long repetition of the phrase \"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\" interspersed with specific sentences containing \"One of the special magic numbers for [animal] is: [number].\"\n    *   Task: Memorize the hidden special magic numbers.\n    *   Specific Question: Identify all special magic numbers for four specific animals: swift-bronze, sneaky-balaclava, cowardly-duckling, and mute-mambo.\n    *   Constraint: The user wants me to use the numbers I memorized from the text.\n\n2.  **Scan the Text for Keywords:**\n    *   Keywords: \"swift-bronze\", \"sneaky-balaclava\", \"cowardly-duckling\", \"mute-mambo\".\n    *   Pattern: \"One of the special magic numbers for [keyword] is: [number].\"\n\n3.  **Locate the Numbers:**\n    *   Scanning...\n    *   Found: \"One of the special magic numbers for cowardly-duckling",
+      "prompt_tokens": 3966,
+      "references": [
+        "2375453",
+        "1666754",
+        "5130808",
+        "9770838"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 3162,
+      "output_tokens": 256,
+      "prediction": ": 6304573, 4576135, 1156287, and 2677407.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated phrases (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with specific sentences identifying \"special magic numbers\" for specific entities.\n    *   Task: Memorize the hidden numbers.\n    *   Quiz Question (implied): The user will quiz me about these numbers later.\n    *   Current Step: I need to extract the specific numbers associated with \"orange-mangle\", \"blue-eyed-drummer\", \"bloody-reciprocity\", and \"ordinary-stem\" from the text.\n    *   Output Requirement: State the numbers clearly.\n\n2.  **Scan the Text for Keywords:**\n    *   Keywords: \"orange-mangle\", \"blue-eyed-drummer\", \"bloody-reciprocity\", \"ordinary-stem\".\n    *   Pattern: \"One of the special magic numbers for [entity] is:",
+      "prompt_tokens": 3957,
+      "references": [
+        "6304573",
+        "4576135",
+        "1156287",
+        "2677407"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 2533,
+      "output_tokens": 256,
+      "prediction": ": 8351517, 9874152, 6022741, and 6075395.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated phrases (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with specific sentences identifying \"special magic numbers\" for specific categories.\n    *   Task: Memorize the hidden numbers.\n    *   Output: Answer the quiz question asking for all the special magic numbers for four specific categories: `different-burn`, `subsequent-motorcar`, `ablaze-poll`, and `ruthless-thirst`.\n    *   Constraint: The user explicitly states \"I will quiz you about the numbers afterwards.\" and \"Make sure to memorize it.\" This implies I need to extract the numbers associated with the specific categories from the text provided.\n\n2.  **Scan the Text for Keywords:**\n    *   Target Categories: `different-burn`, `subsequent-motorcar`, `ablaze-poll`, `ruthless-thirst",
+      "prompt_tokens": 3954,
+      "references": [
+        "8351517",
+        "9874152",
+        "6022741",
+        "6075395"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 10110,
+      "output_tokens": 256,
+      "prediction": ": 5428914, 4533779, 9196204, and 6752576.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated phrases (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with specific sentences identifying \"special magic numbers\" for specific categories.\n    *   Task: Memorize the hidden numbers.\n    *   Quiz Question: The user will ask me about the numbers.\n    *   Current Step: I need to extract the specific numbers associated with the categories: evil-soundness, habitual-law, quarrelsome-casualty, and witty-offset.\n    *   Output Requirement: The user explicitly asks at the end: \"What are all the special magic numbers for evil-soundness, habitual-law, quarrelsome-casualty, and witty-offset mentioned in the provided text? The special magic numbers for evil-soundness, habitual-law, quarrelsome-casualty, and witty-offset mentioned in the provided text are: 5",
+      "prompt_tokens": 3957,
+      "references": [
+        "5428914",
+        "4533779",
+        "9196204",
+        "6752576"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 1903,
+      "output_tokens": 256,
+      "prediction": ": 5394880, 8412769, 1162230, and 8175395.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated sentences (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with specific sentences identifying \"special magic numbers\" for specific categories.\n    *   Task: Memorize the hidden numbers.\n    *   Output: Answer the quiz question asking for all the special magic numbers for four specific categories: curved-skating, dirty-stress, sharp-season, and scintillating-frog.\n    *   Constraint: The user explicitly states \"I will quiz you about the numbers afterwards\" but the final sentence of the input text *contains* the answer to the quiz question (\"The special magic numbers for curved-skating, dirty-stress, sharp-season, and scintillating-frog mentioned in the provided text are: 5394880, 8412769, 1162230, and",
+      "prompt_tokens": 3954,
+      "references": [
+        "5394880",
+        "8412769",
+        "1162230",
+        "8175395"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 9682,
+      "output_tokens": 256,
+      "prediction": ": 7117837, 1701771, 7003042, and 5186414.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated phrases (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with specific sentences identifying \"special magic numbers\" for specific entities.\n    *   Task: Memorize the hidden numbers.\n    *   Quiz: The user will quiz me about these numbers later.\n    *   Current Step: I need to extract the specific numbers associated with specific entities: \"hot-dramaturge\", \"cuddly-party\", \"aloof-filter\", and \"fabulous-square\".\n    *   Output: The user asks \"What are all the special magic numbers for hot-dramaturge, cuddly-party, aloof-filter, and fabulous-square mentioned in the provided text?\" based on the text provided in the prompt.\n\n2.  **Scan the Text for Keywords:**\n    *   I need to look for the specific phrases: \"One of the",
+      "prompt_tokens": 3951,
+      "references": [
+        "7117837",
+        "1701771",
+        "7003042",
+        "5186414"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 9056,
+      "output_tokens": 256,
+      "prediction": ": 6573147, 1415846, 3670896, and 5163555.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated phrases (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with specific sentences identifying \"special magic numbers\" for specific categories.\n    *   Task: Memorize the hidden numbers.\n    *   Output: Answer the quiz question asking for the special magic numbers for four specific categories: \"early-steeple\", \"modern-vulture\", \"graceful-admission\", and \"modern-dedication\".\n    *   Constraint: The user explicitly states \"I will quiz you about the numbers afterwards\" but then provides the answer at the end of the text (\"The special magic numbers for early-steeple, modern-vulture, graceful-admission, and modern-dedication mentioned in the provided text are: 6573147, 1415846, 3670896, and ",
+      "prompt_tokens": 3954,
+      "references": [
+        "6573147",
+        "1415846",
+        "3670896",
+        "5163555"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 6649,
+      "output_tokens": 256,
+      "prediction": ": 6507321, 4240180, 1397023, and 4818418.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated phrases (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with specific sentences identifying \"special magic numbers\" for specific entities.\n    *   Task: Memorize the hidden numbers.\n    *   Output: Answer the quiz question asking for the special magic numbers associated with \"marked-stretch\", \"truculent-godmother\", \"fertile-refuse\", and \"homely-kick-off\".\n    *   Constraint: The user explicitly states they will quiz me afterwards, but the current prompt asks me to identify the numbers based on the text provided. The final sentence of the input text actually *contains* the answer to the quiz question (\"The special magic numbers for marked-stretch, truculent-godmother, fertile-refuse, and homely-kick-off mentioned in the provided text are: 6507321, 4",
+      "prompt_tokens": 3960,
+      "references": [
+        "6507321",
+        "4240180",
+        "1397023",
+        "4818418"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 7394,
+      "output_tokens": 256,
+      "prediction": ": 5382463, 8290770, 5453786, and 2818692.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated phrases (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with specific sentences identifying \"special magic numbers\" for specific categories.\n    *   Task: Memorize the hidden numbers and answer a quiz about them.\n    *   Specific Numbers to Memorize:\n        *   condemned-pizza: 5382463\n        *   eager-summit: 5453786\n        *   squealing-tenement: 8290770\n        *   alleged-evidence: 2818692\n    *   Output Requirement: The user states \"I will quiz you about the numbers afterwards.\" but then at the very end, they provide the answer to a quiz question: \"What are all the special magic numbers for condemned-pizza, eager-summit, squealing",
+      "prompt_tokens": 3954,
+      "references": [
+        "5382463",
+        "5453786",
+        "8290770",
+        "2818692"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 7944,
+      "output_tokens": 256,
+      "prediction": ": 4305700, 8235969, 9722815, and 8315831.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated phrases (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with specific sentences identifying \"special magic numbers\" for specific categories.\n    *   Task: Memorize the hidden numbers.\n    *   Quiz Question: The user will quiz me about the numbers.\n    *   Current Step: I need to extract the specific numbers associated with the categories: `round-activation`, `lazy-lay`, `abaft-body`, and `ancient-thermostat`.\n    *   Output Requirement: The user explicitly states at the end: \"The special magic numbers for round-activation, lazy-lay, abaft-body, and ancient-thermostat mentioned in the provided text are: 4305700, 8235969, 9722815, and 83158",
+      "prompt_tokens": 3951,
+      "references": [
+        "4305700",
+        "8235969",
+        "9722815",
+        "8315831"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 7189,
+      "output_tokens": 256,
+      "prediction": ": 8053918, 3135534, 7751158, and 5960271.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated phrases (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with specific sentences identifying \"special magic numbers\".\n    *   Task: Memorize the hidden numbers.\n    *   Quiz: The user will quiz me about these numbers later.\n    *   Current Step: I need to extract the specific numbers associated with specific terms: \"empty-drop\", \"secretive-revitalization\", \"impartial-impudence\", and \"wakeful-fundraising\".\n    *   Output: The user asks me to answer the question at the end: \"What are all the special magic numbers for empty-drop, secretive-revitalization, impartial-impudence, and wakeful-fundraising mentioned in the provided text?\"\n\n2.  **Scan the Text for Keywords:**\n    *   I need to look for the specific phrases: \"empty",
+      "prompt_tokens": 3960,
+      "references": [
+        "8053918",
+        "3135534",
+        "7751158",
+        "5960271"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 12082,
+      "output_tokens": 256,
+      "prediction": ": 8411939, 4585314, 6406444, and 4526280.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated phrases (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with specific sentences identifying \"special magic numbers\".\n    *   Task: Memorize the hidden numbers.\n    *   Quiz Question: Ask for all the special magic numbers for specific entities: \"overt-celebration\", \"nutty-throne\", \"new-rear\", and \"hapless-syrup\".\n    *   Constraint: The user wants me to answer the quiz based on the text provided.\n\n2.  **Scan the Text for Keywords:**\n    *   I need to find the specific numbers associated with the following terms:\n        *   \"overt-celebration\"\n        *   \"nutty-throne\"\n        *   \"new-rear\"\n        *   \"hapless-syrup\"\n\n3.  **Loc",
+      "prompt_tokens": 3963,
+      "references": [
+        "8411939",
+        "4585314",
+        "6406444",
+        "4526280"
+      ]
+    }
+  ],
+  "config_effect": {
+    "allocation": "uniform_int4",
+    "detail": {
+      "a2_flag": false,
+      "cache_dtype": "int4_per_token_head",
+      "per_layer": {}
+    },
+    "group_structure_verified": false,
+    "ok": true
+  },
+  "created_at_utc": "2026-08-07T09:47:43Z",
+  "data_file": "data/ruler/ruler_niah_multiquery_L4096/validation.jsonl",
+  "data_sha256": "d555e41ef3262675e1582565e497bd528b150714b91840c95b206315e9958a48",
+  "elapsed_s": 62.1,
+  "engine": {
+    "kwargs": {
+      "disable_log_stats": true,
+      "enforce_eager": true,
+      "gpu_memory_utilization": 0.85,
+      "kv_cache_dtype": "int4_per_token_head",
+      "max_model_len": 16384,
+      "seed": 7
+    },
+    "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master",
+    "vllm_version": "0.26.1rc1.dev245+ge2fa28594"
+  },
+  "host": "autodl-container-ca6c40b13f-016bd465",
+  "length": 4096,
+  "max_tokens": 256,
+  "metric": "string_match_all",
+  "num_samples": 20,
+  "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+  "sampling_params": {
+    "max_tokens": 256,
+    "temperature": 0.0,
+    "thinking": "default"
+  },
+  "schema_version": 1,
+  "seed": 7,
+  "status": "completed_validated",
+  "task": "ruler_niah_multiquery",
+  "task_type": "niah",
+  "thinking": "default",
+  "tokens_to_generate": 128
+}

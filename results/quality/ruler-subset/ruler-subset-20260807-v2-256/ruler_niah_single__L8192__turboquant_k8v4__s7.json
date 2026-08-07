@@ -1,0 +1,291 @@
+{
+  "accuracy": 100.0,
+  "allocation": "turboquant_k8v4",
+  "attempt_id": "ruler-subset-20260807-v2-256",
+  "cases": [
+    {
+      "hits": [
+        true
+      ],
+      "index": 2169,
+      "output_tokens": 256,
+      "prediction": " 5437923.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated sentences (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with a specific sentence containing a \"special magic number\".\n    *   Task: Identify the \"special magic number\" hidden within the text.\n    *   Constraint: The user wants me to memorize it and will quiz me afterwards.\n    *   Output: The specific number found in the text.\n\n2.  **Scan the Text for the Number:**\n    *   I need to look through the provided text block to find a number that looks like a \"special magic number\" (usually distinct from the repetitive text).\n    *   Scanning...\n    *   Most of the text is repetitive: \"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\"\n    *   Scanning for numbers...\n    *   Found near the end of the text block: \"One of the special magic numbers for jittery-hospital is: 54",
+      "prompt_tokens": 8058,
+      "references": [
+        "5437923"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 17554,
+      "output_tokens": 256,
+      "prediction": " 3094235.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated sentences (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with a specific sentence containing a \"special magic number\".\n    *   Task: Identify the special magic number hidden within the text.\n    *   Constraint: The user wants me to memorize it and will quiz me afterwards.\n    *   Output: The specific number found in the text.\n\n2.  **Scan the Text for the Number:**\n    *   I need to look through the provided text block to find the specific sentence that contains the number.\n    *   Scanning...\n    *   Most of the text is repetitive filler (\"The grass is green...\").\n    *   Scanning towards the end of the text block.\n    *   Found it: \"One of the special magic numbers for roomy-devil is: 3094235.\"\n    *   Let's verify the context. It appears after a long sequence of the repetitive text.\n    *   Text",
+      "prompt_tokens": 8058,
+      "references": [
+        "3094235"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 3337,
+      "output_tokens": 256,
+      "prediction": ": 4226067.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated sentences (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with a specific sentence containing a \"special magic number\".\n    *   Task: Identify the \"special magic number for smoggy-caliber\" hidden within the text.\n    *   Constraint: The user wants me to memorize this number and will quiz me afterwards.\n    *   Output: The specific number.\n\n2.  **Scan the Text for Keywords:**\n    *   Keywords: \"smoggy-caliber\", \"special magic number\".\n    *   Scanning the text...\n    *   Found near the end of the text block: \"One of the special magic numbers for smoggy-caliber is: 4226067.\"\n\n3.  **Verify the Number:**\n    *   The number is 4226067.\n\n4.  **Formulate the Output:**\n    *   The user asked \"What is the special magic number",
+      "prompt_tokens": 7436,
+      "references": [
+        "4226067"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 13507,
+      "output_tokens": 256,
+      "prediction": ": 4823498.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:** The user wants me to identify a \"special magic number\" hidden within a long text. The text is repetitive, mostly saying \"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\" repeated many times. The user claims there is a special magic number hidden within this text. They also provide a specific answer in the final sentence of their prompt (\"The special magic number for typical-toilet mentioned in the provided text is: 4823498.\"). My task is to confirm this number based on the text provided.\n\n2.  **Scan the Text for Numbers:** I need to look through the provided text for any numbers.\n    *   The text consists of sentences: \"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\"\n    *   These sentences are repeated many times (over 100 times in the prompt).\n    *   I need to check if there are any numbers embedded in these sentences or in the surrounding context.\n    *   Scanning... \"The",
+      "prompt_tokens": 8055,
+      "references": [
+        "4823498"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 17647,
+      "output_tokens": 256,
+      "prediction": ": 2694522.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated sentences (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with a specific sentence containing a \"special magic number\".\n    *   Task: Identify the \"special magic number\" hidden within the text.\n    *   Constraint: The user wants me to memorize it and will quiz me afterwards.\n    *   Output: The specific number.\n\n2.  **Scan the Text for the Number:**\n    *   I need to look through the provided text block to find a number that looks like a \"special magic number\" (usually a specific integer, often associated with a specific entity like \"flippant-twine\").\n    *   Scanning...\n    *   Found it: \"One of the special magic numbers for flippant-twine is: 2694522.\"\n    *   This appears near the end of the text block.\n\n3.  **Verify the Number:**\n    *   The number is 2694",
+      "prompt_tokens": 8061,
+      "references": [
+        "2694522"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 7655,
+      "output_tokens": 256,
+      "prediction": ": 7120868.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:** The user wants me to identify a \"special magic number\" hidden in the provided text. They also mention they will quiz me about it afterwards. The text is a repetitive paragraph about grass, sky, sun, etc., with one specific sentence containing a number.\n\n2.  **Scan the Text:** I need to look through the provided text to find the specific number associated with \"old-snowplow\".\n    *   The text is mostly repetitive: \"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\" repeated many times.\n    *   I need to find the sentence that breaks the pattern or contains the specific number.\n    *   Scanning...\n    *   Found it near the end of the text block.\n    *   Text segment: \"One of the special magic numbers for old-snowplow is: 7120868.\"\n\n3.  **Verify the Number:** The number is 7120868.\n\n4.  **Formulate the Output:** The user asked \"What",
+      "prompt_tokens": 8061,
+      "references": [
+        "7120868"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 12435,
+      "output_tokens": 256,
+      "prediction": ": 4514944.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:** The user wants me to identify a \"special magic number\" hidden within a provided text. The text is repetitive, consisting mostly of the phrase \"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\" repeated many times. There is a specific sentence embedded in the text that contains the number. I need to output that number.\n\n2.  **Scan the Text:** I need to look through the provided text for a specific pattern or a number that stands out as a \"special magic number\" associated with \"knowledgeable-hometown\".\n\n    *   The text is a long repetition of \"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\"\n    *   I need to find the specific sentence that introduces the number.\n    *   Scanning...\n    *   Found it near the end of the text block.\n    *   Text segment: \"One of the special magic numbers for knowledgeable-hometown is: 4514944.\"\n\n3.  **Verify the Number",
+      "prompt_tokens": 8055,
+      "references": [
+        "4514944"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 24754,
+      "output_tokens": 256,
+      "prediction": ": 3871230.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated sentences (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with a specific sentence containing a \"special magic number\".\n    *   Task: Identify the special magic number for \"strong-hive\" hidden within the text.\n    *   Constraint: The user wants me to remember this number for a quiz later.\n    *   Output: The specific number found in the text.\n\n2.  **Scan the Text for Keywords:**\n    *   Keywords: \"special magic number\", \"strong-hive\".\n    *   Scanning the text...\n    *   The text is mostly repetitive filler (\"The grass is green...\").\n    *   I need to find the specific sentence that introduces the number.\n    *   Looking towards the end of the text block provided in the prompt.\n    *   Text segment: \"One of the special magic numbers for strong-hive is: 3871230.\"\n    *   Wait, let me double",
+      "prompt_tokens": 8055,
+      "references": [
+        "3871230"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 17649,
+      "output_tokens": 256,
+      "prediction": ": 8755439.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:** The user wants me to identify a \"special magic number\" hidden within a provided text. The text is a repetitive loop of \"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\" repeated many times. The user claims there is a special magic number hidden within this text. They also provide a specific answer in their final sentence (\"The special magic number for disgusted-buckle mentioned in the provided text is: 8755439.\"). My task is to confirm this number based on the text provided.\n\n2.  **Scan the Text for Numbers:** I need to look through the provided text for any numerical values.\n    *   Scanning...\n    *   \"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\" (No numbers)\n    *   ... (Repeated many times)\n    *   \"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\" (No numbers)\n    *   ...\n   ",
+      "prompt_tokens": 8055,
+      "references": [
+        "8755439"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 15128,
+      "output_tokens": 256,
+      "prediction": " 4684531.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated sentences (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") followed by a specific sentence containing a \"special magic number\".\n    *   Task: Identify the \"special magic number\" hidden within the text.\n    *   Constraint: The user wants me to memorize it and will quiz me afterwards.\n    *   Output: The specific number found in the text.\n\n2.  **Scan the Text for the Number:**\n    *   I need to look through the provided text to find a number that looks like a \"special magic number\".\n    *   Scanning...\n    *   Most of the text is repetitive filler (\"The grass is green...\").\n    *   Near the end of the text block, there is a sentence: \"One of the special magic numbers for terrible-online is: 4684531.\"\n    *   Let's verify if there are other numbers.\n    *   Scanning the beginning... no numbers.\n    *   Sc",
+      "prompt_tokens": 8052,
+      "references": [
+        "4684531"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 14677,
+      "output_tokens": 256,
+      "prediction": " 1538552.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated sentences (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") followed by a specific sentence containing a \"special magic number\".\n    *   Task: Identify the \"special magic number\" hidden within the text.\n    *   Constraint: The user wants me to memorize it and will quiz me afterwards.\n    *   Output: The specific number found in the text.\n\n2.  **Scan the Text for the Number:**\n    *   I need to look through the provided text block to find a number that stands out as a \"special magic number\".\n    *   The text is mostly repetitive filler (\"The grass is green...\").\n    *   I need to find the sentence that breaks the pattern or contains a specific value.\n    *   Scanning...\n    *   ...\n    *   \"One of the special magic numbers for flaky-endoderm is: 1538552.\"\n    *   ...\n    *   \"The grass is green",
+      "prompt_tokens": 8061,
+      "references": [
+        "1538552"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 9908,
+      "output_tokens": 256,
+      "prediction": ": 2110460.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated sentences (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with a specific sentence containing a \"special magic number\".\n    *   Task: Identify the \"special magic number\" for \"grandiose-clave\" hidden within the text.\n    *   Constraint: The user wants me to memorize it and will quiz me afterwards.\n    *   Output: The specific number.\n\n2.  **Scan the Text for Keywords:**\n    *   Keywords: \"grandiose-clave\", \"special magic number\".\n    *   Scanning the text...\n    *   The text is mostly repetitive filler (\"The grass is green...\").\n    *   I need to find the specific sentence that introduces the number.\n    *   Looking through the middle/end of the text...\n    *   Found it: \"One of the special magic numbers for grandiose-clave is: 2110460.\"\n\n3.  **Verify the Number:**\n   ",
+      "prompt_tokens": 8058,
+      "references": [
+        "2110460"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 18364,
+      "output_tokens": 256,
+      "prediction": " 9375710.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated sentences (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with a specific sentence containing a number.\n    *   Task: Identify the \"special magic number\" hidden within the text.\n    *   Constraint: The user wants me to memorize this number and will quiz me about it afterwards.\n    *   Output: The specific number found in the text.\n\n2.  **Scan the Text for the Number:**\n    *   I need to look through the provided text block to find a number that is described as a \"special magic number\".\n    *   Scanning...\n    *   Most of the text is repetitive (\"The grass is green...\").\n    *   There is a distinct sentence in the middle: \"One of the special magic numbers for fair-yogurt is: 9375710.\"\n    *   Let's verify if there are other numbers.\n    *   Scanning the rest of the text... No other numbers found",
+      "prompt_tokens": 8058,
+      "references": [
+        "9375710"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 6579,
+      "output_tokens": 256,
+      "prediction": ": 5443951.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated sentences (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with a specific sentence containing a \"special magic number\".\n    *   Task: Identify the \"special magic number\" hidden within the text.\n    *   Constraint: The user wants me to memorize it and will quiz me afterwards.\n    *   Output: The specific number.\n\n2.  **Scan the Text for the Number:**\n    *   I need to look through the provided text block to find the specific sentence that contains the number.\n    *   Scanning...\n    *   Most of the text is repetitive filler (\"The grass is green...\").\n    *   Near the end of the text block, there is a sentence: \"One of the special magic numbers for deafening-radish is: 5443951.\"\n    *   Let's verify the context.\n    *   Text segment: \"...The grass is green. The sky is blue. The sun is",
+      "prompt_tokens": 8058,
+      "references": [
+        "5443951"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 27095,
+      "output_tokens": 256,
+      "prediction": ": 5408072.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated sentences (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with a specific sentence containing a \"special magic number\".\n    *   Task: Identify the special magic number hidden within the text.\n    *   Constraint: The user wants me to memorize it and will quiz me afterwards.\n    *   Output: The specific number.\n\n2.  **Scan the Text for the Number:**\n    *   I need to look through the provided text to find the specific sentence that contains the number.\n    *   Scanning...\n    *   Most of the text is just the repeated sentences.\n    *   Scanning towards the end of the text block...\n    *   Found it: \"One of the special magic numbers for shiny-fleece is: 5408072.\"\n    *   Wait, let me double-check the exact location.\n    *   The text starts with \"The grass is green...\" repeated many times.\n   ",
+      "prompt_tokens": 8058,
+      "references": [
+        "5408072"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 16837,
+      "output_tokens": 256,
+      "prediction": ": 7700828.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated sentences (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with a specific sentence containing a \"special magic number\".\n    *   Task: Identify the \"special magic number\" hidden within the text.\n    *   Constraint: The user wants me to memorize it and will quiz me afterwards.\n    *   Output: The specific number found in the text.\n\n2.  **Scan the Text for the Number:**\n    *   I need to look through the provided text block to find a number that looks like a \"special magic number\" (usually distinct from the common numbers in the text, but in this case, it's embedded in a specific sentence).\n    *   Scanning...\n    *   Most of the text is repetitive filler (\"The grass is green...\").\n    *   I need to find the sentence that breaks the pattern or contains a number.\n    *   Looking towards the end of the text block provided in the prompt.\n    *  ",
+      "prompt_tokens": 8055,
+      "references": [
+        "7700828"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 22865,
+      "output_tokens": 256,
+      "prediction": ": 9548432.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated sentences (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with a specific sentence containing a \"special magic number\".\n    *   Task: Identify the \"special magic number\" hidden within the text.\n    *   Constraint: The user wants me to memorize it and will quiz me afterwards.\n    *   Output: The specific number.\n\n2.  **Scan the Text for the Number:**\n    *   I need to look through the provided text block to find a number that looks like a \"special magic number\".\n    *   Scanning...\n    *   Most of the text is repetitive (\"The grass is green...\").\n    *   There is a distinct sentence near the end of the first block of text (actually, looking closely at the structure provided in the prompt).\n    *   Let's locate the specific sentence: \"One of the special magic numbers for dark-boyhood is: 9548432.\"\n    *   Wait",
+      "prompt_tokens": 8055,
+      "references": [
+        "9548432"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 7210,
+      "output_tokens": 256,
+      "prediction": ": 2839607.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated sentences (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with a specific sentence containing a \"special magic number\".\n    *   Task: Identify the \"special magic number\" hidden within the text.\n    *   Constraint: The user wants me to memorize it and will quiz me afterwards.\n    *   Output: The specific number found in the text.\n\n2.  **Scan the Text for the Number:**\n    *   I need to look through the provided text block to find a number that looks like a \"special magic number\" (usually a specific integer, often associated with a code or ID).\n    *   Scanning...\n    *   Most of the text is repetitive filler (\"The grass is green...\").\n    *   Near the end of the text block, there is a sentence: \"One of the special magic numbers for annoying-doorbell is: 2839607.\"\n    *   Let's verify if there are other",
+      "prompt_tokens": 8055,
+      "references": [
+        "2839607"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 27635,
+      "output_tokens": 256,
+      "prediction": ": 8082668.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:** The user wants me to identify a \"special magic number\" hidden within a provided text. The text is repetitive (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") repeated many times. The user claims there is a specific number associated with \"used-postfix\" hidden in the text. They also provide a confirmation statement at the end: \"The special magic number for used-postfix mentioned in the provided text is: 8082668.\"\n\n2.  **Scan the Text for Numbers:** I need to look through the provided text to find any numbers.\n    *   Scanning...\n    *   \"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\" (No numbers)\n    *   ... (Repeated many times)\n    *   \"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\" (No numbers)\n    *   ...\n    *   Wait, I need to check the very",
+      "prompt_tokens": 8055,
+      "references": [
+        "8082668"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 27635,
+      "output_tokens": 256,
+      "prediction": " 7402509.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing repeated sentences (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with a specific sentence containing a \"special magic number\".\n    *   Task: Identify the special magic number hidden within the text.\n    *   Constraint: The user wants me to memorize it and will quiz me afterwards.\n    *   Output: The specific number found in the text.\n\n2.  **Scan the Text for the Number:**\n    *   I need to look through the provided text to find the specific sentence that contains the number.\n    *   Scanning...\n    *   Most of the text is just the repeated poem-like sentences.\n    *   Scanning towards the end of the text block...\n    *   Found it: \"One of the special magic numbers for lush-tornado is: 7402509.\"\n    *   Wait, let me double-check the exact location.\n    *   The text provided is a massive block of repeated lines.\n",
+      "prompt_tokens": 8055,
+      "references": [
+        "7402509"
+      ]
+    }
+  ],
+  "config_effect": {
+    "allocation": "turboquant_k8v4",
+    "detail": {
+      "a2_flag": false,
+      "cache_dtype": "turboquant_k8v4",
+      "per_layer": {}
+    },
+    "group_structure_verified": false,
+    "ok": true
+  },
+  "created_at_utc": "2026-08-07T10:16:40Z",
+  "data_file": "data/ruler/ruler_niah_single_L8192/validation.jsonl",
+  "data_sha256": "4b97836cc1c9eadaa5f8ee47df119f83164b98faa62bc0eecf00039a5002a10a",
+  "elapsed_s": 63.7,
+  "engine": {
+    "kwargs": {
+      "disable_log_stats": true,
+      "enforce_eager": true,
+      "gpu_memory_utilization": 0.85,
+      "kv_cache_dtype": "turboquant_k8v4",
+      "max_model_len": 16384,
+      "seed": 7
+    },
+    "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master",
+    "vllm_version": "0.26.1rc1.dev245+ge2fa28594"
+  },
+  "host": "autodl-container-ca6c40b13f-016bd465",
+  "length": 8192,
+  "max_tokens": 256,
+  "metric": "string_match_all",
+  "num_samples": 20,
+  "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+  "sampling_params": {
+    "max_tokens": 256,
+    "temperature": 0.0,
+    "thinking": "default"
+  },
+  "schema_version": 1,
+  "seed": 7,
+  "status": "completed_validated",
+  "task": "ruler_niah_single",
+  "task_type": "niah",
+  "thinking": "default",
+  "tokens_to_generate": 128
+}

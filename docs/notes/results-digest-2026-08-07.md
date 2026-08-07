@@ -25,8 +25,8 @@
 
 ## 2. RULER 子集（attempt `ruler-subset-20260807`）
 
-状态：**v1（官方 tokens_to_generate）完成 70/70**；v2（max_tokens=256）排在 serving
-门禁之后（attempt `ruler-subset-20260807-v2-256`）。
+状态：**v1（官方 tokens_to_generate）完成 70/70**；**v2（max_tokens=256）完成 70/70**
+（attempt `ruler-subset-20260807-v2-256`，0 失败，70 个 JSON 哈希全匹配）。
 协议：官方生成器 `c3f5e3b4`，noise haystack，20 samples/task/length，
 官方 `string_match_all`，单 seed（greedy）。
 
@@ -57,6 +57,12 @@
 结论（v1，待 v2 确认）：packed 在 NIAH 系列与 fp16/uniform 持平且 CWE 点估计最高；
 TurboQuant 在 CWE 4K 出现明显掉分（65.5/67.0 vs 97.5），与 vLLM TurboQuant 研究的
 “推理任务精度回落”方向一致，但其中含 think 截断成分，需 v2 定量。
+
+**v2（max_tokens=256）要点**：NIAH single 100 全列；multikey/multivalue 4K 仅 TQ
+−5/−6.25；multiquery 8K packed 最高（88.75，fp16 86.25，k8v4 80）；VT 4K TQ
+−1..−5、8K 基本持平；**CWE 4K TQ 掉分在 256 token 下仍存在（k8v4 69.0 / 4bit_nc
+70.0 vs fp16 97.5，−28.5/−27.5）→ 该掉分是真实质量退化而非截断伪影**，与 vLLM
+TurboQuant 研究一致；FWE 仍为 think 伪影（主协议用 no-think 版）。
 
 **FWE 三方法重跑（max_tokens=256，attempt `ruler-fwe-fixed-20260807`，6/6 完成）**：
 

@@ -23,6 +23,7 @@ while true; do
   WAITED=$((WAITED + 60))
 done
 
+GATES_LOG="/root/autodl-tmp/MLSys_Research/logs/r5-serving-v3-gates-20260807.log"
 if grep -q '\[FAIL\]' "$GATES_LOG"; then
   echo "serving gates FAILED; not launching 9B" >&2
   exit 3
