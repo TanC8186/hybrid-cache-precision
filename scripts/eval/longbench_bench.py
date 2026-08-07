@@ -191,10 +191,11 @@ def main() -> int:
         raise SystemExit(f"data missing: {data_path}")
     data_sha = sha256_file(data_path)
     thinking = "disabled" if args.disable_thinking else "default"
+    model_tag = "9b" if "9B" in args.model else "2b"
     out_path = (
         Path(args.out_dir)
         / args.attempt_id
-        / f"{args.task}__{args.allocation}__s{args.seed}.json"
+        / f"{args.task}__{args.allocation}__s{args.seed}__{model_tag}.json"
     )
     if args.resume and out_path.exists():
         existing = json.loads(out_path.read_text(encoding="utf-8"))
@@ -203,6 +204,8 @@ def main() -> int:
             and existing.get("data_sha256") == data_sha
             and existing.get("thinking") == thinking
             and existing.get("max_samples") == args.max_samples
+            and existing.get("model") == args.model
+            and existing.get("engine", {}).get("kwargs", {}).get("max_model_len") == args.max_model_len
         ):
             print(f"resume: skip {out_path}")
             return 0
