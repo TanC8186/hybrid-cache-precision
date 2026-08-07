@@ -41,7 +41,7 @@ def main() -> int:
         "ruler_fwe",
     ]
     lengths = [4096, 8192]
-    seeds = [7, 42, 2026]
+    seeds = [7]
 
     by_key: dict[tuple, dict] = {}
     for path in sorted((Path(args.ruler_dir) / args.attempt).glob("*.json")):
@@ -72,9 +72,11 @@ def main() -> int:
                 ]
                 m = statistics.mean(diffs)
                 sd = statistics.stdev(diffs) if len(diffs) > 1 else 0.0
-                half = t_half(len(diffs), sd)
+                half = t_half(len(diffs), sd) if len(diffs) > 1 else 0.0
                 row[f"delta_{a}"] = round(m, 2)
-                row[f"ci95_{a}"] = [round(m - half, 2), round(m + half, 2)]
+                row[f"ci95_{a}"] = (
+                    [round(m - half, 2), round(m + half, 2)] if len(diffs) > 1 else None
+                )
             table.append(row)
 
     overall = {}

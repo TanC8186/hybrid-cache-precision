@@ -29,7 +29,7 @@ def main() -> int:
 
     allocs = ["fp16", "uniform_int4", "packed_per_layer", "turboquant_k8v4", "turboquant_4bit_nc"]
     benches = ["gsm8k", "mmlu", "aime25"]
-    seeds = [7, 42, 2026]
+    seeds = [7]
     by_key: dict[tuple, dict] = {}
     for path in sorted((Path(args.dir) / args.attempt).glob("*.json")):
         rec = json.loads(path.read_text(encoding="utf-8"))
@@ -57,10 +57,12 @@ def main() -> int:
                 by_key[(b, a, s)]["accuracy"] - by_key[(b, "fp16", s)]["accuracy"] for s in seeds
             ]
             m = statistics.mean(diffs)
-            sd = statistics.stdev(diffs)
-            half = t_half(len(diffs), sd)
+            sd = statistics.stdev(diffs) if len(diffs) > 1 else 0.0
+            half = t_half(len(diffs), sd) if len(diffs) > 1 else 0.0
             row[f"delta_{a}"] = round(m, 4)
-            row[f"ci95_{a}"] = [round(m - half, 4), round(m + half, 4)]
+            row[f"ci95_{a}"] = (
+                [round(m - half, 4), round(m + half, 4)] if len(diffs) > 1 else None
+            )
         rows.append(row)
 
     result = {
