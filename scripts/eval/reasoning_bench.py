@@ -1,0 +1,242 @@
+"""Reasoning/downstream benchmark eval via vLLM offline greedy generation.
+
+Benches (disclosed subsets):
+- gsm8k: openai/gsm8k main/test, first 200 rows (deterministic head).
+- mmlu: cais/mmlu all/test, first 500 rows (deterministic head).
+- aime25: opencompass/AIME2025, all 30 problems (I + II).
+
+Cell = (bench, allocation, seed). Atomic JSON + sha256 per cell, resumable.
+Scoring is deterministic extraction (documented per bench).
+"""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import os
+import platform
+import re
+import sys
+import time
+import uuid
+from pathlib import Path
+
+
+MODEL_DEFAULT = "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master"
+DATA_ROOT = Path("/root/autodl-tmp/caches/datasets")
+ALLOCATIONS = ["fp16", "uniform_int4", "packed_per_layer", "turboquant_k8v4", "turboquant_4bit_nc"]
+
+BENCH_CONFIG = {
+    "gsm8k": {"max_tokens": 256, "max_samples": 200},
+    "mmlu": {"max_tokens": 128, "max_samples": 500},
+    "aime25": {"max_tokens": 1024, "max_samples": 30},
+}
+
+
+def sha256_file(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def atomic_write_json(path: Path, value: dict) -> str:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_name(f".{path.name}.tmp-{os.getpid()}-{uuid.uuid4().hex[:8]}")
+    payload = json.dumps(value, ensure_ascii=False, sort_keys=True, indent=2).encode("utf-8") + b"\n"
+    with tmp.open("wb") as handle:
+        handle.write(payload)
+        handle.flush()
+        os.fsync(handle.fileno())
+    os.replace(tmp, path)
+    digest = sha256_file(path)
+    Path(str(path) + ".sha256").write_text(f"{digest}\n", encoding="ascii")
+    return digest
+
+
+def load_rows(bench: str, max_samples: int) -> tuple[list[dict], list[str]]:
+    if bench == "gsm8k":
+        import pandas as pd
+
+        df = pd.read_parquet(DATA_ROOT / "gsm8k" / "main" / "test-00000-of-00001.parquet")
+        rows = []
+        for _, row in df.head(max_samples).iterrows():
+            expected = str(row["answer"]).split("####")[-1].strip()
+            rows.append({"question": str(row["question"]), "expected": expected})
+        prompts = [f"Question: {r['question']}\nAnswer:" for r in rows]
+        return rows, prompts
+
+    if bench == "mmlu":
+        import pandas as pd
+
+        df = pd.read_parquet(DATA_ROOT / "mmlu" / "all" / "test-00000-of-00001.parquet")
+        rows = []
+        for _, row in df.head(max_samples).iterrows():
+            choices = list(row["choices"])
+            rows.append(
+                {
+                    "question": str(row["question"]),
+                    "subject": str(row["subject"]),
+                    "choices": [str(c) for c in choices],
+                    "expected": ["A", "B", "C", "D"][int(row["answer"])],
+                }
+            )
+        prompts = []
+        for r in rows:
+            letters = ["A", "B", "C", "D"]
+            body = "\n".join(f"{letter}. {choice}" for letter, choice in zip(letters, r["choices"]))
+            prompts.append(f"Question: {r['question']}\n{body}\nAnswer:")
+        return rows, prompts
+
+    if bench == "aime25":
+        rows = []
+        for split in ("aime2025-I", "aime2025-II"):
+            with (DATA_ROOT / "aime2025" / f"{split}.jsonl").open(encoding="utf-8") as handle:
+                for line in handle:
+                    if not line.strip():
+                        continue
+                    item = json.loads(line)
+                    rows.append({"question": item["question"], "expected": str(item["answer"]), "split": split})
+        rows = rows[:max_samples]
+        prompts = [f"Problem: {r['question']}\nAnswer:" for r in rows]
+        return rows, prompts
+
+    raise SystemExit(f"unknown bench: {bench}")
+
+
+def extract_answer(bench: str, prediction: str) -> str | None:
+    if bench == "gsm8k":
+        numbers = re.findall(r"[-+]?\d[\d,]*(?:\.\d+)?", prediction)
+        if not numbers:
+            return None
+        return numbers[-1].replace(",", "")
+    if bench == "mmlu":
+        letters = re.findall(r"\b([A-D])\b", prediction.upper())
+        return letters[-1] if letters else None
+    if bench == "aime25":
+        numbers = re.findall(r"\d+", prediction)
+        return numbers[-1] if numbers else None
+    raise SystemExit(f"unknown bench: {bench}")
+
+
+def normalize_expected(bench: str, expected: str) -> str:
+    if bench == "gsm8k":
+        return expected.replace(",", "")
+    if bench == "aime25":
+        return str(int(expected))
+    return expected
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--bench", required=True, choices=["gsm8k", "mmlu", "aime25"])
+    ap.add_argument("--allocation", required=True, choices=ALLOCATIONS)
+    ap.add_argument("--seed", type=int, required=True)
+    ap.add_argument("--model", default=MODEL_DEFAULT)
+    ap.add_argument("--max-model-len", type=int, default=8192)
+    ap.add_argument("--gpu-memory-utilization", type=float, default=0.85)
+    ap.add_argument("--max-samples", type=int, default=0)
+    ap.add_argument("--out-dir", default="results/quality/reasoning")
+    ap.add_argument("--attempt-id", default="reasoning-20260807")
+    ap.add_argument("--resume", action="store_true")
+    args = ap.parse_args()
+
+    max_samples = args.max_samples or BENCH_CONFIG[args.bench]["max_samples"]
+    max_tokens = BENCH_CONFIG[args.bench]["max_tokens"]
+    out_path = (
+        Path(args.out_dir)
+        / args.attempt_id
+        / f"{args.bench}__{args.allocation}__s{args.seed}.json"
+    )
+    if args.resume and out_path.exists():
+        existing = json.loads(out_path.read_text(encoding="utf-8"))
+        if existing.get("status") == "completed_validated":
+            print(f"resume: skip {out_path}")
+            return 0
+
+    rows, prompts = load_rows(args.bench, max_samples)
+    if len(rows) != max_samples:
+        raise SystemExit(f"rows mismatch: {len(rows)} != {max_samples}")
+
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from kv_quality_retrieval import engine_kwargs, verify_config_effect  # noqa: PLC0415
+
+    kwargs = engine_kwargs(
+        args.allocation,
+        argparse.Namespace(
+            model=args.model,
+            max_model_len=args.max_model_len,
+            gpu_memory_utilization=args.gpu_memory_utilization,
+            seed=args.seed,
+        ),
+    )
+    from vllm import LLM, SamplingParams, __version__ as vllm_version  # noqa: PLC0415
+
+    t0 = time.time()
+    llm = LLM(**kwargs)
+    effect = verify_config_effect(llm, args.allocation)
+    if not effect.get("ok"):
+        print(f"config effect FAILED: {json.dumps(effect, ensure_ascii=False)}", file=sys.stderr)
+        return 3
+
+    outputs = llm.generate(
+        prompts,
+        SamplingParams(max_tokens=max_tokens, temperature=0.0),
+        use_tqdm=True,
+    )
+    cases = []
+    hits = 0
+    for row, prompt, output in zip(rows, prompts, outputs):
+        prediction = output.outputs[0].text
+        predicted = extract_answer(args.bench, prediction)
+        expected_norm = normalize_expected(args.bench, row["expected"])
+        hit = predicted is not None and predicted == expected_norm
+        hits += int(hit)
+        cases.append(
+            {
+                "question": row["question"],
+                "expected": row["expected"],
+                "prediction": prediction,
+                "predicted": predicted,
+                "hit": hit,
+                "prompt_tokens": len(output.prompt_token_ids),
+                "output_tokens": len(output.outputs[0].token_ids),
+            }
+        )
+
+    record = {
+        "schema_version": 1,
+        "attempt_id": args.attempt_id,
+        "status": "completed_validated",
+        "bench": args.bench,
+        "allocation": args.allocation,
+        "seed": args.seed,
+        "num_samples": len(cases),
+        "accuracy": round(hits / len(cases), 4),
+        "extraction": {
+            "gsm8k": "last numeric token (commas stripped)",
+            "mmlu": "last A-D letter token",
+            "aime25": "last integer token",
+        }[args.bench],
+        "cases": cases,
+        "engine": {
+            "model": args.model,
+            "kwargs": {k: v for k, v in kwargs.items() if k != "model"},
+            "vllm_version": vllm_version,
+        },
+        "config_effect": effect,
+        "sampling_params": {"max_tokens": max_tokens, "temperature": 0.0},
+        "elapsed_s": round(time.time() - t0, 1),
+        "created_at_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+        "host": platform.node(),
+    }
+    digest = atomic_write_json(out_path, record)
+    print(f"REASONING({args.bench}, {args.allocation}, seed={args.seed}) acc={record['accuracy']:.4f}")
+    print(f"→ {out_path} (sha256={digest})")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
