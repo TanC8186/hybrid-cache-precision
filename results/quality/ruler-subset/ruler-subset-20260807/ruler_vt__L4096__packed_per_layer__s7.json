@@ -1,0 +1,464 @@
+{
+  "accuracy": 89.0,
+  "allocation": "packed_per_layer",
+  "attempt_id": "ruler-subset-20260807",
+  "cases": [
+    {
+      "hits": [
+        true,
+        true,
+        false,
+        true,
+        true
+      ],
+      "index": 0,
+      "output_tokens": 30,
+      "prediction": " FUPIL RNUYT YGIUD BZPTL\n\n<think>\nThe user wants me to identify variables assigned the value 260",
+      "prompt_tokens": 4055,
+      "references": [
+        "FUPIL",
+        "RNUYT",
+        "RHRQC",
+        "YGIUD",
+        "BZPTL"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 1,
+      "output_tokens": 30,
+      "prediction": " NOITL VXLXL EWLTV HUMGL SGIXC\n\n<think>\nThe user wants me to identify variables that hold the value 7",
+      "prompt_tokens": 4052,
+      "references": [
+        "NOITL",
+        "VXLXL",
+        "EWLTV",
+        "HUMGL",
+        "SGIXC"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 2,
+      "output_tokens": 30,
+      "prediction": " WYKTO PFFLA IRKEM DQAKO AQDMB\n\n<think>\nThe user wants me to identify variables assigned the value",
+      "prompt_tokens": 4058,
+      "references": [
+        "WYKTO",
+        "PFFLA",
+        "IRKEM",
+        "DQAKO",
+        "AQDMB"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 3,
+      "output_tokens": 30,
+      "prediction": " FADDR OFSTE PTCVZ CAIRY KSBRQ\n\n<think>\nThe user wants me to identify variables assigned the value 72",
+      "prompt_tokens": 4052,
+      "references": [
+        "FADDR",
+        "OFSTE",
+        "PTCVZ",
+        "CAIRY",
+        "KSBRQ"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        false,
+        true
+      ],
+      "index": 4,
+      "output_tokens": 30,
+      "prediction": " QXUMV PIGYH LTORI HPWON\n\n<think>\nThe user wants me to identify variables assigned the value 779",
+      "prompt_tokens": 4058,
+      "references": [
+        "QXUMV",
+        "PIGYH",
+        "LTORI",
+        "MIMJG",
+        "HPWON"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        false,
+        true
+      ],
+      "index": 5,
+      "output_tokens": 30,
+      "prediction": " JLHFS ITYRE THPTP SDBBH\n\n<think>\nThe user wants me to identify variables assigned the value 93104",
+      "prompt_tokens": 4056,
+      "references": [
+        "JLHFS",
+        "ITYRE",
+        "THPTP",
+        "ZVHJH",
+        "SDBBH"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        false,
+        true,
+        true,
+        true
+      ],
+      "index": 6,
+      "output_tokens": 30,
+      "prediction": " DTPUF HQPTY FFREE BALPH\n\n<think>\nThe user wants me to identify variables assigned the value 95305 in the",
+      "prompt_tokens": 4054,
+      "references": [
+        "DTPUF",
+        "NLLWZ",
+        "HQPTY",
+        "FFREE",
+        "BALPH"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 7,
+      "output_tokens": 30,
+      "prediction": " OHDRS YNMCB LIGCZ VOYZR HBTMQ\n\n<think>\nThe user wants me to identify variables assigned the value",
+      "prompt_tokens": 4058,
+      "references": [
+        "OHDRS",
+        "YNMCB",
+        "LIGCZ",
+        "VOYZR",
+        "HBTMQ"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 8,
+      "output_tokens": 30,
+      "prediction": " WVAWM BNQML BGDHW IAKFV MAQUS\n\n<think>\nThe user wants me to identify all variables that hold the",
+      "prompt_tokens": 4055,
+      "references": [
+        "WVAWM",
+        "BNQML",
+        "BGDHW",
+        "MAQUS",
+        "IAKFV"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 9,
+      "output_tokens": 30,
+      "prediction": " IUGAS VPRWL MITJY WZGJW KIMXJ\n\n<think>\nThe user wants me to identify all variables that",
+      "prompt_tokens": 4061,
+      "references": [
+        "IUGAS",
+        "VPRWL",
+        "MITJY",
+        "WZGJW",
+        "KIMXJ"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 10,
+      "output_tokens": 30,
+      "prediction": " CIRNY QXMOQ GRHFC ZTSCE HAIBJ\n\n<think>\nThe user wants me to identify variables assigned the value 7",
+      "prompt_tokens": 4052,
+      "references": [
+        "CIRNY",
+        "QXMOQ",
+        "GRHFC",
+        "ZTSCE",
+        "HAIBJ"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "index": 11,
+      "output_tokens": 30,
+      "prediction": " QQR SRV QXQ ILP TCH\n\n<think>\nThe user wants me to identify variables assigned the value 45773",
+      "prompt_tokens": 4055,
+      "references": [
+        "RELIP",
+        "QLGVF",
+        "KMGOO",
+        "ZHZRH",
+        "ORTBP"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 12,
+      "output_tokens": 30,
+      "prediction": " TEDOZ NXVGV MUTIC ZZUJU ZDZWS\n\n<think>\nThe user wants me to identify the variables assigned the value ",
+      "prompt_tokens": 4054,
+      "references": [
+        "TEDOZ",
+        "NXVGV",
+        "MUTIC",
+        "ZDZWS",
+        "ZZUJU"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 13,
+      "output_tokens": 30,
+      "prediction": " HKDYH MCXDL YAJLY EKCMK RTYKT\n\n<think>\nThe user wants me to identify variables assigned the value 4",
+      "prompt_tokens": 4054,
+      "references": [
+        "HKDYH",
+        "MCXDL",
+        "RTYKT",
+        "EKCMK",
+        "YAJLY"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        false,
+        false,
+        true,
+        true
+      ],
+      "index": 14,
+      "output_tokens": 30,
+      "prediction": " FFWID UGIEB TNTMU\n\n<think>\nThe user wants me to identify all variables that hold the value 79092",
+      "prompt_tokens": 4053,
+      "references": [
+        "FFWID",
+        "XAWDD",
+        "GERAA",
+        "UGIEB",
+        "TNTMU"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 15,
+      "output_tokens": 30,
+      "prediction": " PBHQO IZNLP CSWQT SFLFI LKCLR\n\n<think>\nThe user wants me to identify all variables that end up with",
+      "prompt_tokens": 4054,
+      "references": [
+        "PBHQO",
+        "IZNLP",
+        "CSWQT",
+        "SFLFI",
+        "LKCLR"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 16,
+      "output_tokens": 30,
+      "prediction": " ZPJPF RFCVJ TOUVZ VPQAY VGESI\n\n<think>\nThe user wants me to identify variables assigned the value 90",
+      "prompt_tokens": 4053,
+      "references": [
+        "ZPJPF",
+        "RFCVJ",
+        "TOUVZ",
+        "VPQAY",
+        "VGESI"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 17,
+      "output_tokens": 30,
+      "prediction": " EQRHR MLHTC LHRMR BKPAH FDGIA\n\n<think>\nThe user wants me to identify variables assigned the value 1",
+      "prompt_tokens": 4054,
+      "references": [
+        "EQRHR",
+        "MLHTC",
+        "LHRMR",
+        "BKPAH",
+        "FDGIA"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 18,
+      "output_tokens": 30,
+      "prediction": " AIUQV XCVGP NKIII ENCNX JSVVG\n\n<think>\nThe user wants me to identify the variables assigned the value ",
+      "prompt_tokens": 4053,
+      "references": [
+        "AIUQV",
+        "XCVGP",
+        "NKIII",
+        "ENCNX",
+        "JSVVG"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 19,
+      "output_tokens": 30,
+      "prediction": " BLHHB NILBV BWWPN MOUXL VQIMD\n\n<think>\nThe user wants me to identify all variables that are assigned the",
+      "prompt_tokens": 4050,
+      "references": [
+        "BLHHB",
+        "NILBV",
+        "BWWPN",
+        "MOUXL",
+        "VQIMD"
+      ]
+    }
+  ],
+  "config_effect": {
+    "allocation": "packed_per_layer",
+    "detail": {
+      "a2_flag": true,
+      "cache_dtype": "int4_per_token_head",
+      "per_layer": {
+        "11": "int4_per_token_head",
+        "15": "int4_per_token_head",
+        "19": "int4_per_token_head",
+        "23": "auto",
+        "3": "int4_per_token_head",
+        "7": "int4_per_token_head"
+      }
+    },
+    "group_structure_verified": false,
+    "ok": true
+  },
+  "created_at_utc": "2026-08-07T06:07:05Z",
+  "data_file": "data/ruler/ruler_vt_L4096/validation.jsonl",
+  "data_sha256": "af0e68a37000cb0516247053725b58b9b70f90721092e771005f115d82fe8cab",
+  "elapsed_s": 56.9,
+  "engine": {
+    "kwargs": {
+      "disable_log_stats": true,
+      "enable_per_layer_page_groups": true,
+      "enforce_eager": true,
+      "gpu_memory_utilization": 0.85,
+      "kv_cache_dtype": "int4_per_token_head",
+      "kv_cache_dtype_per_layer": {
+        "11": "int4_per_token_head",
+        "15": "int4_per_token_head",
+        "19": "int4_per_token_head",
+        "23": "auto",
+        "3": "int4_per_token_head",
+        "7": "int4_per_token_head"
+      },
+      "max_model_len": 16384,
+      "seed": 7
+    },
+    "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master",
+    "vllm_version": "0.26.1rc1.dev245+ge2fa28594"
+  },
+  "host": "autodl-container-ca6c40b13f-016bd465",
+  "length": 4096,
+  "metric": "string_match_all",
+  "num_samples": 20,
+  "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+  "sampling_params": {
+    "max_tokens": 30,
+    "temperature": 0.0
+  },
+  "schema_version": 1,
+  "seed": 7,
+  "status": "completed_validated",
+  "task": "ruler_vt",
+  "task_type": "variable_tracking",
+  "tokens_to_generate": 30
+}

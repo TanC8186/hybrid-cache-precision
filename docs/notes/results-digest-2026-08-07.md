@@ -25,22 +25,38 @@
 
 ## 2. RULER 子集（attempt `ruler-subset-20260807`）
 
-状态：**排队中**（70 cells = 7 tasks × 2 lengths × 5 alloc × 1 seed；官方生成器
-`c3f5e3b4`，noise haystack，20 samples/task/length，官方 `string_match_all`）。
+状态：**v1（官方 tokens_to_generate）完成 70/70**；v2（max_tokens=256）排在 serving
+门禁之后（attempt `ruler-subset-20260807-v2-256`）。
+协议：官方生成器 `c3f5e3b4`，noise haystack，20 samples/task/length，
+官方 `string_match_all`，单 seed（greedy）。
 
 | task | L | fp16 | uniform | packed | k8v4 | 4bit_nc |
 |---|---:|---:|---:|---:|---:|---:|
-| niah_single | 4096 | 待填写 | 待填写 | 待填写 | 待填写 | 待填写 |
-| niah_multikey | 4096 | 待填写 | 待填写 | 待填写 | 待填写 | 待填写 |
-| niah_multivalue | 4096 | 待填写 | 待填写 | 待填写 | 待填写 | 待填写 |
-| niah_multiquery | 4096 | 待填写 | 待填写 | 待填写 | 待填写 | 待填写 |
-| vt | 4096 | 待填写 | 待填写 | 待填写 | 待填写 | 待填写 |
-| cwe | 4096 | 待填写 | 待填写 | 待填写 | 待填写 | 待填写 |
-| fwe | 4096 | 待填写 | 待填写 | 待填写 | 待填写 | 待填写 |
-| （同上 8192） | 8192 | 待填写 | 待填写 | 待填写 | 待填写 | 待填写 |
+| niah_single | 4096 | 100.0 | 100.0 | 100.0 | 100.0 | 100.0 |
+| niah_single | 8192 | 100.0 | 100.0 | 100.0 | 100.0 | 100.0 |
+| niah_multikey | 4096 | 100.0 | 100.0 | 100.0 | 95.0 | 95.0 |
+| niah_multikey | 8192 | 100.0 | 100.0 | 100.0 | 100.0 | 100.0 |
+| niah_multivalue | 4096 | 100.0 | 100.0 | 100.0 | 93.75 | 93.75 |
+| niah_multivalue | 8192 | 98.75 | 98.75 | 98.75 | 100.0 | 98.75 |
+| niah_multiquery | 4096 | 100.0 | 95.0 | 100.0 | 98.75 | 98.75 |
+| niah_multiquery | 8192 | 85.0 | 80.0 | 85.0 | 80.0 | 85.0 |
+| vt | 4096 | 91.0 | 89.0 | 89.0 | 91.0 | 89.0 |
+| vt | 8192 | 96.0 | 99.0 | 99.0 | 95.0 | 96.0 |
+| cwe | 4096 | 97.5 | 97.0 | 98.5 | 65.5 | 67.0 |
+| cwe | 8192 | 97.5 | 97.5 | 98.5 | 97.5 | 97.0 |
+| fwe | 4096 | 0.0 | 0.0 | 0.0 | 31.67 | 56.67 |
+| fwe | 8192 | 0.0 | 5.0 | 5.0 | 61.67 | 71.67 |
 
-结论（待填写）：packed 是否在长上下文检索/抽取任务上与 fp16/uniform 持平；
-TurboQuant 4-bit NC 是否如 vLLM 研究提示在推理任务上有可见回落。
+**方法学披露（必须写入论文）**：v1 使用官方 RULER 的 `tokens_to_generate`
+（NIAH 128 / VT 30 / CWE 120 / FWE 50）。抽查显示 fp16 的 FWE=0 全部是
+`<think>` 推理消耗完预算、未输出答案的**协议伪影**（TurboQuant 空 think 后直接输出
+答案所以分数反而高）；VT 部分 miss 也是 think 截断与真实漏词混合；multiquery 8K
+的 3/20 miss 同为 think 截断。**v1 只作为协议敏感性数据，不得用于“TurboQuant
+优于 fp16”类结论**。已安排 v2（max_tokens=256，70 cells）在 serving 门禁后补跑。
+
+结论（v1，待 v2 确认）：packed 在 NIAH 系列与 fp16/uniform 持平且 CWE 点估计最高；
+TurboQuant 在 CWE 4K 出现明显掉分（65.5/67.0 vs 97.5），与 vLLM TurboQuant 研究的
+“推理任务精度回落”方向一致，但其中含 think 截断成分，需 v2 定量。
 
 ## 3. TurboQuant/FP8 serving（protocol-v3）
 

@@ -1,0 +1,368 @@
+{
+  "accuracy": 31.67,
+  "allocation": "turboquant_k8v4",
+  "attempt_id": "ruler-subset-20260807",
+  "cases": [
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 0,
+      "output_tokens": 16,
+      "prediction": "\n\n<think>\n\n</think>\n\numvpig hwumbt qgcgoe",
+      "prompt_tokens": 3961,
+      "references": [
+        "umvpig",
+        "hwumbt",
+        "qgcgoe"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        false,
+        false
+      ],
+      "index": 1,
+      "output_tokens": 50,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A block of text containing coded words and dots ('...').\n    *   Task: Track the frequency of each coded word.\n   ",
+      "prompt_tokens": 3991,
+      "references": [
+        "uggzux",
+        "fubqnf",
+        "qbsznp"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 2,
+      "output_tokens": 16,
+      "prediction": "\n\n<think>\n\n</think>\n\nszvzzr ihlsel pogjgr",
+      "prompt_tokens": 3946,
+      "references": [
+        "szvzzr",
+        "ihlsel",
+        "pogjgr"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        true,
+        true
+      ],
+      "index": 3,
+      "output_tokens": 17,
+      "prediction": "\n\n<think>\n\n</think>\n\njdoex, iagafb, pxcgre",
+      "prompt_tokens": 3830,
+      "references": [
+        "tjdoex",
+        "iagafb",
+        "pxcgre"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        false,
+        false
+      ],
+      "index": 4,
+      "output_tokens": 50,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A block of text containing coded words and dots ('...').\n    *   Task: Track the frequency of each coded word.\n   ",
+      "prompt_tokens": 3862,
+      "references": [
+        "uoumno",
+        "gozott",
+        "plquvu"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        false,
+        false
+      ],
+      "index": 5,
+      "output_tokens": 50,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A coded text containing repeated words and some noise (dots '...').\n    *   Task: Track the frequency of each coded word.",
+      "prompt_tokens": 3823,
+      "references": [
+        "vkidam",
+        "hxwlfh",
+        "siafsj"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        false,
+        false
+      ],
+      "index": 6,
+      "output_tokens": 50,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A block of text containing coded words separated by spaces and dots ('...').\n    *   Task: Track the frequency of each coded word",
+      "prompt_tokens": 3934,
+      "references": [
+        "vitpsj",
+        "jucgsa",
+        "sfrakc"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 7,
+      "output_tokens": 17,
+      "prediction": "\n\n<think>\n\n</think>\n\nlcpmyw tyetgg qsxwqv",
+      "prompt_tokens": 3843,
+      "references": [
+        "tyetgg",
+        "lcpmyw",
+        "qsxwqv"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        false,
+        false
+      ],
+      "index": 8,
+      "output_tokens": 50,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A block of text containing coded words separated by spaces and dots ('...').\n    *   Task: Track the frequency of each coded word",
+      "prompt_tokens": 3298,
+      "references": [
+        "volunt",
+        "jencmi",
+        "rfkyye"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        false,
+        false
+      ],
+      "index": 9,
+      "output_tokens": 50,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A coded text containing words and dots ('...').\n    *   Task: Track the frequency of each coded word.\n    *  ",
+      "prompt_tokens": 3896,
+      "references": [
+        "vcpicl",
+        "iqbfdp",
+        "qypmsm"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        false,
+        false
+      ],
+      "index": 10,
+      "output_tokens": 50,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A block of text containing coded words and dots ('...').\n    *   Task: Track the frequency of each coded word.\n   ",
+      "prompt_tokens": 4035,
+      "references": [
+        "tnlkvs",
+        "fjgzar",
+        "qhgtpx"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        false,
+        false
+      ],
+      "index": 11,
+      "output_tokens": 50,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A block of text containing coded words and spaces.\n    *   Task: Track the frequency of each coded word.\n    *  ",
+      "prompt_tokens": 3881,
+      "references": [
+        "trnmmh",
+        "gyatvm",
+        "ptqjlz"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        false,
+        false
+      ],
+      "index": 12,
+      "output_tokens": 50,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A block of text containing coded words separated by spaces, interspersed with dots ('...').\n    *   Task: Track the frequency",
+      "prompt_tokens": 3894,
+      "references": [
+        "thweli",
+        "gtjlff",
+        "pkylwd"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        false
+      ],
+      "index": 13,
+      "output_tokens": 20,
+      "prediction": "\n\n<think>\n\n</think>\n\nvqrzru, hfvvpc, vqrzru",
+      "prompt_tokens": 3971,
+      "references": [
+        "vqrzru",
+        "hfvvpc",
+        "pwcone"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        false,
+        false
+      ],
+      "index": 14,
+      "output_tokens": 50,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A block of text containing coded words separated by spaces (and some dots '...').\n    *   Task: Track the frequency of each",
+      "prompt_tokens": 4001,
+      "references": [
+        "trhpoa",
+        "joirgt",
+        "qkwuql"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        false,
+        false
+      ],
+      "index": 15,
+      "output_tokens": 50,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A block of text containing coded words and dots ('...').\n    *   Task: Track the frequency of each coded word.\n   ",
+      "prompt_tokens": 3961,
+      "references": [
+        "ufnlme",
+        "fwmyjj",
+        "pydgpr"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        false,
+        false
+      ],
+      "index": 16,
+      "output_tokens": 50,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A block of text containing coded words and dots ('...').\n    *   Task: Track the frequency of each coded word.\n   ",
+      "prompt_tokens": 3830,
+      "references": [
+        "vjqlad",
+        "hhplgm",
+        "rdogxq"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        false,
+        false
+      ],
+      "index": 17,
+      "output_tokens": 50,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A coded text containing words separated by spaces (and some ellipses '...').\n    *   Task: Track the frequency of each",
+      "prompt_tokens": 3965,
+      "references": [
+        "uzvcls",
+        "hgarwy",
+        "qacbqp"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 18,
+      "output_tokens": 18,
+      "prediction": "\n\n<think>\n\n</think>\n\nvdmzkj, jyfeeh, qukyun",
+      "prompt_tokens": 4009,
+      "references": [
+        "vdmzkj",
+        "jyfeeh",
+        "qukyun"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 19,
+      "output_tokens": 15,
+      "prediction": "\n\n<think>\n\n</think>\n\nhipxzd wgplrd svduou",
+      "prompt_tokens": 3888,
+      "references": [
+        "wgplrd",
+        "hipxzd",
+        "svduou"
+      ]
+    }
+  ],
+  "config_effect": {
+    "allocation": "turboquant_k8v4",
+    "detail": {
+      "a2_flag": false,
+      "cache_dtype": "turboquant_k8v4",
+      "per_layer": {}
+    },
+    "group_structure_verified": false,
+    "ok": true
+  },
+  "created_at_utc": "2026-08-07T06:28:15Z",
+  "data_file": "data/ruler/ruler_fwe_L4096/validation.jsonl",
+  "data_sha256": "d22e21d579e53d976588c63828a8acdf970e04d258a614caede338a8a31e824b",
+  "elapsed_s": 58.6,
+  "engine": {
+    "kwargs": {
+      "disable_log_stats": true,
+      "enforce_eager": true,
+      "gpu_memory_utilization": 0.85,
+      "kv_cache_dtype": "turboquant_k8v4",
+      "max_model_len": 16384,
+      "seed": 7
+    },
+    "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master",
+    "vllm_version": "0.26.1rc1.dev245+ge2fa28594"
+  },
+  "host": "autodl-container-ca6c40b13f-016bd465",
+  "length": 4096,
+  "metric": "string_match_all",
+  "num_samples": 20,
+  "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+  "sampling_params": {
+    "max_tokens": 50,
+    "temperature": 0.0
+  },
+  "schema_version": 1,
+  "seed": 7,
+  "status": "completed_validated",
+  "task": "ruler_fwe",
+  "task_type": "freq_words_extraction",
+  "tokens_to_generate": 50
+}

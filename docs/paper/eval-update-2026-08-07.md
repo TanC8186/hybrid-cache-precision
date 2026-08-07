@@ -18,10 +18,14 @@ packed +0.0185 [−0.0206, +0.0576]；k8v4 0.0000 [−0.0804, +0.0804]；
 
 ## 2. Long-context（RULER subset，noise haystack）
 
-（待回填）使用官方 RULER 生成器（commit `c3f5e3b4`）与官方 `string_match_all` 评分，
+使用官方 RULER 生成器（commit `c3f5e3b4`）与官方 `string_match_all` 评分，
 任务覆盖 NIAH-single/multikey/multivalue/multiquery、variable tracking、common/freq words
-extraction，长度 4096/8192，每 cell 20 samples、greedy、单 seed。
-表格：待回填。
+extraction，长度 4096/8192，每 cell 20 samples、greedy、单 seed。第一轮使用官方
+`tokens_to_generate`（v1，70/70 完成）：NIAH single 全部 100；packed 在 CWE 4K 点估计
+最高（98.5）；TurboQuant 在 CWE 4K 明显回落（k8v4 65.5 / 4bit_nc 67.0 vs fp16 97.5）。
+**FWE 的 0 分与 VT/multiquery 部分 miss 是 `<think>` 消耗官方短预算的协议伪影**
+（已逐样本抽查），v1 保留为协议敏感性数据；第二版以 max_tokens=256 重跑全部 70
+cells（attempt `ruler-subset-20260807-v2-256`）作为主报告协议，待回填。
 
 ## 3. Serving（TurboQuant/FP8，protocol-v3）
 
