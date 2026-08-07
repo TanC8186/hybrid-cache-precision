@@ -102,15 +102,20 @@ def main() -> int:
         / args.attempt_id
         / f"{args.task}__L{args.length}__{args.allocation}__s{args.seed}.json"
     )
-    if args.resume and out_path.exists():
-        existing = json.loads(out_path.read_text(encoding="utf-8"))
-        if existing.get("status") == "completed_validated":
-            print(f"resume: skip {out_path}")
-            return 0
-
     data_file = Path(args.data_root) / f"{args.task}_L{args.length}" / "validation.jsonl"
     if not data_file.exists():
         raise SystemExit(f"dataset missing: {data_file}")
+    data_sha = sha256_file(data_file)
+    if args.resume and out_path.exists():
+        existing = json.loads(out_path.read_text(encoding="utf-8"))
+        if (
+            existing.get("status") == "completed_validated"
+            and existing.get("data_sha256") == data_sha
+            and existing.get("ruler_commit") == RULER_COMMIT
+        ):
+            print(f"resume: skip {out_path}")
+            return 0
+
     rows = [
         json.loads(line)
         for line in data_file.read_text(encoding="utf-8").splitlines()
