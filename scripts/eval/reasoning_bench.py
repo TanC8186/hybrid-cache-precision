@@ -125,7 +125,18 @@ def normalize_expected(bench: str, expected: str) -> str:
     if bench == "gsm8k":
         return expected.replace(",", "")
     if bench == "aime25":
-        return str(int(expected))
+        # AIME2025 stores some answers as LaTeX/unit strings (e.g. "336^\\circ").
+        # AIME answers are integers, so canonicalize to the integer.
+        text = expected.strip().replace("$", "").replace(",", "")
+        frac = re.fullmatch(r"\\frac\{([^}]+)\}\{([^}]+)\}", text)
+        if frac:
+            from fractions import Fraction
+
+            value = Fraction(frac.group(1).strip(), frac.group(2).strip())
+            return str(value) if value.denominator == 1 else str(value)
+        text = re.sub(r"\\circ|\\degree|\\text\{[^}]*\}", "", text).strip()
+        numbers = re.findall(r"\d+", text)
+        return numbers[-1] if numbers else text
     return expected
 
 
