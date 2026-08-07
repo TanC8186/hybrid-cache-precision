@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 # Reasoning benchmarks: gsm8k(200) + mmlu(500) + aime25(30) x 5 allocations x 1 seed.
 # Greedy (temperature=0) with fixed datasets; engine seed does not change outputs.
-# Main protocol: --disable-thinking. Qwen3.5 thinking traces hit the generation
-# budget on a large share of cells (gsm8k 171/200 @256, mmlu 113/500 @128,
-# aime25 30/30 @1024 in attempt reasoning-20260807), so "last token" extraction
-# becomes a truncation artifact; attempt reasoning-20260807 is retained as
+# Main protocol: --disable-thinking (chat template, enable_thinking=False) with
+# generous budgets (gsm8k 1024 / mmlu 512 / aime25 4096) so the model can state
+# a final answer; extraction prefers the last answer marker (strict final).
+# Attempts reasoning-20260807 (thinking, small budgets) and
+# reasoning-20260807-nothink (no-think, small budgets) are retained as
 # protocol-sensitivity data and must not be used as the main protocol.
 set -euo pipefail
 cd /root/autodl-tmp/MLSys_Research

@@ -1,5 +1,5 @@
-"""Analyze reasoning benchmark cells: per (bench, allocation) mean over 3
-seeds and paired deltas vs fp16."""
+"""Analyze reasoning benchmark cells: per (bench, allocation) single-seed
+accuracy (strict-final and fallback), marker coverage, paired deltas vs fp16."""
 
 from __future__ import annotations
 
@@ -43,13 +43,29 @@ def main() -> int:
     if missing:
         raise SystemExit(f"incomplete cells: {len(missing)} missing, e.g. {missing[:5]}")
 
+    thinking_modes = {rec.get("thinking") for rec in by_key.values()}
+    if len(thinking_modes) != 1:
+        raise SystemExit(f"inconsistent thinking modes: {thinking_modes}")
+    capped = {
+        key: sum(
+            1 for case in rec["cases"] if case["output_tokens"] >= rec["sampling_params"]["max_tokens"]
+        )
+        for key, rec in by_key.items()
+    }
+    marker_cover = {
+        key: sum(1 for case in rec["cases"] if case.get("extraction_source") == "final_marker")
+        for key, rec in by_key.items()
+    }
+
     rows = []
     for b in benches:
         row = {"bench": b, "num_samples": by_key[(b, "fp16", seeds[0])]["num_samples"]}
         for a in allocs:
             scores = [by_key[(b, a, s)]["accuracy"] for s in seeds]
             row[a] = round(statistics.mean(scores), 4)
-            row[f"std_{a}"] = round(statistics.stdev(scores), 4)
+            row[f"std_{a}"] = round(statistics.stdev(scores), 4) if len(scores) > 1 else 0.0
+            strict_scores = [by_key[(b, a, s)]["accuracy_strict_final"] for s in seeds]
+            row[f"strict_{a}"] = round(statistics.mean(strict_scores), 4)
         for a in allocs:
             if a == "fp16":
                 continue
@@ -68,8 +84,18 @@ def main() -> int:
     result = {
         "schema_version": 1,
         "attempt": args.attempt,
+        "thinking": thinking_modes.pop(),
         "rows": rows,
-        "extraction_note": "gsm8k=last number; mmlu=last A-D; aime25=last integer",
+        "final_marker_coverage": {
+            f"{b}__{a}__s{s}": marker_cover[(b, a, s)] for b in benches for a in allocs for s in seeds
+        },
+        "capped_at_max_tokens": {
+            f"{b}__{a}__s{s}": capped[(b, a, s)] for b in benches for a in allocs for s in seeds
+        },
+        "extraction_note": (
+            "gsm8k=last number; mmlu=last A-D; aime25=last integer; "
+            "thinking=disabled means the extraction is not a truncation artifact"
+        ),
     }
     out = Path(args.out)
     out.parent.mkdir(parents=True, exist_ok=True)

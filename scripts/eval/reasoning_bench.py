@@ -6,7 +6,12 @@ Benches (disclosed subsets):
 - aime25: opencompass/AIME2025, all 30 problems (I + II).
 
 Cell = (bench, allocation, seed). Atomic JSON + sha256 per cell, resumable.
-Scoring is deterministic extraction (documented per bench).
+Scoring is deterministic extraction (documented per bench). Main protocol:
+--disable-thinking (chat template, enable_thinking=False) and generous budgets
+(gsm8k 1024 / mmlu 512 / aime25 4096) so the model can state a final answer.
+Extraction prefers the last "answer"/"result" marker (strict final answer);
+if no marker exists it falls back to the last candidate token and records the
+case as fallback so artifact cases remain auditable.
 """
 
 from __future__ import annotations
@@ -28,10 +33,12 @@ DATA_ROOT = Path("/root/autodl-tmp/caches/datasets")
 ALLOCATIONS = ["fp16", "uniform_int4", "packed_per_layer", "turboquant_k8v4", "turboquant_4bit_nc"]
 
 BENCH_CONFIG = {
-    "gsm8k": {"max_tokens": 256, "max_samples": 200},
-    "mmlu": {"max_tokens": 128, "max_samples": 500},
-    "aime25": {"max_tokens": 1024, "max_samples": 30},
+    "gsm8k": {"max_tokens": 1024, "max_samples": 200},
+    "mmlu": {"max_tokens": 512, "max_samples": 500},
+    "aime25": {"max_tokens": 4096, "max_samples": 30},
 }
+
+ANSWER_MARKER_RE = re.compile(r"(?i)\b(?:answer|result)(?:\s*:\s*|\s+|$)")
 
 
 def sha256_file(path: Path) -> str:
@@ -106,18 +113,25 @@ def load_rows(bench: str, max_samples: int) -> tuple[list[dict], list[str]]:
     raise SystemExit(f"unknown bench: {bench}")
 
 
-def extract_answer(bench: str, prediction: str) -> str | None:
+def extract_answer(bench: str, prediction: str) -> tuple[str | None, str]:
+    markers = list(ANSWER_MARKER_RE.finditer(prediction))
+    if markers:
+        segment = prediction[markers[-1].end():]
+        source = "final_marker"
+    else:
+        segment = prediction
+        source = "last_token_fallback"
     if bench == "gsm8k":
-        numbers = re.findall(r"[-+]?\d[\d,]*(?:\.\d+)?", prediction)
+        numbers = re.findall(r"[-+]?\d[\d,]*(?:\.\d+)?", segment)
         if not numbers:
-            return None
-        return numbers[-1].replace(",", "")
+            return None, source
+        return numbers[-1].replace(",", ""), source
     if bench == "mmlu":
-        letters = re.findall(r"\b([A-D])\b", prediction.upper())
-        return letters[-1] if letters else None
+        letters = re.findall(r"\b([A-D])\b", segment.upper())
+        return (letters[-1] if letters else None), source
     if bench == "aime25":
-        numbers = re.findall(r"\d+", prediction)
-        return numbers[-1] if numbers else None
+        numbers = re.findall(r"\d+", segment)
+        return (numbers[-1] if numbers else None), source
     raise SystemExit(f"unknown bench: {bench}")
 
 
@@ -221,12 +235,15 @@ def main() -> int:
     )
     cases = []
     hits = 0
+    strict_hits = 0
     for row, prompt, output in zip(rows, prompts, outputs):
         prediction = output.outputs[0].text
-        predicted = extract_answer(args.bench, prediction)
+        predicted, extraction_source = extract_answer(args.bench, prediction)
         expected_norm = normalize_expected(args.bench, row["expected"])
         hit = predicted is not None and predicted == expected_norm
+        strict_hit = hit and extraction_source == "final_marker"
         hits += int(hit)
+        strict_hits += int(strict_hit)
         cases.append(
             {
                 "question": row["question"],
@@ -234,6 +251,8 @@ def main() -> int:
                 "prediction": prediction,
                 "predicted": predicted,
                 "hit": hit,
+                "hit_strict_final": strict_hit,
+                "extraction_source": extraction_source,
                 "prompt_tokens": len(output.prompt_token_ids),
                 "output_tokens": len(output.outputs[0].token_ids),
             }
@@ -248,11 +267,12 @@ def main() -> int:
         "seed": args.seed,
         "num_samples": len(cases),
         "accuracy": round(hits / len(cases), 4),
+        "accuracy_strict_final": round(strict_hits / len(cases), 4),
         "thinking": thinking,
         "extraction": {
-            "gsm8k": "last numeric token (commas stripped)",
-            "mmlu": "last A-D letter token",
-            "aime25": "last integer token",
+            "gsm8k": "last numeric token after final answer marker (commas stripped)",
+            "mmlu": "last A-D letter token after final answer marker",
+            "aime25": "last integer token after final answer marker",
         }[args.bench],
         "cases": cases,
         "engine": {
