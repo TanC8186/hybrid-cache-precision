@@ -1,22 +1,22 @@
 #!/usr/bin/env bash
-# Wait for the R5 serving MVEx+Pilot gates, then run the Qwen3.5-9B NIAH
-# rerun (core allocations) on the same GPU.
+# Wait for the RULER v2 (max_tokens=256) matrix, then run the Qwen3.5-9B
+# NIAH rerun (core allocations) on the same GPU.
 set -euo pipefail
 
-GATES_LOG="${1:-/root/autodl-tmp/MLSys_Research/logs/r5-serving-v3-gates-20260807.log}"
+RULER_V2_LOG="${1:-/root/autodl-tmp/MLSys_Research/logs/ruler-subset-20260807-v2-256.log}"
 MAX_WAIT_S="${2:-43200}"
 WAITED=0
 
 while true; do
-  if grep -q '\[DONE_GATES\]' "$GATES_LOG" 2>/dev/null; then
+  if grep -q '\[DONE\] ruler-subset-20260807-v2-256' "$RULER_V2_LOG" 2>/dev/null; then
     break
   fi
-  if grep -q '\[FAIL\]' "$GATES_LOG" 2>/dev/null; then
-    echo "serving gates FAILED; not launching 9B" >&2
+  if grep -q '\[FAIL\]' "$RULER_V2_LOG" 2>/dev/null; then
+    echo "RULER v2 FAILED; not launching 9B" >&2
     exit 3
   fi
   if [ "$WAITED" -ge "$MAX_WAIT_S" ]; then
-    echo "timed out waiting for serving gates" >&2
+    echo "timed out waiting for RULER v2" >&2
     exit 2
   fi
   sleep 60

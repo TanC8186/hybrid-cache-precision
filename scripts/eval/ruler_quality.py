@@ -103,24 +103,38 @@ def main() -> int:
     ap.add_argument("--data-root", default="data/ruler")
     ap.add_argument("--out-dir", default="results/quality/ruler-subset")
     ap.add_argument("--attempt-id", default="ruler-subset-20260807")
+    ap.add_argument(
+        "--max-tokens",
+        type=int,
+        default=0,
+        help="generation budget override; 0 = official tokens_to_generate",
+    )
     ap.add_argument("--resume", action="store_true")
     args = ap.parse_args()
+
+    data_file = Path(args.data_root) / f"{args.task}_L{args.length}" / "validation.jsonl"
+    if not data_file.exists():
+        raise SystemExit(f"dataset missing: {data_file}")
+    data_sha = sha256_file(data_file)
+    tasks_base = load_tasks_base()
+    task_type = TASK_TYPE.get(args.task)
+    if task_type is None:
+        raise SystemExit(f"unknown ruler task: {args.task}")
+    config = tasks_base[task_type]
+    effective_max_tokens = args.max_tokens or int(config["tokens_to_generate"])
 
     out_path = (
         Path(args.out_dir)
         / args.attempt_id
         / f"{args.task}__L{args.length}__{args.allocation}__s{args.seed}.json"
     )
-    data_file = Path(args.data_root) / f"{args.task}_L{args.length}" / "validation.jsonl"
-    if not data_file.exists():
-        raise SystemExit(f"dataset missing: {data_file}")
-    data_sha = sha256_file(data_file)
     if args.resume and out_path.exists():
         existing = json.loads(out_path.read_text(encoding="utf-8"))
         if (
             existing.get("status") == "completed_validated"
             and existing.get("data_sha256") == data_sha
             and existing.get("ruler_commit") == RULER_COMMIT
+            and existing.get("max_tokens") == effective_max_tokens
         ):
             print(f"resume: skip {out_path}")
             return 0
@@ -134,12 +148,7 @@ def main() -> int:
     if missing_prefix:
         raise SystemExit(f"fail-closed: {len(missing_prefix)} rows lack answer_prefix")
 
-    tasks_base = load_tasks_base()
     metrics = load_metrics()
-    task_type = TASK_TYPE.get(args.task)
-    if task_type is None:
-        raise SystemExit(f"unknown ruler task: {args.task}")
-    config = tasks_base[task_type]
     metric_fn = metrics[task_type]["metric_fn"]
 
     sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -163,7 +172,7 @@ def main() -> int:
     prompts = [row["input"] + row.get("answer_prefix", "") for row in rows]
     outputs = llm.generate(
         prompts,
-        SamplingParams(max_tokens=config["tokens_to_generate"], temperature=0.0),
+        SamplingParams(max_tokens=effective_max_tokens, temperature=0.0),
         use_tqdm=True,
     )
     preds = [output.outputs[0].text for output in outputs]
@@ -194,6 +203,7 @@ def main() -> int:
         "seed": args.seed,
         "num_samples": len(rows),
         "tokens_to_generate": config["tokens_to_generate"],
+        "max_tokens": effective_max_tokens,
         "accuracy": score,
         "metric": "string_match_all",
         "ruler_commit": RULER_COMMIT,
@@ -206,7 +216,7 @@ def main() -> int:
             "vllm_version": vllm_version,
         },
         "config_effect": effect,
-        "sampling_params": {"max_tokens": config["tokens_to_generate"], "temperature": 0.0},
+        "sampling_params": {"max_tokens": effective_max_tokens, "temperature": 0.0},
         "elapsed_s": round(time.time() - t0, 1),
         "created_at_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         "host": platform.node(),

@@ -32,6 +32,11 @@ def main() -> int:
     print("first prediction:", repr(first["prediction"][:160]))
     print("first references:", first["references"])
     print("first hits:", first["hits"])
+    missed = [case for case in rec["cases"] if not all(case["hits"])]
+    print("missed samples:", len(missed), "/", len(rec["cases"]))
+    for case in missed[:5]:
+        print("  refs:", case["references"], "hits:", case["hits"])
+        print("  pred:", repr(case["prediction"][:220]))
     return 0
 
 
