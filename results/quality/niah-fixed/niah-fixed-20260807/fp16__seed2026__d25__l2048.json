@@ -1,0 +1,73 @@
+{
+  "accuracy": 1.0,
+  "allocation": "fp16",
+  "attempt_id": "niah-fixed-20260807",
+  "cases": [
+    {
+      "answer": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:** The user has provided a long string of text that appears to be a list of words, phrases, or perhaps a scrambled sentence/code. The text ends with \"The secret code is YU2L76Q5.\" The user asks to identify the secret code mentioned in the text and answer with the exact code.\n\n2.  **Scan the Text:** I need to look through the provided text to find the specific string \"The secret code is...\" or similar patterns that indicate the answer.\n    *   Scanning...\n    *   Found: \"The secret code is YU2L76Q5.\" near the end of the text block.\n    *   Context: The text looks like a concatenation of words (marble, quartz, yellow, underwood, beacon, valley, anchor, tracer, valley, basket, jungle, lagoon, zebra, meadow, alpine, oxygen, garden, signal, umbrella, valley, equator, glacier, marble, oxygen, horizon, falcon, pebble, yellow, tracer, nebula, harbor, xylem, underwood, island, ember, nebula, candle, marble",
+      "code": "YU2L76Q5",
+      "hit": true,
+      "hit_final": false,
+      "hit_think": true,
+      "output_tokens": 256,
+      "prompt_tokens": 2724,
+      "prompt_words": 2069
+    },
+    {
+      "answer": "\n\nQ462QQZ5",
+      "code": "Q462QQZ5",
+      "hit": true,
+      "hit_final": true,
+      "hit_think": false,
+      "output_tokens": 9,
+      "prompt_tokens": 2695,
+      "prompt_words": 2069
+    },
+    {
+      "answer": "\n\nY9BD3WLB",
+      "code": "Y9BD3WLB",
+      "hit": true,
+      "hit_final": true,
+      "hit_think": false,
+      "output_tokens": 8,
+      "prompt_tokens": 2756,
+      "prompt_words": 2069
+    }
+  ],
+  "config_effect": {
+    "allocation": "fp16",
+    "detail": {
+      "a2_flag": false,
+      "cache_dtype": "auto",
+      "per_layer": {}
+    },
+    "group_structure_verified": false,
+    "ok": true
+  },
+  "context_length_note": "max_len counts filler words, not tokens; actual prompt_words per case recorded",
+  "created_at_utc": "2026-08-07T03:51:37Z",
+  "depth_pct": 25,
+  "elapsed_s": 62.2,
+  "engine": {
+    "kwargs": {
+      "disable_log_stats": true,
+      "enforce_eager": true,
+      "gpu_memory_utilization": 0.85,
+      "max_model_len": 16384,
+      "seed": 2026
+    },
+    "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master",
+    "vllm_version": "0.26.1rc1.dev245+ge2fa28594"
+  },
+  "host": "autodl-container-ca6c40b13f-016bd465",
+  "max_len": 2048,
+  "max_tokens": 256,
+  "num_needles": 3,
+  "sampling_params": {
+    "max_tokens": 256,
+    "temperature": 0.0
+  },
+  "schema_version": 1,
+  "seed": 2026,
+  "status": "completed_validated"
+}
