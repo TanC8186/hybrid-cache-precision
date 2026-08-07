@@ -73,6 +73,20 @@ TurboQuant 在 CWE 4K 出现明显掉分（65.5/67.0 vs 97.5），与 vLLM Turbo
 （b）量化列高于 fp16 的排序**不是质量信号**，禁止用于任何结论；
 （c）若需可解读的 FWE，后续应使用更大预算（如 1024）或禁用 thinking 后重跑。
 
+**FWE 禁用 thinking 重跑（`enable_thinking=False` 经 Qwen3.5 chat template 包装，
+max_tokens=256，attempt `ruler-fwe-fixed-nothink-20260807`，6/6 完成）**：
+
+| 分配 | FWE 4K | FWE 8K |
+|---|---:|---:|
+| fp16 | **93.33** | 100.0 |
+| uniform int4 | 88.33 | 100.0 |
+| packed per-layer | 88.33 | 100.0 |
+
+解读：禁用 thinking 后 FWE 变为可解读的抽取任务；量化两列与 fp16 在 8K 持平，
+4K 点估计低 5 分（88.33 vs 93.33，20 样本，单 seed）；无显著退化结论需更多样本
+支撑，但方向上 fp16 ≥ 量化，符合预期。此版本作为 FWE 主报告协议（v1/v2-256
+保留为协议敏感性数据）。
+
 ## 3. TurboQuant/FP8 serving（protocol-v3）
 
 状态：**排队中**（门禁 MVEx+Pilot → 人工审阅 → Formal）。

@@ -7,7 +7,10 @@ from pathlib import Path
 
 
 def main() -> int:
-    base = Path("results/quality/ruler-subset/ruler-fwe-fixed-20260807")
+    import sys
+
+    attempt = sys.argv[1] if len(sys.argv) > 1 else "ruler-fwe-fixed-20260807"
+    base = Path("results/quality/ruler-subset") / attempt
     rows = []
     for path in sorted(base.glob("*.json")):
         rec = json.loads(path.read_text(encoding="utf-8"))

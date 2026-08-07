@@ -32,6 +32,10 @@ cells（attempt `ruler-subset-20260807-v2-256`）作为主报告协议，待回�
 `<think>` 未输出答案为主，量化列“更高”来自思考文本顺带命中目标词，属协议伪影，
 不构成质量结论；FWE 建议从主表格中排除或仅作披露性附注。
 
+**FWE 禁用 thinking 版（enable_thinking=False，6/6 完成）**：4K 93.33 / 88.33 /
+88.33，8K 100.0 / 100.0 / 100.0（fp16 / uniform / packed）。禁用思考后 FWE 可解读：
+8K 完全持平，4K 量化点估计低 5 分；作为 FWE 主报告协议。
+
 ## 3. Serving（TurboQuant/FP8，protocol-v3）
 
 （待回填）在 A2 protocol-v3 相同契约下（PIECEWISE、Random60/ShareGPT300、warmup 120、
