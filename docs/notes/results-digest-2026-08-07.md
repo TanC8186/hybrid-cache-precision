@@ -23,6 +23,13 @@
 `hit_final`（严格最终答案）保持 R4/R5 的排序：packed 0.9259 > fp16/uniform 0.9074 >
 4bit_nc 0.8889 > k8v4 0.8519——与旧协议数值一致，说明旧协议虽截断但配对比较方向仍成立。
 
+**最终答案指标（post-hoc，`hit_last_section`）**：取生成文本中最后一个 `Answer:`
+之后的内容判定 code（无 `Answer:` 时用全文）。对 2B 全部 270 条 needle 与 9B 已完成
+15 条 needle，`hit_last_section` 与 `hit`（任意位置）**零分歧**；9B 的重复输出
+（先答 code 再重复 Question/Answer）不影响判定，最后一次 Answer 块仍包含正确 code。
+结果：`results/quality/niah-fixed-final-answer.json`、
+`results/quality/niah-fixed-9b-final-answer.json`。
+
 ## 2. RULER 子集（attempt `ruler-subset-20260807`）
 
 状态：**v1（官方 tokens_to_generate）完成 70/70**；**v2（max_tokens=256）完成 70/70**
