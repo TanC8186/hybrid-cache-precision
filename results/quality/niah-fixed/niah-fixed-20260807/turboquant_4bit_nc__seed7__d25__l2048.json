@@ -1,0 +1,74 @@
+{
+  "accuracy": 0.6666666666666666,
+  "allocation": "turboquant_4bit_nc",
+  "attempt_id": "niah-fixed-20260807",
+  "cases": [
+    {
+      "answer": "\n\nNPCUKCAT",
+      "code": "NPCUKCAT",
+      "hit": true,
+      "hit_final": true,
+      "hit_think": false,
+      "output_tokens": 5,
+      "prompt_tokens": 2735,
+      "prompt_words": 2069
+    },
+    {
+      "answer": "\n\nCREUGUZZ",
+      "code": "CREUGUZZ",
+      "hit": true,
+      "hit_final": true,
+      "hit_think": false,
+      "output_tokens": 6,
+      "prompt_tokens": 2694,
+      "prompt_words": 2069
+    },
+    {
+      "answer": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing various words, phrases, and a specific string at the end.\n    *   Task: Identify the \"secret code\" mentioned in the text.\n    *   Constraint: Answer with the exact code.\n\n2.  **Scan the Text:**\n    *   I need to look for a pattern that looks like a code (e.g., numbers, letters, specific formatting) that stands out as a \"secret code\".\n    *   The text is a list of words (mostly nature-related: island, jungle, thunder, etc.) followed by a specific string.\n    *   Scanning towards the end of the text: \"...drizzle horizon candle alpine willow yellow river prairie drizzle island glacier river tracer alpine needle pebble thunder valley nebula zebra ivory equator equator thunder marble glacier prairie meadow journey zebra valley river compass basket harbor marble falcon candle lagoon quartz rocket vapor beacon prairie nebula whisper whisper falcon ivory rocket needle jungle dolphin umbrella horizon oxygen river xylem umbrella anchor jungle needle pebble pebble lantern needle marble underwood willow journey lagoon thunder yellow",
+      "code": "ZAF928TG",
+      "hit": false,
+      "hit_final": false,
+      "hit_think": false,
+      "output_tokens": 256,
+      "prompt_tokens": 2794,
+      "prompt_words": 2069
+    }
+  ],
+  "config_effect": {
+    "allocation": "turboquant_4bit_nc",
+    "detail": {
+      "a2_flag": false,
+      "cache_dtype": "turboquant_4bit_nc",
+      "per_layer": {}
+    },
+    "group_structure_verified": false,
+    "ok": true
+  },
+  "context_length_note": "max_len counts filler words, not tokens; actual prompt_words per case recorded",
+  "created_at_utc": "2026-08-07T05:01:08Z",
+  "depth_pct": 25,
+  "elapsed_s": 61.1,
+  "engine": {
+    "kwargs": {
+      "disable_log_stats": true,
+      "enforce_eager": true,
+      "gpu_memory_utilization": 0.85,
+      "kv_cache_dtype": "turboquant_4bit_nc",
+      "max_model_len": 16384,
+      "seed": 7
+    },
+    "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master",
+    "vllm_version": "0.26.1rc1.dev245+ge2fa28594"
+  },
+  "host": "autodl-container-ca6c40b13f-016bd465",
+  "max_len": 2048,
+  "max_tokens": 256,
+  "num_needles": 3,
+  "sampling_params": {
+    "max_tokens": 256,
+    "temperature": 0.0
+  },
+  "schema_version": 1,
+  "seed": 7,
+  "status": "completed_validated"
+}

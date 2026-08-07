@@ -22,6 +22,15 @@ RULER_ROOT = Path(__file__).resolve().parents[2] / "vendor" / "ruler"
 RULER_COMMIT = "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a"
 MODEL_DEFAULT = "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master"
 ALLOCATIONS = ["fp16", "uniform_int4", "packed_per_layer", "turboquant_k8v4", "turboquant_4bit_nc"]
+TASK_TYPE = {
+    "ruler_niah_single": "niah",
+    "ruler_niah_multikey": "niah",
+    "ruler_niah_multivalue": "niah",
+    "ruler_niah_multiquery": "niah",
+    "ruler_vt": "variable_tracking",
+    "ruler_cwe": "common_words_extraction",
+    "ruler_fwe": "freq_words_extraction",
+}
 
 
 def load_tasks_base() -> dict:
@@ -127,7 +136,9 @@ def main() -> int:
 
     tasks_base = load_tasks_base()
     metrics = load_metrics()
-    task_type = args.task.split("_", 1)[1] if args.task.startswith("ruler_") else args.task
+    task_type = TASK_TYPE.get(args.task)
+    if task_type is None:
+        raise SystemExit(f"unknown ruler task: {args.task}")
     config = tasks_base[task_type]
     metric_fn = metrics[task_type]["metric_fn"]
 

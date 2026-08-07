@@ -1,0 +1,74 @@
+{
+  "accuracy": 1.0,
+  "allocation": "turboquant_k8v4",
+  "attempt_id": "niah-fixed-20260807",
+  "cases": [
+    {
+      "answer": "\n\nDQLF2ACK",
+      "code": "DQLF2ACK",
+      "hit": true,
+      "hit_final": true,
+      "hit_think": false,
+      "output_tokens": 7,
+      "prompt_tokens": 2725,
+      "prompt_words": 2069
+    },
+    {
+      "answer": "\n\nBLY48P7A",
+      "code": "BLY48P7A",
+      "hit": true,
+      "hit_final": true,
+      "hit_think": false,
+      "output_tokens": 9,
+      "prompt_tokens": 2780,
+      "prompt_words": 2069
+    },
+    {
+      "answer": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:** The user has provided a long text that appears to be a jumbled or encoded string of words (likely a \"word salad\" or a specific type of puzzle text). The text contains many words like \"jungle\", \"rocket\", \"signal\", \"pebble\", \"dolphin\", etc., arranged in a seemingly random order. The user explicitly states: \"The secret code is C77KX8ZU.\" and asks me to answer the question \"What is the secret code mentioned in the text? Answer with the exact code.\"\n\n2.  **Analyze the Input Text:**\n    *   The text is a massive string of words.\n    *   It looks like a \"word scramble\" or a \"code\" where words are mixed.\n    *   However, the prompt *already* contains the answer in the very first sentence of the prompt: \"The secret code is C77KX8ZU.\"\n    *   Wait, let me re-read the prompt carefully.\n    *   Prompt: \"jungle rocket signal pebble dolphin prairie tracer anchor whisper thunder basket island alpine river orchard harbor signal tracer oxygen basket",
+      "code": "C77KX8ZU",
+      "hit": true,
+      "hit_final": false,
+      "hit_think": true,
+      "output_tokens": 256,
+      "prompt_tokens": 2723,
+      "prompt_words": 2069
+    }
+  ],
+  "config_effect": {
+    "allocation": "turboquant_k8v4",
+    "detail": {
+      "a2_flag": false,
+      "cache_dtype": "turboquant_k8v4",
+      "per_layer": {}
+    },
+    "group_structure_verified": false,
+    "ok": true
+  },
+  "context_length_note": "max_len counts filler words, not tokens; actual prompt_words per case recorded",
+  "created_at_utc": "2026-08-07T04:58:47Z",
+  "depth_pct": 75,
+  "elapsed_s": 60.3,
+  "engine": {
+    "kwargs": {
+      "disable_log_stats": true,
+      "enforce_eager": true,
+      "gpu_memory_utilization": 0.85,
+      "kv_cache_dtype": "turboquant_k8v4",
+      "max_model_len": 16384,
+      "seed": 2026
+    },
+    "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master",
+    "vllm_version": "0.26.1rc1.dev245+ge2fa28594"
+  },
+  "host": "autodl-container-ca6c40b13f-016bd465",
+  "max_len": 2048,
+  "max_tokens": 256,
+  "num_needles": 3,
+  "sampling_params": {
+    "max_tokens": 256,
+    "temperature": 0.0
+  },
+  "schema_version": 1,
+  "seed": 2026,
+  "status": "completed_validated"
+}

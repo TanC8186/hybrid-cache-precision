@@ -1,0 +1,74 @@
+{
+  "accuracy": 0.6666666666666666,
+  "allocation": "turboquant_k8v4",
+  "attempt_id": "niah-fixed-20260807",
+  "cases": [
+    {
+      "answer": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A long text containing various keywords, phrases, and a specific string at the end.\n    *   Task: Identify the \"secret code\" mentioned in the text.\n    *   Constraint: Answer with the exact code.\n\n2.  **Scan the Text:**\n    *   The text appears to be a massive list of words, some repeated, seemingly forming a pattern or a sentence.\n    *   I need to look for a specific string that looks like a code or a key.\n    *   Scanning towards the end of the text...\n    *   Found: \"The secret code is B33A2QT3.\"\n    *   Let's verify if this is the intended answer. The text starts with \"quartz kernel silver compass...\" and ends with \"...whisper whisper...\".\n    *   Wait, looking closely at the beginning and end.\n    *   Beginning: \"quartz kernel silver compass vapor falcon whisper vapor ivory anchor prairie candle quartz alpine rocket needle xylem oxygen equator kettle equator signal dolphin candle signal garden rocket orchard orchard dolphin jungle signal oxygen tracer ember",
+      "code": "B33A2QT3",
+      "hit": true,
+      "hit_final": false,
+      "hit_think": true,
+      "output_tokens": 256,
+      "prompt_tokens": 2736,
+      "prompt_words": 2069
+    },
+    {
+      "answer": "\n\n9BBLFGGH.",
+      "code": "9BBLFGGH",
+      "hit": true,
+      "hit_final": true,
+      "hit_think": false,
+      "output_tokens": 8,
+      "prompt_tokens": 2713,
+      "prompt_words": 2069
+    },
+    {
+      "answer": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:** The user wants to know the \"secret code\" mentioned in the provided text. The answer should be the exact code.\n\n2.  **Scan the Text:** I need to look through the long list of words (which appears to be a jumbled or encoded string of words) to find a specific pattern or a phrase that looks like a code.\n\n3.  **Locate the Code:**\n    *   The text starts with \"harbor whisper falcon willow drizzle anchor orchard rocket meadow glacier harbor nebula dolphin river island nebula kernel kettle yellow ember valley marble river thunder island drizzle equator willow needle river basket yellow island island island drizzle underwood river needle falcon compass silver zebra glacier ember marble valley oxygen lantern zebra lagoon yellow equator beacon meadow drizzle basket valley anchor nebula silver thunder island signal pebble needle umbrella garden basket orchard zebra nebula horizon valley jungle zebra river rocket marble orchard lagoon drizzle island valley ember glacier garden marble meadow thunder beacon journey orchard harbor whisper ivory candle drizzle prairie kernel orchard oxygen horizon vapor equator glacier needle prairie alpine alpine harbor candle",
+      "code": "DBTB47LY",
+      "hit": false,
+      "hit_final": false,
+      "hit_think": false,
+      "output_tokens": 256,
+      "prompt_tokens": 2718,
+      "prompt_words": 2069
+    }
+  ],
+  "config_effect": {
+    "allocation": "turboquant_k8v4",
+    "detail": {
+      "a2_flag": false,
+      "cache_dtype": "turboquant_k8v4",
+      "per_layer": {}
+    },
+    "group_structure_verified": false,
+    "ok": true
+  },
+  "context_length_note": "max_len counts filler words, not tokens; actual prompt_words per case recorded",
+  "created_at_utc": "2026-08-07T04:49:25Z",
+  "depth_pct": 50,
+  "elapsed_s": 66.4,
+  "engine": {
+    "kwargs": {
+      "disable_log_stats": true,
+      "enforce_eager": true,
+      "gpu_memory_utilization": 0.85,
+      "kv_cache_dtype": "turboquant_k8v4",
+      "max_model_len": 16384,
+      "seed": 42
+    },
+    "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master",
+    "vllm_version": "0.26.1rc1.dev245+ge2fa28594"
+  },
+  "host": "autodl-container-ca6c40b13f-016bd465",
+  "max_len": 2048,
+  "max_tokens": 256,
+  "num_needles": 3,
+  "sampling_params": {
+    "max_tokens": 256,
+    "temperature": 0.0
+  },
+  "schema_version": 1,
+  "seed": 42,
+  "status": "completed_validated"
+}

@@ -5,19 +5,23 @@
 
 ## 1. NIAH 重跑（max_tokens=256，attempt `niah-fixed-20260807`）
 
-状态：**运行中**（90 cells = 5 alloc × 3 seeds × 3 depths × 2 lengths）。
+状态：**完成**（90/90 cells，0 失败，90 个 JSON 哈希全部匹配）。
 判定：每 cell 3 needles；主指标 accuracy（code 出现在 answer），
 诊断指标 hit_final（`</think>` 后出现）/hit_think；paired Δ vs fp16（18-cell t-CI）。
 
 | 分配 | cell 均值 | 总体 needle | hit_final | Δ vs fp16 [95% CI] |
 |---|---:|---:|---:|---:|
-| fp16 | 待填写 | 待填写 | 待填写 | — |
-| uniform int4 | 待填写 | 待填写 | 待填写 | 待填写 |
-| packed per-layer | 待填写 | 待填写 | 待填写 | 待填写 |
-| turboquant_k8v4 | 待填写 | 待填写 | 待填写 | 待填写 |
-| turboquant_4bit_nc | 待填写 | 待填写 | 待填写 | 待填写 |
+| fp16 | 0.9630 ± 0.1078 | 0.9630 | 0.9074 | — |
+| uniform int4 | 0.9815 ± 0.0786 | 0.9815 | 0.9074 | +0.0185 [−0.0206, +0.0576] |
+| packed per-layer | 0.9815 ± 0.0786 | 0.9815 | 0.9259 | +0.0185 [−0.0206, +0.0576] |
+| turboquant_k8v4 | 0.9630 ± 0.1078 | 0.9630 | 0.8519 | 0.0000 [−0.0804, +0.0804] |
+| turboquant_4bit_nc | 0.9444 ± 0.1278 | 0.9444 | 0.8889 | −0.0185 [−0.0875, +0.0505] |
 
-结论（待填写）：32-token `<think>` 截断伪影是否消除；packed/TurboQuant 相对 fp16 是否无显著退化。
+结论：max_tokens=256 后 `<think>` 截断伪影基本消除（带 `<think>` 标签的 needle 从 28
+降到 5/6/5/10/11，且这些案例也多数已完整输出答案）；所有分配相对 fp16 的配对
+95% CI 均包含 0；packed 点估计最优，TurboQuant 4bit_nc 点估计最低但无统计显著差异。
+`hit_final`（严格最终答案）保持 R4/R5 的排序：packed 0.9259 > fp16/uniform 0.9074 >
+4bit_nc 0.8889 > k8v4 0.8519——与旧协议数值一致，说明旧协议虽截断但配对比较方向仍成立。
 
 ## 2. RULER 子集（attempt `ruler-subset-20260807`）
 

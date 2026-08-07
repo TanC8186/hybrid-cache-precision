@@ -1,0 +1,74 @@
+{
+  "accuracy": 1.0,
+  "allocation": "turboquant_4bit_nc",
+  "attempt_id": "niah-fixed-20260807",
+  "cases": [
+    {
+      "answer": "\n\nTFUUSSJJ",
+      "code": "TFUUSSJJ",
+      "hit": true,
+      "hit_final": true,
+      "hit_think": false,
+      "output_tokens": 6,
+      "prompt_tokens": 2747,
+      "prompt_words": 2069
+    },
+    {
+      "answer": "\n\n4VQ5FY6R.\n\n(Note: The text contains the phrase \"The secret code is 4VQ5FY6R.\" followed by a long list of words. The question asks for the code mentioned in the text, which is explicitly stated as 4VQ5FY6R.)\n\nAnswer: 4VQ5FY6R.\n\n(Note: The text explicitly states \"The secret code is 4VQ5FY6R.\" at the beginning of the second paragraph. The subsequent text is a long list of words.)\n\nAnswer: 4VQ5FY6R.\n\n(Note: The text explicitly states \"The secret code is 4VQ5FY6R.\" at the beginning of the second paragraph. The subsequent text is a long list of words.)\n\nAnswer: 4VQ5FY6R.\n\n(Note: The text explicitly states \"The secret code is 4VQ5FY6R.\" at the beginning of the second paragraph. The subsequent text is a long list of words.)\n\nAnswer: 4VQ5FY6R.\n\n(Note: The text explicitly states \"The secret code is 4VQ5FY6R.\" at the beginning of the second",
+      "code": "4VQ5FY6R",
+      "hit": true,
+      "hit_final": true,
+      "hit_think": false,
+      "output_tokens": 256,
+      "prompt_tokens": 2743,
+      "prompt_words": 2069
+    },
+    {
+      "answer": "\n\n29GPR34H. needle horizon umbrella candle willow candle pebble thunder signal orchard yellow alpine candle nebula alpine journey meadow dolphin oxygen nebula drizzle zebra vapor silver ivory anchor harbor zebra zebra river signal zebra willow zebra falcon quartz horizon ivory jungle orchard oxygen ember anchor vapor equator glacier signal jungle oxygen pebble yellow willow ember jungle basket horizon orchard meadow horizon island river ember willow nebula marble anchor journey orchard meadow lantern oxygen garden signal tracer basket dolphin anchor dolphin marble alpine quartz prairie valley harbor lagoon oxygen orchard ivory lagoon meadow valley whisper meadow meadow anchor garden basket jungle signal meadow ivory lagoon zebra horizon signal lagoon dolphin basket thunder compass silver lantern harbor meadow anchor kernel willow candle garden tracer drizzle valley glacier underwood beacon willow basket signal ivory whisper marble ember thunder tracer beacon harbor drizzle pebble drizzle jungle candle meadow ember river compass island alpine glacier pebble lagoon basket garden basket umbrella drizzle river silver compass silver kernel lantern oxygen ember anchor vapor compass zebra harbor orchard lantern valley island lagoon island garden kernel silver anchor marble ember signal silver lagoon kettle equator willow oxygen equator valley",
+      "code": "29GPR34H",
+      "hit": true,
+      "hit_final": true,
+      "hit_think": false,
+      "output_tokens": 256,
+      "prompt_tokens": 2750,
+      "prompt_words": 2069
+    }
+  ],
+  "config_effect": {
+    "allocation": "turboquant_4bit_nc",
+    "detail": {
+      "a2_flag": false,
+      "cache_dtype": "turboquant_4bit_nc",
+      "per_layer": {}
+    },
+    "group_structure_verified": false,
+    "ok": true
+  },
+  "context_length_note": "max_len counts filler words, not tokens; actual prompt_words per case recorded",
+  "created_at_utc": "2026-08-07T05:08:08Z",
+  "depth_pct": 25,
+  "elapsed_s": 68.7,
+  "engine": {
+    "kwargs": {
+      "disable_log_stats": true,
+      "enforce_eager": true,
+      "gpu_memory_utilization": 0.85,
+      "kv_cache_dtype": "turboquant_4bit_nc",
+      "max_model_len": 16384,
+      "seed": 42
+    },
+    "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master",
+    "vllm_version": "0.26.1rc1.dev245+ge2fa28594"
+  },
+  "host": "autodl-container-ca6c40b13f-016bd465",
+  "max_len": 2048,
+  "max_tokens": 256,
+  "num_needles": 3,
+  "sampling_params": {
+    "max_tokens": 256,
+    "temperature": 0.0
+  },
+  "schema_version": 1,
+  "seed": 42,
+  "status": "completed_validated"
+}

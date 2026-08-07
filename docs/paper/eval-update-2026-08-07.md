@@ -6,11 +6,15 @@
 
 ## 1. Retrieval（NIAH rerun，max_tokens=256）
 
-（待回填）使用与 R4 完全相同的 18-cell 网格（3 depths × 2 lengths × 3 seeds × 3 needles），
+使用与 R4 完全相同的 18-cell 网格（3 depths × 2 lengths × 3 seeds × 3 needles），
 生成上限从 32 提升到 256 token，并逐样本记录 `hit_final`（`</think>` 之后的命中）。
-在 `max_tokens=256` 下，`<think>` 截断伪影消失：fp16 平均 accuracy（待回填），
-uniform int4（待回填），packed per-layer（待回填），TurboQuant k8v4（待回填），
-TurboQuant 4-bit NC（待回填）。配对差（vs fp16，18-cell t-CI）：待回填。
+在 `max_tokens=256` 下，`<think>` 截断伪影基本消失：fp16 0.9630，uniform int4 0.9815，
+packed per-layer 0.9815，TurboQuant k8v4 0.9630，TurboQuant 4-bit NC 0.9444。
+配对差（vs fp16，18-cell t-CI）全部包含 0：uniform +0.0185 [−0.0206, +0.0576]；
+packed +0.0185 [−0.0206, +0.0576]；k8v4 0.0000 [−0.0804, +0.0804]；
+4bit_nc −0.0185 [−0.0875, +0.0505]。严格最终答案命中（hit_final）排序与 R4/R5
+一致（packed 0.9259 > fp16/uniform 0.9074 > 4bit_nc 0.8889 > k8v4 0.8519）。
+状态：ANALYZED（90/90 完成，哈希全匹配；独立复现未跑）。
 
 ## 2. Long-context（RULER subset，noise haystack）
 
