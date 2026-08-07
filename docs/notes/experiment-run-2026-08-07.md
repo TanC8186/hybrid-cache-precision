@@ -53,3 +53,9 @@
 - [ ] 每阶段结果回传本地（`results/quality/`）+ 哈希核对 + git 提交。
 - [ ] 9B 与推理完成后更新 `results/quality/*-analysis.json` 与论文 Eval 章节。
 - [ ] C4/PG19 PPL、32K/64K 探针、LongBench 子集（数据未下载）仍待后续安排。
+
+## 5. 已知待办/失败记录
+
+- C4/PG19 语料切片：`fetch_extra_corpora.py` 通过 hf-mirror streaming 抓取失败
+  （`huggingface_hub` pagination client-closed），待改用 ModelScope parquet 直下或
+  本地下载后上传；不影响 GPU 队列。
