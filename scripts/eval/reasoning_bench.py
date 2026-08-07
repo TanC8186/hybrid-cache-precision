@@ -151,11 +151,17 @@ def main() -> int:
     ap.add_argument("--max-samples", type=int, default=0)
     ap.add_argument("--out-dir", default="results/quality/reasoning")
     ap.add_argument("--attempt-id", default="reasoning-20260807")
+    ap.add_argument(
+        "--disable-thinking",
+        action="store_true",
+        help="wrap prompts with the model chat template using enable_thinking=False",
+    )
     ap.add_argument("--resume", action="store_true")
     args = ap.parse_args()
 
     max_samples = args.max_samples or BENCH_CONFIG[args.bench]["max_samples"]
     max_tokens = BENCH_CONFIG[args.bench]["max_tokens"]
+    thinking = "disabled" if args.disable_thinking else "default"
     out_path = (
         Path(args.out_dir)
         / args.attempt_id
@@ -163,13 +169,29 @@ def main() -> int:
     )
     if args.resume and out_path.exists():
         existing = json.loads(out_path.read_text(encoding="utf-8"))
-        if existing.get("status") == "completed_validated":
+        if (
+            existing.get("status") == "completed_validated"
+            and existing.get("thinking") == thinking
+        ):
             print(f"resume: skip {out_path}")
             return 0
 
     rows, prompts = load_rows(args.bench, max_samples)
     if len(rows) != max_samples:
         raise SystemExit(f"rows mismatch: {len(rows)} != {max_samples}")
+    if args.disable_thinking:
+        from transformers import AutoTokenizer  # noqa: PLC0415
+
+        tokenizer = AutoTokenizer.from_pretrained(args.model, trust_remote_code=True)
+        prompts = [
+            tokenizer.apply_chat_template(
+                [{"role": "user", "content": prompt}],
+                tokenize=False,
+                add_generation_prompt=True,
+                enable_thinking=False,
+            )
+            for prompt in prompts
+        ]
 
     sys.path.insert(0, str(Path(__file__).resolve().parent))
     from kv_quality_retrieval import engine_kwargs, verify_config_effect  # noqa: PLC0415
@@ -226,6 +248,7 @@ def main() -> int:
         "seed": args.seed,
         "num_samples": len(cases),
         "accuracy": round(hits / len(cases), 4),
+        "thinking": thinking,
         "extraction": {
             "gsm8k": "last numeric token (commas stripped)",
             "mmlu": "last A-D letter token",
