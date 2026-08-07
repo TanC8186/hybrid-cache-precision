@@ -45,5 +45,18 @@ fp16 / int4 / packed per-layer / TurboQuant k8v4 / TurboQuant 4-bit NC / FP8 的
 
 ## 4. Reasoning（2B 子集）
 
-（待回填）GSM8K（前 200）、MMLU（all/test 前 500）、AIME2025（全 30），greedy；
-抽取规则与子集规模如实披露。准确率：待回填。
+GSM8K（前 200）、MMLU（all/test 前 500）、AIME2025（全 30），greedy、单 seed。
+主协议：chat template `enable_thinking=False` + 大预算（1024/512/4096）+ 最终答案
+抽取（最后一个 answer/result 标记后的候选；无标记退回全文本最后候选并记录）。
+（thinking 模式与小预算版本因截断伪影保留为敏感性数据，禁用作主协议。）
+
+| bench | n | fp16 | uniform int4 | packed per-layer | TQ k8v4 | TQ 4-bit NC |
+|---|---:|---:|---:|---:|---:|---:|
+| GSM8K | 200 | 0.760 | 0.695 | 0.680 | 0.675 | 0.685 |
+| MMLU | 500 | 0.588 | 0.586 | 0.596 | 0.600 | 0.612 |
+| AIME2025 | 30 | 0.167 | 0.100 | 0.167 | 0.067 | 0.100 |
+
+结论边界：GSM8K 量化列点估计低 fp16 6.5–8.5pt（单 seed、无 CI，需多 seed 确认）；
+MMLU 量化列与 fp16 持平或略高（capped 99–118/500 各分配对称，严格最终答案口径
+仍持平）；AIME2025 在 4096 预算下仍有 20–22/30 未完成，各列均近地板，仅报告
+"各列无显著优势"。证据：`results/quality/reasoning-nothink-v2-analysis.json`。

@@ -136,6 +136,37 @@ TPOT 相对 fp16 开销、容量-吞吐 Pareto 点。
 
 ## 5. 推理基准（attempt `reasoning-20260807`）
 
-状态：**排队中**（15 cells = 3 bench × 5 alloc × 1 seed）。
-子集：gsm8k test 前 200、mmlu all/test 前 500、aime25 全 30；
-抽取：gsm8k=最后一个数字、mmlu=最后一个 A-D、aime25=最后一个整数。
+状态：**主协议完成 15/15**（attempt `reasoning-20260807-nothink-v2`；0 失败，
+30 个 JSON 哈希全部匹配）。另保留两个协议敏感性 attempt，**禁用作主协议**：
+
+- `reasoning-20260807`（thinking 模式 + 小预算 256/128/1024）：4/15 cells 完成
+  （fp16 三格 + uniform gsm8k），gsm8k 171–173/200、mmlu 113/500、aime25 30/30
+  撞 token 上限 → "最后候选"抽取为截断伪影。
+- `reasoning-20260807-nothink`（no-think + 小预算 256/128/1024）：15/15 完成，
+  但 gsm8k 95/200、mmlu 462/500、aime25 29/30 仍撞上限，伪影未消除。
+
+主协议：no-think（chat template `enable_thinking=False`）+ 大预算
+（gsm8k 1024 / mmlu 512 / aime25 4096）+ 最终答案抽取（取最后一个
+`answer`/`result` 标记后的候选；无标记退回全文本最后候选并在 cell 内记录
+`extraction_source`）。单 seed（greedy，seed=7），无配对 CI（n=1）。
+
+| bench | n | fp16 | uniform | packed | k8v4 | 4bit_nc |
+|---|---:|---:|---:|---:|---:|---:|
+| gsm8k | 200 | 0.7600 | 0.6950 | 0.6800 | 0.6750 | 0.6850 |
+| mmlu | 500 | 0.5880 | 0.5860 | 0.5960 | 0.6000 | 0.6120 |
+| aime25 | 30 | 0.1667 | 0.1000 | 0.1667 | 0.0667 | 0.1000 |
+
+截断与覆盖：gsm8k capped 4–7/200（≤3.5%）；mmlu capped 99–118/500
+（约 20–24%，各分配对称）；aime25 capped 20–22/30（4096 预算仍不足，2B 模型
+长推导/循环）。最终答案标记覆盖：gsm8k ~58–62%、mmlu ~78–80%、aime25 ~37–50%。
+
+结论边界：
+- **gsm8k**：量化列点估计低于 fp16 6.5–8.5pt（packed −8.0pt），单 seed 无 CI，
+  方向一致但不足以作统计结论，论文只能写"点估计回退，需多 seed 确认"。
+- **mmlu**：量化列与 fp16 持平或略高（packed +0.8pt，4bit_nc +2.4pt）；严格最终
+  答案口径仍持平（fp16 0.524，packed 0.512，4bit_nc 0.546）。
+- **aime25**：2B 模型在 4096 预算下仍有 2/3 无法完成，各列均近地板，Δ 仅 1–3 题，
+  无跨分配信号；论文应披露为预算受限，或仅报告"各列均无显著优势"。
+
+分析：`results/quality/reasoning-nothink-v2-analysis.json`；
+原始 cell：`results/quality/reasoning/reasoning-20260807-nothink-v2/`。
