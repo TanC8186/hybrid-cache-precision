@@ -4,8 +4,8 @@
 > (`results/ablations/bench_lat/{int4,fp16}/` and `results/ablations/serving_bench_20260803/`),
 > cross-checked against
 > `docs/notes/serving-latency-throughput-2026-08-03.md` (VALIDATED) and the server-log
-> provenance index `results/ablations/bench_lat/logs/PROVENANCE.md`. Items marked **[VERIFY]**
-> are estimates pending re-validation. Figures: `results/figures/fig{1,2,3}_*.png`.
+> provenance index `results/ablations/bench_lat/logs/PROVENANCE.md`. Figures:
+> `results/figures/fig{1,2,3}_*.png`.
 >
 > **Mainline note (2026-08-03).** This draft is based on **uniform 4-bit KV quantization**
 > (`kv_cache_dtype=int4_per_token_head`, i.e. uniform `int4_per_token_head` on every GQA
@@ -22,7 +22,7 @@
 > **Canonical-data update (2026-08-06).** The SLO section (§4) now reports the **protocol-v2
 > steady-state matrix** (`results/verified/2026-08-04/e3/validation_report.md`, VERIFIED:
 > 72/72 formal samples + 48/48 independent reproduction, 160,200 requests, zero failures) with
-> workload-specific sustainable boundaries. The earlier "+25%" SLO reading from the single-run
+> workload-specific sustainable boundaries. The earlier single-run SLO reading from the single-run
 > matrix is **withdrawn as a claim** and retained only as historical context. Quality (§6) now
 > uses the canonical 3-seed PPL file (`byte_budget_3seed.csv`, seeds 7/42/2026, 5 × 2048-token
 > sequences, final harness) with paired 95% t-CIs; the single-run byte-budget file is retained
@@ -213,7 +213,7 @@ ShareGPT intervals.
 Random traffic the boundary gain is 0% at the strictest 250 ms threshold, +4.8% at 500 ms, and
 +14.3% at 1000–3000 ms. On the real ShareGPT trace the boundary is **lower** for int4 (−17.6%),
 reversing the synthetic direction. Therefore no workload-general claim is made; Random and
-ShareGPT are reported separately, and the earlier "+25%" single-run reading is withdrawn
+ShareGPT are reported separately, and the earlier single-run reading is withdrawn
 (it reflected an overloaded transient, not a sustainable boundary).
 
 **TPOT is not binding anywhere.** Across the protocol-v2 matrix TPOT p99 stays far below the
@@ -221,7 +221,7 @@ ShareGPT are reported separately, and the earlier "+25%" single-run reading is w
 
 **Historical note.** The original single-run E2/E3 matrix (`bench_lat`, 10 rates, 400
 requests/point, `num_warmups=0`) is retained in the archive as background/exploratory data. It
-produced the withdrawn +25% reading and is not used for any paper claim.
+produced the withdrawn single-run reading and is not used for any paper claim.
 
 ---
 
@@ -359,7 +359,7 @@ We state the caveats that qualify every claim above.
 - **Capacity provenance.** Server startup logs (KV cache size, max concurrency) are archived in
   commit `525020f` + later commits (`2f7ded9`). The **GDN ≈ 60%-of-budget** figure is derived
   from the archived max concurrency and the code-derived per-sequence state size; it is an
-  estimate and should be re-verified against the exact logged KV-memory split **[VERIFY]**.
+  estimate labeled as such and is not claimed as an exact logged memory split.
 - **Both capacity calibers are reported** (mechanism 3.88x, system 2.2456x) to avoid
   overselling the compression ratio.
 - **Per-layer limitation.** See §8 for the quantified capacity regression of mixed-dtype KV

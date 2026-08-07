@@ -1,8 +1,11 @@
-# Evaluation 章节补跑文本框架（2026-08-07，数字待回填）
+# Evaluation 章节补跑文本框架（2026-08-07，数字已回填并核对哈希）
 
 > 数字来源：`results/quality/niah-fixed-analysis.json`、
-> `results/quality/ruler-subset-analysis.json`、`results/quality/reasoning-analysis.json`、
-> `results/quality/r5-serving-analysis.json`。回填前必须运行对应 analyzer 并核对哈希。
+> `results/quality/ruler-subset-analysis-v2-256.json`、
+> `results/quality/reasoning-nothink-v2-analysis.json`、
+> `results/quality/longbench-analysis-20260807.json`。
+> 以下数字均由对应 analyzer 产出，原始 cell 哈希已核对；serving Formal 与
+> C4/PG19 PPL 未跑，相关小节以显式状态标注，不设占位数字。
 
 ## 1. Retrieval（NIAH rerun，max_tokens=256）
 
@@ -25,7 +28,11 @@ extraction，长度 4096/8192，每 cell 20 samples、greedy、单 seed。第一
 最高（98.5）；TurboQuant 在 CWE 4K 明显回落（k8v4 65.5 / 4bit_nc 67.0 vs fp16 97.5）。
 **FWE 的 0 分与 VT/multiquery 部分 miss 是 `<think>` 消耗官方短预算的协议伪影**
 （已逐样本抽查），v1 保留为协议敏感性数据；第二版以 max_tokens=256 重跑全部 70
-cells（attempt `ruler-subset-20260807-v2-256`）作为主报告协议，待回填。
+cells（attempt `ruler-subset-20260807-v2-256`）作为主报告协议，70/70 完成。
+v2 要点：NIAH single 全部 100；multikey/multivalue 4K 中 TurboQuant 低 5–6.25 分；
+multiquery 8K packed 最高（88.75，fp16 86.25，k8v4 80）；VT 4K TurboQuant 低 1–2 分、
+8K 基本持平；**CWE 4K TurboQuant 掉分在 256 token 下仍存在**
+（k8v4 69.0 / 4bit_nc 70.0 vs fp16 97.5，−28.5/−27.5），确认为真实质量退化而非截断伪影。
 
 **FWE 专项重跑（fp16/uniform/packed，max_tokens=256，6/6 完成）**：4K 得分
 15.0 / 28.33 / 20.0，8K 得分 41.67 / 61.67 / 55.0。逐样本审计表明 miss 仍以
@@ -38,10 +45,22 @@ cells（attempt `ruler-subset-20260807-v2-256`）作为主报告协议，待回�
 
 ## 3. Serving（TurboQuant/FP8，protocol-v3）
 
-（待回填）在 A2 protocol-v3 相同契约下（PIECEWISE、Random60/ShareGPT300、warmup 120、
-TTFT {250..3000}ms、TPOT 200ms、goodput/offered ≥ 0.95、3 seeds）比较
-fp16 / int4 / packed per-layer / TurboQuant k8v4 / TurboQuant 4-bit NC / FP8 的可持续边界，
-并报告 P99 TTFT/TPOT 与容量探针（capacity tokens）。边界表：待回填。
+状态：**Formal 未跑**（需人工放行，约 8h）。计划契约：protocol-v3（PIECEWISE、
+Random60/ShareGPT300、warmup 120、TTFT {250..3000}ms、TPOT 200ms、
+goodput/offered ≥ 0.95、3 seeds），比较 fp16 / int4 / packed per-layer /
+TurboQuant k8v4 / TurboQuant 4-bit NC / FP8，并报告 P99 TTFT/TPOT 与容量探针。
+当前仅有门禁阶段 pilot 边界（ANALYZED，未独立复现）：
+
+| workload | TTFT | fp16 | int4 | packed per-layer |
+|---|---:|---:|---:|---:|
+| Random60 | 250 ms | 30 | NONE* | 30 |
+| Random60 | 500 ms | 35 | 35 | 35 |
+| Random60 | 1000+ ms | 35 | 40 | 40 |
+| ShareGPT300 | 250 ms | 45 | 35 | 40 |
+| ShareGPT300 | 500+ ms | 45 | 40 | 40 |
+
+*NONE = 测试网格内无 3-seed 全可持续点。TurboQuant/FP8 正式边界、P99 表与容量探针
+在 Formal 完成后回填；当前不设占位数字。
 
 ## 4. Reasoning（2B 子集）
 

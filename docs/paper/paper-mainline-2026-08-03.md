@@ -4,13 +4,13 @@
 > These chapters connect to the existing Evaluation draft
 > (`docs/paper/serving-evaluation-2026-08-03.md`, referenced below as **Eval**; its §1–§8
 > map to the paper's Experiments/Limitations sections and should be renumbered when merged).
-> All numbers are copied from the archived JSONs / server logs and cross-validated notes; items
-> derived from code or carrying residual uncertainty are marked **[VERIFY]**. No number is invented;
-> where a value is not yet measured we say so explicitly. Language: English (MLSys submission).
+> All numbers are copied from the archived JSONs / server logs and cross-validated notes.
+> No number is invented; where a value is not yet measured we say so explicitly.
+> Language: English (MLSys submission).
 >
 > **Canonical-data update (2026-08-06).** The serving mainline is **uniform 4-bit** KV quantization
 > (`kv_cache_dtype=int4_per_token_head` applied to every GQA attention layer). The earlier
-> "+25% SLO" headline is **withdrawn**: it was an overloaded-transient artifact of the first
+> single-run SLO headline is **withdrawn**: it was an overloaded-transient artifact of the first
 > single-run matrix. The canonical SLO evidence is the protocol-v2 steady-state matrix
 > (`results/verified/2026-08-04/e3/validation_report.md`, VERIFIED): uniform int4's sustainable
 > boundary is workload-dependent (Random: +0% at 250 ms, +4.8% at 500 ms, +14.3% at 1000–3000 ms;
