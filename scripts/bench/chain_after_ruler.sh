@@ -47,8 +47,33 @@ run_phase() {
   fi
 }
 
+run_capacity_probe() {
+  local alloc="$1"; shift
+  local out="$OUT_ROOT/capacity/${alloc}.json"
+  mkdir -p "$(dirname "$out")"
+  echo "[RUN] capacity $alloc" >> "$LOG"
+  if VLLM_ALLOW_INSECURE_SERIALIZATION=1 $PY scripts/bench/inspect_kv_config.py \
+      --model /root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master \
+      --max-model-len 4096 --gpu-memory-utilization 0.85 --seed 42 \
+      --kv-cache-dtype "$1" --enforce-eager --output "$out" \
+      ${EXTRA_ARGS:-} >> "$LOG" 2>&1; then
+    echo "[OK] capacity $alloc" >> "$LOG"
+  else
+    echo "[FAIL] capacity $alloc" >> "$LOG"
+    exit 1
+  fi
+}
+
 run_phase r5_turboquant_protocol_v3_random60_formal.yaml mvex r5-tq-v3-random60-mvex-20260807
 run_phase r5_turboquant_protocol_v3_sharegpt300_formal.yaml mvex r5-tq-v3-sharegpt300-mvex-20260807
 run_phase r5_turboquant_protocol_v3_random60_formal.yaml pilot r5-tq-v3-random60-pilot-20260807
 run_phase r5_turboquant_protocol_v3_sharegpt300_formal.yaml pilot r5-tq-v3-sharegpt300-pilot-20260807
+
+EXTRA_ARGS="" run_capacity_probe fp16 auto
+EXTRA_ARGS="" run_capacity_probe uniform_int4 int4_per_token_head
+EXTRA_ARGS="--kv-cache-dtype-per-layer {\"23\":\"auto\",\"3\":\"int4_per_token_head\",\"7\":\"int4_per_token_head\",\"11\":\"int4_per_token_head\",\"15\":\"int4_per_token_head\",\"19\":\"int4_per_token_head\"} --enable-per-layer-page-groups" run_capacity_probe packed_per_layer int4_per_token_head
+EXTRA_ARGS="" run_capacity_probe turboquant_k8v4 turboquant_k8v4
+EXTRA_ARGS="" run_capacity_probe turboquant_4bit_nc turboquant_4bit_nc
+EXTRA_ARGS="" run_capacity_probe fp8 fp8
+
 echo "[DONE_GATES]" >> "$LOG"
