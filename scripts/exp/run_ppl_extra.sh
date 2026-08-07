@@ -24,17 +24,23 @@ run_cell() {
   else
     echo "unknown alloc $alloc"; return 2
   fi
-  local out="results/quality/ppl-extra/${ATTEMPT}__${corpus}__${alloc}__$(basename "$model").csv"
+  local tag
+  if [[ "$model" == *"Qwen3.5-9B"* ]]; then tag="9b"; else tag="2b"; fi
+  local out="results/quality/ppl-extra/${ATTEMPT}__${corpus}__${alloc}__${tag}.csv"
   local args=(--bits "$bits" --seeds 7,42,2026 --num-seqs 5 --max-len 2048 --chunk 128
               --corpus "data/${corpus}_slice.txt" --model "$model" --out "$out")
   if [ -n "$layer_bits" ]; then
     args+=(--layer-bits "$layer_bits")
   fi
+  if [ -f "$out" ] && [ -f "$out.seeds.csv" ]; then
+    echo "[SKIP] $corpus $alloc $tag (exists)" >> "$LOGDIR/${ATTEMPT}.log"
+    return 0
+  fi
   if .venv/bin/python scripts/exp/hybrid_premise.py "${args[@]}" \
       >> "$LOGDIR/${ATTEMPT}.log" 2>&1; then
-    echo "[OK] $corpus $alloc $(basename "$model")" >> "$LOGDIR/${ATTEMPT}.log"
+    echo "[OK] $corpus $alloc $tag" >> "$LOGDIR/${ATTEMPT}.log"
   else
-    echo "[FAIL] $corpus $alloc $(basename "$model")" >> "$LOGDIR/${ATTEMPT}.log"
+    echo "[FAIL] $corpus $alloc $tag" >> "$LOGDIR/${ATTEMPT}.log"
     exit 1
   fi
 }
