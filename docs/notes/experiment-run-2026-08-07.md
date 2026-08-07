@@ -9,7 +9,8 @@
 | 顺序 | 实验 | Attempt ID | 规模 | 状态 |
 |---|---|---|---|---|
 | 1 | NIAH 重跑（max_tokens=256，修复 `<think>` 32-token 截断伪影） | `niah-fixed-20260807` | 5 alloc × 3 seeds × 3 depths × 2 lengths = 90 cells | **运行中**（12:00 约 20/90） |
-| 2 | RULER 子集（官方生成器/评分，noise haystack；greedy 固定数据 → 单 seed） | `ruler-subset-20260807` | 7 tasks × 2 lengths × 5 alloc × 1 seed = 70 cells | 数据已生成（14/14 校验通过），等 NIAH 完成自动启动 |
+| 1 | NIAH 重跑（max_tokens=256，修复 `<think>` 32-token 截断伪影） | `niah-fixed-20260807` | 90 cells | **完成 90/90，0 失败**（见 results-digest） |
+| 2 | RULER 子集（官方生成器/评分，noise haystack；greedy 固定数据 → 单 seed） | `ruler-subset-20260807` | 70 cells | **运行中**（13:26 约 2/70） |
 | 3 | TurboQuant k8v4 / 4bit_nc + FP8 serving protocol-v3 门禁 | `r5-tq-v3-*-mvex/pilot-20260807` | MVEx 3+3 → Pilot 9+9 | 配置已提交 `MLSys_Serving_f7a79f5`（3267efa）并 dry-run 通过，等 RULER 完成 |
 | 4 | Qwen3.5-9B NIAH 重跑（fp16/int4/packed） | `niah-fixed-9b-20260807` | 3 alloc × 3 seeds × 3 depths × 2 lengths = 54 cells | 脚本就绪，等 serving 门禁完成 |
 | 5 | 推理基准（2B；greedy 固定数据 → 单 seed） | `reasoning-20260807` | gsm8k 200 + mmlu 500 + aime25 30，× 5 alloc × 1 seed | 数据已下载，等 9B 完成 |
