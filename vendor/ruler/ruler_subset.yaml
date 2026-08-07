@@ -1,0 +1,58 @@
+ruler_niah_single:
+  task: niah
+  args:
+    type_haystack: noise
+    type_needle_k: words
+    type_needle_v: numbers
+    num_needle_k: 1
+    num_needle_v: 1
+    num_needle_q: 1
+
+ruler_niah_multikey:
+  task: niah
+  args:
+    type_haystack: noise
+    type_needle_k: words
+    type_needle_v: numbers
+    num_needle_k: 4
+    num_needle_v: 1
+    num_needle_q: 1
+
+ruler_niah_multivalue:
+  task: niah
+  args:
+    type_haystack: noise
+    type_needle_k: words
+    type_needle_v: numbers
+    num_needle_k: 1
+    num_needle_v: 4
+    num_needle_q: 1
+
+ruler_niah_multiquery:
+  task: niah
+  args:
+    type_haystack: noise
+    type_needle_k: words
+    type_needle_v: numbers
+    num_needle_k: 1
+    num_needle_v: 1
+    num_needle_q: 4
+
+ruler_vt:
+  task: variable_tracking
+  args:
+    type_haystack: noise
+    num_chains: 1
+    num_hops: 4
+
+ruler_cwe:
+  task: common_words_extraction
+  args:
+    freq_cw: 30
+    freq_ucw: 3
+    num_cw: 10
+
+ruler_fwe:
+  task: freq_words_extraction
+  args:
+    alpha: 2.0

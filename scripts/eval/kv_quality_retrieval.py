@@ -160,6 +160,7 @@ def main() -> int:
     ap.add_argument("--depth-pct", type=int, required=True, choices=[25, 50, 75])
     ap.add_argument("--max-len", type=int, required=True)
     ap.add_argument("--num-needles", type=int, default=3)
+    ap.add_argument("--max-tokens", type=int, default=256)
     ap.add_argument("--model", default=MODEL_DEFAULT)
     ap.add_argument("--max-model-len", type=int, default=16384)
     ap.add_argument("--gpu-memory-utilization", type=float, default=0.85)
@@ -173,7 +174,10 @@ def main() -> int:
     if args.resume and out_path.exists():
         try:
             existing = json.loads(out_path.read_text(encoding="utf-8"))
-            if existing.get("status") == "completed_validated":
+            if (
+                existing.get("status") == "completed_validated"
+                and existing.get("max_tokens") == args.max_tokens
+            ):
                 print(f"resume: skip {out_path}")
                 return 0
         except Exception:
@@ -194,10 +198,34 @@ def main() -> int:
     for _ in range(args.num_needles):
         code = make_code(rng)
         prompt = build_prompt(rng, args.max_len, args.depth_pct, code)
-        outputs = llm.generate([prompt], SamplingParams(max_tokens=32, temperature=0.0), use_tqdm=False)
+        outputs = llm.generate(
+            [prompt],
+            SamplingParams(max_tokens=args.max_tokens, temperature=0.0),
+            use_tqdm=False,
+        )
         answer = outputs[0].outputs[0].text
-        hit = code in answer.upper().replace(" ", "")
-        cases.append({"code": code, "answer": answer, "hit": hit, "prompt_words": len(prompt.split())})
+        answer_upper_nospace = answer.upper().replace(" ", "")
+        hit = code in answer_upper_nospace
+        hit_think = False
+        hit_final = False
+        if "<think>" in answer.lower():
+            think_text, _, final_text = answer.partition("</think>")
+            hit_think = code in think_text.upper().replace(" ", "")
+            hit_final = code in final_text.upper().replace(" ", "")
+        else:
+            hit_final = hit
+        cases.append(
+            {
+                "code": code,
+                "answer": answer,
+                "hit": hit,
+                "hit_think": hit_think,
+                "hit_final": hit_final,
+                "prompt_words": len(prompt.split()),
+                "prompt_tokens": len(outputs[0].prompt_token_ids),
+                "output_tokens": len(outputs[0].outputs[0].token_ids),
+            }
+        )
 
     from vllm import __version__ as vllm_version
 
@@ -210,6 +238,8 @@ def main() -> int:
         "depth_pct": args.depth_pct,
         "max_len": args.max_len,
         "num_needles": args.num_needles,
+        "max_tokens": args.max_tokens,
+        "sampling_params": {"max_tokens": args.max_tokens, "temperature": 0.0},
         "accuracy": sum(1 for c in cases if c["hit"]) / len(cases),
         "cases": cases,
         "context_length_note": "max_len counts filler words, not tokens; actual prompt_words per case recorded",
