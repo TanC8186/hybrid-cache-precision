@@ -289,3 +289,26 @@ seed 间波动 ≤0.01（greedy 确定性为主，记录为方法学观察）。
 
 分析：`results/quality/reasoning-gsm8k-3seed-analysis.json`；
 原始 cell：`results/quality/reasoning/reasoning-gsm8k-3seed-20260808/`。
+
+## 10. 外部 baseline：KIVI 风格 4-bit KV 量化 PPL（attempt `ppl-external-20260808`）
+
+实现：transformers 5.x HQQ backend 的 KIVI 风格量化（K 逐通道 group32 4-bit、
+V 逐 token 4-bit、128-token fp16 residual 窗口），子类化 DynamicCache 只覆写
+attention 层 update；Qwen3.5-2B、协议与 canonical 相同（seeds 7/42/2026、
+5×2048、chunk 128）。fp16 为同 harness 参考。6/6 cells 完成。
+
+| corpus | fp16 mean | kivi4 mean | Δ [95% t-CI] |
+|---|---:|---:|---:|
+| wikitext2 | 11.3413 | 11.3452 | +0.0039 [−0.0463, +0.0542] |
+| c4 | 17.4645 | 17.4551 | −0.0094 [−0.0654, +0.0466] |
+| pg19 | 26.7010 | 26.6955 | −0.0055 [−0.0514, +0.0403] |
+
+结论：**KIVI 风格 4-bit 在三语料上与同 harness fp16 的 Δ 全部 ≈0（CI 含 0）**，
+即该外部方法在 PPL 上近无损；对照本工作 uniform int4（同语料相对自身 fp16
+约 +1.1–1.7%），外部方法 PPL 略优（预期：逐通道 K + residual 窗口更精确）。
+论文须如实报告：质量维度外部方法不劣于本工作；本工作卖点为系统层容量/SLO 与
+packed 机制。注意 harness 差异（canonical fp16 11.48 vs 本 harness 11.34，
+约 1%），跨 harness 比较以各自的 fp16 为基准。
+
+分析：`results/quality/ppl-external-analysis-20260808.json`；
+原始 cell：`results/quality/ppl-external/ppl-external-20260808/`。

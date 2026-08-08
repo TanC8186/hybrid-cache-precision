@@ -1,0 +1,2 @@
+backend,corpus,ppl_mean,ppl_std,num_seeds
+kivi4_hqq,wikitext2,11.3452,1.5836,3

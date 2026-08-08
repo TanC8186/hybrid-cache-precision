@@ -113,3 +113,20 @@ RepoBench-P −2.0/−5.2）。单 seed、无 CI，全部按点估计披露，�
 Δ 均为 3-seed 配对 95% t-CI。结论：第二、第三语料上量化列相对 fp16 增加约
 1.1–1.6%（2B）与约 1.1%（9B），packed 点估计普遍略优于 uniform；与 Wikitext-2
 结论一致，质量门禁通过。证据：`results/quality/ppl-extra-analysis-20260807.json`。
+
+## 7. 外部 baseline：KIVI 风格 4-bit KV 量化（PPL）
+
+实现：transformers 5.x HQQ backend（K 逐通道 group32 / V 逐 token / residual 128），
+同模型 Qwen3.5-2B、同 canonical 协议（3 seeds × 5×2048，chunk 128），fp16 为
+同 harness 参考。三语料配对 Δ（95% CI）：
+
+| corpus | Δ vs 同 harness fp16 |
+|---|---:|
+| Wikitext-2 | +0.004 [−0.046, +0.054] |
+| C4 | −0.009 [−0.065, +0.047] |
+| PG19 | −0.006 [−0.051, +0.040] |
+
+结论：外部 KIVI 风格 4-bit 在 PPL 上近无损（CI 含 0），PPL 略优于本工作
+uniform int4（约 +1.1–1.7% vs 各自 fp16）；论文如实报告该质量对比，并说明
+本工作的贡献定位在系统层（容量/SLO/packed 机制）。证据：
+`results/quality/ppl-external-analysis-20260808.json`。

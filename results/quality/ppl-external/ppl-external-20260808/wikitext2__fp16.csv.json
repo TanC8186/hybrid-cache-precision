@@ -1,0 +1,24 @@
+{
+  "backend": "fp16",
+  "corpus": "wikitext2",
+  "corpus_sha256": "f7c3d825fe137ae727909932428eec25ff1b05e685b713eefc4efb289bfd49d0",
+  "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master",
+  "protocol": "seeds=7,42,2026, num_seqs=5, max_len=2048, chunk=128",
+  "scheme": "fp16 reference (same harness)",
+  "rows": [
+    {
+      "seed": 7,
+      "ppl": 9.63463046026082
+    },
+    {
+      "seed": 42,
+      "ppl": 12.789285097630119
+    },
+    {
+      "seed": 2026,
+      "ppl": 11.599957862462155
+    }
+  ],
+  "ppl_mean": 11.3413,
+  "ppl_std": 1.5932
+}

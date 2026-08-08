@@ -1,0 +1,2 @@
+backend,corpus,ppl_mean,ppl_std,num_seeds
+fp16,wikitext2,11.3413,1.5932,3

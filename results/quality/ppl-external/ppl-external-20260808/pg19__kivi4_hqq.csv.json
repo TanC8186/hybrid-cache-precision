@@ -1,0 +1,24 @@
+{
+  "backend": "kivi4_hqq",
+  "corpus": "pg19",
+  "corpus_sha256": "c898ba298565e45b0aa6e4dcc80e02976548d5bcf2ee48c6d1e690ffcc8e8141",
+  "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master",
+  "protocol": "seeds=7,42,2026, num_seqs=5, max_len=2048, chunk=128",
+  "scheme": "KIVI-style: K per-channel group32 4-bit, V per-token 4-bit, residual 128 (HQQ backend)",
+  "rows": [
+    {
+      "seed": 7,
+      "ppl": 29.332629680915346
+    },
+    {
+      "seed": 42,
+      "ppl": 28.3216014840611
+    },
+    {
+      "seed": 2026,
+      "ppl": 22.43232895706872
+    }
+  ],
+  "ppl_mean": 26.6955,
+  "ppl_std": 3.7265
+}

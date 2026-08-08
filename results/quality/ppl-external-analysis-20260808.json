@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "attempt": "ppl-external-20260808",
+  "method": "KIVI-style 4-bit KV quantization (K per-channel group32, V per-token, residual 128) via transformers HQQ backend",
+  "protocol": "seeds 7/42/2026, num_seqs 5, max_len 2048, chunk 128; same-harness fp16 reference",
+  "rows": [
+    {
+      "corpus": "wikitext2",
+      "fp16_per_seed": [
+        9.6346,
+        12.7893,
+        11.6
+      ],
+      "kivi4_per_seed": [
+        9.6412,
+        12.7718,
+        11.6226
+      ],
+      "fp16_mean": 11.3413,
+      "kivi4_mean": 11.3452,
+      "delta_kivi4_vs_fp16": 0.0039,
+      "ci95": [
+        -0.0463,
+        0.0542
+      ]
+    },
+    {
+      "corpus": "c4",
+      "fp16_per_seed": [
+        17.2528,
+        16.4543,
+        18.6864
+      ],
+      "kivi4_per_seed": [
+        17.2174,
+        16.4559,
+        18.6919
+      ],
+      "fp16_mean": 17.4645,
+      "kivi4_mean": 17.4551,
+      "delta_kivi4_vs_fp16": -0.0094,
+      "ci95": [
+        -0.0654,
+        0.0466
+      ]
+    },
+    {
+      "corpus": "pg19",
+      "fp16_per_seed": [
+        29.3183,
+        28.3437,
+        22.4411
+      ],
+      "kivi4_per_seed": [
+        29.3326,
+        28.3216,
+        22.4323
+      ],
+      "fp16_mean": 26.701,
+      "kivi4_mean": 26.6955,
+      "delta_kivi4_vs_fp16": -0.0055,
+      "ci95": [
+        -0.0514,
+        0.0403
+      ]
+    }
+  ]
+}

@@ -21,7 +21,7 @@
 | C14 | C4/PG19 PPL（第二/三语料，2B+9B） | `results/quality/ppl-extra/` + `ppl-extra-analysis-20260807.json` | DONE / ANALYZED | 3-seed CI；无独立复现 |
 | C15 | Serving protocol-v3 六列正式边界 | — | PENDING | Formal 未跑 |
 | C16 | A2 在 9B 恢复容量（3.230×/0.832×）、纯 attention 无稀释（3.765× vs 混合 2.245×） | `results/verified/2026-08-08/capacity-probe-extra/` | DONE / ANALYZED | 单主机探针；与 2B VERIFIED 比例一致 |
-| C17 | KIVI/KVQuant 同协议对照 | — | PENDING | B1 |
+| C17 | KIVI 风格 4-bit 外部 baseline（transformers HQQ，K 逐通道 group32 / V 逐 token / residual 128） | `results/quality/ppl-external/` + `ppl-external-analysis-20260808.json` | DONE / ANALYZED | 三语料 3-seed 配对 CI：Δ +0.004/−0.009/−0.006，均含 0；同 harness fp16 参考 |
 
 ## 写作红线
 

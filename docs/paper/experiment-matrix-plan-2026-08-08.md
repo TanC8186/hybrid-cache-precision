@@ -26,7 +26,7 @@
 | M2 A2 独立复现 | — | 2B | — | 4/4 probes | **DONE / VERIFIED** |
 | M3 9B packed 容量探针 | legacy/uniform/packed | 9B | — | 3 probes | **DONE / ANALYZED** |
 | M4 纯注意力对照 | fp16/int4 | Qwen2.5-7B | — | 容量探针 | **DONE / ANALYZED** |
-| B1 外部 baseline（KIVI/KVQuant） | — | 2B | 3 | 待定 | **PENDING（需评估）** |
+| B1 外部 baseline（KIVI 风格 4-bit） | — | 2B | 3 | 3 corpora | **DONE / ANALYZED** |
 | B2 GSM8K 多 seed | 5 allocs | 2B | 3 | 3×200 | **DONE / ANALYZED** |
 | B3 LongBench 多 seed | 关键任务 | 2B/9B | 3 | 3×50×任务 | **PENDING（可选）** |
 | B4 32K/64K 探针 | fp16/int4/packed | 2B | — | 容量+检索 | **PENDING（可选）** |
@@ -191,7 +191,7 @@
 | P0 | M3 9B packed 容量探针 | 0.5–1h | 复用 A2 probe 脚本 | **DONE（3/3 probes，比例与 2B 一致）** |
 | P0 | M4 纯注意力对照 | 1–2h | 同容量协议 @ Qwen2.5-7B | **DONE（3.765× vs 混合 2.245×）** |
 | P1 | B2 GSM8K 3-seed | 1–1.5h | `run_reasoning_gsm8k_3seed.sh` | **DONE（配对 CI 不含 0：回退真实）** |
-| P1 | B1 外部 baseline | 2–5 天（评估后） | KIVI/KVQuant 同协议实现 | 同硬件同协议对照表 |
+| P1 | B1 外部 baseline | 2–5 天（评估后） | KIVI 风格 4-bit（transformers HQQ）同协议实现 | **DONE（三语料 Δ≈0，CI 含 0）** |
 | P2 | B3 LongBench 多 seed | 2–3h | `longbench_bench.py` 加 seeds | 关键任务 CI |
 | P2 | B4 32K/64K 探针 | 2–4h | 容量+检索探针 | 长上下文优势扩展 |
 

@@ -1,0 +1,2 @@
+backend,corpus,ppl_mean,ppl_std,num_seeds
+fp16,pg19,26.7010,3.7213,3

@@ -1,0 +1,4 @@
+backend,corpus,seed,ppl
+kivi4_hqq,wikitext2,7,9.641222104750097
+kivi4_hqq,wikitext2,42,12.771803164075287
+kivi4_hqq,wikitext2,2026,11.622647259367234
