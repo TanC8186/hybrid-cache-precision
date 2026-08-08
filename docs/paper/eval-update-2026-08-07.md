@@ -93,3 +93,19 @@ MultiNews），每任务前 50 样本、greedy、单 seed、no-think；官方 v1
 RepoBench-P −2.0/−5.2）。单 seed、无 CI，全部按点估计披露，禁止写成显著退化；
 2B 代码任务接近地板，不用于结论。截断（中段截断至 15.8K token）各分配完全对称。
 证据：`results/quality/longbench-analysis-20260807.json`。
+
+## 6. PPL 扩展语料（C4/PG19，2B + 9B）
+
+与 Wikitext-2 相同协议（3 seeds × 5×2048，`hybrid_premise.py`），语料为固定切片
+（`data/c4_slice.txt`、`data/pg19_slice.txt`，sha 见 `data/MANIFEST.yaml`）：
+
+| 模型 | corpus | fp16 | uniform | packed |
+|---|---:|---:|---:|---:|
+| 2B | C4 | 17.58 | 17.87（+0.29 [+0.21, +0.37]） | 17.78（+0.20 [+0.14, +0.25]） |
+| 2B | PG19 | 27.18 | 27.62（+0.44 [+0.29, +0.59]） | 27.42（+0.25 [+0.10, +0.40]） |
+| 9B | C4 | 12.73 | 12.87（+0.14 [+0.08, +0.19]） | 12.87（+0.14 [+0.11, +0.17]） |
+| 9B | PG19 | 18.00 | 18.22（+0.22 [+0.12, +0.32]） | 18.21（+0.21 [+0.12, +0.30]） |
+
+Δ 均为 3-seed 配对 95% t-CI。结论：第二、第三语料上量化列相对 fp16 增加约
+1.1–1.6%（2B）与约 1.1%（9B），packed 点估计普遍略优于 uniform；与 Wikitext-2
+结论一致，质量门禁通过。证据：`results/quality/ppl-extra-analysis-20260807.json`。

@@ -220,3 +220,23 @@ LCC/RepoBench-P=code_sim（fuzzywuzzy）。
 
 分析：`results/quality/longbench-analysis-20260807.json`；
 原始 cell：`results/quality/longbench/longbench-20260807/`。
+
+## 7. C4/PG19 PPL（attempt `ppl-extra-20260807`）
+
+状态：**完成 12/12**（2B + 9B × fp16/uniform/packed × c4/pg19；0 失败；
+24 个 CSV 哈希已核对并生成 `.sha256` 边车）。协议与 Q1 相同
+（`hybrid_premise.py --seeds 7,42,2026 --num-seqs 5 --max-len 2048 --chunk 128`）。
+
+| 模型 | corpus | fp16 | uniform | Δ uniform [95% CI] | packed | Δ packed [95% CI] |
+|---|---:|---:|---:|---:|---:|---:|
+| 2B | c4 | 17.5800 | 17.8730 | +0.2930 [+0.2127, +0.3732] | 17.7761 | +0.1961 [+0.1373, +0.2548] |
+| 2B | pg19 | 27.1783 | 27.6210 | +0.4428 [+0.2949, +0.5907] | 27.4244 | +0.2462 [+0.0962, +0.3961] |
+| 9B | c4 | 12.7287 | 12.8678 | +0.1391 [+0.0847, +0.1935] | 12.8677 | +0.1391 [+0.1051, +0.1730] |
+| 9B | pg19 | 18.0016 | 18.2226 | +0.2210 [+0.1207, +0.3213] | 18.2080 | +0.2064 [+0.1172, +0.2955] |
+
+结论：与 Wikitext-2 一致——uniform/packed 相对 fp16 增加约 1.1–1.6%（2B）与约
+1.1%（9B），3-seed 配对 CI 不含 0；packed 点估计普遍略优于 uniform
+（2B c4 −0.097、pg19 −0.197；9B pg19 −0.015、c4 持平），与"L23 保护无质量回退
+代价"的故事自洽。语料：c4 sha `7ee17255...`、pg19 sha `c898ba29...`。
+分析：`results/quality/ppl-extra-analysis-20260807.json`；
+原始 CSV：`results/quality/ppl-extra/`。

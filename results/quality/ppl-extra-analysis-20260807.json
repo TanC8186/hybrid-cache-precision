@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "attempt": "ppl-extra-20260807",
+  "protocol": "hybrid_premise.py --seeds 7,42,2026 --num-seqs 5 --max-len 2048 --chunk 128",
+  "dedupe_note": "hybrid_premise.py always appends an FP16 baseline row; bits=16 cells therefore contain 6 rows in *.seeds.csv. Analysis deduplicates by (bits, seed) and uses the 3 unique requested-bit rows.",
+  "allocations": {
+    "fp16": "--bits 16",
+    "uniform": "--bits 4",
+    "packed": "--bits 4 --layer-bits '{\"23\":16}'"
+  },
+  "tables": {
+    "2b": [
+      {
+        "corpus": "c4",
+        "fp16_mean": 17.58,
+        "uniform_mean": 17.873,
+        "delta_uniform_vs_fp16": 0.293,
+        "ci95_uniform_vs_fp16": [
+          0.2127,
+          0.3732
+        ],
+        "packed_mean": 17.7761,
+        "delta_packed_vs_fp16": 0.1961,
+        "ci95_packed_vs_fp16": [
+          0.1373,
+          0.2548
+        ]
+      },
+      {
+        "corpus": "pg19",
+        "fp16_mean": 27.1783,
+        "uniform_mean": 27.621,
+        "delta_uniform_vs_fp16": 0.4428,
+        "ci95_uniform_vs_fp16": [
+          0.2949,
+          0.5907
+        ],
+        "packed_mean": 27.4244,
+        "delta_packed_vs_fp16": 0.2462,
+        "ci95_packed_vs_fp16": [
+          0.0962,
+          0.3961
+        ]
+      }
+    ],
+    "9b": [
+      {
+        "corpus": "c4",
+        "fp16_mean": 12.7287,
+        "uniform_mean": 12.8678,
+        "delta_uniform_vs_fp16": 0.1391,
+        "ci95_uniform_vs_fp16": [
+          0.0847,
+          0.1935
+        ],
+        "packed_mean": 12.8677,
+        "delta_packed_vs_fp16": 0.1391,
+        "ci95_packed_vs_fp16": [
+          0.1051,
+          0.173
+        ]
+      },
+      {
+        "corpus": "pg19",
+        "fp16_mean": 18.0016,
+        "uniform_mean": 18.2226,
+        "delta_uniform_vs_fp16": 0.221,
+        "ci95_uniform_vs_fp16": [
+          0.1207,
+          0.3213
+        ],
+        "packed_mean": 18.208,
+        "delta_packed_vs_fp16": 0.2064,
+        "ci95_packed_vs_fp16": [
+          0.1172,
+          0.2955
+        ]
+      }
+    ]
+  }
+}

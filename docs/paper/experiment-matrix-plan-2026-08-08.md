@@ -15,7 +15,7 @@
 | E3 SLO（protocol-v2 formal） | fp16/int4 | 2B | 3 | 72 + 48 复现 | **DONE / VERIFIED** |
 | E4 SLO（protocol-v3 formal） | 6 allocs | 2B | 3 | Random60 45 + ShareGPT300 63 | **PENDING（需人工放行）** |
 | Q1 PPL Wikitext-2 | fp16/uniform/packed | 2B | 3 | 5×2048 | **DONE / ANALYZED** |
-| Q2 PPL C4/PG19 | fp16/uniform/packed | 2B/9B | 3 | 5×2048 | **2/12 DONE（续跑中）** |
+| Q2 PPL C4/PG19 | fp16/uniform/packed | 2B/9B | 3 | 5×2048 | **DONE / ANALYZED** |
 | Q3 NIAH 2B | 5 allocs | 2B | 3 | 90 cells | **DONE / ANALYZED** |
 | Q3b NIAH 9B | fp16/uniform/packed | 9B | 3 | 54 cells | **DONE / ANALYZED** |
 | Q4 RULER v2 | 5 allocs | 2B | 1 | 70 cells | **DONE / ANALYZED** |
@@ -106,13 +106,22 @@
 - 证据：`results/quality/r4-ppl/*.csv.seeds.csv`；corpus sha
   `f7c3d825...`；协议 `hybrid_premise.py --seeds 7,42,2026 --num-seqs 5 --max-len 2048`。
 
-### Q2 PPL C4/PG19 — 2/12 DONE（续跑中）
+### Q2 PPL C4/PG19 — DONE / ANALYZED
 
 - 协议与 Q1 相同；语料 `data/c4_slice.txt`（sha `7ee17255...`）、
   `data/pg19_slice.txt`（sha `c898ba29...`）。
-- 已完成：c4 fp16 2B（17.58 ± 1.06）、pg19 fp16 2B（29.84/28.79/22.90）。
-- 剩余 10 cells：2B uniform/packed ×2 + 9B fp16/uniform/packed ×2。
-- 续跑命令：`bash scripts/exp/run_ppl_extra.sh ppl-extra-20260807`（已有 skip 逻辑）。
+- 结果（mean PPL；Δ 为 vs fp16 的 3-seed 配对 95% CI）：
+
+| 模型 | corpus | fp16 | uniform（Δ） | packed（Δ） |
+|---|---:|---:|---:|---:|
+| 2B | c4 | 17.5800 | 17.8730（+0.293 [+0.213, +0.373]） | 17.7761（+0.196 [+0.137, +0.255]） |
+| 2B | pg19 | 27.1783 | 27.6210（+0.443 [+0.295, +0.591]） | 27.4244（+0.246 [+0.096, +0.396]） |
+| 9B | c4 | 12.7287 | 12.8678（+0.139 [+0.085, +0.194]） | 12.8677（+0.139 [+0.105, +0.173]） |
+| 9B | pg19 | 18.0016 | 18.2226（+0.221 [+0.121, +0.321]） | 18.2080（+0.206 [+0.117, +0.296]） |
+
+- 与 Q1 结论一致：量化 Δ ≈ +1.1–1.6%（2B）/ ≈1.1%（9B），packed 点估计略优于 uniform。
+- 分析：`results/quality/ppl-extra-analysis-20260807.json`（已修复 analyzer 的文件名
+  glob bug 并加 fail-closed）。
 - 注意：`hybrid_premise.py` 对 bits=16 会输出 6 行/3 seeds（FP16 baseline 重复），
   分析器已按 (bits, seed) 去重（`analyze_ppl_extra.py`）。
 
@@ -175,7 +184,7 @@
 
 | 优先级 | 实验 | 成本 | 命令/入口 | 完成门禁 |
 |---|---|---|---|---|
-| P0 | Q2 续跑（10 cells） | 1.5–2h | `run_ppl_extra.sh ppl-extra-20260807` | 12/12 + 分析 + sha |
+| P0 | Q2 续跑（10 cells） | 1.5–2h | `run_ppl_extra.sh ppl-extra-20260807` | **DONE（12/12 + 分析 + sha）** |
 | P0 | E4 Serving Formal | ~8h | 人工放行 → `run_serving_formal.sh` | 108/108 + ANALYZED→（复现后 VERIFIED） |
 | P0 | M3 9B packed 容量探针 | 0.5–1h | 复用 A2 probe 脚本 | 3/3 probes + ratio gate |
 | P0 | M4 纯注意力对照 | 1–2h | 同容量协议 @ Qwen2.5-7B | 稀释对比表 |

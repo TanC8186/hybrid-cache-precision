@@ -18,7 +18,7 @@
 | C11 | RULER v2：CWE 4K TQ 掉分真实 | `ruler-subset-analysis-v2-256.json` | ANALYZED | 20 samples、单 seed |
 | C12 | Reasoning：MMLU 持平、GSM8K 点估计低 6.5–8.5pt | `reasoning-nothink-v2-analysis.json` | ANALYZED | 单 seed，禁止显著性表述 |
 | C13 | LongBench：QA/摘要持平；9B 代码点估计偏低 | `longbench-analysis-20260807.json` | ANALYZED | 50 samples、单 seed |
-| C14 | C4/PG19 PPL（第二语料） | `results/quality/ppl-extra/*__2b.csv` | 2/12 PENDING | 续跑后回填 |
+| C14 | C4/PG19 PPL（第二/三语料，2B+9B） | `results/quality/ppl-extra/` + `ppl-extra-analysis-20260807.json` | DONE / ANALYZED | 3-seed CI；无独立复现 |
 | C15 | Serving protocol-v3 六列正式边界 | — | PENDING | Formal 未跑 |
 | C16 | A2 在 9B 恢复容量、纯 attention 无稀释 | — | PENDING | M3/M4 |
 | C17 | KIVI/KVQuant 同协议对照 | — | PENDING | B1 |

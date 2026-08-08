@@ -28,8 +28,13 @@ def main() -> int:
     args = ap.parse_args()
 
     cells: dict[tuple[str, str, str], list[float]] = {}
-    for path in sorted(Path(args.dir).glob(f"{args.attempt}__*__seeds.csv")):
-        parts = path.name.replace(f"{args.attempt}__", "").replace("__seeds.csv", "").split("__")
+    for path in sorted(Path(args.dir).glob(f"{args.attempt}__*")):
+        if not path.name.endswith(".csv.seeds.csv"):
+            continue
+        core = path.name[len(args.attempt) + 2 : -len(".csv.seeds.csv")]
+        parts = core.split("__")
+        if len(parts) != 3:
+            raise SystemExit(f"unexpected filename: {path.name}")
         corpus, alloc, model = parts[0], parts[1], parts[2]
         if model not in ("2b", "9b"):
             continue  # legacy master-named artifacts from the naming bug
@@ -53,6 +58,8 @@ def main() -> int:
     missing = [(c, a, m) for c in corpora for a in allocs for m in model_names if (c, a, m) not in cells]
     if missing:
         raise SystemExit(f"incomplete cells: {missing}")
+    if len(cells) != len(corpora) * len(allocs) * len(model_names):
+        raise SystemExit(f"unexpected cell count: {len(cells)}")
 
     tables: dict[str, list[dict]] = {}
     for m in model_names:
