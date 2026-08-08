@@ -117,6 +117,20 @@ $$r_{\text{state}}(L) = \frac{A_q L + G_{\text{fp32}}}{A_q L + G_{\text{bf16}}}$
 - 2B/9B 在相同 L 下实测比接近（4K：1.376/1.406；16K：1.115/1.140），与模型预测“A、G 同比例缩放 → 比值相同”一致，跨规模成立。
 - 重要边界：state 减半的容量收益随 L 增长而衰减（4K 约 +38~41%，16K 约 +11~14%），因为 G 在长上下文被摊销；论文应把 state 精度收益定位在“短上下文/高并发”区间，与 KV 量化收益（随 L 增长）互补。
 
+## 补充：逐层 state 敏感度扫描（决策门，2026-08-09 完成）
+
+协议：Qwen3.5-2B，C4+PG19，seeds 7/42/2026，5 seqs × 2048 tokens，chunk 128，注意力 KV fp16；每 seed 跑 20 个配置：fp32 基线、18 个单层 bf16（bf16_Li）、全局 bf16（bf16_all）。每个 cast 配置内置逐层审计（目标层写 bf16 且调用数>0，非目标 GDN 层保持 fp32）；fp32/bf16_all 每 seed PPL 与已入库 `ppl-state-20260808` 矩阵逐位一致（reference diff = 0.0）。
+
+结果：
+
+- 全局 bf16：C4 Δ=−0.000287（CI [−0.0016, +0.0010]）、PG19 Δ=+0.00041（CI [−0.0033, +0.0041]），均含 0，与 8 格矩阵一致。
+- 18 个单层配置：|Δ| 最大 C4 0.00074 / PG19 0.00127；仅 2/36 个 CI 恰好不含 0（C4 的 L2 +0.00039、L8 +0.00066），PG19 上都不显著、量级 ~0.002–0.004%，符合多重比较噪声（36 次检验期望约 2 个假阳性）。
+- 审计：bf16_all 每 seed 18 层全部 cast（每层 80 次写）；单层配置只 cast 目标层（80 次），其余 17 层保持 fp32。
+
+决策结论：**2B 上没有任何一层对 bf16 state 在 PPL 上有实际敏感度，逐层 state 精度分配没有可测量的质量收益空间**。因此不投入 vLLM fork 的逐层 state dtype 实现；论文贡献重心确定为“全局 state 精度作为容量预算维度 + r_state(L) 容量模型（已跨 2B/9B、4K/16K 验证）+ 精度-容量-质量闭环（PPL/RULER 持平、GSM8K 披露回退）”。
+
+边界：该扫描是 transformers chunk 边界（128 token）写回舍入，不是 vLLM kernel 逐 token 语义；任务级（RULER/GSM8K）已由 vLLM 侧实验覆盖，此处仅作为设计空间的判据。
+
 ## 证据文件
 
 - `scripts/bench/probe_ssm_state_dtype.py`（探针脚本）
@@ -126,7 +140,11 @@ $$r_{\text{state}}(L) = \frac{A_q L + G_{\text{fp32}}}{A_q L + G_{\text{bf16}}}$
 - `scripts/bench/analyze_capacity_state.py`（容量模型验证）
 - `results/verified/2026-08-08/capacity-state/capacity-state-20260808__*`（10 探针 JSON + sha256）
 - `results/verified/2026-08-08/capacity-state-analysis.json`
-- `scripts/exp/hybrid_premise.py`（新增 `--state-dtype`）
+- `scripts/exp/hybrid_premise.py`（新增 `--state-dtype` 与逐层 `layer_ids`/`audit` 支持）
+- `scripts/exp/run_state_sensitivity.py`（决策门 runner，含逐层审计 + 参考复现）
+- `scripts/eval/analyze_state_sensitivity.py`
+- `results/quality/state-sensitivity/state-sensitivity-20260809/c4.json`、`pg19.json` + sha256
+- `results/quality/state-sensitivity-analysis-20260809.json`
 - `scripts/exp/run_ppl_state_dtype.sh`（8 格 runner）
 - `scripts/eval/analyze_ppl_state_dtype.py`（配对 CI 分析）
 - `results/quality/ppl-state-dtype/ppl-state-20260808__*`（8 格 CSV + seeds CSV）

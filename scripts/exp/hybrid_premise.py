@@ -65,13 +65,23 @@ def make_cache(bits: int, evict_budget: int | None, attn_indices: list[int], mod
     )
 
 
-def _wrap_state_dtype(cache, state_dtype: str | None) -> None:
+def _wrap_state_dtype(
+    cache,
+    state_dtype: str | None,
+    layer_ids: set[int] | None = None,
+    audit: dict | None = None,
+) -> None:
     """Cast GDN recurrent (SSM) state to target dtype at every cache write.
 
     With auto/None the transformers default (float32) is kept. When a reduced
     dtype is requested, the stored state is rounded once per write boundary,
     which simulates the vLLM ``--mamba-ssm-cache-dtype`` storage precision at
     the granularity of the chunked forward passes used by this harness.
+    ``layer_ids`` restricts the cast to specific GDN layers (per-layer
+    sensitivity); when it is None every GDN layer is cast. ``audit``, when
+    provided, records cast calls and the written dtype per layer so callers
+    can fail-closed if the intended layers were not cast (or unintended
+    layers were).
     """
     import types
 
@@ -79,10 +89,24 @@ def _wrap_state_dtype(cache, state_dtype: str | None) -> None:
         return
     dtype = getattr(torch, state_dtype)
     orig = cache.update_recurrent_state
+    if audit is not None:
+        audit.setdefault("cast_calls", {})
+        audit.setdefault("written_dtypes", {})
 
     def wrapped(self, recurrent_states, layer_idx, state_idx=0, **kwargs):
+        if layer_ids is not None and layer_idx not in layer_ids:
+            if audit is not None:
+                audit["written_dtypes"][layer_idx] = (
+                    str(recurrent_states.dtype) if recurrent_states is not None else None
+                )
+            return orig(recurrent_states, layer_idx, state_idx, **kwargs)
         if recurrent_states is not None and recurrent_states.dtype != dtype:
             recurrent_states = recurrent_states.to(dtype)
+        if audit is not None:
+            audit["cast_calls"][layer_idx] = audit["cast_calls"].get(layer_idx, 0) + 1
+            audit["written_dtypes"][layer_idx] = (
+                str(recurrent_states.dtype) if recurrent_states is not None else None
+            )
         return orig(recurrent_states, layer_idx, state_idx, **kwargs)
 
     cache.update_recurrent_state = types.MethodType(wrapped, cache)
@@ -139,6 +163,8 @@ def chunked_ppl(
     chunk_size: int,
     *,
     state_dtype: str | None = None,
+    state_layer_ids: set[int] | None = None,
+    state_audit: dict | None = None,
     use_cache: bool = True,
     attn_indices: list[int] | None = None,
 ) -> tuple[float, float, float]:
@@ -150,7 +176,7 @@ def chunked_ppl(
     device = next(model.parameters()).device
     seq_len = ids.shape[1]
     cache = cache_factory()
-    _wrap_state_dtype(cache, state_dtype)
+    _wrap_state_dtype(cache, state_dtype, layer_ids=state_layer_ids, audit=state_audit)
     evicting = getattr(cache, "evict_budget", None) is not None
     restore_patch = patch_attention_recording(model, cache, attn_indices or []) if (evicting and attn_indices) else None
     try:
