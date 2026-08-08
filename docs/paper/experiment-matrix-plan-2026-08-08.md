@@ -24,8 +24,8 @@
 | Q7 LongBench v1 | 5 allocs（2B）+ 3 allocs（9B） | 2B/9B | 1 | 64 cells | **DONE / ANALYZED** |
 | M1 A2 机制门禁 | — | 2B | — | 8/8 检查 | **DONE / VERIFIED** |
 | M2 A2 独立复现 | — | 2B | — | 4/4 probes | **DONE / VERIFIED** |
-| M3 9B packed 容量探针 | legacy/uniform/packed | 9B | — | 3 probes | **PENDING** |
-| M4 纯注意力对照 | fp16/int4 | Qwen2.5-7B | — | 容量 + 质量切片 | **PENDING** |
+| M3 9B packed 容量探针 | legacy/uniform/packed | 9B | — | 3 probes | **DONE / ANALYZED** |
+| M4 纯注意力对照 | fp16/int4 | Qwen2.5-7B | — | 容量 + 质量切片 | **PENDING（模型下载中）** |
 | B1 外部 baseline（KIVI/KVQuant） | — | 2B | 3 | 待定 | **PENDING（需评估）** |
 | B2 GSM8K 多 seed | 5 allocs | 2B | 3 | 3×200 | **PENDING** |
 | B3 LongBench 多 seed | 关键任务 | 2B/9B | 3 | 3×50×任务 | **PENDING（可选）** |
@@ -176,7 +176,7 @@
 |---|---|---|---|---|
 | M1 | A2 运行时门禁（8/8 检查） | DONE/VERIFIED | 单 backing、混 dtype、GDN dtype、真实生成 | W2 机制正确性 |
 | M2 | A2 独立主机复现 | DONE/VERIFIED | 冻结代码+SHA 部署，比例复现 | 可复现性 |
-| M3 | 9B packed 容量探针 | PENDING | packed 恢复在 9B 成立（现只有 0.258 塌缩） | W2 通用性 |
+| M3 | 9B packed 容量探针 | DONE/ANALYZED | 9B legacy 89,088 / uniform 345,702 / packed 287,744 tokens；packed/legacy 3.230、packed/uniform 0.832（与 2B 的 3.232/0.833 一致） | W2 通用性 |
 | M4 | 纯注意力对照（Qwen2.5-7B） | PENDING | 3.88×→2.245× 稀释是 hybrid 性质 | W2/W3 一般性 |
 | M5 | A2 上游化 patch（diff+单测） | PENDING（工程） | 与 DSV4 packed 路径的边界证明 | W2 机制增量 |
 
@@ -186,8 +186,8 @@
 |---|---|---|---|---|
 | P0 | Q2 续跑（10 cells） | 1.5–2h | `run_ppl_extra.sh ppl-extra-20260807` | **DONE（12/12 + 分析 + sha）** |
 | P0 | E4 Serving Formal | ~8h | 人工放行 → `run_serving_formal.sh` | 108/108 + ANALYZED→（复现后 VERIFIED） |
-| P0 | M3 9B packed 容量探针 | 0.5–1h | 复用 A2 probe 脚本 | 3/3 probes + ratio gate |
-| P0 | M4 纯注意力对照 | 1–2h | 同容量协议 @ Qwen2.5-7B | 稀释对比表 |
+| P0 | M3 9B packed 容量探针 | 0.5–1h | 复用 A2 probe 脚本 | **DONE（3/3 probes，比例与 2B 一致）** |
+| P0 | M4 纯注意力对照 | 1–2h | 同容量协议 @ Qwen2.5-7B | 稀释对比表（模型下载中） |
 | P1 | B2 GSM8K 3-seed | 1–1.5h | `run_reasoning_bench.sh --seeds 7,42,2026`（改造） | 配对 CI |
 | P1 | B1 外部 baseline | 2–5 天（评估后） | KIVI/KVQuant 同协议实现 | 同硬件同协议对照表 |
 | P2 | B3 LongBench 多 seed | 2–3h | `longbench_bench.py` 加 seeds | 关键任务 CI |
