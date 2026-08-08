@@ -60,6 +60,10 @@
 - 结果：int4 vs fp16 端到端容量比 2.245×@4096、3.155×@16384（2B）、2.19×@4096
   （9B）；机制层 attention KV 3.88×；GDN 每请求 18.63 MiB（代码推导，≈60% KV 预算）。
 - 论文口径：机制层与系统层两个标尺同时报告；GDN 占比为标注过的代码推导估计。
+- 模型（2026-08-08 入文）：$r_s(L)=(A_f L+G)/(A_q L+G)$，跨 2B/9B/纯注意力
+  验证（预测 vs 实测：2B@4K 2.149 vs 2.2456、2B@16K 3.091 vs 3.155、9B@4K 2.149
+  vs 2.19、纯注意力 3.765≈机制值）；见 mainline §3.3 Table 2 与
+  `results/verified/2026-08-08/capacity-probe-extra/`。
 
 ### E2 Serving gates（protocol-v3）— DONE / ANALYZED
 

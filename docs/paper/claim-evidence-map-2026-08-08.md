@@ -22,6 +22,7 @@
 | C15 | Serving protocol-v3 六列正式边界（Random60/ShareGPT300 × 3 seeds；高负载失败计入分母） | `results/quality/r5-serving-formal-analysis-20260808.json` | DONE / ANALYZED | 独立复现未跑；A2 三列来自门禁 formal |
 | C16 | A2 在 9B 恢复容量（3.230×/0.832×）、纯 attention 无稀释（3.765× vs 混合 2.245×） | `results/verified/2026-08-08/capacity-probe-extra/` | DONE / ANALYZED | 单主机探针；与 2B VERIFIED 比例一致 |
 | C17 | KIVI 风格 4-bit 外部 baseline（transformers HQQ，K 逐通道 group32 / V 逐 token / residual 128） | `results/quality/ppl-external/` + `ppl-external-analysis-20260808.json` | DONE / ANALYZED | 三语料 3-seed 配对 CI：Δ +0.004/−0.009/−0.006，均含 0；同 harness fp16 参考 |
+| C18 | 容量/稀释模型 $r_s(L)=(A_f L+G)/(A_q L+G)$ 跨规模验证：2B@4K/16K、9B@4K、纯注意力 $G=0$ | §3.3 Table 2；容量探针 `results/verified/2026-08-08/capacity-probe-extra/` + E1 VERIFIED | DONE / ANALYZED | 2B 误差 +4.5%/+2.1%（block 对齐）；9B +1.9%；纯注意力 3.765 vs 机制 3.878（布局差异，披露） |
 
 ## 写作红线
 

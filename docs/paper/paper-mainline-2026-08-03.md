@@ -292,13 +292,35 @@ Two structural consequences follow directly:
    of the budget). Hybrid KV quantization therefore becomes *more* attractive exactly in the
    long-context regime these models target.
 
+**Model validation.** The closed form predicts the end-to-end ratio from architecture constants
+only. Table 2 reports predicted vs. measured ratios on three scales and one architecture control:
+
+| model | L | predicted $r_s$ | measured | gap | evidence |
+|---|---:|---:|---:|---:|---|
+| Qwen3.5-2B (hybrid) | 4096 | 2.149 | 2.2456 | +4.5% | E1 capacity (VERIFIED) |
+| Qwen3.5-2B (hybrid) | 16384 | 3.091 | 3.155 | +2.1% | E1 capacity (VERIFIED) |
+| Qwen3.5-9B (hybrid) | 4096 | 2.149 | 2.19 | +1.9% | server logs |
+| Qwen2.5-7B (pure attention, $G=0$) | 4096 | $r_s = m$ | 3.765 | — | M4 probe (2026-08-08) |
+
+The 9B prediction uses $A_f = 16{,}384$ B (8 attention layers), $A_q = A_f/3.878$, and
+$G = 26{,}050{,}560$ B (24 GDN layers at the same per-layer state size as the 2B model; this
+per-layer state shape is the one code-derived assumption, see Eval §7). With attention and GDN
+layers scaling together, the predicted 4K ratio is again 2.149 — the model explains why the
+measured 2B (2.2456) and 9B (2.19) system ratios land in the same band despite very different
+absolute memories. On the pure-attention control ($G=0$) the model degenerates to $r_s = m$: the
+measured end-to-end ratio is 3.765, i.e. **no dilution**, versus 2.245 on the hybrid at the same
+context. The small gap between 3.765 and the 2B-inferred mechanism ratio 3.878 is layout-dependent
+(different layer/head counts and int4 metadata), and the residual 2B/9B gaps (+4.5%/+2.1%/+1.9%)
+are page-alignment rounding that favors int4 (below). The M4 probe used the same frozen probe
+protocol as the VERIFIED A2 gate (`results/verified/2026-08-08/capacity-probe-extra/`).
+
 The same $G$ also sets an upper bound on what any attention-only KV quantizer can buy on a hybrid:
 at the int4 server's maximum concurrency (659.6 sequences) the aggregate GDN state is ≈12.0 GiB ≈
-**60% of the 20.08 GiB KV budget** **[VERIFY — provenance estimate from max concurrency ×
-code-derived state size, see Eval §7]**; at the 400 sequences observed in flight at the highest
-offered rate it is ≈36%. Because $G$ is identical for both allocations, it is a pure diluent:
-further capacity gains in a hybrid require compressing the GDN state itself, not just the attention
-KV. We report both calibers everywhere so the claim is never overstated.
+**60% of the 20.08 GiB KV budget** (code-derived estimate: max concurrency × per-layer state size,
+see Eval §7; labeled as an estimate, not a logged memory split); at the 400 sequences observed in
+flight at the highest offered rate it is ≈36%. Because $G$ is identical for both allocations, it is
+a pure diluent: further capacity gains in a hybrid require compressing the GDN state itself, not
+just the attention KV. We report both calibers everywhere so the claim is never overstated.
 
 **Across scales and family.** The same dilution explains the Qwen3.5-9B result: uniform int4 gives
 **2.19×** @4096 (328,499 vs 150,062 tokens, server logs). The 9B family member has more attention
