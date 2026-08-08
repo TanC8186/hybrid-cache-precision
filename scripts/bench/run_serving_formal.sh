@@ -5,6 +5,8 @@ set -euo pipefail
 
 OUT_ROOT="${1:-/root/autodl-tmp/r5-serving-20260807}"
 cd /root/autodl-tmp/MLSys_Serving_f7a79f5
+export PATH="/root/autodl-tmp/MLSys_Research/.venv/bin:/usr/bin:/bin"
+export VLLM_ALLOW_INSECURE_SERIALIZATION=1
 PY=/root/autodl-tmp/MLSys_Research/.venv/bin/python
 RUNNER=scripts/bench/run_steady_state.py
 LOG=/root/autodl-tmp/MLSys_Research/logs/r5-serving-v3-formal-20260807.log
