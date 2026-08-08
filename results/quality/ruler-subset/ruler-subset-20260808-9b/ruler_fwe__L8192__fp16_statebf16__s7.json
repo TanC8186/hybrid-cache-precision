@@ -1,0 +1,372 @@
+{
+  "accuracy": 93.33,
+  "allocation": "fp16_statebf16",
+  "attempt_id": "ruler-subset-20260808-9b",
+  "cases": [
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 0,
+      "output_tokens": 256,
+      "prediction": "\n\nmqupjb, qaxoqh, guklre\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A coded text containing words and dots ('...').\n    *   Task: Track the frequency of each coded word.\n    *   Constraint: Ignore the dots ('...').\n    *   Output: Identify the three most frequently appeared words.\n    *   Format: \"According to the coded text above, the three most frequently appeared words are: [word1], [word2], [word3]\" (based on the provided example answer format in the prompt, though the prompt actually ends with \"Answer: According to the coded text above, the three most frequently appeared words are: mqupjb, qaxoqh, guklre\". Wait, looking closely at the prompt structure, the user provided the text and then asked a question, and then *provided* the answer in the prompt itself? No, the prompt ends with \"Answer: According to the coded text above, the three most frequently appeared words are: mqupjb, qaxoqh, guklre\". This looks like the user is showing me an example or expecting me to confirm/c",
+      "prompt_tokens": 7961,
+      "references": [
+        "mqupjb",
+        "qaxoqh",
+        "guklre"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        false
+      ],
+      "index": 1,
+      "output_tokens": 256,
+      "prediction": "\n\n1. **okmnxy**\n2. **qgpshy**\n3. **g juekj**\n\n(Note: The third word is \"g juekj\" as it appears most frequently after the first two.)\n\n**Correction:** The third word is **g juekj**.\n\n**Final Answer:**\n1. **okmnxy**\n2. **qgpshy**\n3. **g juekj**\n\n(Note: The third word is \"g juekj\" as it appears most frequently after the first two.)\n\n**Correction:** The third word is **g juekj**.\n\n**Final Answer:**\n1. **okmnxy**\n2. **qgpshy**\n3. **g juekj**\n\n(Note: The third word is \"g juekj\" as it appears most frequently after the first two.)\n\n**Correction:** The third word is **g juekj**.\n\n**Final Answer:**\n1. **okmnxy**\n2. **qgpshy**\n3. **g juekj**\n\n(Note: The third word is \"g juekj\" as it appears most frequently after the first two.)\n\n**Correction:** The third word is **g juekj**.\n\n",
+      "prompt_tokens": 8106,
+      "references": [
+        "okmnxy",
+        "qgpshy",
+        "gjuekj"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 2,
+      "output_tokens": 65,
+      "prediction": "\n\n1. **qsxwqv**\n2. **sxqlzg**\n3. **iztaka**\n\nThe three most frequently appeared words in the above coded text are:\n\n1. **qsxwqv**\n2. **sxqlzg**\n3. **iztaka**",
+      "prompt_tokens": 7747,
+      "references": [
+        "qsxwqv",
+        "sxqlzg",
+        "iztaka"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        false,
+        false
+      ],
+      "index": 3,
+      "output_tokens": 256,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A coded text containing words and dots ('...').\n    *   Task: Track the frequency of each coded word.\n    *   Goal: Find the three most frequently appeared coded words.\n    *   Constraint: Do not provide any explanation. Ignore the dots '...'.\n    *   Output Format: \"According to the coded text above, the three most frequently appeared words are: [word1], [word2], [word3]\" (or similar based on the prompt's ending). The prompt ends with \"Answer: According to the coded text above, the three most frequently appeared words are:\", so I need to complete that sentence.\n\n2.  **Preprocessing:**\n    *   Remove all instances of '...' (dots).\n    *   Extract the remaining words.\n    *   Count the frequency of each unique word.\n    *   Sort by frequency descending.\n    *   Select the top 3.\n\n3.  **Execution (Mental or Scratchpad):**\n    *   I need to scan the text and count occurrences.\n    *   Let's list the potential candidates based on a quick",
+      "prompt_tokens": 7339,
+      "references": [
+        "ottors",
+        "rjrzch",
+        "jencmi"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 4,
+      "output_tokens": 25,
+      "prediction": "\n\nozncsp, qxvcpv, flamts\n\nozncsp, qxvcpv, flamts",
+      "prompt_tokens": 7815,
+      "references": [
+        "ozncsp",
+        "qxvcpv",
+        "flamts"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 5,
+      "output_tokens": 256,
+      "prediction": "\n\nnzehtd, qatmzp, gizmzh\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A coded text containing words and dots ('...').\n    *   Task: Track the frequency of each coded word.\n    *   Goal: Find the three most frequently appeared coded words.\n    *   Constraint: Do not provide any explanation. Ignore the dots '...'.\n    *   Output Format: \"According to the coded text above, the three most frequently appeared words are: [word1], [word2], [word3]\" (based on the example provided in the prompt's final line, though the prompt actually ends with \"Answer: According to the coded text above, the three most frequently appeared words are:\" and then stops, implying I need to complete it or provide the answer in that format). Wait, looking at the very end of the prompt: \"Answer: According to the coded text above, the three most frequently appeared words are:\". It seems the user wants me to complete the sentence or provide the list. The prompt actually includes the start of the answer at the very end. I need to provide the actual words.\n    *   Wait, reading the",
+      "prompt_tokens": 7795,
+      "references": [
+        "nzehtd",
+        "qatmzp",
+        "gizmzh"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 6,
+      "output_tokens": 40,
+      "prediction": "\n\nBased on the analysis of the text, the three most frequent words are:\n\n1. **nochfd**\n2. **qllesm**\n3. **hjhadu**",
+      "prompt_tokens": 7255,
+      "references": [
+        "nochfd",
+        "qllesm",
+        "hjhadu"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 7,
+      "output_tokens": 256,
+      "prediction": "\n\nnkskvu, gdfnhq, rbadwf\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A coded text containing words separated by spaces and dots ('...').\n    *   Task: Track the frequency of each coded word.\n    *   Goal: Find the three most frequently appeared coded words.\n    *   Constraint: Do not provide any explanation. Ignore the dots '...'.\n    *   Output Format: \"According to the coded text above, the three most frequently appeared words are: [word1], [word2], [word3]\" (based on the example provided in the prompt's final line, though the prompt actually ends with \"Answer: According to the coded text above, the three most frequently appeared words are: nkskvu, gdfnhq, rbadwf\". Wait, looking closely at the prompt structure, the user provided the text and then asked the question. The last line \"Answer: According to the coded text above, the three most frequently appeared words are: nkskvu, gdfnhq, rbadwf\" looks like part of the prompt's expected output format or a hint. Actually, reading the prompt",
+      "prompt_tokens": 7723,
+      "references": [
+        "nkskvu",
+        "rbadwf",
+        "gdfnhq"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 8,
+      "output_tokens": 256,
+      "prediction": "\n\nosyuro, rjmnvc, hlfvdm\n\nosyuro, rjmnvc, hlfvdm\n\nosyuro, rjmnvc, hlfvdm\n\nosyuro, rjmnvc, hlfvdm\n\nosyuro, rjmnvc, hlfvdm\n\nosyuro, rjmnvc, hlfvdm\n\nosyuro, rjmnvc, hlfvdm\n\nosyuro, rjmnvc, hlfvdm\n\nosyuro, rjmnvc, hlfvdm\n\nosyuro, rjmnvc, hlfvdm\n\nosyuro, rjmnvc, hlfvdm\n\nosyuro, rjmnvc, hlfvdm\n\nosyuro, rjmnvc, hlfvdm\n\nosyuro, rjmnvc, hlfvdm\n\nosyuro, rjmnvc, hlfvdm\n\nosyuro, rjmnvc, hlfvdm\n\nosyuro, rjmnvc, hlfvdm\n\nosyuro, rjmnvc, hlfvdm\n\nosyuro",
+      "prompt_tokens": 7895,
+      "references": [
+        "osyuro",
+        "rjmnvc",
+        "hlfvdm"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 9,
+      "output_tokens": 256,
+      "prediction": "\n\npcfist, spppvb, hggqua\n\npcfist, spppvb, hggqua\n\npcfist, spppvb, hggqua\n\npcfist, spppvb, hggqua\n\npcfist, spppvb, hggqua\n\npcfist, spppvb, hggqua\n\npcfist, spppvb, hggqua\n\npcfist, spppvb, hggqua\n\npcfist, spppvb, hggqua\n\npcfist, spppvb, hggqua\n\npcfist, spppvb, hggqua\n\npcfist, spppvb, hggqua\n\npcfist, spppvb, hggqua\n\npcfist, spppvb, hggqua\n\npcfist, spppvb, hggqua\n\npcfist, spppvb, hggqua\n\npcfist, spppvb, hggqua\n\npcfist, spppvb, hggqua\n\npcfist, spppvb, hggqua\n\npcfist, spppvb, hggqua\n\npcfist, spppvb, hggqua\n\npcfist",
+      "prompt_tokens": 7821,
+      "references": [
+        "pcfist",
+        "spppvb",
+        "hggqua"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 10,
+      "output_tokens": 256,
+      "prediction": "\n\noedicn, reudpw, hcjedi\n\noedicn, reudpw, hcjedi\n\noedicn, reudpw, hcjedi\n\noedicn, reudpw, hcjedi\n\noedicn, reudpw, hcjedi\n\noedicn, reudpw, hcjedi\n\noedicn, reudpw, hcjedi\n\noedicn, reudpw, hcjedi\n\noedicn, reudpw, hcjedi\n\noedicn, reudpw, hcjedi\n\noedicn, reudpw, hcjedi\n\noedicn, reudpw, hcjedi\n\noedicn, reudpw, hcjedi\n\noedicn, reudpw, hcjedi\n\noedicn, reudpw, hcjedi\n\noedicn, reudpw, hcjedi\n\noedicn, reudpw, hcjedi\n\noedicn, reudpw, hcjedi\n\noedicn, reudpw, hcjedi\n\noedicn, reudpw, hcjedi\n\noedicn, reudpw, hcjedi\n\noedicn",
+      "prompt_tokens": 7894,
+      "references": [
+        "oedicn",
+        "reudpw",
+        "hcjedi"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 11,
+      "output_tokens": 256,
+      "prediction": "\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A coded text containing words and dots ('...').\n    *   Task: Track the frequency of each coded word.\n    *   Goal: Find the three most frequently appeared coded words.\n    *   Constraint: Do not provide any explanation. Ignore the dots '....'.\n    *   Output Format: \"According to the coded text above, the three most frequently appeared words are: [word1], [word2], [word3]\" (implied based on the prompt's ending).\n\n2.  **Preprocessing:**\n    *   I need to extract all words from the text, ignoring the '...' sequences.\n    *   I need to count the occurrences of each unique word.\n    *   I need to identify the top 3.\n\n3.  **Scanning and Counting:**\n    *   I will read through the text and tally the words.\n    *   Common words observed: `nzcrej`, `qixlie`, `gqlesw`, `nzcrej`, `qixlie`, `nfqisa`, `xdhxrx`, `uljygo`,",
+      "prompt_tokens": 8131,
+      "references": [
+        "nzcrej",
+        "qixlie",
+        "gqlesw"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 12,
+      "output_tokens": 256,
+      "prediction": "\n\nprepuu, ruxwxa, ieqsgz\n\nprepuu, ruxwxa, ieqsgz\n\nprepuu, ruxwxa, ieqsgz\n\nprepuu, ruxwxa, ieqsgz\n\nprepuu, ruxwxa, ieqsgz\n\nprepuu, ruxwxa, ieqsgz\n\nprepuu, ruxwxa, ieqsgz\n\nprepuu, ruxwxa, ieqsgz\n\nprepuu, ruxwxa, ieqsgz\n\nprepuu, ruxwxa, ieqsgz\n\nprepuu, ruxwxa, ieqsgz\n\nprepuu, ruxwxa, ieqsgz\n\nprepuu, ruxwxa, ieqsgz\n\nprepuu, ruxwxa, ieqsgz\n\nprepuu, ruxwxa, ieqsgz\n\nprepuu, ruxwxa, ieqsgz\n\nprepuu, ruxwxa, ieqsgz\n\nprepuu, ruxwxa, ieqsgz\n\nprepuu",
+      "prompt_tokens": 7779,
+      "references": [
+        "prepuu",
+        "ruxwxa",
+        "ieqsgz"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 13,
+      "output_tokens": 256,
+      "prediction": " orsavv, rwosvm, fpnnfa.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A block of text containing coded words (strings of letters) separated by spaces and dots ('...').\n    *   Task: Track the frequency of each coded word.\n    *   Goal: Find the three most frequently appeared coded words.\n    *   Constraint: Do not provide any explanation. Ignore the dots '....'.\n    *   Output Format: Just the answer (likely a list of the three words).\n\n2.  **Scan the Text for Words:**\n    *   I need to extract all unique words and count their occurrences.\n    *   The text is dense with '...' which should be ignored.\n    *   I will read through the text and tally the counts for potential candidates.\n\n    *   *Candidate 1: orsavv*\n        *   Scanning... appears very frequently.\n        *   Let's do a rough count or mental check. It seems to be the most common.\n    *   *Candidate 2: rwosvm*\n        *   Scanning... appears very frequently.\n    *   *",
+      "prompt_tokens": 7726,
+      "references": [
+        "orsavv",
+        "rwosvm",
+        "fpnnfa"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 14,
+      "output_tokens": 256,
+      "prediction": "\n\npvtkrb, nokjym, golmoz\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A coded text containing words and dots ('...').\n    *   Task: Track the frequency of each coded word.\n    *   Goal: Find the three most frequently appeared coded words.\n    *   Constraint: Do not provide any explanation. Ignore the dots '....'.\n    *   Output Format: \"According to the coded text above, the three most frequently appeared words are: [word1], [word2], [word3]\" (based on the example provided in the prompt's final line, though the prompt actually ends with \"Answer: According to the coded text above, the three most frequently appeared words are:\"). I need to complete the answer or provide the list. The prompt ends with \"Answer: According to the coded text above, the three most frequently appeared words are:\", implying I should complete the sentence or just provide the words. Looking at the very last line of the prompt: \"Answer: According to the coded text above, the three most frequently appeared words are: pvtkrb, nokjym, golmoz\". Wait, the prompt *includes* the answer",
+      "prompt_tokens": 7714,
+      "references": [
+        "nokjym",
+        "pvtkrb",
+        "golmoz"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 15,
+      "output_tokens": 40,
+      "prediction": "\n\nBased on the text provided, the three most frequently appeared words are:\n\n1. **nwlrss**\n2. **pvufld**\n3. **gbxzrh**",
+      "prompt_tokens": 8019,
+      "references": [
+        "nwlrss",
+        "pvufld",
+        "gbxzrh"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 16,
+      "output_tokens": 256,
+      "prediction": "\n\npyllkp, sokkla, jrmazg\n\npyllkp, sokkla, jrmazg\n\npyllkp, sokkla, jrmazg\n\npyllkp, sokkla, jrmazg\n\npyllkp, sokkla, jrmazg\n\npyllkp, sokkla, jrmazg\n\npyllkp, sokkla, jrmazg\n\npyllkp, sokkla, jrmazg\n\npyllkp, sokkla, jrmazg\n\npyllkp, sokkla, jrmazg\n\npyllkp, sokkla, jrmazg\n\npyllkp, sokkla, jrmazg\n\npyllkp, sokkla, jrmazg\n\npyllkp, sokkla, jrmazg\n\npyllkp, sokkla, jrmazg\n\npyllkp, sokkla, jrmazg\n\npyllkp, sokkla, jrmazg\n\npyllkp, sokkla, jrmazg\n\npyllkp, sokkla, jrmazg\n\npyllkp, sokkla, jrmazg\n\npyllkp, sokkla, jrmazg\n\npyllkp",
+      "prompt_tokens": 7876,
+      "references": [
+        "pyllkp",
+        "sokkla",
+        "jrmazg"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 17,
+      "output_tokens": 256,
+      "prediction": "\n\nngkflg, prxxlb, fqxpeh\n\nngkflg, prxxlb, fqxpeh\n\nngkflg, prxxlb, fqxpeh\n\nngkflg, prxxlb, fqxpeh\n\nngkflg, prxxlb, fqxpeh\n\nngkflg, prxxlb, fqxpeh\n\nngkflg, prxxlb, fqxpeh\n\nngkflg, prxxlb, fqxpeh\n\nngkflg, prxxlb, fqxpeh\n\nngkflg, prxxlb, fqxpeh\n\nngkflg, prxxlb, fqxpeh\n\nngkflg, prxxlb, fqxpeh\n\nngkflg, prxxlb, fqxpeh\n\nngkflg, prxxlb, fqxpeh\n\nngkflg, prxxlb, fqxpeh\n\nngkflg, prxxlb, fqxpeh\n\nngkflg, prxxlb, fqxpeh\n\nngkflg, prxxlb, fqxpeh\n\nngkfl",
+      "prompt_tokens": 7681,
+      "references": [
+        "ngkflg",
+        "prxxlb",
+        "fqxpeh"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 18,
+      "output_tokens": 81,
+      "prediction": "\n\nBased on the analysis of the text, the three most frequent words are:\n\n1. ochbos\n2. pifaxv\n3. gwpagn\n\n(Note: The word \"wtjwgv\" is also very frequent, but \"gwpagn\" appears slightly more often in the provided text.)\n\n**Final Answer:**\nochbos, pifaxv, gwpagn",
+      "prompt_tokens": 7275,
+      "references": [
+        "ochbos",
+        "pifaxv",
+        "gwpagn"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 19,
+      "output_tokens": 256,
+      "prediction": " mpmsie, qaduxr, eseqmc.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A coded text containing words separated by spaces and dots ('...').\n    *   Task: Track the frequency of each coded word.\n    *   Goal: Find the three most frequently appeared coded words.\n    *   Constraint: Do not provide any explanation. Ignore the dots '....'.\n    *   Output Format: Just the answer (likely a list of the three words).\n\n2.  **Scan the Text:**\n    *   The text is a long stream of words separated by spaces and ellipses ('...').\n    *   I need to count the occurrences of each unique word.\n    *   I need to identify the top 3.\n\n3.  **Preprocessing (Mental or Scratchpad):**\n    *   Remove '...' and treat them as separators or ignore them.\n    *   Extract words.\n    *   Count frequencies.\n\n    *Let's do a rough count by scanning for common candidates.*\n    *   Candidates visible: `mpmsie`, `qaduxr`, `eseqmc`, `",
+      "prompt_tokens": 7804,
+      "references": [
+        "mpmsie",
+        "qaduxr",
+        "eseqmc"
+      ]
+    }
+  ],
+  "config_effect": {
+    "allocation": "fp16_statebf16",
+    "detail": {
+      "a2_flag": false,
+      "cache_dtype": "auto",
+      "mamba_ssm_cache_dtype": "bfloat16",
+      "per_layer": {}
+    },
+    "group_structure_verified": false,
+    "ok": true
+  },
+  "created_at_utc": "2026-08-08T15:04:35Z",
+  "data_file": "data/ruler/ruler_fwe_L8192/validation.jsonl",
+  "data_sha256": "e40be1cdf0e66524188c79b5546ca82665054daa782b49b65a520b04fee0fa01",
+  "elapsed_s": 77.4,
+  "engine": {
+    "kwargs": {
+      "disable_log_stats": true,
+      "enforce_eager": true,
+      "gpu_memory_utilization": 0.85,
+      "mamba_ssm_cache_dtype": "bfloat16",
+      "max_model_len": 16384,
+      "seed": 7
+    },
+    "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-9B/snapshots/master",
+    "vllm_version": "0.26.1rc1.dev245+ge2fa28594"
+  },
+  "host": "autodl-container-ca6c40b13f-016bd465",
+  "length": 8192,
+  "max_tokens": 256,
+  "metric": "string_match_all",
+  "num_samples": 20,
+  "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+  "sampling_params": {
+    "max_tokens": 256,
+    "temperature": 0.0,
+    "thinking": "default"
+  },
+  "schema_version": 1,
+  "seed": 7,
+  "status": "completed_validated",
+  "task": "ruler_fwe",
+  "task_type": "freq_words_extraction",
+  "thinking": "default",
+  "tokens_to_generate": 50
+}

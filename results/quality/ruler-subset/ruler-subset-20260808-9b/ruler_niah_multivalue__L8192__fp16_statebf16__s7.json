@@ -1,0 +1,412 @@
+{
+  "accuracy": 100.0,
+  "allocation": "fp16_statebf16",
+  "attempt_id": "ruler-subset-20260808-9b",
+  "cases": [
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 3076,
+      "output_tokens": 256,
+      "prediction": ":\n\n2839607, 8082668, 3564251, 3684052.\n\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go",
+      "prompt_tokens": 8047,
+      "references": [
+        "2839607",
+        "3564251",
+        "3684052",
+        "8082668"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 5328,
+      "output_tokens": 256,
+      "prediction": ":\n\n5218028, 5476583, 1192619, 2921859.\n\nThe special magic numbers for rhetorical-industry mentioned in the provided text are:\n\n5218028, 5476583, 1192619, 2921859.\n\nThe special magic numbers for rhetorical-industry mentioned in the provided text are:\n\n5218028, 5476583, 1192619, 2921859.\n\nThe special magic numbers for rhetorical-industry mentioned in the provided text are:\n\n5218028, 5476583, 1192619, 2921859.\n\nThe special magic numbers for rhetorical-industry mentioned in the provided text are:\n\n5218028, 5476583, 1192619, 2921859.\n\nThe special magic numbers for rhetorical-industry mentioned in",
+      "prompt_tokens": 8047,
+      "references": [
+        "5218028",
+        "1192619",
+        "2921859",
+        "5476583"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 5054,
+      "output_tokens": 256,
+      "prediction": ": 1054447, 3997281, 5418934, 9398441.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A text containing repeated phrases (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with specific sentences revealing \"special magic numbers for omniscient-core\".\n    *   Task: Memorize the hidden magic numbers and answer a quiz question about them.\n    *   Current Step: The user has provided the text and the question (\"What are all the special magic numbers for omniscient-core mentioned in the provided text?\"). The user also included the answer within the prompt itself at the very end (\"The special magic numbers for omniscient-core mentioned in the provided text are: 1054447, 3997281, 5418934, 9398441.\").\n    *   Goal: Confirm the numbers found in the text and present them as the answer.\n\n2.  **Scan the",
+      "prompt_tokens": 8053,
+      "references": [
+        "1054447",
+        "5418934",
+        "9398441",
+        "3997281"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 1007,
+      "output_tokens": 256,
+      "prediction": ":\n\n7273233, 1009594, 3710343, 9897858.\n\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go",
+      "prompt_tokens": 8053,
+      "references": [
+        "7273233",
+        "3710343",
+        "9897858",
+        "1009594"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 3796,
+      "output_tokens": 91,
+      "prediction": ":\n\n6159230, 5041154, 5017343, 1971823.\n\nThe special magic numbers for laughable-warfare mentioned in the provided text are:\n\n6159230, 5041154, 5017343, 1971823.",
+      "prompt_tokens": 8053,
+      "references": [
+        "6159230",
+        "5017343",
+        "1971823",
+        "5041154"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 12342,
+      "output_tokens": 256,
+      "prediction": ": 3109911, 3770370, 3154051, 8973915.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A text containing repeated phrases (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with specific sentences containing \"special magic numbers for ripe-theology\".\n    *   Task: Identify and memorize the special magic numbers hidden in the text.\n    *   Output: The user is asking me to recall the numbers found in the text. The prompt ends with a question: \"What are all the special magic numbers for ripe-theology mentioned in the provided text?\" and actually provides the answer at the very end of the input text itself (\"The special magic numbers for ripe-theology mentioned in the provided text are: 3109911, 3770370, 3154051, 8973915.\").\n    *   Constraint: I need to output the numbers I found/memorized.\n\n2.",
+      "prompt_tokens": 8047,
+      "references": [
+        "3109911",
+        "3154051",
+        "8973915",
+        "3770370"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 5684,
+      "output_tokens": 256,
+      "prediction": ":\n\n4374754, 7264956, 6229731, 7693979.\n\nThe special magic numbers for royal-attention mentioned in the provided text are:\n\n4374754, 7264956, 6229731, 7693979.\n\nThe special magic numbers for royal-attention mentioned in the provided text are:\n\n4374754, 7264956, 6229731, 7693979.\n\nThe special magic numbers for royal-attention mentioned in the provided text are:\n\n4374754, 7264956, 6229731, 7693979.\n\nThe special magic numbers for royal-attention mentioned in the provided text are:\n\n4374754, 7264956, 6229731, 7693979.\n\nThe special magic numbers for royal-attention mentioned in",
+      "prompt_tokens": 8047,
+      "references": [
+        "4374754",
+        "6229731",
+        "7693979",
+        "7264956"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 459,
+      "output_tokens": 256,
+      "prediction": ":\n\n2074176, 4860684, 6672134, 1352896.\n\nThe special magic numbers for few-treaty mentioned in the provided text are:\n\n2074176, 4860684, 6672134, 1352896.\n\nThe special magic numbers for few-treaty mentioned in the provided text are:\n\n2074176, 4860684, 6672134, 1352896.\n\nThe special magic numbers for few-treaty mentioned in the provided text are:\n\n2074176, 4860684, 6672134, 1352896.\n\nThe special magic numbers for few-treaty mentioned in the provided text are:\n\n2074176, 4860684, 6672134, 1352896.\n\nThe special magic numbers for few",
+      "prompt_tokens": 8053,
+      "references": [
+        "2074176",
+        "6672134",
+        "1352896",
+        "4860684"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 11082,
+      "output_tokens": 256,
+      "prediction": ":\n\n2130789, 2188789, 1527021, 6543670.\n\nThe special magic numbers for flaky-codling mentioned in the provided text are:\n\n2130789, 2188789, 1527021, 6543670.\n\nThe special magic numbers for flaky-codling mentioned in the provided text are:\n\n2130789, 2188789, 1527021, 6543670.\n\nThe special magic numbers for flaky-codling mentioned in the provided text are:\n\n2130789, 2188789, 1527021, 6543670.\n\nThe special magic numbers for flaky-codling mentioned in the provided text are:\n\n2130789, 2188789, 1527021, 6543670.\n\nThe special",
+      "prompt_tokens": 8059,
+      "references": [
+        "2130789",
+        "1527021",
+        "6543670",
+        "2188789"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 4512,
+      "output_tokens": 90,
+      "prediction": ":\n\n3219824, 8935169, 8930103, 5076817.\n\nThe special magic numbers for round-webinar mentioned in the provided text are:\n\n3219824, 8935169, 8930103, 5076817.",
+      "prompt_tokens": 8047,
+      "references": [
+        "3219824",
+        "8930103",
+        "5076817",
+        "8935169"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 2980,
+      "output_tokens": 256,
+      "prediction": ":\n\n8106470, 1908841, 7897151, 8835373.\n\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go",
+      "prompt_tokens": 8047,
+      "references": [
+        "8106470",
+        "7897151",
+        "8835373",
+        "1908841"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 6586,
+      "output_tokens": 256,
+      "prediction": ":\n\n4214348, 8526486, 4191175, 9997381.\n\nThe special magic numbers for furtive-milestone mentioned in the provided text are:\n\n4214348, 8526486, 4191175, 9997381.\n\nThe special magic numbers for furtive-milestone mentioned in the provided text are:\n\n4214348, 8526486, 4191175, 9997381.\n\nThe special magic numbers for furtive-milestone mentioned in the provided text are:\n\n4214348, 8526486, 4191175, 9997381.\n\nThe special magic numbers for furtive-milestone mentioned in the provided text are:\n\n4214348, 8526486, 4191175, 9997381.\n\nThe special",
+      "prompt_tokens": 8059,
+      "references": [
+        "4214348",
+        "4191175",
+        "9997381",
+        "8526486"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 824,
+      "output_tokens": 256,
+      "prediction": ":\n\n2264748, 1848731, 8434500, 2642635.\n\nThe special magic numbers for futuristic-wine mentioned in the provided text are:\n\n2264748, 1848731, 8434500, 2642635.\n\nThe special magic numbers for futuristic-wine mentioned in the provided text are:\n\n2264748, 1848731, 8434500, 2642635.\n\nThe special magic numbers for futuristic-wine mentioned in the provided text are:\n\n2264748, 1848731, 8434500, 2642635.\n\nThe special magic numbers for futuristic-wine mentioned in the provided text are:\n\n2264748, 1848731, 8434500, 2642635.\n\nThe special magic numbers for futuristic-wine mentioned in",
+      "prompt_tokens": 8047,
+      "references": [
+        "2264748",
+        "8434500",
+        "2642635",
+        "1848731"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 281,
+      "output_tokens": 90,
+      "prediction": ":\n\n9147706, 7728339, 9075854, 4586084.\n\nThe special magic numbers for mighty-pride mentioned in the provided text are:\n\n9147706, 7728339, 9075854, 4586084.",
+      "prompt_tokens": 8047,
+      "references": [
+        "9147706",
+        "9075854",
+        "4586084",
+        "7728339"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 7302,
+      "output_tokens": 256,
+      "prediction": ":\n\n8633773, 9164991, 5785687, 8096887.\n\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go",
+      "prompt_tokens": 8047,
+      "references": [
+        "8633773",
+        "5785687",
+        "8096887",
+        "9164991"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 22151,
+      "output_tokens": 256,
+      "prediction": ":\n\n2022698, 1841248, 6261415, 1959074.\n\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go",
+      "prompt_tokens": 8053,
+      "references": [
+        "2022698",
+        "6261415",
+        "1959074",
+        "1841248"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 3259,
+      "output_tokens": 256,
+      "prediction": ": 9519948, 2149597, 2344047, 4117625.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A text containing repeated phrases (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with specific sentences containing \"special magic numbers for available-floodplain\".\n    *   Task: Identify and memorize the special magic numbers hidden in the text.\n    *   Output: The user is asking me to recall the numbers found in the text. The prompt ends with a question: \"What are all the special magic numbers for available-floodplain mentioned in the provided text?\"\n    *   Constraint: I need to extract the numbers accurately based on the provided text.\n\n2.  **Scan the Text for Numbers:**\n    *   I need to look for patterns like \"One of the special magic numbers for available-floodplain is: [NUMBER].\"\n    *   Scanning...\n    *   Found instance 1: \"One of the special magic numbers for available-flood",
+      "prompt_tokens": 8053,
+      "references": [
+        "9519948",
+        "2344047",
+        "4117625",
+        "2149597"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 14684,
+      "output_tokens": 256,
+      "prediction": ":\n\n5130808, 8033426, 1666754, 2375453.\n\nThe special magic numbers for skillful-palace mentioned in the provided text are:\n\n5130808, 8033426, 1666754, 2375453.\n\nThe special magic numbers for skillful-palace mentioned in the provided text are:\n\n5130808, 8033426, 1666754, 2375453.\n\nThe special magic numbers for skillful-palace mentioned in the provided text are:\n\n5130808, 8033426, 1666754, 2375453.\n\nThe special magic numbers for skillful-palace mentioned in the provided text are:\n\n5130808, 8033426, 1666754, 2375453.\n\nThe special",
+      "prompt_tokens": 8059,
+      "references": [
+        "5130808",
+        "1666754",
+        "2375453",
+        "8033426"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 6224,
+      "output_tokens": 90,
+      "prediction": ":\n\n6271130, 7640184, 5004485, 5456272.\n\nThe special magic numbers for excellent-pence mentioned in the provided text are:\n\n6271130, 7640184, 5004485, 5456272.",
+      "prompt_tokens": 8047,
+      "references": [
+        "6271130",
+        "5004485",
+        "5456272",
+        "7640184"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 6220,
+      "output_tokens": 256,
+      "prediction": ":\n\n8688755, 4576135, 2677407, 2229110.\n\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go",
+      "prompt_tokens": 8047,
+      "references": [
+        "8688755",
+        "2677407",
+        "2229110",
+        "4576135"
+      ]
+    }
+  ],
+  "config_effect": {
+    "allocation": "fp16_statebf16",
+    "detail": {
+      "a2_flag": false,
+      "cache_dtype": "auto",
+      "mamba_ssm_cache_dtype": "bfloat16",
+      "per_layer": {}
+    },
+    "group_structure_verified": false,
+    "ok": true
+  },
+  "created_at_utc": "2026-08-08T14:52:25Z",
+  "data_file": "data/ruler/ruler_niah_multivalue_L8192/validation.jsonl",
+  "data_sha256": "639947c69a3b9214347e8bc92f5d1e1a15b33794d3fb36f097531e40fe5408d3",
+  "elapsed_s": 81.7,
+  "engine": {
+    "kwargs": {
+      "disable_log_stats": true,
+      "enforce_eager": true,
+      "gpu_memory_utilization": 0.85,
+      "mamba_ssm_cache_dtype": "bfloat16",
+      "max_model_len": 16384,
+      "seed": 7
+    },
+    "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-9B/snapshots/master",
+    "vllm_version": "0.26.1rc1.dev245+ge2fa28594"
+  },
+  "host": "autodl-container-ca6c40b13f-016bd465",
+  "length": 8192,
+  "max_tokens": 256,
+  "metric": "string_match_all",
+  "num_samples": 20,
+  "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+  "sampling_params": {
+    "max_tokens": 256,
+    "temperature": 0.0,
+    "thinking": "default"
+  },
+  "schema_version": 1,
+  "seed": 7,
+  "status": "completed_validated",
+  "task": "ruler_niah_multivalue",
+  "task_type": "niah",
+  "thinking": "default",
+  "tokens_to_generate": 128
+}

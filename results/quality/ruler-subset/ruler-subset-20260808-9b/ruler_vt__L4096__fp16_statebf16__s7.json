@@ -1,0 +1,452 @@
+{
+  "accuracy": 100.0,
+  "allocation": "fp16_statebf16",
+  "attempt_id": "ruler-subset-20260808-9b",
+  "cases": [
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 0,
+      "output_tokens": 256,
+      "prediction": " FUPIL RNUYT RHRQC YGIUD BZPTL\n\nMemorize and track the chain(s) of variable assignment hidden in the following text.\n\nVAR DRX = 26023\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The variable assignment VAR WXU = VAR DRX is hidden in the text.\nThe grass is green. The sky is blue. The sun is yellow. Here we go.\nThe grass is green. The sky is The variable assignment VAR FUS = VAR WXU is hidden in the text.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and assignments.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky",
+      "prompt_tokens": 4055,
+      "references": [
+        "FUPIL",
+        "RNUYT",
+        "RHRQC",
+        "YGIUD",
+        "BZPTL"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 1,
+      "output_tokens": 256,
+      "prediction": " NOITL VXLXL EWLTV HUMGL SGIXC\n\nMemorize and track the chain(s) of variable assignment hidden in the following text.\n\nVAR BKO = 77221\nThe grass is green. The sky is BKO. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is BKO. The sun is yellow. Here we go. statements.\nThe grass is BKO. The sky is BKO. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is BKO. The sun is yellow. Here we go. There and back again.\nThe grass is green. \"The sky is BKO.\" The sun is yellow. Here we go. There and part of a sentence.\nThe grass is green. The sky is BKO. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is BKO. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is BKO. The `VAR` keyword is used to declare a variable.\nThe grass is green",
+      "prompt_tokens": 4052,
+      "references": [
+        "NOITL",
+        "VXLXL",
+        "EWLTV",
+        "HUMGL",
+        "SGIXC"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 2,
+      "output_tokens": 256,
+      "prediction": " WYKTO PFFLA IRKEM DQAKO AQDMB\n\nMemorize and track the chain(s) of variable assignment hidden in the following text.\n\nVAR TJT = 10769\nThe grass is green. The sky is blue. The source of light is the sun. Here we go. There and back again.\nThe grass is green. The sky is blue. The source of light is the sun. Here we go. There and sky is blue.\nThe grass is green. The sky is blue. The source of light is the sun. Here we go. There and back again.\nVAR VGC = VAR TJT \nThe grass is green. The sky is blue. The source of light is the sun. Here we go. There and back again.\nThe grass is green. `VAR AOZ = VAR VGC`\nThe grass is green. The sky is blue. The source of light is the sun. Here we go. There and back again.\nThe grass is green. The sky is blue. The source of light is the chain. Here we go. There and back again.\nThe grass is red. The sky is blue. The source of light is the",
+      "prompt_tokens": 4058,
+      "references": [
+        "WYKTO",
+        "PFFLA",
+        "IRKEM",
+        "DQAKO",
+        "AQDMB"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 3,
+      "output_tokens": 256,
+      "prediction": " FADDR OFSTE PTCVZ CAIRY KSBRQ\n\nMemorize and track the chain(s) of variable assignment hidden in the following text.\n\nVAR NRB = 72955\nThe grass is green. The sky is NRB. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is NRB. The sun is yellow. Here we go. re:\nThe grass is green. The sky is NRB. The sun is yellow. Here we go. There and back again.\nVAR QAK = VAR NRB \nThe grass is green. The sky is NRB. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is NRB. The value of NRB is 72955. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is NRB. The sun is yellow. Here we go. There and variable assignment.\nThe grass is green. The sky is NRB. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is NRB.",
+      "prompt_tokens": 4052,
+      "references": [
+        "FADDR",
+        "OFSTE",
+        "PTCVZ",
+        "CAIRY",
+        "KSBRQ"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 4,
+      "output_tokens": 256,
+      "prediction": " QXUMV PIGYH LTORI MIMJG HPWON\n\nMemorize and track the chain(s) of variable assignment hidden in the following text.\n\nVAR OGM = 77969\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The value of OGM is 77969. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The value of OGM is 77969. The sky is blue. The sun is yellow. Here we go.\nVAR SLA = VAR OGM \nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is SLA. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is The grass is green. The sky is blue. The sun is yellow. Here we go. There",
+      "prompt_tokens": 4058,
+      "references": [
+        "QXUMV",
+        "PIGYH",
+        "LTORI",
+        "MIMJG",
+        "HPWON"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 5,
+      "output_tokens": 256,
+      "prediction": " JLHFS ITYRE THPTP ZVHJH SDBBH\n\nMemorize and track the chain(s) of variable assignment hidden in the following text.\n\nVAR MLE = 93104\nThe grass is green. The sky is blue. The source of light is the sun. Here we go. There and back again.\nThe grass is green. The sky is blue. The source of light is the sun. Here we go. There and blue.\nThe grass is green. The sky is blue. The source of light is the sun. Here we go. There and back again.\nVAR BYM = VAR MLE \nThe grass is green. The sky is blue. The source of light is the sun. Here we go. There and back again.\nThe grass is green. 93104. The source of light is the sun. Here we go. There and back again.\nThe grass is green. The sky is blue. The source of light is the sun. Here we go. There and back again.\nThe grass is green. The sky is blue. The source of following. Here we go. There and back again.\nThe grass is green. The sky",
+      "prompt_tokens": 4056,
+      "references": [
+        "JLHFS",
+        "ITYRE",
+        "THPTP",
+        "ZVHJH",
+        "SDBBH"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 6,
+      "output_tokens": 256,
+      "prediction": " DTPUF NLLWZ HQPTY FFREE BALPH\n\nMemorize and track the chain(s) of variable assignment hidden in the following text.\n\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go.\nVAR RYU = 95305\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is full of stars. The moon is white. The stars are bright.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and full of stars.\n",
+      "prompt_tokens": 4054,
+      "references": [
+        "DTPUF",
+        "NLLWZ",
+        "HQPTY",
+        "FFREE",
+        "BALPH"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 7,
+      "output_tokens": 256,
+      "prediction": " OHDRS YNMCB LIGCZ VOYZR HBTMQ\n\nMemorize and track the chain(s) of variable assignment hidden in the following text.\n\nVAR MKI = 81932\nThe grass is green. The sky is blue. The variable is red. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The variable is red. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is `VAR MKI` . The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and actual value.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. \"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\"\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is",
+      "prompt_tokens": 4058,
+      "references": [
+        "OHDRS",
+        "YNMCB",
+        "LIGCZ",
+        "VOYZR",
+        "HBTMQ"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 8,
+      "output_tokens": 256,
+      "prediction": " WVAWM BNQML BGDHW MAQUS IAKFV\n\nMemorize and track the chain(s) of variable assignment hidden in the following text.\n\nVAR YHS = 94478\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The variable assignment VAR KMM = VAR YHS is hidden in the text.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and `back` again.\nThe grass is green. The sky is back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. \"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\"\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky",
+      "prompt_tokens": 4055,
+      "references": [
+        "WVAWM",
+        "BNQML",
+        "BGDHW",
+        "MAQUS",
+        "IAKFV"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 9,
+      "output_tokens": 256,
+      "prediction": " IUGAS VPRWL MITJY WZGJW KIMXJ\n\nMemorize and track the chain(s) of variable assignment hidden in the following text.\n\nVAR ZIC = 12747\nThe grass is green. The sky is blue. The source of light is the sun. The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The source of light is the sun. The grass is green. The sky is text. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The source of light is the sun. The grass is green. The sky is text. The sun is yellow. Here we go. There and back again.\nVAR VCX = VAR ZIC \nThe grass is green. The sky is blue. The source of light is the sun. The grass is green. The sky is text. The sun is yellow. Here we go. VCX is assigned the value of ZIC.\nThe grass is green. The sky is blue. The source of light is the sun. The grass is green",
+      "prompt_tokens": 4061,
+      "references": [
+        "IUGAS",
+        "VPRWL",
+        "MITJY",
+        "WZGJW",
+        "KIMXJ"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 10,
+      "output_tokens": 256,
+      "prediction": " CIRNY QXMOQ GRHFC ZTSCE HAIBJ\n\nMemorize and track the chain(s) of variable assignment hidden in the following text.\n\nVAR OUE = 75725\nThe grass is green. The sky is OUE. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is OUE. The sun is yellow. Here we go. The grass is green. The sky is OUE. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is OUE. The sun is yellow. Here we go. There and back again.\nVAR CWQ = VAR OUE \nThe grass is green. The sky is OUE. The sun is yellow. Here we go. There and back again.\nThe grass is green.\nVAR GXD = VAR CWQ \nThe grass is green. The sky is OUE. The sun is yellow. Here we go. There and there and back again.\nThe grass is green. The sky is OUE. The sky is OUE. The sun is yellow. Here we go. There and back again.\nThe grass is green",
+      "prompt_tokens": 4052,
+      "references": [
+        "CIRNY",
+        "QXMOQ",
+        "GRHFC",
+        "ZTSCE",
+        "HAIBJ"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 11,
+      "output_tokens": 256,
+      "prediction": " RELIP QLGVF KMGOO ZHZRH ORTBP\n\nMemorize and track the chain(s) of variable assignment hidden in the following text.\n\nVAR QQR = 45773\nThe grass is green. The sky is QQR. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is QQR. The sun is yellow. Here we go. QQR. There and back again.\nThe grass is green. The sky is QQR. The sun is yellow. Here we go. There and back again.\nVAR SRV = VAR QQR \nThe grass is green. The sky is QQR. The sun is yellow. The sun is yellow. Here we go. There and back again.\nThe grass is green. filler text.\nThe grass is green. The sky is QQR. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is QQR. The VAR SRV. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is QQR. The sun is yellow. Here we go. There and `QQR",
+      "prompt_tokens": 4055,
+      "references": [
+        "RELIP",
+        "QLGVF",
+        "KMGOO",
+        "ZHZRH",
+        "ORTBP"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 12,
+      "output_tokens": 256,
+      "prediction": " TEDOZ NXVGV MUTIC ZDZWS ZZUJU\n\nMemorize and track the chain(s) of variable assignment hidden in the following text.\n\nVAR RRP = 66886\nThe grass is green. The sky is blue. The source of light is the sun. Here we go. There and back again.\nThe grass is green. The sky is blue. The source of light is the sun. Here we go. There and blue.\nThe grass is green. The sky is blue. The source of light is the sun. Here we go. There and back again.\nVAR VYC = VAR RRP \nThe grass is green. The sky is blue. The source of light is the sun. Here we go. There and back again.\nThe grass is green. RRP is 66886. The source of light is the sun. Here we go. There and back again.\nThe grass is green. The sky is blue. The source of reassignment is the sun. Here we go. There and back again.\nThe grass is green. The sky is blue. The source of light is the sun. Here we go. There and back again.\nThe",
+      "prompt_tokens": 4054,
+      "references": [
+        "TEDOZ",
+        "NXVGV",
+        "MUTIC",
+        "ZDZWS",
+        "ZZUJU"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 13,
+      "output_tokens": 256,
+      "prediction": " HKDYH MCXDL RTYKT EKCMK YAJLY\n\nMemorize and track the chain(s) of variable assignment hidden in the following text.\n\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The value of the variable is 41551. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The value of the variable is 41551. The sky is blue. The sun is yellow. Here we go.\nVAR KED = 41551\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and formal.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is KED. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow",
+      "prompt_tokens": 4054,
+      "references": [
+        "HKDYH",
+        "MCXDL",
+        "RTYKT",
+        "EKCMK",
+        "YAJLY"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 14,
+      "output_tokens": 256,
+      "prediction": " FFWID XAWDD GERAA UGIEB TNTMU\n\nMemorize and track the chain(s) of variable assignment hidden in the following text.\n\nVAR YBU = 79092\nThe grass is green. The sky is blue. The source of light is the sun. The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The source of light is the sun. The grass is green. The sky is blue. The sun is yellow. Here we go.\nVAR WNL = VAR YBU \nThe grass is green. The sky is blue. The source of light is the source of light. The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nVAR ZBM = VAR WNL \nThe grass is green. The sky is blue. The source of light is the source of light. The grass is green. The sky is the sky. The sun is yellow. Here we go. There and back again.\nVAR KRM = VAR ZBM \nThe grass is green. The sky is blue. The source of light is",
+      "prompt_tokens": 4053,
+      "references": [
+        "FFWID",
+        "XAWDD",
+        "GERAA",
+        "UGIEB",
+        "TNTMU"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 15,
+      "output_tokens": 256,
+      "prediction": " PBHQO IZNLP CSWQT SFLFI LKCLR\n\nMemorize and track the chain(s) of variable assignment hidden in the following text.\n\nVAR VCC = 51606\nThe grass is green. The sky is blue. The source is red. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The source is red. The sun is yellow. Here we go. There and back again.\nThe grass is green. following the chain of variable assignment, 5 variables are assigned the value 51606, they are:  VCC TVO POI DJR TWS\nThe grass is green. The sky is blue. The source is red. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The source is red. The sun is yellow. Here we go. names of the variables.\nThe grass is green. The sky is blue. The source is red. The sun is yellow. Here we go. There and back again.\nThe grass is green. variable assignment, 5 variables are assigned the value 516",
+      "prompt_tokens": 4054,
+      "references": [
+        "PBHQO",
+        "IZNLP",
+        "CSWQT",
+        "SFLFI",
+        "LKCLR"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 16,
+      "output_tokens": 256,
+      "prediction": " ZPJPF RFCVJ TOUVZ VPQAY VGESI\n\nMemorize and track the chain(s) of variable assignment hidden in the following text.\n\nVAR OKD = 97313\nThe grass is green. The sky is OKD. The sun is yellow. Here we go. There and back again.\nThe grass is green. The OKD. The sun is yellow. Here we go. The OKD. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nVAR QAT = VAR OKD \nThe grass is green.\nVAR FKI = VAR QAT \nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and active.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. statements.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is variable. The sun is yellow. Here we go. There and back again",
+      "prompt_tokens": 4053,
+      "references": [
+        "ZPJPF",
+        "RFCVJ",
+        "TOUVZ",
+        "VPQAY",
+        "VGESI"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 17,
+      "output_tokens": 256,
+      "prediction": " EQRHR MLHTC LHRMR BKPAH FDGIA\n\nMemorize and track the chain(s) of variable assignment hidden in the following text.\n\nVAR SNV = 18792\nThe grass is green. The sky is blue. The initializes the sun. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. \"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\"\nThe grass is green. The sky is blue. The sun is yellow. Here go. There and back again.\nVAR UBW = VAR SNV \nThe grass is green. The sky is UBW. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. SNV. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is",
+      "prompt_tokens": 4054,
+      "references": [
+        "EQRHR",
+        "MLHTC",
+        "LHRMR",
+        "BKPAH",
+        "FDGIA"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 18,
+      "output_tokens": 256,
+      "prediction": " AIUQV XCVGP NKIII ENCNX JSVVG\n\nMemorize and track the chain(s) of variable assignment hidden in the following text.\n\nVAR TLY = 53001\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The initializes the sky. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go.\nVAR UMT = VAR TLY \nThe grass is green. The sky is blue. Now the sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is 53001. The sun is yellow. Here we go. There and *back* again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\nThe grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.",
+      "prompt_tokens": 4053,
+      "references": [
+        "AIUQV",
+        "XCVGP",
+        "NKIII",
+        "ENCNX",
+        "JSVVG"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 19,
+      "output_tokens": 256,
+      "prediction": " BLHHB NILBV BWWPN MOUXL VQIMD\n\nMemorize and track the chain(s) of variable assignment hidden in the following text.\n\nVAR NEG = 33897\nThe grass is green. The sky is NEG. The sun is yellow. Here we go. There and back again.\nThe grass is green. The variable LLN is assigned the value of NEG. The sun is yellow. Here we go.\nThe grass is green. The variable LLN is assigned the value of NEG. The sun is yellow. Here we go.\nThe grass is green. The variable LLN is assigned the value of NEG. The sentence is green. The sun is yellow. Here we go.\nThe grass is green. The variable LLN is assigned the value of NEG. The sun is yellow. Here we go.\nThe grass is green. The variable LLN is assigned the line of NEG. The sun is yellow. Here we go.\nThe grass is varied. The variable LLN is assigned the value of NEG. The sun is yellow. Here we go.\nThe grass is green. The variable LLN is assigned the value of NEG. The sun is yellow. 338",
+      "prompt_tokens": 4050,
+      "references": [
+        "BLHHB",
+        "NILBV",
+        "BWWPN",
+        "MOUXL",
+        "VQIMD"
+      ]
+    }
+  ],
+  "config_effect": {
+    "allocation": "fp16_statebf16",
+    "detail": {
+      "a2_flag": false,
+      "cache_dtype": "auto",
+      "mamba_ssm_cache_dtype": "bfloat16",
+      "per_layer": {}
+    },
+    "group_structure_verified": false,
+    "ok": true
+  },
+  "created_at_utc": "2026-08-08T14:56:52Z",
+  "data_file": "data/ruler/ruler_vt_L4096/validation.jsonl",
+  "data_sha256": "af0e68a37000cb0516247053725b58b9b70f90721092e771005f115d82fe8cab",
+  "elapsed_s": 72.6,
+  "engine": {
+    "kwargs": {
+      "disable_log_stats": true,
+      "enforce_eager": true,
+      "gpu_memory_utilization": 0.85,
+      "mamba_ssm_cache_dtype": "bfloat16",
+      "max_model_len": 16384,
+      "seed": 7
+    },
+    "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-9B/snapshots/master",
+    "vllm_version": "0.26.1rc1.dev245+ge2fa28594"
+  },
+  "host": "autodl-container-ca6c40b13f-016bd465",
+  "length": 4096,
+  "max_tokens": 256,
+  "metric": "string_match_all",
+  "num_samples": 20,
+  "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+  "sampling_params": {
+    "max_tokens": 256,
+    "temperature": 0.0,
+    "thinking": "default"
+  },
+  "schema_version": 1,
+  "seed": 7,
+  "status": "completed_validated",
+  "task": "ruler_vt",
+  "task_type": "variable_tracking",
+  "thinking": "default",
+  "tokens_to_generate": 30
+}

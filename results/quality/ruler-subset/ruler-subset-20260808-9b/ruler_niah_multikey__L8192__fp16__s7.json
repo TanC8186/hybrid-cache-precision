@@ -1,0 +1,291 @@
+{
+  "accuracy": 100.0,
+  "allocation": "fp16",
+  "attempt_id": "ruler-subset-20260808-9b",
+  "cases": [
+    {
+      "hits": [
+        true
+      ],
+      "index": 17502,
+      "output_tokens": 36,
+      "prediction": ": 2785277.\n\nThe special magic number for quick-vane mentioned in the provided text is: 2785277.",
+      "prompt_tokens": 8050,
+      "references": [
+        "2785277"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 2797,
+      "output_tokens": 37,
+      "prediction": ": 9897858.\n\nThe special magic number for royal-chestnut mentioned in the provided text is: 9897858.",
+      "prompt_tokens": 8052,
+      "references": [
+        "9897858"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 12406,
+      "output_tokens": 35,
+      "prediction": " 8973915.\n\nThe special magic number for truculent-arm-rest mentioned in the provided text is 8973915.",
+      "prompt_tokens": 8050,
+      "references": [
+        "8973915"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 5674,
+      "output_tokens": 35,
+      "prediction": ": 4374754.\n\nThe special magic number for faint-water mentioned in the provided text is: 4374754.",
+      "prompt_tokens": 8044,
+      "references": [
+        "4374754"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 10927,
+      "output_tokens": 37,
+      "prediction": ": 4694634.\n\nThe special magic number for spectacular-spleen mentioned in the provided text is: 4694634.",
+      "prompt_tokens": 8052,
+      "references": [
+        "4694634"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 22039,
+      "output_tokens": 38,
+      "prediction": ": 3219824.\n\nThe special magic number for fallacious-woodland mentioned in the provided text is: 3219824.",
+      "prompt_tokens": 8053,
+      "references": [
+        "3219824"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 2621,
+      "output_tokens": 36,
+      "prediction": " 4194548.\n\nThe special magic number for mindless-kilometer mentioned in the provided text is 4194548.",
+      "prompt_tokens": 8051,
+      "references": [
+        "4194548"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 8620,
+      "output_tokens": 37,
+      "prediction": ": 8526486.\n\nThe special magic number for roomy-extent mentioned in the provided text is: 8526486.",
+      "prompt_tokens": 8051,
+      "references": [
+        "8526486"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 22460,
+      "output_tokens": 36,
+      "prediction": ": 2642635.\n\nThe special magic number for obedient-breeze mentioned in the provided text is: 2642635.",
+      "prompt_tokens": 8049,
+      "references": [
+        "2642635"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 22736,
+      "output_tokens": 37,
+      "prediction": " 7358113.\n\nThe special magic number for disillusioned-pastoralist mentioned in the provided text is 7358113.",
+      "prompt_tokens": 8058,
+      "references": [
+        "7358113"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 23446,
+      "output_tokens": 36,
+      "prediction": ": 1981186.\n\nThe special magic number for fascinated-divide mentioned in the provided text is: 1981186.",
+      "prompt_tokens": 8047,
+      "references": [
+        "1981186"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 5683,
+      "output_tokens": 37,
+      "prediction": ": 9519948.\n\nThe special magic number for available-floodplain mentioned in the provided text is: 9519948.",
+      "prompt_tokens": 8051,
+      "references": [
+        "9519948"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 18558,
+      "output_tokens": 37,
+      "prediction": ": 5374922.\n\nThe special magic number for hypnotic-escape mentioned in the provided text is: 5374922.",
+      "prompt_tokens": 8050,
+      "references": [
+        "5374922"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 6216,
+      "output_tokens": 36,
+      "prediction": ": 6304573.\n\nThe special magic number for orange-mangle mentioned in the provided text is: 6304573.",
+      "prompt_tokens": 8049,
+      "references": [
+        "6304573"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 14090,
+      "output_tokens": 36,
+      "prediction": ": 3646552.\n\nThe special magic number for handsome-lap mentioned in the provided text is: 3646552.",
+      "prompt_tokens": 8049,
+      "references": [
+        "3646552"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 12400,
+      "output_tokens": 36,
+      "prediction": ": 4533779.\n\nThe special magic number for stimulating-brown mentioned in the provided text is: 4533779.",
+      "prompt_tokens": 8050,
+      "references": [
+        "4533779"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 7632,
+      "output_tokens": 37,
+      "prediction": ": 6596150.\n\nThe special magic number for abashed-girlfriend mentioned in the provided text is: 6596150.",
+      "prompt_tokens": 8052,
+      "references": [
+        "6596150"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 17261,
+      "output_tokens": 35,
+      "prediction": " 1604451.\n\nThe special magic number for salty-spiritual mentioned in the provided text is 1604451.",
+      "prompt_tokens": 8048,
+      "references": [
+        "1604451"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 19036,
+      "output_tokens": 36,
+      "prediction": " 7117837.\n\nThe special magic number for hot-dramaturge mentioned in the provided text is 7117837.",
+      "prompt_tokens": 8051,
+      "references": [
+        "7117837"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 7545,
+      "output_tokens": 37,
+      "prediction": ": 7907400.\n\nThe special magic number for inconclusive-sweets mentioned in the provided text is: 7907400.",
+      "prompt_tokens": 8051,
+      "references": [
+        "7907400"
+      ]
+    }
+  ],
+  "config_effect": {
+    "allocation": "fp16",
+    "detail": {
+      "a2_flag": false,
+      "cache_dtype": "auto",
+      "mamba_ssm_cache_dtype": "float32",
+      "per_layer": {}
+    },
+    "group_structure_verified": false,
+    "ok": true
+  },
+  "created_at_utc": "2026-08-08T14:28:51Z",
+  "data_file": "data/ruler/ruler_niah_multikey_L8192/validation.jsonl",
+  "data_sha256": "f02870cf776d9937a3a398c59022b180f8f6424c3987fcdb1cb4eb051e5d7acb",
+  "elapsed_s": 74.5,
+  "engine": {
+    "kwargs": {
+      "disable_log_stats": true,
+      "enforce_eager": true,
+      "gpu_memory_utilization": 0.85,
+      "max_model_len": 16384,
+      "seed": 7
+    },
+    "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-9B/snapshots/master",
+    "vllm_version": "0.26.1rc1.dev245+ge2fa28594"
+  },
+  "host": "autodl-container-ca6c40b13f-016bd465",
+  "length": 8192,
+  "max_tokens": 256,
+  "metric": "string_match_all",
+  "num_samples": 20,
+  "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+  "sampling_params": {
+    "max_tokens": 256,
+    "temperature": 0.0,
+    "thinking": "default"
+  },
+  "schema_version": 1,
+  "seed": 7,
+  "status": "completed_validated",
+  "task": "ruler_niah_multikey",
+  "task_type": "niah",
+  "thinking": "default",
+  "tokens_to_generate": 128
+}

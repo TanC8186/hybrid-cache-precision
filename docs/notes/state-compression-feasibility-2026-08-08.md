@@ -83,13 +83,17 @@
 | RULER 总体均值（14 格） | 87.83 | 88.33 | +0.49 |
 | RULER 非零差格 | — | — | niah_multivalue L8192 −1.25；vt L8192 +1.0；cwe L8192 +0.5；fwe L4096 +8.33（thinking 截断抽奖，见下）；fwe L8192 −1.67 |
 | GSM8K 配对（3 seeds） | 0.755–0.76 | 0.73×3 | −2.67pt，95% CI [−3.38, −1.95] |
+| RULER 总体均值（14 格，9B） | 95.83 | 95.12 | −0.71 |
+| RULER 非零差格（9B） | — | — | niah_multiquery L4096 +1.25；niah_multiquery L8192 −6.25；fwe L8192 −5.0 |
+| GSM8K 配对（3 seeds，9B） | 0.885×3 | 0.88×3 | −0.5pt，CI [−0.5, −0.5] |
 
 解读：
 
 - RULER 14 格中 10 格差值为 0，非零格在 ±1.7 内（FWE L4096 除外）；**bf16 state 在检索/跟踪/抽取类任务上与 fp32 基本持平**。
 - FWE L4096 的 +8.33 是已知伪影：两配置 20/20 样本都生成未闭合 `<think>` 并耗尽 256 token 预算，命中差异来自截断内容抽奖，不能作为质量结论；论文 FWE 头条数字走 nothink 协议，本对比的 FWE 行仅作同协议参考。
 - GSM8K 显示 bf16 state 稳定小幅回退 −2.7pt（0 think、截断率 3.5% vs 2.3%），与论文既有质量口径“多数任务持平 + GSM8K 有限回退”一致。
-- 结论：**vLLM 真实 kernel 路径下，bf16 state 换来 +37.5% 容量（2B 实测），PPL/RULER 无可见损失，仅 GSM8K 有可披露的小幅回退**——state 精度作为容量预算维度的主张成立，但论文必须同时披露 GSM8K。
+- 9B 侧：GSM8K 回退更小（−0.5pt，3 seed 完全一致，0 think、每 seed 仅 1 个截断样本）；RULER 11/14 格差值为 0，总体 −0.71 由两格驱动——niah_multiquery L8192（53.75→47.5，20 样本中 13–15 个 think 截断）与 fwe L8192（98.33→93.33，20 样本中 15 个截断，1 样本翻转），均为单 seed + thinking 截断下的抽奖区间，不能解读为系统性退化。
+- 结论：**vLLM 真实 kernel 路径下，bf16 state 换来 +37.5% 容量（2B 实测），PPL/RULER 无可见损失（9B 的少量非零格为 think 截断抽奖），GSM8K 有可披露的小幅回退（2B −2.7pt / 9B −0.5pt）**——state 精度作为容量预算维度的主张成立，但论文必须同时披露 GSM8K。
 
 ## 证据文件
 
@@ -103,8 +107,12 @@
 - `results/quality/ppl-state-dtype-analysis-20260808.json`
 - `scripts/eval/kv_quality_retrieval.py` / `ruler_quality.py` / `reasoning_bench.py`（新增 `fp16_statebf16` allocation）
 - `scripts/eval/run_ruler_statebf16.sh`、`scripts/eval/run_gsm8k_statebf16.sh`
+- `scripts/eval/run_ruler_9b.sh`、`scripts/eval/run_gsm8k_9b.sh`（9B：fp16 与 fp16_statebf16 同 attempt 对比）
 - `scripts/eval/analyze_ruler_statebf16.py`、`scripts/eval/analyze_gsm8k_statebf16.py`
 - `results/quality/ruler-subset/ruler-subset-20260808-statebf16/`（14 格 JSON + sha256）
 - `results/quality/reasoning/reasoning-gsm8k-3seed-statebf16-20260808/`（3 格 JSON + sha256）
 - `results/quality/ruler-statebf16-analysis-20260808.json`、`results/quality/gsm8k-statebf16-analysis-20260808.json`
+- `results/quality/ruler-subset/ruler-subset-20260808-9b/`（28 格 JSON + sha256）
+- `results/quality/reasoning/reasoning-gsm8k-3seed-9b-20260808/`（6 格 JSON + sha256）
+- `results/quality/ruler-9b-statebf16-analysis-20260808.json`、`results/quality/gsm8k-9b-statebf16-analysis-20260808.json`
 - 文献：https://tridao.me/blog/2026/replayssm/ ；https://github.com/vllm-project/vllm/pull/43518 ；https://github.com/vllm-project/vllm/pull/51052 ；https://github.com/vllm-project/vllm/issues/37121

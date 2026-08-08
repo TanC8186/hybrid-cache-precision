@@ -1,0 +1,291 @@
+{
+  "accuracy": 100.0,
+  "allocation": "fp16",
+  "attempt_id": "ruler-subset-20260808-9b",
+  "cases": [
+    {
+      "hits": [
+        true
+      ],
+      "index": 1179,
+      "output_tokens": 37,
+      "prediction": ": 5437923.\n\nThe special magic number for jittery-hospital mentioned in the provided text is: 5437923.",
+      "prompt_tokens": 3958,
+      "references": [
+        "5437923"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 8824,
+      "output_tokens": 37,
+      "prediction": ": 3094235.\n\nThe special magic number for roomy-devil mentioned in the provided text is: 3094235.",
+      "prompt_tokens": 3958,
+      "references": [
+        "3094235"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 8474,
+      "output_tokens": 40,
+      "prediction": ": 5918715.\n\nThe special magic number for scintillating-slipper mentioned in the provided text is: 5918715.",
+      "prompt_tokens": 3967,
+      "references": [
+        "5918715"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 1176,
+      "output_tokens": 37,
+      "prediction": ": 2166941.\n\nThe special magic number for weak-jeweller mentioned in the provided text is: 2166941.",
+      "prompt_tokens": 3958,
+      "references": [
+        "2166941"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 5501,
+      "output_tokens": 37,
+      "prediction": ": 2338687.\n\nThe special magic number for harmonious-uniform mentioned in the provided text is: 2338687.",
+      "prompt_tokens": 3958,
+      "references": [
+        "2338687"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 10629,
+      "output_tokens": 10,
+      "prediction": ":\n\n5663623",
+      "prompt_tokens": 3958,
+      "references": [
+        "5663623"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 8291,
+      "output_tokens": 10,
+      "prediction": ":\n\n7210606",
+      "prompt_tokens": 3955,
+      "references": [
+        "7210606"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 1809,
+      "output_tokens": 10,
+      "prediction": ":\n\n5479144",
+      "prompt_tokens": 3958,
+      "references": [
+        "5479144"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 3877,
+      "output_tokens": 36,
+      "prediction": ": 5107245.\n\nThe special magic number for roasted-poetry mentioned in the provided text is: 5107245.",
+      "prompt_tokens": 3955,
+      "references": [
+        "5107245"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 12966,
+      "output_tokens": 35,
+      "prediction": ": 5528972.\n\nThe special magic number for lovely-filter mentioned in the provided text is: 5528972.",
+      "prompt_tokens": 3952,
+      "references": [
+        "5528972"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 1444,
+      "output_tokens": 34,
+      "prediction": " 6440561.\n\nThe special magic number for vague-shear mentioned in the provided text is 6440561.",
+      "prompt_tokens": 3955,
+      "references": [
+        "6440561"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 9374,
+      "output_tokens": 37,
+      "prediction": ": 6292423.\n\nThe special magic number for aggressive-psychology mentioned in the provided text is: 6292423.",
+      "prompt_tokens": 3958,
+      "references": [
+        "6292423"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 13239,
+      "output_tokens": 38,
+      "prediction": ": 4539704.\n\nThe special magic number for berserk-suitcase mentioned in the provided text is: 4539704.",
+      "prompt_tokens": 3961,
+      "references": [
+        "4539704"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 9274,
+      "output_tokens": 37,
+      "prediction": ": 9375710.\n\nThe special magic number for fair-yogurt mentioned in the provided text is: 9375710.",
+      "prompt_tokens": 3958,
+      "references": [
+        "9375710"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 3339,
+      "output_tokens": 37,
+      "prediction": ": 5443951.\n\nThe special magic number for deafening-radish mentioned in the provided text is: 5443951.",
+      "prompt_tokens": 3958,
+      "references": [
+        "5443951"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 13595,
+      "output_tokens": 35,
+      "prediction": " 5408072.\n\nThe special magic number for shiny-fleece mentioned in the provided text is 5408072.",
+      "prompt_tokens": 3958,
+      "references": [
+        "5408072"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 8467,
+      "output_tokens": 36,
+      "prediction": ": 7700828.\n\nThe special magic number for solid-sanction mentioned in the provided text is: 7700828.",
+      "prompt_tokens": 3955,
+      "references": [
+        "7700828"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 11525,
+      "output_tokens": 36,
+      "prediction": ": 9548432.\n\nThe special magic number for dark-boyhood mentioned in the provided text is: 9548432.",
+      "prompt_tokens": 3955,
+      "references": [
+        "9548432"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 3700,
+      "output_tokens": 10,
+      "prediction": ":\n\n2839607",
+      "prompt_tokens": 3955,
+      "references": [
+        "2839607"
+      ]
+    },
+    {
+      "hits": [
+        true
+      ],
+      "index": 13865,
+      "output_tokens": 34,
+      "prediction": " 8082668.\n\nThe special magic number for used-postfix mentioned in the provided text is **8082668**.",
+      "prompt_tokens": 3955,
+      "references": [
+        "8082668"
+      ]
+    }
+  ],
+  "config_effect": {
+    "allocation": "fp16",
+    "detail": {
+      "a2_flag": false,
+      "cache_dtype": "auto",
+      "mamba_ssm_cache_dtype": "float32",
+      "per_layer": {}
+    },
+    "group_structure_verified": false,
+    "ok": true
+  },
+  "created_at_utc": "2026-08-08T14:24:23Z",
+  "data_file": "data/ruler/ruler_niah_single_L4096/validation.jsonl",
+  "data_sha256": "32beca74438a0481c588c42a26f4d8df50f7a2165d41624acd33e55bb83652e4",
+  "elapsed_s": 75.0,
+  "engine": {
+    "kwargs": {
+      "disable_log_stats": true,
+      "enforce_eager": true,
+      "gpu_memory_utilization": 0.85,
+      "max_model_len": 16384,
+      "seed": 7
+    },
+    "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-9B/snapshots/master",
+    "vllm_version": "0.26.1rc1.dev245+ge2fa28594"
+  },
+  "host": "autodl-container-ca6c40b13f-016bd465",
+  "length": 4096,
+  "max_tokens": 256,
+  "metric": "string_match_all",
+  "num_samples": 20,
+  "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+  "sampling_params": {
+    "max_tokens": 256,
+    "temperature": 0.0,
+    "thinking": "default"
+  },
+  "schema_version": 1,
+  "seed": 7,
+  "status": "completed_validated",
+  "task": "ruler_niah_single",
+  "task_type": "niah",
+  "thinking": "default",
+  "tokens_to_generate": 128
+}

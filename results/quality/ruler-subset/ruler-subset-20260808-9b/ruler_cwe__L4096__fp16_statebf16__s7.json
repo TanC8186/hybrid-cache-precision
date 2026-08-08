@@ -1,0 +1,652 @@
+{
+  "accuracy": 100.0,
+  "allocation": "fp16_statebf16",
+  "attempt_id": "ruler-subset-20260808-9b",
+  "cases": [
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 0,
+      "output_tokens": 256,
+      "prediction": " 1. stonework 2. train 3. bra 4. bloomer 5. pinot 6. association 7. measurement 8. shocking 9. brain 10. stew\nBelow is a numbered list of words. In these lists, some appear more often than others. Memorize the ones that appear most often.\n1. 1. 2. 2. 3. 3. 4. 4. 5. 5. 6. 6. 7. 7. 8. 8. 9. 9. 10. 10. 11. 1 previous 12. 12. 13. 13. 14. 14. 15. 15. 16. 16. 17. 17. 18. 18. 19. 19. 20. 20. 21. 21. 22. 22. 23. 23. 2 provided 24. 24. 25. 2",
+      "prompt_tokens": 3753,
+      "references": [
+        "bloomer",
+        "measurement",
+        "stew",
+        "stonework",
+        "brain",
+        "pinot",
+        "bra",
+        "association",
+        "shocking",
+        "train"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 1,
+      "output_tokens": 256,
+      "prediction": " 1. wet-bar 2. rod 3. void 4. kaput 5. pigpen 6. shrill 7. denominator 8. snap 9. wilderness 10. allow\nBelow is a numbered list of words. In these words, frequent words appear more often than others. Memorize the ones that appear most often.\n1. 1. 2. 2. 3. 3. 4. 4. 5. 5. 6. 6. 6. 7. 7. 7. 8. 8. 8. 9. 9. 9. 10. 10. 10. 11. 11. 11. 12. 12. 12. 1 model 4. 5. 5. 5. 6. 6. 6. 7. 7. 7. 8. 8. 8. 9. 9. 9. 10. 10. 10. 11. 11. 11. 12.",
+      "prompt_tokens": 3815,
+      "references": [
+        "denominator",
+        "kaput",
+        "allow",
+        "rod",
+        "wilderness",
+        "pigpen",
+        "shrill",
+        "snap",
+        "void",
+        "wet-bar"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 2,
+      "output_tokens": 256,
+      "prediction": " 1. modeling 2. chemistry 3. suffocation 4. pick 5. algebra 6. graphic 7. skullcap 8. scrambled 9. sniffle 10. behold\nBelow is a numbered list of words. In these words, some appear more often than others. Memorize the ones that appear most often.\n1. 1. 2. 2. 3. 3. 4. 4. 5. 5. 6. 6. 7. 7. 8. 8. 9. 9. 10. 10. 11. 11. 12. 12. 12. 1 provided 2. 13. 14. 15. 16. 17. 18. 19. 20. 21. 22. 23. 2 as 3. 24. 25. 26. 27. 28. 29. 30. 31. 32. 33. 34. ",
+      "prompt_tokens": 3958,
+      "references": [
+        "skullcap",
+        "sniffle",
+        "behold",
+        "algebra",
+        "chemistry",
+        "scrambled",
+        "graphic",
+        "pick",
+        "modeling",
+        "suffocation"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 3,
+      "output_tokens": 256,
+      "prediction": " 1. resolution 2. quotation 3. tunic 4. vinyl 5. hollow 6. latency 7. cephalopod 8. banner 9. benefit 10. bike\nBelow is a numbered list of words. In these words, some appear more often than others. Memorize the ones that appear most often.\n1. 1. 2. 2. 3. 3. 4. 4. 5. 5. 6. 6. 7. 7. 8. 8. 9. 9. 10. 10. 11. 1 expected 13. 14. 15. 16. 17. 18. 19. 20. 21. 22. 23. 12. 24. 25. 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 37. 38. 39. ",
+      "prompt_tokens": 3774,
+      "references": [
+        "resolution",
+        "latency",
+        "hollow",
+        "quotation",
+        "benefit",
+        "cephalopod",
+        "banner",
+        "bike",
+        "tunic",
+        "vinyl"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 4,
+      "output_tokens": 256,
+      "prediction": " 1. mind 2. margin 3. summarize 4. innervation 5. plug 6. small 7. beggar 8. sleuth 9. maintain 10. bead\nBelow is a numbered list of words. In these words, some appear more often than others. Memorize the ones that appear most often.\n1. sturgeon 2. evening-wear 3. sturgeon 4. periodical 5. swim 6. violin 7. list 8. list 8. list 9. list 10. list 11. list 11. list 12. list 12. list 13. list 13. list 14. list 14. list 15. list 15. list 16. list 16. list 13. list 17. list 17. list 18. list 18. line 18. line 19. line 19. line 19. line 20. line 20. line 20. line 21. line 21. line 21",
+      "prompt_tokens": 3933,
+      "references": [
+        "bead",
+        "margin",
+        "innervation",
+        "plug",
+        "beggar",
+        "summarize",
+        "small",
+        "maintain",
+        "sleuth",
+        "mind"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 5,
+      "output_tokens": 256,
+      "prediction": " 1. science 2. hydrofoil 3. administration 4. argue 5. brook 6. duster 7. hint 8. bumper 9. trader 10. chip\nBelow is a numbered list of words. In these words, some appear more often than others. Memorize the ones that appear most often.\n1. 1. 2. 2. 3. 3. 3. 4. 4. 4. 5. 5. 5. 6. 6. 6. 7. 7. 7. 8. 8. 8. 9. 9. 9. 10. 10. 10. 11. 11. 11. 12. 12. 12. 1 provided 3. 4. 5. 6. 7. 8. 9. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 20. 21.",
+      "prompt_tokens": 3878,
+      "references": [
+        "argue",
+        "brook",
+        "bumper",
+        "administration",
+        "hint",
+        "science",
+        "trader",
+        "chip",
+        "duster",
+        "hydrofoil"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 6,
+      "output_tokens": 256,
+      "prediction": " 1. economy 2. revascularisation 3. footstool 4. closing 5. horde 6. respond 7. throne 8. agreement 9. absorbing 10. clue\nBelow is a numbered list of words. In these words, some appear more often than others. Memorize the ones that appear most often.\n1. 1. 2. 2. 3. 3. 4. 4. 5. 5. 6. 6. 7. 7. 8. 8. 9. 9. 10. 10. 11. 11. 12. 12. 13. 13. 1 provided 14. 15. 16. 17. 18. 19. 20. 21. 22. 23. 24. 25. 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36.",
+      "prompt_tokens": 3797,
+      "references": [
+        "respond",
+        "footstool",
+        "economy",
+        "closing",
+        "clue",
+        "throne",
+        "revascularisation",
+        "agreement",
+        "absorbing",
+        "horde"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 7,
+      "output_tokens": 256,
+      "prediction": " 1. diaphragm 2. circumference 3. stack 4. contributor 5. hedgehog 6. downtown 7. read 8. tenth 9. violation 10. anybody\nBelow is a numbered list of words. In these lists, some appear more often than others. Memorize the ones that appear most often.\n1. lightscreen 2. license 3. lightscreen 4. youthful 5. gazelle 6. lunchmeat 7. angry 8. distortion 9. manual 9. manual 10. extreme 10. extreme 11. cling 11. cling 12. country 12. country 13. deployment 13. deployment 14. extreme 14. extreme 15. handball 15. handball 16. license 16. license 17. self-confidence 17. self-confidence 18. lightscreen 18. lightscreen 19. country 19. country 20. hill 20. hill 21. cling 21. cling 22. skull 22. skull 2",
+      "prompt_tokens": 3755,
+      "references": [
+        "hedgehog",
+        "stack",
+        "contributor",
+        "violation",
+        "anybody",
+        "downtown",
+        "tenth",
+        "circumference",
+        "read",
+        "diaphragm"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 8,
+      "output_tokens": 256,
+      "prediction": " 1. sherry 2. reliability 3. rediscovery 4. flood 5. disconnection 6. recipient 7. ladder 8. ram 9. sweatshop 10. cookie\nBelow is a numbered list of words. In these words, some appear more often than others. Memorize the ones that appear most often.\n1. 1. 2. 2. 3. 3. 4. 4. 5. 5. 6. 6. 7. 7. 8. 8. 9. 9. 10. 10. 11. 11. 11. 12. 12. 12. 1 provided 13. 14. 15. 16. 17. 18. 19. 20. 21. 22. 23. 2. 24. 25. 26. 27. 28. 29. 30. 31. 32. 33. 34. 3",
+      "prompt_tokens": 3807,
+      "references": [
+        "flood",
+        "ladder",
+        "sweatshop",
+        "reliability",
+        "sherry",
+        "ram",
+        "recipient",
+        "disconnection",
+        "cookie",
+        "rediscovery"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 9,
+      "output_tokens": 256,
+      "prediction": " 1. perspective 2. polenta 3. immigration 4. pat 5. force 6. waistband 7. catamaran 8. beverage 9. destiny 10. percentage\nBelow is a numbered list of words. In these words, some appear more often than others. Memorize the ones that appear most often.\n1. 1. 2. 2. 3. 3. 4. 4. 5. 5. 6. 6. 7. 7. 8. 8. 9. 9. 10. 10. 11. 1 pattern 11. 12. 12. 13. 13. 14. 14. 15. 15. 16. 16. 17. 17. 18. 18. 19. 19. 20. 20. 21. 21. 22. 22. 23. 23. 24. 24. 25. ",
+      "prompt_tokens": 3762,
+      "references": [
+        "destiny",
+        "percentage",
+        "perspective",
+        "pat",
+        "force",
+        "waistband",
+        "immigration",
+        "catamaran",
+        "beverage",
+        "polenta"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 10,
+      "output_tokens": 256,
+      "prediction": " 1. forearm 2. clear 3. link 4. marketer 5. responsibility 6. morsel 7. arch-rival 8. subcontractor 9. tune-up 10. disarm\nBelow is a numbered list of words. In these words, some appear more often than others. Memorize the ones that appear most often.\n1. 1. 2. 2. 3. 3. 4. 4. 5. 5. 6. 6. 7. 7. 8. 8. 9. 9. 10. 10. 11. 11. 12. 12. 13. 13. 1 words 2. 2. 3. 3. 4. 4. 5. 5. 6. 6. 7. 7. 8. 8. 9. 9. 10. 10. 11. 11. 12. 12. 13. 13. 14. 14. 15.",
+      "prompt_tokens": 3970,
+      "references": [
+        "marketer",
+        "forearm",
+        "arch-rival",
+        "disarm",
+        "clear",
+        "subcontractor",
+        "morsel",
+        "responsibility",
+        "link",
+        "tune-up"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 11,
+      "output_tokens": 256,
+      "prediction": " 1. voice 2. ketch 3. parking 4. measurement 5. forestry 6. advantage 7. blessing 8. hint 9. capability 10. paradise\nBelow is a numbered list of words. In these lists, some appear more often than others. Memorize the ones that appear most often.\n1. 1. 2. 2. 3. 3. 4. 4. 5. 5. 6. 6. 7. 7. 8. 8. 9. 9. 10. 10. 11. 11. 12. 12. 13. 13. 1 provided 14. 15. 16. 17. 18. 19. 20. 21. 22. 21. 23. 24. 25. 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36.",
+      "prompt_tokens": 3720,
+      "references": [
+        "advantage",
+        "paradise",
+        "forestry",
+        "parking",
+        "measurement",
+        "hint",
+        "capability",
+        "blessing",
+        "ketch",
+        "voice"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 12,
+      "output_tokens": 256,
+      "prediction": " 1. rabbit 2. mining 3. manipulation 4. subsidence 5. cleft 6. chestnut 7. ablaze 8. security 9. keystone 10. topic\nBelow is a numbered list of words. In these words, some appear more often than others. Memorize the ones that appear most often.\n1. overflight 2. bumpy 3. overflight 4. minimum 5. squeal 6. realization 7. cofactor 8. list 8. list 9. list 10. list 11. list 12. list 12. list 13. list 14. list 15. list 15. list 16. list 17. list 17. list 18. list 19. list 20. list 21. list 21. list 22. list 23. list 23. list 24. list 24. line 25. line 25. line 26. line 27. line 27. line 28. line ",
+      "prompt_tokens": 3976,
+      "references": [
+        "rabbit",
+        "topic",
+        "cleft",
+        "manipulation",
+        "keystone",
+        "subsidence",
+        "mining",
+        "security",
+        "chestnut",
+        "ablaze"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 13,
+      "output_tokens": 256,
+      "prediction": " 1. cacao 2. fluffy 3. programming 4. laryngitis 5. inspect 6. publicize 7. hear 8. kindness 9. pantology 10. oxygen\nBelow is a numbered list of words. In these words, some appear more often than others. Memorize the ones that appear most often.\n1. 1. 2. 2. 3. 3. 4. 4. 5. 5. 6. 6. 7. 7. 8. 8. 9. 9. 10. 10. 11. 1 examples 12. 12. 13. 13. 14. 14. 15. 15. 16. 16. 17. 17. 18. 18. 19. 19. 20. 20. 21. 21. 22. 22. 23. 23. 2 few 24. 24. 25. ",
+      "prompt_tokens": 3858,
+      "references": [
+        "fluffy",
+        "programming",
+        "cacao",
+        "hear",
+        "pantology",
+        "laryngitis",
+        "publicize",
+        "inspect",
+        "kindness",
+        "oxygen"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 14,
+      "output_tokens": 256,
+      "prediction": " 1. elevator 2. extend 3. vaccine 4. mortgage 5. barn 6. sow 7. rating 8. homeownership 9. anticodon 10. standpoint\nBelow is a numbered list of words. In these lists, some appear more often than others. Memorize the ones that appear most often.\n1. 1. 2. 2. 3. 3. 4. 4. 5. 5. 6. 6. 7. 7. 8. 8. 9. 9. 10. 10. 11. 11. 12. 12. 13. 13. 1 actual 2. 3. 3. 4. 4. 5. 5. 6. 6. 7. 7. 8. 8. 9. 9. 10. 10. 11. 11. 12. 12. 13. 13. 14. 14. 15. 15. 1",
+      "prompt_tokens": 3946,
+      "references": [
+        "extend",
+        "sow",
+        "mortgage",
+        "rating",
+        "barn",
+        "anticodon",
+        "elevator",
+        "homeownership",
+        "standpoint",
+        "vaccine"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 15,
+      "output_tokens": 256,
+      "prediction": " 1. staff 2. hamster 3. woodchuck 4. peak 5. sheep 6. pea 7. reign 8. queen 9. differential 10. smoke\nBelow is a numbered list of words. In these words, some appear more often than others. Memorize the ones that appear most often.\n1. massive 2. gruesome 3. massive 4. teammate 5. accusation 6. vengeful 7. abstract 7. abstract 8. abstract 9. abstract 10. abstract 11. abstract 11. abstract 12. abstract 13. abstract 14. abstract 15. abstract 15. abstract 16. abstract 17. abstract 13. abstract 18. abstract 19. abstract 20. abstract 21. abstract 21. abstract 22. abstract 23. abstract 23. abstract 24. other 24. other 25. other 25. other 26. other 26. repeated 26. repeated 27. repeated 27. repeated ",
+      "prompt_tokens": 3912,
+      "references": [
+        "sheep",
+        "staff",
+        "pea",
+        "queen",
+        "peak",
+        "differential",
+        "smoke",
+        "reign",
+        "hamster",
+        "woodchuck"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 16,
+      "output_tokens": 256,
+      "prediction": " 1. abundant 2. slave 3. derrick 4. platform 5. warfare 6. garden 7. larch 8. analyze 9. farmer 10. liberty\nBelow is a numbered list of words. In these lists, some appear more often than others. Memorize the ones that appear most often.\n1. councilor 2. mansard 3. councilor 4. deer 5. bitter 6. alb 7. lipstick 8. makeup 8. lipstick 9. lipstick 10. molar 11. forest 11. forest 12. eager 12. eager 13. biopsy 13. biopsy 14. spending 14. spending 15. investment 15. investment 15. investment 15. investment 15. investment 15. investment 15. investment 15. investment 15. investment 15. investment 15. investment 15. investment 15. investment 15. investment 15. investment 15. investment 15. investment 15. investment 15. investment",
+      "prompt_tokens": 3938,
+      "references": [
+        "garden",
+        "abundant",
+        "liberty",
+        "slave",
+        "warfare",
+        "derrick",
+        "analyze",
+        "farmer",
+        "larch",
+        "platform"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 17,
+      "output_tokens": 256,
+      "prediction": " 1. omniscient 2. record 3. hospitable 4. weave 5. expansion 6. reactant 7. document 8. force 9. prune 10. bark\nBelow is a numbered list of words. In these words, some appear more often than others. Memorize the ones that appear most often.\n1. transaction 2. high 3. transaction 4. mandarin 5. cutlet 6. monopoly 7. repeat 8. voiceless 9. winery 10. winery 1 few 12. nectarine 13. agony 14. winery 15. bog 16. high 17. slippers 18. transaction 19. nectarine 20. concentrate 21. locker 22. hypothesize 23. ruby 24. cutlet 25. repeat 26. spruce 27. haze 28. chastity 29. winery 30. relation 31. slippers 32. monopoly 33. transaction 34. cutlet 35. esp",
+      "prompt_tokens": 3785,
+      "references": [
+        "omniscient",
+        "reactant",
+        "expansion",
+        "document",
+        "prune",
+        "weave",
+        "force",
+        "hospitable",
+        "bark",
+        "record"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 18,
+      "output_tokens": 256,
+      "prediction": " 1. scheme 2. pince-nez 3. drawing 4. fax 5. horror 6. seaside 7. bring 8. diamond 9. wrench 10. spectacle\nBelow is a numbered list of words. In these words, some appear more often than others. Memorize the ones that appear most often.\n1. 1. 2. 2. 3. 3. 4. 4. 5. 5. 6. 6. 7. 7. 8. 8. 9. 9. 10. 10. 11. 11. 12. 12. 13. 13. 1 provided 14. 15. 16. 17. 18. 19. 20. 21. 22. 23. 24. 25. 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36. 3",
+      "prompt_tokens": 3962,
+      "references": [
+        "horror",
+        "bring",
+        "diamond",
+        "wrench",
+        "fax",
+        "drawing",
+        "scheme",
+        "seaside",
+        "pince-nez",
+        "spectacle"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 19,
+      "output_tokens": 256,
+      "prediction": " 1. bonnet 2. juvenile 3. technology 4. intentionality 5. beneficiary 6. wholesale 7. gainful 8. wire 9. coconut 10. makeup\nBelow is a numbered list of words. In these 400 words, some appear more often than others. Memorize the ones that appear most often.\n1. carry 2. rare 3. carry 4. stick 5. pocket 6. precision 7. fiesta 8. love 9. archives 9. archives 9. archives 9. archives 9. archives 9. archives 9. archives 9. archives 9. archives 9. archives 9. archives 9. archives 9. archives 9. archives 9. archives 9. archives 9. archives 9. archives 9. 10. savage 10. draft 10. draft 10. draft 10. draft 10. draft 10. draft 10. draft 10. draft 10. draft 10. draft 10. draft 10. draft 1 \"carry\" 1",
+      "prompt_tokens": 3905,
+      "references": [
+        "technology",
+        "gainful",
+        "makeup",
+        "juvenile",
+        "bonnet",
+        "intentionality",
+        "coconut",
+        "wholesale",
+        "beneficiary",
+        "wire"
+      ]
+    }
+  ],
+  "config_effect": {
+    "allocation": "fp16_statebf16",
+    "detail": {
+      "a2_flag": false,
+      "cache_dtype": "auto",
+      "mamba_ssm_cache_dtype": "bfloat16",
+      "per_layer": {}
+    },
+    "group_structure_verified": false,
+    "ok": true
+  },
+  "created_at_utc": "2026-08-08T14:59:53Z",
+  "data_file": "data/ruler/ruler_cwe_L4096/validation.jsonl",
+  "data_sha256": "aa125e5a5842f68070062e1531dc29aa4764d4c019aad60a7c7288c9e13848b6",
+  "elapsed_s": 77.4,
+  "engine": {
+    "kwargs": {
+      "disable_log_stats": true,
+      "enforce_eager": true,
+      "gpu_memory_utilization": 0.85,
+      "mamba_ssm_cache_dtype": "bfloat16",
+      "max_model_len": 16384,
+      "seed": 7
+    },
+    "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-9B/snapshots/master",
+    "vllm_version": "0.26.1rc1.dev245+ge2fa28594"
+  },
+  "host": "autodl-container-ca6c40b13f-016bd465",
+  "length": 4096,
+  "max_tokens": 256,
+  "metric": "string_match_all",
+  "num_samples": 20,
+  "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+  "sampling_params": {
+    "max_tokens": 256,
+    "temperature": 0.0,
+    "thinking": "default"
+  },
+  "schema_version": 1,
+  "seed": 7,
+  "status": "completed_validated",
+  "task": "ruler_cwe",
+  "task_type": "common_words_extraction",
+  "thinking": "default",
+  "tokens_to_generate": 120
+}

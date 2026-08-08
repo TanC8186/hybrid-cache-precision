@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "metric": "string_match_all (official RULER)",
+  "protocol": "ruler_quality.py --max-tokens 256 --thinking default, seed 7; fp16_statebf16 adds mamba_ssm_cache_dtype=bfloat16 to the fp16 engine args",
+  "rows": [
+    {
+      "task": "ruler_niah_single",
+      "length": 4096,
+      "fp16_state_fp32_acc": 100.0,
+      "fp16_state_bf16_acc": 100.0,
+      "delta_bf16_minus_fp32": 0.0
+    },
+    {
+      "task": "ruler_niah_single",
+      "length": 8192,
+      "fp16_state_fp32_acc": 100.0,
+      "fp16_state_bf16_acc": 100.0,
+      "delta_bf16_minus_fp32": 0.0
+    },
+    {
+      "task": "ruler_niah_multikey",
+      "length": 4096,
+      "fp16_state_fp32_acc": 100.0,
+      "fp16_state_bf16_acc": 100.0,
+      "delta_bf16_minus_fp32": 0.0
+    },
+    {
+      "task": "ruler_niah_multikey",
+      "length": 8192,
+      "fp16_state_fp32_acc": 100.0,
+      "fp16_state_bf16_acc": 100.0,
+      "delta_bf16_minus_fp32": 0.0
+    },
+    {
+      "task": "ruler_niah_multivalue",
+      "length": 4096,
+      "fp16_state_fp32_acc": 100.0,
+      "fp16_state_bf16_acc": 100.0,
+      "delta_bf16_minus_fp32": 0.0
+    },
+    {
+      "task": "ruler_niah_multivalue",
+      "length": 8192,
+      "fp16_state_fp32_acc": 100.0,
+      "fp16_state_bf16_acc": 100.0,
+      "delta_bf16_minus_fp32": 0.0
+    },
+    {
+      "task": "ruler_niah_multiquery",
+      "length": 4096,
+      "fp16_state_fp32_acc": 91.25,
+      "fp16_state_bf16_acc": 92.5,
+      "delta_bf16_minus_fp32": 1.25
+    },
+    {
+      "task": "ruler_niah_multiquery",
+      "length": 8192,
+      "fp16_state_fp32_acc": 53.75,
+      "fp16_state_bf16_acc": 47.5,
+      "delta_bf16_minus_fp32": -6.25
+    },
+    {
+      "task": "ruler_vt",
+      "length": 4096,
+      "fp16_state_fp32_acc": 100.0,
+      "fp16_state_bf16_acc": 100.0,
+      "delta_bf16_minus_fp32": 0.0
+    },
+    {
+      "task": "ruler_vt",
+      "length": 8192,
+      "fp16_state_fp32_acc": 100.0,
+      "fp16_state_bf16_acc": 100.0,
+      "delta_bf16_minus_fp32": 0.0
+    },
+    {
+      "task": "ruler_cwe",
+      "length": 4096,
+      "fp16_state_fp32_acc": 100.0,
+      "fp16_state_bf16_acc": 100.0,
+      "delta_bf16_minus_fp32": 0.0
+    },
+    {
+      "task": "ruler_cwe",
+      "length": 8192,
+      "fp16_state_fp32_acc": 100.0,
+      "fp16_state_bf16_acc": 100.0,
+      "delta_bf16_minus_fp32": 0.0
+    },
+    {
+      "task": "ruler_fwe",
+      "length": 4096,
+      "fp16_state_fp32_acc": 98.33,
+      "fp16_state_bf16_acc": 98.33,
+      "delta_bf16_minus_fp32": 0.0
+    },
+    {
+      "task": "ruler_fwe",
+      "length": 8192,
+      "fp16_state_fp32_acc": 98.33,
+      "fp16_state_bf16_acc": 93.33,
+      "delta_bf16_minus_fp32": -5.0
+    }
+  ],
+  "overall": {
+    "n_cells": 14,
+    "fp32_state_mean": 95.83,
+    "bf16_state_mean": 95.12,
+    "delta_mean": -0.71,
+    "delta_min": -6.25,
+    "delta_max": 1.25
+  }
+}
