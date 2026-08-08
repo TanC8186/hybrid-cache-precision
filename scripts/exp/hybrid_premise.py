@@ -65,6 +65,29 @@ def make_cache(bits: int, evict_budget: int | None, attn_indices: list[int], mod
     )
 
 
+def _wrap_state_dtype(cache, state_dtype: str | None) -> None:
+    """Cast GDN recurrent (SSM) state to target dtype at every cache write.
+
+    With auto/None the transformers default (float32) is kept. When a reduced
+    dtype is requested, the stored state is rounded once per write boundary,
+    which simulates the vLLM ``--mamba-ssm-cache-dtype`` storage precision at
+    the granularity of the chunked forward passes used by this harness.
+    """
+    import types
+
+    if state_dtype is None:
+        return
+    dtype = getattr(torch, state_dtype)
+    orig = cache.update_recurrent_state
+
+    def wrapped(self, recurrent_states, layer_idx, state_idx=0, **kwargs):
+        if recurrent_states is not None and recurrent_states.dtype != dtype:
+            recurrent_states = recurrent_states.to(dtype)
+        return orig(recurrent_states, layer_idx, state_idx, **kwargs)
+
+    cache.update_recurrent_state = types.MethodType(wrapped, cache)
+
+
 def build_causal_mask(L: int, R: int, device) -> torch.Tensor:
     """构建 [1,1,L,R] 因果 mask。
 
@@ -115,6 +138,7 @@ def chunked_ppl(
     cache_factory,
     chunk_size: int,
     *,
+    state_dtype: str | None = None,
     use_cache: bool = True,
     attn_indices: list[int] | None = None,
 ) -> tuple[float, float, float]:
@@ -126,6 +150,7 @@ def chunked_ppl(
     device = next(model.parameters()).device
     seq_len = ids.shape[1]
     cache = cache_factory()
+    _wrap_state_dtype(cache, state_dtype)
     evicting = getattr(cache, "evict_budget", None) is not None
     restore_patch = patch_attention_recording(model, cache, attn_indices or []) if (evicting and attn_indices) else None
     try:
@@ -207,7 +232,8 @@ def tokenize_corpus(tokenizer, corpus: str, max_len: int, num_seqs: int, seed: i
 
 
 def run_serving_metrics(
-    model, tokenizer, ids_list, attn_indices, chunk_size, out_path: Path, kv_budget_mb: float = 4000
+    model, tokenizer, ids_list, attn_indices, chunk_size, out_path: Path, kv_budget_mb: float = 4000,
+    state_dtype: str | None = None,
 ) -> None:
     """Serving 指标（Phase 0，transformers 参考路径）：
     - 实际显存占用（torch.cuda.max_memory_allocated 增量）
@@ -227,7 +253,7 @@ def run_serving_metrics(
         qb = fb = 0.0
         for ids in ids_list:
             p, q, f = chunked_ppl(model, tokenizer, ids, cache_factory, chunk_size,
-                                  attn_indices=attn_indices)
+                                  attn_indices=attn_indices, state_dtype=state_dtype)
             tl += math.log(p) * (ids.shape[1] - 1)
             tt += ids.shape[1] - 1
             qb, fb = q, f
@@ -268,6 +294,7 @@ def run_serving_metrics(
 def run_bits(
     model, tokenizer, ids_list, attn_indices, bits_list, evict_budgets, chunk_size, out_path: Path,
     layer_bits: dict[int, int] | None = None,
+    state_dtype: str | None = None,
 ) -> None:
     import csv
     import math
@@ -286,6 +313,7 @@ def run_bits(
                 lambda b=bits, e=eb, lb=layer_bits: make_cache(b, e, attn_indices, model, layer_bits=lb),
                 chunk_size,
                 attn_indices=attn_indices,
+                state_dtype=state_dtype,
             )
             total_loss += math.log(ppl) * (ids.shape[1] - 1)  # log-prob 总和
             total_tokens += ids.shape[1] - 1
@@ -305,6 +333,7 @@ def run_bits(
             lambda: make_cache(16, None, attn_indices, model),
             chunk_size,
             attn_indices=attn_indices,
+            state_dtype=state_dtype,
         )
         total_loss += math.log(ppl0) * (ids.shape[1] - 1)
         total_tokens += ids.shape[1] - 1
@@ -317,7 +346,8 @@ def run_bits(
 
 
 def run_layer_sensitivity(
-    model, tokenizer, ids_list, attn_indices, chunk_size, out_path: Path
+    model, tokenizer, ids_list, attn_indices, chunk_size, out_path: Path,
+    state_dtype: str | None = None,
 ) -> None:
     """逐层敏感度：该层 KV 压 2-bit、其余层 8-bit，测 PPL。
 
@@ -332,7 +362,7 @@ def run_layer_sensitivity(
         qb = fb = 0.0
         for ids in ids_list:
             p, q, f = chunked_ppl(model, tokenizer, ids, cache_factory, chunk_size,
-                                  attn_indices=attn_indices)
+                                  attn_indices=attn_indices, state_dtype=state_dtype)
             tl += math.log(p) * (ids.shape[1] - 1)
             tt += ids.shape[1] - 1
             qb, fb = q, f
@@ -375,7 +405,8 @@ HETERO_ALLOCS = {
 
 
 def run_hetero(
-    model, tokenizer, ids_list, attn_indices, chunk_size, out_path: Path
+    model, tokenizer, ids_list, attn_indices, chunk_size, out_path: Path,
+    state_dtype: str | None = None,
 ) -> None:
     """异构预算验证：若干逐层位宽分配 vs 均匀，输出 PPL vs 字节。"""
     import csv
@@ -387,7 +418,7 @@ def run_hetero(
         for ids in ids_list:
             p, q, f = chunked_ppl(model, tokenizer, ids,
                                   lambda b=bits, lb=layer_bits: make_cache(b, None, attn_indices, model, layer_bits=lb),
-                                  chunk_size, attn_indices=attn_indices)
+                                  chunk_size, attn_indices=attn_indices, state_dtype=state_dtype)
             tl += math.log(p) * (ids.shape[1] - 1)
             tt += ids.shape[1] - 1
             qb, fb = q, f
@@ -424,9 +455,12 @@ def main() -> None:
     ap.add_argument("--layer-bits", type=str, default=None,
                     help='per-layer 位宽 JSON，如 {"23":16}（未列出的层用 --bits 默认值）')
     ap.add_argument("--model", type=str, default=str(MODEL_PATH), help="模型目录")
+    ap.add_argument("--state-dtype", default="auto", choices=["auto", "float32", "float16", "bfloat16"],
+                    help="recurrent (SSM) state storage dtype; auto keeps transformers default (float32)")
     args = ap.parse_args()
 
     bits_list = [int(b) for b in args.bits.split(",")]
+    state_dtype = None if args.state_dtype == "auto" else args.state_dtype
     layer_bits = json.loads(args.layer_bits) if args.layer_bits else None
     if layer_bits is not None:
         layer_bits = {int(k): int(v) for k, v in layer_bits.items()}
@@ -461,13 +495,16 @@ def main() -> None:
     out.parent.mkdir(parents=True, exist_ok=True)
 
     if args.layer_sensitivity:
-        run_layer_sensitivity(model, tokenizer, ids_list, attn_indices, chunk, out)
+        run_layer_sensitivity(model, tokenizer, ids_list, attn_indices, chunk, out,
+                              state_dtype=state_dtype)
         return
     if args.hetero:
-        run_hetero(model, tokenizer, ids_list, attn_indices, chunk, out)
+        run_hetero(model, tokenizer, ids_list, attn_indices, chunk, out,
+                   state_dtype=state_dtype)
         return
     if args.serving:
-        run_serving_metrics(model, tokenizer, ids_list, attn_indices, chunk, out)
+        run_serving_metrics(model, tokenizer, ids_list, attn_indices, chunk, out,
+                            state_dtype=state_dtype)
         return
 
     # 多 seed 聚合：mean±std（headline 要求）
@@ -481,6 +518,7 @@ def main() -> None:
         for bits, evict, ppl, qbytes, fbytes, _t in run_bits(
             model, tokenizer, s_ids, attn_indices, bits_list, evict_budgets, chunk, out,
             layer_bits=layer_bits,
+            state_dtype=state_dtype,
         ):
             all_rows.setdefault((bits, evict), []).append(ppl)
             seed_rows.append((bits, evict, seed, ppl))

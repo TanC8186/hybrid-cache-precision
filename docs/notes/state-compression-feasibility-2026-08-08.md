@@ -54,9 +54,31 @@
 - **质量实验同样可做**：同一 harness 跑 C4/PG19 PPL 与现有 RULER/GSM8K 脚本即可；本次只做了 16-token greedy 冒烟，尚未做正式质量对比。
 - 未测项：float16（MambaDType 允许但未验证 kernel）、9B 模型、ReplaySSM 与 state 压缩的组合、逐层 state 精度分配（当前开关是全局的，逐层需 fork 内扩展）。
 
+## 补充：C4/PG19 PPL 质量对比（2B/9B × fp32/bf16，2026-08-08 完成）
+
+在 transformers 研究 harness（`hybrid_premise.py`）中加入 `--state-dtype`：在 recurrent state 每次写入缓存边界 cast 到目标 dtype（bf16 = 模拟 vLLM `--mamba-ssm-cache-dtype bfloat16` 的存储精度；fp32 = 原协议不动）。
+
+协议：`--bits 16 --seeds 7,42,2026 --num-seqs 5 --max-len 2048 --chunk 128`，Qwen3.5-2B/9B × C4/PG19，注意力 KV 保持 fp16（隔离 state dtype 单变量）。
+
+| 模型 | 语料 | fp32 PPL | bf16 PPL | Δ (bf16−fp32) | 95% CI（配对） |
+|---|---|---|---|---|---|
+| 2B | C4 | 17.5800 | 17.5797 | −0.0003 | [−0.0016, +0.0010] |
+| 2B | PG19 | 27.1783 | 27.1787 | +0.0004 | [−0.0033, +0.0041] |
+| 9B | C4 | 12.7287 | 12.7289 | +0.0002 | [−0.0022, +0.0026] |
+| 9B | PG19 | 18.0016 | 18.0022 | +0.0006 | [−0.0025, +0.0037] |
+
+逐 seed 差异为 10^-4~10^-3 级（确认 bf16 路径真实生效，非空跑）；四个 cell 的 95% CI 均包含 0，即 **bf16 state 在 C4/PG19 PPL 上与 fp32 统计不可区分**。结合容量探针 +37.5%，"state 精度作为容量预算维度"的可行性得到直接支撑。
+
+注意边界：该 harness 是 chunk 边界（128 token）一次的写回舍入，不是 vLLM kernel 内部逐 token 的 bf16 计算；论文引用时需按此措辞，正式 serving 侧数值仍建议用 vLLM 侧质量实验（RULER/GSM8K）复核。
+
 ## 证据文件
 
 - `scripts/bench/probe_ssm_state_dtype.py`（探针脚本）
 - `results/verified/2026-08-08/ssm_dtype/2b_auto.json` + `.sha256`
 - `results/verified/2026-08-08/ssm_dtype/2b_bf16.json` + `.sha256`
+- `scripts/exp/hybrid_premise.py`（新增 `--state-dtype`）
+- `scripts/exp/run_ppl_state_dtype.sh`（8 格 runner）
+- `scripts/eval/analyze_ppl_state_dtype.py`（配对 CI 分析）
+- `results/quality/ppl-state-dtype/ppl-state-20260808__*`（8 格 CSV + seeds CSV）
+- `results/quality/ppl-state-dtype-analysis-20260808.json`
 - 文献：https://tridao.me/blog/2026/replayssm/ ；https://github.com/vllm-project/vllm/pull/43518 ；https://github.com/vllm-project/vllm/pull/51052 ；https://github.com/vllm-project/vllm/issues/37121

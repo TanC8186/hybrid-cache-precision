@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "attempt": "ppl-state-20260808",
+  "protocol": "hybrid_premise.py --bits 16 --seeds 7,42,2026 --num-seqs 5 --max-len 2048 --chunk 128; statefp32=--state-dtype auto (no patch), statebf16=--state-dtype bfloat16 (cast at recurrent-state write boundary)",
+  "dedupe_note": "hybrid_premise.py always appends an FP16 baseline row; bits=16 cells contain 6 rows in *.seeds.csv. Analysis deduplicates by (bits, seed).",
+  "tables": {
+    "2b": [
+      {
+        "corpus": "c4",
+        "fp32_mean": 17.58,
+        "bf16_mean": 17.5797,
+        "delta_bf16_vs_fp32": -0.0003,
+        "ci95_delta": [
+          -0.0016,
+          0.001
+        ],
+        "delta_pct_mean": -0.0018
+      },
+      {
+        "corpus": "pg19",
+        "fp32_mean": 27.1783,
+        "bf16_mean": 27.1787,
+        "delta_bf16_vs_fp32": 0.0004,
+        "ci95_delta": [
+          -0.0033,
+          0.0041
+        ],
+        "delta_pct_mean": 0.0018
+      }
+    ],
+    "9b": [
+      {
+        "corpus": "c4",
+        "fp32_mean": 12.7287,
+        "bf16_mean": 12.7289,
+        "delta_bf16_vs_fp32": 0.0002,
+        "ci95_delta": [
+          -0.0022,
+          0.0026
+        ],
+        "delta_pct_mean": 0.0013
+      },
+      {
+        "corpus": "pg19",
+        "fp32_mean": 18.0016,
+        "bf16_mean": 18.0022,
+        "delta_bf16_vs_fp32": 0.0006,
+        "ci95_delta": [
+          -0.0025,
+          0.0037
+        ],
+        "delta_pct_mean": 0.0026
+      }
+    ]
+  }
+}
