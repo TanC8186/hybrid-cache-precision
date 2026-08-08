@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "protocol": "inspect_kv_config.py, max_model_len=4096, gpu_memory_utilization=0.85, seed=42, enforce_eager",
+  "missing_probes": [],
+  "probes": {
+    "9b_legacy": {
+      "tokens": 89088.0,
+      "max_concurrency": 21.75,
+      "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-9B/snapshots/master",
+      "cache_dtype": "int4_per_token_head",
+      "per_layer": {
+        "11": "int4_per_token_head",
+        "15": "int4_per_token_head",
+        "19": "int4_per_token_head",
+        "23": "auto",
+        "3": "int4_per_token_head",
+        "7": "int4_per_token_head"
+      },
+      "packed_flag": false
+    },
+    "9b_uniform": {
+      "tokens": 345702.0,
+      "max_concurrency": 84.4,
+      "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-9B/snapshots/master",
+      "cache_dtype": "int4_per_token_head",
+      "per_layer": {},
+      "packed_flag": false
+    },
+    "9b_packed": {
+      "tokens": 287744.0,
+      "max_concurrency": 70.25,
+      "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-9B/snapshots/master",
+      "cache_dtype": "int4_per_token_head",
+      "per_layer": {
+        "11": "int4_per_token_head",
+        "15": "int4_per_token_head",
+        "19": "int4_per_token_head",
+        "23": "auto",
+        "3": "int4_per_token_head",
+        "7": "int4_per_token_head"
+      },
+      "packed_flag": true
+    },
+    "attn_fp16": {
+      "tokens": 204512.0,
+      "max_concurrency": 49.9296875,
+      "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen2.5-7B-Instruct/snapshots/master",
+      "cache_dtype": "auto",
+      "per_layer": {},
+      "packed_flag": false
+    },
+    "attn_int4": {
+      "tokens": 769968.0,
+      "max_concurrency": 187.98046875,
+      "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen2.5-7B-Instruct/snapshots/master",
+      "cache_dtype": "int4_per_token_head",
+      "per_layer": {},
+      "packed_flag": false
+    }
+  },
+  "ratios": {
+    "9b_packed_over_legacy": 3.2299,
+    "9b_packed_over_uniform": 0.8323,
+    "9b_uniform_over_legacy": 3.8805,
+    "attn_int4_over_fp16": 3.7649
+  },
+  "reference_2b_gate": {
+    "legacy_tokens": 705604,
+    "uniform_tokens": 2736947,
+    "packed_tokens": 2280448,
+    "packed_over_legacy": 3.232,
+    "packed_over_uniform": 0.833,
+    "hybrid_2b_int4_over_fp16": 2.245,
+    "pure_attention_mechanism_ratio": 3.88
+  }
+}
