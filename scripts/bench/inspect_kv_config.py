@@ -112,7 +112,7 @@ def collect_worker_runtime(worker: Any) -> dict[str, Any]:
         "local_rank": getattr(worker, "local_rank", None),
         "device": str(model_runner.device),
         "torch_cuda_device": torch.cuda.get_device_name(model_runner.device),
-        "kernel_block_sizes": list(model_runner._kernel_block_sizes),
+        "kernel_block_sizes": list(getattr(model_runner, "_kernel_block_sizes", [])),
         "raw_runner_cache_count": len(raw_caches),
         "raw_runner_caches": raw_caches,
         "bound_layers": layers,

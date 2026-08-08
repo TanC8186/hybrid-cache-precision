@@ -240,3 +240,28 @@ LCC/RepoBench-P=code_sim（fuzzywuzzy）。
 代价"的故事自洽。语料：c4 sha `7ee17255...`、pg19 sha `c898ba29...`。
 分析：`results/quality/ppl-extra-analysis-20260807.json`；
 原始 CSV：`results/quality/ppl-extra/`。
+
+## 8. 容量探针扩展（M3 9B + M4 纯注意力对照）
+
+协议与 VERIFIED A2 gate 完全一致（`inspect_kv_config.py`，max_model_len=4096、
+gpu_memory_utilization=0.85、seed=42、`--enforce-eager`；uniform 显式传
+`--kv-cache-dtype-per-layer '{}'`）。探针 JSON + sha256：
+`results/verified/2026-08-08/capacity-probe-extra/`。
+
+| 模型 | 配置 | tokens | max concurrency | 比例 |
+|---|---|---:|---:|---:|
+| Qwen3.5-9B | legacy per-layer | 89,088 | 21.75 | — |
+| Qwen3.5-9B | uniform int4 | 345,702 | 84.4 | — |
+| Qwen3.5-9B | packed per-layer | 287,744 | 70.25 | packed/legacy **3.230**；packed/uniform **0.832** |
+| Qwen2.5-7B（纯 attention） | fp16 | 204,512 | 49.93 | — |
+| Qwen2.5-7B（纯 attention） | int4 | 769,968 | 187.98 | int4/fp16 **3.765** |
+
+结论：
+- A2 在 9B 上比例与 2B VERIFIED gate 几乎逐位一致（3.230 vs 3.232；0.832 vs
+  0.833）→ 机制跨规模成立；
+- 纯注意力模型 int4/fp16 = 3.765×，接近机制层 3.88×，而混合 2B 端到端只有
+  2.245× → GDN state 稀释是混合架构性质，不是模型个例。
+
+过程记录：9B 首轮探针因未传 `--enforce-eager` 触发 ninja 缺失失败（已补装）；
+纯注意力探针因 `inspect_kv_config.py` 访问混合架构专属属性
+`_kernel_block_sizes` 失败（已改为 `getattr` 防御式读取，从研究仓运行）。
