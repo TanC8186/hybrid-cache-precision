@@ -45,22 +45,23 @@ multiquery 8K packed 最高（88.75，fp16 86.25，k8v4 80）；VT 4K TurboQuant
 
 ## 3. Serving（TurboQuant/FP8，protocol-v3）
 
-状态：**Formal 未跑**（需人工放行，约 8h）。计划契约：protocol-v3（PIECEWISE、
+状态：**Formal 完成（2026-08-08，108/108）**。契约：protocol-v3（PIECEWISE、
 Random60/ShareGPT300、warmup 120、TTFT {250..3000}ms、TPOT 200ms、
-goodput/offered ≥ 0.95、3 seeds），比较 fp16 / int4 / packed per-layer /
-TurboQuant k8v4 / TurboQuant 4-bit NC / FP8，并报告 P99 TTFT/TPOT 与容量探针。
-当前仅有门禁阶段 pilot 边界（ANALYZED，未独立复现）：
+goodput/offered ≥ 0.95、3 seeds）。六列合并边界（A2 三列来自门禁 formal、
+TQ/FP8 三列来自本次 Formal；整体 ANALYZED，独立复现未跑）：
 
-| workload | TTFT | fp16 | int4 | packed per-layer |
-|---|---:|---:|---:|---:|
-| Random60 | 250 ms | 30 | NONE* | 30 |
-| Random60 | 500 ms | 35 | 35 | 35 |
-| Random60 | 1000+ ms | 35 | 40 | 40 |
-| ShareGPT300 | 250 ms | 45 | 35 | 40 |
-| ShareGPT300 | 500+ ms | 45 | 40 | 40 |
+| workload | TTFT | fp16 | int4 | packed | k8v4 | 4bit_nc | fp8 |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Random60 | 250 ms | 30 | NONE | 30 | NONE | NONE | 30 |
+| Random60 | 500 ms | 35 | 35 | 35 | 35 | 35 | 35 |
+| Random60 | 1000 ms | 35 | 40 | 40 | 40 | 35 | 40 |
+| Random60 | 2000/3000 ms | 35 | 40 | 40 | 40 | 40 | 40 |
+| ShareGPT300 | 250 ms | 45 | 35 | 40 | 45 | 40 | 45 |
+| ShareGPT300 | 500+ ms | 45 | 40 | 40 | 45 | 40 | 45 |
 
-*NONE = 测试网格内无 3-seed 全可持续点。TurboQuant/FP8 正式边界、P99 表与容量探针
-在 Formal 完成后回填；当前不设占位数字。
+*NONE = 测试网格内无 3-seed 全可持续点。高负载样本失败按 `count_as_slo_miss`
+计入分母（到达窗口偏差 ≤0.03%，重算与报告一致），属真实过载。
+证据：`results/quality/r5-serving-formal-analysis-20260808.json`。
 
 ## 4. Reasoning（2B 子集）
 

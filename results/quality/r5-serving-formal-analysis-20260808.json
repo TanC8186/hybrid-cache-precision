@@ -1,0 +1,2227 @@
+{
+  "schema_version": 1,
+  "attempts": [
+    {
+      "attempt_id": "r5-tq-v3-random60-formal-20260807",
+      "phase": "formal",
+      "git_commit": "3267efacc1614bddd029a67e9a406e8d1435f270",
+      "vllm_source_commit": "55f47685a553ad8d776c464c59785399a98c7185",
+      "config_sha256": "7688a829913e6a0138e372fce8e27084f0c72e68da3cf5b1db1e83afad6c2a9e",
+      "num_samples": 45
+    },
+    {
+      "attempt_id": "r5-tq-v3-sharegpt300-formal-20260807",
+      "phase": "formal",
+      "git_commit": "3267efacc1614bddd029a67e9a406e8d1435f270",
+      "vllm_source_commit": "55f47685a553ad8d776c464c59785399a98c7185",
+      "config_sha256": "d709f71c460eb059fb2861dfe50df7783089c0848a792fc8bdfe85e0d9fe9928",
+      "num_samples": 63
+    }
+  ],
+  "boundaries": {
+    "fp8__random": {
+      "250": 30.0,
+      "500": 35.0,
+      "1000": 40.0,
+      "2000": 40.0,
+      "3000": 40.0
+    },
+    "fp8__sharegpt": {
+      "250": 45.0,
+      "500": 45.0,
+      "1000": 45.0,
+      "2000": 45.0,
+      "3000": 45.0
+    },
+    "turboquant_4bit_nc__random": {
+      "250": null,
+      "500": 35.0,
+      "1000": 35.0,
+      "2000": 40.0,
+      "3000": 40.0
+    },
+    "turboquant_4bit_nc__sharegpt": {
+      "250": 40.0,
+      "500": 40.0,
+      "1000": 40.0,
+      "2000": 40.0,
+      "3000": 40.0
+    },
+    "turboquant_k8v4__random": {
+      "250": null,
+      "500": 35.0,
+      "1000": 40.0,
+      "2000": 40.0,
+      "3000": 40.0
+    },
+    "turboquant_k8v4__sharegpt": {
+      "250": 45.0,
+      "500": 45.0,
+      "1000": 45.0,
+      "2000": 45.0,
+      "3000": 45.0
+    }
+  },
+  "samples": [
+    {
+      "sample_id": "fp8__random__r30__s2026",
+      "allocation": "fp8",
+      "workload": "random",
+      "offered_rate": 30.0,
+      "seed": 2026,
+      "completed": 1800,
+      "failed": 0,
+      "expected": 1800,
+      "request_throughput_over_offered": 0.9840770164137383,
+      "ttft_p99_ms": 233.08609021827579,
+      "tpot_p99_ms": 21.11301770389784,
+      "goodput_over_offered": {
+        "1000": 0.9840770164137383,
+        "2000": 0.9840770164137383,
+        "250": 0.9802500502387961,
+        "3000": 0.9840770164137383,
+        "500": 0.9840770164137383
+      }
+    },
+    {
+      "sample_id": "fp8__random__r30__s42",
+      "allocation": "fp8",
+      "workload": "random",
+      "offered_rate": 30.0,
+      "seed": 42,
+      "completed": 1800,
+      "failed": 0,
+      "expected": 1800,
+      "request_throughput_over_offered": 0.9835461358190247,
+      "ttft_p99_ms": 247.34030758962032,
+      "tpot_p99_ms": 21.62983962679355,
+      "goodput_over_offered": {
+        "1000": 0.9835461358190247,
+        "2000": 0.9835461358190247,
+        "250": 0.9753499180205328,
+        "3000": 0.9835461358190247,
+        "500": 0.9835461358190247
+      }
+    },
+    {
+      "sample_id": "fp8__random__r30__s7",
+      "allocation": "fp8",
+      "workload": "random",
+      "offered_rate": 30.0,
+      "seed": 7,
+      "completed": 1800,
+      "failed": 0,
+      "expected": 1800,
+      "request_throughput_over_offered": 0.9832081323712819,
+      "ttft_p99_ms": 231.2743995897472,
+      "tpot_p99_ms": 20.486304467382627,
+      "goodput_over_offered": {
+        "1000": 0.9832081323712819,
+        "2000": 0.9832081323712819,
+        "250": 0.9821156788908695,
+        "3000": 0.9832081323712819,
+        "500": 0.9832081323712819
+      }
+    },
+    {
+      "sample_id": "fp8__random__r35__s2026",
+      "allocation": "fp8",
+      "workload": "random",
+      "offered_rate": 35.0,
+      "seed": 2026,
+      "completed": 2100,
+      "failed": 0,
+      "expected": 2100,
+      "request_throughput_over_offered": 0.9838019641686432,
+      "ttft_p99_ms": 296.22753683477623,
+      "tpot_p99_ms": 26.13392366272375,
+      "goodput_over_offered": {
+        "1000": 0.9838019641686432,
+        "2000": 0.9838019641686432,
+        "250": 0.9346118659602111,
+        "3000": 0.9838019641686432,
+        "500": 0.9838019641686432
+      }
+    },
+    {
+      "sample_id": "fp8__random__r35__s42",
+      "allocation": "fp8",
+      "workload": "random",
+      "offered_rate": 35.0,
+      "seed": 42,
+      "completed": 2100,
+      "failed": 0,
+      "expected": 2100,
+      "request_throughput_over_offered": 0.9841149504301788,
+      "ttft_p99_ms": 271.2734475731848,
+      "tpot_p99_ms": 28.905528525814532,
+      "goodput_over_offered": {
+        "1000": 0.9841149504301788,
+        "2000": 0.9841149504301788,
+        "250": 0.9527169972497875,
+        "3000": 0.9841149504301788,
+        "500": 0.9841149504301788
+      }
+    },
+    {
+      "sample_id": "fp8__random__r35__s7",
+      "allocation": "fp8",
+      "workload": "random",
+      "offered_rate": 35.0,
+      "seed": 7,
+      "completed": 2100,
+      "failed": 0,
+      "expected": 2100,
+      "request_throughput_over_offered": 0.9846278689310201,
+      "ttft_p99_ms": 282.01876787468757,
+      "tpot_p99_ms": 26.448826311728144,
+      "goodput_over_offered": {
+        "1000": 0.9846278689310201,
+        "2000": 0.9846278689310201,
+        "250": 0.948524847070216,
+        "3000": 0.9846278689310201,
+        "500": 0.9846278689310201
+      }
+    },
+    {
+      "sample_id": "fp8__random__r40__s2026",
+      "allocation": "fp8",
+      "workload": "random",
+      "offered_rate": 40.0,
+      "seed": 2026,
+      "completed": 2400,
+      "failed": 0,
+      "expected": 2400,
+      "request_throughput_over_offered": 0.9758727074861836,
+      "ttft_p99_ms": 528.801765628159,
+      "tpot_p99_ms": 39.46505726850408,
+      "goodput_over_offered": {
+        "1000": 0.9758727074861836,
+        "2000": 0.9758727074861836,
+        "250": 0.6208990101380842,
+        "3000": 0.9758727074861836,
+        "500": 0.96164123050201
+      }
+    },
+    {
+      "sample_id": "fp8__random__r40__s42",
+      "allocation": "fp8",
+      "workload": "random",
+      "offered_rate": 40.0,
+      "seed": 42,
+      "completed": 2400,
+      "failed": 0,
+      "expected": 2400,
+      "request_throughput_over_offered": 0.9774372161093916,
+      "ttft_p99_ms": 580.531644336877,
+      "tpot_p99_ms": 41.30181648423819,
+      "goodput_over_offered": {
+        "1000": 0.9774372161093916,
+        "2000": 0.9774372161093916,
+        "250": 0.5897204537193329,
+        "3000": 0.9774372161093916,
+        "500": 0.9460777720925486
+      }
+    },
+    {
+      "sample_id": "fp8__random__r40__s7",
+      "allocation": "fp8",
+      "workload": "random",
+      "offered_rate": 40.0,
+      "seed": 7,
+      "completed": 2400,
+      "failed": 0,
+      "expected": 2400,
+      "request_throughput_over_offered": 0.9782205834443201,
+      "ttft_p99_ms": 458.9389898627994,
+      "tpot_p99_ms": 38.75422040323221,
+      "goodput_over_offered": {
+        "1000": 0.9782205834443201,
+        "2000": 0.9782205834443201,
+        "250": 0.6566305666369998,
+        "3000": 0.9782205834443201,
+        "500": 0.9761826238954777
+      }
+    },
+    {
+      "sample_id": "fp8__random__r45__s2026",
+      "allocation": "fp8",
+      "workload": "random",
+      "offered_rate": 45.0,
+      "seed": 2026,
+      "completed": 2700,
+      "failed": 0,
+      "expected": 2700,
+      "request_throughput_over_offered": 0.9125094605413113,
+      "ttft_p99_ms": 4547.6265380345285,
+      "tpot_p99_ms": 42.87455293577253,
+      "goodput_over_offered": {
+        "1000": 0.23725245974074097,
+        "2000": 0.5393944811199752,
+        "250": 0.06928312570776624,
+        "3000": 0.7509614893788126,
+        "500": 0.18115002624079368
+      }
+    },
+    {
+      "sample_id": "fp8__random__r45__s42",
+      "allocation": "fp8",
+      "workload": "random",
+      "offered_rate": 45.0,
+      "seed": 42,
+      "completed": 2700,
+      "failed": 0,
+      "expected": 2700,
+      "request_throughput_over_offered": 0.9145633761463796,
+      "ttft_p99_ms": 4279.894178919494,
+      "tpot_p99_ms": 43.19029812781712,
+      "goodput_over_offered": {
+        "1000": 0.2716591954331098,
+        "2000": 0.5226560331088385,
+        "250": 0.07621361467886498,
+        "3000": 0.7214888856265884,
+        "500": 0.15886304570838966
+      }
+    },
+    {
+      "sample_id": "fp8__random__r45__s7",
+      "allocation": "fp8",
+      "workload": "random",
+      "offered_rate": 45.0,
+      "seed": 7,
+      "completed": 2700,
+      "failed": 0,
+      "expected": 2700,
+      "request_throughput_over_offered": 0.9141549389358722,
+      "ttft_p99_ms": 4764.846397414803,
+      "tpot_p99_ms": 42.984021857938195,
+      "goodput_over_offered": {
+        "1000": 0.3074269202051007,
+        "2000": 0.470959081503629,
+        "250": 0.10191134689618427,
+        "3000": 0.658191556033828,
+        "500": 0.2041612696956781
+      }
+    },
+    {
+      "sample_id": "fp8__random__r50__s2026",
+      "allocation": "fp8",
+      "workload": "random",
+      "offered_rate": 50.0,
+      "seed": 2026,
+      "completed": 3000,
+      "failed": 0,
+      "expected": 3000,
+      "request_throughput_over_offered": 0.8268831959991755,
+      "ttft_p99_ms": 11321.029405426234,
+      "tpot_p99_ms": 42.8152063310029,
+      "goodput_over_offered": {
+        "1000": 0.09950161125190078,
+        "2000": 0.185497463635815,
+        "250": 0.045754203511954375,
+        "3000": 0.23648859405576417,
+        "500": 0.06559940021593459
+      }
+    },
+    {
+      "sample_id": "fp8__random__r50__s42",
+      "allocation": "fp8",
+      "workload": "random",
+      "offered_rate": 50.0,
+      "seed": 42,
+      "completed": 3000,
+      "failed": 0,
+      "expected": 3000,
+      "request_throughput_over_offered": 0.828955254045309,
+      "ttft_p99_ms": 11219.055500011891,
+      "tpot_p99_ms": 42.808796568062355,
+      "goodput_over_offered": {
+        "1000": 0.0922903516170444,
+        "2000": 0.18098856379989248,
+        "250": 0.02597393129341968,
+        "3000": 0.24150229734520004,
+        "500": 0.05277681784088467
+      }
+    },
+    {
+      "sample_id": "fp8__random__r50__s7",
+      "allocation": "fp8",
+      "workload": "random",
+      "offered_rate": 50.0,
+      "seed": 7,
+      "completed": 3000,
+      "failed": 0,
+      "expected": 3000,
+      "request_throughput_over_offered": 0.8283904138566162,
+      "ttft_p99_ms": 11226.135760508478,
+      "tpot_p99_ms": 42.868115451098895,
+      "goodput_over_offered": {
+        "1000": 0.1272959935959667,
+        "2000": 0.18694010339364303,
+        "250": 0.04280017138259184,
+        "3000": 0.2590100693991687,
+        "500": 0.06571897283262489
+      }
+    },
+    {
+      "sample_id": "turboquant_4bit_nc__random__r30__s2026",
+      "allocation": "turboquant_4bit_nc",
+      "workload": "random",
+      "offered_rate": 30.0,
+      "seed": 2026,
+      "completed": 1800,
+      "failed": 0,
+      "expected": 1800,
+      "request_throughput_over_offered": 0.9818644706430876,
+      "ttft_p99_ms": 249.6725333109498,
+      "tpot_p99_ms": 22.3048432785871,
+      "goodput_over_offered": {
+        "1000": 0.9818644706430876,
+        "2000": 0.9818644706430876,
+        "250": 0.9720458259366568,
+        "3000": 0.9818644706430876,
+        "500": 0.9818644706430876
+      }
+    },
+    {
+      "sample_id": "turboquant_4bit_nc__random__r30__s42",
+      "allocation": "turboquant_4bit_nc",
+      "workload": "random",
+      "offered_rate": 30.0,
+      "seed": 42,
+      "completed": 1800,
+      "failed": 0,
+      "expected": 1800,
+      "request_throughput_over_offered": 0.9812359693125556,
+      "ttft_p99_ms": 249.8312969133258,
+      "tpot_p99_ms": 26.541977057776112,
+      "goodput_over_offered": {
+        "1000": 0.9812359693125556,
+        "2000": 0.9812359693125556,
+        "250": 0.9714236096194301,
+        "3000": 0.9812359693125556,
+        "500": 0.9812359693125556
+      }
+    },
+    {
+      "sample_id": "turboquant_4bit_nc__random__r30__s7",
+      "allocation": "turboquant_4bit_nc",
+      "workload": "random",
+      "offered_rate": 30.0,
+      "seed": 7,
+      "completed": 1800,
+      "failed": 0,
+      "expected": 1800,
+      "request_throughput_over_offered": 0.9812333146401214,
+      "ttft_p99_ms": 388.6736949905753,
+      "tpot_p99_ms": 26.66239870198834,
+      "goodput_over_offered": {
+        "1000": 0.9812333146401214,
+        "2000": 0.9812333146401214,
+        "250": 0.9316265192888709,
+        "3000": 0.9812333146401214,
+        "500": 0.9763271480669208
+      }
+    },
+    {
+      "sample_id": "turboquant_4bit_nc__random__r35__s2026",
+      "allocation": "turboquant_4bit_nc",
+      "workload": "random",
+      "offered_rate": 35.0,
+      "seed": 2026,
+      "completed": 2100,
+      "failed": 0,
+      "expected": 2100,
+      "request_throughput_over_offered": 0.9815615587581139,
+      "ttft_p99_ms": 314.9111792072651,
+      "tpot_p99_ms": 31.48279623942464,
+      "goodput_over_offered": {
+        "1000": 0.9815615587581139,
+        "2000": 0.9815615587581139,
+        "250": 0.8824705823501519,
+        "3000": 0.9815615587581139,
+        "500": 0.9815615587581139
+      }
+    },
+    {
+      "sample_id": "turboquant_4bit_nc__random__r35__s42",
+      "allocation": "turboquant_4bit_nc",
+      "workload": "random",
+      "offered_rate": 35.0,
+      "seed": 42,
+      "completed": 2100,
+      "failed": 0,
+      "expected": 2100,
+      "request_throughput_over_offered": 0.9795668818266687,
+      "ttft_p99_ms": 326.94362973794324,
+      "tpot_p99_ms": 34.250458656832215,
+      "goodput_over_offered": {
+        "1000": 0.9795668818266687,
+        "2000": 0.9795668818266687,
+        "250": 0.8788114311244971,
+        "3000": 0.9795668818266687,
+        "500": 0.9795668818266687
+      }
+    },
+    {
+      "sample_id": "turboquant_4bit_nc__random__r35__s7",
+      "allocation": "turboquant_4bit_nc",
+      "workload": "random",
+      "offered_rate": 35.0,
+      "seed": 7,
+      "completed": 2100,
+      "failed": 0,
+      "expected": 2100,
+      "request_throughput_over_offered": 0.9814883243185707,
+      "ttft_p99_ms": 357.0358451269567,
+      "tpot_p99_ms": 30.924316005062636,
+      "goodput_over_offered": {
+        "1000": 0.9814883243185707,
+        "2000": 0.9814883243185707,
+        "250": 0.8646444761854074,
+        "3000": 0.9814883243185707,
+        "500": 0.9814883243185707
+      }
+    },
+    {
+      "sample_id": "turboquant_4bit_nc__random__r40__s2026",
+      "allocation": "turboquant_4bit_nc",
+      "workload": "random",
+      "offered_rate": 40.0,
+      "seed": 2026,
+      "completed": 2400,
+      "failed": 0,
+      "expected": 2400,
+      "request_throughput_over_offered": 0.953284661777331,
+      "ttft_p99_ms": 1680.761439371854,
+      "tpot_p99_ms": 45.91297040436798,
+      "goodput_over_offered": {
+        "1000": 0.8766246868927373,
+        "2000": 0.953284661777331,
+        "250": 0.17794647019843512,
+        "3000": 0.953284661777331,
+        "500": 0.46790388815570666
+      }
+    },
+    {
+      "sample_id": "turboquant_4bit_nc__random__r40__s42",
+      "allocation": "turboquant_4bit_nc",
+      "workload": "random",
+      "offered_rate": 40.0,
+      "seed": 42,
+      "completed": 2400,
+      "failed": 0,
+      "expected": 2400,
+      "request_throughput_over_offered": 0.9555938113576691,
+      "ttft_p99_ms": 1422.9282184690237,
+      "tpot_p99_ms": 45.92982663487003,
+      "goodput_over_offered": {
+        "1000": 0.8660068915428877,
+        "2000": 0.9555938113576691,
+        "250": 0.16046012749047528,
+        "3000": 0.9555938113576691,
+        "500": 0.4192667847331773
+      }
+    },
+    {
+      "sample_id": "turboquant_4bit_nc__random__r40__s7",
+      "allocation": "turboquant_4bit_nc",
+      "workload": "random",
+      "offered_rate": 40.0,
+      "seed": 7,
+      "completed": 2400,
+      "failed": 0,
+      "expected": 2400,
+      "request_throughput_over_offered": 0.9546822243828009,
+      "ttft_p99_ms": 1500.8529427461324,
+      "tpot_p99_ms": 45.83486939846413,
+      "goodput_over_offered": {
+        "1000": 0.7983530101401173,
+        "2000": 0.9546822243828009,
+        "250": 0.21719020604708722,
+        "3000": 0.9546822243828009,
+        "500": 0.45983860474438243
+      }
+    },
+    {
+      "sample_id": "turboquant_4bit_nc__random__r45__s2026",
+      "allocation": "turboquant_4bit_nc",
+      "workload": "random",
+      "offered_rate": 45.0,
+      "seed": 2026,
+      "completed": 2700,
+      "failed": 0,
+      "expected": 2700,
+      "request_throughput_over_offered": 0.8557715916628281,
+      "ttft_p99_ms": 8695.632019843906,
+      "tpot_p99_ms": 45.97124852856078,
+      "goodput_over_offered": {
+        "1000": 0.17337298542206184,
+        "2000": 0.2431025225205145,
+        "250": 0.060220963857754564,
+        "3000": 0.36861568929772925,
+        "500": 0.09476877996562429
+      }
+    },
+    {
+      "sample_id": "turboquant_4bit_nc__random__r45__s42",
+      "allocation": "turboquant_4bit_nc",
+      "workload": "random",
+      "offered_rate": 45.0,
+      "seed": 42,
+      "completed": 2700,
+      "failed": 0,
+      "expected": 2700,
+      "request_throughput_over_offered": 0.8605622619086268,
+      "ttft_p99_ms": 8199.073549509048,
+      "tpot_p99_ms": 45.891781078108885,
+      "goodput_over_offered": {
+        "1000": 0.18199298205549105,
+        "2000": 0.2667743011916743,
+        "250": 0.04430302015011078,
+        "3000": 0.3617548767652931,
+        "500": 0.09848656997398728
+      }
+    },
+    {
+      "sample_id": "turboquant_4bit_nc__random__r45__s7",
+      "allocation": "turboquant_4bit_nc",
+      "workload": "random",
+      "offered_rate": 45.0,
+      "seed": 7,
+      "completed": 2700,
+      "failed": 0,
+      "expected": 2700,
+      "request_throughput_over_offered": 0.8593903389962866,
+      "ttft_p99_ms": 8621.888773422688,
+      "tpot_p99_ms": 45.91758672558651,
+      "goodput_over_offered": {
+        "1000": 0.18970246001547658,
+        "2000": 0.2845536900232149,
+        "250": 0.05188171305792397,
+        "3000": 0.35935247878770643,
+        "500": 0.11967806202318657
+      }
+    },
+    {
+      "sample_id": "turboquant_4bit_nc__random__r50__s2026",
+      "allocation": "turboquant_4bit_nc",
+      "workload": "random",
+      "offered_rate": 50.0,
+      "seed": 2026,
+      "completed": 3000,
+      "failed": 0,
+      "expected": 3000,
+      "request_throughput_over_offered": 0.7751602900600725,
+      "ttft_p99_ms": 15960.274275150148,
+      "tpot_p99_ms": 45.93020846627242,
+      "goodput_over_offered": {
+        "1000": 0.0826837642730744,
+        "2000": 0.13952885221081304,
+        "250": 0.048835098273784565,
+        "3000": 0.17906202700387674,
+        "500": 0.05813702175450544
+      }
+    },
+    {
+      "sample_id": "turboquant_4bit_nc__random__r50__s42",
+      "allocation": "turboquant_4bit_nc",
+      "workload": "random",
+      "offered_rate": 50.0,
+      "seed": 42,
+      "completed": 3000,
+      "failed": 0,
+      "expected": 3000,
+      "request_throughput_over_offered": 0.7762212210486353,
+      "ttft_p99_ms": 15884.330446887761,
+      "tpot_p99_ms": 45.92697098660539,
+      "goodput_over_offered": {
+        "1000": 0.07658716047679869,
+        "2000": 0.1492932148483542,
+        "250": 0.024062857852507696,
+        "3000": 0.1777546596201375,
+        "500": 0.04450335000678843
+      }
+    },
+    {
+      "sample_id": "turboquant_4bit_nc__random__r50__s7",
+      "allocation": "turboquant_4bit_nc",
+      "workload": "random",
+      "offered_rate": 50.0,
+      "seed": 7,
+      "completed": 3000,
+      "failed": 0,
+      "expected": 3000,
+      "request_throughput_over_offered": 0.7749478335253616,
+      "ttft_p99_ms": 15984.737847466016,
+      "tpot_p99_ms": 45.983999086705246,
+      "goodput_over_offered": {
+        "1000": 0.08162783846467142,
+        "2000": 0.14517356081375107,
+        "250": 0.03616423223118354,
+        "3000": 0.1813377930449346,
+        "500": 0.048821713512097784
+      }
+    },
+    {
+      "sample_id": "turboquant_k8v4__random__r30__s2026",
+      "allocation": "turboquant_k8v4",
+      "workload": "random",
+      "offered_rate": 30.0,
+      "seed": 2026,
+      "completed": 1800,
+      "failed": 0,
+      "expected": 1800,
+      "request_throughput_over_offered": 0.98458611560679,
+      "ttft_p99_ms": 238.84034890681505,
+      "tpot_p99_ms": 21.135952838029212,
+      "goodput_over_offered": {
+        "1000": 0.98458611560679,
+        "2000": 0.98458611560679,
+        "250": 0.9785692004558596,
+        "3000": 0.98458611560679,
+        "500": 0.98458611560679
+      }
+    },
+    {
+      "sample_id": "turboquant_k8v4__random__r30__s42",
+      "allocation": "turboquant_k8v4",
+      "workload": "random",
+      "offered_rate": 30.0,
+      "seed": 42,
+      "completed": 1800,
+      "failed": 0,
+      "expected": 1800,
+      "request_throughput_over_offered": 0.9834905839540045,
+      "ttft_p99_ms": 231.9300252199173,
+      "tpot_p99_ms": 23.624515915949512,
+      "goodput_over_offered": {
+        "1000": 0.9834905839540045,
+        "2000": 0.9834905839540045,
+        "250": 0.9823978166385,
+        "3000": 0.9834905839540045,
+        "500": 0.9834905839540045
+      }
+    },
+    {
+      "sample_id": "turboquant_k8v4__random__r30__s7",
+      "allocation": "turboquant_k8v4",
+      "workload": "random",
+      "offered_rate": 30.0,
+      "seed": 7,
+      "completed": 1800,
+      "failed": 0,
+      "expected": 1800,
+      "request_throughput_over_offered": 0.98275120250786,
+      "ttft_p99_ms": 454.64452883228654,
+      "tpot_p99_ms": 24.162938309261413,
+      "goodput_over_offered": {
+        "1000": 0.98275120250786,
+        "2000": 0.98275120250786,
+        "250": 0.9303378050407741,
+        "3000": 0.98275120250786,
+        "500": 0.9783834193856028
+      }
+    },
+    {
+      "sample_id": "turboquant_k8v4__random__r35__s2026",
+      "allocation": "turboquant_k8v4",
+      "workload": "random",
+      "offered_rate": 35.0,
+      "seed": 2026,
+      "completed": 2100,
+      "failed": 0,
+      "expected": 2100,
+      "request_throughput_over_offered": 0.9834765176190405,
+      "ttft_p99_ms": 309.22803828492727,
+      "tpot_p99_ms": 27.97052738366751,
+      "goodput_over_offered": {
+        "1000": 0.9834765176190405,
+        "2000": 0.9834765176190405,
+        "250": 0.9015201411507873,
+        "3000": 0.9834765176190405,
+        "500": 0.9834765176190405
+      }
+    },
+    {
+      "sample_id": "turboquant_k8v4__random__r35__s42",
+      "allocation": "turboquant_k8v4",
+      "workload": "random",
+      "offered_rate": 35.0,
+      "seed": 42,
+      "completed": 2100,
+      "failed": 0,
+      "expected": 2100,
+      "request_throughput_over_offered": 0.9829291366741334,
+      "ttft_p99_ms": 288.2781200855969,
+      "tpot_p99_ms": 30.405284999246437,
+      "goodput_over_offered": {
+        "1000": 0.9829291366741334,
+        "2000": 0.9829291366741334,
+        "250": 0.9305062493848464,
+        "3000": 0.9829291366741334,
+        "500": 0.9829291366741334
+      }
+    },
+    {
+      "sample_id": "turboquant_k8v4__random__r35__s7",
+      "allocation": "turboquant_k8v4",
+      "workload": "random",
+      "offered_rate": 35.0,
+      "seed": 7,
+      "completed": 2100,
+      "failed": 0,
+      "expected": 2100,
+      "request_throughput_over_offered": 0.9835979167717562,
+      "ttft_p99_ms": 301.22905647382123,
+      "tpot_p99_ms": 29.305274468208598,
+      "goodput_over_offered": {
+        "1000": 0.9835979167717562,
+        "2000": 0.9835979167717562,
+        "250": 0.9306709812502285,
+        "3000": 0.9835979167717562,
+        "500": 0.9835979167717562
+      }
+    },
+    {
+      "sample_id": "turboquant_k8v4__random__r40__s2026",
+      "allocation": "turboquant_k8v4",
+      "workload": "random",
+      "offered_rate": 40.0,
+      "seed": 2026,
+      "completed": 2400,
+      "failed": 0,
+      "expected": 2400,
+      "request_throughput_over_offered": 0.9675376429094629,
+      "ttft_p99_ms": 852.4454745091494,
+      "tpot_p99_ms": 43.91929015033241,
+      "goodput_over_offered": {
+        "1000": 0.9675376429094629,
+        "2000": 0.9675376429094629,
+        "250": 0.449098722583809,
+        "3000": 0.9675376429094629,
+        "500": 0.9050508368048934
+      }
+    },
+    {
+      "sample_id": "turboquant_k8v4__random__r40__s42",
+      "allocation": "turboquant_k8v4",
+      "workload": "random",
+      "offered_rate": 40.0,
+      "seed": 42,
+      "completed": 2400,
+      "failed": 0,
+      "expected": 2400,
+      "request_throughput_over_offered": 0.9713661125438076,
+      "ttft_p99_ms": 816.1445736698793,
+      "tpot_p99_ms": 43.57147850609553,
+      "goodput_over_offered": {
+        "1000": 0.9713661125438076,
+        "2000": 0.9713661125438076,
+        "250": 0.40514061610681307,
+        "3000": 0.9713661125438076,
+        "500": 0.8811100112532788
+      }
+    },
+    {
+      "sample_id": "turboquant_k8v4__random__r40__s7",
+      "allocation": "turboquant_k8v4",
+      "workload": "random",
+      "offered_rate": 40.0,
+      "seed": 7,
+      "completed": 2400,
+      "failed": 0,
+      "expected": 2400,
+      "request_throughput_over_offered": 0.9717774020192514,
+      "ttft_p99_ms": 618.74968903139,
+      "tpot_p99_ms": 43.87533734002569,
+      "goodput_over_offered": {
+        "1000": 0.9717774020192514,
+        "2000": 0.9717774020192514,
+        "250": 0.4534961209423174,
+        "3000": 0.9717774020192514,
+        "500": 0.9061824273829521
+      }
+    },
+    {
+      "sample_id": "turboquant_k8v4__random__r45__s2026",
+      "allocation": "turboquant_k8v4",
+      "workload": "random",
+      "offered_rate": 45.0,
+      "seed": 2026,
+      "completed": 2700,
+      "failed": 0,
+      "expected": 2700,
+      "request_throughput_over_offered": 0.8816542428062273,
+      "ttft_p99_ms": 6823.086814545093,
+      "tpot_p99_ms": 44.6447549578477,
+      "goodput_over_offered": {
+        "1000": 0.20180086002009204,
+        "2000": 0.28735397543314073,
+        "250": 0.06857310777381767,
+        "3000": 0.4966652234475081,
+        "500": 0.1136354357394693
+      }
+    },
+    {
+      "sample_id": "turboquant_k8v4__random__r45__s42",
+      "allocation": "turboquant_k8v4",
+      "workload": "random",
+      "offered_rate": 45.0,
+      "seed": 42,
+      "completed": 2700,
+      "failed": 0,
+      "expected": 2700,
+      "request_throughput_over_offered": 0.8866106199130978,
+      "ttft_p99_ms": 6299.610190186646,
+      "tpot_p99_ms": 44.55265047791319,
+      "goodput_over_offered": {
+        "1000": 0.21410004599382954,
+        "2000": 0.2988206163410811,
+        "250": 0.05451013440947194,
+        "3000": 0.5037261818321082,
+        "500": 0.12937947564657798
+      }
+    },
+    {
+      "sample_id": "turboquant_k8v4__random__r45__s7",
+      "allocation": "turboquant_k8v4",
+      "workload": "random",
+      "offered_rate": 45.0,
+      "seed": 7,
+      "completed": 2700,
+      "failed": 0,
+      "expected": 2700,
+      "request_throughput_over_offered": 0.884476720159863,
+      "ttft_p99_ms": 6826.689308267086,
+      "tpot_p99_ms": 44.599054620901896,
+      "goodput_over_offered": {
+        "1000": 0.21653300445395166,
+        "2000": 0.34330800101019865,
+        "250": 0.05994786658861294,
+        "3000": 0.4543589669858259,
+        "500": 0.17460225623896555
+      }
+    },
+    {
+      "sample_id": "turboquant_k8v4__random__r50__s2026",
+      "allocation": "turboquant_k8v4",
+      "workload": "random",
+      "offered_rate": 50.0,
+      "seed": 2026,
+      "completed": 3000,
+      "failed": 0,
+      "expected": 3000,
+      "request_throughput_over_offered": 0.7965507802374785,
+      "ttft_p99_ms": 14007.573932781816,
+      "tpot_p99_ms": 44.641915515329195,
+      "goodput_over_offered": {
+        "1000": 0.09266540743429333,
+        "2000": 0.15957567297424155,
+        "250": 0.04965166530146949,
+        "3000": 0.20073079661984458,
+        "500": 0.061599927005031675
+      }
+    },
+    {
+      "sample_id": "turboquant_k8v4__random__r50__s42",
+      "allocation": "turboquant_k8v4",
+      "workload": "random",
+      "offered_rate": 50.0,
+      "seed": 42,
+      "completed": 3000,
+      "failed": 0,
+      "expected": 3000,
+      "request_throughput_over_offered": 0.799405748027055,
+      "ttft_p99_ms": 13823.386783953756,
+      "tpot_p99_ms": 44.59699853976059,
+      "goodput_over_offered": {
+        "1000": 0.0836711349601651,
+        "2000": 0.16201289826681647,
+        "250": 0.020518080866027747,
+        "3000": 0.2022496542508449,
+        "500": 0.04529965905486646
+      }
+    },
+    {
+      "sample_id": "turboquant_k8v4__random__r50__s7",
+      "allocation": "turboquant_k8v4",
+      "workload": "random",
+      "offered_rate": 50.0,
+      "seed": 7,
+      "completed": 3000,
+      "failed": 0,
+      "expected": 3000,
+      "request_throughput_over_offered": 0.7978790351940606,
+      "ttft_p99_ms": 13877.8221934475,
+      "tpot_p99_ms": 44.62473239075011,
+      "goodput_over_offered": {
+        "1000": 0.09281992776090904,
+        "2000": 0.16170348446599628,
+        "250": 0.038564153367712926,
+        "3000": 0.22207633146234687,
+        "500": 0.054521734071594136
+      }
+    },
+    {
+      "sample_id": "fp8__sharegpt__r20__s2026",
+      "allocation": "fp8",
+      "workload": "sharegpt",
+      "offered_rate": 20.0,
+      "seed": 2026,
+      "completed": 6000,
+      "failed": 0,
+      "expected": 6000,
+      "request_throughput_over_offered": 0.982120385846079,
+      "ttft_p99_ms": 129.08706288784742,
+      "tpot_p99_ms": 14.582517587114129,
+      "goodput_over_offered": {
+        "1000": 0.982120385846079,
+        "2000": 0.982120385846079,
+        "250": 0.982120385846079,
+        "3000": 0.982120385846079,
+        "500": 0.982120385846079
+      }
+    },
+    {
+      "sample_id": "fp8__sharegpt__r20__s42",
+      "allocation": "fp8",
+      "workload": "sharegpt",
+      "offered_rate": 20.0,
+      "seed": 42,
+      "completed": 6000,
+      "failed": 0,
+      "expected": 6000,
+      "request_throughput_over_offered": 0.9842578028415294,
+      "ttft_p99_ms": 129.9651488289237,
+      "tpot_p99_ms": 15.00795902328239,
+      "goodput_over_offered": {
+        "1000": 0.9842578028415294,
+        "2000": 0.9842578028415294,
+        "250": 0.9842578028415294,
+        "3000": 0.9842578028415294,
+        "500": 0.9842578028415294
+      }
+    },
+    {
+      "sample_id": "fp8__sharegpt__r20__s7",
+      "allocation": "fp8",
+      "workload": "sharegpt",
+      "offered_rate": 20.0,
+      "seed": 7,
+      "completed": 6000,
+      "failed": 0,
+      "expected": 6000,
+      "request_throughput_over_offered": 0.9877411778407568,
+      "ttft_p99_ms": 127.33683576807384,
+      "tpot_p99_ms": 15.057346041003882,
+      "goodput_over_offered": {
+        "1000": 0.9877411778407568,
+        "2000": 0.9877411778407568,
+        "250": 0.9877411778407568,
+        "3000": 0.9877411778407568,
+        "500": 0.9877411778407568
+      }
+    },
+    {
+      "sample_id": "fp8__sharegpt__r25__s2026",
+      "allocation": "fp8",
+      "workload": "sharegpt",
+      "offered_rate": 25.0,
+      "seed": 2026,
+      "completed": 7500,
+      "failed": 0,
+      "expected": 7500,
+      "request_throughput_over_offered": 0.9850730905960577,
+      "ttft_p99_ms": 153.5240118950606,
+      "tpot_p99_ms": 18.15879393136129,
+      "goodput_over_offered": {
+        "1000": 0.9850730905960577,
+        "2000": 0.9850730905960577,
+        "250": 0.9850730905960577,
+        "3000": 0.9850730905960577,
+        "500": 0.9850730905960577
+      }
+    },
+    {
+      "sample_id": "fp8__sharegpt__r25__s42",
+      "allocation": "fp8",
+      "workload": "sharegpt",
+      "offered_rate": 25.0,
+      "seed": 42,
+      "completed": 7500,
+      "failed": 0,
+      "expected": 7500,
+      "request_throughput_over_offered": 0.9692985438601418,
+      "ttft_p99_ms": 150.72911942377687,
+      "tpot_p99_ms": 17.21272951908986,
+      "goodput_over_offered": {
+        "1000": 0.9692985438601418,
+        "2000": 0.9692985438601418,
+        "250": 0.9692985438601418,
+        "3000": 0.9692985438601418,
+        "500": 0.9692985438601418
+      }
+    },
+    {
+      "sample_id": "fp8__sharegpt__r25__s7",
+      "allocation": "fp8",
+      "workload": "sharegpt",
+      "offered_rate": 25.0,
+      "seed": 7,
+      "completed": 7500,
+      "failed": 0,
+      "expected": 7500,
+      "request_throughput_over_offered": 0.9835487056539415,
+      "ttft_p99_ms": 150.53215065971017,
+      "tpot_p99_ms": 17.307110037106806,
+      "goodput_over_offered": {
+        "1000": 0.9835487056539415,
+        "2000": 0.9835487056539415,
+        "250": 0.9835487056539415,
+        "3000": 0.9835487056539415,
+        "500": 0.9835487056539415
+      }
+    },
+    {
+      "sample_id": "fp8__sharegpt__r30__s2026",
+      "allocation": "fp8",
+      "workload": "sharegpt",
+      "offered_rate": 30.0,
+      "seed": 2026,
+      "completed": 9000,
+      "failed": 0,
+      "expected": 9000,
+      "request_throughput_over_offered": 0.9829971745377432,
+      "ttft_p99_ms": 170.95877988263967,
+      "tpot_p99_ms": 22.251685102554898,
+      "goodput_over_offered": {
+        "1000": 0.9829971745377432,
+        "2000": 0.9829971745377432,
+        "250": 0.9829971745377432,
+        "3000": 0.9829971745377432,
+        "500": 0.9829971745377432
+      }
+    },
+    {
+      "sample_id": "fp8__sharegpt__r30__s42",
+      "allocation": "fp8",
+      "workload": "sharegpt",
+      "offered_rate": 30.0,
+      "seed": 42,
+      "completed": 9000,
+      "failed": 0,
+      "expected": 9000,
+      "request_throughput_over_offered": 0.9842367067212502,
+      "ttft_p99_ms": 172.03432643786073,
+      "tpot_p99_ms": 21.2415689742193,
+      "goodput_over_offered": {
+        "1000": 0.9842367067212502,
+        "2000": 0.9842367067212502,
+        "250": 0.9842367067212502,
+        "3000": 0.9842367067212502,
+        "500": 0.9842367067212502
+      }
+    },
+    {
+      "sample_id": "fp8__sharegpt__r30__s7",
+      "allocation": "fp8",
+      "workload": "sharegpt",
+      "offered_rate": 30.0,
+      "seed": 7,
+      "completed": 9000,
+      "failed": 0,
+      "expected": 9000,
+      "request_throughput_over_offered": 0.9819094838017389,
+      "ttft_p99_ms": 169.3078175932169,
+      "tpot_p99_ms": 20.82491951861553,
+      "goodput_over_offered": {
+        "1000": 0.9819094838017389,
+        "2000": 0.9819094838017389,
+        "250": 0.9819094838017389,
+        "3000": 0.9819094838017389,
+        "500": 0.9819094838017389
+      }
+    },
+    {
+      "sample_id": "fp8__sharegpt__r35__s2026",
+      "allocation": "fp8",
+      "workload": "sharegpt",
+      "offered_rate": 35.0,
+      "seed": 2026,
+      "completed": 10500,
+      "failed": 0,
+      "expected": 10500,
+      "request_throughput_over_offered": 0.9840415049202523,
+      "ttft_p99_ms": 190.89459460228684,
+      "tpot_p99_ms": 26.587630018669493,
+      "goodput_over_offered": {
+        "1000": 0.9840415049202523,
+        "2000": 0.9840415049202523,
+        "250": 0.9840415049202523,
+        "3000": 0.9840415049202523,
+        "500": 0.9840415049202523
+      }
+    },
+    {
+      "sample_id": "fp8__sharegpt__r35__s42",
+      "allocation": "fp8",
+      "workload": "sharegpt",
+      "offered_rate": 35.0,
+      "seed": 42,
+      "completed": 10500,
+      "failed": 0,
+      "expected": 10500,
+      "request_throughput_over_offered": 0.9849122397607396,
+      "ttft_p99_ms": 188.09876339510083,
+      "tpot_p99_ms": 24.655641759080552,
+      "goodput_over_offered": {
+        "1000": 0.9849122397607396,
+        "2000": 0.9849122397607396,
+        "250": 0.9848184385950481,
+        "3000": 0.9849122397607396,
+        "500": 0.9849122397607396
+      }
+    },
+    {
+      "sample_id": "fp8__sharegpt__r35__s7",
+      "allocation": "fp8",
+      "workload": "sharegpt",
+      "offered_rate": 35.0,
+      "seed": 7,
+      "completed": 10500,
+      "failed": 0,
+      "expected": 10500,
+      "request_throughput_over_offered": 0.9804644120218585,
+      "ttft_p99_ms": 188.45773976296195,
+      "tpot_p99_ms": 25.057504015664296,
+      "goodput_over_offered": {
+        "1000": 0.9804644120218585,
+        "2000": 0.9804644120218585,
+        "250": 0.9804644120218585,
+        "3000": 0.9804644120218585,
+        "500": 0.9804644120218585
+      }
+    },
+    {
+      "sample_id": "fp8__sharegpt__r40__s2026",
+      "allocation": "fp8",
+      "workload": "sharegpt",
+      "offered_rate": 40.0,
+      "seed": 2026,
+      "completed": 12000,
+      "failed": 0,
+      "expected": 12000,
+      "request_throughput_over_offered": 0.9692259033486869,
+      "ttft_p99_ms": 239.07889593392616,
+      "tpot_p99_ms": 29.276282605715103,
+      "goodput_over_offered": {
+        "1000": 0.9692259033486869,
+        "2000": 0.9692259033486869,
+        "250": 0.9644605426572225,
+        "3000": 0.9692259033486869,
+        "500": 0.9692259033486869
+      }
+    },
+    {
+      "sample_id": "fp8__sharegpt__r40__s42",
+      "allocation": "fp8",
+      "workload": "sharegpt",
+      "offered_rate": 40.0,
+      "seed": 42,
+      "completed": 12000,
+      "failed": 0,
+      "expected": 12000,
+      "request_throughput_over_offered": 0.97976925526383,
+      "ttft_p99_ms": 236.08189033344397,
+      "tpot_p99_ms": 28.709163910709325,
+      "goodput_over_offered": {
+        "1000": 0.97976925526383,
+        "2000": 0.97976925526383,
+        "250": 0.9749520564254495,
+        "3000": 0.97976925526383,
+        "500": 0.97976925526383
+      }
+    },
+    {
+      "sample_id": "fp8__sharegpt__r40__s7",
+      "allocation": "fp8",
+      "workload": "sharegpt",
+      "offered_rate": 40.0,
+      "seed": 7,
+      "completed": 12000,
+      "failed": 0,
+      "expected": 12000,
+      "request_throughput_over_offered": 0.9708670397311774,
+      "ttft_p99_ms": 242.06045446917418,
+      "tpot_p99_ms": 28.370258397422734,
+      "goodput_over_offered": {
+        "1000": 0.9708670397311774,
+        "2000": 0.9708670397311774,
+        "250": 0.9643945927996362,
+        "3000": 0.9708670397311774,
+        "500": 0.9708670397311774
+      }
+    },
+    {
+      "sample_id": "fp8__sharegpt__r45__s2026",
+      "allocation": "fp8",
+      "workload": "sharegpt",
+      "offered_rate": 45.0,
+      "seed": 2026,
+      "completed": 13500,
+      "failed": 0,
+      "expected": 13500,
+      "request_throughput_over_offered": 0.9764331650904657,
+      "ttft_p99_ms": 260.4513534530998,
+      "tpot_p99_ms": 31.539975459066532,
+      "goodput_over_offered": {
+        "1000": 0.9764331650904657,
+        "2000": 0.9764331650904657,
+        "250": 0.9603039357708233,
+        "3000": 0.9764331650904657,
+        "500": 0.9764331650904657
+      }
+    },
+    {
+      "sample_id": "fp8__sharegpt__r45__s42",
+      "allocation": "fp8",
+      "workload": "sharegpt",
+      "offered_rate": 45.0,
+      "seed": 42,
+      "completed": 13500,
+      "failed": 0,
+      "expected": 13500,
+      "request_throughput_over_offered": 0.9773280694300769,
+      "ttft_p99_ms": 258.6904154531658,
+      "tpot_p99_ms": 31.591866456437863,
+      "goodput_over_offered": {
+        "1000": 0.9773280694300769,
+        "2000": 0.9773280694300769,
+        "250": 0.962414767037292,
+        "3000": 0.9773280694300769,
+        "500": 0.9773280694300769
+      }
+    },
+    {
+      "sample_id": "fp8__sharegpt__r45__s7",
+      "allocation": "fp8",
+      "workload": "sharegpt",
+      "offered_rate": 45.0,
+      "seed": 7,
+      "completed": 13500,
+      "failed": 0,
+      "expected": 13500,
+      "request_throughput_over_offered": 0.9808862032301462,
+      "ttft_p99_ms": 262.6570971496403,
+      "tpot_p99_ms": 31.161020575608646,
+      "goodput_over_offered": {
+        "1000": 0.9808862032301462,
+        "2000": 0.9808862032301462,
+        "250": 0.9643927833684245,
+        "3000": 0.9808862032301462,
+        "500": 0.9808862032301462
+      }
+    },
+    {
+      "sample_id": "fp8__sharegpt__r50__s2026",
+      "allocation": "fp8",
+      "workload": "sharegpt",
+      "offered_rate": 50.0,
+      "seed": 2026,
+      "completed": 14151,
+      "failed": 849,
+      "expected": 15000,
+      "request_throughput_over_offered": 0.8743208054900464,
+      "ttft_p99_ms": 17780.31632117927,
+      "tpot_p99_ms": 34.90951506054809,
+      "goodput_over_offered": {
+        "1000": 0.16095015887934216,
+        "2000": 0.1929548353858678,
+        "250": 0.1456892417034506,
+        "3000": 0.2150738975274434,
+        "500": 0.15285631211803935
+      }
+    },
+    {
+      "sample_id": "fp8__sharegpt__r50__s42",
+      "allocation": "fp8",
+      "workload": "sharegpt",
+      "offered_rate": 50.0,
+      "seed": 42,
+      "completed": 14109,
+      "failed": 891,
+      "expected": 15000,
+      "request_throughput_over_offered": 0.8671171981077681,
+      "ttft_p99_ms": 17718.99868309498,
+      "tpot_p99_ms": 34.62695493066049,
+      "goodput_over_offered": {
+        "1000": 0.14750026759222082,
+        "2000": 0.16274196191008364,
+        "250": 0.13656066441246445,
+        "3000": 0.18210137203156265,
+        "500": 0.1439356777920755
+      }
+    },
+    {
+      "sample_id": "fp8__sharegpt__r50__s7",
+      "allocation": "fp8",
+      "workload": "sharegpt",
+      "offered_rate": 50.0,
+      "seed": 7,
+      "completed": 14319,
+      "failed": 681,
+      "expected": 15000,
+      "request_throughput_over_offered": 0.877127305820924,
+      "ttft_p99_ms": 17843.779832348224,
+      "tpot_p99_ms": 34.428861025864116,
+      "goodput_over_offered": {
+        "1000": 0.1363562666916249,
+        "2000": 0.14787242937717093,
+        "250": 0.11816317989584206,
+        "3000": 0.1943658734108382,
+        "500": 0.13084321008684222
+      }
+    },
+    {
+      "sample_id": "turboquant_4bit_nc__sharegpt__r20__s2026",
+      "allocation": "turboquant_4bit_nc",
+      "workload": "sharegpt",
+      "offered_rate": 20.0,
+      "seed": 2026,
+      "completed": 6000,
+      "failed": 0,
+      "expected": 6000,
+      "request_throughput_over_offered": 0.9756868568092211,
+      "ttft_p99_ms": 137.15737907215956,
+      "tpot_p99_ms": 17.562746289574257,
+      "goodput_over_offered": {
+        "1000": 0.9756868568092211,
+        "2000": 0.9756868568092211,
+        "250": 0.9756868568092211,
+        "3000": 0.9756868568092211,
+        "500": 0.9756868568092211
+      }
+    },
+    {
+      "sample_id": "turboquant_4bit_nc__sharegpt__r20__s42",
+      "allocation": "turboquant_4bit_nc",
+      "workload": "sharegpt",
+      "offered_rate": 20.0,
+      "seed": 42,
+      "completed": 6000,
+      "failed": 0,
+      "expected": 6000,
+      "request_throughput_over_offered": 0.9809109754749507,
+      "ttft_p99_ms": 137.04218311235311,
+      "tpot_p99_ms": 17.12274424266071,
+      "goodput_over_offered": {
+        "1000": 0.9809109754749507,
+        "2000": 0.9809109754749507,
+        "250": 0.9809109754749507,
+        "3000": 0.9809109754749507,
+        "500": 0.9809109754749507
+      }
+    },
+    {
+      "sample_id": "turboquant_4bit_nc__sharegpt__r20__s7",
+      "allocation": "turboquant_4bit_nc",
+      "workload": "sharegpt",
+      "offered_rate": 20.0,
+      "seed": 7,
+      "completed": 6000,
+      "failed": 0,
+      "expected": 6000,
+      "request_throughput_over_offered": 0.9853890917237992,
+      "ttft_p99_ms": 134.83136009424936,
+      "tpot_p99_ms": 17.583270400549317,
+      "goodput_over_offered": {
+        "1000": 0.9853890917237992,
+        "2000": 0.9853890917237992,
+        "250": 0.9844037026320753,
+        "3000": 0.9853890917237992,
+        "500": 0.9853890917237992
+      }
+    },
+    {
+      "sample_id": "turboquant_4bit_nc__sharegpt__r25__s2026",
+      "allocation": "turboquant_4bit_nc",
+      "workload": "sharegpt",
+      "offered_rate": 25.0,
+      "seed": 2026,
+      "completed": 7500,
+      "failed": 0,
+      "expected": 7500,
+      "request_throughput_over_offered": 0.9818764916811993,
+      "ttft_p99_ms": 162.55263065919283,
+      "tpot_p99_ms": 20.685383575585,
+      "goodput_over_offered": {
+        "1000": 0.9818764916811993,
+        "2000": 0.9818764916811993,
+        "250": 0.9818764916811993,
+        "3000": 0.9818764916811993,
+        "500": 0.9818764916811993
+      }
+    },
+    {
+      "sample_id": "turboquant_4bit_nc__sharegpt__r25__s42",
+      "allocation": "turboquant_4bit_nc",
+      "workload": "sharegpt",
+      "offered_rate": 25.0,
+      "seed": 42,
+      "completed": 7500,
+      "failed": 0,
+      "expected": 7500,
+      "request_throughput_over_offered": 0.9636419479506521,
+      "ttft_p99_ms": 162.64797380194068,
+      "tpot_p99_ms": 20.33135718000787,
+      "goodput_over_offered": {
+        "1000": 0.9636419479506521,
+        "2000": 0.9636419479506521,
+        "250": 0.9636419479506521,
+        "3000": 0.9636419479506521,
+        "500": 0.9636419479506521
+      }
+    },
+    {
+      "sample_id": "turboquant_4bit_nc__sharegpt__r25__s7",
+      "allocation": "turboquant_4bit_nc",
+      "workload": "sharegpt",
+      "offered_rate": 25.0,
+      "seed": 7,
+      "completed": 7500,
+      "failed": 0,
+      "expected": 7500,
+      "request_throughput_over_offered": 0.9802900715160522,
+      "ttft_p99_ms": 162.35450666397816,
+      "tpot_p99_ms": 19.493578899119587,
+      "goodput_over_offered": {
+        "1000": 0.9802900715160522,
+        "2000": 0.9802900715160522,
+        "250": 0.9802900715160522,
+        "3000": 0.9802900715160522,
+        "500": 0.9802900715160522
+      }
+    },
+    {
+      "sample_id": "turboquant_4bit_nc__sharegpt__r30__s2026",
+      "allocation": "turboquant_4bit_nc",
+      "workload": "sharegpt",
+      "offered_rate": 30.0,
+      "seed": 2026,
+      "completed": 9000,
+      "failed": 0,
+      "expected": 9000,
+      "request_throughput_over_offered": 0.9798852781206494,
+      "ttft_p99_ms": 184.2679401114583,
+      "tpot_p99_ms": 24.962296777715295,
+      "goodput_over_offered": {
+        "1000": 0.9798852781206494,
+        "2000": 0.9798852781206494,
+        "250": 0.9798852781206494,
+        "3000": 0.9798852781206494,
+        "500": 0.9798852781206494
+      }
+    },
+    {
+      "sample_id": "turboquant_4bit_nc__sharegpt__r30__s42",
+      "allocation": "turboquant_4bit_nc",
+      "workload": "sharegpt",
+      "offered_rate": 30.0,
+      "seed": 42,
+      "completed": 9000,
+      "failed": 0,
+      "expected": 9000,
+      "request_throughput_over_offered": 0.9813083756038848,
+      "ttft_p99_ms": 181.73824265599254,
+      "tpot_p99_ms": 25.408390886150308,
+      "goodput_over_offered": {
+        "1000": 0.9813083756038848,
+        "2000": 0.9813083756038848,
+        "250": 0.9813083756038848,
+        "3000": 0.9813083756038848,
+        "500": 0.9813083756038848
+      }
+    },
+    {
+      "sample_id": "turboquant_4bit_nc__sharegpt__r30__s7",
+      "allocation": "turboquant_4bit_nc",
+      "workload": "sharegpt",
+      "offered_rate": 30.0,
+      "seed": 7,
+      "completed": 9000,
+      "failed": 0,
+      "expected": 9000,
+      "request_throughput_over_offered": 0.978314110946601,
+      "ttft_p99_ms": 179.3947376310826,
+      "tpot_p99_ms": 23.60948941111566,
+      "goodput_over_offered": {
+        "1000": 0.978314110946601,
+        "2000": 0.978314110946601,
+        "250": 0.978314110946601,
+        "3000": 0.978314110946601,
+        "500": 0.978314110946601
+      }
+    },
+    {
+      "sample_id": "turboquant_4bit_nc__sharegpt__r35__s2026",
+      "allocation": "turboquant_4bit_nc",
+      "workload": "sharegpt",
+      "offered_rate": 35.0,
+      "seed": 2026,
+      "completed": 10500,
+      "failed": 0,
+      "expected": 10500,
+      "request_throughput_over_offered": 0.9785715701172991,
+      "ttft_p99_ms": 215.78229999169707,
+      "tpot_p99_ms": 29.16821165010333,
+      "goodput_over_offered": {
+        "1000": 0.9785715701172991,
+        "2000": 0.9785715701172991,
+        "250": 0.9765212296846725,
+        "3000": 0.9785715701172991,
+        "500": 0.9785715701172991
+      }
+    },
+    {
+      "sample_id": "turboquant_4bit_nc__sharegpt__r35__s42",
+      "allocation": "turboquant_4bit_nc",
+      "workload": "sharegpt",
+      "offered_rate": 35.0,
+      "seed": 42,
+      "completed": 10500,
+      "failed": 0,
+      "expected": 10500,
+      "request_throughput_over_offered": 0.9824770595700225,
+      "ttft_p99_ms": 217.61362047865987,
+      "tpot_p99_ms": 28.93811372005279,
+      "goodput_over_offered": {
+        "1000": 0.9824770595700225,
+        "2000": 0.9824770595700225,
+        "250": 0.981728505619874,
+        "3000": 0.9824770595700225,
+        "500": 0.9824770595700225
+      }
+    },
+    {
+      "sample_id": "turboquant_4bit_nc__sharegpt__r35__s7",
+      "allocation": "turboquant_4bit_nc",
+      "workload": "sharegpt",
+      "offered_rate": 35.0,
+      "seed": 7,
+      "completed": 10500,
+      "failed": 0,
+      "expected": 10500,
+      "request_throughput_over_offered": 0.9761372707656291,
+      "ttft_p99_ms": 215.6213164329529,
+      "tpot_p99_ms": 29.125599479302767,
+      "goodput_over_offered": {
+        "1000": 0.9761372707656291,
+        "2000": 0.9761372707656291,
+        "250": 0.9749287198589668,
+        "3000": 0.9761372707656291,
+        "500": 0.9761372707656291
+      }
+    },
+    {
+      "sample_id": "turboquant_4bit_nc__sharegpt__r40__s2026",
+      "allocation": "turboquant_4bit_nc",
+      "workload": "sharegpt",
+      "offered_rate": 40.0,
+      "seed": 2026,
+      "completed": 12000,
+      "failed": 0,
+      "expected": 12000,
+      "request_throughput_over_offered": 0.9647764785552624,
+      "ttft_p99_ms": 247.24374333396554,
+      "tpot_p99_ms": 31.932207183601964,
+      "goodput_over_offered": {
+        "1000": 0.9647764785552624,
+        "2000": 0.9647764785552624,
+        "250": 0.9564954804476631,
+        "3000": 0.9647764785552624,
+        "500": 0.9647764785552624
+      }
+    },
+    {
+      "sample_id": "turboquant_4bit_nc__sharegpt__r40__s42",
+      "allocation": "turboquant_4bit_nc",
+      "workload": "sharegpt",
+      "offered_rate": 40.0,
+      "seed": 42,
+      "completed": 12000,
+      "failed": 0,
+      "expected": 12000,
+      "request_throughput_over_offered": 0.9753181699576337,
+      "ttft_p99_ms": 253.26451815664768,
+      "tpot_p99_ms": 32.091693414840854,
+      "goodput_over_offered": {
+        "1000": 0.9753181699576337,
+        "2000": 0.9753181699576337,
+        "250": 0.9643458405456101,
+        "3000": 0.9753181699576337,
+        "500": 0.9753181699576337
+      }
+    },
+    {
+      "sample_id": "turboquant_4bit_nc__sharegpt__r40__s7",
+      "allocation": "turboquant_4bit_nc",
+      "workload": "sharegpt",
+      "offered_rate": 40.0,
+      "seed": 7,
+      "completed": 12000,
+      "failed": 0,
+      "expected": 12000,
+      "request_throughput_over_offered": 0.9652581039348196,
+      "ttft_p99_ms": 247.6562930829823,
+      "tpot_p99_ms": 31.798856626782154,
+      "goodput_over_offered": {
+        "1000": 0.9652581039348196,
+        "2000": 0.9652581039348196,
+        "250": 0.9563294664734225,
+        "3000": 0.9652581039348196,
+        "500": 0.9652581039348196
+      }
+    },
+    {
+      "sample_id": "turboquant_4bit_nc__sharegpt__r45__s2026",
+      "allocation": "turboquant_4bit_nc",
+      "workload": "sharegpt",
+      "offered_rate": 45.0,
+      "seed": 2026,
+      "completed": 13500,
+      "failed": 0,
+      "expected": 13500,
+      "request_throughput_over_offered": 0.971358423307361,
+      "ttft_p99_ms": 473.6700821854175,
+      "tpot_p99_ms": 34.958972357627424,
+      "goodput_over_offered": {
+        "1000": 0.971358423307361,
+        "2000": 0.971358423307361,
+        "250": 0.921999024908187,
+        "3000": 0.971358423307361,
+        "500": 0.9635875559209022
+      }
+    },
+    {
+      "sample_id": "turboquant_4bit_nc__sharegpt__r45__s42",
+      "allocation": "turboquant_4bit_nc",
+      "workload": "sharegpt",
+      "offered_rate": 45.0,
+      "seed": 42,
+      "completed": 12807,
+      "failed": 693,
+      "expected": 13500,
+      "request_throughput_over_offered": 0.8722175025317155,
+      "ttft_p99_ms": 19551.493042483926,
+      "tpot_p99_ms": 47.31894843004553,
+      "goodput_over_offered": {
+        "1000": 0.03977317259924431,
+        "2000": 0.03977317259924431,
+        "250": 0.039228334618432746,
+        "3000": 0.03977317259924431,
+        "500": 0.03977317259924431
+      }
+    },
+    {
+      "sample_id": "turboquant_4bit_nc__sharegpt__r45__s7",
+      "allocation": "turboquant_4bit_nc",
+      "workload": "sharegpt",
+      "offered_rate": 45.0,
+      "seed": 7,
+      "completed": 13500,
+      "failed": 0,
+      "expected": 13500,
+      "request_throughput_over_offered": 0.9497282109930478,
+      "ttft_p99_ms": 7421.482041217388,
+      "tpot_p99_ms": 36.08300113553803,
+      "goodput_over_offered": {
+        "1000": 0.3621630244586822,
+        "2000": 0.44820136535086724,
+        "250": 0.33226417337186404,
+        "3000": 0.5890425415292436,
+        "500": 0.34626387070428005
+      }
+    },
+    {
+      "sample_id": "turboquant_4bit_nc__sharegpt__r50__s2026",
+      "allocation": "turboquant_4bit_nc",
+      "workload": "sharegpt",
+      "offered_rate": 50.0,
+      "seed": 2026,
+      "completed": 13720,
+      "failed": 1280,
+      "expected": 15000,
+      "request_throughput_over_offered": 0.846637525702794,
+      "ttft_p99_ms": 18042.28128613904,
+      "tpot_p99_ms": 35.72275947313755,
+      "goodput_over_offered": {
+        "1000": 0.10027594601071722,
+        "2000": 0.11021097820008674,
+        "250": 0.07892488304474296,
+        "3000": 0.13026616740223018,
+        "500": 0.08472546084474754
+      }
+    },
+    {
+      "sample_id": "turboquant_4bit_nc__sharegpt__r50__s42",
+      "allocation": "turboquant_4bit_nc",
+      "workload": "sharegpt",
+      "offered_rate": 50.0,
+      "seed": 42,
+      "completed": 13593,
+      "failed": 1407,
+      "expected": 15000,
+      "request_throughput_over_offered": 0.8297926636771794,
+      "ttft_p99_ms": 18204.158522337675,
+      "tpot_p99_ms": 35.68240237289241,
+      "goodput_over_offered": {
+        "1000": 0.09968744352128552,
+        "2000": 0.11446047556791816,
+        "250": 0.08637950556192223,
+        "3000": 0.1280736414621292,
+        "500": 0.0924230186719083
+      }
+    },
+    {
+      "sample_id": "turboquant_4bit_nc__sharegpt__r50__s7",
+      "allocation": "turboquant_4bit_nc",
+      "workload": "sharegpt",
+      "offered_rate": 50.0,
+      "seed": 7,
+      "completed": 13829,
+      "failed": 1171,
+      "expected": 15000,
+      "request_throughput_over_offered": 0.8413233577152585,
+      "ttft_p99_ms": 18182.46573999524,
+      "tpot_p99_ms": 35.53755634360842,
+      "goodput_over_offered": {
+        "1000": 0.10324143018604336,
+        "2000": 0.11705156846078221,
+        "250": 0.08632857362050414,
+        "3000": 0.1361545791139452,
+        "500": 0.0942983009949129
+      }
+    },
+    {
+      "sample_id": "turboquant_k8v4__sharegpt__r20__s2026",
+      "allocation": "turboquant_k8v4",
+      "workload": "sharegpt",
+      "offered_rate": 20.0,
+      "seed": 2026,
+      "completed": 6000,
+      "failed": 0,
+      "expected": 6000,
+      "request_throughput_over_offered": 0.9804473859523457,
+      "ttft_p99_ms": 131.15275265648967,
+      "tpot_p99_ms": 15.089959703385833,
+      "goodput_over_offered": {
+        "1000": 0.9804473859523457,
+        "2000": 0.9804473859523457,
+        "250": 0.9804473859523457,
+        "3000": 0.9804473859523457,
+        "500": 0.9804473859523457
+      }
+    },
+    {
+      "sample_id": "turboquant_k8v4__sharegpt__r20__s42",
+      "allocation": "turboquant_k8v4",
+      "workload": "sharegpt",
+      "offered_rate": 20.0,
+      "seed": 42,
+      "completed": 6000,
+      "failed": 0,
+      "expected": 6000,
+      "request_throughput_over_offered": 0.9835409993126591,
+      "ttft_p99_ms": 129.432350602001,
+      "tpot_p99_ms": 15.814942781192563,
+      "goodput_over_offered": {
+        "1000": 0.9835409993126591,
+        "2000": 0.9835409993126591,
+        "250": 0.9835409993126591,
+        "3000": 0.9835409993126591,
+        "500": 0.9835409993126591
+      }
+    },
+    {
+      "sample_id": "turboquant_k8v4__sharegpt__r20__s7",
+      "allocation": "turboquant_k8v4",
+      "workload": "sharegpt",
+      "offered_rate": 20.0,
+      "seed": 7,
+      "completed": 6000,
+      "failed": 0,
+      "expected": 6000,
+      "request_throughput_over_offered": 0.9879788753425934,
+      "ttft_p99_ms": 127.57830299437053,
+      "tpot_p99_ms": 16.16917713079602,
+      "goodput_over_offered": {
+        "1000": 0.9879788753425934,
+        "2000": 0.9879788753425934,
+        "250": 0.9879788753425934,
+        "3000": 0.9879788753425934,
+        "500": 0.9879788753425934
+      }
+    },
+    {
+      "sample_id": "turboquant_k8v4__sharegpt__r25__s2026",
+      "allocation": "turboquant_k8v4",
+      "workload": "sharegpt",
+      "offered_rate": 25.0,
+      "seed": 2026,
+      "completed": 7500,
+      "failed": 0,
+      "expected": 7500,
+      "request_throughput_over_offered": 0.9846906893924525,
+      "ttft_p99_ms": 156.2385810725391,
+      "tpot_p99_ms": 18.008582327853556,
+      "goodput_over_offered": {
+        "1000": 0.9846906893924525,
+        "2000": 0.9846906893924525,
+        "250": 0.9846906893924525,
+        "3000": 0.9846906893924525,
+        "500": 0.9846906893924525
+      }
+    },
+    {
+      "sample_id": "turboquant_k8v4__sharegpt__r25__s42",
+      "allocation": "turboquant_k8v4",
+      "workload": "sharegpt",
+      "offered_rate": 25.0,
+      "seed": 42,
+      "completed": 7500,
+      "failed": 0,
+      "expected": 7500,
+      "request_throughput_over_offered": 0.9689865188929216,
+      "ttft_p99_ms": 156.46436663344505,
+      "tpot_p99_ms": 18.10451337154239,
+      "goodput_over_offered": {
+        "1000": 0.9689865188929216,
+        "2000": 0.9689865188929216,
+        "250": 0.9689865188929216,
+        "3000": 0.9689865188929216,
+        "500": 0.9689865188929216
+      }
+    },
+    {
+      "sample_id": "turboquant_k8v4__sharegpt__r25__s7",
+      "allocation": "turboquant_k8v4",
+      "workload": "sharegpt",
+      "offered_rate": 25.0,
+      "seed": 7,
+      "completed": 7500,
+      "failed": 0,
+      "expected": 7500,
+      "request_throughput_over_offered": 0.9833139990174281,
+      "ttft_p99_ms": 153.87889213860035,
+      "tpot_p99_ms": 17.55065382272008,
+      "goodput_over_offered": {
+        "1000": 0.9833139990174281,
+        "2000": 0.9833139990174281,
+        "250": 0.9833139990174281,
+        "3000": 0.9833139990174281,
+        "500": 0.9833139990174281
+      }
+    },
+    {
+      "sample_id": "turboquant_k8v4__sharegpt__r30__s2026",
+      "allocation": "turboquant_k8v4",
+      "workload": "sharegpt",
+      "offered_rate": 30.0,
+      "seed": 2026,
+      "completed": 9000,
+      "failed": 0,
+      "expected": 9000,
+      "request_throughput_over_offered": 0.9832277070929877,
+      "ttft_p99_ms": 174.19307129457596,
+      "tpot_p99_ms": 23.163396436721087,
+      "goodput_over_offered": {
+        "1000": 0.9832277070929877,
+        "2000": 0.9832277070929877,
+        "250": 0.9832277070929877,
+        "3000": 0.9832277070929877,
+        "500": 0.9832277070929877
+      }
+    },
+    {
+      "sample_id": "turboquant_k8v4__sharegpt__r30__s42",
+      "allocation": "turboquant_k8v4",
+      "workload": "sharegpt",
+      "offered_rate": 30.0,
+      "seed": 42,
+      "completed": 9000,
+      "failed": 0,
+      "expected": 9000,
+      "request_throughput_over_offered": 0.983909699011721,
+      "ttft_p99_ms": 177.41793626919392,
+      "tpot_p99_ms": 23.11250027734787,
+      "goodput_over_offered": {
+        "1000": 0.983909699011721,
+        "2000": 0.983909699011721,
+        "250": 0.983909699011721,
+        "3000": 0.983909699011721,
+        "500": 0.983909699011721
+      }
+    },
+    {
+      "sample_id": "turboquant_k8v4__sharegpt__r30__s7",
+      "allocation": "turboquant_k8v4",
+      "workload": "sharegpt",
+      "offered_rate": 30.0,
+      "seed": 7,
+      "completed": 9000,
+      "failed": 0,
+      "expected": 9000,
+      "request_throughput_over_offered": 0.9815830670359094,
+      "ttft_p99_ms": 172.10670907050374,
+      "tpot_p99_ms": 21.009187386371206,
+      "goodput_over_offered": {
+        "1000": 0.9815830670359094,
+        "2000": 0.9815830670359094,
+        "250": 0.9815830670359094,
+        "3000": 0.9815830670359094,
+        "500": 0.9815830670359094
+      }
+    },
+    {
+      "sample_id": "turboquant_k8v4__sharegpt__r35__s2026",
+      "allocation": "turboquant_k8v4",
+      "workload": "sharegpt",
+      "offered_rate": 35.0,
+      "seed": 2026,
+      "completed": 10500,
+      "failed": 0,
+      "expected": 10500,
+      "request_throughput_over_offered": 0.9836303625041088,
+      "ttft_p99_ms": 196.64649093523624,
+      "tpot_p99_ms": 26.208409123743582,
+      "goodput_over_offered": {
+        "1000": 0.9836303625041088,
+        "2000": 0.9836303625041088,
+        "250": 0.9831619670933927,
+        "3000": 0.9836303625041088,
+        "500": 0.9836303625041088
+      }
+    },
+    {
+      "sample_id": "turboquant_k8v4__sharegpt__r35__s42",
+      "allocation": "turboquant_k8v4",
+      "workload": "sharegpt",
+      "offered_rate": 35.0,
+      "seed": 42,
+      "completed": 10500,
+      "failed": 0,
+      "expected": 10500,
+      "request_throughput_over_offered": 0.9848546769678206,
+      "ttft_p99_ms": 192.67185145989063,
+      "tpot_p99_ms": 25.879187345970443,
+      "goodput_over_offered": {
+        "1000": 0.9848546769678206,
+        "2000": 0.9848546769678206,
+        "250": 0.9848546769678206,
+        "3000": 0.9848546769678206,
+        "500": 0.9848546769678206
+      }
+    },
+    {
+      "sample_id": "turboquant_k8v4__sharegpt__r35__s7",
+      "allocation": "turboquant_k8v4",
+      "workload": "sharegpt",
+      "offered_rate": 35.0,
+      "seed": 7,
+      "completed": 10500,
+      "failed": 0,
+      "expected": 10500,
+      "request_throughput_over_offered": 0.9788726635661019,
+      "ttft_p99_ms": 194.37284409999853,
+      "tpot_p99_ms": 25.11861426134905,
+      "goodput_over_offered": {
+        "1000": 0.9788726635661019,
+        "2000": 0.9788726635661019,
+        "250": 0.9785929856622259,
+        "3000": 0.9788726635661019,
+        "500": 0.9788726635661019
+      }
+    },
+    {
+      "sample_id": "turboquant_k8v4__sharegpt__r40__s2026",
+      "allocation": "turboquant_k8v4",
+      "workload": "sharegpt",
+      "offered_rate": 40.0,
+      "seed": 2026,
+      "completed": 12000,
+      "failed": 0,
+      "expected": 12000,
+      "request_throughput_over_offered": 0.9686758347308322,
+      "ttft_p99_ms": 234.40579224377873,
+      "tpot_p99_ms": 28.57671252318793,
+      "goodput_over_offered": {
+        "1000": 0.9686758347308322,
+        "2000": 0.9686758347308322,
+        "250": 0.9646396854194537,
+        "3000": 0.9686758347308322,
+        "500": 0.9686758347308322
+      }
+    },
+    {
+      "sample_id": "turboquant_k8v4__sharegpt__r40__s42",
+      "allocation": "turboquant_k8v4",
+      "workload": "sharegpt",
+      "offered_rate": 40.0,
+      "seed": 42,
+      "completed": 12000,
+      "failed": 0,
+      "expected": 12000,
+      "request_throughput_over_offered": 0.9791755186276785,
+      "ttft_p99_ms": 234.40061086788774,
+      "tpot_p99_ms": 29.34568659712871,
+      "goodput_over_offered": {
+        "1000": 0.9791755186276785,
+        "2000": 0.9791755186276785,
+        "250": 0.975666806352596,
+        "3000": 0.9791755186276785,
+        "500": 0.9791755186276785
+      }
+    },
+    {
+      "sample_id": "turboquant_k8v4__sharegpt__r40__s7",
+      "allocation": "turboquant_k8v4",
+      "workload": "sharegpt",
+      "offered_rate": 40.0,
+      "seed": 7,
+      "completed": 12000,
+      "failed": 0,
+      "expected": 12000,
+      "request_throughput_over_offered": 0.9702786933561104,
+      "ttft_p99_ms": 235.26689924299717,
+      "tpot_p99_ms": 28.3989095222205,
+      "goodput_over_offered": {
+        "1000": 0.9702786933561104,
+        "2000": 0.9702786933561104,
+        "250": 0.9668018613715843,
+        "3000": 0.9702786933561104,
+        "500": 0.9702786933561104
+      }
+    },
+    {
+      "sample_id": "turboquant_k8v4__sharegpt__r45__s2026",
+      "allocation": "turboquant_k8v4",
+      "workload": "sharegpt",
+      "offered_rate": 45.0,
+      "seed": 2026,
+      "completed": 13500,
+      "failed": 0,
+      "expected": 13500,
+      "request_throughput_over_offered": 0.9763667958021731,
+      "ttft_p99_ms": 265.0815600529313,
+      "tpot_p99_ms": 31.7753991112113,
+      "goodput_over_offered": {
+        "1000": 0.9763667958021731,
+        "2000": 0.9763667958021731,
+        "250": 0.9532232865683437,
+        "3000": 0.9763667958021731,
+        "500": 0.9763667958021731
+      }
+    },
+    {
+      "sample_id": "turboquant_k8v4__sharegpt__r45__s42",
+      "allocation": "turboquant_k8v4",
+      "workload": "sharegpt",
+      "offered_rate": 45.0,
+      "seed": 42,
+      "completed": 13500,
+      "failed": 0,
+      "expected": 13500,
+      "request_throughput_over_offered": 0.977438748829996,
+      "ttft_p99_ms": 261.58661507070065,
+      "tpot_p99_ms": 32.25557923782617,
+      "goodput_over_offered": {
+        "1000": 0.977438748829996,
+        "2000": 0.977438748829996,
+        "250": 0.9584691968156657,
+        "3000": 0.977438748829996,
+        "500": 0.977438748829996
+      }
+    },
+    {
+      "sample_id": "turboquant_k8v4__sharegpt__r45__s7",
+      "allocation": "turboquant_k8v4",
+      "workload": "sharegpt",
+      "offered_rate": 45.0,
+      "seed": 7,
+      "completed": 13500,
+      "failed": 0,
+      "expected": 13500,
+      "request_throughput_over_offered": 0.9806658437795698,
+      "ttft_p99_ms": 269.3045847304166,
+      "tpot_p99_ms": 32.52393213765962,
+      "goodput_over_offered": {
+        "1000": 0.9806658437795698,
+        "2000": 0.9806658437795698,
+        "250": 0.9565487282140277,
+        "3000": 0.9806658437795698,
+        "500": 0.9806658437795698
+      }
+    },
+    {
+      "sample_id": "turboquant_k8v4__sharegpt__r50__s2026",
+      "allocation": "turboquant_k8v4",
+      "workload": "sharegpt",
+      "offered_rate": 50.0,
+      "seed": 2026,
+      "completed": 14379,
+      "failed": 621,
+      "expected": 15000,
+      "request_throughput_over_offered": 0.887279327986708,
+      "ttft_p99_ms": 17738.52525424212,
+      "tpot_p99_ms": 33.72823666160305,
+      "goodput_over_offered": {
+        "1000": 0.1647566455055644,
+        "2000": 0.20276791652857104,
+        "250": 0.14593612982047185,
+        "3000": 0.21998406038477047,
+        "500": 0.15420481540015185
+      }
+    },
+    {
+      "sample_id": "turboquant_k8v4__sharegpt__r50__s42",
+      "allocation": "turboquant_k8v4",
+      "workload": "sharegpt",
+      "offered_rate": 50.0,
+      "seed": 42,
+      "completed": 14253,
+      "failed": 747,
+      "expected": 15000,
+      "request_throughput_over_offered": 0.8761213309601582,
+      "ttft_p99_ms": 17478.76269966364,
+      "tpot_p99_ms": 34.05961997807025,
+      "goodput_over_offered": {
+        "1000": 0.14248573950506188,
+        "2000": 0.1548410603163291,
+        "250": 0.13553971337733453,
+        "3000": 0.16565964968340885,
+        "500": 0.13965815364775694
+      }
+    },
+    {
+      "sample_id": "turboquant_k8v4__sharegpt__r50__s7",
+      "allocation": "turboquant_k8v4",
+      "workload": "sharegpt",
+      "offered_rate": 50.0,
+      "seed": 7,
+      "completed": 14535,
+      "failed": 465,
+      "expected": 15000,
+      "request_throughput_over_offered": 0.8893353733312527,
+      "ttft_p99_ms": 17782.551179490983,
+      "tpot_p99_ms": 34.2596422878227,
+      "goodput_over_offered": {
+        "1000": 0.20766455157112293,
+        "2000": 0.227427559867373,
+        "250": 0.14543860904082476,
+        "3000": 0.2665864617546796,
+        "500": 0.158471181075194
+      }
+    }
+  ]
+}

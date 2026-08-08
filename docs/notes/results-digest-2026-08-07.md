@@ -112,14 +112,27 @@ Attempts：`r5-tq-v3-{random60,sharegpt300}-{mvex,pilot,formal}-20260807`。
 
 | workload | TTFT | fp16（A2） | int4（A2） | packed（A2） | k8v4 | 4bit_nc | fp8 |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| Random60 | 250 | 30 | NONE | 30 | 待填写 | 待填写 | 待填写 |
-| Random60 | 500 | 35 | 35 | 35 | 待填写 | 待填写 | 待填写 |
-| Random60 | 1000+ | 35 | 40 | 40 | 待填写 | 待填写 | 待填写 |
-| ShareGPT300 | 250 | 45 | 35 | 40 | 待填写 | 待填写 | 待填写 |
-| ShareGPT300 | 500+ | 45 | 40 | 40 | 待填写 | 待填写 | 待填写 |
+| Random60 | 250 | 30 | NONE | 30 | NONE | NONE | 30 |
+| Random60 | 500 | 35 | 35 | 35 | 35 | 35 | 35 |
+| Random60 | 1000 | 35 | 40 | 40 | 40 | 35 | 40 |
+| Random60 | 2000/3000 | 35 | 40 | 40 | 40 | 40 | 40 |
+| ShareGPT300 | 250 | 45 | 35 | 40 | 45 | 40 | 45 |
+| ShareGPT300 | 500+ | 45 | 40 | 40 | 45 | 40 | 45 |
 
 附：P99 TTFT/TPOT（每个 cell 的 `reported_ttft_p99_ms`/`reported_tpot_p99_ms`）、
 TPOT 相对 fp16 开销、容量-吞吐 Pareto 点。
+
+**E4 Formal 补跑（2026-08-08，108/108 完成）**：Random60 45 + ShareGPT300 63
+全部 `completed_validated`、0 进程失败；高负载样本（ShareGPT r45–r50 的
+TQ/FP8）按协议 `count_as_slo_miss` 计入失败（fp8 r50 681–891、4bit_nc r50
+1171–1407、k8v4 r50 465–747），到达窗口偏差 ≤0.03%，TTFT/TPOT 重算与报告
+一致 → 属真实过载测量而非伪影。上表六列合并（A2 三列来自门禁 formal，
+TQ/FP8 三列来自本次 Formal）；整体仍为 ANALYZED（独立复现未跑）。
+分析：`results/quality/r5-serving-formal-analysis-20260808.json`；
+原始 attempt：服务器 `/root/autodl-tmp/r5-serving-20260807/`。
+**过程修复**：`analyze_r5_serving.py` 的 `verify_sidecar` 误哈希 `.sha256`
+自身（必然 mismatch）→ 改为哈希被保护文件；status.json 按 runner 设计无
+sidecar → 改为校验其内嵌 analysis/result sha。
 
 ## 4. Qwen3.5-9B NIAH 重跑（attempt `niah-fixed-9b-20260807`）
 

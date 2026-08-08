@@ -13,7 +13,7 @@
 | E1b 端到端容量比 | fp16→int4 | 2B/9B | — | 4096/16384 | **DONE / VERIFIED** |
 | E2 Serving gates（protocol-v3） | 6 allocs | 2B | 3 | MVEx 6 + Pilot 18 + 容量 6 | **DONE / ANALYZED** |
 | E3 SLO（protocol-v2 formal） | fp16/int4 | 2B | 3 | 72 + 48 复现 | **DONE / VERIFIED** |
-| E4 SLO（protocol-v3 formal） | 6 allocs | 2B | 3 | Random60 45 + ShareGPT300 63 | **PENDING（需人工放行）** |
+| E4 SLO（protocol-v3 formal） | 6 allocs | 2B | 3 | Random60 45 + ShareGPT300 63 | **DONE / ANALYZED** |
 | Q1 PPL Wikitext-2 | fp16/uniform/packed | 2B | 3 | 5×2048 | **DONE / ANALYZED** |
 | Q2 PPL C4/PG19 | fp16/uniform/packed | 2B/9B | 3 | 5×2048 | **DONE / ANALYZED** |
 | Q3 NIAH 2B | 5 allocs | 2B | 3 | 90 cells | **DONE / ANALYZED** |
@@ -85,12 +85,13 @@
   **−17.6%**；TPOT 全矩阵不 binding。
 - 口径：禁止 workload-general 表述；Random/ShareGPT 分开报告。
 
-### E4 SLO（protocol-v3 formal）— PENDING
+### E4 SLO（protocol-v3 formal）— DONE / ANALYZED
 
 - 目标：六列（fp16/int4/packed/k8v4/4bit_nc/fp8）× Random60/ShareGPT300 × 3 seeds；
   PIECEWISE、warmup 120、TTFT {250..3000}、TPOT 200、goodput ≥ 0.95。
-- 成本：约 8h；放行门禁：人工确认后 `bash scripts/exp/run_serving_formal.sh`（待创建）。
-- 产出：`analyze_r5_serving.py` 边界表 + P99 TTFT/TPOT + 容量探针。
+- 完成：108/108 `completed_validated`，0 进程失败；六列边界表见
+  `results/quality/r5-serving-formal-analysis-20260808.json`。
+- 状态：ANALYZED（独立复现未跑）；修复了分析器 `verify_sidecar` 哈希对象 bug。
 
 ## 3. 质量实验（Q）
 
@@ -187,7 +188,7 @@
 | 优先级 | 实验 | 成本 | 命令/入口 | 完成门禁 |
 |---|---|---|---|---|
 | P0 | Q2 续跑（10 cells） | 1.5–2h | `run_ppl_extra.sh ppl-extra-20260807` | **DONE（12/12 + 分析 + sha）** |
-| P0 | E4 Serving Formal | ~8h | 人工放行 → `run_serving_formal.sh` | 108/108 + ANALYZED→（复现后 VERIFIED） |
+| P0 | E4 Serving Formal | ~8h | 人工放行 → `run_serving_formal.sh` | **DONE（108/108；独立复现待跑）** |
 | P0 | M3 9B packed 容量探针 | 0.5–1h | 复用 A2 probe 脚本 | **DONE（3/3 probes，比例与 2B 一致）** |
 | P0 | M4 纯注意力对照 | 1–2h | 同容量协议 @ Qwen2.5-7B | **DONE（3.765× vs 混合 2.245×）** |
 | P1 | B2 GSM8K 3-seed | 1–1.5h | `run_reasoning_gsm8k_3seed.sh` | **DONE（配对 CI 不含 0：回退真实）** |

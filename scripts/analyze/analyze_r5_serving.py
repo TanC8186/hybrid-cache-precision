@@ -26,11 +26,12 @@ def load_json(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def verify_sidecar(path: Path) -> None:
-    digest = sha256_file(path)
-    recorded = path.read_text(encoding="ascii").strip()
+def verify_sidecar(sidecar_path: Path) -> None:
+    payload = sidecar_path.with_suffix("")
+    digest = sha256_file(payload)
+    recorded = sidecar_path.read_text(encoding="ascii").strip()
     if digest != recorded:
-        raise SystemExit(f"sidecar mismatch: {path}")
+        raise SystemExit(f"sidecar mismatch: {sidecar_path} (payload {payload.name})")
 
 
 def audit_attempt(raw_dir: Path, attempt_id: str) -> dict:
@@ -44,12 +45,18 @@ def audit_attempt(raw_dir: Path, attempt_id: str) -> dict:
     for sample_dir in sorted((attempt_dir / "samples").glob("*")):
         if not sample_dir.is_dir():
             continue
-        for name in ("contract.json", "result.json", "analysis.json", "status.json"):
+        for name in ("contract.json", "result.json", "analysis.json"):
             verify_sidecar(sample_dir / f"{name}.sha256")
         sample_contract = load_json(sample_dir / "contract.json")
         result = load_json(sample_dir / "result.json")
         analysis = load_json(sample_dir / "analysis.json")
         status = load_json(sample_dir / "status.json")
+        # The runner writes status.json without a sidecar; validate its embedded
+        # hashes of analysis/result instead.
+        if sha256_file(sample_dir / "analysis.json") != status.get("analysis_sha256"):
+            raise SystemExit(f"{sample_dir.name}: status.analysis_sha256 mismatch")
+        if sha256_file(sample_dir / "result.json") != status.get("result_sha256"):
+            raise SystemExit(f"{sample_dir.name}: status.result_sha256 mismatch")
         if status["status"] != "completed_validated":
             continue
         expected = int(plan[sample_dir.name]["num_prompts"])
