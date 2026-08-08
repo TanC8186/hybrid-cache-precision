@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "attempt": "capacity-state-20260808",
+  "protocol": "probe_ssm_state_dtype.py, uniform int4 (kv_cache_dtype_per_layer={}), gpu_memory_utilization=0.85; auto resolves to fp32 state",
+  "model": "r_state(L) = (A_q L + G_fp32) / (A_q L + G_bf16), A_q/G from paper mainline §3.3",
+  "rows": [
+    {
+      "model": "2b",
+      "length": 4096,
+      "fp32_capacity_tokens": 2692710,
+      "bf16_capacity_tokens": 3703954,
+      "measured_ratio_bf16": 1.3755,
+      "predicted_ratio": 1.4089,
+      "gap_pct": -2.37,
+      "fp16_capacity_tokens": 3703954,
+      "measured_ratio_fp16": 1.3755
+    },
+    {
+      "model": "2b",
+      "length": 16384,
+      "fp32_capacity_tokens": 4895837,
+      "bf16_capacity_tokens": 5458458,
+      "measured_ratio_bf16": 1.1149,
+      "predicted_ratio": 1.1522,
+      "gap_pct": -3.24
+    },
+    {
+      "model": "9b",
+      "length": 4096,
+      "fp32_capacity_tokens": 315392,
+      "bf16_capacity_tokens": 443538,
+      "measured_ratio_bf16": 1.4063,
+      "predicted_ratio": 1.4089,
+      "gap_pct": -0.18,
+      "fp16_capacity_tokens": 443538,
+      "measured_ratio_fp16": 1.4063
+    },
+    {
+      "model": "9b",
+      "length": 16384,
+      "fp32_capacity_tokens": 573440,
+      "bf16_capacity_tokens": 653635,
+      "measured_ratio_bf16": 1.1398,
+      "predicted_ratio": 1.1522,
+      "gap_pct": -1.07
+    }
+  ]
+}

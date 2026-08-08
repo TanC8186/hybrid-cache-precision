@@ -95,11 +95,37 @@
 - 9B 侧：GSM8K 回退更小（−0.5pt，3 seed 完全一致，0 think、每 seed 仅 1 个截断样本）；RULER 11/14 格差值为 0，总体 −0.71 由两格驱动——niah_multiquery L8192（53.75→47.5，20 样本中 13–15 个 think 截断）与 fwe L8192（98.33→93.33，20 样本中 15 个截断，1 样本翻转），均为单 seed + thinking 截断下的抽奖区间，不能解读为系统性退化。
 - 结论：**vLLM 真实 kernel 路径下，bf16 state 换来 +37.5% 容量（2B 实测），PPL/RULER 无可见损失（9B 的少量非零格为 think 截断抽奖），GSM8K 有可披露的小幅回退（2B −2.7pt / 9B −0.5pt）**——state 精度作为容量预算维度的主张成立，但论文必须同时披露 GSM8K。
 
+## 补充：容量模型验证（state 可量化，uniform int4，2026-08-08 完成）
+
+把论文 §3.3 容量模型推广到 G 可量化：固定注意力 KV 配置（uniform int4，2B/9B 分别用论文的 A_q=3,168 / 4,224.86 B/token），令 G 只减半 temporal state（conv 保持 bf16），预测
+
+$$r_{\text{state}}(L) = \frac{A_q L + G_{\text{fp32}}}{A_q L + G_{\text{bf16}}}$$
+
+并在 vLLM uniform int4 布局下实测（`probe_ssm_state_dtype.py`，gpu_mem 0.85，max_model_len 4K/16K）：
+
+| model | L | fp32 容量 (tokens) | bf16 容量 (tokens) | 实测比 | 预测比 | 误差 |
+|---|---|---:|---:|---:|---:|---:|
+| 2B | 4096 | 2,692,710 | 3,703,954 | 1.3755 | 1.4089 | −2.37% |
+| 2B | 16384 | 4,895,837 | 5,458,458 | 1.1149 | 1.1522 | −3.24% |
+| 9B | 4096 | 315,392 | 443,538 | 1.4063 | 1.4089 | −0.18% |
+| 9B | 16384 | 573,440 | 653,635 | 1.1398 | 1.1522 | −1.07% |
+
+解读：
+
+- fp16 与 bf16 实测容量完全一致（同字节数），模型预测只针对 bf16。
+- 四个点的预测误差 −3.24%~−0.18%，残差与论文 KV 容量模型一致地来自页对齐（vLLM 把 attention block_size 对齐到 mamba page）。
+- 2B/9B 在相同 L 下实测比接近（4K：1.376/1.406；16K：1.115/1.140），与模型预测“A、G 同比例缩放 → 比值相同”一致，跨规模成立。
+- 重要边界：state 减半的容量收益随 L 增长而衰减（4K 约 +38~41%，16K 约 +11~14%），因为 G 在长上下文被摊销；论文应把 state 精度收益定位在“短上下文/高并发”区间，与 KV 量化收益（随 L 增长）互补。
+
 ## 证据文件
 
 - `scripts/bench/probe_ssm_state_dtype.py`（探针脚本）
 - `results/verified/2026-08-08/ssm_dtype/2b_auto.json` + `.sha256`
 - `results/verified/2026-08-08/ssm_dtype/2b_bf16.json` + `.sha256`
+- `scripts/bench/run_capacity_state_probes.sh`（uniform int4 10 探针 runner）
+- `scripts/bench/analyze_capacity_state.py`（容量模型验证）
+- `results/verified/2026-08-08/capacity-state/capacity-state-20260808__*`（10 探针 JSON + sha256）
+- `results/verified/2026-08-08/capacity-state-analysis.json`
 - `scripts/exp/hybrid_premise.py`（新增 `--state-dtype`）
 - `scripts/exp/run_ppl_state_dtype.sh`（8 格 runner）
 - `scripts/eval/analyze_ppl_state_dtype.py`（配对 CI 分析）
