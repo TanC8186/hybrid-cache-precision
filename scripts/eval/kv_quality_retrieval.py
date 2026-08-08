@@ -95,6 +95,8 @@ def engine_kwargs(allocation: str, args: argparse.Namespace) -> dict[str, Any]:
         kwargs["enable_per_layer_page_groups"] = True
     elif allocation in ("turboquant_k8v4", "turboquant_4bit_nc"):
         kwargs["kv_cache_dtype"] = allocation
+    elif allocation == "fp16_statebf16":
+        kwargs["mamba_ssm_cache_dtype"] = "bfloat16"
     return kwargs
 
 
@@ -113,6 +115,7 @@ def verify_config_effect(llm, allocation: str) -> dict[str, Any]:
         checks["detail"]["cache_dtype"] = str(getattr(cc, "cache_dtype", None))
         checks["detail"]["per_layer"] = getattr(cc, "kv_cache_dtype_per_layer", None)
         checks["detail"]["a2_flag"] = bool(getattr(cc, "enable_per_layer_page_groups", False))
+        checks["detail"]["mamba_ssm_cache_dtype"] = str(getattr(cc, "mamba_ssm_cache_dtype", None))
     kv = None
     try:
         core = getattr(getattr(eng, "engine_core", None), "core_engine", None)
@@ -134,6 +137,13 @@ def verify_config_effect(llm, allocation: str) -> dict[str, Any]:
     a2 = checks["detail"].get("a2_flag")
     if allocation == "fp16":
         checks["ok"] = dtype in ("auto", "fp16", "bf16") and not per_layer and not a2
+    elif allocation == "fp16_statebf16":
+        checks["ok"] = (
+            dtype in ("auto", "fp16", "bf16")
+            and not per_layer
+            and not a2
+            and checks["detail"].get("mamba_ssm_cache_dtype") == "bfloat16"
+        )
     elif allocation == "uniform_int4":
         checks["ok"] = dtype == "int4_per_token_head" and not per_layer and not a2
     elif allocation == "packed_per_layer":

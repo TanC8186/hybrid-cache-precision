@@ -21,7 +21,7 @@ from pathlib import Path
 RULER_ROOT = Path(__file__).resolve().parents[2] / "vendor" / "ruler"
 RULER_COMMIT = "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a"
 MODEL_DEFAULT = "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master"
-ALLOCATIONS = ["fp16", "uniform_int4", "packed_per_layer", "turboquant_k8v4", "turboquant_4bit_nc"]
+ALLOCATIONS = ["fp16", "fp16_statebf16", "uniform_int4", "packed_per_layer", "turboquant_k8v4", "turboquant_4bit_nc"]
 TASK_TYPE = {
     "ruler_niah_single": "niah",
     "ruler_niah_multikey": "niah",

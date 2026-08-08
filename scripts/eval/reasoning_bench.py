@@ -30,7 +30,7 @@ from pathlib import Path
 
 MODEL_DEFAULT = "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master"
 DATA_ROOT = Path("/root/autodl-tmp/caches/datasets")
-ALLOCATIONS = ["fp16", "uniform_int4", "packed_per_layer", "turboquant_k8v4", "turboquant_4bit_nc"]
+ALLOCATIONS = ["fp16", "fp16_statebf16", "uniform_int4", "packed_per_layer", "turboquant_k8v4", "turboquant_4bit_nc"]
 
 BENCH_CONFIG = {
     "gsm8k": {"max_tokens": 1024, "max_samples": 200},

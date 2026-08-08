@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "bench": "gsm8k",
+  "protocol": "reasoning_bench.py --disable-thinking, 200 samples, greedy; fp16_statebf16 adds mamba_ssm_cache_dtype=bfloat16 to the fp16 engine args",
+  "rows": [
+    {
+      "seed": 7,
+      "fp16_state_fp32_acc": 0.76,
+      "fp16_state_bf16_acc": 0.73,
+      "delta_bf16_minus_fp32": -0.03
+    },
+    {
+      "seed": 42,
+      "fp16_state_fp32_acc": 0.755,
+      "fp16_state_bf16_acc": 0.73,
+      "delta_bf16_minus_fp32": -0.025
+    },
+    {
+      "seed": 2026,
+      "fp16_state_fp32_acc": 0.755,
+      "fp16_state_bf16_acc": 0.73,
+      "delta_bf16_minus_fp32": -0.025
+    }
+  ],
+  "paired_delta": {
+    "mean": -0.0267,
+    "ci95": [
+      -0.0338,
+      -0.0195
+    ],
+    "n_seeds": 3
+  }
+}
