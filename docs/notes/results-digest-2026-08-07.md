@@ -221,6 +221,14 @@ LCC/RepoBench-P=code_sim（fuzzywuzzy）。
 分析：`results/quality/longbench-analysis-20260807.json`；
 原始 cell：`results/quality/longbench/longbench-20260807/`。
 
+**LongBench 输出预算审计（2026-08-08，防伪影核查）**：3200 样本中 1268
+（39.6%）撞 max_new_tokens，但 **0 个样本含 `<think>` 块**（no-think wrapper
+生效，无"思考吃光预算"伪影）。撞限按任务分布：LCC 94%、RepoBench-P 99%、
+GovReport 77%、MultiNews 42%，TREC/TriviaQA/SAMSum/QMSum ≈0%；各分配间
+撞限率对称（fp16 41% / uniform 41% / packed 40% / k8v4 36% / 4bit_nc 36%），
+相对比较不受影响。输出预算与官方 LongBench 协议一致（64/512 等），截断属
+协议内行为；抽样确认 GovReport 截断为正常摘要截尾而非思考文本。
+
 ## 7. C4/PG19 PPL（attempt `ppl-extra-20260807`）
 
 状态：**完成 12/12**（2B + 9B × fp16/uniform/packed × c4/pg19；0 失败；

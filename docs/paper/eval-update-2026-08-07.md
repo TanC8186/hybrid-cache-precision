@@ -96,6 +96,9 @@ MultiNews），每任务前 50 样本、greedy、单 seed、no-think；官方 v1
 点估计低 6pt；9B 上 QA/摘要持平，代码任务量化列点估计一致略低（LCC −1.8/−2.6，
 RepoBench-P −2.0/−5.2）。单 seed、无 CI，全部按点估计披露，禁止写成显著退化；
 2B 代码任务接近地板，不用于结论。截断（中段截断至 15.8K token）各分配完全对称。
+输出预算审计：3200 样本 0 个 `<think>` 块；39.6% 撞官方输出预算（LCC/RepoBench/
+GovReport 为主），各分配撞限率对称（36–41%），相对比较不受影响，截断为官方
+协议内行为。禁止把截断导致的绝对分数解读为绝对能力。
 证据：`results/quality/longbench-analysis-20260807.json`。
 
 ## 6. PPL 扩展语料（C4/PG19，2B + 9B）
