@@ -265,3 +265,27 @@ gpu_memory_utilization=0.85、seed=42、`--enforce-eager`；uniform 显式传
 过程记录：9B 首轮探针因未传 `--enforce-eager` 触发 ninja 缺失失败（已补装）；
 纯注意力探针因 `inspect_kv_config.py` 访问混合架构专属属性
 `_kernel_block_sizes` 失败（已改为 `getattr` 防御式读取，从研究仓运行）。
+
+## 9. GSM8K 3-seed（attempt `reasoning-gsm8k-3seed-20260808`）
+
+状态：**完成 15/15**（5 allocs × seeds {7,42,2026}；seed 7 从
+`reasoning-20260807-nothink-v2` 哈希复制，seed 42/2026 新跑；0 失败，15 个 JSON
+哈希全部匹配）。协议：no-think、greedy、max_tokens=1024、200 samples/seed。
+
+| 分配 | seed 7/42/2026 | mean ± SD | Δ vs fp16 [95% t-CI] |
+|---|---:|---:|---:|
+| fp16 | 0.760 / 0.755 / 0.755 | 0.7567 ± 0.0029 | — |
+| uniform int4 | 0.695 / 0.695 / 0.695 | 0.6950 ± 0.0000 | −0.0617 [−0.0688, −0.0545] |
+| packed per-layer | 0.680 / 0.690 / 0.690 | 0.6867 ± 0.0058 | −0.0700 [−0.0915, −0.0485] |
+| turboquant_k8v4 | 0.675 / 0.690 / 0.675 | 0.6800 ± 0.0087 | −0.0767 [−0.1025, −0.0508] |
+| turboquant_4bit_nc | 0.685 / 0.685 / 0.685 | 0.6850 ± 0.0000 | −0.0717 [−0.0788, −0.0645] |
+
+结论（必须如实写入论文）：**GSM8K 上所有量化分配相对 fp16 的回退是真实的**，
+Δ −6.2 至 −7.7pt，3-seed 配对 95% CI 全部不含 0。该负结果与 MMLU/LongBench/
+NIAH/PPL 的持平结论并存，论文的"质量门禁"应表述为
+"多数任务持平、GSM8K 存在一致但量级有限（约 −6~−8pt）的回退"，
+禁止再写全局"近无损"。注意：uniform/4bit_nc 三 seed 完全一致，fp16/packed/k8v4
+seed 间波动 ≤0.01（greedy 确定性为主，记录为方法学观察）。
+
+分析：`results/quality/reasoning-gsm8k-3seed-analysis.json`；
+原始 cell：`results/quality/reasoning/reasoning-gsm8k-3seed-20260808/`。

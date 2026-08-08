@@ -16,7 +16,7 @@
 | C9 | 等字节：4-bit+驱逐优于 <4-bit 全保留（11.85 vs 19.00） | `byte_budget_3seed.csv` | ANALYZED | 3-seed 配对 CI |
 | C10 | NIAH 2B/9B 量化不劣（CI 含 0） | `niah-fixed-analysis.json` / `niah-fixed-9b-analysis.json` | ANALYZED | 90/90、54/54、哈希全匹配 |
 | C11 | RULER v2：CWE 4K TQ 掉分真实 | `ruler-subset-analysis-v2-256.json` | ANALYZED | 20 samples、单 seed |
-| C12 | Reasoning：MMLU 持平、GSM8K 点估计低 6.5–8.5pt | `reasoning-nothink-v2-analysis.json` | ANALYZED | 单 seed，禁止显著性表述 |
+| C12 | Reasoning：MMLU 持平；GSM8K 量化回退真实（Δ −6.2~−7.7pt，3-seed 配对 CI 不含 0） | `reasoning-gsm8k-3seed-analysis.json` | ANALYZED | GSM8K 有 CI；MMLU/AIME 仍单 seed |
 | C13 | LongBench：QA/摘要持平；9B 代码点估计偏低 | `longbench-analysis-20260807.json` | ANALYZED | 50 samples、单 seed |
 | C14 | C4/PG19 PPL（第二/三语料，2B+9B） | `results/quality/ppl-extra/` + `ppl-extra-analysis-20260807.json` | DONE / ANALYZED | 3-seed CI；无独立复现 |
 | C15 | Serving protocol-v3 六列正式边界 | — | PENDING | Formal 未跑 |
@@ -32,4 +32,6 @@
    novel packed layout"。
 4. 单 seed 的负向点估计（GSM8K、TREC、9B 代码）写 "point-estimate decline,
    multi-seed confirmation pending"，不写显著退化。
+   （GSM8K 已有 3-seed CI：改为如实报告 "consistent decline, paired CI
+   excludes 0"；TREC/9B 代码仍按单 seed 处理。）
 5. AIME25 只报告 "budget-limited, near-floor, no cross-allocation signal"。

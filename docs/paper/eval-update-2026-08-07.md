@@ -75,10 +75,14 @@ GSM8K（前 200）、MMLU（all/test 前 500）、AIME2025（全 30），greedy�
 | MMLU | 500 | 0.588 | 0.586 | 0.596 | 0.600 | 0.612 |
 | AIME2025 | 30 | 0.167 | 0.100 | 0.167 | 0.067 | 0.100 |
 
-结论边界：GSM8K 量化列点估计低 fp16 6.5–8.5pt（单 seed、无 CI，需多 seed 确认）；
-MMLU 量化列与 fp16 持平或略高（capped 99–118/500 各分配对称，严格最终答案口径
-仍持平）；AIME2025 在 4096 预算下仍有 20–22/30 未完成，各列均近地板，仅报告
-"各列无显著优势"。证据：`results/quality/reasoning-nothink-v2-analysis.json`。
+结论边界：**GSM8K 3-seed 配对 CI 确认量化回退真实**（uniform −6.2pt
+[−6.9, −5.5]，packed −7.0pt [−9.2, −4.9]，k8v4 −7.7pt [−10.3, −5.1]，
+4bit_nc −7.2pt [−7.9, −6.5]；n=200/seed，no-think、greedy）。MMLU 量化列与
+fp16 持平或略高（capped 99–118/500 各分配对称，严格最终答案口径仍持平）；
+AIME2025 在 4096 预算下仍有 20–22/30 未完成，各列均近地板，仅报告
+"各列无显著优势"。因此质量门禁口径为"多数任务持平、GSM8K 存在一致但量级
+有限的回退"。证据：`results/quality/reasoning-gsm8k-3seed-analysis.json` +
+`results/quality/reasoning-nothink-v2-analysis.json`。
 
 ## 5. LongBench v1 子集（2B 全 5 分配 + 9B 核心 3 分配）
 

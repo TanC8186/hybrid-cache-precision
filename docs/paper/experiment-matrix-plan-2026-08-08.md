@@ -27,7 +27,7 @@
 | M3 9B packed 容量探针 | legacy/uniform/packed | 9B | — | 3 probes | **DONE / ANALYZED** |
 | M4 纯注意力对照 | fp16/int4 | Qwen2.5-7B | — | 容量探针 | **DONE / ANALYZED** |
 | B1 外部 baseline（KIVI/KVQuant） | — | 2B | 3 | 待定 | **PENDING（需评估）** |
-| B2 GSM8K 多 seed | 5 allocs | 2B | 3 | 3×200 | **PENDING** |
+| B2 GSM8K 多 seed | 5 allocs | 2B | 3 | 3×200 | **DONE / ANALYZED** |
 | B3 LongBench 多 seed | 关键任务 | 2B/9B | 3 | 3×50×任务 | **PENDING（可选）** |
 | B4 32K/64K 探针 | fp16/int4/packed | 2B | — | 容量+检索 | **PENDING（可选）** |
 
@@ -158,7 +158,9 @@
 
 - 协议：no-think + 大预算（1024/512/4096）+ 最终答案抽取；单 seed；
   thinking/小预算版本为敏感性数据。
-- 结论边界：GSM8K 量化列点估计低 fp16 6.5–8.5pt（需多 seed，见 B2）；
+- 结论边界：**GSM8K 3-seed 配对 CI 确认量化回退真实**（uniform −6.2pt
+  [−6.9,−5.5]、packed −7.0pt [−9.2,−4.9]、k8v4 −7.7pt [−10.3,−5.1]、
+  4bit_nc −7.2pt [−7.9,−6.5]；见 B2）；
   MMLU 持平；AIME 预算受限、近地板。
 
 ### Q7 LongBench v1 — DONE / ANALYZED
@@ -188,7 +190,7 @@
 | P0 | E4 Serving Formal | ~8h | 人工放行 → `run_serving_formal.sh` | 108/108 + ANALYZED→（复现后 VERIFIED） |
 | P0 | M3 9B packed 容量探针 | 0.5–1h | 复用 A2 probe 脚本 | **DONE（3/3 probes，比例与 2B 一致）** |
 | P0 | M4 纯注意力对照 | 1–2h | 同容量协议 @ Qwen2.5-7B | **DONE（3.765× vs 混合 2.245×）** |
-| P1 | B2 GSM8K 3-seed | 1–1.5h | `run_reasoning_bench.sh --seeds 7,42,2026`（改造） | 配对 CI |
+| P1 | B2 GSM8K 3-seed | 1–1.5h | `run_reasoning_gsm8k_3seed.sh` | **DONE（配对 CI 不含 0：回退真实）** |
 | P1 | B1 外部 baseline | 2–5 天（评估后） | KIVI/KVQuant 同协议实现 | 同硬件同协议对照表 |
 | P2 | B3 LongBench 多 seed | 2–3h | `longbench_bench.py` 加 seeds | 关键任务 CI |
 | P2 | B4 32K/64K 探针 | 2–4h | 容量+检索探针 | 长上下文优势扩展 |
@@ -201,6 +203,8 @@
 - SLO 边界 workload-dependent：Random 0%/+4.8%/+14.3%，ShareGPT −17.6%（VERIFIED）；
 - packed per-layer：0.258×→0.833×（3.232× vs legacy），独立复现 VERIFIED；
 - 质量持平（点估计口径）：PPL/NIAH/RULER/FWE/MMLU/LongBench；
+- GSM8K 量化回退真实（Δ −6.2~−7.7pt，3-seed 配对 CI 不含 0）——必须披露，
+  质量门禁表述为"多数任务持平 + GSM8K 有限回退"，禁止全局"近无损"；
 - 等字节排序：4-bit+驱逐优于 <4-bit 全保留（3-seed CI）。
 
 **禁止/暂缓的声明：**

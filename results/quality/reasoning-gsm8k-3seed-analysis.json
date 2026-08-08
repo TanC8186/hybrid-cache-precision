@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "attempt": "reasoning-gsm8k-3seed-20260808",
+  "bench": "gsm8k",
+  "protocol": "no-think, greedy, max_tokens=1024, 200 samples, seeds 7/42/2026",
+  "rows": [
+    {
+      "allocation": "fp16",
+      "n": 200,
+      "per_seed": {
+        "7": 0.76,
+        "42": 0.755,
+        "2026": 0.755
+      },
+      "mean": 0.7567,
+      "std": 0.0029
+    },
+    {
+      "allocation": "uniform_int4",
+      "n": 200,
+      "per_seed": {
+        "7": 0.695,
+        "42": 0.695,
+        "2026": 0.695
+      },
+      "mean": 0.695,
+      "std": 0.0,
+      "delta_vs_fp16": -0.0617,
+      "ci95_vs_fp16": [
+        -0.0688,
+        -0.0545
+      ]
+    },
+    {
+      "allocation": "packed_per_layer",
+      "n": 200,
+      "per_seed": {
+        "7": 0.68,
+        "42": 0.69,
+        "2026": 0.69
+      },
+      "mean": 0.6867,
+      "std": 0.0058,
+      "delta_vs_fp16": -0.07,
+      "ci95_vs_fp16": [
+        -0.0915,
+        -0.0485
+      ]
+    },
+    {
+      "allocation": "turboquant_k8v4",
+      "n": 200,
+      "per_seed": {
+        "7": 0.675,
+        "42": 0.69,
+        "2026": 0.675
+      },
+      "mean": 0.68,
+      "std": 0.0087,
+      "delta_vs_fp16": -0.0767,
+      "ci95_vs_fp16": [
+        -0.1025,
+        -0.0508
+      ]
+    },
+    {
+      "allocation": "turboquant_4bit_nc",
+      "n": 200,
+      "per_seed": {
+        "7": 0.685,
+        "42": 0.685,
+        "2026": 0.685
+      },
+      "mean": 0.685,
+      "std": 0.0,
+      "delta_vs_fp16": -0.0717,
+      "ci95_vs_fp16": [
+        -0.0788,
+        -0.0645
+      ]
+    }
+  ]
+}
