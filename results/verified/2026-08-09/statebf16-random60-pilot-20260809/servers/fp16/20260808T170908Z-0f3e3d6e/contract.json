@@ -1,0 +1,25 @@
+{
+  "allocation": "fp16",
+  "command": [
+    "/root/autodl-tmp/MLSys_Research/.venv/bin/vllm",
+    "serve",
+    "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "8000",
+    "--max-model-len",
+    "4096",
+    "--gpu-memory-utilization",
+    "0.85",
+    "--seed",
+    "42",
+    "--kv-cache-dtype",
+    "auto",
+    "--compilation-config",
+    "{\"cudagraph_mode\":\"PIECEWISE\"}"
+  ],
+  "cwd": "/root/autodl-tmp/MLSys_Serving_f7a79f5",
+  "schema_version": 1,
+  "started_at": "2026-08-08T17:09:08Z"
+}

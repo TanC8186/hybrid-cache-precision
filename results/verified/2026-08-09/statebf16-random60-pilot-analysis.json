@@ -1,0 +1,386 @@
+{
+  "schema_version": 1,
+  "experiment": "statebf16_random60_pilot_2b",
+  "protocol": "Random60, seed 7, warmup 120 req, 60 s measurement window, rates 30/40/50 req/s; fp16 = fp32 GDN state, fp16_statebf16 = --mamba-ssm-cache-dtype bfloat16; protocol-v3, failures count as SLO misses",
+  "rows": [
+    {
+      "sample_id": "fp16__random__r30__s7",
+      "allocation": "fp16",
+      "rate": 30.0,
+      "failed": 0,
+      "ttft_p99_ms": 222.6,
+      "tpot_p99_ms": 21.4,
+      "slo_sweep": {
+        "250": {
+          "goodput_over_offered": 0.9812,
+          "sustainable": true
+        },
+        "500": {
+          "goodput_over_offered": 0.9828,
+          "sustainable": true
+        },
+        "1000": {
+          "goodput_over_offered": 0.9828,
+          "sustainable": true
+        },
+        "2000": {
+          "goodput_over_offered": 0.9828,
+          "sustainable": true
+        },
+        "3000": {
+          "goodput_over_offered": 0.9828,
+          "sustainable": true
+        }
+      }
+    },
+    {
+      "sample_id": "fp16__random__r40__s7",
+      "allocation": "fp16",
+      "rate": 40.0,
+      "failed": 0,
+      "ttft_p99_ms": 4686.3,
+      "tpot_p99_ms": 48.7,
+      "slo_sweep": {
+        "250": {
+          "goodput_over_offered": 0.145,
+          "sustainable": false
+        },
+        "500": {
+          "goodput_over_offered": 0.2413,
+          "sustainable": false
+        },
+        "1000": {
+          "goodput_over_offered": 0.348,
+          "sustainable": false
+        },
+        "2000": {
+          "goodput_over_offered": 0.4933,
+          "sustainable": false
+        },
+        "3000": {
+          "goodput_over_offered": 0.6656,
+          "sustainable": false
+        }
+      }
+    },
+    {
+      "sample_id": "fp16__random__r50__s7",
+      "allocation": "fp16",
+      "rate": 50.0,
+      "failed": 0,
+      "ttft_p99_ms": 20987.5,
+      "tpot_p99_ms": 48.9,
+      "slo_sweep": {
+        "250": {
+          "goodput_over_offered": 0.0313,
+          "sustainable": false
+        },
+        "500": {
+          "goodput_over_offered": 0.0435,
+          "sustainable": false
+        },
+        "1000": {
+          "goodput_over_offered": 0.0639,
+          "sustainable": false
+        },
+        "2000": {
+          "goodput_over_offered": 0.11,
+          "sustainable": false
+        },
+        "3000": {
+          "goodput_over_offered": 0.1423,
+          "sustainable": false
+        }
+      }
+    },
+    {
+      "sample_id": "fp16_statebf16__random__r30__s7",
+      "allocation": "fp16_statebf16",
+      "rate": 30.0,
+      "failed": 0,
+      "ttft_p99_ms": 233.2,
+      "tpot_p99_ms": 18.8,
+      "slo_sweep": {
+        "250": {
+          "goodput_over_offered": 0.9774,
+          "sustainable": true
+        },
+        "500": {
+          "goodput_over_offered": 0.9835,
+          "sustainable": true
+        },
+        "1000": {
+          "goodput_over_offered": 0.9835,
+          "sustainable": true
+        },
+        "2000": {
+          "goodput_over_offered": 0.9835,
+          "sustainable": true
+        },
+        "3000": {
+          "goodput_over_offered": 0.9835,
+          "sustainable": true
+        }
+      }
+    },
+    {
+      "sample_id": "fp16_statebf16__random__r40__s7",
+      "allocation": "fp16_statebf16",
+      "rate": 40.0,
+      "failed": 0,
+      "ttft_p99_ms": 1540.4,
+      "tpot_p99_ms": 45.9,
+      "slo_sweep": {
+        "250": {
+          "goodput_over_offered": 0.228,
+          "sustainable": false
+        },
+        "500": {
+          "goodput_over_offered": 0.4636,
+          "sustainable": false
+        },
+        "1000": {
+          "goodput_over_offered": 0.7814,
+          "sustainable": false
+        },
+        "2000": {
+          "goodput_over_offered": 0.9583,
+          "sustainable": true
+        },
+        "3000": {
+          "goodput_over_offered": 0.9583,
+          "sustainable": true
+        }
+      }
+    },
+    {
+      "sample_id": "fp16_statebf16__random__r50__s7",
+      "allocation": "fp16_statebf16",
+      "rate": 50.0,
+      "failed": 0,
+      "ttft_p99_ms": 16166.2,
+      "tpot_p99_ms": 45.9,
+      "slo_sweep": {
+        "250": {
+          "goodput_over_offered": 0.0375,
+          "sustainable": false
+        },
+        "500": {
+          "goodput_over_offered": 0.0509,
+          "sustainable": false
+        },
+        "1000": {
+          "goodput_over_offered": 0.0822,
+          "sustainable": false
+        },
+        "2000": {
+          "goodput_over_offered": 0.145,
+          "sustainable": false
+        },
+        "3000": {
+          "goodput_over_offered": 0.1773,
+          "sustainable": false
+        }
+      }
+    }
+  ],
+  "table": {
+    "fp16": {
+      "30.0": {
+        "sample_id": "fp16__random__r30__s7",
+        "allocation": "fp16",
+        "rate": 30.0,
+        "failed": 0,
+        "ttft_p99_ms": 222.6,
+        "tpot_p99_ms": 21.4,
+        "slo_sweep": {
+          "250": {
+            "goodput_over_offered": 0.9812,
+            "sustainable": true
+          },
+          "500": {
+            "goodput_over_offered": 0.9828,
+            "sustainable": true
+          },
+          "1000": {
+            "goodput_over_offered": 0.9828,
+            "sustainable": true
+          },
+          "2000": {
+            "goodput_over_offered": 0.9828,
+            "sustainable": true
+          },
+          "3000": {
+            "goodput_over_offered": 0.9828,
+            "sustainable": true
+          }
+        }
+      },
+      "40.0": {
+        "sample_id": "fp16__random__r40__s7",
+        "allocation": "fp16",
+        "rate": 40.0,
+        "failed": 0,
+        "ttft_p99_ms": 4686.3,
+        "tpot_p99_ms": 48.7,
+        "slo_sweep": {
+          "250": {
+            "goodput_over_offered": 0.145,
+            "sustainable": false
+          },
+          "500": {
+            "goodput_over_offered": 0.2413,
+            "sustainable": false
+          },
+          "1000": {
+            "goodput_over_offered": 0.348,
+            "sustainable": false
+          },
+          "2000": {
+            "goodput_over_offered": 0.4933,
+            "sustainable": false
+          },
+          "3000": {
+            "goodput_over_offered": 0.6656,
+            "sustainable": false
+          }
+        }
+      },
+      "50.0": {
+        "sample_id": "fp16__random__r50__s7",
+        "allocation": "fp16",
+        "rate": 50.0,
+        "failed": 0,
+        "ttft_p99_ms": 20987.5,
+        "tpot_p99_ms": 48.9,
+        "slo_sweep": {
+          "250": {
+            "goodput_over_offered": 0.0313,
+            "sustainable": false
+          },
+          "500": {
+            "goodput_over_offered": 0.0435,
+            "sustainable": false
+          },
+          "1000": {
+            "goodput_over_offered": 0.0639,
+            "sustainable": false
+          },
+          "2000": {
+            "goodput_over_offered": 0.11,
+            "sustainable": false
+          },
+          "3000": {
+            "goodput_over_offered": 0.1423,
+            "sustainable": false
+          }
+        }
+      }
+    },
+    "fp16_statebf16": {
+      "30.0": {
+        "sample_id": "fp16_statebf16__random__r30__s7",
+        "allocation": "fp16_statebf16",
+        "rate": 30.0,
+        "failed": 0,
+        "ttft_p99_ms": 233.2,
+        "tpot_p99_ms": 18.8,
+        "slo_sweep": {
+          "250": {
+            "goodput_over_offered": 0.9774,
+            "sustainable": true
+          },
+          "500": {
+            "goodput_over_offered": 0.9835,
+            "sustainable": true
+          },
+          "1000": {
+            "goodput_over_offered": 0.9835,
+            "sustainable": true
+          },
+          "2000": {
+            "goodput_over_offered": 0.9835,
+            "sustainable": true
+          },
+          "3000": {
+            "goodput_over_offered": 0.9835,
+            "sustainable": true
+          }
+        }
+      },
+      "40.0": {
+        "sample_id": "fp16_statebf16__random__r40__s7",
+        "allocation": "fp16_statebf16",
+        "rate": 40.0,
+        "failed": 0,
+        "ttft_p99_ms": 1540.4,
+        "tpot_p99_ms": 45.9,
+        "slo_sweep": {
+          "250": {
+            "goodput_over_offered": 0.228,
+            "sustainable": false
+          },
+          "500": {
+            "goodput_over_offered": 0.4636,
+            "sustainable": false
+          },
+          "1000": {
+            "goodput_over_offered": 0.7814,
+            "sustainable": false
+          },
+          "2000": {
+            "goodput_over_offered": 0.9583,
+            "sustainable": true
+          },
+          "3000": {
+            "goodput_over_offered": 0.9583,
+            "sustainable": true
+          }
+        }
+      },
+      "50.0": {
+        "sample_id": "fp16_statebf16__random__r50__s7",
+        "allocation": "fp16_statebf16",
+        "rate": 50.0,
+        "failed": 0,
+        "ttft_p99_ms": 16166.2,
+        "tpot_p99_ms": 45.9,
+        "slo_sweep": {
+          "250": {
+            "goodput_over_offered": 0.0375,
+            "sustainable": false
+          },
+          "500": {
+            "goodput_over_offered": 0.0509,
+            "sustainable": false
+          },
+          "1000": {
+            "goodput_over_offered": 0.0822,
+            "sustainable": false
+          },
+          "2000": {
+            "goodput_over_offered": 0.145,
+            "sustainable": false
+          },
+          "3000": {
+            "goodput_over_offered": 0.1773,
+            "sustainable": false
+          }
+        }
+      }
+    }
+  },
+  "log_proof": {
+    "fp16": {
+      "session_count": 1,
+      "has_override_warning": false,
+      "has_piecewise": true
+    },
+    "fp16_statebf16": {
+      "session_count": 1,
+      "has_override_warning": true,
+      "has_piecewise": true
+    }
+  },
+  "pilot_read": "single seed 7, 60 s window; boundary numbers are directional, formal 3-seed required. At r40 the bf16-state cell reached sustainable (>=0.95 goodput) at TTFT>=2000 ms while the fp32-state cell stayed below 0.95 at every threshold."
+}

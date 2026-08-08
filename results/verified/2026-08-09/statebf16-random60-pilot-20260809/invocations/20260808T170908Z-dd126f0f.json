@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "scripts/bench/run_steady_state.py",
+    "--config",
+    "experiments/configs/statebf16_random60_pilot.yaml",
+    "--phase",
+    "pilot",
+    "--attempt-id",
+    "statebf16-random60-pilot-20260809",
+    "--output-root",
+    "/root/autodl-tmp/statebf16-serving-20260809",
+    "--resume"
+  ],
+  "invoked_at": "2026-08-08T17:09:08Z",
+  "max_samples": null,
+  "resume": true
+}

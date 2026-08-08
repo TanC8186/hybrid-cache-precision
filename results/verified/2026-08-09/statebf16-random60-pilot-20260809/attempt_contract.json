@@ -1,0 +1,77 @@
+{
+  "attempt_id": "statebf16-random60-pilot-20260809",
+  "config_path": "/root/autodl-tmp/MLSys_Serving_f7a79f5/experiments/configs/statebf16_random60_pilot.yaml",
+  "config_sha256": "f7475580e37d144df9a316dd5677263a22cc55103a83f4cfa5f44ace284b40b7",
+  "experiment": "statebf16_random60_pilot_2b",
+  "git_commit": "3267efacc1614bddd029a67e9a406e8d1435f270",
+  "parent_attempt": null,
+  "phase": {
+    "allocations": [
+      "fp16",
+      "fp16_statebf16"
+    ],
+    "name": "pilot",
+    "seeds": [
+      7
+    ],
+    "workload_rates": {
+      "random": [
+        30.0,
+        40.0,
+        50.0
+      ]
+    }
+  },
+  "plan": [
+    {
+      "allocation": "fp16",
+      "num_prompts": 1800,
+      "request_rate": 30.0,
+      "sample_id": "fp16__random__r30__s7",
+      "seed": 7,
+      "workload": "random"
+    },
+    {
+      "allocation": "fp16",
+      "num_prompts": 2400,
+      "request_rate": 40.0,
+      "sample_id": "fp16__random__r40__s7",
+      "seed": 7,
+      "workload": "random"
+    },
+    {
+      "allocation": "fp16",
+      "num_prompts": 3000,
+      "request_rate": 50.0,
+      "sample_id": "fp16__random__r50__s7",
+      "seed": 7,
+      "workload": "random"
+    },
+    {
+      "allocation": "fp16_statebf16",
+      "num_prompts": 1800,
+      "request_rate": 30.0,
+      "sample_id": "fp16_statebf16__random__r30__s7",
+      "seed": 7,
+      "workload": "random"
+    },
+    {
+      "allocation": "fp16_statebf16",
+      "num_prompts": 2400,
+      "request_rate": 40.0,
+      "sample_id": "fp16_statebf16__random__r40__s7",
+      "seed": 7,
+      "workload": "random"
+    },
+    {
+      "allocation": "fp16_statebf16",
+      "num_prompts": 3000,
+      "request_rate": 50.0,
+      "sample_id": "fp16_statebf16__random__r50__s7",
+      "seed": 7,
+      "workload": "random"
+    }
+  ],
+  "schema_version": 1,
+  "vllm_source_commit": "55f47685a553ad8d776c464c59785399a98c7185"
+}

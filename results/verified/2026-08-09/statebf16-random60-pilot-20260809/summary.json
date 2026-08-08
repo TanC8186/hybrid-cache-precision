@@ -1,0 +1,33 @@
+{
+  "counts": {
+    "completed_validated": 6
+  },
+  "samples": [
+    {
+      "sample_id": "fp16__random__r30__s7",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "fp16__random__r40__s7",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "fp16__random__r50__s7",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "fp16_statebf16__random__r30__s7",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "fp16_statebf16__random__r40__s7",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "fp16_statebf16__random__r50__s7",
+      "status": "completed_validated"
+    }
+  ],
+  "schema_version": 1,
+  "updated_at": "2026-08-08T17:23:13Z"
+}

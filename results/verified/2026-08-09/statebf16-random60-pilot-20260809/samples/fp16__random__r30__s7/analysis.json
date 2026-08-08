@@ -1,0 +1,64 @@
+{
+  "arrival_span_over_target": 1.0000395570881664,
+  "benchmark_duration_s": 61.04976181872189,
+  "completed": 1800,
+  "drain_after_arrival_window_s": 1.0497618187218904,
+  "failed": 0,
+  "failed_request_fraction": 0.0,
+  "failed_request_indices": [],
+  "measurement_window_s": 60.0,
+  "observed_arrival_span_s": 60.00237342528999,
+  "offered_rate_req_s": 30.0,
+  "reported_tpot_p99_ms": 21.429382258307513,
+  "reported_ttft_p99_ms": 222.6053025946021,
+  "request_failure_policy": "count_as_slo_miss",
+  "request_throughput_over_offered": 0.9828048171287056,
+  "request_throughput_req_s": 29.484144513861168,
+  "sample_id": "fp16__random__r30__s7",
+  "schema_version": 2,
+  "slo_sweep": {
+    "1000": {
+      "good_requests": 1800,
+      "goodput_over_offered": 0.9828048171287056,
+      "goodput_req_s": 29.484144513861168,
+      "sustainable": true,
+      "tpot_threshold_ms": 200.0,
+      "ttft_threshold_ms": 1000.0
+    },
+    "2000": {
+      "good_requests": 1800,
+      "goodput_over_offered": 0.9828048171287056,
+      "goodput_req_s": 29.484144513861168,
+      "sustainable": true,
+      "tpot_threshold_ms": 200.0,
+      "ttft_threshold_ms": 2000.0
+    },
+    "250": {
+      "good_requests": 1797,
+      "goodput_over_offered": 0.9811668091001577,
+      "goodput_req_s": 29.435004273004733,
+      "sustainable": true,
+      "tpot_threshold_ms": 200.0,
+      "ttft_threshold_ms": 250.0
+    },
+    "3000": {
+      "good_requests": 1800,
+      "goodput_over_offered": 0.9828048171287056,
+      "goodput_req_s": 29.484144513861168,
+      "sustainable": true,
+      "tpot_threshold_ms": 200.0,
+      "ttft_threshold_ms": 3000.0
+    },
+    "500": {
+      "good_requests": 1800,
+      "goodput_over_offered": 0.9828048171287056,
+      "goodput_req_s": 29.484144513861168,
+      "sustainable": true,
+      "tpot_threshold_ms": 200.0,
+      "ttft_threshold_ms": 500.0
+    }
+  },
+  "status": "completed_validated",
+  "tpot_p99_ms_recomputed": 21.429384094992958,
+  "ttft_p99_ms_recomputed": 222.6053025946021
+}

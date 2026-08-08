@@ -131,6 +131,23 @@ $$r_{\text{state}}(L) = \frac{A_q L + G_{\text{fp32}}}{A_q L + G_{\text{bf16}}}$
 
 边界：该扫描是 transformers chunk 边界（128 token）写回舍入，不是 vLLM kernel 逐 token 语义；任务级（RULER/GSM8K）已由 vLLM 侧实验覆盖，此处仅作为设计空间的判据。
 
+## 补充：serving pilot（Random60，fp32 vs bf16 state，2026-08-09 完成）
+
+把容量收益接到 serving 端：同一 vLLM 引擎（Qwen3.5-2B，fp16 注意力 KV，max_model_len 4096，gpu_mem 0.85），对比 fp32 state 与 `--mamba-ssm-cache-dtype bfloat16`。Random60 workload，seed 7，120 预热请求，60s 测量窗，rates 30/40/50 req/s；protocol-v3（失败计为 SLO miss）。bf16 样本的 server.log 同时含 Qwen3.5 override warning（`Using the user-specified value`）与 `CUDAGraphMode.PIECEWISE`，配置生效有硬证据。
+
+| rate | 配置 | TTFT p99 (ms) | TPOT p99 (ms) | goodput@1s | goodput@2s | goodput@3s | 可持续 |
+|---|---|---:|---:|---:|---:|---:|---|
+| 30 | fp32 state | 222.6 | 21.4 | 0.983 | 0.983 | 0.983 | 全部阈值 |
+| 30 | bf16 state | 233.2 | 18.8 | 0.983 | 0.983 | 0.983 | 全部阈值 |
+| 40 | fp32 state | 4,686 | 48.7 | 0.348 | 0.493 | 0.666 | 否（任何阈值） |
+| 40 | bf16 state | 1,540 | 45.9 | 0.781 | 0.958 | 0.958 | TTFT≥2s |
+| 50 | fp32 state | 20,988 | 48.9 | 0.064 | 0.110 | 0.142 | 否 |
+| 50 | bf16 state | 16,166 | 45.9 | 0.082 | 0.145 | 0.177 | 否 |
+
+解读：r40 是边界区——fp32 state 在任何 TTFT 阈值下都不可持续（3s 时 goodput 仅 0.666），bf16 state 把 goodput 推到 0.958（≥0.95），在 TTFT≥2s 达到可持续；r30 两者都可持续，r50 两者都过载。这与 +37.6% 容量（uniform int4 4K）的方向一致：更多并发容量 → 过载点附近的排队/TTFT 显著改善。
+
+边界：pilot 仅 1 seed、60s 窗口、单一 workload，数字是方向性的；论文 claim 需要 Random60+ShareGPT300 的 3-seed formal 复核。
+
 ## 证据文件
 
 - `scripts/bench/probe_ssm_state_dtype.py`（探针脚本）
@@ -145,6 +162,10 @@ $$r_{\text{state}}(L) = \frac{A_q L + G_{\text{fp32}}}{A_q L + G_{\text{bf16}}}$
 - `scripts/eval/analyze_state_sensitivity.py`
 - `results/quality/state-sensitivity/state-sensitivity-20260809/c4.json`、`pg19.json` + sha256
 - `results/quality/state-sensitivity-analysis-20260809.json`
+- `experiments/configs/statebf16_random60_pilot.yaml`（sha256 f7475580…，与 attempt contract 一致）
+- `scripts/bench/analyze_statebf16_pilot.py`
+- `results/verified/2026-08-09/statebf16-random60-pilot-20260809/`（6 samples + 2 server sessions，含 contract/result/analysis/bench.log/server.log）
+- `results/verified/2026-08-09/statebf16-random60-pilot-analysis.json`
 - `scripts/exp/run_ppl_state_dtype.sh`（8 格 runner）
 - `scripts/eval/analyze_ppl_state_dtype.py`（配对 CI 分析）
 - `results/quality/ppl-state-dtype/ppl-state-20260808__*`（8 格 CSV + seeds CSV）

@@ -1,0 +1,64 @@
+{
+  "arrival_span_over_target": 1.000096056672434,
+  "benchmark_duration_s": 82.364970440045,
+  "completed": 3000,
+  "drain_after_arrival_window_s": 22.364970440045,
+  "failed": 0,
+  "failed_request_fraction": 0.0,
+  "failed_request_indices": [],
+  "measurement_window_s": 60.0,
+  "observed_arrival_span_s": 60.00576340034604,
+  "offered_rate_req_s": 50.0,
+  "reported_tpot_p99_ms": 48.94614431376415,
+  "reported_ttft_p99_ms": 20987.53870530054,
+  "request_failure_policy": "count_as_slo_miss",
+  "request_throughput_over_offered": 0.7284650219558462,
+  "request_throughput_req_s": 36.42325109779231,
+  "sample_id": "fp16__random__r50__s7",
+  "schema_version": 2,
+  "slo_sweep": {
+    "1000": {
+      "good_requests": 263,
+      "goodput_over_offered": 0.06386210025812918,
+      "goodput_req_s": 3.193105012906459,
+      "sustainable": false,
+      "tpot_threshold_ms": 200.0,
+      "ttft_threshold_ms": 1000.0
+    },
+    "2000": {
+      "good_requests": 453,
+      "goodput_over_offered": 0.10999821831533277,
+      "goodput_req_s": 5.499910915766638,
+      "sustainable": false,
+      "tpot_threshold_ms": 200.0,
+      "ttft_threshold_ms": 2000.0
+    },
+    "250": {
+      "good_requests": 129,
+      "goodput_over_offered": 0.03132399594410138,
+      "goodput_req_s": 1.5661997972050692,
+      "sustainable": false,
+      "tpot_threshold_ms": 200.0,
+      "ttft_threshold_ms": 250.0
+    },
+    "3000": {
+      "good_requests": 586,
+      "goodput_over_offered": 0.1422935009553753,
+      "goodput_req_s": 7.114675047768764,
+      "sustainable": false,
+      "tpot_threshold_ms": 200.0,
+      "ttft_threshold_ms": 3000.0
+    },
+    "500": {
+      "good_requests": 179,
+      "goodput_over_offered": 0.04346507964336549,
+      "goodput_req_s": 2.1732539821682746,
+      "sustainable": false,
+      "tpot_threshold_ms": 200.0,
+      "ttft_threshold_ms": 500.0
+    }
+  },
+  "status": "completed_validated",
+  "tpot_p99_ms_recomputed": 48.946148204639194,
+  "ttft_p99_ms_recomputed": 20987.53870530054
+}
