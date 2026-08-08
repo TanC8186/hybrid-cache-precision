@@ -107,7 +107,8 @@ and is *not* quantized by the KV scheme. From `MambaStateShapeCalculator
 GDN state grows **linearly with the number of concurrent sequences** (independent of context
 length) and is drawn from the *same* KV-cache memory pool as the attention blocks. At the int4
 server's maximum concurrency (659.6 sequences), aggregate GDN state ≈ 12.0 GiB ≈ **60% of the
-20.08 GiB KV-cache budget** **[VERIFY — provenance estimate, see §7]**; at the 400 requests
+20.08 GiB KV-cache budget** (code-derived estimate: max concurrency × per-layer state size,
+see §7; labeled as an estimate, not a logged memory split); at the 400 requests
 observed in flight at the highest offered rate it is ≈ 36%. Because this fixed per-sequence cost
 is identical for both allocations, it dilutes the 3.88x attention-KV gain to 2.2456x end to end.
 
