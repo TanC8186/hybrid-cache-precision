@@ -30,7 +30,15 @@ from pathlib import Path
 
 MODEL_DEFAULT = "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master"
 DATA_ROOT = Path("/root/autodl-tmp/caches/datasets")
-ALLOCATIONS = ["fp16", "fp16_statebf16", "uniform_int4", "packed_per_layer", "turboquant_k8v4", "turboquant_4bit_nc"]
+ALLOCATIONS = [
+    "fp16",
+    "fp16_statebf16",
+    "uniform_int4",
+    "uniform_int4_statebf16",
+    "packed_per_layer",
+    "turboquant_k8v4",
+    "turboquant_4bit_nc",
+]
 
 BENCH_CONFIG = {
     "gsm8k": {"max_tokens": 1024, "max_samples": 200},
@@ -63,24 +71,36 @@ def atomic_write_json(path: Path, value: dict) -> str:
     return digest
 
 
-def load_rows(bench: str, max_samples: int) -> tuple[list[dict], list[str]]:
+def load_rows(bench: str, max_samples: int, seed: int) -> tuple[list[dict], list[str], list[int]]:
+    """Load a deterministic per-seed sample of rows.
+
+    For gsm8k the rows are sampled WITHOUT replacement from the full test set
+    using ``random_state=seed``, so different seeds produce different question
+    subsets while the same seed produces the identical subset across
+    allocations (this is what makes the paired CI meaningful). Decoding stays
+    greedy (temperature=0.0), so the engine ``seed`` does not add randomness.
+    """
     if bench == "gsm8k":
         import pandas as pd
 
         df = pd.read_parquet(DATA_ROOT / "gsm8k" / "main" / "test-00000-of-00001.parquet")
+        sampled = df.sample(n=max_samples, random_state=seed)
+        sampled_indices = [int(i) for i in sampled.index]
         rows = []
-        for _, row in df.head(max_samples).iterrows():
+        for _, row in sampled.iterrows():
             expected = str(row["answer"]).split("####")[-1].strip()
             rows.append({"question": str(row["question"]), "expected": expected})
         prompts = [f"Question: {r['question']}\nAnswer:" for r in rows]
-        return rows, prompts
+        return rows, prompts, sampled_indices
 
     if bench == "mmlu":
         import pandas as pd
 
         df = pd.read_parquet(DATA_ROOT / "mmlu" / "all" / "test-00000-of-00001.parquet")
+        sampled = df.head(max_samples)
+        sampled_indices = list(range(max_samples))
         rows = []
-        for _, row in df.head(max_samples).iterrows():
+        for _, row in sampled.iterrows():
             choices = list(row["choices"])
             rows.append(
                 {
@@ -95,7 +115,7 @@ def load_rows(bench: str, max_samples: int) -> tuple[list[dict], list[str]]:
             letters = ["A", "B", "C", "D"]
             body = "\n".join(f"{letter}. {choice}" for letter, choice in zip(letters, r["choices"]))
             prompts.append(f"Question: {r['question']}\n{body}\nAnswer:")
-        return rows, prompts
+        return rows, prompts, sampled_indices
 
     if bench == "aime25":
         rows = []
@@ -108,7 +128,7 @@ def load_rows(bench: str, max_samples: int) -> tuple[list[dict], list[str]]:
                     rows.append({"question": item["question"], "expected": str(item["answer"]), "split": split})
         rows = rows[:max_samples]
         prompts = [f"Problem: {r['question']}\nAnswer:" for r in rows]
-        return rows, prompts
+        return rows, prompts, list(range(len(rows)))
 
     raise SystemExit(f"unknown bench: {bench}")
 
@@ -190,7 +210,7 @@ def main() -> int:
             print(f"resume: skip {out_path}")
             return 0
 
-    rows, prompts = load_rows(args.bench, max_samples)
+    rows, prompts, sampled_indices = load_rows(args.bench, max_samples, args.seed)
     if len(rows) != max_samples:
         raise SystemExit(f"rows mismatch: {len(rows)} != {max_samples}")
     if args.disable_thinking:
@@ -274,6 +294,11 @@ def main() -> int:
             "mmlu": "last A-D letter token after final answer marker",
             "aime25": "last integer token after final answer marker",
         }[args.bench],
+        "seed_semantics": (
+            "gsm8k rows sampled without replacement using random_state=seed; "
+            "mmlu/aime25 fixed deterministic head; decode greedy temperature=0.0"
+        ),
+        "sampled_indices": sampled_indices if args.bench == "gsm8k" else None,
         "cases": cases,
         "engine": {
             "model": args.model,

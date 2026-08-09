@@ -1,8 +1,9 @@
 """NIAH (needle-in-a-haystack) retrieval quality via vLLM offline greedy generation (R4).
 
-Allocations: fp16 / uniform_int4 / packed_per_layer (same engine args as serving).
-Each sample: one (allocation, seed, depth_pct, max_len) cell with num_needles needles;
-writes one atomic JSON + .sha256 and is independently resumable.
+Allocations: fp16 / uniform_int4 / packed_per_layer / uniform_int4_statebf16
+(same engine args as serving). Each sample: one (allocation, seed, depth_pct,
+max_len) cell with num_needles needles; writes one atomic JSON + .sha256 and is
+independently resumable.
 """
 
 from __future__ import annotations
@@ -97,6 +98,9 @@ def engine_kwargs(allocation: str, args: argparse.Namespace) -> dict[str, Any]:
         kwargs["kv_cache_dtype"] = allocation
     elif allocation == "fp16_statebf16":
         kwargs["mamba_ssm_cache_dtype"] = "bfloat16"
+    elif allocation == "uniform_int4_statebf16":
+        kwargs["kv_cache_dtype"] = "int4_per_token_head"
+        kwargs["mamba_ssm_cache_dtype"] = "bfloat16"
     return kwargs
 
 
@@ -144,6 +148,13 @@ def verify_config_effect(llm, allocation: str) -> dict[str, Any]:
             and not a2
             and checks["detail"].get("mamba_ssm_cache_dtype") == "bfloat16"
         )
+    elif allocation == "uniform_int4_statebf16":
+        checks["ok"] = (
+            dtype == "int4_per_token_head"
+            and not per_layer
+            and not a2
+            and checks["detail"].get("mamba_ssm_cache_dtype") == "bfloat16"
+        )
     elif allocation == "uniform_int4":
         checks["ok"] = dtype == "int4_per_token_head" and not per_layer and not a2
     elif allocation == "packed_per_layer":
@@ -164,7 +175,14 @@ def main() -> int:
     ap.add_argument(
         "--allocation",
         required=True,
-        choices=["fp16", "uniform_int4", "packed_per_layer", "turboquant_k8v4", "turboquant_4bit_nc"],
+        choices=[
+            "fp16",
+            "uniform_int4",
+            "packed_per_layer",
+            "turboquant_k8v4",
+            "turboquant_4bit_nc",
+            "uniform_int4_statebf16",
+        ],
     )
     ap.add_argument("--seed", type=int, required=True)
     ap.add_argument("--depth-pct", type=int, required=True, choices=[25, 50, 75])
