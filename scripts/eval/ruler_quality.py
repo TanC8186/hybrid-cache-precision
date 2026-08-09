@@ -134,11 +134,10 @@ def main() -> int:
     effective_max_tokens = args.max_tokens or int(config["tokens_to_generate"])
     thinking_mode = "disabled" if args.disable_thinking else "default"
 
-    out_path = (
-        Path(args.out_dir)
-        / args.attempt_id
-        / f"{args.task}__L{args.length}__{args.allocation}__s{args.seed}.json"
-    )
+    out_name = f"{args.task}__L{args.length}__{args.allocation}__s{args.seed}.json"
+    if args.dataset_seed != 42:
+        out_name = f"{args.task}__L{args.length}__{args.allocation}__s{args.seed}__d{args.dataset_seed}.json"
+    out_path = Path(args.out_dir) / args.attempt_id / out_name
     if args.resume and out_path.exists():
         existing = json.loads(out_path.read_text(encoding="utf-8"))
         if (

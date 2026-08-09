@@ -29,9 +29,20 @@ def t_half(n: int, sd: float) -> float:
     return table.get(df, 1.96) * sd / math.sqrt(n)
 
 
-def load_cell(ruler_dir: Path, attempt_bf16: str, attempt_fp16: str, task: str, length: int, dseed: int, alloc: str) -> dict:
-    attempt = attempt_bf16 if alloc == "fp16_statebf16" else attempt_fp16
-    path = ruler_dir / attempt / f"{task}__L{length}__{alloc}__s7.json"
+def legacy_attempt(model: str, alloc: str) -> str:
+    if model == "2b":
+        return "ruler-subset-20260808-statebf16" if alloc == "fp16_statebf16" else "ruler-subset-20260807-v2-256"
+    return "ruler-subset-20260808-9b"
+
+
+def load_cell(ruler_dir: Path, attempt_bf16: str, attempt_fp16: str, task: str, length: int, dseed: int, alloc: str, model: str) -> dict:
+    if dseed == 42:
+        attempt = legacy_attempt(model, alloc)
+        name = f"{task}__L{length}__{alloc}__s7.json"
+    else:
+        attempt = attempt_bf16 if alloc == "fp16_statebf16" else attempt_fp16
+        name = f"{task}__L{length}__{alloc}__s7__d{dseed}.json"
+    path = ruler_dir / attempt / name
     rec = json.loads(path.read_text(encoding="utf-8"))
     if rec.get("status") != "completed_validated":
         raise SystemExit(f"cell not completed: {path}")
@@ -53,8 +64,8 @@ def main() -> int:
         bf16_vals = []
         per_seed = {}
         for dseed in DATASET_SEEDS:
-            fp16 = load_cell(ruler_dir, args.attempt_bf16, args.attempt_fp16, task, length, dseed, "fp16")
-            bf16 = load_cell(ruler_dir, args.attempt_bf16, args.attempt_fp16, task, length, dseed, "fp16_statebf16")
+            fp16 = load_cell(ruler_dir, args.attempt_bf16, args.attempt_fp16, task, length, dseed, "fp16", model)
+            bf16 = load_cell(ruler_dir, args.attempt_bf16, args.attempt_fp16, task, length, dseed, "fp16_statebf16", model)
             fp16_vals.append(float(fp16["accuracy"]))
             bf16_vals.append(float(bf16["accuracy"]))
             per_seed[str(dseed)] = {
