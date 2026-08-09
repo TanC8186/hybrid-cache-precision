@@ -1,0 +1,411 @@
+{
+  "accuracy": 80.0,
+  "allocation": "fp16",
+  "attempt_id": "ruler-subset-20260809-multiseed",
+  "cases": [
+    {
+      "hits": [
+        false,
+        true,
+        false,
+        true
+      ],
+      "index": 17691,
+      "output_tokens": 256,
+      "prediction": ":\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A text containing repeated phrases (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with specific sentences containing \"special magic numbers\" associated with specific terms (high-fellow, picayune-trapezium, broad-stool, reminiscent-rush).\n    *   Task: Identify and recall the special magic numbers for the specified terms: broad-stool, high-fellow, reminiscent-rush, and picayune-trapezium.\n    *   Output: List the numbers corresponding to each term.\n\n2.  **Scan the Text for Keywords and Numbers:**\n    *   Search for \"high-fellow\":\n        *   Found: \"One of the special magic numbers for high-fellow is: 5453111.\"\n        *   Number: 5453111\n    *   Search for \"picayune-trapezium\":\n        *   Found: \"One of the special magic numbers for picayune-trapezium is: 3980420.\"",
+      "prompt_tokens": 8060,
+      "references": [
+        "4799992",
+        "5453111",
+        "9932761",
+        "3980420"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 2087,
+      "output_tokens": 140,
+      "prediction": ":\n\n5591741, 3691843, 6861626, 6362818.\n\nThe special magic numbers for historical-roadway, jagged-calico, mindless-subgroup, and utopian-oxford mentioned in the provided text are:\n\n*   **historical-roadway**: 5591741\n*   **jagged-calico**: 3691843\n*   **mindless-subgroup**: 6861626\n*   **utopian-oxford**: 6362818",
+      "prompt_tokens": 8060,
+      "references": [
+        "5591741",
+        "3691843",
+        "6861626",
+        "6362818"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 8600,
+      "output_tokens": 83,
+      "prediction": ":\n\nBased on the text provided, here are the special magic numbers:\n\n*   **erratic-thousand:** 7077472\n*   **brainy-legacy:** 5624582\n*   **amuck-service:** 7825947\n*   **funny-dial:** 8876639",
+      "prompt_tokens": 7426,
+      "references": [
+        "7077472",
+        "5624582",
+        "7825947",
+        "8876639"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 13853,
+      "output_tokens": 88,
+      "prediction": ":\n\nBased on the text provided, here are the special magic numbers you asked for:\n\n*   **boring-snowmobiling:** 3846800\n*   **damp-execution:** 3334578\n*   **eatable-stress:** 1320443\n*   **ambiguous-reform:** 3017743",
+      "prompt_tokens": 8057,
+      "references": [
+        "3846800",
+        "3334578",
+        "1320443",
+        "3017743"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        true,
+        false,
+        false
+      ],
+      "index": 24901,
+      "output_tokens": 256,
+      "prediction": ":\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A text containing repeated phrases (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with specific sentences containing \"special magic numbers\" associated with specific labels (e.g., \"diligent-upward\", \"adorable-doctorate\", \"exclusive-tobacco\", \"juvenile-mini-skirt\").\n    *   Task: Memorize the hidden magic numbers and then answer a quiz question about them.\n    *   Quiz Question: \"What are all the special magic numbers for exclusive-tobacco, diligent-upward, juvenile-mini-skirt, and adorable-doctorate mentioned in the provided text?\"\n    *   Constraint: The user wants the answer based *only* on the provided text.\n\n2.  **Scan the Text for Magic Numbers:**\n    *   I need to look for patterns like \"One of the special magic numbers for [label] is: [number].\"\n    *   Scanning...\n    *   Found: \"One of the special magic numbers for diligent-upward is: 4594732.\"",
+      "prompt_tokens": 8057,
+      "references": [
+        "8156563",
+        "4594732",
+        "2551709",
+        "3249657"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 22976,
+      "output_tokens": 88,
+      "prediction": ":\n\nBased on the text provided, here are the special magic numbers you asked for:\n\n*   **optimal-pagoda:** 3167536\n*   **sharp-secretion:** 6231650\n*   **hulking-tap:** 1662962\n*   **labored-belief:** 7377216",
+      "prompt_tokens": 8057,
+      "references": [
+        "3167536",
+        "6231650",
+        "1662962",
+        "7377216"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 1723,
+      "output_tokens": 84,
+      "prediction": ":\n\nBased on the text provided, here are the special magic numbers:\n\n*   **needy-official:** 8927684\n*   **narrow-speakerphone:** 1982222\n*   **direful-diam:** 7951902\n*   **ambiguous-enrollment:** 6296266",
+      "prompt_tokens": 8054,
+      "references": [
+        "8927684",
+        "6296266",
+        "1982222",
+        "7951902"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 20125,
+      "output_tokens": 85,
+      "prediction": ":\n\nBased on the text provided, here are the special magic numbers:\n\n*   **strange-generator**: 4048427\n*   **lethal-formal**: 9359079\n*   **abstracted-comestible**: 9999045\n*   **tacit-platelet**: 8174744",
+      "prompt_tokens": 8057,
+      "references": [
+        "4048427",
+        "9359079",
+        "9999045",
+        "8174744"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "index": 8075,
+      "output_tokens": 256,
+      "prediction": ":\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A text containing repeated phrases (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with specific sentences containing \"special magic numbers\".\n    *   Task: Identify and memorize the special magic numbers hidden in the text.\n    *   Output: Quiz the user about the numbers afterwards (but the current prompt asks me to list them based on the text provided).\n    *   Specific Question: \"What are all the special magic numbers for undesirable-sleet, magenta-attenuation, garrulous-textbook, and ahead-counter mentioned in the provided text?\"\n\n2.  **Scan the Text for Keywords:**\n    *   I need to look for the specific labels: \"undesirable-sleet\", \"magenta-attenuation\", \"garrulous-textbook\", \"ahead-counter\".\n    *   I need to extract the numbers associated with them.\n\n3.  **Extraction Process:**\n    *   *Scan 1:* \"One of the special magic numbers for magenta-attenuation is: 687",
+      "prompt_tokens": 8060,
+      "references": [
+        "5578051",
+        "6876243",
+        "1958206",
+        "8069002"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 28276,
+      "output_tokens": 81,
+      "prediction": ":\n\nBased on the text provided, here are the special magic numbers:\n\n*   **testy-hand:** 6193152\n*   **nasty-slot:** 8939525\n*   **cool-clerk:** 1297505\n*   **vengeful-bunch:** 3442342",
+      "prompt_tokens": 8051,
+      "references": [
+        "3442342",
+        "1297505",
+        "6193152",
+        "8939525"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 10333,
+      "output_tokens": 84,
+      "prediction": ":\n\nBased on the text provided, here are the special magic numbers:\n\n*   **sassy-dryer:** 5953358\n*   **watery-hound:** 5770235\n*   **invincible-e-book:** 1372902\n*   **nice-deck:** 9275933",
+      "prompt_tokens": 8060,
+      "references": [
+        "5770235",
+        "5953358",
+        "1372902",
+        "9275933"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "index": 1809,
+      "output_tokens": 256,
+      "prediction": ":\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A text containing repeated phrases (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with specific sentences containing \"special magic numbers\" associated with specific names (soggy-kick, waggish-melatonin, brave-measure, fuzzy-waterfront).\n    *   Task: Identify and memorize the special magic numbers hidden in the text.\n    *   Output: Quiz the user about the numbers afterwards (but the current prompt asks me to list them based on the text provided).\n    *   Specific Question: \"What are all the special magic numbers for soggy-kick, brave-measure, fuzzy-waterfront, and waggish-melatonin mentioned in the provided text?\"\n\n2.  **Scan the Text for Keywords:**\n    *   Keyword 1: \"soggy-kick\"\n    *   Keyword 2: \"brave-measure\"\n    *   Keyword 3: \"fuzzy-waterfront\"\n    *   Keyword 4: \"waggish-melatonin\"\n\n3.  **",
+      "prompt_tokens": 8060,
+      "references": [
+        "2330914",
+        "1567115",
+        "2858983",
+        "6209002"
+      ]
+    },
+    {
+      "hits": [
+        false,
+        false,
+        false,
+        true
+      ],
+      "index": 12291,
+      "output_tokens": 256,
+      "prediction": ":\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Input: A text containing repeated phrases (\"The grass is green. The sky is blue. The sun is yellow. Here we go. There and back again.\") interspersed with specific sentences containing \"special magic numbers\" associated with specific terms (e.g., \"dusty-seaplane\", \"envious-crewman\", \"poor-labour\", \"trashy-operating\").\n    *   Task: Identify and memorize the special magic numbers hidden in the text.\n    *   Output: Answer a quiz question by listing the special magic numbers for four specific terms: \"poor-labour\", \"envious-crewman\", \"trashy-operating\", and \"dusty-seaplane\".\n\n2.  **Scan the Text for Magic Numbers:**\n    *   I need to look for patterns like \"One of the special magic numbers for [term] is: [number].\"\n    *   Scan 1: \"One of the special magic numbers for dusty-seaplane is: 4646393.\" -> Found `dusty-seaplane`: `4646393`.",
+      "prompt_tokens": 8063,
+      "references": [
+        "2026974",
+        "2188743",
+        "3209336",
+        "4646393"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 19345,
+      "output_tokens": 85,
+      "prediction": ":\n\nBased on the text provided, here are the special magic numbers:\n\n*   **absent-dragonfruit:** 6937093\n*   **temporary-buffalo:** 1300514\n*   **thoughtful-valuable:** 9597226\n*   **dashing-gliding:** 3441765",
+      "prompt_tokens": 8057,
+      "references": [
+        "1300514",
+        "3441765",
+        "6937093",
+        "9597226"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 27145,
+      "output_tokens": 83,
+      "prediction": ":\n\nBased on the text provided, here are the special magic numbers:\n\n*   **horrible-trial:** 2928889\n*   **understood-hip:** 1578414\n*   **deafening-sector:** 3641742\n*   **distinct-teacher:** 4488158",
+      "prompt_tokens": 8048,
+      "references": [
+        "3641742",
+        "2928889",
+        "1578414",
+        "4488158"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 16726,
+      "output_tokens": 83,
+      "prediction": ":\n\nBased on the text provided, here are the special magic numbers:\n\n*   **trashy-heartbeat:** 2660316\n*   **red-affect:** 4460154\n*   **somber-restoration:** 3141249\n*   **beautiful-gravitas:** 5466177",
+      "prompt_tokens": 8057,
+      "references": [
+        "4460154",
+        "3141249",
+        "5466177",
+        "2660316"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 16415,
+      "output_tokens": 83,
+      "prediction": ":\n\nBased on the text provided, here are the special magic numbers:\n\n*   **temporary-sister-in-law:** 1527004\n*   **depressed-share:** 2179416\n*   **alert-breast:** 8494518\n*   **shiny-scratch:** 7253371",
+      "prompt_tokens": 7426,
+      "references": [
+        "7253371",
+        "8494518",
+        "1527004",
+        "2179416"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 8269,
+      "output_tokens": 88,
+      "prediction": ":\n\nBased on the text provided, here are the special magic numbers:\n\n*   **melted-grill:** 9924518\n*   **capable-fragrance:** 8180909\n*   **unadvised-extinction:** 7337471\n*   **picayune-recruit:** 2751823",
+      "prompt_tokens": 8063,
+      "references": [
+        "8180909",
+        "7337471",
+        "9924518",
+        "2751823"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 24355,
+      "output_tokens": 85,
+      "prediction": ":\n\nBased on the text provided, here are the special magic numbers:\n\n*   **magical-labor**: 3412363\n*   **volatile-clothing**: 3459882\n*   **miscreant-land**: 6004527\n*   **clear-woodwind**: 6629493",
+      "prompt_tokens": 8060,
+      "references": [
+        "6004527",
+        "3412363",
+        "3459882",
+        "6629493"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 22375,
+      "output_tokens": 87,
+      "prediction": ":\n\nBased on the text provided, here are the special magic numbers:\n\n*   **hilarious-exocrine:** 2362659\n*   **abortive-kingdom:** 6637236\n*   **meek-sabre:** 6687828\n*   **wry-clip:** 3578217",
+      "prompt_tokens": 8063,
+      "references": [
+        "2362659",
+        "6637236",
+        "6687828",
+        "3578217"
+      ]
+    }
+  ],
+  "config_effect": {
+    "allocation": "fp16",
+    "detail": {
+      "a2_flag": false,
+      "cache_dtype": "auto",
+      "mamba_ssm_cache_dtype": "float32",
+      "per_layer": {}
+    },
+    "group_structure_verified": false,
+    "ok": true
+  },
+  "created_at_utc": "2026-08-09T13:06:14Z",
+  "data_file": "data/ruler/ruler_niah_multiquery_L8192/seed23/validation.jsonl",
+  "data_sha256": "eeeded064fce2534d47fa7d6341025783e48861a7766f7c4d0c6d42aae717a69",
+  "elapsed_s": 78.8,
+  "engine": {
+    "kwargs": {
+      "disable_log_stats": true,
+      "enforce_eager": true,
+      "gpu_memory_utilization": 0.85,
+      "max_model_len": 16384,
+      "seed": 7
+    },
+    "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-9B/snapshots/master",
+    "vllm_version": "0.26.1rc1.dev245+ge2fa28594"
+  },
+  "host": "autodl-container-ca6c40b13f-016bd465",
+  "length": 8192,
+  "max_tokens": 256,
+  "metric": "string_match_all",
+  "num_samples": 20,
+  "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+  "sampling_params": {
+    "max_tokens": 256,
+    "temperature": 0.0,
+    "thinking": "default"
+  },
+  "schema_version": 1,
+  "seed": 7,
+  "status": "completed_validated",
+  "task": "ruler_niah_multiquery",
+  "task_type": "niah",
+  "thinking": "default",
+  "tokens_to_generate": 128
+}

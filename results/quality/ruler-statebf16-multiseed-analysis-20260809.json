@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "dataset_seeds": [
+    42,
+    11,
+    23
+  ],
+  "engine_seed": 7,
+  "protocol": "ruler_quality.py --max-tokens 256 --thinking default; dataset generated per random_seed",
+  "rows": [
+    {
+      "task": "ruler_fwe",
+      "length": 4096,
+      "model": "2b",
+      "fp16_mean": 29.44,
+      "bf16_mean": 25.55,
+      "delta_mean": -3.89,
+      "ci95_delta": [
+        -32.97,
+        25.19
+      ],
+      "per_dataset_seed": {
+        "42": {
+          "fp16": 15.0,
+          "fp16_statebf16": 23.33
+        },
+        "11": {
+          "fp16": 43.33,
+          "fp16_statebf16": 28.33
+        },
+        "23": {
+          "fp16": 30.0,
+          "fp16_statebf16": 25.0
+        }
+      }
+    },
+    {
+      "task": "ruler_fwe",
+      "length": 8192,
+      "model": "2b",
+      "fp16_mean": 35.0,
+      "bf16_mean": 36.67,
+      "delta_mean": 1.66,
+      "ci95_delta": [
+        -5.51,
+        8.83
+      ],
+      "per_dataset_seed": {
+        "42": {
+          "fp16": 41.67,
+          "fp16_statebf16": 40.0
+        },
+        "11": {
+          "fp16": 36.67,
+          "fp16_statebf16": 40.0
+        },
+        "23": {
+          "fp16": 26.67,
+          "fp16_statebf16": 30.0
+        }
+      }
+    },
+    {
+      "task": "ruler_niah_multiquery",
+      "length": 4096,
+      "model": "9b",
+      "fp16_mean": 87.92,
+      "bf16_mean": 88.75,
+      "delta_mean": 0.83,
+      "ci95_delta": [
+        -3.91,
+        5.58
+      ],
+      "per_dataset_seed": {
+        "42": {
+          "fp16": 91.25,
+          "fp16_statebf16": 92.5
+        },
+        "11": {
+          "fp16": 86.25,
+          "fp16_statebf16": 85.0
+        },
+        "23": {
+          "fp16": 86.25,
+          "fp16_statebf16": 88.75
+        }
+      }
+    },
+    {
+      "task": "ruler_niah_multiquery",
+      "length": 8192,
+      "model": "9b",
+      "fp16_mean": 72.92,
+      "bf16_mean": 68.75,
+      "delta_mean": -4.17,
+      "ci95_delta": [
+        -8.91,
+        0.58
+      ],
+      "per_dataset_seed": {
+        "42": {
+          "fp16": 53.75,
+          "fp16_statebf16": 47.5
+        },
+        "11": {
+          "fp16": 85.0,
+          "fp16_statebf16": 81.25
+        },
+        "23": {
+          "fp16": 80.0,
+          "fp16_statebf16": 77.5
+        }
+      }
+    },
+    {
+      "task": "ruler_fwe",
+      "length": 8192,
+      "model": "9b",
+      "fp16_mean": 53.89,
+      "bf16_mean": 54.44,
+      "delta_mean": 0.55,
+      "ci95_delta": [
+        -11.39,
+        12.5
+      ],
+      "per_dataset_seed": {
+        "42": {
+          "fp16": 98.33,
+          "fp16_statebf16": 93.33
+        },
+        "11": {
+          "fp16": 36.67,
+          "fp16_statebf16": 40.0
+        },
+        "23": {
+          "fp16": 26.67,
+          "fp16_statebf16": 30.0
+        }
+      }
+    }
+  ]
+}
