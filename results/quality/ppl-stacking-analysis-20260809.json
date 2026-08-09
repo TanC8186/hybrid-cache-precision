@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "attempt": "ppl-stacking-20260809",
+  "protocol": "hybrid_premise.py --bits 4 --seeds 7,42,2026 --num-seqs 5 --max-len 2048 --chunk 128; statefp32=--state-dtype auto, statebf16=--state-dtype bfloat16 (write-boundary rounding)",
+  "tables": {
+    "c4": {
+      "fp32_state_mean": 17.873,
+      "bf16_state_mean": 17.8701,
+      "delta_bf16_vs_fp32": -0.0029,
+      "ci95_delta": [
+        -0.0129,
+        0.0072
+      ]
+    },
+    "pg19": {
+      "fp32_state_mean": 27.621,
+      "bf16_state_mean": 27.6276,
+      "delta_bf16_vs_fp32": 0.0065,
+      "ci95_delta": [
+        -0.0447,
+        0.0578
+      ]
+    }
+  },
+  "stacking_cost_vs_fp16_kv": {
+    "c4": {
+      "fp16kv_state_delta": -0.0003,
+      "int4kv_state_delta": -0.0029,
+      "note": "state-bf16 marginal cost under int4 KV vs under fp16 KV; if CI overlap, stacking adds no measurable state-precision cost"
+    },
+    "pg19": {
+      "fp16kv_state_delta": 0.0004,
+      "int4kv_state_delta": 0.0065,
+      "note": "state-bf16 marginal cost under int4 KV vs under fp16 KV; if CI overlap, stacking adds no measurable state-precision cost"
+    }
+  }
+}
