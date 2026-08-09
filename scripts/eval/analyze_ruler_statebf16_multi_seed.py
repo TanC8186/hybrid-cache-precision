@@ -35,12 +35,12 @@ def legacy_attempt(model: str, alloc: str) -> str:
     return "ruler-subset-20260808-9b"
 
 
-def load_cell(ruler_dir: Path, attempt_bf16: str, attempt_fp16: str, task: str, length: int, dseed: int, alloc: str, model: str) -> dict:
+def load_cell(ruler_dir: Path, attempt_2b: str, attempt_9b: str, task: str, length: int, dseed: int, alloc: str, model: str) -> dict:
     if dseed == 42:
         attempt = legacy_attempt(model, alloc)
         name = f"{task}__L{length}__{alloc}__s7.json"
     else:
-        attempt = attempt_bf16 if alloc == "fp16_statebf16" else attempt_fp16
+        attempt = attempt_2b if model == "2b" else attempt_9b
         name = f"{task}__L{length}__{alloc}__s7__d{dseed}.json"
     path = ruler_dir / attempt / name
     rec = json.loads(path.read_text(encoding="utf-8"))
@@ -52,8 +52,8 @@ def load_cell(ruler_dir: Path, attempt_bf16: str, attempt_fp16: str, task: str, 
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--ruler-dir", default="results/quality/ruler-subset")
-    ap.add_argument("--attempt-bf16", default="ruler-subset-20260809-multiseed")
-    ap.add_argument("--attempt-fp16", default="ruler-subset-20260809-multiseed")
+    ap.add_argument("--attempt-2b", default="ruler-subset-20260809-multiseed-2b")
+    ap.add_argument("--attempt-9b", default="ruler-subset-20260809-multiseed-9b")
     ap.add_argument("--out", default="results/quality/ruler-statebf16-multiseed-analysis-20260809.json")
     args = ap.parse_args()
     ruler_dir = Path(args.ruler_dir)
@@ -64,8 +64,8 @@ def main() -> int:
         bf16_vals = []
         per_seed = {}
         for dseed in DATASET_SEEDS:
-            fp16 = load_cell(ruler_dir, args.attempt_bf16, args.attempt_fp16, task, length, dseed, "fp16", model)
-            bf16 = load_cell(ruler_dir, args.attempt_bf16, args.attempt_fp16, task, length, dseed, "fp16_statebf16", model)
+            fp16 = load_cell(ruler_dir, args.attempt_2b, args.attempt_9b, task, length, dseed, "fp16", model)
+            bf16 = load_cell(ruler_dir, args.attempt_2b, args.attempt_9b, task, length, dseed, "fp16_statebf16", model)
             fp16_vals.append(float(fp16["accuracy"]))
             bf16_vals.append(float(bf16["accuracy"]))
             per_seed[str(dseed)] = {
