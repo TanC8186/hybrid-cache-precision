@@ -71,13 +71,45 @@ CI 均含 0；与 fp16-KV 下的 state 代价（−0.0003/+0.0004）同量级 �
 p=0.0493、L8 p=0.0036，均正），Bonferroni（α/36=0.001389）与 BH-FDR 后均不显著；
 量级 0.0004–0.0007 PPL 远低于 seed 间波动。结论保持“噪声级 + 符号一致性观察”。
 
-## 6. S-formal serving（P0-4 / R4，进行中）
+## 6. S-formal serving（P0-4 / R4，已完成）
 
-- MVEx：Random60 2/2 + ShareGPT300 2/2，全部 completed_validated、到达窗口偏差
-  ≤0.01%、int4_statebf16 日志含 `int4_per_token_head` + `Using the user-specified
-  value` + `CUDAGraphMode.PIECEWISE`；
-- Pilot：Random60 6/6 完成；ShareGPT300 6/6 进行中；
-- Formal：72 样本待 pilot 门禁通过后挂机。
+门禁链：MVEx 4/4 → Pilot 12/12 → Formal 72/72（Random60 30 + ShareGPT300 42），
+全部 `completed_validated`、sidecar 哈希/请求守恒/到达窗口（≤0.01%）/SLO 键全过；
+int4_statebf16 日志含 `int4_per_token_head` + `Using the user-specified value` +
+`CUDAGraphMode.PIECEWISE`。
+
+可持续边界（3 seeds 全可持续的最大 rate，req/s）：
+
+| workload | allocation | 250ms | 500ms | 1000ms | 2000/3000ms |
+|---|---|---:|---:|---:|---:|
+| Random60 | int4 (fp32 state) | 30 | 35 | 35 | 40 |
+| Random60 | int4_statebf16 | 30 | 35 | **40** | 40 |
+| ShareGPT300 | int4 (fp32 state) | 40 | 40 | 40 | 40 |
+| ShareGPT300 | int4_statebf16 | **35** | 40 | 40 | 40 |
+
+配对 goodput Δ（bf16−fp32，95% CI 不含 0 的要点）：
+
+- Random60：r40 250ms +0.334 [+0.078,+0.589]、500ms +0.215 [+0.154,+0.276]；
+  r45 2000/3000ms +0.324/+0.367；r50 2000/3000ms +0.041/+0.072；
+- ShareGPT300：r40 250ms **−0.002 [−0.0026,−0.0015]**（小但 CI 不含 0）；
+  其余格无显著差异。
+
+结论（workload-specific，禁止 generalization）：
+
+- Random60 边界区（TTFT 1000ms）35→40，与 +38~41% 容量方向一致；
+- ShareGPT300 250ms 边界 40→35，500ms 以上持平 → bf16 state 收益不普适，
+  claim #5 必须按 workload × threshold 分开表述；
+- 状态：`ANALYZED`（独立复现待跑，升级 VERIFIED 前不进 Abstract）。
+
+原始产物归档：`results/verified/2026-08-09/statebf16-formal-20260809.tar.gz`
+（1.0GB，sha256 `8b856e8d...`，gitignored 不入库；远端保留副本）。
+
+## 7. GSM8K 9-seed 补跑（S3 功效，进行中）
+
+预注册见 `docs/notes/gsm8k-power-plan-2026-08-09.md`。S-formal 完成后自动接力：
+2B 36 cells（fp16/fp16_statebf16/uniform_int4/int4+bf16 × 9 seeds），随后 9B
+18 cells（fp16/fp16_statebf16 × 9 seeds）；每 cell 校验 sampled_indices=200、
+seed_semantics、config_effect、sha。
 
 ## 证据路径
 
