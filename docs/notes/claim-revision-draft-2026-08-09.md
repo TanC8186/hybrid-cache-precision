@@ -12,7 +12,9 @@
 - 容量：uniform int4 KV 下 2B/9B、4K/16K 收益 +11~41%，模型误差 −3.24~−0.18%
   （int4 列 4/4 全负，同号概率 0.0625 → 保守下界表述）；
 - PPL：fp16-KV 与 int4-KV 下 bf16 state 的 3-seed 配对 CI 均含 0；
-- RULER：单 dataset-seed 点估计（补 seed 后按 CI 表述，见 P1-2）；
+- RULER：3 dataset-seed 点估计，5 个原非零格 Δ CI 均含 0（2B fwe L4096
+  −3.89 [−32.97,+25.19]；9B niah_multiquery L8192 −4.17 [−8.91,+0.58] 等）；
+  FWE 跨 seed 波动极大 → 只能“点估计 + 宽 CI”，不得称持平或掉分；
 - GSM8K（真实随机协议，9 seeds）：2B state −1.00pt [−1.71,−0.29]（p=0.025）、
   int4 −2.72pt [−4.20,−1.24]（p=0.007）→ 回退显著；2B stacking 边际
   +1.17pt [−0.33,+2.66]（无叠加代价）；9B state +0.33pt [−0.07,+0.73]

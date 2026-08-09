@@ -122,6 +122,36 @@ sampled_indices=200、seed_semantics、config_effect、sha，0 异常。
 关键结论：2B 的 state/int4 回退在真实随机协议 + 9 seeds 下显著（CI 不含 0），
 9B 无回退（点估计略正）；旧 head-200 协议数字全部退役。
 
+## 8. P1-1 chunk 消融（R7，已完成）
+
+2B C4，1 seed × 1 seq，fp16 KV：
+
+| state | chunk=128 | chunk=1 | 差 |
+|---|---:|---:|---:|
+| fp32 | 19.3480 | 36.1643 | +16.82 |
+| bf16 | 19.3498 | 36.1347 | +16.78 |
+
+**结论**：harness chunk=1 的 PPL 比 chunk=128 高约 87%，state 差值仍极小；
+该 transformers harness 的 chunk 级写回舍入不能等同 kernel 逐 token 语义，
+论文必须披露此边界；kernel 路径质量证据只采用 vLLM GSM8K/RULER。
+
+## 9. P1-2 RULER 3-dataset-seed（R8，已完成）
+
+数据集 seeds {42,11,23}（10 份新数据集，去重后 8 个唯一文件），新 cells 20/20，
+legacy seed-42 cells 10/10：
+
+| 格 | fp16 mean | bf16 mean | Δ [95% CI] |
+|---|---:|---:|---:|
+| 2B fwe L4096 | 29.44 | 25.55 | −3.89 [−32.97, +25.19] |
+| 2B fwe L8192 | 35.00 | 36.67 | +1.66 [−5.51, +8.83] |
+| 9B niah_multiquery L4096 | 87.92 | 88.75 | +0.83 [−3.91, +5.58] |
+| 9B niah_multiquery L8192 | 72.92 | 68.75 | −4.17 [−8.91, +0.58] |
+| 9B fwe L8192 | 53.89 | 54.44 | +0.55 [−11.39, +12.50] |
+
+**结论**：5 个非零格在 3 个 dataset seed 下全部 CI 含 0；原单 seed 非零差异是
+抽奖/think 截断噪声；FWE 跨 seed 波动极大（如 2B fp16 L4096：15/43.3/30），
+RULER 只能按点估计 + 宽 CI 表述，claim 3 据此修订。
+
 ## 证据路径
 
 - `results/verified/2026-08-09/capacity-state-fp16kv/` + `capacity-2x2-analysis.json`
