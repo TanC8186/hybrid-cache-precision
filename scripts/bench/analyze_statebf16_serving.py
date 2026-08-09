@@ -38,7 +38,7 @@ def load_json(path: Path) -> dict:
 
 
 def audit_attempt(raw_dir: Path, attempt_id: str) -> dict:
-    attempt_dir = raw_dir / "attempts" / attempt_id
+    attempt_dir = raw_dir / attempt_id
     if not attempt_dir.is_dir():
         raise SystemExit(f"missing attempt: {attempt_dir}")
     contract = load_json(attempt_dir / "attempt_contract.json")
@@ -150,9 +150,7 @@ def paired_deltas(samples: list[dict]) -> list[dict]:
 def log_proof(raw_dir: Path) -> dict:
     proof = {}
     for allocation in ("int4", "int4_statebf16"):
-        logs = list((raw_dir / "attempts").glob(f"*/servers/{allocation}/*/server.log"))
-        if not logs:
-            logs = list((raw_dir / "servers" / allocation).glob("*/server.log"))
+        logs = list(raw_dir.glob(f"*/servers/{allocation}/*/server.log"))
         texts = [log.read_text(encoding="utf-8", errors="replace") for log in logs]
         proof[allocation] = {
             "session_count": len(texts),
