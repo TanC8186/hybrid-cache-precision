@@ -101,6 +101,13 @@ int4_statebf16 日志含 `int4_per_token_head` + `Using the user-specified value
   claim #5 必须按 workload × threshold 分开表述；
 - 状态：`ANALYZED`（独立复现待跑，升级 VERIFIED 前不进 Abstract）。
 
+**独立复现（2026-08-09 完成，最终判定 PARTIALLY_REPRODUCIBLE）**：
+Random60 显著 paired goodput 增益复现（r40 250/500ms、r45、r50 2000/3000ms），
+但 1000ms 边界 35→40 不复现；ShareGPT 250ms 边界方向翻转、r45 int4 相对差
+>100%（TTFT p99 262/822/16191ms vs ≈18.5s），不可作收益表述。claim #5 保持
+`ANALYZED`，只按 workload × threshold 限定进正文（详见
+`docs/notes/repro-final-2026-08-09.md`）。
+
 原始产物归档：`results/verified/2026-08-09/statebf16-formal-20260809.tar.gz`
 （1.0GB，sha256 `8b856e8d...`，gitignored 不入库；远端保留副本）。
 

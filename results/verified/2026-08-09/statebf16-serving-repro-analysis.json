@@ -1,0 +1,1085 @@
+{
+  "schema_version": 1,
+  "attempts": [
+    {
+      "attempt_id": "statebf16-v3-random60-repro-20260809",
+      "git_commit": "0c0cb6672d7c8f67f72aa1d38cd5efa6d99b4082",
+      "vllm_source_commit": "55f47685a553ad8d776c464c59785399a98c7185",
+      "config_sha256": "99c0e36c4a42043f16bcbee84f3ac7232a1e7bb2286fe56b113da5445e969c53",
+      "num_samples": 30
+    },
+    {
+      "attempt_id": "statebf16-v3-sharegpt300-repro-20260809",
+      "git_commit": "0c0cb6672d7c8f67f72aa1d38cd5efa6d99b4082",
+      "vllm_source_commit": "55f47685a553ad8d776c464c59785399a98c7185",
+      "config_sha256": "ae649f71d6b2ba994b6ceb9b6a3d7ce3728bf236f574b88757b4a0cb6cbd16e3",
+      "num_samples": 42
+    }
+  ],
+  "boundaries": {
+    "int4__random": {
+      "250": 30.0,
+      "500": 35.0,
+      "1000": 40.0,
+      "2000": 40.0,
+      "3000": 40.0
+    },
+    "int4__sharegpt": {
+      "250": 35.0,
+      "500": 40.0,
+      "1000": 40.0,
+      "2000": 40.0,
+      "3000": 40.0
+    },
+    "int4_statebf16__random": {
+      "250": 30.0,
+      "500": 35.0,
+      "1000": 40.0,
+      "2000": 40.0,
+      "3000": 40.0
+    },
+    "int4_statebf16__sharegpt": {
+      "250": 40.0,
+      "500": 40.0,
+      "1000": 40.0,
+      "2000": 40.0,
+      "3000": 40.0
+    }
+  },
+  "paired_deltas": [
+    {
+      "workload": "random",
+      "rate": 30.0,
+      "threshold_ms": 250,
+      "per_seed_delta": {
+        "7": 0.0006,
+        "42": 0.0016,
+        "2026": -0.0016
+      },
+      "mean_delta_goodput": 0.0002,
+      "ci95": [
+        -0.0038,
+        0.0043
+      ],
+      "fp32_all_sustainable": true,
+      "bf16_all_sustainable": true
+    },
+    {
+      "workload": "random",
+      "rate": 30.0,
+      "threshold_ms": 500,
+      "per_seed_delta": {
+        "7": -0.0005,
+        "42": 0.0016,
+        "2026": -0.0005
+      },
+      "mean_delta_goodput": 0.0002,
+      "ci95": [
+        -0.0029,
+        0.0033
+      ],
+      "fp32_all_sustainable": true,
+      "bf16_all_sustainable": true
+    },
+    {
+      "workload": "random",
+      "rate": 30.0,
+      "threshold_ms": 1000,
+      "per_seed_delta": {
+        "7": -0.0005,
+        "42": 0.0016,
+        "2026": -0.0005
+      },
+      "mean_delta_goodput": 0.0002,
+      "ci95": [
+        -0.0029,
+        0.0033
+      ],
+      "fp32_all_sustainable": true,
+      "bf16_all_sustainable": true
+    },
+    {
+      "workload": "random",
+      "rate": 30.0,
+      "threshold_ms": 2000,
+      "per_seed_delta": {
+        "7": -0.0005,
+        "42": 0.0016,
+        "2026": -0.0005
+      },
+      "mean_delta_goodput": 0.0002,
+      "ci95": [
+        -0.0029,
+        0.0033
+      ],
+      "fp32_all_sustainable": true,
+      "bf16_all_sustainable": true
+    },
+    {
+      "workload": "random",
+      "rate": 30.0,
+      "threshold_ms": 3000,
+      "per_seed_delta": {
+        "7": -0.0005,
+        "42": 0.0016,
+        "2026": -0.0005
+      },
+      "mean_delta_goodput": 0.0002,
+      "ci95": [
+        -0.0029,
+        0.0033
+      ],
+      "fp32_all_sustainable": true,
+      "bf16_all_sustainable": true
+    },
+    {
+      "workload": "random",
+      "rate": 35.0,
+      "threshold_ms": 250,
+      "per_seed_delta": {
+        "7": 0.0476,
+        "42": 0.0334,
+        "2026": 0.0184
+      },
+      "mean_delta_goodput": 0.0332,
+      "ci95": [
+        -0.0031,
+        0.0694
+      ],
+      "fp32_all_sustainable": false,
+      "bf16_all_sustainable": false
+    },
+    {
+      "workload": "random",
+      "rate": 35.0,
+      "threshold_ms": 500,
+      "per_seed_delta": {
+        "7": -0.0009,
+        "42": 0.0004,
+        "2026": 0.0013
+      },
+      "mean_delta_goodput": 0.0002,
+      "ci95": [
+        -0.0025,
+        0.003
+      ],
+      "fp32_all_sustainable": true,
+      "bf16_all_sustainable": true
+    },
+    {
+      "workload": "random",
+      "rate": 35.0,
+      "threshold_ms": 1000,
+      "per_seed_delta": {
+        "7": -0.0009,
+        "42": 0.0004,
+        "2026": 0.0013
+      },
+      "mean_delta_goodput": 0.0002,
+      "ci95": [
+        -0.0025,
+        0.003
+      ],
+      "fp32_all_sustainable": true,
+      "bf16_all_sustainable": true
+    },
+    {
+      "workload": "random",
+      "rate": 35.0,
+      "threshold_ms": 2000,
+      "per_seed_delta": {
+        "7": -0.0009,
+        "42": 0.0004,
+        "2026": 0.0013
+      },
+      "mean_delta_goodput": 0.0002,
+      "ci95": [
+        -0.0025,
+        0.003
+      ],
+      "fp32_all_sustainable": true,
+      "bf16_all_sustainable": true
+    },
+    {
+      "workload": "random",
+      "rate": 35.0,
+      "threshold_ms": 3000,
+      "per_seed_delta": {
+        "7": -0.0009,
+        "42": 0.0004,
+        "2026": 0.0013
+      },
+      "mean_delta_goodput": 0.0002,
+      "ci95": [
+        -0.0025,
+        0.003
+      ],
+      "fp32_all_sustainable": true,
+      "bf16_all_sustainable": true
+    },
+    {
+      "workload": "random",
+      "rate": 40.0,
+      "threshold_ms": 250,
+      "per_seed_delta": {
+        "7": 0.3168,
+        "42": 0.3168,
+        "2026": 0.2789
+      },
+      "mean_delta_goodput": 0.3042,
+      "ci95": [
+        0.2498,
+        0.3585
+      ],
+      "fp32_all_sustainable": false,
+      "bf16_all_sustainable": false
+    },
+    {
+      "workload": "random",
+      "rate": 40.0,
+      "threshold_ms": 500,
+      "per_seed_delta": {
+        "7": 0.164,
+        "42": 0.1283,
+        "2026": 0.1219
+      },
+      "mean_delta_goodput": 0.1381,
+      "ci95": [
+        0.0817,
+        0.1945
+      ],
+      "fp32_all_sustainable": false,
+      "bf16_all_sustainable": false
+    },
+    {
+      "workload": "random",
+      "rate": 40.0,
+      "threshold_ms": 1000,
+      "per_seed_delta": {
+        "7": 0.0081,
+        "42": 0.015,
+        "2026": 0.0116
+      },
+      "mean_delta_goodput": 0.0116,
+      "ci95": [
+        0.003,
+        0.0201
+      ],
+      "fp32_all_sustainable": true,
+      "bf16_all_sustainable": true
+    },
+    {
+      "workload": "random",
+      "rate": 40.0,
+      "threshold_ms": 2000,
+      "per_seed_delta": {
+        "7": 0.0081,
+        "42": 0.0061,
+        "2026": 0.0064
+      },
+      "mean_delta_goodput": 0.0069,
+      "ci95": [
+        0.0042,
+        0.0095
+      ],
+      "fp32_all_sustainable": true,
+      "bf16_all_sustainable": true
+    },
+    {
+      "workload": "random",
+      "rate": 40.0,
+      "threshold_ms": 3000,
+      "per_seed_delta": {
+        "7": 0.0081,
+        "42": 0.0061,
+        "2026": 0.0064
+      },
+      "mean_delta_goodput": 0.0069,
+      "ci95": [
+        0.0042,
+        0.0095
+      ],
+      "fp32_all_sustainable": true,
+      "bf16_all_sustainable": true
+    },
+    {
+      "workload": "random",
+      "rate": 45.0,
+      "threshold_ms": 250,
+      "per_seed_delta": {
+        "7": 0.0522,
+        "42": 0.0274,
+        "2026": -0.0008
+      },
+      "mean_delta_goodput": 0.0263,
+      "ci95": [
+        -0.0396,
+        0.0921
+      ],
+      "fp32_all_sustainable": false,
+      "bf16_all_sustainable": false
+    },
+    {
+      "workload": "random",
+      "rate": 45.0,
+      "threshold_ms": 500,
+      "per_seed_delta": {
+        "7": 0.0541,
+        "42": 0.0559,
+        "2026": 0.0704
+      },
+      "mean_delta_goodput": 0.0601,
+      "ci95": [
+        0.0378,
+        0.0824
+      ],
+      "fp32_all_sustainable": false,
+      "bf16_all_sustainable": false
+    },
+    {
+      "workload": "random",
+      "rate": 45.0,
+      "threshold_ms": 1000,
+      "per_seed_delta": {
+        "7": 0.1237,
+        "42": 0.0907,
+        "2026": 0.0603
+      },
+      "mean_delta_goodput": 0.0916,
+      "ci95": [
+        0.0129,
+        0.1703
+      ],
+      "fp32_all_sustainable": false,
+      "bf16_all_sustainable": false
+    },
+    {
+      "workload": "random",
+      "rate": 45.0,
+      "threshold_ms": 2000,
+      "per_seed_delta": {
+        "7": 0.2793,
+        "42": 0.3861,
+        "2026": 0.3477
+      },
+      "mean_delta_goodput": 0.3377,
+      "ci95": [
+        0.2033,
+        0.4721
+      ],
+      "fp32_all_sustainable": false,
+      "bf16_all_sustainable": false
+    },
+    {
+      "workload": "random",
+      "rate": 45.0,
+      "threshold_ms": 3000,
+      "per_seed_delta": {
+        "7": 0.3626,
+        "42": 0.4009,
+        "2026": 0.3535
+      },
+      "mean_delta_goodput": 0.3724,
+      "ci95": [
+        0.3099,
+        0.4348
+      ],
+      "fp32_all_sustainable": false,
+      "bf16_all_sustainable": false
+    },
+    {
+      "workload": "random",
+      "rate": 50.0,
+      "threshold_ms": 250,
+      "per_seed_delta": {
+        "7": 0.0054,
+        "42": 0.0014,
+        "2026": 0.0076
+      },
+      "mean_delta_goodput": 0.0048,
+      "ci95": [
+        -0.003,
+        0.0126
+      ],
+      "fp32_all_sustainable": false,
+      "bf16_all_sustainable": false
+    },
+    {
+      "workload": "random",
+      "rate": 50.0,
+      "threshold_ms": 500,
+      "per_seed_delta": {
+        "7": 0.0185,
+        "42": 0.0081,
+        "2026": 0.0071
+      },
+      "mean_delta_goodput": 0.0113,
+      "ci95": [
+        -0.0044,
+        0.0269
+      ],
+      "fp32_all_sustainable": false,
+      "bf16_all_sustainable": false
+    },
+    {
+      "workload": "random",
+      "rate": 50.0,
+      "threshold_ms": 1000,
+      "per_seed_delta": {
+        "7": 0.0658,
+        "42": 0.0235,
+        "2026": 0.0181
+      },
+      "mean_delta_goodput": 0.0358,
+      "ci95": [
+        -0.0291,
+        0.1008
+      ],
+      "fp32_all_sustainable": false,
+      "bf16_all_sustainable": false
+    },
+    {
+      "workload": "random",
+      "rate": 50.0,
+      "threshold_ms": 2000,
+      "per_seed_delta": {
+        "7": 0.0497,
+        "42": 0.0343,
+        "2026": 0.0399
+      },
+      "mean_delta_goodput": 0.0413,
+      "ci95": [
+        0.0219,
+        0.0607
+      ],
+      "fp32_all_sustainable": false,
+      "bf16_all_sustainable": false
+    },
+    {
+      "workload": "random",
+      "rate": 50.0,
+      "threshold_ms": 3000,
+      "per_seed_delta": {
+        "7": 0.0874,
+        "42": 0.0612,
+        "2026": 0.0665
+      },
+      "mean_delta_goodput": 0.0717,
+      "ci95": [
+        0.0374,
+        0.1061
+      ],
+      "fp32_all_sustainable": false,
+      "bf16_all_sustainable": false
+    },
+    {
+      "workload": "sharegpt",
+      "rate": 20.0,
+      "threshold_ms": 250,
+      "per_seed_delta": {
+        "7": -0.0003,
+        "42": 0.0007,
+        "2026": -0.0004
+      },
+      "mean_delta_goodput": 0.0,
+      "ci95": [
+        -0.0015,
+        0.0016
+      ],
+      "fp32_all_sustainable": true,
+      "bf16_all_sustainable": true
+    },
+    {
+      "workload": "sharegpt",
+      "rate": 20.0,
+      "threshold_ms": 500,
+      "per_seed_delta": {
+        "7": -0.0003,
+        "42": 0.0007,
+        "2026": -0.0004
+      },
+      "mean_delta_goodput": 0.0,
+      "ci95": [
+        -0.0015,
+        0.0016
+      ],
+      "fp32_all_sustainable": true,
+      "bf16_all_sustainable": true
+    },
+    {
+      "workload": "sharegpt",
+      "rate": 20.0,
+      "threshold_ms": 1000,
+      "per_seed_delta": {
+        "7": -0.0003,
+        "42": 0.0007,
+        "2026": -0.0004
+      },
+      "mean_delta_goodput": 0.0,
+      "ci95": [
+        -0.0015,
+        0.0016
+      ],
+      "fp32_all_sustainable": true,
+      "bf16_all_sustainable": true
+    },
+    {
+      "workload": "sharegpt",
+      "rate": 20.0,
+      "threshold_ms": 2000,
+      "per_seed_delta": {
+        "7": -0.0003,
+        "42": 0.0007,
+        "2026": -0.0004
+      },
+      "mean_delta_goodput": 0.0,
+      "ci95": [
+        -0.0015,
+        0.0016
+      ],
+      "fp32_all_sustainable": true,
+      "bf16_all_sustainable": true
+    },
+    {
+      "workload": "sharegpt",
+      "rate": 20.0,
+      "threshold_ms": 3000,
+      "per_seed_delta": {
+        "7": -0.0003,
+        "42": 0.0007,
+        "2026": -0.0004
+      },
+      "mean_delta_goodput": 0.0,
+      "ci95": [
+        -0.0015,
+        0.0016
+      ],
+      "fp32_all_sustainable": true,
+      "bf16_all_sustainable": true
+    },
+    {
+      "workload": "sharegpt",
+      "rate": 25.0,
+      "threshold_ms": 250,
+      "per_seed_delta": {
+        "7": -0.0009,
+        "42": -0.0002,
+        "2026": -0.0004
+      },
+      "mean_delta_goodput": -0.0005,
+      "ci95": [
+        -0.0014,
+        0.0004
+      ],
+      "fp32_all_sustainable": true,
+      "bf16_all_sustainable": true
+    },
+    {
+      "workload": "sharegpt",
+      "rate": 25.0,
+      "threshold_ms": 500,
+      "per_seed_delta": {
+        "7": -0.0009,
+        "42": -0.0002,
+        "2026": -0.0004
+      },
+      "mean_delta_goodput": -0.0005,
+      "ci95": [
+        -0.0014,
+        0.0004
+      ],
+      "fp32_all_sustainable": true,
+      "bf16_all_sustainable": true
+    },
+    {
+      "workload": "sharegpt",
+      "rate": 25.0,
+      "threshold_ms": 1000,
+      "per_seed_delta": {
+        "7": -0.0009,
+        "42": -0.0002,
+        "2026": -0.0004
+      },
+      "mean_delta_goodput": -0.0005,
+      "ci95": [
+        -0.0014,
+        0.0004
+      ],
+      "fp32_all_sustainable": true,
+      "bf16_all_sustainable": true
+    },
+    {
+      "workload": "sharegpt",
+      "rate": 25.0,
+      "threshold_ms": 2000,
+      "per_seed_delta": {
+        "7": -0.0009,
+        "42": -0.0002,
+        "2026": -0.0004
+      },
+      "mean_delta_goodput": -0.0005,
+      "ci95": [
+        -0.0014,
+        0.0004
+      ],
+      "fp32_all_sustainable": true,
+      "bf16_all_sustainable": true
+    },
+    {
+      "workload": "sharegpt",
+      "rate": 25.0,
+      "threshold_ms": 3000,
+      "per_seed_delta": {
+        "7": -0.0009,
+        "42": -0.0002,
+        "2026": -0.0004
+      },
+      "mean_delta_goodput": -0.0005,
+      "ci95": [
+        -0.0014,
+        0.0004
+      ],
+      "fp32_all_sustainable": true,
+      "bf16_all_sustainable": true
+    },
+    {
+      "workload": "sharegpt",
+      "rate": 30.0,
+      "threshold_ms": 250,
+      "per_seed_delta": {
+        "7": 0.001,
+        "42": 0.0002,
+        "2026": 0.0001
+      },
+      "mean_delta_goodput": 0.0004,
+      "ci95": [
+        -0.0009,
+        0.0017
+      ],
+      "fp32_all_sustainable": true,
+      "bf16_all_sustainable": true
+    },
+    {
+      "workload": "sharegpt",
+      "rate": 30.0,
+      "threshold_ms": 500,
+      "per_seed_delta": {
+        "7": 0.001,
+        "42": -0.0,
+        "2026": 0.0001
+      },
+      "mean_delta_goodput": 0.0004,
+      "ci95": [
+        -0.0011,
+        0.0018
+      ],
+      "fp32_all_sustainable": true,
+      "bf16_all_sustainable": true
+    },
+    {
+      "workload": "sharegpt",
+      "rate": 30.0,
+      "threshold_ms": 1000,
+      "per_seed_delta": {
+        "7": 0.001,
+        "42": -0.0,
+        "2026": 0.0001
+      },
+      "mean_delta_goodput": 0.0004,
+      "ci95": [
+        -0.0011,
+        0.0018
+      ],
+      "fp32_all_sustainable": true,
+      "bf16_all_sustainable": true
+    },
+    {
+      "workload": "sharegpt",
+      "rate": 30.0,
+      "threshold_ms": 2000,
+      "per_seed_delta": {
+        "7": 0.001,
+        "42": -0.0,
+        "2026": 0.0001
+      },
+      "mean_delta_goodput": 0.0004,
+      "ci95": [
+        -0.0011,
+        0.0018
+      ],
+      "fp32_all_sustainable": true,
+      "bf16_all_sustainable": true
+    },
+    {
+      "workload": "sharegpt",
+      "rate": 30.0,
+      "threshold_ms": 3000,
+      "per_seed_delta": {
+        "7": 0.001,
+        "42": -0.0,
+        "2026": 0.0001
+      },
+      "mean_delta_goodput": 0.0004,
+      "ci95": [
+        -0.0011,
+        0.0018
+      ],
+      "fp32_all_sustainable": true,
+      "bf16_all_sustainable": true
+    },
+    {
+      "workload": "sharegpt",
+      "rate": 35.0,
+      "threshold_ms": 250,
+      "per_seed_delta": {
+        "7": -0.0011,
+        "42": -0.0003,
+        "2026": 0.0013
+      },
+      "mean_delta_goodput": -0.0,
+      "ci95": [
+        -0.003,
+        0.003
+      ],
+      "fp32_all_sustainable": true,
+      "bf16_all_sustainable": true
+    },
+    {
+      "workload": "sharegpt",
+      "rate": 35.0,
+      "threshold_ms": 500,
+      "per_seed_delta": {
+        "7": 0.0006,
+        "42": 0.0003,
+        "2026": 0.0017
+      },
+      "mean_delta_goodput": 0.0009,
+      "ci95": [
+        -0.001,
+        0.0027
+      ],
+      "fp32_all_sustainable": true,
+      "bf16_all_sustainable": true
+    },
+    {
+      "workload": "sharegpt",
+      "rate": 35.0,
+      "threshold_ms": 1000,
+      "per_seed_delta": {
+        "7": 0.0006,
+        "42": 0.0003,
+        "2026": 0.0017
+      },
+      "mean_delta_goodput": 0.0009,
+      "ci95": [
+        -0.001,
+        0.0027
+      ],
+      "fp32_all_sustainable": true,
+      "bf16_all_sustainable": true
+    },
+    {
+      "workload": "sharegpt",
+      "rate": 35.0,
+      "threshold_ms": 2000,
+      "per_seed_delta": {
+        "7": 0.0006,
+        "42": 0.0003,
+        "2026": 0.0017
+      },
+      "mean_delta_goodput": 0.0009,
+      "ci95": [
+        -0.001,
+        0.0027
+      ],
+      "fp32_all_sustainable": true,
+      "bf16_all_sustainable": true
+    },
+    {
+      "workload": "sharegpt",
+      "rate": 35.0,
+      "threshold_ms": 3000,
+      "per_seed_delta": {
+        "7": 0.0006,
+        "42": 0.0003,
+        "2026": 0.0017
+      },
+      "mean_delta_goodput": 0.0009,
+      "ci95": [
+        -0.001,
+        0.0027
+      ],
+      "fp32_all_sustainable": true,
+      "bf16_all_sustainable": true
+    },
+    {
+      "workload": "sharegpt",
+      "rate": 40.0,
+      "threshold_ms": 250,
+      "per_seed_delta": {
+        "7": 0.0041,
+        "42": 0.0016,
+        "2026": 0.0043
+      },
+      "mean_delta_goodput": 0.0033,
+      "ci95": [
+        -0.0003,
+        0.007
+      ],
+      "fp32_all_sustainable": false,
+      "bf16_all_sustainable": true
+    },
+    {
+      "workload": "sharegpt",
+      "rate": 40.0,
+      "threshold_ms": 500,
+      "per_seed_delta": {
+        "7": 0.0026,
+        "42": 0.0004,
+        "2026": 0.0016
+      },
+      "mean_delta_goodput": 0.0015,
+      "ci95": [
+        -0.0012,
+        0.0043
+      ],
+      "fp32_all_sustainable": true,
+      "bf16_all_sustainable": true
+    },
+    {
+      "workload": "sharegpt",
+      "rate": 40.0,
+      "threshold_ms": 1000,
+      "per_seed_delta": {
+        "7": 0.0026,
+        "42": 0.0004,
+        "2026": 0.0016
+      },
+      "mean_delta_goodput": 0.0015,
+      "ci95": [
+        -0.0012,
+        0.0043
+      ],
+      "fp32_all_sustainable": true,
+      "bf16_all_sustainable": true
+    },
+    {
+      "workload": "sharegpt",
+      "rate": 40.0,
+      "threshold_ms": 2000,
+      "per_seed_delta": {
+        "7": 0.0026,
+        "42": 0.0004,
+        "2026": 0.0016
+      },
+      "mean_delta_goodput": 0.0015,
+      "ci95": [
+        -0.0012,
+        0.0043
+      ],
+      "fp32_all_sustainable": true,
+      "bf16_all_sustainable": true
+    },
+    {
+      "workload": "sharegpt",
+      "rate": 40.0,
+      "threshold_ms": 3000,
+      "per_seed_delta": {
+        "7": 0.0026,
+        "42": 0.0004,
+        "2026": 0.0016
+      },
+      "mean_delta_goodput": 0.0015,
+      "ci95": [
+        -0.0012,
+        0.0043
+      ],
+      "fp32_all_sustainable": true,
+      "bf16_all_sustainable": true
+    },
+    {
+      "workload": "sharegpt",
+      "rate": 45.0,
+      "threshold_ms": 250,
+      "per_seed_delta": {
+        "7": 0.0606,
+        "42": 0.0141,
+        "2026": 0.4624
+      },
+      "mean_delta_goodput": 0.179,
+      "ci95": [
+        -0.4334,
+        0.7914
+      ],
+      "fp32_all_sustainable": false,
+      "bf16_all_sustainable": false
+    },
+    {
+      "workload": "sharegpt",
+      "rate": 45.0,
+      "threshold_ms": 500,
+      "per_seed_delta": {
+        "7": 0.0848,
+        "42": 0.0079,
+        "2026": 0.4832
+      },
+      "mean_delta_goodput": 0.192,
+      "ci95": [
+        -0.4418,
+        0.8257
+      ],
+      "fp32_all_sustainable": false,
+      "bf16_all_sustainable": false
+    },
+    {
+      "workload": "sharegpt",
+      "rate": 45.0,
+      "threshold_ms": 1000,
+      "per_seed_delta": {
+        "7": 0.1037,
+        "42": 0.0101,
+        "2026": 0.4894
+      },
+      "mean_delta_goodput": 0.201,
+      "ci95": [
+        -0.4301,
+        0.8322
+      ],
+      "fp32_all_sustainable": false,
+      "bf16_all_sustainable": false
+    },
+    {
+      "workload": "sharegpt",
+      "rate": 45.0,
+      "threshold_ms": 2000,
+      "per_seed_delta": {
+        "7": 0.1391,
+        "42": 0.026,
+        "2026": 0.5014
+      },
+      "mean_delta_goodput": 0.2222,
+      "ci95": [
+        -0.3948,
+        0.8391
+      ],
+      "fp32_all_sustainable": false,
+      "bf16_all_sustainable": false
+    },
+    {
+      "workload": "sharegpt",
+      "rate": 45.0,
+      "threshold_ms": 3000,
+      "per_seed_delta": {
+        "7": 0.1141,
+        "42": 0.0592,
+        "2026": 0.4964
+      },
+      "mean_delta_goodput": 0.2232,
+      "ci95": [
+        -0.3685,
+        0.8149
+      ],
+      "fp32_all_sustainable": false,
+      "bf16_all_sustainable": false
+    },
+    {
+      "workload": "sharegpt",
+      "rate": 50.0,
+      "threshold_ms": 250,
+      "per_seed_delta": {
+        "7": 0.0016,
+        "42": 0.0025,
+        "2026": 0.0299
+      },
+      "mean_delta_goodput": 0.0114,
+      "ci95": [
+        -0.0286,
+        0.0513
+      ],
+      "fp32_all_sustainable": false,
+      "bf16_all_sustainable": false
+    },
+    {
+      "workload": "sharegpt",
+      "rate": 50.0,
+      "threshold_ms": 500,
+      "per_seed_delta": {
+        "7": 0.0054,
+        "42": 0.0028,
+        "2026": 0.0273
+      },
+      "mean_delta_goodput": 0.0118,
+      "ci95": [
+        -0.0216,
+        0.0453
+      ],
+      "fp32_all_sustainable": false,
+      "bf16_all_sustainable": false
+    },
+    {
+      "workload": "sharegpt",
+      "rate": 50.0,
+      "threshold_ms": 1000,
+      "per_seed_delta": {
+        "7": 0.0032,
+        "42": 0.0113,
+        "2026": 0.0262
+      },
+      "mean_delta_goodput": 0.0136,
+      "ci95": [
+        -0.0154,
+        0.0426
+      ],
+      "fp32_all_sustainable": false,
+      "bf16_all_sustainable": false
+    },
+    {
+      "workload": "sharegpt",
+      "rate": 50.0,
+      "threshold_ms": 2000,
+      "per_seed_delta": {
+        "7": 0.0095,
+        "42": 0.0105,
+        "2026": 0.0231
+      },
+      "mean_delta_goodput": 0.0143,
+      "ci95": [
+        -0.0045,
+        0.0332
+      ],
+      "fp32_all_sustainable": false,
+      "bf16_all_sustainable": false
+    },
+    {
+      "workload": "sharegpt",
+      "rate": 50.0,
+      "threshold_ms": 3000,
+      "per_seed_delta": {
+        "7": 0.0123,
+        "42": 0.0074,
+        "2026": 0.0258
+      },
+      "mean_delta_goodput": 0.0152,
+      "ci95": [
+        -0.0085,
+        0.0389
+      ],
+      "fp32_all_sustainable": false,
+      "bf16_all_sustainable": false
+    }
+  ],
+  "log_proof": {
+    "int4": {
+      "session_count": 2,
+      "has_int4": true,
+      "has_override_warning": false,
+      "has_piecewise": true
+    },
+    "int4_statebf16": {
+      "session_count": 2,
+      "has_int4": true,
+      "has_override_warning": true,
+      "has_piecewise": true
+    }
+  }
+}

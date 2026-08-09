@@ -25,6 +25,8 @@
 - S-formal（int4 KV × {fp32,bf16} state，Random60+ShareGPT300，3 seeds）完成前：
   “ANALYZED / formal pending”，不进 Abstract；
 - 完成后：按 workload × TTFT threshold 的 3-seed 边界与 paired goodput Δ 表述；
+- 独立复现后（PARTIALLY_REPRODUCIBLE）：Random60 过载区 paired goodput 增益可写
+  （原始+复现区间），1000ms 边界与 ShareGPT 250ms/r45 不得写为稳定结论；
 - DA 的“带宽 vs 容量”替代解释：用每 server 的 num_gpu_blocks/concurrency 与容量
   探针对照讨论，不把 TTFT 改善单独归因于容量。
 
