@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "attempt": "reasoning-gsm8k-state3seed-v2-20260809",
+  "bench": "gsm8k",
+  "protocol": "no-think, greedy, max_tokens=1024, 200 rows sampled per seed (random_state=seed, no replacement); same seed -> same subset in every allocation; engine seed kept for provenance only",
+  "rows": [
+    {
+      "allocation": "fp16",
+      "n": 200,
+      "per_seed": {
+        "7": 0.705,
+        "42": 0.695,
+        "2026": 0.705
+      },
+      "mean": 0.7017,
+      "std": 0.0058
+    },
+    {
+      "allocation": "fp16_statebf16",
+      "n": 200,
+      "per_seed": {
+        "7": 0.695,
+        "42": 0.665,
+        "2026": 0.705
+      },
+      "mean": 0.6883,
+      "std": 0.0208,
+      "delta_vs_fp16": -0.0133,
+      "ci95_vs_fp16": [
+        -0.0513,
+        0.0246
+      ]
+    },
+    {
+      "allocation": "uniform_int4",
+      "n": 200,
+      "per_seed": {
+        "7": 0.645,
+        "42": 0.7,
+        "2026": 0.695
+      },
+      "mean": 0.68,
+      "std": 0.0304,
+      "delta_vs_fp16": -0.0217,
+      "ci95_vs_fp16": [
+        -0.1062,
+        0.0629
+      ]
+    },
+    {
+      "allocation": "uniform_int4_statebf16",
+      "n": 200,
+      "per_seed": {
+        "7": 0.645,
+        "42": 0.7,
+        "2026": 0.705
+      },
+      "mean": 0.6833,
+      "std": 0.0333,
+      "delta_vs_fp16": -0.0183,
+      "ci95_vs_fp16": [
+        -0.1082,
+        0.0715
+      ]
+    }
+  ],
+  "stacking_marginal": {
+    "compare": "uniform_int4_statebf16 vs uniform_int4",
+    "per_seed_delta": {
+      "7": 0.0,
+      "42": 0.0,
+      "2026": 0.01
+    },
+    "mean": 0.0033,
+    "ci95": [
+      -0.011,
+      0.0177
+    ]
+  }
+}
