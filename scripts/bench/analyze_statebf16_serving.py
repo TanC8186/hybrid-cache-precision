@@ -114,15 +114,23 @@ def paired_deltas(samples: list[dict]) -> list[dict]:
     workloads = sorted({s["workload"] for s in samples})
     rows = []
     for workload in workloads:
-        fp32 = {s["seed"]: s for s in samples if s["allocation"] == "int4" and s["workload"] == workload}
-        bf16 = {s["seed"]: s for s in samples if s["allocation"] == "int4_statebf16" and s["workload"] == workload}
+        fp32 = {
+            (s["seed"], s["offered_rate"]): s
+            for s in samples
+            if s["allocation"] == "int4" and s["workload"] == workload
+        }
+        bf16 = {
+            (s["seed"], s["offered_rate"]): s
+            for s in samples
+            if s["allocation"] == "int4_statebf16" and s["workload"] == workload
+        }
         rates = sorted({s["offered_rate"] for s in fp32.values()})
-        seeds = sorted(fp32)
+        seeds = sorted({s["seed"] for s in fp32.values()})
         for rate in rates:
             for threshold in THRESHOLDS:
                 diffs = [
-                    bf16[s]["goodput_over_offered"][threshold]
-                    - fp32[s]["goodput_over_offered"][threshold]
+                    bf16[(s, rate)]["goodput_over_offered"][threshold]
+                    - fp32[(s, rate)]["goodput_over_offered"][threshold]
                     for s in seeds
                 ]
                 mean_d = statistics.mean(diffs)
@@ -137,10 +145,10 @@ def paired_deltas(samples: list[dict]) -> list[dict]:
                         "mean_delta_goodput": round(mean_d, 4),
                         "ci95": [round(mean_d - half, 4), round(mean_d + half, 4)],
                         "fp32_all_sustainable": all(
-                            fp32[s]["goodput_over_offered"][threshold] >= 0.95 for s in seeds
+                            fp32[(s, rate)]["goodput_over_offered"][threshold] >= 0.95 for s in seeds
                         ),
                         "bf16_all_sustainable": all(
-                            bf16[s]["goodput_over_offered"][threshold] >= 0.95 for s in seeds
+                            bf16[(s, rate)]["goodput_over_offered"][threshold] >= 0.95 for s in seeds
                         ),
                     }
                 )
