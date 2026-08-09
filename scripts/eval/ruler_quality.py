@@ -101,6 +101,8 @@ def main() -> int:
     ap.add_argument("--max-model-len", type=int, default=16384)
     ap.add_argument("--gpu-memory-utilization", type=float, default=0.85)
     ap.add_argument("--data-root", default="data/ruler")
+    ap.add_argument("--dataset-seed", type=int, default=42,
+                    help="RULER dataset generation seed; non-42 reads data/ruler/<task>_L<len>/seed<seed>/")
     ap.add_argument("--out-dir", default="results/quality/ruler-subset")
     ap.add_argument("--attempt-id", default="ruler-subset-20260807")
     ap.add_argument(
@@ -117,7 +119,10 @@ def main() -> int:
     ap.add_argument("--resume", action="store_true")
     args = ap.parse_args()
 
-    data_file = Path(args.data_root) / f"{args.task}_L{args.length}" / "validation.jsonl"
+    cell_dir = Path(args.data_root) / f"{args.task}_L{args.length}"
+    if args.dataset_seed != 42:
+        cell_dir = cell_dir / f"seed{args.dataset_seed}"
+    data_file = cell_dir / "validation.jsonl"
     if not data_file.exists():
         raise SystemExit(f"dataset missing: {data_file}")
     data_sha = sha256_file(data_file)

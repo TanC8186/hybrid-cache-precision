@@ -60,6 +60,8 @@ def main() -> int:
         default="/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master",
     )
     ap.add_argument("--save-dir", default="data/ruler")
+    ap.add_argument("--dataset-seed-dir", action="store_true",
+                    help="store seed-variant datasets under seed<random_seed>/ subdirs")
     ap.add_argument("--force", action="store_true")
     args = ap.parse_args()
 
@@ -76,7 +78,10 @@ def main() -> int:
     template = templates["base"].format(task_template=config["template"]) + config["answer_prefix"]
 
     data_root = Path(args.save_dir)
-    save_dir = data_root / f"{args.task}_L{args.length}"
+    save_name = f"{args.task}_L{args.length}"
+    if args.dataset_seed_dir and args.random_seed != 42:
+        save_name = f"{save_name}/seed{args.random_seed}"
+    save_dir = data_root / save_name
     data_file = save_dir / "validation.jsonl"
     if data_file.exists() and not args.force:
         print(f"skip (exists): {data_file} sha256={sha256_file(data_file)}")
@@ -92,7 +97,7 @@ def main() -> int:
         "--save_dir",
         str(data_root),
         "--save_name",
-        f"{args.task}_L{args.length}",
+        save_name,
         "--subset",
         "validation",
         "--tokenizer_path",
