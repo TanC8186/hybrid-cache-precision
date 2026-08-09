@@ -131,7 +131,9 @@ def main() -> int:
                     }
                 )
 
-    gaps = [r["signed_gap_pct"] for r in rows]
+    by_kv: dict[str, list[float]] = {"fp16": [], "int4": []}
+    for r in rows:
+        by_kv[r["kv_dtype"]].append(r["signed_gap_pct"])
     result = {
         "schema_version": 1,
         "int4_attempt": args.int4_attempt,
@@ -145,14 +147,23 @@ def main() -> int:
         "rows": rows,
         "r_kv_rows": r_kv_rows,
         "signed_error_summary": {
-            "n_cells": len(gaps),
-            "all_negative": all(g < 0 for g in gaps),
-            "min_pct": round(min(gaps), 2),
-            "max_pct": round(max(gaps), 2),
-            "same_sign_probability_note": (
-                "P(all same sign by chance | coin flip) = 2 * (0.5)^4 = 0.0625; "
-                "negative bias is consistent with discrete block rounding"
-            ),
+            "by_kv_dtype": {
+                kv: {
+                    "n_cells": len(vals),
+                    "all_negative": all(v < 0 for v in vals),
+                    "negative_count": sum(1 for v in vals if v < 0),
+                    "positive_count": sum(1 for v in vals if v > 0),
+                    "min_pct": round(min(vals), 2),
+                    "max_pct": round(max(vals), 2),
+                    "same_sign_probability_note": (
+                        "int4 headline cells: P(all negative by chance | coin flip) "
+                        "= 2 * (0.5)^4 = 0.0625, consistent with discrete block "
+                        "rounding; fp16-KV cells show mixed signs, so the "
+                        "conservative-lower-bound framing is scoped to int4 KV"
+                    ),
+                }
+                for kv, vals in by_kv.items()
+            },
         },
     }
     out = Path(args.out)
