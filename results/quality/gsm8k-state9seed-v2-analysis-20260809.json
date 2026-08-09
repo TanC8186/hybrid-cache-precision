@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "attempt": "reasoning-gsm8k-state9seed-v2-20260809",
+  "bench": "gsm8k",
+  "protocol": "no-think, greedy, max_tokens=1024, 200 rows sampled per seed (random_state=seed, no replacement); same seed -> same subset in every allocation; engine seed kept for provenance only",
+  "power_plan": {
+    "alpha": 0.05,
+    "power_target": 0.8,
+    "n_seeds": 9,
+    "mde_formula": "MDE = (t_{1-alpha/2,df} + t_{power,df}) * sd / sqrt(n)",
+    "decision_rule": "significance only if paired CI excludes 0; otherwise point estimate with uncertainty"
+  },
+  "rows": [
+    {
+      "allocation": "fp16",
+      "n": 200,
+      "n_seeds": 9,
+      "per_seed": {
+        "7": 0.705,
+        "42": 0.695,
+        "2026": 0.705,
+        "11": 0.705,
+        "23": 0.73,
+        "31": 0.74,
+        "47": 0.72,
+        "73": 0.715,
+        "97": 0.69
+      },
+      "mean": 0.7117,
+      "std": 0.0162
+    },
+    {
+      "allocation": "fp16_statebf16",
+      "n": 200,
+      "n_seeds": 9,
+      "per_seed": {
+        "7": 0.695,
+        "42": 0.665,
+        "2026": 0.705,
+        "11": 0.68,
+        "23": 0.73,
+        "31": 0.74,
+        "47": 0.71,
+        "73": 0.705,
+        "97": 0.685
+      },
+      "mean": 0.7017,
+      "std": 0.0237,
+      "delta_vs_fp16": -0.01,
+      "ci95_vs_fp16": [
+        -0.0171,
+        -0.0029
+      ],
+      "paired_t": {
+        "p_value": 0.02494,
+        "ci_excludes_zero": true,
+        "mde_80_power": 0.0116,
+        "power_at_observed": 0.6753
+      }
+    },
+    {
+      "allocation": "uniform_int4",
+      "n": 200,
+      "n_seeds": 9,
+      "per_seed": {
+        "7": 0.645,
+        "42": 0.7,
+        "2026": 0.695,
+        "11": 0.655,
+        "23": 0.685,
+        "31": 0.71,
+        "47": 0.685,
+        "73": 0.715,
+        "97": 0.67
+      },
+      "mean": 0.6844,
+      "std": 0.0239,
+      "delta_vs_fp16": -0.0272,
+      "ci95_vs_fp16": [
+        -0.042,
+        -0.0124
+      ],
+      "paired_t": {
+        "p_value": 0.00693,
+        "ci_excludes_zero": true,
+        "mde_80_power": 0.0241,
+        "power_at_observed": 0.8828
+      }
+    },
+    {
+      "allocation": "uniform_int4_statebf16",
+      "n": 200,
+      "n_seeds": 9,
+      "per_seed": {
+        "7": 0.645,
+        "42": 0.7,
+        "2026": 0.705,
+        "11": 0.67,
+        "23": 0.69,
+        "31": 0.705,
+        "47": 0.72,
+        "73": 0.7,
+        "97": 0.73
+      },
+      "mean": 0.6961,
+      "std": 0.0256,
+      "delta_vs_fp16": -0.0156,
+      "ci95_vs_fp16": [
+        -0.0353,
+        0.0042
+      ],
+      "paired_t": {
+        "p_value": 0.16152,
+        "ci_excludes_zero": false,
+        "mde_80_power": 0.0322,
+        "power_at_observed": 0.275
+      }
+    }
+  ],
+  "stacking_marginal": {
+    "compare": "uniform_int4_statebf16 vs uniform_int4",
+    "per_seed_delta": {
+      "7": 0.0,
+      "42": 0.0,
+      "2026": 0.01,
+      "11": 0.015,
+      "23": 0.005,
+      "31": -0.005,
+      "47": 0.035,
+      "73": -0.015,
+      "97": 0.06
+    },
+    "mean": 0.0117,
+    "ci95": [
+      -0.0033,
+      0.0266
+    ],
+    "paired_t": {
+      "p_value": 0.16515,
+      "ci_excludes_zero": false,
+      "mde_80_power": 0.0244,
+      "power_at_observed": 0.2706
+    }
+  }
+}
