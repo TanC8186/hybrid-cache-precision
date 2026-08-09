@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "attempt": "reasoning-gsm8k-9b-state3seed-v2-20260809",
+  "bench": "gsm8k",
+  "protocol": "no-think, greedy, max_tokens=1024, 200 rows sampled per seed (random_state=seed, no replacement); same seed -> same subset in every allocation; engine seed kept for provenance only",
+  "rows": [
+    {
+      "allocation": "fp16",
+      "n": 200,
+      "per_seed": {
+        "7": 0.85,
+        "42": 0.86,
+        "2026": 0.885
+      },
+      "mean": 0.865,
+      "std": 0.018
+    },
+    {
+      "allocation": "fp16_statebf16",
+      "n": 200,
+      "per_seed": {
+        "7": 0.845,
+        "42": 0.86,
+        "2026": 0.89
+      },
+      "mean": 0.865,
+      "std": 0.0229,
+      "delta_vs_fp16": 0.0,
+      "ci95_vs_fp16": [
+        -0.0124,
+        0.0124
+      ]
+    }
+  ],
+  "stacking_marginal": null
+}

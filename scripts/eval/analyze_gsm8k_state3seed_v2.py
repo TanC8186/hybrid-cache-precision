@@ -30,7 +30,12 @@ def main() -> int:
     ap.add_argument("--dir", default="results/quality/reasoning")
     ap.add_argument("--attempt", default="reasoning-gsm8k-state3seed-v2-20260809")
     ap.add_argument("--out", default="results/quality/gsm8k-state3seed-v2-analysis-20260809.json")
+    ap.add_argument("--allocations", default=",".join(ALLOCATIONS))
     args = ap.parse_args()
+    allocations = [a.strip() for a in args.allocations.split(",") if a.strip()]
+    for a in allocations:
+        if a not in ALLOCATIONS:
+            raise SystemExit(f"unknown allocation: {a}")
 
     cells: dict[tuple[str, int], dict] = {}
     for path in (Path(args.dir) / args.attempt).glob("gsm8k__*.json"):
@@ -39,7 +44,7 @@ def main() -> int:
             continue
         cells[(rec["allocation"], rec["seed"])] = rec
 
-    missing = [(a, s) for a in ALLOCATIONS for s in SEEDS if (a, s) not in cells]
+    missing = [(a, s) for a in allocations for s in SEEDS if (a, s) not in cells]
     if missing:
         raise SystemExit(f"incomplete cells: {missing}")
 
@@ -52,7 +57,7 @@ def main() -> int:
 
     fp16 = {s: cells[("fp16", s)]["accuracy"] for s in SEEDS}
     rows = []
-    for alloc in ALLOCATIONS:
+    for alloc in allocations:
         scores = [cells[(alloc, s)]["accuracy"] for s in SEEDS]
         row = {
             "allocation": alloc,
@@ -69,11 +74,19 @@ def main() -> int:
             row["ci95_vs_fp16"] = [round(mean_d - half, 4), round(mean_d + half, 4)]
         rows.append(row)
 
-    int4 = {s: cells[("uniform_int4", s)]["accuracy"] for s in SEEDS}
-    stack = {s: cells[("uniform_int4_statebf16", s)]["accuracy"] for s in SEEDS}
-    stack_diffs = [stack[s] - int4[s] for s in SEEDS]
-    stack_mean = statistics.mean(stack_diffs)
-    stack_half = t_half(len(stack_diffs), statistics.stdev(stack_diffs))
+    stacking_marginal = None
+    if "uniform_int4" in allocations and "uniform_int4_statebf16" in allocations:
+        int4 = {s: cells[("uniform_int4", s)]["accuracy"] for s in SEEDS}
+        stack = {s: cells[("uniform_int4_statebf16", s)]["accuracy"] for s in SEEDS}
+        stack_diffs = [stack[s] - int4[s] for s in SEEDS]
+        stack_mean = statistics.mean(stack_diffs)
+        stack_half = t_half(len(stack_diffs), statistics.stdev(stack_diffs))
+        stacking_marginal = {
+            "compare": "uniform_int4_statebf16 vs uniform_int4",
+            "per_seed_delta": {str(s): round(stack[s] - int4[s], 4) for s in SEEDS},
+            "mean": round(stack_mean, 4),
+            "ci95": [round(stack_mean - stack_half, 4), round(stack_mean + stack_half, 4)],
+        }
 
     result = {
         "schema_version": 1,
@@ -85,12 +98,7 @@ def main() -> int:
             "every allocation; engine seed kept for provenance only"
         ),
         "rows": rows,
-        "stacking_marginal": {
-            "compare": "uniform_int4_statebf16 vs uniform_int4",
-            "per_seed_delta": {str(s): round(stack[s] - int4[s], 4) for s in SEEDS},
-            "mean": round(stack_mean, 4),
-            "ci95": [round(stack_mean - stack_half, 4), round(stack_mean + stack_half, 4)],
-        },
+        "stacking_marginal": stacking_marginal,
     }
     out = Path(args.out)
     out.parent.mkdir(parents=True, exist_ok=True)
