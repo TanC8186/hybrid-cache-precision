@@ -104,12 +104,23 @@ int4_statebf16 日志含 `int4_per_token_head` + `Using the user-specified value
 原始产物归档：`results/verified/2026-08-09/statebf16-formal-20260809.tar.gz`
 （1.0GB，sha256 `8b856e8d...`，gitignored 不入库；远端保留副本）。
 
-## 7. GSM8K 9-seed 补跑（S3 功效，进行中）
+## 7. GSM8K 9-seed 补跑（S3 功效，已完成）
 
 预注册见 `docs/notes/gsm8k-power-plan-2026-08-09.md`。S-formal 完成后自动接力：
-2B 36 cells（fp16/fp16_statebf16/uniform_int4/int4+bf16 × 9 seeds），随后 9B
-18 cells（fp16/fp16_statebf16 × 9 seeds）；每 cell 校验 sampled_indices=200、
-seed_semantics、config_effect、sha。
+2B 36 cells（fp16/fp16_statebf16/uniform_int4/int4+bf16 × 9 seeds）与 9B
+18 cells（fp16/fp16_statebf16 × 9 seeds）全部完成；每 cell 校验
+sampled_indices=200、seed_semantics、config_effect、sha，0 异常。
+
+| 模型 | 对比 | Δ [95% CI] | p | MDE(80%) | power | 判定 |
+|---|---|---:|---:|---:|---:|---|
+| 2B | statebf16 vs fp16 | −1.00pt [−1.71, −0.29] | 0.0249 | 1.16pt | 67.5% | **CI 不含 0** |
+| 2B | uniform int4 vs fp16 | −2.72pt [−4.20, −1.24] | 0.0069 | 2.41pt | 88.3% | **CI 不含 0** |
+| 2B | int4+bf16 vs fp16 | −1.56pt [−3.53, +0.42] | 0.1615 | 3.22pt | 27.5% | 含 0 |
+| 2B | stacking (int4+bf16 vs int4) | +1.17pt [−0.33, +2.66] | 0.165 | 2.44pt | 27.1% | 含 0，无可测叠加代价 |
+| 9B | statebf16 vs fp16 | +0.33pt [−0.07, +0.73] | 0.141 | 0.65pt | 30.2% | 含 0，无回退 |
+
+关键结论：2B 的 state/int4 回退在真实随机协议 + 9 seeds 下显著（CI 不含 0），
+9B 无回退（点估计略正）；旧 head-200 协议数字全部退役。
 
 ## 证据路径
 
