@@ -1,0 +1,62 @@
+Botev, Aleksandar and
+          De, Soham and
+          Smith, Samuel L and
+          Fernando, Anushan and
+          Muraru, George-Cristian and
+          Haroun, Ruba and
+          Berrada, Leonard and
+          Pascanu, Razvan and
+          Sessa, Pier Giuseppe and
+          Dadashi, Robert and
+          Hussenot, Léonard and
+          Ferret, Johan and
+          Girgin, Sertan and
+          Bachem, Olivier and
+          Andreev, Alek and
+          Kenealy, Kathleen and
+          Mesnard, Thomas and
+          Hardin, Cassidy and
+          Bhupatiraju, Surya and
+          Pathak, Shreya and
+          Sifre, Laurent and
+          Rivière, Morgane and
+          Kale, Mihir Sanjay and
+          Love, Juliette and
+          Tafti, Pouya and
+          Joulin, Armand and
+          Fiedel, Noah and
+          Senter, Evan and
+          Chen, Yutian and
+          Srinivasan, Srivatsan and
+          Desjardins, Guillaume and
+          Budden, David and
+          Doucet, Arnaud and
+          Vikram, Sharad and
+          Paszke, Adam and
+          Gale, Trevor and
+          Borgeaud, Sebastian and
+          Chen, Charlie and
+          Brock, Andy and
+          Paterson, Antonia and
+          Brennan, Jenny and
+          Risdal, Meg and
+          Gundluru, Raj and
+          Devanathan, Nesh and
+          Mooney, Paul and
+          Chauhan, Nilay and
+          Culliton, Phil and
+          Martins, Luiz Gustavo and
+          Bandy, Elisa and
+          Huntsperger, David and
+          Cameron, Glenn and
+          Zucker, Arthur and
+          Warkentin, Tris and
+          Peran, Ludovic and
+          Giang, Minh and
+          Ghahramani, Zoubin and
+          Farabet, Clément and
+          Kavukcuoglu, Koray and
+          Hassabis, Demis and
+          Hadsell, Raia and
+          Teh, Yee Whye and
+          de Frietas, Nando

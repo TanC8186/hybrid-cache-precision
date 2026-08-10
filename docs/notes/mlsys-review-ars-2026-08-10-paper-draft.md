@@ -133,8 +133,8 @@
     模式；08-10 R2 W4 已指出 FWE think 截断伪影，主表仍默认 think——
     要么改用 no-think 数据，要么在正文与图注显式披露并给出边界；
   - W3（MAJOR 建议）：state 精度 prior art 只引 ReplaySSM/PR#43518；需核对
-    并显式处置近年 Mamba/SSM 量化工作（如 Quamba arXiv:2410.13211、
-    MambaQuant arXiv:2504.13785），说明它们是否量化 serving 态，若否，
+    并显式处置近年 Mamba/SSM 量化工作（如 Quamba arXiv:2410.13229、
+    MambaQuant arXiv:2501.13484），说明它们是否量化 serving 态，若否，
     应写明“这些工作针对权重/激活，未处理逐序列 state dtype”；
   - W4（MINOR）：RecurrentGemma 基于 Griffin（De et al. 2024），建议补引
     Griffin 以给出理论谱系；DeltaNet（Yang et al./Schlag et al.）与 GDN
@@ -341,7 +341,7 @@ mandatory 维度 warn）优先级更高，触发 `major_revision`。本报告以
 
 | # | 修订项 | 状态 | 证据/落点 |
 |---|---|---|---|
-| R1 | RULER think/max-tokens 披露 | ✅ | Setup §4、Fig 3 图注、Limitations 新增 “RULER protocol” 段；no-think 重跑列为 future work |
+| R1 | RULER think/max-tokens 披露 | ✅ | Setup §4、Fig 4 图注、Limitations 新增 “RULER protocol” 段；no-think 重跑列为 future work |
 | R2 | vLLM dtype 引文改 PR #22196；#43518 语义纠正 | ✅ | related work 改写 + `main.bib` 新增 `vllmpr22196`，`vllmpr43518` 仅用于 FP8 checkpointing 语境 |
 | R3 | serving 补 p + BH 校正；"independent reproduction" 改 "second formal run" | ✅ | `results/quality/serving-bh/serving-bh-analysis-20260810.json`（60 单元 p/BH q）；正文补 p/q 并明写“无单元在 q<0.05 存活，按方向性处理”；摘要/正文/表格/图注统一改为 “second formal run” |
 | R4 | 标题收窄 + intro 免探针预测 + contributions 列表 | ✅ | 标题改为 "Joint Precision Budgeting Across Attention KV and Recurrent State..."；intro 四贡献 (a)–(d) + 目标场景（短上下文高并发） |
@@ -352,3 +352,19 @@ q=0.052。正文据此把 serving 过载区表述降级为“方向性证据 + �
 
 重编译状态：7 页、0 Overfull、28 条引用全部解析；标题/引文/统计数字已逐项
 与 JSON 交叉核对。
+
+### R5–R10 追加修订（2026-08-10 第二笔）
+
+| # | 修订项 | 状态 | 证据/落点 |
+|---|---|---|---|
+| R5 | 目标场景 + cost/请求换算 | ✅ | intro 已有目标场景；Results §5.1 新增换算：2B fp32 state 18.63 MiB/序列 → bf16 9.32 MiB/序列；int4 KV 4K 下 total-token 上限 2,692,710 → 3,703,954，等价 657 → 904 个并发 4K 序列（约 +247 slots） |
+| R6 | TP/多卡 state 与 KV 分片讨论 | ✅ | Limitations 新增 “Tensor parallelism” 段：均匀分片下 A·L 与 G 同乘 1/P，r_state 一阶不变；未测 TP=2/4，明确为预期而非测量 |
+| R7 | RULER 全网格披露 + 选择性复测口径 | ✅ | Results RULER 段写明 5 格来自早期 KV 量化筛选、先于 state 网格；新增附录表 tab:ruler-grid（28 格单 seed 全网格，均值 +0.49 pp / −0.71 pp） |
+| R8 | capacity 探针确定性声明 | ✅ | Setup §4 新增“每格单次确定性运行 + block 分配器确定性 + sha256 记录” |
+| R9 | state 精度 prior art 显式边界 | ✅ | related work 新增 Quamba (arXiv:2410.13229) / MambaQuant (arXiv:2501.13484) 一句：W8A8/W4A8 权重激活量化，未处理 serving 态逐序列 dtype；`main.bib` 新增两条（引用 28 → 30） |
+| R10 | 机制归因判别 | ✅ | Limitations 新增 “Mechanism attribution” 段：容量/带宽/页对齐混杂，serving 机制归因保持开放；给出 fixed-block-count 与 fixed-bytes 两种未来判别实验 |
+
+另：修正正文残留 “independent reproduction”（intro/setup/serving 共 3 处）为
+“second formal run”；capacity 公式补全为 C(L)=L·M/(A·L+G)，避免量纲歧义。
+重编译状态（R5–R10 后）：8 页、0 Overfull、30 条引用全部解析；无未定义引用；
+hyperref 重复锚点警告为模板既有（对照 ca5e558 同为 10 条）。
