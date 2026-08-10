@@ -30,9 +30,9 @@
 Hybrid linear-attention models pair a small set of GQA attention layers with
 interleaved Gated Delta Network (GDN) layers, so serving memory is split
 between a growing, quantizable attention KV cache and a fixed per-sequence
-recurrent state that no KV quantizer touches. Existing systems optimize only
-the KV bit-width and treat the state precision as fixed. We show that state
-precision is a second, composable budget dimension. On Qwen3.5-2B/9B served
+recurrent state that no KV quantizer touches. Existing systems optimize the
+KV bit-width and leave state precision fixed. We show that state precision
+is a second, composable budget dimension. On Qwen3.5-2B/9B served
 with vLLM on an RTX 5090, switching the GDN state from fp32 to bf16 raises
 int4-KV capacity by 1.11--1.41x across context lengths 4K--16K (a conservative
 lower bound: all four measured cells fall below the architecture-derived
@@ -72,8 +72,8 @@ but existing budget analyses, including prior work on state compression
 itself~\cite{replayssm,vllmpr43518}, do not treat it as a dimension that
 should be jointly allocated with the KV bit-width.
 
-This paper is a system study, not a new quantization algorithm. Its
-contribution is a measurement-plus-model-plus-closed-loop analysis of the
+This paper is a system study. It contributes measurement, an
+architecture-derived capacity model, and a closed-loop evaluation of the
 two-dimensional precision budget: (i) an architecture-derived capacity model
 $C(L)=M/(A\cdot L+G)$ in which $A$ is the per-token attention-KV footprint at
 the chosen KV bit-width and $G$ is the per-sequence state footprint at the
@@ -91,9 +91,9 @@ for the int4 column (sign test $P=0.0625$; errors $-0.18\%$ to $-3.24\%$). The
 compound ratio of int4 over fp16 KV rises from 2.245 to 2.675 at 2B/4K when
 the state is also bf16. The fp16-KV column is reported cell-by-cell because its
 signs are mixed ($+2.86\%$, $+3.53\%$, $-2.83\%$); block-rounding granularity
-shifts with layout and we do not claim a lower bound there.
+shifts with layout and we do not treat the fp16 column as a bound.
 
-The quality story is deliberately bounded. Perplexity changes are within
+The quality evidence is bounded. Perplexity changes are within
 $[-0.013, +0.007]$ (C4) and $[-0.045, +0.058]$ (PG19) with all confidence
 intervals containing zero. GSM8K (200 seeded items, 9 seeds) shows a
 significant 1.0-point regression at 2B state-bf16 ($p=0.025$), which we
@@ -135,11 +135,11 @@ caching inputs instead of state, and vLLM exposes a configurable
 state-dtype path~\cite{replayssm,vllmpr43518}; recurrent state caching also
 appears in inference frameworks such as FlashInfer~\cite{flashinfer}.
 QPruningKV~\cite{qpruningkv} characterized the token-precision trade-off
-under a fixed byte budget for attention models. We do not claim first state
-compression. What is missing is joint budget accounting: serving systems
-expose state dtype but do not analyze it as a precision dimension that
-multiplies with the KV bit-width decision, nor do they validate the
-resulting capacity-quality-serving trade-off with replicated measurements.
+under a fixed byte budget for attention models. State compression itself is
+prior art. The gap is joint budget accounting: serving systems expose state
+dtype without analyzing it as a precision dimension that multiplies with
+the KV bit-width decision, and without validating the resulting
+capacity-quality-serving trade-off with replicated measurements.
 
 \section{Precision Budget Model}
 \label{sec:model}
@@ -267,7 +267,7 @@ and the magnitude is the same as the state change under fp16 KV
 ($-0.0003$/$+0.0004$), so stacking state-bf16 onto int4 KV introduces no
 measurable additional perplexity cost. The harness is a chunk-level
 approximation (Section~\ref{sec:limits}); these numbers are supporting
-evidence, not the kernel-semantics claim.
+evidence for the kernel-level claim, not a substitute for it.
 
 \textbf{GSM8K.} Figure~\ref{fig:gsm8k} summarizes the 9-seed paired deltas.
 At 2B, bf16 state loses 1.00 point [$-$1.71, $-$0.29], $p=0.025$, with a
@@ -317,7 +317,7 @@ precision. Bf16 was applied to one GDN layer at a time (18 configurations,
 and 8, $p=0.049$ and $p=0.0036$), but neither survives Bonferroni
 ($\alpha/36$) or BH-FDR correction. There is no evidence for a per-layer
 precision benefit, so the paper's allocation dimension is the whole-state
-switch, not layer-wise state precision.
+switch rather than layer-wise state precision.
 
 \subsection{Serving}
 \label{sec:serving}
@@ -350,8 +350,9 @@ ShareGPT & int4+bf16 & 35 (40) & 40 & 40 & 40 & 40\\
 The only repeated boundary difference is Random60 at 1000 ms (35 vs.\ 40 in
 the formal matrix), and it did not reappear in the reproduction (int4 also
 reached 40 there). ShareGPT at 250 ms shows opposite directions between the
-two runs. We therefore do not claim a boundary improvement for either
-workload; the boundary tables are reported as measurements, not effects.
+two runs. We therefore do not present either workload as improved; the
+boundary tables are measurements, and we report them without assigning an
+effect.
 
 What does replicate is the paired goodput delta in the Random60 overload
 region. At r40, bf16 state improves goodput by 0.334 [0.078, 0.589] at
@@ -359,11 +360,12 @@ region. At r40, bf16 state improves goodput by 0.334 [0.078, 0.589] at
 measures 0.304 [0.250, 0.359] and 0.138 [0.082, 0.195]. At r45/r50 and
 2000--3000 ms the deltas are smaller but consistently positive in both runs
 (e.g., r45/3000 ms: 0.367 [0.308, 0.426] vs.\ 0.372 [0.310, 0.435]). These
-are paired goodput effects under a fixed offered rate, not sustainable-SLO
-headlines. The mechanism is not fully isolated: bf16 state changes the
-allocator's page/block geometry as well as bytes, and the
-capacity-to-latency chain is one candidate explanation, not the only one.
-ShareGPT at 500 ms and above shows boundary parity in both runs.
+are paired goodput effects under a fixed offered rate; we stop short of
+treating them as sustainable-SLO improvements. The mechanism is only
+partially isolated: bf16 state changes the allocator's page/block geometry
+as well as bytes, and the capacity-to-latency chain is one candidate
+explanation among several. ShareGPT at 500 ms and above shows boundary
+parity in both runs.
 
 \begin{figure}[t]
 \centering
