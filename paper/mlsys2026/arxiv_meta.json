@@ -1,0 +1,296 @@
+{
+ "2309.17453v4": {
+  "title": "Efficient Streaming Language Models with Attention Sinks",
+  "authors": [
+   "Guangxuan Xiao",
+   "Yuandong Tian",
+   "Beidi Chen",
+   "Song Han",
+   "Mike Lewis"
+  ],
+  "published": "2023-09-29"
+ },
+ "2406.02528v7": {
+  "title": "Scalable MatMul-free Language Modeling",
+  "authors": [
+   "Rui-Jie Zhu",
+   "Yu Zhang",
+   "Steven Abreu",
+   "Ethan Sifferman",
+   "Tyler Sheaves",
+   "Yiqiao Wang",
+   "Dustin Richmond",
+   "Sumit Bam Shrestha",
+   "Peng Zhou",
+   "Jason K. Eshraghian"
+  ],
+  "published": "2024-06-04"
+ },
+ "2405.16712v1": {
+  "title": "Zamba: A Compact 7B SSM Hybrid Model",
+  "authors": [
+   "Paolo Glorioso",
+   "Quentin Anthony",
+   "Yury Tokpanov",
+   "James Whittington",
+   "Jonathan Pilault",
+   "Adam Ibrahim",
+   "Beren Millidge"
+  ],
+  "published": "2024-05-26"
+ },
+ "2405.21060v1": {
+  "title": "Transformers are SSMs: Generalized Models and Efficient Algorithms Through Structured State Space Duality",
+  "authors": [
+   "Tri Dao",
+   "Albert Gu"
+  ],
+  "published": "2024-05-31"
+ },
+ "2404.06654v3": {
+  "title": "RULER: What's the Real Context Size of Your Long-Context Language Models?",
+  "authors": [
+   "Cheng-Ping Hsieh",
+   "Simeng Sun",
+   "Samuel Kriman",
+   "Shantanu Acharya",
+   "Dima Rekesh",
+   "Fei Jia",
+   "Yang Zhang",
+   "Boris Ginsburg"
+  ],
+  "published": "2024-04-09"
+ },
+ "2306.14048v3": {
+  "title": "H$_2$O: Heavy-Hitter Oracle for Efficient Generative Inference of Large Language Models",
+  "authors": [
+   "Zhenyu Zhang",
+   "Ying Sheng",
+   "Tianyi Zhou",
+   "Tianlong Chen",
+   "Lianmin Zheng",
+   "Ruisi Cai",
+   "Zhao Song",
+   "Yuandong Tian",
+   "Christopher Ré",
+   "Clark Barrett",
+   "Zhangyang Wang",
+   "Beidi Chen"
+  ],
+  "published": "2023-06-24"
+ },
+ "2309.06180v1": {
+  "title": "Efficient Memory Management for Large Language Model Serving with PagedAttention",
+  "authors": [
+   "Woosuk Kwon",
+   "Zhuohan Li",
+   "Siyuan Zhuang",
+   "Ying Sheng",
+   "Lianmin Zheng",
+   "Cody Hao Yu",
+   "Joseph E. Gonzalez",
+   "Hao Zhang",
+   "Ion Stoica"
+  ],
+  "published": "2023-09-12"
+ },
+ "2308.14508v2": {
+  "title": "LongBench: A Bilingual, Multitask Benchmark for Long Context Understanding",
+  "authors": [
+   "Yushi Bai",
+   "Xin Lv",
+   "Jiajie Zhang",
+   "Hongchang Lyu",
+   "Jiankai Tang",
+   "Zhidian Huang",
+   "Zhengxiao Du",
+   "Xiao Liu",
+   "Aohan Zeng",
+   "Lei Hou",
+   "Yuxiao Dong",
+   "Jie Tang",
+   "Juanzi Li"
+  ],
+  "published": "2023-08-28"
+ },
+ "2312.00752v2": {
+  "title": "Mamba: Linear-Time Sequence Modeling with Selective State Spaces",
+  "authors": [
+   "Albert Gu",
+   "Tri Dao"
+  ],
+  "published": "2023-12-01"
+ },
+ "2402.02750v2": {
+  "title": "KIVI: A Tuning-Free Asymmetric 2bit Quantization for KV Cache",
+  "authors": [
+   "Zirui Liu",
+   "Jiayi Yuan",
+   "Hongye Jin",
+   "Shaochen Zhong",
+   "Zhaozhuo Xu",
+   "Vladimir Braverman",
+   "Beidi Chen",
+   "Xia Hu"
+  ],
+  "published": "2024-02-05"
+ },
+ "2411.18077v3": {
+  "title": "MiniKV: Pushing the Limits of LLM Inference via 2-Bit Layer-Discriminative KV Cache",
+  "authors": [
+   "Akshat Sharma",
+   "Hangliang Ding",
+   "Jianping Li",
+   "Neel Dani",
+   "Minjia Zhang"
+  ],
+  "published": "2024-11-27"
+ },
+ "2412.12706v2": {
+  "title": "More Tokens, Lower Precision: Towards the Optimal Token-Precision Trade-off in KV Cache Compression",
+  "authors": [
+   "Jiebin Zhang",
+   "Dawei Zhu",
+   "Yifan Song",
+   "Wenhao Wu",
+   "Chuqiao Kuang",
+   "Xiaoguang Li",
+   "Lifeng Shang",
+   "Qun Liu",
+   "Sujian Li"
+  ],
+  "published": "2024-12-17"
+ },
+ "2504.19874v1": {
+  "title": "TurboQuant: Online Vector Quantization with Near-optimal Distortion Rate",
+  "authors": [
+   "Amir Zandieh",
+   "Majid Daliri",
+   "Majid Hadian",
+   "Vahab Mirrokni"
+  ],
+  "published": "2025-04-28"
+ },
+ "2501.01005v2": {
+  "title": "FlashInfer: Efficient and Customizable Attention Engine for LLM Inference Serving",
+  "authors": [
+   "Zihao Ye",
+   "Lequn Chen",
+   "Ruihang Lai",
+   "Wuwei Lin",
+   "Yineng Zhang",
+   "Stephanie Wang",
+   "Tianqi Chen",
+   "Baris Kasikci",
+   "Vinod Grover",
+   "Arvind Krishnamurthy",
+   "Luis Ceze"
+  ],
+  "published": "2025-01-02"
+ },
+ "2404.14469v2": {
+  "title": "SnapKV: LLM Knows What You are Looking for Before Generation",
+  "authors": [
+   "Yuhong Li",
+   "Yingbing Huang",
+   "Bowen Yang",
+   "Bharat Venkitesh",
+   "Acyr Locatelli",
+   "Hanchen Ye",
+   "Tianle Cai",
+   "Patrick Lewis",
+   "Deming Chen"
+  ],
+  "published": "2024-04-22"
+ },
+ "2404.07839v2": {
+  "title": "RecurrentGemma: Moving Past Transformers for Efficient Open Language Models",
+  "authors": [
+   "Aleksandar Botev",
+   "Soham De",
+   "Samuel L Smith",
+   "Anushan Fernando",
+   "George-Cristian Muraru",
+   "Ruba Haroun",
+   "Leonard Berrada",
+   "Razvan Pascanu",
+   "Pier Giuseppe Sessa",
+   "Robert Dadashi",
+   "Léonard Hussenot",
+   "Johan Ferret",
+   "Sertan Girgin",
+   "Olivier Bachem",
+   "Alek Andreev",
+   "Kathleen Kenealy",
+   "Thomas Mesnard",
+   "Cassidy Hardin",
+   "Surya Bhupatiraju",
+   "Shreya Pathak",
+   "Laurent Sifre",
+   "Morgane Rivière",
+   "Mihir Sanjay Kale",
+   "Juliette Love",
+   "Pouya Tafti",
+   "Armand Joulin",
+   "Noah Fiedel",
+   "Evan Senter",
+   "Yutian Chen",
+   "Srivatsan Srinivasan",
+   "Guillaume Desjardins",
+   "David Budden",
+   "Arnaud Doucet",
+   "Sharad Vikram",
+   "Adam Paszke",
+   "Trevor Gale",
+   "Sebastian Borgeaud",
+   "Charlie Chen",
+   "Andy Brock",
+   "Antonia Paterson",
+   "Jenny Brennan",
+   "Meg Risdal",
+   "Raj Gundluru",
+   "Nesh Devanathan",
+   "Paul Mooney",
+   "Nilay Chauhan",
+   "Phil Culliton",
+   "Luiz Gustavo Martins",
+   "Elisa Bandy",
+   "David Huntsperger",
+   "Glenn Cameron",
+   "Arthur Zucker",
+   "Tris Warkentin",
+   "Ludovic Peran",
+   "Minh Giang",
+   "Zoubin Ghahramani",
+   "Clément Farabet",
+   "Koray Kavukcuoglu",
+   "Demis Hassabis",
+   "Raia Hadsell",
+   "Yee Whye Teh",
+   "Nando de Frietas"
+  ],
+  "published": "2024-04-11"
+ },
+ "2401.18079v6": {
+  "title": "KVQuant: Towards 10 Million Context Length LLM Inference with KV Cache Quantization",
+  "authors": [
+   "Coleman Hooper",
+   "Sehoon Kim",
+   "Hiva Mohammadzadeh",
+   "Michael W. Mahoney",
+   "Yakun Sophia Shao",
+   "Kurt Keutzer",
+   "Amir Gholami"
+  ],
+  "published": "2024-01-31"
+ },
+ "2412.06464v3": {
+  "title": "Gated Delta Networks: Improving Mamba2 with Delta Rule",
+  "authors": [
+   "Songlin Yang",
+   "Jan Kautz",
+   "Ali Hatamizadeh"
+  ],
+  "published": "2024-12-09"
+ }
+}

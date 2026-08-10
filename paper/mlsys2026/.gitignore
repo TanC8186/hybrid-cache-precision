@@ -1,0 +1,13 @@
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.blg
+*.out
+*.log
+
+# Large redundant raster exports (PNG previews and vector files are tracked)
+figures/*.tiff
+
+# Downloaded template archive and OS metadata (source files are tracked)
+mlsys2025style.zip
+template/
