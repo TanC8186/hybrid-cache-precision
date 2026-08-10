@@ -12,12 +12,12 @@
 
 % Blind submission: the style file removes author information automatically.
 \usepackage{mlsys2025}
-\mlsystitlerunning{Precision Budget Allocation for Hybrid Linear-Attention Serving}
+\mlsystitlerunning{Precision Budgeting for Hybrid Linear-Attention Serving}
 
 \begin{document}
 
 \twocolumn[
-\mlsystitle{Allocating Precision Across Attention KV and Recurrent State in Hybrid Linear-Attention Serving}
+\mlsystitle{Joint Precision Budgeting Across Attention KV and Recurrent State in Hybrid Linear-Attention Serving}
 
 \begin{mlsysauthorlist}
 \mlsysauthor{Anonymous}{}
@@ -41,10 +41,10 @@ KV ratio from 2.245x to 2.675x at 2B/4K. Quality effects are bounded:
 perplexity shows no detectable change, GSM8K has a significant but
 under-powered 1.0-point regression at 2B and none at 9B, and RULER shows no
 detectable difference within wide intervals. Paired goodput gains appear in
-the Random60 overload region and are reproduced in an independent run, while
-boundaries remain workload- and threshold-dependent. We report both the
-capacity model and the exact statistical boundaries of every quality and
-serving claim.
+the Random60 overload region and reappear in a second formal run, while no
+serving cell survives multiple-comparison correction; boundaries remain
+workload- and threshold-dependent. We report both the capacity model and the
+exact statistical boundaries of every quality and serving claim.
 \end{abstract}
 ]
 
@@ -72,16 +72,21 @@ but existing budget analyses, including prior work on state compression
 itself~\cite{replayssm,vllmpr43518}, do not treat it as a dimension that
 should be jointly allocated with the KV bit-width.
 
-This paper is a system study. It contributes measurement, an
-architecture-derived capacity model, and a closed-loop evaluation of the
-two-dimensional precision budget: (i) an architecture-derived capacity model
+This paper is a system study with four contributions. (a) A capacity model
 $C(L)=M/(A\cdot L+G)$ in which $A$ is the per-token attention-KV footprint at
 the chosen KV bit-width and $G$ is the per-sequence state footprint at the
-chosen state precision; (ii) a capacity measurement protocol that probes
-exact token capacity on the serving engine and verifies the resolved
-configurations; (iii) a quality and serving evaluation whose negative and
-partially-reproduced results are reported at the same precision as the
-positive ones.
+chosen state precision. All parameters are derived from the model
+configuration and the vLLM page layout, so the model predicts capacity at
+untested context lengths without probing the engine; on seven cells it
+matches measurement within $-3.2\%$ to $+3.5\%$, and under int4 KV all four
+cells fall below the prediction. (b) A capacity measurement protocol that
+probes exact token capacity on the serving engine and verifies the resolved
+configurations. (c) A quality map across perplexity, GSM8K, and RULER with
+paired seeds and disclosed statistical power. (d) A serving evaluation with
+a second formal run, in which the Random60 overload-region goodput deltas
+reappear and every boundary cell is reported without assigning an effect.
+The target regime is short-context, high-concurrency, memory-bound serving,
+where the fixed state is a large fraction of the budget.
 
 The headline result is a capacity effect. Under int4 KV, bf16 state increases
 token capacity by 1.3755x (2B, 4K), 1.4063x (9B, 4K), 1.1149x (2B, 16K), and
@@ -132,8 +137,10 @@ manager~\cite{vllm} now allocates both from the same GPU pool.
 \textbf{State precision and compression.} Quantizing SSM states has been
 explored in the low-precision inference literature: ReplaySSM proposes
 caching inputs instead of state, and vLLM exposes a configurable
-state-dtype path~\cite{replayssm,vllmpr43518}; recurrent state caching also
-appears in inference frameworks such as FlashInfer~\cite{flashinfer}.
+state-dtype path~\cite{replayssm,vllmpr22196}; FP8 state checkpointing is
+under development in the FlashInfer SSU path~\cite{vllmpr43518}. Recurrent
+state caching also appears in inference frameworks such as
+FlashInfer~\cite{flashinfer}.
 QPruningKV~\cite{qpruningkv} characterized the token-precision trade-off
 under a fixed byte budget for attention models. State compression itself is
 prior art. The gap is joint budget accounting: serving systems expose state
@@ -188,8 +195,10 @@ sequences, 3 dataset seeds; we report in Section~\ref{sec:limits} why this
 harness is an approximation. Reasoning quality uses the vLLM kernel path:
 GSM8K~\cite{gsm8k} with 200 seeded items per seed, greedy, no
 chain-of-thought, 9 seeds; RULER~\cite{ruler} with 3 dataset seeds and the
-engine seed fixed. All comparisons are paired across seeds and reported as
-deltas with 95\% confidence intervals.
+engine seed fixed, using the engine's default thinking mode with a 256-token
+generation cap (Section~\ref{sec:limits} discusses think truncation). All
+comparisons are paired across seeds and reported as deltas with 95\%
+confidence intervals.
 
 \textbf{Serving.} Protocol v3: piecewise constant Poisson arrivals,
 120 s warmup, 60 s (300 s for boundary confirmation) measurement windows,
@@ -324,8 +333,8 @@ dataset-lottery noise.
 \includegraphics[width=\linewidth]{figures/fig3_ppl_ruler.pdf}
 \caption{\textbf{Perplexity stacking and RULER.} (a) PPL marginal change of
 bf16 state under int4 KV (C4/PG19, 3 seeds). (b) RULER deltas (bf16 minus
-fp32 state) for the five previously nonzero cells; 3 dataset seeds, wide CIs,
-no detectable difference.}
+fp32 state) for the five previously nonzero cells; 3 dataset seeds, default
+thinking mode (max 256 tokens), wide CIs, no detectable difference.}
 \label{fig:ruler}
 \end{figure}
 
@@ -383,7 +392,8 @@ Figure~\ref{fig:serving} shows paired goodput deltas in the overload region.
 \centering
 \footnotesize
 \caption{\textbf{Sustainable rate boundaries (req/s, 3 seeds, protocol v3).}
-Formal matrix; values in parentheses are the independent reproduction.
+Formal matrix; values in parentheses are the second formal run (identical
+contracts and seeds).
 Differences between runs at Random60/1000 ms and ShareGPT/250 ms show that
 single boundary cells are run-sensitive and are not claimed as effects.}
 \label{tab:serving}
@@ -409,26 +419,30 @@ effect.
 
 What does replicate is the paired goodput delta in the Random60 overload
 region. At r40, bf16 state improves goodput by 0.334 [0.078, 0.589] at
-250 ms and 0.215 [0.154, 0.276] at 500 ms; the independent reproduction
-measures 0.304 [0.250, 0.359] and 0.138 [0.082, 0.195]. At r45/r50 and
+250 ms (paired t-test $p=0.030$) and 0.215 [0.154, 0.276] at 500 ms
+($p=0.004$); the second formal run measures 0.304 [0.250, 0.359]
+($p=0.002$) and 0.138 [0.082, 0.195] ($p=0.009$). At r45/r50 and
 2000--3000 ms the deltas are smaller but consistently positive in both runs
-(e.g., r45/3000 ms: 0.367 [0.308, 0.426] vs.\ 0.372 [0.310, 0.435]). These
-are paired goodput effects under a fixed offered rate; we stop short of
-treating them as sustainable-SLO improvements. The mechanism is only
-partially isolated: bf16 state changes the allocator's page/block geometry
-as well as bytes, and the capacity-to-latency chain is one candidate
-explanation among several. ShareGPT at 500 ms and above shows boundary
-parity in both runs.
+(e.g., r45/3000 ms: 0.367 [0.308, 0.426] vs.\ 0.372 [0.310, 0.435];
+$p=0.001$ and $p=0.002$). None of the 60 serving cells survives BH-FDR at
+$q<0.05$ (closest: formal r40/500 ms $q=0.066$; second run r40/250 ms
+$q=0.052$). We therefore treat the overload-region deltas as directional
+evidence whose weight comes from same-cell reproduction across the two
+runs, and we stop short of treating them as sustainable-SLO improvements.
+Per-cell $p$ and BH $q$ values for all 60 cells are archived with the
+analysis artifacts. The mechanism is only partially isolated: bf16 state
+changes the allocator's page/block geometry as well as bytes, and the
+capacity-to-latency chain is one candidate explanation among several.
+ShareGPT at 500 ms and above shows boundary parity in both runs.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\linewidth]{figures/fig4_serving.pdf}
 \caption{\textbf{Serving, Random60 overload region.} (a) Paired goodput
 delta (bf16 minus fp32 state) at rates 40--50 req/s, all thresholds, formal
-and independent reproduction, 3 seeds each, 95\% CI. (b) Sustainable-rate
-boundary parity map (int4 vs.\ int4+bf16); orange cells differ between
-allocations, teal cells are equal, with the reproduction value in
-parentheses.}
+and second run, 3 seeds each, 95\% CI. (b) Sustainable-rate boundary parity
+map (int4 vs.\ int4+bf16); orange cells differ between allocations, teal
+cells are equal, with the second-run value in parentheses.}
 \label{fig:serving}
 \end{figure}
 
@@ -440,6 +454,12 @@ boundaries (chunk 128). A chunk-1 ablation changes PPL from 19.35 to 36.16
 ($+87\%$), which shows the harness is not equivalent to per-token kernel
 semantics. We treat PPL as supporting evidence and place the kernel-path
 quality conclusions (GSM8K, RULER) on the vLLM serving path.
+
+\textbf{RULER protocol.} RULER runs used the engine's default thinking mode
+with a 256-token generation cap. FWE scores can be sensitive to think
+truncation, so the wide intervals in Figure~\ref{fig:ruler} may shift in
+either direction under a no-think protocol; a no-think re-run of the five
+cells is future work.
 
 \textbf{Generalization.} All evidence is from Qwen3.5-2B/9B on one RTX 5090.
 Claims are scoped to GDN-based hybrids; Mamba2-style architectures and other
@@ -467,7 +487,8 @@ capacity, quality, and serving consequences of treating both as a joint
 budget. The capacity model is a conservative lower bound under int4 KV, the
 compound KV $\times$ state gain is real (2.245 to 2.675 at 2B/4K), quality
 degradation is bounded and disclosed at the level of statistical power, and
-the serving benefit is a replicated, workload-limited paired goodput effect.
+the serving benefit is a workload-limited paired goodput effect reproduced
+in a second formal run.
 We release the full measurement contracts, per-seed data, and reproduction
 artifacts so that the boundary cells and null results can be audited
 independently. Long-form and retrieval evidence beyond GSM8K and RULER

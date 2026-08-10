@@ -1,0 +1,2056 @@
+{
+ "formal": {
+  "n_cells": 60,
+  "n_p_lt_0_05": 12,
+  "n_q_lt_0_05": 0,
+  "cells": [
+   {
+    "workload": "random",
+    "rate": 30.0,
+    "threshold_ms": 250,
+    "mean_delta_goodput": -0.001,
+    "ci95": [
+     -0.0084,
+     0.0065
+    ],
+    "per_seed_delta": {
+     "7": -0.0003,
+     "42": 0.0017,
+     "2026": -0.0042
+    },
+    "p_value": 0.643997,
+    "bh_q": 0.823963
+   },
+   {
+    "workload": "random",
+    "rate": 30.0,
+    "threshold_ms": 500,
+    "mean_delta_goodput": 0.0003,
+    "ci95": [
+     -0.0027,
+     0.0034
+    ],
+    "per_seed_delta": {
+     "7": 0.0008,
+     "42": -0.0011,
+     "2026": 0.0013
+    },
+    "p_value": 0.693142,
+    "bh_q": 0.823963
+   },
+   {
+    "workload": "random",
+    "rate": 30.0,
+    "threshold_ms": 1000,
+    "mean_delta_goodput": 0.0003,
+    "ci95": [
+     -0.0027,
+     0.0034
+    ],
+    "per_seed_delta": {
+     "7": 0.0008,
+     "42": -0.0011,
+     "2026": 0.0013
+    },
+    "p_value": 0.693142,
+    "bh_q": 0.823963
+   },
+   {
+    "workload": "random",
+    "rate": 30.0,
+    "threshold_ms": 2000,
+    "mean_delta_goodput": 0.0003,
+    "ci95": [
+     -0.0027,
+     0.0034
+    ],
+    "per_seed_delta": {
+     "7": 0.0008,
+     "42": -0.0011,
+     "2026": 0.0013
+    },
+    "p_value": 0.693142,
+    "bh_q": 0.823963
+   },
+   {
+    "workload": "random",
+    "rate": 30.0,
+    "threshold_ms": 3000,
+    "mean_delta_goodput": 0.0003,
+    "ci95": [
+     -0.0027,
+     0.0034
+    ],
+    "per_seed_delta": {
+     "7": 0.0008,
+     "42": -0.0011,
+     "2026": 0.0013
+    },
+    "p_value": 0.693142,
+    "bh_q": 0.823963
+   },
+   {
+    "workload": "random",
+    "rate": 35.0,
+    "threshold_ms": 250,
+    "mean_delta_goodput": 0.0391,
+    "ci95": [
+     -0.0304,
+     0.1086
+    ],
+    "per_seed_delta": {
+     "7": 0.058,
+     "42": 0.007,
+     "2026": 0.0524
+    },
+    "p_value": 0.136304,
+    "bh_q": 0.375672
+   },
+   {
+    "workload": "random",
+    "rate": 35.0,
+    "threshold_ms": 500,
+    "mean_delta_goodput": -0.0004,
+    "ci95": [
+     -0.0014,
+     0.0006
+    ],
+    "per_seed_delta": {
+     "7": -0.0008,
+     "42": -0.0,
+     "2026": -0.0003
+    },
+    "p_value": 0.256689,
+    "bh_q": 0.385033
+   },
+   {
+    "workload": "random",
+    "rate": 35.0,
+    "threshold_ms": 1000,
+    "mean_delta_goodput": -0.0004,
+    "ci95": [
+     -0.0014,
+     0.0006
+    ],
+    "per_seed_delta": {
+     "7": -0.0008,
+     "42": -0.0,
+     "2026": -0.0003
+    },
+    "p_value": 0.256689,
+    "bh_q": 0.385033
+   },
+   {
+    "workload": "random",
+    "rate": 35.0,
+    "threshold_ms": 2000,
+    "mean_delta_goodput": -0.0004,
+    "ci95": [
+     -0.0014,
+     0.0006
+    ],
+    "per_seed_delta": {
+     "7": -0.0008,
+     "42": -0.0,
+     "2026": -0.0003
+    },
+    "p_value": 0.256689,
+    "bh_q": 0.385033
+   },
+   {
+    "workload": "random",
+    "rate": 35.0,
+    "threshold_ms": 3000,
+    "mean_delta_goodput": -0.0004,
+    "ci95": [
+     -0.0014,
+     0.0006
+    ],
+    "per_seed_delta": {
+     "7": -0.0008,
+     "42": -0.0,
+     "2026": -0.0003
+    },
+    "p_value": 0.256689,
+    "bh_q": 0.385033
+   },
+   {
+    "workload": "random",
+    "rate": 40.0,
+    "threshold_ms": 250,
+    "mean_delta_goodput": 0.3336,
+    "ci95": [
+     0.0784,
+     0.5889
+    ],
+    "per_seed_delta": {
+     "7": 0.4523,
+     "42": 0.2724,
+     "2026": 0.2762
+    },
+    "p_value": 0.030211,
+    "bh_q": 0.164787
+   },
+   {
+    "workload": "random",
+    "rate": 40.0,
+    "threshold_ms": 500,
+    "mean_delta_goodput": 0.2151,
+    "ci95": [
+     0.1542,
+     0.2761
+    ],
+    "per_seed_delta": {
+     "7": 0.2277,
+     "42": 0.1869,
+     "2026": 0.2308
+    },
+    "p_value": 0.004295,
+    "bh_q": 0.066285
+   },
+   {
+    "workload": "random",
+    "rate": 40.0,
+    "threshold_ms": 1000,
+    "mean_delta_goodput": 0.0228,
+    "ci95": [
+     -0.011,
+     0.0566
+    ],
+    "per_seed_delta": {
+     "7": 0.0102,
+     "42": 0.0209,
+     "2026": 0.0372
+    },
+    "p_value": 0.101166,
+    "bh_q": 0.375672
+   },
+   {
+    "workload": "random",
+    "rate": 40.0,
+    "threshold_ms": 2000,
+    "mean_delta_goodput": 0.0086,
+    "ci95": [
+     0.0038,
+     0.0134
+    ],
+    "per_seed_delta": {
+     "7": 0.0102,
+     "42": 0.0065,
+     "2026": 0.0091
+    },
+    "p_value": 0.015883,
+    "bh_q": 0.105887
+   },
+   {
+    "workload": "random",
+    "rate": 40.0,
+    "threshold_ms": 3000,
+    "mean_delta_goodput": 0.0086,
+    "ci95": [
+     0.0038,
+     0.0134
+    ],
+    "per_seed_delta": {
+     "7": 0.0102,
+     "42": 0.0065,
+     "2026": 0.0091
+    },
+    "p_value": 0.015883,
+    "bh_q": 0.105887
+   },
+   {
+    "workload": "random",
+    "rate": 45.0,
+    "threshold_ms": 250,
+    "mean_delta_goodput": 0.0333,
+    "ci95": [
+     -0.0441,
+     0.1107
+    ],
+    "per_seed_delta": {
+     "7": 0.0649,
+     "42": 0.0324,
+     "2026": 0.0026
+    },
+    "p_value": 0.205379,
+    "bh_q": 0.375672
+   },
+   {
+    "workload": "random",
+    "rate": 45.0,
+    "threshold_ms": 500,
+    "mean_delta_goodput": 0.0639,
+    "ci95": [
+     0.0421,
+     0.0857
+    ],
+    "per_seed_delta": {
+     "7": 0.0693,
+     "42": 0.0687,
+     "2026": 0.0538
+    },
+    "p_value": 0.006229,
+    "bh_q": 0.074748
+   },
+   {
+    "workload": "random",
+    "rate": 45.0,
+    "threshold_ms": 1000,
+    "mean_delta_goodput": 0.088,
+    "ci95": [
+     0.0063,
+     0.1698
+    ],
+    "per_seed_delta": {
+     "7": 0.1192,
+     "42": 0.0913,
+     "2026": 0.0536
+    },
+    "p_value": 0.043592,
+    "bh_q": 0.21796
+   },
+   {
+    "workload": "random",
+    "rate": 45.0,
+    "threshold_ms": 2000,
+    "mean_delta_goodput": 0.3242,
+    "ci95": [
+     0.2311,
+     0.4173
+    ],
+    "per_seed_delta": {
+     "7": 0.2898,
+     "42": 0.3641,
+     "2026": 0.3187
+    },
+    "p_value": 0.004419,
+    "bh_q": 0.066285
+   },
+   {
+    "workload": "random",
+    "rate": 45.0,
+    "threshold_ms": 3000,
+    "mean_delta_goodput": 0.3672,
+    "ci95": [
+     0.3082,
+     0.4262
+    ],
+    "per_seed_delta": {
+     "7": 0.3526,
+     "42": 0.3946,
+     "2026": 0.3544
+    },
+    "p_value": 0.001391,
+    "bh_q": 0.066285
+   },
+   {
+    "workload": "random",
+    "rate": 50.0,
+    "threshold_ms": 250,
+    "mean_delta_goodput": 0.0037,
+    "ci95": [
+     0.0013,
+     0.006
+    ],
+    "per_seed_delta": {
+     "7": 0.0041,
+     "42": 0.0026,
+     "2026": 0.0043
+    },
+    "p_value": 0.020741,
+    "bh_q": 0.124446
+   },
+   {
+    "workload": "random",
+    "rate": 50.0,
+    "threshold_ms": 500,
+    "mean_delta_goodput": 0.01,
+    "ci95": [
+     -0.0024,
+     0.0224
+    ],
+    "per_seed_delta": {
+     "7": 0.0158,
+     "42": 0.0069,
+     "2026": 0.0074
+    },
+    "p_value": 0.07375,
+    "bh_q": 0.340385
+   },
+   {
+    "workload": "random",
+    "rate": 50.0,
+    "threshold_ms": 1000,
+    "mean_delta_goodput": 0.0333,
+    "ci95": [
+     -0.0263,
+     0.0928
+    ],
+    "per_seed_delta": {
+     "7": 0.0608,
+     "42": 0.022,
+     "2026": 0.017
+    },
+    "p_value": 0.138146,
+    "bh_q": 0.375672
+   },
+   {
+    "workload": "random",
+    "rate": 50.0,
+    "threshold_ms": 2000,
+    "mean_delta_goodput": 0.0406,
+    "ci95": [
+     0.0201,
+     0.0611
+    ],
+    "per_seed_delta": {
+     "7": 0.0492,
+     "42": 0.0327,
+     "2026": 0.0399
+    },
+    "p_value": 0.013557,
+    "bh_q": 0.105887
+   },
+   {
+    "workload": "random",
+    "rate": 50.0,
+    "threshold_ms": 3000,
+    "mean_delta_goodput": 0.0724,
+    "ci95": [
+     0.0358,
+     0.109
+    ],
+    "per_seed_delta": {
+     "7": 0.0892,
+     "42": 0.0665,
+     "2026": 0.0616
+    },
+    "p_value": 0.013498,
+    "bh_q": 0.105887
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 20.0,
+    "threshold_ms": 250,
+    "mean_delta_goodput": -0.0001,
+    "ci95": [
+     -0.002,
+     0.0019
+    ],
+    "per_seed_delta": {
+     "7": 0.0008,
+     "42": -0.0002,
+     "2026": -0.0008
+    },
+    "p_value": 0.899496,
+    "bh_q": 0.914742
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 20.0,
+    "threshold_ms": 500,
+    "mean_delta_goodput": -0.0001,
+    "ci95": [
+     -0.002,
+     0.0019
+    ],
+    "per_seed_delta": {
+     "7": 0.0008,
+     "42": -0.0002,
+     "2026": -0.0008
+    },
+    "p_value": 0.899496,
+    "bh_q": 0.914742
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 20.0,
+    "threshold_ms": 1000,
+    "mean_delta_goodput": -0.0001,
+    "ci95": [
+     -0.002,
+     0.0019
+    ],
+    "per_seed_delta": {
+     "7": 0.0008,
+     "42": -0.0002,
+     "2026": -0.0008
+    },
+    "p_value": 0.899496,
+    "bh_q": 0.914742
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 20.0,
+    "threshold_ms": 2000,
+    "mean_delta_goodput": -0.0001,
+    "ci95": [
+     -0.002,
+     0.0019
+    ],
+    "per_seed_delta": {
+     "7": 0.0008,
+     "42": -0.0002,
+     "2026": -0.0008
+    },
+    "p_value": 0.899496,
+    "bh_q": 0.914742
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 20.0,
+    "threshold_ms": 3000,
+    "mean_delta_goodput": -0.0001,
+    "ci95": [
+     -0.002,
+     0.0019
+    ],
+    "per_seed_delta": {
+     "7": 0.0008,
+     "42": -0.0002,
+     "2026": -0.0008
+    },
+    "p_value": 0.899496,
+    "bh_q": 0.914742
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 25.0,
+    "threshold_ms": 250,
+    "mean_delta_goodput": 0.0,
+    "ci95": [
+     -0.0007,
+     0.0008
+    ],
+    "per_seed_delta": {
+     "7": -0.0001,
+     "42": -0.0001,
+     "2026": 0.0004
+    },
+    "p_value": 0.727834,
+    "bh_q": 0.823963
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 25.0,
+    "threshold_ms": 500,
+    "mean_delta_goodput": 0.0,
+    "ci95": [
+     -0.0007,
+     0.0008
+    ],
+    "per_seed_delta": {
+     "7": -0.0001,
+     "42": -0.0001,
+     "2026": 0.0004
+    },
+    "p_value": 0.727834,
+    "bh_q": 0.823963
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 25.0,
+    "threshold_ms": 1000,
+    "mean_delta_goodput": 0.0,
+    "ci95": [
+     -0.0007,
+     0.0008
+    ],
+    "per_seed_delta": {
+     "7": -0.0001,
+     "42": -0.0001,
+     "2026": 0.0004
+    },
+    "p_value": 0.727834,
+    "bh_q": 0.823963
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 25.0,
+    "threshold_ms": 2000,
+    "mean_delta_goodput": 0.0,
+    "ci95": [
+     -0.0007,
+     0.0008
+    ],
+    "per_seed_delta": {
+     "7": -0.0001,
+     "42": -0.0001,
+     "2026": 0.0004
+    },
+    "p_value": 0.727834,
+    "bh_q": 0.823963
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 25.0,
+    "threshold_ms": 3000,
+    "mean_delta_goodput": 0.0,
+    "ci95": [
+     -0.0007,
+     0.0008
+    ],
+    "per_seed_delta": {
+     "7": -0.0001,
+     "42": -0.0001,
+     "2026": 0.0004
+    },
+    "p_value": 0.727834,
+    "bh_q": 0.823963
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 30.0,
+    "threshold_ms": 250,
+    "mean_delta_goodput": -0.0004,
+    "ci95": [
+     -0.0009,
+     0.0002
+    ],
+    "per_seed_delta": {
+     "7": -0.0006,
+     "42": -0.0001,
+     "2026": -0.0004
+    },
+    "p_value": 0.127643,
+    "bh_q": 0.375672
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 30.0,
+    "threshold_ms": 500,
+    "mean_delta_goodput": -0.0003,
+    "ci95": [
+     -0.0009,
+     0.0003
+    ],
+    "per_seed_delta": {
+     "7": -0.0006,
+     "42": -0.0001,
+     "2026": -0.0003
+    },
+    "p_value": 0.148743,
+    "bh_q": 0.375672
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 30.0,
+    "threshold_ms": 1000,
+    "mean_delta_goodput": -0.0003,
+    "ci95": [
+     -0.0009,
+     0.0003
+    ],
+    "per_seed_delta": {
+     "7": -0.0006,
+     "42": -0.0001,
+     "2026": -0.0003
+    },
+    "p_value": 0.148743,
+    "bh_q": 0.375672
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 30.0,
+    "threshold_ms": 2000,
+    "mean_delta_goodput": -0.0003,
+    "ci95": [
+     -0.0009,
+     0.0003
+    ],
+    "per_seed_delta": {
+     "7": -0.0006,
+     "42": -0.0001,
+     "2026": -0.0003
+    },
+    "p_value": 0.148743,
+    "bh_q": 0.375672
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 30.0,
+    "threshold_ms": 3000,
+    "mean_delta_goodput": -0.0003,
+    "ci95": [
+     -0.0009,
+     0.0003
+    ],
+    "per_seed_delta": {
+     "7": -0.0006,
+     "42": -0.0001,
+     "2026": -0.0003
+    },
+    "p_value": 0.148743,
+    "bh_q": 0.375672
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 35.0,
+    "threshold_ms": 250,
+    "mean_delta_goodput": -0.0008,
+    "ci95": [
+     -0.0035,
+     0.0019
+    ],
+    "per_seed_delta": {
+     "7": -0.0018,
+     "42": 0.0004,
+     "2026": -0.001
+    },
+    "p_value": 0.339422,
+    "bh_q": 0.496715
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 35.0,
+    "threshold_ms": 500,
+    "mean_delta_goodput": -0.0004,
+    "ci95": [
+     -0.0013,
+     0.0005
+    ],
+    "per_seed_delta": {
+     "7": -0.0003,
+     "42": -0.0001,
+     "2026": -0.0008
+    },
+    "p_value": 0.194613,
+    "bh_q": 0.375672
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 35.0,
+    "threshold_ms": 1000,
+    "mean_delta_goodput": -0.0004,
+    "ci95": [
+     -0.0013,
+     0.0005
+    ],
+    "per_seed_delta": {
+     "7": -0.0003,
+     "42": -0.0001,
+     "2026": -0.0008
+    },
+    "p_value": 0.194613,
+    "bh_q": 0.375672
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 35.0,
+    "threshold_ms": 2000,
+    "mean_delta_goodput": -0.0004,
+    "ci95": [
+     -0.0013,
+     0.0005
+    ],
+    "per_seed_delta": {
+     "7": -0.0003,
+     "42": -0.0001,
+     "2026": -0.0008
+    },
+    "p_value": 0.194613,
+    "bh_q": 0.375672
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 35.0,
+    "threshold_ms": 3000,
+    "mean_delta_goodput": -0.0004,
+    "ci95": [
+     -0.0013,
+     0.0005
+    ],
+    "per_seed_delta": {
+     "7": -0.0003,
+     "42": -0.0001,
+     "2026": -0.0008
+    },
+    "p_value": 0.194613,
+    "bh_q": 0.375672
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 40.0,
+    "threshold_ms": 250,
+    "mean_delta_goodput": -0.002,
+    "ci95": [
+     -0.0026,
+     -0.0015
+    ],
+    "per_seed_delta": {
+     "7": -0.0018,
+     "42": -0.0021,
+     "2026": -0.0022
+    },
+    "p_value": 0.003475,
+    "bh_q": 0.066285
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 40.0,
+    "threshold_ms": 500,
+    "mean_delta_goodput": -0.0003,
+    "ci95": [
+     -0.001,
+     0.0004
+    ],
+    "per_seed_delta": {
+     "7": -0.0006,
+     "42": 0.0,
+     "2026": -0.0003
+    },
+    "p_value": 0.225403,
+    "bh_q": 0.375672
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 40.0,
+    "threshold_ms": 1000,
+    "mean_delta_goodput": -0.0003,
+    "ci95": [
+     -0.001,
+     0.0004
+    ],
+    "per_seed_delta": {
+     "7": -0.0006,
+     "42": 0.0,
+     "2026": -0.0003
+    },
+    "p_value": 0.225403,
+    "bh_q": 0.375672
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 40.0,
+    "threshold_ms": 2000,
+    "mean_delta_goodput": -0.0003,
+    "ci95": [
+     -0.001,
+     0.0004
+    ],
+    "per_seed_delta": {
+     "7": -0.0006,
+     "42": 0.0,
+     "2026": -0.0003
+    },
+    "p_value": 0.225403,
+    "bh_q": 0.375672
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 40.0,
+    "threshold_ms": 3000,
+    "mean_delta_goodput": -0.0003,
+    "ci95": [
+     -0.001,
+     0.0004
+    ],
+    "per_seed_delta": {
+     "7": -0.0006,
+     "42": 0.0,
+     "2026": -0.0003
+    },
+    "p_value": 0.225403,
+    "bh_q": 0.375672
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 45.0,
+    "threshold_ms": 250,
+    "mean_delta_goodput": -0.3895,
+    "ci95": [
+     -1.2509,
+     0.472
+    ],
+    "per_seed_delta": {
+     "7": -0.6636,
+     "42": 0.0003,
+     "2026": -0.5052
+    },
+    "p_value": 0.191108,
+    "bh_q": 0.375672
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 45.0,
+    "threshold_ms": 500,
+    "mean_delta_goodput": -0.3975,
+    "ci95": [
+     -1.2602,
+     0.4652
+    ],
+    "per_seed_delta": {
+     "7": -0.6495,
+     "42": -0.0014,
+     "2026": -0.5416
+    },
+    "p_value": 0.185878,
+    "bh_q": 0.375672
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 45.0,
+    "threshold_ms": 1000,
+    "mean_delta_goodput": -0.3838,
+    "ci95": [
+     -1.219,
+     0.4513
+    ],
+    "per_seed_delta": {
+     "7": -0.6275,
+     "42": -0.0003,
+     "2026": -0.5237
+    },
+    "p_value": 0.186591,
+    "bh_q": 0.375672
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 45.0,
+    "threshold_ms": 2000,
+    "mean_delta_goodput": -0.3275,
+    "ci95": [
+     -1.0679,
+     0.413
+    ],
+    "per_seed_delta": {
+     "7": -0.5929,
+     "42": -0.0051,
+     "2026": -0.3845
+    },
+    "p_value": 0.197308,
+    "bh_q": 0.375672
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 45.0,
+    "threshold_ms": 3000,
+    "mean_delta_goodput": -0.2863,
+    "ci95": [
+     -0.8994,
+     0.3268
+    ],
+    "per_seed_delta": {
+     "7": -0.5,
+     "42": -0.0162,
+     "2026": -0.3428
+    },
+    "p_value": 0.18221,
+    "bh_q": 0.375672
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 50.0,
+    "threshold_ms": 250,
+    "mean_delta_goodput": 0.0002,
+    "ci95": [
+     -0.0014,
+     0.0019
+    ],
+    "per_seed_delta": {
+     "7": 0.0009,
+     "42": 0.0002,
+     "2026": -0.0005
+    },
+    "p_value": 0.669711,
+    "bh_q": 0.823963
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 50.0,
+    "threshold_ms": 500,
+    "mean_delta_goodput": 0.0021,
+    "ci95": [
+     -0.0019,
+     0.0062
+    ],
+    "per_seed_delta": {
+     "7": 0.004,
+     "42": 0.0016,
+     "2026": 0.0008
+    },
+    "p_value": 0.156726,
+    "bh_q": 0.375672
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 50.0,
+    "threshold_ms": 1000,
+    "mean_delta_goodput": -0.0009,
+    "ci95": [
+     -0.01,
+     0.0083
+    ],
+    "per_seed_delta": {
+     "7": 0.0027,
+     "42": -0.0047,
+     "2026": -0.0007
+    },
+    "p_value": 0.714776,
+    "bh_q": 0.823963
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 50.0,
+    "threshold_ms": 2000,
+    "mean_delta_goodput": 0.0009,
+    "ci95": [
+     -0.011,
+     0.0129
+    ],
+    "per_seed_delta": {
+     "7": 0.0055,
+     "42": -0.0041,
+     "2026": 0.0014
+    },
+    "p_value": 0.769107,
+    "bh_q": 0.854563
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 50.0,
+    "threshold_ms": 3000,
+    "mean_delta_goodput": -0.0002,
+    "ci95": [
+     -0.0097,
+     0.0093
+    ],
+    "per_seed_delta": {
+     "7": 0.0042,
+     "42": -0.0019,
+     "2026": -0.0029
+    },
+    "p_value": 0.936393,
+    "bh_q": 0.936393
+   }
+  ]
+ },
+ "repro": {
+  "n_cells": 60,
+  "n_p_lt_0_05": 11,
+  "n_q_lt_0_05": 0,
+  "cells": [
+   {
+    "workload": "random",
+    "rate": 30.0,
+    "threshold_ms": 250,
+    "mean_delta_goodput": 0.0002,
+    "ci95": [
+     -0.0038,
+     0.0043
+    ],
+    "per_seed_delta": {
+     "7": 0.0006,
+     "42": 0.0016,
+     "2026": -0.0016
+    },
+    "p_value": 0.852021,
+    "bh_q": 0.94669
+   },
+   {
+    "workload": "random",
+    "rate": 30.0,
+    "threshold_ms": 500,
+    "mean_delta_goodput": 0.0002,
+    "ci95": [
+     -0.0029,
+     0.0033
+    ],
+    "per_seed_delta": {
+     "7": -0.0005,
+     "42": 0.0016,
+     "2026": -0.0005
+    },
+    "p_value": 0.80197,
+    "bh_q": 0.907891
+   },
+   {
+    "workload": "random",
+    "rate": 30.0,
+    "threshold_ms": 1000,
+    "mean_delta_goodput": 0.0002,
+    "ci95": [
+     -0.0029,
+     0.0033
+    ],
+    "per_seed_delta": {
+     "7": -0.0005,
+     "42": 0.0016,
+     "2026": -0.0005
+    },
+    "p_value": 0.80197,
+    "bh_q": 0.907891
+   },
+   {
+    "workload": "random",
+    "rate": 30.0,
+    "threshold_ms": 2000,
+    "mean_delta_goodput": 0.0002,
+    "ci95": [
+     -0.0029,
+     0.0033
+    ],
+    "per_seed_delta": {
+     "7": -0.0005,
+     "42": 0.0016,
+     "2026": -0.0005
+    },
+    "p_value": 0.80197,
+    "bh_q": 0.907891
+   },
+   {
+    "workload": "random",
+    "rate": 30.0,
+    "threshold_ms": 3000,
+    "mean_delta_goodput": 0.0002,
+    "ci95": [
+     -0.0029,
+     0.0033
+    ],
+    "per_seed_delta": {
+     "7": -0.0005,
+     "42": 0.0016,
+     "2026": -0.0005
+    },
+    "p_value": 0.80197,
+    "bh_q": 0.907891
+   },
+   {
+    "workload": "random",
+    "rate": 35.0,
+    "threshold_ms": 250,
+    "mean_delta_goodput": 0.0332,
+    "ci95": [
+     -0.0031,
+     0.0694
+    ],
+    "per_seed_delta": {
+     "7": 0.0476,
+     "42": 0.0334,
+     "2026": 0.0184
+    },
+    "p_value": 0.059061,
+    "bh_q": 0.284695
+   },
+   {
+    "workload": "random",
+    "rate": 35.0,
+    "threshold_ms": 500,
+    "mean_delta_goodput": 0.0002,
+    "ci95": [
+     -0.0025,
+     0.003
+    ],
+    "per_seed_delta": {
+     "7": -0.0009,
+     "42": 0.0004,
+     "2026": 0.0013
+    },
+    "p_value": 0.716803,
+    "bh_q": 0.877718
+   },
+   {
+    "workload": "random",
+    "rate": 35.0,
+    "threshold_ms": 1000,
+    "mean_delta_goodput": 0.0002,
+    "ci95": [
+     -0.0025,
+     0.003
+    ],
+    "per_seed_delta": {
+     "7": -0.0009,
+     "42": 0.0004,
+     "2026": 0.0013
+    },
+    "p_value": 0.716803,
+    "bh_q": 0.877718
+   },
+   {
+    "workload": "random",
+    "rate": 35.0,
+    "threshold_ms": 2000,
+    "mean_delta_goodput": 0.0002,
+    "ci95": [
+     -0.0025,
+     0.003
+    ],
+    "per_seed_delta": {
+     "7": -0.0009,
+     "42": 0.0004,
+     "2026": 0.0013
+    },
+    "p_value": 0.716803,
+    "bh_q": 0.877718
+   },
+   {
+    "workload": "random",
+    "rate": 35.0,
+    "threshold_ms": 3000,
+    "mean_delta_goodput": 0.0002,
+    "ci95": [
+     -0.0025,
+     0.003
+    ],
+    "per_seed_delta": {
+     "7": -0.0009,
+     "42": 0.0004,
+     "2026": 0.0013
+    },
+    "p_value": 0.716803,
+    "bh_q": 0.877718
+   },
+   {
+    "workload": "random",
+    "rate": 40.0,
+    "threshold_ms": 250,
+    "mean_delta_goodput": 0.3042,
+    "ci95": [
+     0.2498,
+     0.3585
+    ],
+    "per_seed_delta": {
+     "7": 0.3168,
+     "42": 0.3168,
+     "2026": 0.2789
+    },
+    "p_value": 0.001721,
+    "bh_q": 0.05163
+   },
+   {
+    "workload": "random",
+    "rate": 40.0,
+    "threshold_ms": 500,
+    "mean_delta_goodput": 0.1381,
+    "ci95": [
+     0.0817,
+     0.1945
+    ],
+    "per_seed_delta": {
+     "7": 0.164,
+     "42": 0.1283,
+     "2026": 0.1219
+    },
+    "p_value": 0.00888,
+    "bh_q": 0.076114
+   },
+   {
+    "workload": "random",
+    "rate": 40.0,
+    "threshold_ms": 1000,
+    "mean_delta_goodput": 0.0116,
+    "ci95": [
+     0.003,
+     0.0201
+    ],
+    "per_seed_delta": {
+     "7": 0.0081,
+     "42": 0.015,
+     "2026": 0.0116
+    },
+    "p_value": 0.0284,
+    "bh_q": 0.1704
+   },
+   {
+    "workload": "random",
+    "rate": 40.0,
+    "threshold_ms": 2000,
+    "mean_delta_goodput": 0.0069,
+    "ci95": [
+     0.0042,
+     0.0095
+    ],
+    "per_seed_delta": {
+     "7": 0.0081,
+     "42": 0.0061,
+     "2026": 0.0064
+    },
+    "p_value": 0.008124,
+    "bh_q": 0.076114
+   },
+   {
+    "workload": "random",
+    "rate": 40.0,
+    "threshold_ms": 3000,
+    "mean_delta_goodput": 0.0069,
+    "ci95": [
+     0.0042,
+     0.0095
+    ],
+    "per_seed_delta": {
+     "7": 0.0081,
+     "42": 0.0061,
+     "2026": 0.0064
+    },
+    "p_value": 0.008124,
+    "bh_q": 0.076114
+   },
+   {
+    "workload": "random",
+    "rate": 45.0,
+    "threshold_ms": 250,
+    "mean_delta_goodput": 0.0263,
+    "ci95": [
+     -0.0396,
+     0.0921
+    ],
+    "per_seed_delta": {
+     "7": 0.0522,
+     "42": 0.0274,
+     "2026": -0.0008
+    },
+    "p_value": 0.228367,
+    "bh_q": 0.415213
+   },
+   {
+    "workload": "random",
+    "rate": 45.0,
+    "threshold_ms": 500,
+    "mean_delta_goodput": 0.0601,
+    "ci95": [
+     0.0378,
+     0.0824
+    ],
+    "per_seed_delta": {
+     "7": 0.0541,
+     "42": 0.0559,
+     "2026": 0.0704
+    },
+    "p_value": 0.007282,
+    "bh_q": 0.076114
+   },
+   {
+    "workload": "random",
+    "rate": 45.0,
+    "threshold_ms": 1000,
+    "mean_delta_goodput": 0.0916,
+    "ci95": [
+     0.0129,
+     0.1703
+    ],
+    "per_seed_delta": {
+     "7": 0.1237,
+     "42": 0.0907,
+     "2026": 0.0603
+    },
+    "p_value": 0.037725,
+    "bh_q": 0.205773
+   },
+   {
+    "workload": "random",
+    "rate": 45.0,
+    "threshold_ms": 2000,
+    "mean_delta_goodput": 0.3377,
+    "ci95": [
+     0.2033,
+     0.4721
+    ],
+    "per_seed_delta": {
+     "7": 0.2793,
+     "42": 0.3861,
+     "2026": 0.3477
+    },
+    "p_value": 0.008446,
+    "bh_q": 0.076114
+   },
+   {
+    "workload": "random",
+    "rate": 45.0,
+    "threshold_ms": 3000,
+    "mean_delta_goodput": 0.3724,
+    "ci95": [
+     0.3099,
+     0.4348
+    ],
+    "per_seed_delta": {
+     "7": 0.3626,
+     "42": 0.4009,
+     "2026": 0.3535
+    },
+    "p_value": 0.001518,
+    "bh_q": 0.05163
+   },
+   {
+    "workload": "random",
+    "rate": 50.0,
+    "threshold_ms": 250,
+    "mean_delta_goodput": 0.0048,
+    "ci95": [
+     -0.003,
+     0.0126
+    ],
+    "per_seed_delta": {
+     "7": 0.0054,
+     "42": 0.0014,
+     "2026": 0.0076
+    },
+    "p_value": 0.11814,
+    "bh_q": 0.313102
+   },
+   {
+    "workload": "random",
+    "rate": 50.0,
+    "threshold_ms": 500,
+    "mean_delta_goodput": 0.0113,
+    "ci95": [
+     -0.0044,
+     0.0269
+    ],
+    "per_seed_delta": {
+     "7": 0.0185,
+     "42": 0.0081,
+     "2026": 0.0071
+    },
+    "p_value": 0.091116,
+    "bh_q": 0.313102
+   },
+   {
+    "workload": "random",
+    "rate": 50.0,
+    "threshold_ms": 1000,
+    "mean_delta_goodput": 0.0358,
+    "ci95": [
+     -0.0291,
+     0.1008
+    ],
+    "per_seed_delta": {
+     "7": 0.0658,
+     "42": 0.0235,
+     "2026": 0.0181
+    },
+    "p_value": 0.140896,
+    "bh_q": 0.313102
+   },
+   {
+    "workload": "random",
+    "rate": 50.0,
+    "threshold_ms": 2000,
+    "mean_delta_goodput": 0.0413,
+    "ci95": [
+     0.0219,
+     0.0607
+    ],
+    "per_seed_delta": {
+     "7": 0.0497,
+     "42": 0.0343,
+     "2026": 0.0399
+    },
+    "p_value": 0.011667,
+    "bh_q": 0.081433
+   },
+   {
+    "workload": "random",
+    "rate": 50.0,
+    "threshold_ms": 3000,
+    "mean_delta_goodput": 0.0717,
+    "ci95": [
+     0.0374,
+     0.1061
+    ],
+    "per_seed_delta": {
+     "7": 0.0874,
+     "42": 0.0612,
+     "2026": 0.0665
+    },
+    "p_value": 0.012215,
+    "bh_q": 0.081433
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 20.0,
+    "threshold_ms": 250,
+    "mean_delta_goodput": 0.0,
+    "ci95": [
+     -0.0015,
+     0.0016
+    ],
+    "per_seed_delta": {
+     "7": -0.0003,
+     "42": 0.0007,
+     "2026": -0.0004
+    },
+    "p_value": 1.0,
+    "bh_q": 1.0
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 20.0,
+    "threshold_ms": 500,
+    "mean_delta_goodput": 0.0,
+    "ci95": [
+     -0.0015,
+     0.0016
+    ],
+    "per_seed_delta": {
+     "7": -0.0003,
+     "42": 0.0007,
+     "2026": -0.0004
+    },
+    "p_value": 1.0,
+    "bh_q": 1.0
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 20.0,
+    "threshold_ms": 1000,
+    "mean_delta_goodput": 0.0,
+    "ci95": [
+     -0.0015,
+     0.0016
+    ],
+    "per_seed_delta": {
+     "7": -0.0003,
+     "42": 0.0007,
+     "2026": -0.0004
+    },
+    "p_value": 1.0,
+    "bh_q": 1.0
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 20.0,
+    "threshold_ms": 2000,
+    "mean_delta_goodput": 0.0,
+    "ci95": [
+     -0.0015,
+     0.0016
+    ],
+    "per_seed_delta": {
+     "7": -0.0003,
+     "42": 0.0007,
+     "2026": -0.0004
+    },
+    "p_value": 1.0,
+    "bh_q": 1.0
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 20.0,
+    "threshold_ms": 3000,
+    "mean_delta_goodput": 0.0,
+    "ci95": [
+     -0.0015,
+     0.0016
+    ],
+    "per_seed_delta": {
+     "7": -0.0003,
+     "42": 0.0007,
+     "2026": -0.0004
+    },
+    "p_value": 1.0,
+    "bh_q": 1.0
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 25.0,
+    "threshold_ms": 250,
+    "mean_delta_goodput": -0.0005,
+    "ci95": [
+     -0.0014,
+     0.0004
+    ],
+    "per_seed_delta": {
+     "7": -0.0009,
+     "42": -0.0002,
+     "2026": -0.0004
+    },
+    "p_value": 0.138273,
+    "bh_q": 0.313102
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 25.0,
+    "threshold_ms": 500,
+    "mean_delta_goodput": -0.0005,
+    "ci95": [
+     -0.0014,
+     0.0004
+    ],
+    "per_seed_delta": {
+     "7": -0.0009,
+     "42": -0.0002,
+     "2026": -0.0004
+    },
+    "p_value": 0.138273,
+    "bh_q": 0.313102
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 25.0,
+    "threshold_ms": 1000,
+    "mean_delta_goodput": -0.0005,
+    "ci95": [
+     -0.0014,
+     0.0004
+    ],
+    "per_seed_delta": {
+     "7": -0.0009,
+     "42": -0.0002,
+     "2026": -0.0004
+    },
+    "p_value": 0.138273,
+    "bh_q": 0.313102
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 25.0,
+    "threshold_ms": 2000,
+    "mean_delta_goodput": -0.0005,
+    "ci95": [
+     -0.0014,
+     0.0004
+    ],
+    "per_seed_delta": {
+     "7": -0.0009,
+     "42": -0.0002,
+     "2026": -0.0004
+    },
+    "p_value": 0.138273,
+    "bh_q": 0.313102
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 25.0,
+    "threshold_ms": 3000,
+    "mean_delta_goodput": -0.0005,
+    "ci95": [
+     -0.0014,
+     0.0004
+    ],
+    "per_seed_delta": {
+     "7": -0.0009,
+     "42": -0.0002,
+     "2026": -0.0004
+    },
+    "p_value": 0.138273,
+    "bh_q": 0.313102
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 30.0,
+    "threshold_ms": 250,
+    "mean_delta_goodput": 0.0004,
+    "ci95": [
+     -0.0009,
+     0.0017
+    ],
+    "per_seed_delta": {
+     "7": 0.001,
+     "42": 0.0002,
+     "2026": 0.0001
+    },
+    "p_value": 0.267533,
+    "bh_q": 0.433837
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 30.0,
+    "threshold_ms": 500,
+    "mean_delta_goodput": 0.0004,
+    "ci95": [
+     -0.0011,
+     0.0018
+    ],
+    "per_seed_delta": {
+     "7": 0.001,
+     "42": -0.0,
+     "2026": 0.0001
+    },
+    "p_value": 0.368067,
+    "bh_q": 0.490756
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 30.0,
+    "threshold_ms": 1000,
+    "mean_delta_goodput": 0.0004,
+    "ci95": [
+     -0.0011,
+     0.0018
+    ],
+    "per_seed_delta": {
+     "7": 0.001,
+     "42": -0.0,
+     "2026": 0.0001
+    },
+    "p_value": 0.368067,
+    "bh_q": 0.490756
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 30.0,
+    "threshold_ms": 2000,
+    "mean_delta_goodput": 0.0004,
+    "ci95": [
+     -0.0011,
+     0.0018
+    ],
+    "per_seed_delta": {
+     "7": 0.001,
+     "42": -0.0,
+     "2026": 0.0001
+    },
+    "p_value": 0.368067,
+    "bh_q": 0.490756
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 30.0,
+    "threshold_ms": 3000,
+    "mean_delta_goodput": 0.0004,
+    "ci95": [
+     -0.0011,
+     0.0018
+    ],
+    "per_seed_delta": {
+     "7": 0.001,
+     "42": -0.0,
+     "2026": 0.0001
+    },
+    "p_value": 0.368067,
+    "bh_q": 0.490756
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 35.0,
+    "threshold_ms": 250,
+    "mean_delta_goodput": -0.0,
+    "ci95": [
+     -0.003,
+     0.003
+    ],
+    "per_seed_delta": {
+     "7": -0.0011,
+     "42": -0.0003,
+     "2026": 0.0013
+    },
+    "p_value": 0.966611,
+    "bh_q": 1.0
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 35.0,
+    "threshold_ms": 500,
+    "mean_delta_goodput": 0.0009,
+    "ci95": [
+     -0.001,
+     0.0027
+    ],
+    "per_seed_delta": {
+     "7": 0.0006,
+     "42": 0.0003,
+     "2026": 0.0017
+    },
+    "p_value": 0.178629,
+    "bh_q": 0.340476
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 35.0,
+    "threshold_ms": 1000,
+    "mean_delta_goodput": 0.0009,
+    "ci95": [
+     -0.001,
+     0.0027
+    ],
+    "per_seed_delta": {
+     "7": 0.0006,
+     "42": 0.0003,
+     "2026": 0.0017
+    },
+    "p_value": 0.178629,
+    "bh_q": 0.340476
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 35.0,
+    "threshold_ms": 2000,
+    "mean_delta_goodput": 0.0009,
+    "ci95": [
+     -0.001,
+     0.0027
+    ],
+    "per_seed_delta": {
+     "7": 0.0006,
+     "42": 0.0003,
+     "2026": 0.0017
+    },
+    "p_value": 0.178629,
+    "bh_q": 0.340476
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 35.0,
+    "threshold_ms": 3000,
+    "mean_delta_goodput": 0.0009,
+    "ci95": [
+     -0.001,
+     0.0027
+    ],
+    "per_seed_delta": {
+     "7": 0.0006,
+     "42": 0.0003,
+     "2026": 0.0017
+    },
+    "p_value": 0.178629,
+    "bh_q": 0.340476
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 40.0,
+    "threshold_ms": 250,
+    "mean_delta_goodput": 0.0033,
+    "ci95": [
+     -0.0003,
+     0.007
+    ],
+    "per_seed_delta": {
+     "7": 0.0041,
+     "42": 0.0016,
+     "2026": 0.0043
+    },
+    "p_value": 0.061684,
+    "bh_q": 0.284695
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 40.0,
+    "threshold_ms": 500,
+    "mean_delta_goodput": 0.0015,
+    "ci95": [
+     -0.0012,
+     0.0043
+    ],
+    "per_seed_delta": {
+     "7": 0.0026,
+     "42": 0.0004,
+     "2026": 0.0016
+    },
+    "p_value": 0.137433,
+    "bh_q": 0.313102
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 40.0,
+    "threshold_ms": 1000,
+    "mean_delta_goodput": 0.0015,
+    "ci95": [
+     -0.0012,
+     0.0043
+    ],
+    "per_seed_delta": {
+     "7": 0.0026,
+     "42": 0.0004,
+     "2026": 0.0016
+    },
+    "p_value": 0.137433,
+    "bh_q": 0.313102
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 40.0,
+    "threshold_ms": 2000,
+    "mean_delta_goodput": 0.0015,
+    "ci95": [
+     -0.0012,
+     0.0043
+    ],
+    "per_seed_delta": {
+     "7": 0.0026,
+     "42": 0.0004,
+     "2026": 0.0016
+    },
+    "p_value": 0.137433,
+    "bh_q": 0.313102
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 40.0,
+    "threshold_ms": 3000,
+    "mean_delta_goodput": 0.0015,
+    "ci95": [
+     -0.0012,
+     0.0043
+    ],
+    "per_seed_delta": {
+     "7": 0.0026,
+     "42": 0.0004,
+     "2026": 0.0016
+    },
+    "p_value": 0.137433,
+    "bh_q": 0.313102
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 45.0,
+    "threshold_ms": 250,
+    "mean_delta_goodput": 0.179,
+    "ci95": [
+     -0.4334,
+     0.7914
+    ],
+    "per_seed_delta": {
+     "7": 0.0606,
+     "42": 0.0141,
+     "2026": 0.4624
+    },
+    "p_value": 0.335369,
+    "bh_q": 0.490756
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 45.0,
+    "threshold_ms": 500,
+    "mean_delta_goodput": 0.192,
+    "ci95": [
+     -0.4418,
+     0.8257
+    ],
+    "per_seed_delta": {
+     "7": 0.0848,
+     "42": 0.0079,
+     "2026": 0.4832
+    },
+    "p_value": 0.322333,
+    "bh_q": 0.490756
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 45.0,
+    "threshold_ms": 1000,
+    "mean_delta_goodput": 0.201,
+    "ci95": [
+     -0.4301,
+     0.8322
+    ],
+    "per_seed_delta": {
+     "7": 0.1037,
+     "42": 0.0101,
+     "2026": 0.4894
+    },
+    "p_value": 0.303997,
+    "bh_q": 0.479995
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 45.0,
+    "threshold_ms": 2000,
+    "mean_delta_goodput": 0.2222,
+    "ci95": [
+     -0.3948,
+     0.8391
+    ],
+    "per_seed_delta": {
+     "7": 0.1391,
+     "42": 0.026,
+     "2026": 0.5014
+    },
+    "p_value": 0.261393,
+    "bh_q": 0.433837
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 45.0,
+    "threshold_ms": 3000,
+    "mean_delta_goodput": 0.2232,
+    "ci95": [
+     -0.3685,
+     0.8149
+    ],
+    "per_seed_delta": {
+     "7": 0.1141,
+     "42": 0.0592,
+     "2026": 0.4964
+    },
+    "p_value": 0.24596,
+    "bh_q": 0.433837
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 50.0,
+    "threshold_ms": 250,
+    "mean_delta_goodput": 0.0114,
+    "ci95": [
+     -0.0286,
+     0.0513
+    ],
+    "per_seed_delta": {
+     "7": 0.0016,
+     "42": 0.0025,
+     "2026": 0.0299
+    },
+    "p_value": 0.346692,
+    "bh_q": 0.490756
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 50.0,
+    "threshold_ms": 500,
+    "mean_delta_goodput": 0.0118,
+    "ci95": [
+     -0.0216,
+     0.0453
+    ],
+    "per_seed_delta": {
+     "7": 0.0054,
+     "42": 0.0028,
+     "2026": 0.0273
+    },
+    "p_value": 0.267203,
+    "bh_q": 0.433837
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 50.0,
+    "threshold_ms": 1000,
+    "mean_delta_goodput": 0.0136,
+    "ci95": [
+     -0.0154,
+     0.0426
+    ],
+    "per_seed_delta": {
+     "7": 0.0032,
+     "42": 0.0113,
+     "2026": 0.0262
+    },
+    "p_value": 0.181587,
+    "bh_q": 0.340476
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 50.0,
+    "threshold_ms": 2000,
+    "mean_delta_goodput": 0.0143,
+    "ci95": [
+     -0.0045,
+     0.0332
+    ],
+    "per_seed_delta": {
+     "7": 0.0095,
+     "42": 0.0105,
+     "2026": 0.0231
+    },
+    "p_value": 0.081591,
+    "bh_q": 0.313102
+   },
+   {
+    "workload": "sharegpt",
+    "rate": 50.0,
+    "threshold_ms": 3000,
+    "mean_delta_goodput": 0.0152,
+    "ci95": [
+     -0.0085,
+     0.0389
+    ],
+    "per_seed_delta": {
+     "7": 0.0123,
+     "42": 0.0074,
+     "2026": 0.0258
+    },
+    "p_value": 0.110246,
+    "bh_q": 0.313102
+   }
+  ]
+ }
+}

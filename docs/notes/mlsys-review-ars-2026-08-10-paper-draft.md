@@ -332,3 +332,23 @@ serving p/BH、标题与 intro），再进入下一轮 5 席审稿。
 
 **加权分与决策说明**：量规 65–79 名义映射 Minor；契约 F2（多数审稿人 ≥2
 mandatory 维度 warn）优先级更高，触发 `major_revision`。本报告以契约为准。
+
+---
+
+## 附录 C — 修订状态（2026-08-10 当日落实）
+
+作者侧已按本报告落实 R1–R4，并生成对应证据：
+
+| # | 修订项 | 状态 | 证据/落点 |
+|---|---|---|---|
+| R1 | RULER think/max-tokens 披露 | ✅ | Setup §4、Fig 3 图注、Limitations 新增 “RULER protocol” 段；no-think 重跑列为 future work |
+| R2 | vLLM dtype 引文改 PR #22196；#43518 语义纠正 | ✅ | related work 改写 + `main.bib` 新增 `vllmpr22196`，`vllmpr43518` 仅用于 FP8 checkpointing 语境 |
+| R3 | serving 补 p + BH 校正；"independent reproduction" 改 "second formal run" | ✅ | `results/quality/serving-bh/serving-bh-analysis-20260810.json`（60 单元 p/BH q）；正文补 p/q 并明写“无单元在 q<0.05 存活，按方向性处理”；摘要/正文/表格/图注统一改为 “second formal run” |
+| R4 | 标题收窄 + intro 免探针预测 + contributions 列表 | ✅ | 标题改为 "Joint Precision Budgeting Across Attention KV and Recurrent State..."；intro 四贡献 (a)–(d) + 目标场景（短上下文高并发） |
+
+新增统计结论：formal/repro 两轮各 60 单元中，p<0.05 分别 12/11 格，BH-FDR
+q<0.05 均为 0 格；最近为 formal r40/500ms q=0.066、second run r40/250ms
+q=0.052。正文据此把 serving 过载区表述降级为“方向性证据 + 跨 run 同格复现”。
+
+重编译状态：7 页、0 Overfull、28 条引用全部解析；标题/引文/统计数字已逐项
+与 JSON 交叉核对。
