@@ -239,11 +239,25 @@ sizes change with layout (e.g., int4 2B: 2064/1072 tokens per block; fp16:
 544/288), and the same rounding that makes the int4 column conservative
 flips sign under fp16 KV. We therefore frame the capacity model as a
 conservative lower bound only for the int4-KV column.
+Figure~\ref{fig:blocks} shows the mechanism: bf16 state halves the per-block
+state footprint, which doubles the number of allocatable GPU blocks, and the
+measured ratio is the integer-arithmetic outcome of that re-partitioning.
 
 Figure~\ref{fig:capacity}b also shows the compound KV ratio: with fp32 state,
 int4 KV yields 2.2451x over fp16 KV at 2B/4K; with bf16 state the same
 comparison yields 2.6754x. The two budget dimensions compound: the state
 switch and the KV switch do not share memory and their gains multiply.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figures/fig5_block_granularity.pdf}
+\caption{\textbf{Block granularity under fp32 vs.\ bf16 state.}
+(a) Tokens per GPU block and (b) number of allocated GPU blocks for the seven
+capacity cells. bf16 halves the per-block state footprint; the discrete
+re-partitioning of blocks explains the residual between measured and modeled
+$r_{state}$ in Table~\ref{tab:capacity}.}
+\label{fig:blocks}
+\end{figure}
 
 \begin{figure}[t]
 \centering
@@ -268,6 +282,10 @@ and the magnitude is the same as the state change under fp16 KV
 measurable additional perplexity cost. The harness is a chunk-level
 approximation (Section~\ref{sec:limits}); these numbers are supporting
 evidence for the kernel-level claim, not a substitute for it.
+Figure~\ref{fig:harness} quantifies both statements: chunk-boundary rounding
+moves PPL by roughly 87\% when the chunk size is reduced to one, while the
+marginal state cost under int4 KV stays within 0.007 of the fp16-KV cost on
+both corpora.
 
 \textbf{GSM8K.} Figure~\ref{fig:gsm8k} summarizes the 9-seed paired deltas.
 At 2B, bf16 state loses 1.00 point [$-$1.71, $-$0.29], $p=0.025$, with a
@@ -278,7 +296,10 @@ pre-registered MDE, and we report both. Uniform int4 KV loses 2.72 points
 shows a marginal $+1.17$ points [$-0.33$, $+2.66$] relative to int4 alone:
 no additional regression. At 9B, bf16 state gains 0.33 points [$-0.07$,
 $+0.73$], $p=0.141$: no detectable regression. We do not aggregate the 2B and
-9B effects.
+9B effects. Figure~\ref{fig:gsm8k-seeds} shows the same data at seed
+resolution: the nine thin lines pair each dataset seed across allocations,
+and the between-seed spread is what the confidence intervals in
+Figure~\ref{fig:gsm8k} summarize.
 
 \begin{figure}[t]
 \centering
@@ -308,6 +329,27 @@ no detectable difference.}
 \label{fig:ruler}
 \end{figure}
 
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figures/fig7_harness.pdf}
+\caption{\textbf{Harness boundary and stacking cost.}
+(a) Chunk-level write-back rounding: chunk=1 raises C4 PPL by roughly 87\%
+relative to chunk=128 (1 seed, 1 sequence), so PPL is a chunk-level
+approximation. (b) Marginal state-bf16 PPL delta under fp16 KV vs.\ int4 KV
+(3 seeds): stacking introduces no measurable additional cost.}
+\label{fig:harness}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figures/fig8_gsm8k_per_seed.pdf}
+\caption{\textbf{GSM8K per-seed paired accuracy.}
+200 seeded items, greedy, no chain-of-thought, 9 dataset seeds. Thin lines
+connect the same seed across allocations; the blue line and markers are seed
+means. (a) 2B across four allocations; (b) 9B across two.}
+\label{fig:gsm8k-seeds}
+\end{figure}
+
 \subsection{Per-layer sensitivity}
 \label{sec:sensitivity}
 
@@ -317,7 +359,18 @@ precision. Bf16 was applied to one GDN layer at a time (18 configurations,
 and 8, $p=0.049$ and $p=0.0036$), but neither survives Bonferroni
 ($\alpha/36$) or BH-FDR correction. There is no evidence for a per-layer
 precision benefit, so the paper's allocation dimension is the whole-state
-switch rather than layer-wise state precision.
+switch rather than layer-wise state precision
+(Figure~\ref{fig:sensitivity}).
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figures/fig6_sensitivity.pdf}
+\caption{\textbf{Per-layer state sensitivity (2B, C4/PG19, 3 seeds).}
+Each row is bf16 applied to one GDN layer; points and paired 95\% CIs are
+deltas against the fp32 baseline. Red rows (C4 layers 2 and 8) have raw
+$p<0.05$ and are not significant after Bonferroni or BH-FDR correction.}
+\label{fig:sensitivity}
+\end{figure}
 
 \subsection{Serving}
 \label{sec:serving}

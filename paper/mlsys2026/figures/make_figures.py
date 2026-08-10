@@ -8,6 +8,7 @@ Exports: PDF (vector, editable text) + PNG (300 dpi preview) + TIFF (600 dpi).
 from __future__ import annotations
 
 import json
+import csv
 from pathlib import Path
 
 import matplotlib as mpl
@@ -355,9 +356,188 @@ def fig4_serving():
     plt.close(fig)
 
 
+# --------------------------------------------------------------------------
+# Figure 5: block granularity evidence (capacity mechanism).
+# --------------------------------------------------------------------------
+def fig5_block_granularity():
+    cap = load("results/verified/2026-08-09/capacity-2x2-analysis.json")
+    cats = [
+        ("2B", 4096, "fp16"), ("2B", 16384, "fp16"), ("9B", 4096, "fp16"),
+        ("2B", 4096, "int4"), ("2B", 16384, "int4"),
+        ("9B", 4096, "int4"), ("9B", 16384, "int4"),
+    ]
+    by = {(r["model"].upper(), r["length"], r["kv_dtype"]): r for r in cap["rows"]}
+    labels = [f"{m}\nL{l}" for m, l, _ in cats]
+    fp32_bs = [by[(m, l, k)]["fp32_block_size"] for m, l, k in cats]
+    bf16_bs = [by[(m, l, k)]["bf16_block_size"] for m, l, k in cats]
+    fp32_nb = [by[(m, l, k)]["fp32_num_gpu_blocks"] for m, l, k in cats]
+    bf16_nb = [by[(m, l, k)]["bf16_num_gpu_blocks"] for m, l, k in cats]
+
+    fig, axes = plt.subplots(1, 2, figsize=(7.0, 2.7),
+                             gridspec_kw={"wspace": 0.32})
+    x = np.arange(len(cats))
+    w = 0.36
+    for ax, a, b, ylab, title in (
+            (axes[0], fp32_bs, bf16_bs, "tokens per GPU block",
+             "block size"),
+            (axes[1], fp32_nb, bf16_nb, "allocated GPU blocks",
+             "block count")):
+        ax.bar(x - w / 2, a, w, color=GRAY, ec="k", lw=0.4, label="fp32 state")
+        ax.bar(x + w / 2, b, w, color=TEAL, ec="k", lw=0.4, label="bf16 state")
+        ax.set_xticks(x)
+        ax.set_xticklabels(labels, fontsize=6.2)
+        ax.set_ylabel(ylab)
+        ax.set_title(title, fontsize=7, pad=4)
+        ax.legend(fontsize=6, loc="upper right")
+    panel_label(axes[0], "a")
+    panel_label(axes[1], "b")
+    save(fig, "fig5_block_granularity")
+    plt.close(fig)
+
+
+# --------------------------------------------------------------------------
+# Figure 6: per-layer state sensitivity (negative result, corrected).
+# --------------------------------------------------------------------------
+def fig6_sensitivity():
+    js = load("results/quality/state-sensitivity-analysis-20260809-bonf.json")
+    rows = [r for r in js["rows"] if r["config"].startswith("bf16_L")]
+    layers = [int(r["config"].split("L")[1]) for r in rows]
+    fig, axes = plt.subplots(1, 2, figsize=(7.0, 3.4), sharey=True,
+                             gridspec_kw={"wspace": 0.08})
+    panels = [
+        ("c4", "C4", axes[0]),
+        ("pg19", "PG19", axes[1]),
+    ]
+    for tag, name, ax in panels:
+        y = np.arange(len(rows))[::-1]
+        for yi, (r, ly) in enumerate(zip(rows, layers)):
+            d = r[f"{tag}_delta"]
+            ci = r[f"{tag}_ci95"]
+            raw_sig = r.get(f"{tag}_sensitive", False)
+            color = RED if raw_sig else "#333333"
+            ax.plot(ci, [yi, yi], color=color, lw=1.3, zorder=2)
+            ax.scatter([d], [yi], s=22, color=color, zorder=3)
+        ax.axvline(0, color=GRAY, lw=0.8, ls="--")
+        ax.set_yticks(y)
+        ax.set_yticklabels(layers, fontsize=6.2)
+        ax.set_xlabel("PPL delta (bf16 layer minus fp32)")
+        ax.set_title(f"{name} (3 seeds, 95% CI)", fontsize=7, pad=4)
+        if tag == "c4":
+            ax.set_ylabel("GDN layer (bf16)")
+    axes[1].text(0.012, 1.02, "raw p<0.05; n.s. after\nBonferroni / BH-FDR",
+                 transform=axes[1].transAxes, fontsize=6, color=RED,
+                 va="bottom", ha="left")
+    panel_label(axes[0], "a")
+    panel_label(axes[1], "b")
+    save(fig, "fig6_sensitivity")
+    plt.close(fig)
+
+
+# --------------------------------------------------------------------------
+# Figure 7: harness boundary (chunk ablation) + stacking cost.
+# --------------------------------------------------------------------------
+def fig7_harness():
+    chunk = {}
+    for st in ("fp32", "bf16"):
+        for ck in (128, 1):
+            p = ROOT / ("results/quality/chunk-ablation/"
+                        f"chunk-ablation-20260809__state{st}__chunk{ck}__2b.csv")
+            with p.open(encoding="utf-8") as fh:
+                val = float(list(csv.DictReader(fh))[0]["ppl_mean"])
+            chunk[(st, ck)] = val
+    ppl = load("results/quality/ppl-stacking-analysis-20260809.json")
+    cost = ppl["stacking_cost_vs_fp16_kv"]
+    fig, axes = plt.subplots(1, 2, figsize=(7.0, 2.6),
+                             gridspec_kw={"width_ratios": [1.15, 1.0],
+                                          "wspace": 0.4})
+
+    ax = axes[0]
+    cats = [("fp32", 128), ("bf16", 128), ("fp32", 1), ("bf16", 1)]
+    x = np.arange(len(cats))
+    vals = [chunk[c] for c in cats]
+    colors = [BLUE, TEAL, BLUE, TEAL]
+    ax.bar(x, vals, 0.55, color=colors, ec="k", lw=0.4)
+    ax.set_xticks(x)
+    ax.set_xticklabels(["fp32\nchunk=128", "bf16\nchunk=128",
+                        "fp32\nchunk=1", "bf16\nchunk=1"], fontsize=6.2)
+    ax.set_ylabel("C4 PPL (1 seed x 1 seq)")
+    ax.set_ylim(0, 42)
+    ax.set_title("chunk-level write-back rounding", fontsize=7, pad=4)
+    ax.annotate("+87% vs chunk=128", xy=(1.5, 28), fontsize=6.5,
+                ha="center", color=RED)
+    panel_label(ax, "a")
+
+    ax = axes[1]
+    corpora = ["C4", "PG19"]
+    fp16_vals = [cost[c.lower()]["fp16kv_state_delta"] for c in corpora]
+    int4_vals = [cost[c.lower()]["int4kv_state_delta"] for c in corpora]
+    x = np.arange(len(corpora))
+    w = 0.32
+    ax.axhline(0, color=GRAY, lw=0.8, ls="--")
+    ax.bar(x - w / 2, fp16_vals, w, color=BLUE, ec="k", lw=0.4,
+           label="fp16 KV")
+    ax.bar(x + w / 2, int4_vals, w, color=ORANGE, ec="k", lw=0.4,
+           label="int4 KV")
+    for xi, v in zip(x - w / 2, fp16_vals):
+        ax.text(xi, v + 0.0004, f"{v:+.4f}", ha="center", fontsize=5.8)
+    for xi, v in zip(x + w / 2, int4_vals):
+        ax.text(xi, v + 0.0004, f"{v:+.4f}", ha="center", fontsize=5.8)
+    ax.set_xticks(x)
+    ax.set_xticklabels(corpora, fontsize=7)
+    ax.set_ylabel("state-bf16 marginal PPL delta")
+    ax.set_title("stacking cost: fp16 vs int4 KV", fontsize=7, pad=4)
+    ax.legend(fontsize=6)
+    panel_label(ax, "b")
+    save(fig, "fig7_harness")
+    plt.close(fig)
+
+
+# --------------------------------------------------------------------------
+# Figure 8: GSM8K per-seed paired accuracy.
+# --------------------------------------------------------------------------
+def fig8_gsm8k_per_seed():
+    g2b = load("results/quality/gsm8k-state9seed-v2-analysis-20260809.json")
+    g9b = load("results/quality/gsm8k-9b-state9seed-v2-analysis-20260809.json")
+    fig, axes = plt.subplots(1, 2, figsize=(6.9, 2.8),
+                             gridspec_kw={"wspace": 0.3})
+
+    def draw(ax, rows, allocs, title):
+        seeds = list(rows[0]["per_seed"].keys())
+        x = np.arange(len(allocs))
+        for s in seeds:
+            ys = [next(r for r in rows if r["allocation"] == a)["per_seed"][s]
+                  for a in allocs]
+            ax.plot(x, ys, color="#999999", lw=0.7, alpha=0.65, zorder=1)
+        means = [next(r for r in rows if r["allocation"] == a)["mean"]
+                 for a in allocs]
+        ax.plot(x, means, color=BLUE, lw=1.6, marker="o", ms=4, zorder=3,
+                label="seed mean")
+        ax.set_xticks(x)
+        ax.set_xticklabels(allocs, fontsize=6)
+        ax.set_ylim(0.62, 0.9)
+        ax.set_title(title, fontsize=7, pad=4)
+        ax.legend(fontsize=6)
+
+    rows2 = g2b["rows"]
+    draw(axes[0], rows2,
+         ["fp16", "fp16_statebf16", "uniform_int4", "uniform_int4_statebf16"],
+         "2B, 9 seeds")
+    draw(axes[1], g9b["rows"], ["fp16", "fp16_statebf16"], "9B, 9 seeds")
+    for ax in axes:
+        ax.set_ylabel("GSM8K accuracy")
+    panel_label(axes[0], "a")
+    panel_label(axes[1], "b")
+    save(fig, "fig8_gsm8k_per_seed")
+    plt.close(fig)
+
+
 if __name__ == "__main__":
     fig1_capacity()
     fig2_gsm8k()
     fig3_ppl_ruler()
     fig4_serving()
+    fig5_block_granularity()
+    fig6_sensitivity()
+    fig7_harness()
+    fig8_gsm8k_per_seed()
     print("figures written to", FIG)

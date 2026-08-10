@@ -81,6 +81,52 @@ for tag in ("formal", "repro"):
         add("fig4", f"{tag} boundary {key}",
             js["boundaries"][key], "same")
 
+# Figure 5: block granularity.
+for r in cap["rows"]:
+    add("fig5", f"{r['model']} L{r['length']} {r['kv_dtype']} fp32 block size",
+        r["fp32_block_size"], "capacity-2x2-analysis.json")
+    add("fig5", f"{r['model']} L{r['length']} {r['kv_dtype']} bf16 block size",
+        r["bf16_block_size"], "capacity-2x2-analysis.json")
+    add("fig5", f"{r['model']} L{r['length']} {r['kv_dtype']} fp32 blocks",
+        r["fp32_num_gpu_blocks"], "capacity-2x2-analysis.json")
+    add("fig5", f"{r['model']} L{r['length']} {r['kv_dtype']} bf16 blocks",
+        r["bf16_num_gpu_blocks"], "capacity-2x2-analysis.json")
+
+# Figure 6: per-layer sensitivity.
+sens = load("results/quality/state-sensitivity-analysis-20260809-bonf.json")
+for r in sens["rows"]:
+    if not r["config"].startswith("bf16_L"):
+        continue
+    add("fig6", f"{r['config']} c4 delta", r["c4_delta"],
+        "state-sensitivity-analysis-20260809-bonf.json")
+    add("fig6", f"{r['config']} c4 ci", r["c4_ci95"], "same")
+    add("fig6", f"{r['config']} pg19 delta", r["pg19_delta"], "same")
+    add("fig6", f"{r['config']} pg19 ci", r["pg19_ci95"], "same")
+
+# Figure 7: chunk ablation + stacking cost.
+import csv as _csv
+for st in ("fp32", "bf16"):
+    for ck in (128, 1):
+        p = ROOT / "results" / "quality" / "chunk-ablation" / (
+            f"chunk-ablation-20260809__state{st}__chunk{ck}__2b.csv")
+        with p.open(encoding="utf-8") as fh:
+            val = float(list(_csv.DictReader(fh))[0]["ppl_mean"])
+        add("fig7", f"chunk {st} {ck} ppl", val, p.name)
+for corpus in ("c4", "pg19"):
+    add("fig7", f"{corpus} fp16kv state delta",
+        ppl["stacking_cost_vs_fp16_kv"][corpus]["fp16kv_state_delta"],
+        "ppl-stacking-analysis")
+    add("fig7", f"{corpus} int4kv state delta",
+        ppl["stacking_cost_vs_fp16_kv"][corpus]["int4kv_state_delta"], "same")
+
+# Figure 8: GSM8K per-seed means.
+for r in g2b["rows"]:
+    add("fig8", f"2B {r['allocation']} mean", r["mean"],
+        "gsm8k-state9seed-v2-analysis")
+for r in g9b["rows"]:
+    add("fig8", f"9B {r['allocation']} mean", r["mean"],
+        "gsm8k-9b-state9seed-v2-analysis")
+
 for fig, label, value, source in LEDGER:
     print(f"{fig}\t{label}\t{value}\t{source}")
 print(f"\nLEDGER_ENTRIES={len(LEDGER)}")
