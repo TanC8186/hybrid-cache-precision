@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "material_passport": {
+    "origin_skill": "experiment-skill",
+    "origin_mode": "validate",
+    "origin_date": "2026-08-11",
+    "verification_status": "UNVERIFIED",
+    "version_label": "capacity_phase_validation_retry_contract_v1"
+  },
+  "contract_status": "FROZEN",
+  "created_at": "2026-08-11T13:41:34+08:00",
+  "attempt_id": "capacity-phase-repro-r2-validation-r2-20260811",
+  "classification": "postprocessing_validation_retry",
+  "determinism_class": "environment-sensitive allocator benchmark",
+  "objective": "Compare the provenance-defective old formal attempt with the clean R2 formal result without changing either frozen result or validator code.",
+  "source_attempt": {
+    "attempt_id": "capacity-phase-repro-r2-20260811",
+    "contract_path": "results/verified/2026-08-11/capacity-phase/capacity-phase-repro-r2-20260811.contract.json",
+    "contract_sha256": "55175eee421ba1acd73a0fad52264d02448c87b8155b313befa010c0720bb869",
+    "promotion_eligible": false
+  },
+  "parent_failed_attempt": {
+    "attempt_id": "capacity-phase-repro-r2-validation-v1-20260811",
+    "failure_path": "results/verified/2026-08-11/capacity-phase/capacity-phase-repro-r2-validation-v1-20260811.failure.json",
+    "failure_sha256": "1c66a8e6735450d44b121c6ad526627c802c1781b887c94a1a7833fbb45f1502",
+    "exit_code": 1,
+    "reason": "The frozen script-path invocation set sys.path to scripts/bench and failed to import the top-level scripts package before comparison."
+  },
+  "code": {
+    "validator_sha256": "cfd6b6c570d1b51e2795fd4ca077eb8f2fb81d4bf4ea64cfe7a9db89ef9b1a4c",
+    "analyzer_sha256": "278a144c10a53f33310a25635495b7f18583cbeb7da7019b872e5f5f82ecede5",
+    "code_change_from_failed_attempt": false,
+    "invocation_change": "Use Python module execution so the repository root remains importable."
+  },
+  "protocol": {
+    "working_directory": "/root/autodl-tmp/MLSys_Research",
+    "preflight_command": ".venv/bin/python -m scripts.bench.validate_capacity_phase_repro --help",
+    "preflight_exit_code": 0,
+    "command": ".venv/bin/python -m scripts.bench.validate_capacity_phase_repro --parent-attempt capacity-phase-formal-20260811 --repro-attempt capacity-phase-repro-r2-20260811 --parent-contract results/verified/2026-08-11/capacity-phase/capacity-phase-formal-20260811.contract.json --repro-contract results/verified/2026-08-11/capacity-phase/capacity-phase-repro-r2-20260811.contract.json --token-relative-tolerance 0.02 --median-gain-pp-tolerance 2.0 --out results/verified/2026-08-11/capacity-phase/capacity-phase-repro-r2-validation-r2-20260811.json",
+    "timeout_seconds": 600,
+    "output_absent_at_freeze": true
+  },
+  "tolerances": {
+    "cell_token_symmetric_relative": 0.02,
+    "group_median_gain_absolute_pp": 2.0,
+    "timing_metrics_compared": false
+  },
+  "expected_output": "results/verified/2026-08-11/capacity-phase/capacity-phase-repro-r2-validation-r2-20260811.json",
+  "success_criteria": [
+    "Both attempts contain the exact 112-cell formal matrix with valid sidecars.",
+    "All 52 bf16-state capacity directions are positive in both attempts.",
+    "Every cell token capacity is within the frozen 2% symmetric relative tolerance.",
+    "Every model-by-KV median gain is within the frozen 2 percentage-point tolerance.",
+    "The result remains ANALYZED and PARTIALLY_REPRODUCIBLE because the R2 source contract is not promotion eligible."
+  ],
+  "evidence_policy": "This retry repairs only the validation invocation. It does not repair the old formal provenance and cannot promote R2 to VERIFIED."
+}
