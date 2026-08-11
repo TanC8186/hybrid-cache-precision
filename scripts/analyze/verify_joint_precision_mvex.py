@@ -181,6 +181,7 @@ def audit_sample(
     *,
     root_commit: str,
     vllm_commit: str,
+    require_zero_failures: bool = True,
 ) -> dict[str, Any]:
     sample_id = str(plan["sample_id"])
     sample_dir = attempt_dir / "samples" / sample_id
@@ -213,7 +214,8 @@ def audit_sample(
     require(result["vllm_source_commit"] == vllm_commit, f"{sample_id}: result vLLM commit drift")
 
     independent = recompute_analysis(result, plan, contract["protocol"])
-    require(independent["accounting"]["failed"] == 0, f"{sample_id}: failed requests present")
+    if require_zero_failures:
+        require(independent["accounting"]["failed"] == 0, f"{sample_id}: failed requests present")
     require(analysis["status"] == "completed_validated", f"{sample_id}: analysis status")
     require(analysis["sample_id"] == sample_id, f"{sample_id}: analysis ID")
     require(analysis["request_failure_policy"] == "count_as_slo_miss", f"{sample_id}: failure policy")
@@ -251,6 +253,9 @@ def audit_sample(
     return {
         "sample_id": sample_id,
         "allocation": plan["allocation"],
+        "workload": plan["workload"],
+        "offered_rate_req_s": float(plan["request_rate"]),
+        "seed": int(plan["seed"]),
         "status": status["status"],
         "accounting": independent["accounting"],
         "runner_duration_s": status["runner_duration_s"],
@@ -261,6 +266,7 @@ def audit_sample(
         "tpot_p95_ms": independent["tpot_p95_ms"],
         "goodput_req_s_ttft_250": independent["slo_sweep"]["250"]["goodput_req_s"],
         "goodput_req_s_ttft_3000": independent["slo_sweep"]["3000"]["goodput_req_s"],
+        "slo_sweep": independent["slo_sweep"],
         "all_thresholds_sustainable": all(item["sustainable"] for item in independent["slo_sweep"].values()),
         "hashes": hashes,
     }
