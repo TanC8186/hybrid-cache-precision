@@ -142,12 +142,13 @@ def load_config(path: Path) -> dict[str, Any]:
     failure_policy = protocol.get("request_failure_policy")
     if failure_policy != REQUEST_FAILURE_POLICY:
         raise ExperimentError(
-            "protocol.request_failure_policy must be "
-            f"{REQUEST_FAILURE_POLICY!r}, got {failure_policy!r}"
+            f"protocol.request_failure_policy must be {REQUEST_FAILURE_POLICY!r}, got {failure_policy!r}"
         )
     client_keepalive_s = int(protocol["benchmark_client_keepalive_timeout_s"])
     server_keepalive_s = int(
-        config["environment"].get("env", {}).get(
+        config["environment"]
+        .get("env", {})
+        .get(
             "VLLM_HTTP_TIMEOUT_KEEP_ALIVE",
             5,
         )
@@ -442,10 +443,7 @@ def analyze_result(
     completed = int(result["completed"])
     failed = int(result["failed"])
     if completed + failed != expected:
-        raise ExperimentError(
-            "denominator mismatch: "
-            f"expected={expected}, completed={completed}, failed={failed}"
-        )
+        raise ExperimentError(f"denominator mismatch: expected={expected}, completed={completed}, failed={failed}")
     if completed <= 0:
         raise ExperimentError("result has no successful requests for latency analysis")
 
@@ -456,15 +454,11 @@ def analyze_result(
     errors = list(result["errors"])
     failed_indices = [index for index, error in enumerate(errors) if error]
     if len(failed_indices) != failed:
-        raise ExperimentError(
-            "failed request accounting mismatch: "
-            f"reported={failed}, errors={len(failed_indices)}"
-        )
+        raise ExperimentError(f"failed request accounting mismatch: reported={failed}, errors={len(failed_indices)}")
     success_mask = [not error for error in errors]
     if sum(success_mask) != completed:
         raise ExperimentError(
-            "successful request accounting mismatch: "
-            f"reported={completed}, detailed={sum(success_mask)}"
+            f"successful request accounting mismatch: reported={completed}, detailed={sum(success_mask)}"
         )
 
     duration_s = ensure_finite("duration", result["duration"])
@@ -711,26 +705,18 @@ class ServerSession:
                 encoding="utf-8",
                 errors="replace",
             )[-8000:]
-            raise ExperimentError(
-                f"server exited during benchmark with rc={returncode}\n{tail}"
-            )
+            raise ExperimentError(f"server exited during benchmark with rc={returncode}\n{tail}")
 
         server = self.config["server"]
-        health_url = (
-            f"http://{server['host']}:{server['port']}"
-            f"{server.get('health_path', '/health')}"
-        )
+        health_url = f"http://{server['host']}:{server['port']}{server.get('health_path', '/health')}"
         try:
             with urlopen(health_url, timeout=2) as response:
                 if not 200 <= response.status < 300:
                     raise ExperimentError(
-                        f"server health check failed after benchmark: "
-                        f"url={health_url} status={response.status}"
+                        f"server health check failed after benchmark: url={health_url} status={response.status}"
                     )
         except (OSError, URLError) as exc:
-            raise ExperimentError(
-                f"server health check failed after benchmark: url={health_url} error={exc}"
-            ) from exc
+            raise ExperimentError(f"server health check failed after benchmark: url={health_url} error={exc}") from exc
 
     def __exit__(self, exc_type, exc, traceback) -> None:
         if self.process is not None:
