@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "analysis_id": "gsm8k-cohens-d-9seed-20260811",
+  "created_at": "2026-08-11T00:00:00+08:00",
+  "status": "FROZEN",
+  "git_commit": "b61741e48a0ee938dd407c1209bff0c4fe5bc5c8",
+  "purpose": "Report paired Cohen's d for GSM8K 9-seed paired-accuracy comparisons.",
+  "inputs": {
+    "gsm8k_2b": {
+      "path": "E:\\MLSys_Research\\results\\quality\\gsm8k-state9seed-v2-analysis-20260809.json",
+      "sha256": "1fb4349ed2c9c9dfc0b396c02c4a5b734ba132a27e8a08e60031dc8338703f16"
+    },
+    "gsm8k_9b": {
+      "path": "E:\\MLSys_Research\\results\\quality\\gsm8k-9b-state9seed-v2-analysis-20260809.json",
+      "sha256": "6385bf94fd1217cf337774eed870d45a1755a4170d76403049f9627ae54a44ca"
+    }
+  },
+  "definition": "paired Cohen's d = mean(seed deltas) / sample_SD(seed deltas)",
+  "seed_semantics": "each seed selects the same 200-item subset in every allocation; deltas are paired within seed",
+  "pooling_rule": "2B and 9B are never pooled; int4 comparisons are reported separately",
+  "limitations": [
+    "n=9 paired seeds; effect-size precision is limited by the small seed count",
+    "Cohen's d is a point estimate; the paper's CIs and power are reported alongside it",
+    "no correction for the multiple quality comparisons in this file; the paper already discloses per-comparison p-values"
+  ],
+  "outputs": {
+    "analysis_json": "E:\\MLSys_Research\\results\\quality\\reasoning\\gsm8k-cohens-d-9seed-20260811.json",
+    "contract_json": "E:\\MLSys_Research\\results\\quality\\reasoning\\gsm8k-cohens-d-9seed-20260811.contract.json"
+  }
+}

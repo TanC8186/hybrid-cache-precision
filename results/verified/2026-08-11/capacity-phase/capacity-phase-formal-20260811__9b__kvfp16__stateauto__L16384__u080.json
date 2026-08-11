@@ -1,0 +1,1013 @@
+{
+  "args": {
+    "dtype_arg": "auto",
+    "gpu_memory_utilization": 0.8,
+    "kv_cache_dtype": "auto",
+    "kv_cache_dtype_per_layer": {},
+    "max_model_len": 16384,
+    "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-9B/snapshots/master",
+    "seed": 42
+  },
+  "cache_config": {
+    "block_size": 528,
+    "cache_dtype": "auto",
+    "enable_per_layer_page_groups": false,
+    "kv_cache_dtype_per_layer": {},
+    "mamba_block_size": 16384,
+    "mamba_cache_dtype": "auto",
+    "mamba_page_size_padded": 2162688,
+    "mamba_ssm_cache_dtype": "float32",
+    "num_gpu_blocks": 290
+  },
+  "cache_tensor_summary": {
+    "workers": [
+      {
+        "bytes_by_dtype": {
+          "torch.bfloat16": 5359534080,
+          "torch.float32": 14596177920
+        },
+        "layers": [
+          {
+            "layer": "language_model.model.layers.0.linear_attn",
+            "tensors": [
+              {
+                "dtype": "torch.bfloat16",
+                "logical_nbytes": 14254080,
+                "shape": [
+                  290,
+                  3,
+                  8192
+                ]
+              },
+              {
+                "dtype": "torch.float32",
+                "logical_nbytes": 608174080,
+                "shape": [
+                  290,
+                  32,
+                  128,
+                  128
+                ]
+              }
+            ],
+            "type": "QwenGatedDeltaNetAttention"
+          },
+          {
+            "layer": "language_model.model.layers.1.linear_attn",
+            "tensors": [
+              {
+                "dtype": "torch.bfloat16",
+                "logical_nbytes": 14254080,
+                "shape": [
+                  290,
+                  3,
+                  8192
+                ]
+              },
+              {
+                "dtype": "torch.float32",
+                "logical_nbytes": 608174080,
+                "shape": [
+                  290,
+                  32,
+                  128,
+                  128
+                ]
+              }
+            ],
+            "type": "QwenGatedDeltaNetAttention"
+          },
+          {
+            "layer": "language_model.model.layers.2.linear_attn",
+            "tensors": [
+              {
+                "dtype": "torch.bfloat16",
+                "logical_nbytes": 14254080,
+                "shape": [
+                  290,
+                  3,
+                  8192
+                ]
+              },
+              {
+                "dtype": "torch.float32",
+                "logical_nbytes": 608174080,
+                "shape": [
+                  290,
+                  32,
+                  128,
+                  128
+                ]
+              }
+            ],
+            "type": "QwenGatedDeltaNetAttention"
+          },
+          {
+            "layer": "language_model.model.layers.3.self_attn.attn",
+            "tensors": [
+              {
+                "dtype": "torch.bfloat16",
+                "logical_nbytes": 627179520,
+                "shape": [
+                  290,
+                  4,
+                  528,
+                  512
+                ]
+              }
+            ],
+            "type": "Attention"
+          },
+          {
+            "layer": "language_model.model.layers.4.linear_attn",
+            "tensors": [
+              {
+                "dtype": "torch.bfloat16",
+                "logical_nbytes": 14254080,
+                "shape": [
+                  290,
+                  3,
+                  8192
+                ]
+              },
+              {
+                "dtype": "torch.float32",
+                "logical_nbytes": 608174080,
+                "shape": [
+                  290,
+                  32,
+                  128,
+                  128
+                ]
+              }
+            ],
+            "type": "QwenGatedDeltaNetAttention"
+          },
+          {
+            "layer": "language_model.model.layers.5.linear_attn",
+            "tensors": [
+              {
+                "dtype": "torch.bfloat16",
+                "logical_nbytes": 14254080,
+                "shape": [
+                  290,
+                  3,
+                  8192
+                ]
+              },
+              {
+                "dtype": "torch.float32",
+                "logical_nbytes": 608174080,
+                "shape": [
+                  290,
+                  32,
+                  128,
+                  128
+                ]
+              }
+            ],
+            "type": "QwenGatedDeltaNetAttention"
+          },
+          {
+            "layer": "language_model.model.layers.6.linear_attn",
+            "tensors": [
+              {
+                "dtype": "torch.bfloat16",
+                "logical_nbytes": 14254080,
+                "shape": [
+                  290,
+                  3,
+                  8192
+                ]
+              },
+              {
+                "dtype": "torch.float32",
+                "logical_nbytes": 608174080,
+                "shape": [
+                  290,
+                  32,
+                  128,
+                  128
+                ]
+              }
+            ],
+            "type": "QwenGatedDeltaNetAttention"
+          },
+          {
+            "layer": "language_model.model.layers.7.self_attn.attn",
+            "tensors": [
+              {
+                "dtype": "torch.bfloat16",
+                "logical_nbytes": 627179520,
+                "shape": [
+                  290,
+                  4,
+                  528,
+                  512
+                ]
+              }
+            ],
+            "type": "Attention"
+          },
+          {
+            "layer": "language_model.model.layers.8.linear_attn",
+            "tensors": [
+              {
+                "dtype": "torch.bfloat16",
+                "logical_nbytes": 14254080,
+                "shape": [
+                  290,
+                  3,
+                  8192
+                ]
+              },
+              {
+                "dtype": "torch.float32",
+                "logical_nbytes": 608174080,
+                "shape": [
+                  290,
+                  32,
+                  128,
+                  128
+                ]
+              }
+            ],
+            "type": "QwenGatedDeltaNetAttention"
+          },
+          {
+            "layer": "language_model.model.layers.9.linear_attn",
+            "tensors": [
+              {
+                "dtype": "torch.bfloat16",
+                "logical_nbytes": 14254080,
+                "shape": [
+                  290,
+                  3,
+                  8192
+                ]
+              },
+              {
+                "dtype": "torch.float32",
+                "logical_nbytes": 608174080,
+                "shape": [
+                  290,
+                  32,
+                  128,
+                  128
+                ]
+              }
+            ],
+            "type": "QwenGatedDeltaNetAttention"
+          },
+          {
+            "layer": "language_model.model.layers.10.linear_attn",
+            "tensors": [
+              {
+                "dtype": "torch.bfloat16",
+                "logical_nbytes": 14254080,
+                "shape": [
+                  290,
+                  3,
+                  8192
+                ]
+              },
+              {
+                "dtype": "torch.float32",
+                "logical_nbytes": 608174080,
+                "shape": [
+                  290,
+                  32,
+                  128,
+                  128
+                ]
+              }
+            ],
+            "type": "QwenGatedDeltaNetAttention"
+          },
+          {
+            "layer": "language_model.model.layers.11.self_attn.attn",
+            "tensors": [
+              {
+                "dtype": "torch.bfloat16",
+                "logical_nbytes": 627179520,
+                "shape": [
+                  290,
+                  4,
+                  528,
+                  512
+                ]
+              }
+            ],
+            "type": "Attention"
+          },
+          {
+            "layer": "language_model.model.layers.12.linear_attn",
+            "tensors": [
+              {
+                "dtype": "torch.bfloat16",
+                "logical_nbytes": 14254080,
+                "shape": [
+                  290,
+                  3,
+                  8192
+                ]
+              },
+              {
+                "dtype": "torch.float32",
+                "logical_nbytes": 608174080,
+                "shape": [
+                  290,
+                  32,
+                  128,
+                  128
+                ]
+              }
+            ],
+            "type": "QwenGatedDeltaNetAttention"
+          },
+          {
+            "layer": "language_model.model.layers.13.linear_attn",
+            "tensors": [
+              {
+                "dtype": "torch.bfloat16",
+                "logical_nbytes": 14254080,
+                "shape": [
+                  290,
+                  3,
+                  8192
+                ]
+              },
+              {
+                "dtype": "torch.float32",
+                "logical_nbytes": 608174080,
+                "shape": [
+                  290,
+                  32,
+                  128,
+                  128
+                ]
+              }
+            ],
+            "type": "QwenGatedDeltaNetAttention"
+          },
+          {
+            "layer": "language_model.model.layers.14.linear_attn",
+            "tensors": [
+              {
+                "dtype": "torch.bfloat16",
+                "logical_nbytes": 14254080,
+                "shape": [
+                  290,
+                  3,
+                  8192
+                ]
+              },
+              {
+                "dtype": "torch.float32",
+                "logical_nbytes": 608174080,
+                "shape": [
+                  290,
+                  32,
+                  128,
+                  128
+                ]
+              }
+            ],
+            "type": "QwenGatedDeltaNetAttention"
+          },
+          {
+            "layer": "language_model.model.layers.15.self_attn.attn",
+            "tensors": [
+              {
+                "dtype": "torch.bfloat16",
+                "logical_nbytes": 627179520,
+                "shape": [
+                  290,
+                  4,
+                  528,
+                  512
+                ]
+              }
+            ],
+            "type": "Attention"
+          },
+          {
+            "layer": "language_model.model.layers.16.linear_attn",
+            "tensors": [
+              {
+                "dtype": "torch.bfloat16",
+                "logical_nbytes": 14254080,
+                "shape": [
+                  290,
+                  3,
+                  8192
+                ]
+              },
+              {
+                "dtype": "torch.float32",
+                "logical_nbytes": 608174080,
+                "shape": [
+                  290,
+                  32,
+                  128,
+                  128
+                ]
+              }
+            ],
+            "type": "QwenGatedDeltaNetAttention"
+          },
+          {
+            "layer": "language_model.model.layers.17.linear_attn",
+            "tensors": [
+              {
+                "dtype": "torch.bfloat16",
+                "logical_nbytes": 14254080,
+                "shape": [
+                  290,
+                  3,
+                  8192
+                ]
+              },
+              {
+                "dtype": "torch.float32",
+                "logical_nbytes": 608174080,
+                "shape": [
+                  290,
+                  32,
+                  128,
+                  128
+                ]
+              }
+            ],
+            "type": "QwenGatedDeltaNetAttention"
+          },
+          {
+            "layer": "language_model.model.layers.18.linear_attn",
+            "tensors": [
+              {
+                "dtype": "torch.bfloat16",
+                "logical_nbytes": 14254080,
+                "shape": [
+                  290,
+                  3,
+                  8192
+                ]
+              },
+              {
+                "dtype": "torch.float32",
+                "logical_nbytes": 608174080,
+                "shape": [
+                  290,
+                  32,
+                  128,
+                  128
+                ]
+              }
+            ],
+            "type": "QwenGatedDeltaNetAttention"
+          },
+          {
+            "layer": "language_model.model.layers.19.self_attn.attn",
+            "tensors": [
+              {
+                "dtype": "torch.bfloat16",
+                "logical_nbytes": 627179520,
+                "shape": [
+                  290,
+                  4,
+                  528,
+                  512
+                ]
+              }
+            ],
+            "type": "Attention"
+          },
+          {
+            "layer": "language_model.model.layers.20.linear_attn",
+            "tensors": [
+              {
+                "dtype": "torch.bfloat16",
+                "logical_nbytes": 14254080,
+                "shape": [
+                  290,
+                  3,
+                  8192
+                ]
+              },
+              {
+                "dtype": "torch.float32",
+                "logical_nbytes": 608174080,
+                "shape": [
+                  290,
+                  32,
+                  128,
+                  128
+                ]
+              }
+            ],
+            "type": "QwenGatedDeltaNetAttention"
+          },
+          {
+            "layer": "language_model.model.layers.21.linear_attn",
+            "tensors": [
+              {
+                "dtype": "torch.bfloat16",
+                "logical_nbytes": 14254080,
+                "shape": [
+                  290,
+                  3,
+                  8192
+                ]
+              },
+              {
+                "dtype": "torch.float32",
+                "logical_nbytes": 608174080,
+                "shape": [
+                  290,
+                  32,
+                  128,
+                  128
+                ]
+              }
+            ],
+            "type": "QwenGatedDeltaNetAttention"
+          },
+          {
+            "layer": "language_model.model.layers.22.linear_attn",
+            "tensors": [
+              {
+                "dtype": "torch.bfloat16",
+                "logical_nbytes": 14254080,
+                "shape": [
+                  290,
+                  3,
+                  8192
+                ]
+              },
+              {
+                "dtype": "torch.float32",
+                "logical_nbytes": 608174080,
+                "shape": [
+                  290,
+                  32,
+                  128,
+                  128
+                ]
+              }
+            ],
+            "type": "QwenGatedDeltaNetAttention"
+          },
+          {
+            "layer": "language_model.model.layers.23.self_attn.attn",
+            "tensors": [
+              {
+                "dtype": "torch.bfloat16",
+                "logical_nbytes": 627179520,
+                "shape": [
+                  290,
+                  4,
+                  528,
+                  512
+                ]
+              }
+            ],
+            "type": "Attention"
+          },
+          {
+            "layer": "language_model.model.layers.24.linear_attn",
+            "tensors": [
+              {
+                "dtype": "torch.bfloat16",
+                "logical_nbytes": 14254080,
+                "shape": [
+                  290,
+                  3,
+                  8192
+                ]
+              },
+              {
+                "dtype": "torch.float32",
+                "logical_nbytes": 608174080,
+                "shape": [
+                  290,
+                  32,
+                  128,
+                  128
+                ]
+              }
+            ],
+            "type": "QwenGatedDeltaNetAttention"
+          },
+          {
+            "layer": "language_model.model.layers.25.linear_attn",
+            "tensors": [
+              {
+                "dtype": "torch.bfloat16",
+                "logical_nbytes": 14254080,
+                "shape": [
+                  290,
+                  3,
+                  8192
+                ]
+              },
+              {
+                "dtype": "torch.float32",
+                "logical_nbytes": 608174080,
+                "shape": [
+                  290,
+                  32,
+                  128,
+                  128
+                ]
+              }
+            ],
+            "type": "QwenGatedDeltaNetAttention"
+          },
+          {
+            "layer": "language_model.model.layers.26.linear_attn",
+            "tensors": [
+              {
+                "dtype": "torch.bfloat16",
+                "logical_nbytes": 14254080,
+                "shape": [
+                  290,
+                  3,
+                  8192
+                ]
+              },
+              {
+                "dtype": "torch.float32",
+                "logical_nbytes": 608174080,
+                "shape": [
+                  290,
+                  32,
+                  128,
+                  128
+                ]
+              }
+            ],
+            "type": "QwenGatedDeltaNetAttention"
+          },
+          {
+            "layer": "language_model.model.layers.27.self_attn.attn",
+            "tensors": [
+              {
+                "dtype": "torch.bfloat16",
+                "logical_nbytes": 627179520,
+                "shape": [
+                  290,
+                  4,
+                  528,
+                  512
+                ]
+              }
+            ],
+            "type": "Attention"
+          },
+          {
+            "layer": "language_model.model.layers.28.linear_attn",
+            "tensors": [
+              {
+                "dtype": "torch.bfloat16",
+                "logical_nbytes": 14254080,
+                "shape": [
+                  290,
+                  3,
+                  8192
+                ]
+              },
+              {
+                "dtype": "torch.float32",
+                "logical_nbytes": 608174080,
+                "shape": [
+                  290,
+                  32,
+                  128,
+                  128
+                ]
+              }
+            ],
+            "type": "QwenGatedDeltaNetAttention"
+          },
+          {
+            "layer": "language_model.model.layers.29.linear_attn",
+            "tensors": [
+              {
+                "dtype": "torch.bfloat16",
+                "logical_nbytes": 14254080,
+                "shape": [
+                  290,
+                  3,
+                  8192
+                ]
+              },
+              {
+                "dtype": "torch.float32",
+                "logical_nbytes": 608174080,
+                "shape": [
+                  290,
+                  32,
+                  128,
+                  128
+                ]
+              }
+            ],
+            "type": "QwenGatedDeltaNetAttention"
+          },
+          {
+            "layer": "language_model.model.layers.30.linear_attn",
+            "tensors": [
+              {
+                "dtype": "torch.bfloat16",
+                "logical_nbytes": 14254080,
+                "shape": [
+                  290,
+                  3,
+                  8192
+                ]
+              },
+              {
+                "dtype": "torch.float32",
+                "logical_nbytes": 608174080,
+                "shape": [
+                  290,
+                  32,
+                  128,
+                  128
+                ]
+              }
+            ],
+            "type": "QwenGatedDeltaNetAttention"
+          },
+          {
+            "layer": "language_model.model.layers.31.self_attn.attn",
+            "tensors": [
+              {
+                "dtype": "torch.bfloat16",
+                "logical_nbytes": 627179520,
+                "shape": [
+                  290,
+                  4,
+                  528,
+                  512
+                ]
+              }
+            ],
+            "type": "Attention"
+          }
+        ],
+        "rank": 0,
+        "total_cache_bytes": 19955712000
+      }
+    ]
+  },
+  "capacity": {
+    "max_concurrency": 8.285714285714286,
+    "max_model_len": 16384,
+    "tokens": 135753
+  },
+  "created_utc": "2026-08-10T17:03:26Z",
+  "elapsed_seconds": 167.78,
+  "generation": null,
+  "kv_cache_config": {
+    "groups": [
+      {
+        "group_id": 0,
+        "layer_names": [
+          "language_model.model.layers.0.linear_attn",
+          "language_model.model.layers.4.linear_attn",
+          "language_model.model.layers.8.linear_attn",
+          "language_model.model.layers.12.linear_attn",
+          "language_model.model.layers.16.linear_attn",
+          "language_model.model.layers.20.linear_attn",
+          "language_model.model.layers.24.linear_attn",
+          "language_model.model.layers.28.linear_attn"
+        ],
+        "spec": {
+          "block_size": 16384,
+          "dtypes": [
+            "torch.bfloat16",
+            "torch.float32"
+          ],
+          "mamba_cache_mode": "none",
+          "mamba_type": "GDN_ATTN",
+          "page_size_bytes": 2162688,
+          "page_size_padded": 2162688,
+          "shapes": [
+            [
+              3,
+              8192
+            ],
+            [
+              32,
+              128,
+              128
+            ]
+          ],
+          "type": "MambaSpec"
+        }
+      },
+      {
+        "group_id": 1,
+        "layer_names": [
+          "language_model.model.layers.1.linear_attn",
+          "language_model.model.layers.5.linear_attn",
+          "language_model.model.layers.9.linear_attn",
+          "language_model.model.layers.13.linear_attn",
+          "language_model.model.layers.17.linear_attn",
+          "language_model.model.layers.21.linear_attn",
+          "language_model.model.layers.25.linear_attn",
+          "language_model.model.layers.29.linear_attn"
+        ],
+        "spec": {
+          "block_size": 16384,
+          "dtypes": [
+            "torch.bfloat16",
+            "torch.float32"
+          ],
+          "mamba_cache_mode": "none",
+          "mamba_type": "GDN_ATTN",
+          "page_size_bytes": 2162688,
+          "page_size_padded": 2162688,
+          "shapes": [
+            [
+              3,
+              8192
+            ],
+            [
+              32,
+              128,
+              128
+            ]
+          ],
+          "type": "MambaSpec"
+        }
+      },
+      {
+        "group_id": 2,
+        "layer_names": [
+          "language_model.model.layers.2.linear_attn",
+          "language_model.model.layers.6.linear_attn",
+          "language_model.model.layers.10.linear_attn",
+          "language_model.model.layers.14.linear_attn",
+          "language_model.model.layers.18.linear_attn",
+          "language_model.model.layers.22.linear_attn",
+          "language_model.model.layers.26.linear_attn",
+          "language_model.model.layers.30.linear_attn"
+        ],
+        "spec": {
+          "block_size": 16384,
+          "dtypes": [
+            "torch.bfloat16",
+            "torch.float32"
+          ],
+          "mamba_cache_mode": "none",
+          "mamba_type": "GDN_ATTN",
+          "page_size_bytes": 2162688,
+          "page_size_padded": 2162688,
+          "shapes": [
+            [
+              3,
+              8192
+            ],
+            [
+              32,
+              128,
+              128
+            ]
+          ],
+          "type": "MambaSpec"
+        }
+      },
+      {
+        "group_id": 3,
+        "layer_names": [
+          "language_model.model.layers.3.self_attn.attn",
+          "language_model.model.layers.7.self_attn.attn",
+          "language_model.model.layers.11.self_attn.attn",
+          "language_model.model.layers.15.self_attn.attn",
+          "language_model.model.layers.19.self_attn.attn",
+          "language_model.model.layers.23.self_attn.attn",
+          "language_model.model.layers.27.self_attn.attn",
+          "language_model.model.layers.31.self_attn.attn"
+        ],
+        "spec": {
+          "attention_chunk_size": null,
+          "block_size": 528,
+          "dtype": "torch.bfloat16",
+          "head_size": 256,
+          "head_size_v": 256,
+          "kv_quant_mode": "NONE",
+          "num_kv_heads": 4,
+          "page_size_bytes": 2162688,
+          "page_size_padded": null,
+          "sliding_window": null,
+          "type": "FullAttentionSpec"
+        }
+      }
+    ],
+    "num_blocks": 290,
+    "tensors": [
+      {
+        "block_stride": 0,
+        "offset": 0,
+        "shared_by": [
+          "language_model.model.layers.0.linear_attn",
+          "language_model.model.layers.1.linear_attn",
+          "language_model.model.layers.2.linear_attn",
+          "language_model.model.layers.3.self_attn.attn"
+        ],
+        "size": 627179520,
+        "tensor_id": 0
+      },
+      {
+        "block_stride": 0,
+        "offset": 0,
+        "shared_by": [
+          "language_model.model.layers.4.linear_attn",
+          "language_model.model.layers.5.linear_attn",
+          "language_model.model.layers.6.linear_attn",
+          "language_model.model.layers.7.self_attn.attn"
+        ],
+        "size": 627179520,
+        "tensor_id": 1
+      },
+      {
+        "block_stride": 0,
+        "offset": 0,
+        "shared_by": [
+          "language_model.model.layers.8.linear_attn",
+          "language_model.model.layers.9.linear_attn",
+          "language_model.model.layers.10.linear_attn",
+          "language_model.model.layers.11.self_attn.attn"
+        ],
+        "size": 627179520,
+        "tensor_id": 2
+      },
+      {
+        "block_stride": 0,
+        "offset": 0,
+        "shared_by": [
+          "language_model.model.layers.12.linear_attn",
+          "language_model.model.layers.13.linear_attn",
+          "language_model.model.layers.14.linear_attn",
+          "language_model.model.layers.15.self_attn.attn"
+        ],
+        "size": 627179520,
+        "tensor_id": 3
+      },
+      {
+        "block_stride": 0,
+        "offset": 0,
+        "shared_by": [
+          "language_model.model.layers.16.linear_attn",
+          "language_model.model.layers.17.linear_attn",
+          "language_model.model.layers.18.linear_attn",
+          "language_model.model.layers.19.self_attn.attn"
+        ],
+        "size": 627179520,
+        "tensor_id": 4
+      },
+      {
+        "block_stride": 0,
+        "offset": 0,
+        "shared_by": [
+          "language_model.model.layers.20.linear_attn",
+          "language_model.model.layers.21.linear_attn",
+          "language_model.model.layers.22.linear_attn",
+          "language_model.model.layers.23.self_attn.attn"
+        ],
+        "size": 627179520,
+        "tensor_id": 5
+      },
+      {
+        "block_stride": 0,
+        "offset": 0,
+        "shared_by": [
+          "language_model.model.layers.24.linear_attn",
+          "language_model.model.layers.25.linear_attn",
+          "language_model.model.layers.26.linear_attn",
+          "language_model.model.layers.27.self_attn.attn"
+        ],
+        "size": 627179520,
+        "tensor_id": 6
+      },
+      {
+        "block_stride": 0,
+        "offset": 0,
+        "shared_by": [
+          "language_model.model.layers.28.linear_attn",
+          "language_model.model.layers.29.linear_attn",
+          "language_model.model.layers.30.linear_attn",
+          "language_model.model.layers.31.self_attn.attn"
+        ],
+        "size": 627179520,
+        "tensor_id": 7
+      }
+    ]
+  },
+  "probe": "probe_ssm_state_dtype.py",
+  "resolved_mamba_cache_dtype": "auto",
+  "resolved_mamba_ssm_cache_dtype": "float32",
+  "schema_version": 1
+}

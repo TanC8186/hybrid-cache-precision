@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "material_passport": {
+    "origin_skill": "experiment-skill",
+    "origin_mode": "validate",
+    "verification_status": "ANALYZED",
+    "version_label": "capacity_phase_analysis_v1"
+  },
+  "attempt": "capacity-phase-pilot-20260811",
+  "phase": "pilot",
+  "determinism_class": "deterministic_allocator_for_frozen_build_and_config",
+  "n_cells": 18,
+  "rows": [
+    {
+      "model": "2b",
+      "kv_dtype": "fp16",
+      "length": 1024,
+      "gpu_memory_utilization": 0.8,
+      "fp32_state_tokens": 608051,
+      "bf16_state_tokens": 820516,
+      "measured_state_ratio": 1.34942,
+      "predicted_state_ratio": 1.351112,
+      "prediction_residual_pct": -0.1253,
+      "fp32_max_concurrency": 593.8,
+      "bf16_max_concurrency": 801.2857142857143,
+      "fp32_num_gpu_blocks": 2969,
+      "bf16_num_gpu_blocks": 5609
+    },
+    {
+      "model": "2b",
+      "kv_dtype": "fp16",
+      "length": 4096,
+      "gpu_memory_utilization": 0.8,
+      "fp32_state_tokens": 1105547,
+      "bf16_state_tokens": 1276359,
+      "measured_state_ratio": 1.154505,
+      "predicted_state_ratio": 1.122228,
+      "prediction_residual_pct": 2.8761,
+      "fp32_max_concurrency": 269.90909090909093,
+      "bf16_max_concurrency": 311.6111111111111,
+      "fp32_num_gpu_blocks": 2969,
+      "bf16_num_gpu_blocks": 5609
+    },
+    {
+      "model": "2b",
+      "kv_dtype": "fp16",
+      "length": 16384,
+      "gpu_memory_utilization": 0.8,
+      "fp32_state_tokens": 1430708,
+      "bf16_state_tokens": 1531630,
+      "measured_state_ratio": 1.07054,
+      "predicted_state_ratio": 1.033881,
+      "prediction_residual_pct": 3.5457,
+      "fp32_max_concurrency": 87.32352941176471,
+      "bf16_max_concurrency": 93.48333333333333,
+      "fp32_num_gpu_blocks": 2969,
+      "bf16_num_gpu_blocks": 5609
+    },
+    {
+      "model": "2b",
+      "kv_dtype": "fp16",
+      "length": 32768,
+      "gpu_memory_utilization": 0.8,
+      "fp32_state_tokens": 1520128,
+      "bf16_state_tokens": 1570903,
+      "measured_state_ratio": 1.033402,
+      "predicted_state_ratio": 1.017254,
+      "prediction_residual_pct": 1.5874,
+      "fp32_max_concurrency": 46.390625,
+      "bf16_max_concurrency": 47.94017094017094,
+      "fp32_num_gpu_blocks": 2969,
+      "bf16_num_gpu_blocks": 5609
+    },
+    {
+      "model": "2b",
+      "kv_dtype": "int4",
+      "length": 1024,
+      "gpu_memory_utilization": 0.8,
+      "fp32_state_tokens": 775680,
+      "bf16_state_tokens": 1493504,
+      "measured_state_ratio": 1.925413,
+      "predicted_state_ratio": 1.707182,
+      "prediction_residual_pct": 12.7831,
+      "fp32_max_concurrency": 757.5,
+      "bf16_max_concurrency": 1458.5,
+      "fp32_num_gpu_blocks": 3030,
+      "bf16_num_gpu_blocks": 5834
+    },
+    {
+      "model": "2b",
+      "kv_dtype": "int4",
+      "length": 4096,
+      "gpu_memory_utilization": 0.8,
+      "fp32_state_tokens": 2482176,
+      "bf16_state_tokens": 3414308,
+      "measured_state_ratio": 1.37553,
+      "predicted_state_ratio": 1.408946,
+      "prediction_residual_pct": -2.3717,
+      "fp32_max_concurrency": 606.0,
+      "bf16_max_concurrency": 833.5714285714286,
+      "fp32_num_gpu_blocks": 3030,
+      "bf16_num_gpu_blocks": 5835
+    },
+    {
+      "model": "2b",
+      "kv_dtype": "int4",
+      "length": 16384,
+      "gpu_memory_utilization": 0.8,
+      "fp32_state_tokens": 4513047,
+      "bf16_state_tokens": 5031612,
+      "measured_state_ratio": 1.114904,
+      "predicted_state_ratio": 1.1522,
+      "prediction_residual_pct": -3.237,
+      "fp32_max_concurrency": 275.45454545454544,
+      "bf16_max_concurrency": 307.10526315789474,
+      "fp32_num_gpu_blocks": 3030,
+      "bf16_num_gpu_blocks": 5835
+    },
+    {
+      "model": "2b",
+      "kv_dtype": "int4",
+      "length": 32768,
+      "gpu_memory_utilization": 0.8,
+      "fp32_state_tokens": 5225633,
+      "bf16_state_tokens": 5622603,
+      "measured_state_ratio": 1.075966,
+      "predicted_state_ratio": 1.082848,
+      "prediction_residual_pct": -0.6355,
+      "fp32_max_concurrency": 159.47368421052633,
+      "bf16_max_concurrency": 171.58823529411765,
+      "fp32_num_gpu_blocks": 3030,
+      "bf16_num_gpu_blocks": 5834
+    }
+  ],
+  "float16_state_frontier": [
+    {
+      "model": "2b",
+      "kv_dtype": "fp16",
+      "state_dtype": "float16",
+      "length": 4096,
+      "gpu_memory_utilization": 0.85,
+      "capacity_tokens": 1384675,
+      "max_concurrency": 338.05555555555554
+    },
+    {
+      "model": "2b",
+      "kv_dtype": "int4",
+      "state_dtype": "float16",
+      "length": 4096,
+      "gpu_memory_utilization": 0.85,
+      "capacity_tokens": 3703954,
+      "max_concurrency": 904.2857142857143
+    }
+  ],
+  "prediction_residual_summary": {
+    "n_pairs": 8,
+    "median_absolute_pct": 2.6239,
+    "mean_absolute_pct": 3.3952,
+    "max_absolute_pct": 12.7831,
+    "interpretation": "Residuals quantify idealized model error; they are not lower-bound evidence."
+  }
+}

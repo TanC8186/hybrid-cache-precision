@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "material_passport": {
+    "origin_skill": "experiment-skill",
+    "origin_mode": "validate",
+    "verification_status": "ANALYZED",
+    "version_label": "capacity_phase_analysis_v1"
+  },
+  "attempt": "capacity-phase-mvex-20260811",
+  "phase": "mvex",
+  "determinism_class": "deterministic_allocator_for_frozen_build_and_config",
+  "n_cells": 2,
+  "rows": [
+    {
+      "model": "2b",
+      "kv_dtype": "int4",
+      "length": 4096,
+      "gpu_memory_utilization": 0.85,
+      "fp32_state_tokens": 2693529,
+      "bf16_state_tokens": 3703954,
+      "measured_state_ratio": 1.375131,
+      "predicted_state_ratio": 1.408946,
+      "prediction_residual_pct": -2.4,
+      "fp32_max_concurrency": 657.6,
+      "bf16_max_concurrency": 904.2857142857143,
+      "fp32_num_gpu_blocks": 3288,
+      "bf16_num_gpu_blocks": 6330
+    }
+  ],
+  "float16_state_frontier": [],
+  "prediction_residual_summary": {
+    "n_pairs": 1,
+    "median_absolute_pct": 2.4,
+    "mean_absolute_pct": 2.4,
+    "max_absolute_pct": 2.4,
+    "interpretation": "Residuals quantify idealized model error; they are not lower-bound evidence."
+  }
+}

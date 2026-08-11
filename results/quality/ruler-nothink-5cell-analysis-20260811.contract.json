@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "analysis_id": "ruler-nothink-5cell-20260811",
+  "created_at": "2026-08-11T00:00:00+08:00",
+  "status": "FROZEN",
+  "git_commit": null,
+  "purpose": "Analyze RULER no-think 5-cell rerun and compare with think-default deltas.",
+  "cells": [
+    [
+      "ruler_fwe",
+      4096,
+      "2b"
+    ],
+    [
+      "ruler_fwe",
+      8192,
+      "2b"
+    ],
+    [
+      "ruler_niah_multiquery",
+      4096,
+      "9b"
+    ],
+    [
+      "ruler_niah_multiquery",
+      8192,
+      "9b"
+    ],
+    [
+      "ruler_fwe",
+      8192,
+      "9b"
+    ]
+  ],
+  "dataset_seeds": [
+    42,
+    11,
+    23
+  ],
+  "engine_seed": 7,
+  "protocol": "ruler_quality.py --max-tokens 256 --disable-thinking --resume",
+  "decision_rules": [
+    "only completed_validated, thinking=disabled, max_tokens=256 cells enter the analysis",
+    "old no-think attempts and think-default cells are never pooled into the no-think denominator",
+    "per-cell paired delta with 95% t-CI over 3 dataset seeds",
+    "if no-think sign/magnitude changes materially, paper wording must be revised"
+  ],
+  "inputs": {
+    "think_analysis": {
+      "path": "/root/autodl-tmp/MLSys_Research/results/quality/ruler-statebf16-multiseed-analysis-20260809.json",
+      "sha256": "4e27b9983a01e46854293a2e15621bed2b6aa526e801e7e16c28ae7164405ae4"
+    },
+    "runner_script": {
+      "path": "/root/autodl-tmp/MLSys_Research/scripts/eval/run_ruler_statebf16_nothink_5cell.sh",
+      "sha256": "7afb97eeb43ab8e73abf613e3a16fffe08997968a0dc50b0f4f8bf2f1234a15c"
+    },
+    "plan_doc": {
+      "path": "/root/autodl-tmp/MLSys_Research/docs/notes/ruler-nothink-5cell-plan-2026-08-11.md",
+      "sha256": "e6d9c315d2fe6dad20af37b59dd86aa453eacd2614a06f78432fddcabb1bdaa8"
+    }
+  },
+  "outputs": {
+    "analysis_json": "/root/autodl-tmp/MLSys_Research/results/quality/ruler-nothink-5cell-analysis-20260811.json",
+    "contract_json": "/root/autodl-tmp/MLSys_Research/results/quality/ruler-nothink-5cell-analysis-20260811.contract.json"
+  }
+}

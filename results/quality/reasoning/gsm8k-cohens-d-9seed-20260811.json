@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "analysis_id": "gsm8k-cohens-d-9seed-20260811",
+  "created_at": "2026-08-11T00:00:00+08:00",
+  "contract_sha256": "a2d01d3dd374b46cd8372f28bc99c1b8fc5b5af24f89590e568b2472379cb646",
+  "comparisons": {
+    "2b": [
+      {
+        "base_allocation": "fp16",
+        "target_allocation": "fp16_statebf16",
+        "archived_compare": "fp16_statebf16 vs fp16",
+        "n_seed_pairs": 9,
+        "per_seed_delta": {
+          "7": -0.01,
+          "11": -0.025,
+          "23": 0.0,
+          "31": 0.0,
+          "42": -0.03,
+          "47": -0.01,
+          "73": -0.01,
+          "97": -0.005,
+          "2026": 0.0
+        },
+        "mean_delta": -0.01,
+        "sd_delta": 0.010897,
+        "paired_cohens_d": -0.917663,
+        "paired_ttest_p": 0.024943,
+        "archived_mean_delta": -0.01,
+        "archived_ci95": [
+          -0.0171,
+          -0.0029
+        ],
+        "archived_p_value": 0.02494
+      },
+      {
+        "base_allocation": "fp16",
+        "target_allocation": "uniform_int4",
+        "archived_compare": "uniform_int4 vs fp16",
+        "n_seed_pairs": 9,
+        "per_seed_delta": {
+          "7": -0.06,
+          "11": -0.05,
+          "23": -0.045,
+          "31": -0.03,
+          "42": 0.005,
+          "47": -0.035,
+          "73": 0.0,
+          "97": -0.02,
+          "2026": -0.01
+        },
+        "mean_delta": -0.027222,
+        "sd_delta": 0.022654,
+        "paired_cohens_d": -1.201663,
+        "paired_ttest_p": 0.006932,
+        "archived_mean_delta": -0.0272,
+        "archived_ci95": [
+          -0.042,
+          -0.0124
+        ],
+        "archived_p_value": 0.00693
+      },
+      {
+        "base_allocation": "uniform_int4",
+        "target_allocation": "uniform_int4_statebf16",
+        "archived_compare": "uniform_int4_statebf16 vs uniform_int4",
+        "n_seed_pairs": 9,
+        "per_seed_delta": {
+          "7": 0.0,
+          "11": 0.015,
+          "23": 0.005,
+          "31": -0.005,
+          "42": 0.0,
+          "47": 0.035,
+          "73": -0.015,
+          "97": 0.06,
+          "2026": 0.01
+        },
+        "mean_delta": 0.011667,
+        "sd_delta": 0.022913,
+        "paired_cohens_d": 0.509175,
+        "paired_ttest_p": 0.16515,
+        "archived_mean_delta": 0.0117,
+        "archived_ci95": [
+          -0.0033,
+          0.0266
+        ],
+        "archived_p_value": 0.16515
+      }
+    ],
+    "9b": [
+      {
+        "base_allocation": "fp16",
+        "target_allocation": "fp16_statebf16",
+        "archived_compare": "fp16_statebf16 vs fp16",
+        "n_seed_pairs": 9,
+        "per_seed_delta": {
+          "7": -0.005,
+          "11": 0.01,
+          "23": -0.005,
+          "31": 0.01,
+          "42": 0.0,
+          "47": 0.005,
+          "73": 0.005,
+          "97": 0.01,
+          "2026": 0.0
+        },
+        "mean_delta": 0.003333,
+        "sd_delta": 0.006124,
+        "paired_cohens_d": 0.544331,
+        "paired_ttest_p": 0.141113,
+        "archived_mean_delta": 0.0033,
+        "archived_ci95": [
+          -0.0007,
+          0.0073
+        ],
+        "archived_p_value": 0.14111
+      }
+    ]
+  },
+  "self_review": [
+    {
+      "fallacy": "Simpson's paradox",
+      "resolution": "2B and 9B are reported separately; stacking vs main effects are separate rows."
+    },
+    {
+      "fallacy": "Ecological fallacy",
+      "resolution": "Deltas are paired within seed at the model level; no per-item inference."
+    },
+    {
+      "fallacy": "Berkson's paradox",
+      "resolution": "All comparisons with available rows are included, including non-significant stacking and 9B rows."
+    },
+    {
+      "fallacy": "Collider bias",
+      "resolution": "No selection on significance; n=9 rows include zero-delta seeds."
+    },
+    {
+      "fallacy": "Base-rate neglect",
+      "resolution": "Effect sizes are reported with raw point deltas and CIs, not as standalone d values."
+    },
+    {
+      "fallacy": "Regression to the mean",
+      "resolution": "9B positive d is not claimed as a real gain because the paired CI contains zero."
+    },
+    {
+      "fallacy": "Survivorship bias",
+      "resolution": "No seeds or allocations are dropped."
+    },
+    {
+      "fallacy": "Look-elsewhere effect",
+      "resolution": "The three 2B rows and one 9B row are the paper's existing comparisons; no new windows are added."
+    },
+    {
+      "fallacy": "Garden of forking paths",
+      "resolution": "Formula and pooling rule are frozen in the contract before output generation."
+    },
+    {
+      "fallacy": "Correlation != causation",
+      "resolution": "Effect size describes paired accuracy difference; no mechanism claim."
+    },
+    {
+      "fallacy": "Reverse causality",
+      "resolution": "Allocation is the manipulated variable; seed accuracy is the outcome."
+    }
+  ]
+}

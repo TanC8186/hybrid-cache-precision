@@ -1,0 +1,372 @@
+{
+  "accuracy": 90.0,
+  "allocation": "fp16_statebf16",
+  "attempt_id": "ruler-statebf16-nothink-20260811-2b",
+  "cases": [
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 0,
+      "output_tokens": 13,
+      "prediction": "gpdjdg, dnfdec, dqyyjm",
+      "prompt_tokens": 3971,
+      "references": [
+        "gpdjdg",
+        "dnfdec",
+        "dqyyjm"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 1,
+      "output_tokens": 11,
+      "prediction": "edtbzy bxafrn ckrfpl",
+      "prompt_tokens": 4049,
+      "references": [
+        "edtbzy",
+        "bxafrn",
+        "ckrfpl"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        false
+      ],
+      "index": 2,
+      "output_tokens": 13,
+      "prediction": "edthfm, ctmfdy, nmstqi",
+      "prompt_tokens": 3896,
+      "references": [
+        "edthfm",
+        "ctmfdy",
+        "cxeiwq"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 3,
+      "output_tokens": 14,
+      "prediction": "ftqofu, dtsjxz, eltlln",
+      "prompt_tokens": 3866,
+      "references": [
+        "ftqofu",
+        "dtsjxz",
+        "eltlln"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        false
+      ],
+      "index": 4,
+      "output_tokens": 9,
+      "prediction": "chugnf dodkog pbpxkn",
+      "prompt_tokens": 3546,
+      "references": [
+        "dodkog",
+        "chugnf",
+        "cifxgc"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 5,
+      "output_tokens": 12,
+      "prediction": "cprles, blgcav, bqdfow",
+      "prompt_tokens": 3950,
+      "references": [
+        "cprles",
+        "blgcav",
+        "bqdfow"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        false
+      ],
+      "index": 6,
+      "output_tokens": 12,
+      "prediction": "dpakkc, bykrzk, dpakkc",
+      "prompt_tokens": 4020,
+      "references": [
+        "dpakkc",
+        "bykrzk",
+        "cbzxyn"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        false
+      ],
+      "index": 7,
+      "output_tokens": 14,
+      "prediction": "epqgjn, chhhbe, epqgjn",
+      "prompt_tokens": 4036,
+      "references": [
+        "epqgjn",
+        "chhhbe",
+        "cozodw"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 8,
+      "output_tokens": 10,
+      "prediction": "epinxs cqozhf ctxhiz",
+      "prompt_tokens": 3934,
+      "references": [
+        "epinxs",
+        "cqozhf",
+        "ctxhiz"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 9,
+      "output_tokens": 10,
+      "prediction": "fonqvx clawmp cyybwg",
+      "prompt_tokens": 3864,
+      "references": [
+        "fonqvx",
+        "clawmp",
+        "cyybwg"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 10,
+      "output_tokens": 13,
+      "prediction": "dgsutj, audaqx, awplue",
+      "prompt_tokens": 4055,
+      "references": [
+        "dgsutj",
+        "audaqx",
+        "awplue"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 11,
+      "output_tokens": 11,
+      "prediction": "eosbjj cbwoue cqdngn",
+      "prompt_tokens": 4037,
+      "references": [
+        "eosbjj",
+        "cbwoue",
+        "cqdngn"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 12,
+      "output_tokens": 14,
+      "prediction": "dhtzkq, cbbgcw, ccirws",
+      "prompt_tokens": 3910,
+      "references": [
+        "dhtzkq",
+        "cbbgcw",
+        "ccirws"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        false
+      ],
+      "index": 13,
+      "output_tokens": 12,
+      "prediction": "elvkzn bhlgjv mgzmrn",
+      "prompt_tokens": 4023,
+      "references": [
+        "elvkzn",
+        "bhlgjv",
+        "bieopl"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        false
+      ],
+      "index": 14,
+      "output_tokens": 10,
+      "prediction": "ealfia bxfcgh njpqjr",
+      "prompt_tokens": 3768,
+      "references": [
+        "ealfia",
+        "bxfcgh",
+        "cmbjde"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 15,
+      "output_tokens": 11,
+      "prediction": "ewjbur cgrqig cqdzqp",
+      "prompt_tokens": 4014,
+      "references": [
+        "ewjbur",
+        "cgrqig",
+        "cqdzqp"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 16,
+      "output_tokens": 12,
+      "prediction": "emzntg btvnls ccehwv",
+      "prompt_tokens": 4043,
+      "references": [
+        "emzntg",
+        "btvnls",
+        "ccehwv"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 17,
+      "output_tokens": 11,
+      "prediction": "fixdpr dmmatb drkpiv",
+      "prompt_tokens": 3862,
+      "references": [
+        "fixdpr",
+        "dmmatb",
+        "drkpiv"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 18,
+      "output_tokens": 11,
+      "prediction": "cnkvbw bsrlrc bwwgyb",
+      "prompt_tokens": 3998,
+      "references": [
+        "cnkvbw",
+        "bsrlrc",
+        "bwwgyb"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 19,
+      "output_tokens": 9,
+      "prediction": " ehdcol bnetys bpqxty",
+      "prompt_tokens": 3617,
+      "references": [
+        "ehdcol",
+        "bnetys",
+        "bpqxty"
+      ]
+    }
+  ],
+  "config_effect": {
+    "allocation": "fp16_statebf16",
+    "detail": {
+      "a2_flag": false,
+      "cache_dtype": "auto",
+      "mamba_ssm_cache_dtype": "bfloat16",
+      "per_layer": {}
+    },
+    "group_structure_verified": false,
+    "ok": true
+  },
+  "created_at_utc": "2026-08-10T13:33:52Z",
+  "data_file": "data/ruler/ruler_fwe_L4096/seed23/validation.jsonl",
+  "data_sha256": "eac93db8935d676ac1e8bbf7880ed0313ac036b4ff0e78c6d5c1eecf13ecd358",
+  "elapsed_s": 56.8,
+  "engine": {
+    "kwargs": {
+      "disable_log_stats": true,
+      "enforce_eager": true,
+      "gpu_memory_utilization": 0.85,
+      "mamba_ssm_cache_dtype": "bfloat16",
+      "max_model_len": 16384,
+      "seed": 7
+    },
+    "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master",
+    "vllm_version": "0.26.1rc1.dev245+ge2fa28594"
+  },
+  "host": "autodl-container-kmzddlce45-c57bf976",
+  "length": 4096,
+  "max_tokens": 256,
+  "metric": "string_match_all",
+  "num_samples": 20,
+  "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+  "sampling_params": {
+    "max_tokens": 256,
+    "temperature": 0.0,
+    "thinking": "disabled"
+  },
+  "schema_version": 1,
+  "seed": 7,
+  "status": "completed_validated",
+  "task": "ruler_fwe",
+  "task_type": "freq_words_extraction",
+  "thinking": "disabled",
+  "tokens_to_generate": 50
+}

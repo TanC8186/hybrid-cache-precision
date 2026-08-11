@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "material_passport": {
+    "origin_skill": "experiment-skill",
+    "origin_mode": "run",
+    "origin_date": "2026-08-10",
+    "verification_status": "UNVERIFIED",
+    "version_label": "capacity_phase_mvex_contract_v1"
+  },
+  "contract_status": "FROZEN",
+  "created_at": "2026-08-10T22:06:33+08:00",
+  "attempt_id": "capacity-phase-mvex-20260811",
+  "classification": "minimum_viable_execution",
+  "objective": "Exercise the complete capacity phase-diagram path and measure whether bf16 recurrent state increases deterministic allocator capacity relative to the fp32 auto-state baseline under int4 KV.",
+  "hypothesis": "At Qwen3.5-2B, L=4096, int4 KV, and gpu_memory_utilization=0.85, state=bfloat16 resolves to bf16 and yields strictly more capacity tokens than state=auto resolving to fp32.",
+  "upstream_gate": {
+    "name": "RULER no-think Gate 2",
+    "status": "PASS",
+    "validated_cells": 30,
+    "integrity_report": {
+      "path": "results/quality/ruler-nothink-5cell-validation-20260811.json",
+      "sha256": "3828e134395008e3a055f7c3f6b0c468bc7a5199221e2fd8ad0e6e50b0504584"
+    },
+    "analysis": {
+      "path": "results/quality/ruler-nothink-5cell-analysis-20260811.json",
+      "sha256": "872866bd9d7f4c1161590c93fb319b43404bfc712aa1f10635efb602f2356f83"
+    },
+    "analysis_contract": {
+      "path": "results/quality/ruler-nothink-5cell-analysis-20260811.contract.json",
+      "sha256": "30bad774d8560183bab5565f6576bd8b60e4ad5c17ade73d83045863ddff40bf"
+    }
+  },
+  "host": {
+    "ssh_endpoint": "connect.westb.seetacloud.com:24184",
+    "hostname": "autodl-container-kmzddlce45-c57bf976",
+    "host_key_sha256": "6zkijTPdPT6WfS5rwH9cKmrjcUOEAXfeneFegE8bUbw",
+    "gpu": "NVIDIA GeForce RTX 5090 32607 MiB",
+    "driver": "580.105.08"
+  },
+  "model": {
+    "id": "Qwen/Qwen3.5-2B",
+    "path": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master",
+    "config_sha256": "ed1c1723241f23f7f4e23430759cbd7dcfb4103cbdfe052bfe7626b57c2615b4",
+    "safetensors_index_sha256": "aca8afed9da75b0f050b408d270766fd77627f1af401e240f61c3b47d0db02f9"
+  },
+  "code": {
+    "local_repository_head": "b61741e48a0ee938dd407c1209bff0c4fe5bc5c8",
+    "remote_repository_note": "Runtime snapshot has no top-level .git; file hashes are authoritative.",
+    "runner_sha256": "83c294421f58e0c2702be3149e87792c144ece4bb4fcc7fad4a517ca3ad073a9",
+    "probe_sha256": "86d177223d3850bc8cf0f9dfee0e8153b52c7e682bfe59dd0bb6e09b955358ba",
+    "inspect_runtime_sha256": "5bd86de649de4dd52913e0dbd1d8ccf89a9d0c9945706ded94a5560c8c2bdb3f",
+    "analysis_sha256": "278a144c10a53f33310a25635495b7f18583cbeb7da7019b872e5f5f82ecede5",
+    "vllm_commit": "e2fa28594f7baad142a426b0b6a2cfe2c79201c7",
+    "vllm_version": "0.26.1rc1.dev245+ge2fa28594",
+    "vllm_modified_file_sha256": {
+      "vllm/config/cache.py": "f7e25243e0798b7a551f4cf9ee1bd2b1bff6094b6410ceb40f5a23cce6ff7f71",
+      "vllm/engine/arg_utils.py": "1279e1eaa245438617aae70edb89b9a66edf65240b91b5f5851c716a3ca6f544",
+      "vllm/model_executor/layers/attention/attention.py": "41a43eb4ddbd15a504b83affa6758b1da3903f11b5c105a633320888358a849a",
+      "vllm/utils/torch_utils.py": "be6079d95b59a3e03c04e90703f175c8656aee63b9030d62479f99d241cceea3",
+      "vllm/v1/kv_cache_interface.py": "f3a50d05f5e895dd8552d2752b18aaa118238fd0077e59dd631ee63ded71b307"
+    }
+  },
+  "protocol": {
+    "working_directory": "/root/autodl-tmp/MLSys_Research",
+    "command": "bash scripts/bench/run_capacity_phase_diagram.sh mvex capacity-phase-mvex-20260811",
+    "launched_command": "timeout --signal=TERM --kill-after=30s 1800 bash scripts/bench/run_capacity_phase_diagram.sh mvex capacity-phase-mvex-20260811",
+    "analysis_command": ".venv/bin/python scripts/bench/analyze_capacity_phase_diagram.py --attempt capacity-phase-mvex-20260811 --phase mvex --out results/verified/2026-08-11/capacity-phase/capacity-phase-mvex-20260811.analysis.json",
+    "seed": 42,
+    "model": "2b",
+    "kv_dtype": "int4_per_token_head",
+    "kv_cache_dtype_per_layer": {},
+    "max_model_len": 4096,
+    "gpu_memory_utilization": 0.85,
+    "state_dtypes": [
+      "auto",
+      "bfloat16"
+    ],
+    "expected_resolved_state_dtypes": [
+      "float32",
+      "bfloat16"
+    ],
+    "expected_cells": 2,
+    "timeout_seconds": 1800,
+    "monitor_interval_seconds": 60,
+    "output_absent_at_freeze": true
+  },
+  "expected_outputs": [
+    "results/verified/2026-08-11/capacity-phase/capacity-phase-mvex-20260811__2b__kvint4__stateauto__L4096__u085.json",
+    "results/verified/2026-08-11/capacity-phase/capacity-phase-mvex-20260811__2b__kvint4__statebfloat16__L4096__u085.json",
+    "results/verified/2026-08-11/capacity-phase/capacity-phase-mvex-20260811.analysis.json",
+    "logs/capacity-phase-mvex-20260811.log",
+    "logs/capacity-phase-mvex-20260811-launcher.log"
+  ],
+  "success_criteria": [
+    "The exact two-cell matrix completes without OOM, timeout, retry, or silent exclusion.",
+    "Both JSON files and adjacent SHA256 sidecars pass verification.",
+    "The auto cell resolves recurrent state to float32 and the treatment cell resolves it to bfloat16.",
+    "Both cells record seed=42, int4_per_token_head KV, empty per-layer overrides, L=4096, and gpu_memory_utilization=0.85.",
+    "Capacity tokens, max concurrency, GPU blocks, and elapsed time are finite and positive.",
+    "The bf16-state capacity token count is strictly greater than the fp32-state baseline.",
+    "The strict analyzer accepts exactly two cells and emits one finite measured-vs-predicted pair with an adjacent SHA256 sidecar."
+  ],
+  "evidence_policy": "MVEx output remains UNVERIFIED diagnostic evidence and cannot be used as a paper result. Passing this contract only authorizes the 18-cell pilot."
+}

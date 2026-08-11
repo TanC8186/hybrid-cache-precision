@@ -1,0 +1,637 @@
+{
+  "schema_version": 1,
+  "material_passport": {
+    "origin_skill": "experiment-skill",
+    "origin_mode": "validate",
+    "origin_date": "2026-08-10T14:04:18.012519+00:00",
+    "verification_status": "ANALYZED",
+    "version_label": "ruler_nothink_integrity_v1"
+  },
+  "validation_id": "ruler-nothink-5cell-integrity-20260811",
+  "gate": "Gate 2 pilot integrity",
+  "gate_status": "PASS",
+  "evidence_status": "UNVERIFIED",
+  "reproducibility_rerun": "not_run",
+  "expected_cells": 30,
+  "validated_cells": 30,
+  "attempts": [
+    "ruler-statebf16-nothink-20260811-2b",
+    "ruler-statebf16-nothink-20260811-9b"
+  ],
+  "pilot_contract": {
+    "path": "/root/autodl-tmp/MLSys_Research/results/quality/ruler-nothink-5cell-pilot-20260811.contract.json",
+    "sha256": "c9fe26162cbc2a95789c6732da97e2eaa85ac125a9c8d4576023d440d6a31a77"
+  },
+  "validator_sha256": "fa8bd7d13a20c859b9cd63a1a41adab6280160eed5836d8797aecc6985df1088",
+  "checks": [
+    "exact 30-cell matrix and adjacent SHA256 sidecars",
+    "frozen runner, cell runner, analyzer, and patched vLLM file hashes",
+    "status, task, length, allocation, engine seed, dataset seed, no-think, and token budget",
+    "config_effect.ok and exact fp32/bf16 recurrent-state dtype",
+    "20 sample records per cell and accuracy recomputed from sample hits",
+    "paired allocation dataset identity and cross-model dataset identity",
+    "frozen host and vLLM provenance"
+  ],
+  "cells": [
+    {
+      "spec": {
+        "task": "ruler_fwe",
+        "length": 4096,
+        "model": "2b",
+        "dataset_seed": 42,
+        "allocation": "fp16",
+        "attempt": "ruler-statebf16-nothink-20260811-2b"
+      },
+      "data_relative_path": "data/ruler/ruler_fwe_L4096/validation.jsonl",
+      "data_sha256": "d22e21d579e53d976588c63828a8acdf970e04d258a614caede338a8a31e824b",
+      "accuracy": 93.33,
+      "recomputed_accuracy": 93.33,
+      "state_dtype": "float32",
+      "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+      "vllm_version": "0.26.1rc1.dev245+ge2fa28594",
+      "host": "autodl-container-kmzddlce45-c57bf976",
+      "path": "/root/autodl-tmp/MLSys_Research/results/quality/ruler-subset/ruler-statebf16-nothink-20260811-2b/ruler_fwe__L4096__fp16__s7.json",
+      "sha256": "2475d216ab4ce6d35d9e18e98fdf3593975342c5a4baf6021eac94e6b2bf7ada"
+    },
+    {
+      "spec": {
+        "task": "ruler_fwe",
+        "length": 4096,
+        "model": "2b",
+        "dataset_seed": 42,
+        "allocation": "fp16_statebf16",
+        "attempt": "ruler-statebf16-nothink-20260811-2b"
+      },
+      "data_relative_path": "data/ruler/ruler_fwe_L4096/validation.jsonl",
+      "data_sha256": "d22e21d579e53d976588c63828a8acdf970e04d258a614caede338a8a31e824b",
+      "accuracy": 93.33,
+      "recomputed_accuracy": 93.33,
+      "state_dtype": "bfloat16",
+      "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+      "vllm_version": "0.26.1rc1.dev245+ge2fa28594",
+      "host": "autodl-container-kmzddlce45-c57bf976",
+      "path": "/root/autodl-tmp/MLSys_Research/results/quality/ruler-subset/ruler-statebf16-nothink-20260811-2b/ruler_fwe__L4096__fp16_statebf16__s7.json",
+      "sha256": "4fe72cd81407899700b53d97240649ad5d1a4bd3a3a3b6882c3b26756f1e3f85"
+    },
+    {
+      "spec": {
+        "task": "ruler_fwe",
+        "length": 4096,
+        "model": "2b",
+        "dataset_seed": 11,
+        "allocation": "fp16",
+        "attempt": "ruler-statebf16-nothink-20260811-2b"
+      },
+      "data_relative_path": "data/ruler/ruler_fwe_L4096/seed11/validation.jsonl",
+      "data_sha256": "6ef7394bda95234b1054719095d2fa9daa4f746dcf29314392038b5f598fde98",
+      "accuracy": 90.0,
+      "recomputed_accuracy": 90.0,
+      "state_dtype": "float32",
+      "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+      "vllm_version": "0.26.1rc1.dev245+ge2fa28594",
+      "host": "autodl-container-kmzddlce45-c57bf976",
+      "path": "/root/autodl-tmp/MLSys_Research/results/quality/ruler-subset/ruler-statebf16-nothink-20260811-2b/ruler_fwe__L4096__fp16__s7__d11.json",
+      "sha256": "9eff6ec2041ab745a92cd0f0987d03be1497bbfd2de9506d8c5be2db38f16fbc"
+    },
+    {
+      "spec": {
+        "task": "ruler_fwe",
+        "length": 4096,
+        "model": "2b",
+        "dataset_seed": 11,
+        "allocation": "fp16_statebf16",
+        "attempt": "ruler-statebf16-nothink-20260811-2b"
+      },
+      "data_relative_path": "data/ruler/ruler_fwe_L4096/seed11/validation.jsonl",
+      "data_sha256": "6ef7394bda95234b1054719095d2fa9daa4f746dcf29314392038b5f598fde98",
+      "accuracy": 90.0,
+      "recomputed_accuracy": 90.0,
+      "state_dtype": "bfloat16",
+      "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+      "vllm_version": "0.26.1rc1.dev245+ge2fa28594",
+      "host": "autodl-container-kmzddlce45-c57bf976",
+      "path": "/root/autodl-tmp/MLSys_Research/results/quality/ruler-subset/ruler-statebf16-nothink-20260811-2b/ruler_fwe__L4096__fp16_statebf16__s7__d11.json",
+      "sha256": "98474348e2cb01fafaf48e5b8e6a701a1a011c4ea59e77d99f223b53f6b781a7"
+    },
+    {
+      "spec": {
+        "task": "ruler_fwe",
+        "length": 4096,
+        "model": "2b",
+        "dataset_seed": 23,
+        "allocation": "fp16",
+        "attempt": "ruler-statebf16-nothink-20260811-2b"
+      },
+      "data_relative_path": "data/ruler/ruler_fwe_L4096/seed23/validation.jsonl",
+      "data_sha256": "eac93db8935d676ac1e8bbf7880ed0313ac036b4ff0e78c6d5c1eecf13ecd358",
+      "accuracy": 90.0,
+      "recomputed_accuracy": 90.0,
+      "state_dtype": "float32",
+      "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+      "vllm_version": "0.26.1rc1.dev245+ge2fa28594",
+      "host": "autodl-container-kmzddlce45-c57bf976",
+      "path": "/root/autodl-tmp/MLSys_Research/results/quality/ruler-subset/ruler-statebf16-nothink-20260811-2b/ruler_fwe__L4096__fp16__s7__d23.json",
+      "sha256": "b188497832bd1da3e3933187c6b7b7ebbd4474586cf377a8a303e627e7c9baf5"
+    },
+    {
+      "spec": {
+        "task": "ruler_fwe",
+        "length": 4096,
+        "model": "2b",
+        "dataset_seed": 23,
+        "allocation": "fp16_statebf16",
+        "attempt": "ruler-statebf16-nothink-20260811-2b"
+      },
+      "data_relative_path": "data/ruler/ruler_fwe_L4096/seed23/validation.jsonl",
+      "data_sha256": "eac93db8935d676ac1e8bbf7880ed0313ac036b4ff0e78c6d5c1eecf13ecd358",
+      "accuracy": 90.0,
+      "recomputed_accuracy": 90.0,
+      "state_dtype": "bfloat16",
+      "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+      "vllm_version": "0.26.1rc1.dev245+ge2fa28594",
+      "host": "autodl-container-kmzddlce45-c57bf976",
+      "path": "/root/autodl-tmp/MLSys_Research/results/quality/ruler-subset/ruler-statebf16-nothink-20260811-2b/ruler_fwe__L4096__fp16_statebf16__s7__d23.json",
+      "sha256": "16a9a04336b072e4ac81b873114d4e46b83e96c38234244405497317aef07dcb"
+    },
+    {
+      "spec": {
+        "task": "ruler_fwe",
+        "length": 8192,
+        "model": "2b",
+        "dataset_seed": 42,
+        "allocation": "fp16",
+        "attempt": "ruler-statebf16-nothink-20260811-2b"
+      },
+      "data_relative_path": "data/ruler/ruler_fwe_L8192/validation.jsonl",
+      "data_sha256": "e40be1cdf0e66524188c79b5546ca82665054daa782b49b65a520b04fee0fa01",
+      "accuracy": 100.0,
+      "recomputed_accuracy": 100.0,
+      "state_dtype": "float32",
+      "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+      "vllm_version": "0.26.1rc1.dev245+ge2fa28594",
+      "host": "autodl-container-kmzddlce45-c57bf976",
+      "path": "/root/autodl-tmp/MLSys_Research/results/quality/ruler-subset/ruler-statebf16-nothink-20260811-2b/ruler_fwe__L8192__fp16__s7.json",
+      "sha256": "eb07bd46b7579b9b10c3e5fbd4f41c800f094de0f4f1ce23e2bc52217a4ba2d1"
+    },
+    {
+      "spec": {
+        "task": "ruler_fwe",
+        "length": 8192,
+        "model": "2b",
+        "dataset_seed": 42,
+        "allocation": "fp16_statebf16",
+        "attempt": "ruler-statebf16-nothink-20260811-2b"
+      },
+      "data_relative_path": "data/ruler/ruler_fwe_L8192/validation.jsonl",
+      "data_sha256": "e40be1cdf0e66524188c79b5546ca82665054daa782b49b65a520b04fee0fa01",
+      "accuracy": 100.0,
+      "recomputed_accuracy": 100.0,
+      "state_dtype": "bfloat16",
+      "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+      "vllm_version": "0.26.1rc1.dev245+ge2fa28594",
+      "host": "autodl-container-kmzddlce45-c57bf976",
+      "path": "/root/autodl-tmp/MLSys_Research/results/quality/ruler-subset/ruler-statebf16-nothink-20260811-2b/ruler_fwe__L8192__fp16_statebf16__s7.json",
+      "sha256": "f08703de257ac3e0e70fca0830490d56d72c42d1eed3f862701d594f6a1fd856"
+    },
+    {
+      "spec": {
+        "task": "ruler_fwe",
+        "length": 8192,
+        "model": "2b",
+        "dataset_seed": 11,
+        "allocation": "fp16",
+        "attempt": "ruler-statebf16-nothink-20260811-2b"
+      },
+      "data_relative_path": "data/ruler/ruler_fwe_L8192/seed11/validation.jsonl",
+      "data_sha256": "ea4bc53f1beefef88c61181dfe3666f8832ca9d19bec681c020bc65d2864bb0f",
+      "accuracy": 98.33,
+      "recomputed_accuracy": 98.33,
+      "state_dtype": "float32",
+      "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+      "vllm_version": "0.26.1rc1.dev245+ge2fa28594",
+      "host": "autodl-container-kmzddlce45-c57bf976",
+      "path": "/root/autodl-tmp/MLSys_Research/results/quality/ruler-subset/ruler-statebf16-nothink-20260811-2b/ruler_fwe__L8192__fp16__s7__d11.json",
+      "sha256": "b4ab08900c7abeb7625d37e10cf9970167b3d76b177d9dffb99b73bdd2c5ebaf"
+    },
+    {
+      "spec": {
+        "task": "ruler_fwe",
+        "length": 8192,
+        "model": "2b",
+        "dataset_seed": 11,
+        "allocation": "fp16_statebf16",
+        "attempt": "ruler-statebf16-nothink-20260811-2b"
+      },
+      "data_relative_path": "data/ruler/ruler_fwe_L8192/seed11/validation.jsonl",
+      "data_sha256": "ea4bc53f1beefef88c61181dfe3666f8832ca9d19bec681c020bc65d2864bb0f",
+      "accuracy": 98.33,
+      "recomputed_accuracy": 98.33,
+      "state_dtype": "bfloat16",
+      "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+      "vllm_version": "0.26.1rc1.dev245+ge2fa28594",
+      "host": "autodl-container-kmzddlce45-c57bf976",
+      "path": "/root/autodl-tmp/MLSys_Research/results/quality/ruler-subset/ruler-statebf16-nothink-20260811-2b/ruler_fwe__L8192__fp16_statebf16__s7__d11.json",
+      "sha256": "5028c43b0459f55b5b69236fa85f03566e71a2ff04cb86af6193b8e52c5a0a11"
+    },
+    {
+      "spec": {
+        "task": "ruler_fwe",
+        "length": 8192,
+        "model": "2b",
+        "dataset_seed": 23,
+        "allocation": "fp16",
+        "attempt": "ruler-statebf16-nothink-20260811-2b"
+      },
+      "data_relative_path": "data/ruler/ruler_fwe_L8192/seed23/validation.jsonl",
+      "data_sha256": "37a7e3761900daffe4cde491b603312b192f60f33d00d9289d4613f23861853c",
+      "accuracy": 96.67,
+      "recomputed_accuracy": 96.67,
+      "state_dtype": "float32",
+      "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+      "vllm_version": "0.26.1rc1.dev245+ge2fa28594",
+      "host": "autodl-container-kmzddlce45-c57bf976",
+      "path": "/root/autodl-tmp/MLSys_Research/results/quality/ruler-subset/ruler-statebf16-nothink-20260811-2b/ruler_fwe__L8192__fp16__s7__d23.json",
+      "sha256": "d5d8dcc7943942ca3ad796affaca6fc68b5ad39d39d7aa7dbe33d37daf2b135c"
+    },
+    {
+      "spec": {
+        "task": "ruler_fwe",
+        "length": 8192,
+        "model": "2b",
+        "dataset_seed": 23,
+        "allocation": "fp16_statebf16",
+        "attempt": "ruler-statebf16-nothink-20260811-2b"
+      },
+      "data_relative_path": "data/ruler/ruler_fwe_L8192/seed23/validation.jsonl",
+      "data_sha256": "37a7e3761900daffe4cde491b603312b192f60f33d00d9289d4613f23861853c",
+      "accuracy": 96.67,
+      "recomputed_accuracy": 96.67,
+      "state_dtype": "bfloat16",
+      "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+      "vllm_version": "0.26.1rc1.dev245+ge2fa28594",
+      "host": "autodl-container-kmzddlce45-c57bf976",
+      "path": "/root/autodl-tmp/MLSys_Research/results/quality/ruler-subset/ruler-statebf16-nothink-20260811-2b/ruler_fwe__L8192__fp16_statebf16__s7__d23.json",
+      "sha256": "d665414e83d7fb591f9178f97e20aff6f672f74c587d7450f555b5f235be649c"
+    },
+    {
+      "spec": {
+        "task": "ruler_niah_multiquery",
+        "length": 4096,
+        "model": "9b",
+        "dataset_seed": 42,
+        "allocation": "fp16",
+        "attempt": "ruler-statebf16-nothink-20260811-9b"
+      },
+      "data_relative_path": "data/ruler/ruler_niah_multiquery_L4096/validation.jsonl",
+      "data_sha256": "d555e41ef3262675e1582565e497bd528b150714b91840c95b206315e9958a48",
+      "accuracy": 100.0,
+      "recomputed_accuracy": 100.0,
+      "state_dtype": "float32",
+      "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+      "vllm_version": "0.26.1rc1.dev245+ge2fa28594",
+      "host": "autodl-container-kmzddlce45-c57bf976",
+      "path": "/root/autodl-tmp/MLSys_Research/results/quality/ruler-subset/ruler-statebf16-nothink-20260811-9b/ruler_niah_multiquery__L4096__fp16__s7.json",
+      "sha256": "53e74befdad2cc3919023c2e3e42d6c1b2481c776e595313083d68156319372c"
+    },
+    {
+      "spec": {
+        "task": "ruler_niah_multiquery",
+        "length": 4096,
+        "model": "9b",
+        "dataset_seed": 42,
+        "allocation": "fp16_statebf16",
+        "attempt": "ruler-statebf16-nothink-20260811-9b"
+      },
+      "data_relative_path": "data/ruler/ruler_niah_multiquery_L4096/validation.jsonl",
+      "data_sha256": "d555e41ef3262675e1582565e497bd528b150714b91840c95b206315e9958a48",
+      "accuracy": 100.0,
+      "recomputed_accuracy": 100.0,
+      "state_dtype": "bfloat16",
+      "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+      "vllm_version": "0.26.1rc1.dev245+ge2fa28594",
+      "host": "autodl-container-kmzddlce45-c57bf976",
+      "path": "/root/autodl-tmp/MLSys_Research/results/quality/ruler-subset/ruler-statebf16-nothink-20260811-9b/ruler_niah_multiquery__L4096__fp16_statebf16__s7.json",
+      "sha256": "bddf66ae0fe5a2f925b1aadb15ffd240818408c3c63f862f32fb2c209b76099c"
+    },
+    {
+      "spec": {
+        "task": "ruler_niah_multiquery",
+        "length": 4096,
+        "model": "9b",
+        "dataset_seed": 11,
+        "allocation": "fp16",
+        "attempt": "ruler-statebf16-nothink-20260811-9b"
+      },
+      "data_relative_path": "data/ruler/ruler_niah_multiquery_L4096/seed11/validation.jsonl",
+      "data_sha256": "cb2bb43b570efdbbe9a944996bf06084682fd0c0a40c398d14a5ec460d0f27ce",
+      "accuracy": 100.0,
+      "recomputed_accuracy": 100.0,
+      "state_dtype": "float32",
+      "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+      "vllm_version": "0.26.1rc1.dev245+ge2fa28594",
+      "host": "autodl-container-kmzddlce45-c57bf976",
+      "path": "/root/autodl-tmp/MLSys_Research/results/quality/ruler-subset/ruler-statebf16-nothink-20260811-9b/ruler_niah_multiquery__L4096__fp16__s7__d11.json",
+      "sha256": "99e586d3710a2392af374957d5d856532b032f99b2f695e85bff6f6c7971fc96"
+    },
+    {
+      "spec": {
+        "task": "ruler_niah_multiquery",
+        "length": 4096,
+        "model": "9b",
+        "dataset_seed": 11,
+        "allocation": "fp16_statebf16",
+        "attempt": "ruler-statebf16-nothink-20260811-9b"
+      },
+      "data_relative_path": "data/ruler/ruler_niah_multiquery_L4096/seed11/validation.jsonl",
+      "data_sha256": "cb2bb43b570efdbbe9a944996bf06084682fd0c0a40c398d14a5ec460d0f27ce",
+      "accuracy": 100.0,
+      "recomputed_accuracy": 100.0,
+      "state_dtype": "bfloat16",
+      "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+      "vllm_version": "0.26.1rc1.dev245+ge2fa28594",
+      "host": "autodl-container-kmzddlce45-c57bf976",
+      "path": "/root/autodl-tmp/MLSys_Research/results/quality/ruler-subset/ruler-statebf16-nothink-20260811-9b/ruler_niah_multiquery__L4096__fp16_statebf16__s7__d11.json",
+      "sha256": "a235e09ff0a40978b0f623f69c382823b7a4882b95a38e51b3a7a8b570ecb67b"
+    },
+    {
+      "spec": {
+        "task": "ruler_niah_multiquery",
+        "length": 4096,
+        "model": "9b",
+        "dataset_seed": 23,
+        "allocation": "fp16",
+        "attempt": "ruler-statebf16-nothink-20260811-9b"
+      },
+      "data_relative_path": "data/ruler/ruler_niah_multiquery_L4096/seed23/validation.jsonl",
+      "data_sha256": "f608eb25e07b4095fb67bc72593cca5fbbd2523b74617f0a1e729927927f2f4d",
+      "accuracy": 100.0,
+      "recomputed_accuracy": 100.0,
+      "state_dtype": "float32",
+      "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+      "vllm_version": "0.26.1rc1.dev245+ge2fa28594",
+      "host": "autodl-container-kmzddlce45-c57bf976",
+      "path": "/root/autodl-tmp/MLSys_Research/results/quality/ruler-subset/ruler-statebf16-nothink-20260811-9b/ruler_niah_multiquery__L4096__fp16__s7__d23.json",
+      "sha256": "1758643d40f5bfd5e3b8aaae43b52868e1c657fb5422f1d4c2d4d6f1ab126f27"
+    },
+    {
+      "spec": {
+        "task": "ruler_niah_multiquery",
+        "length": 4096,
+        "model": "9b",
+        "dataset_seed": 23,
+        "allocation": "fp16_statebf16",
+        "attempt": "ruler-statebf16-nothink-20260811-9b"
+      },
+      "data_relative_path": "data/ruler/ruler_niah_multiquery_L4096/seed23/validation.jsonl",
+      "data_sha256": "f608eb25e07b4095fb67bc72593cca5fbbd2523b74617f0a1e729927927f2f4d",
+      "accuracy": 100.0,
+      "recomputed_accuracy": 100.0,
+      "state_dtype": "bfloat16",
+      "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+      "vllm_version": "0.26.1rc1.dev245+ge2fa28594",
+      "host": "autodl-container-kmzddlce45-c57bf976",
+      "path": "/root/autodl-tmp/MLSys_Research/results/quality/ruler-subset/ruler-statebf16-nothink-20260811-9b/ruler_niah_multiquery__L4096__fp16_statebf16__s7__d23.json",
+      "sha256": "75c52551146957dda3036ffade44380011b6d9df21f7b3e776f718ba12be18df"
+    },
+    {
+      "spec": {
+        "task": "ruler_niah_multiquery",
+        "length": 8192,
+        "model": "9b",
+        "dataset_seed": 42,
+        "allocation": "fp16",
+        "attempt": "ruler-statebf16-nothink-20260811-9b"
+      },
+      "data_relative_path": "data/ruler/ruler_niah_multiquery_L8192/validation.jsonl",
+      "data_sha256": "c4addade2eec70a77cdbe6bb236f6c0a727de283a848bc5ef6817aa51c2eeac0",
+      "accuracy": 100.0,
+      "recomputed_accuracy": 100.0,
+      "state_dtype": "float32",
+      "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+      "vllm_version": "0.26.1rc1.dev245+ge2fa28594",
+      "host": "autodl-container-kmzddlce45-c57bf976",
+      "path": "/root/autodl-tmp/MLSys_Research/results/quality/ruler-subset/ruler-statebf16-nothink-20260811-9b/ruler_niah_multiquery__L8192__fp16__s7.json",
+      "sha256": "23ffcc5702cfea9c4fe84339a0703b652b6034ad2abb9f4bd696371679a2535e"
+    },
+    {
+      "spec": {
+        "task": "ruler_niah_multiquery",
+        "length": 8192,
+        "model": "9b",
+        "dataset_seed": 42,
+        "allocation": "fp16_statebf16",
+        "attempt": "ruler-statebf16-nothink-20260811-9b"
+      },
+      "data_relative_path": "data/ruler/ruler_niah_multiquery_L8192/validation.jsonl",
+      "data_sha256": "c4addade2eec70a77cdbe6bb236f6c0a727de283a848bc5ef6817aa51c2eeac0",
+      "accuracy": 100.0,
+      "recomputed_accuracy": 100.0,
+      "state_dtype": "bfloat16",
+      "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+      "vllm_version": "0.26.1rc1.dev245+ge2fa28594",
+      "host": "autodl-container-kmzddlce45-c57bf976",
+      "path": "/root/autodl-tmp/MLSys_Research/results/quality/ruler-subset/ruler-statebf16-nothink-20260811-9b/ruler_niah_multiquery__L8192__fp16_statebf16__s7.json",
+      "sha256": "f7eecd925a37d44c6f41027a5bc4a8d3b5b58a2a2f85b10ef283d42dfe883587"
+    },
+    {
+      "spec": {
+        "task": "ruler_niah_multiquery",
+        "length": 8192,
+        "model": "9b",
+        "dataset_seed": 11,
+        "allocation": "fp16",
+        "attempt": "ruler-statebf16-nothink-20260811-9b"
+      },
+      "data_relative_path": "data/ruler/ruler_niah_multiquery_L8192/seed11/validation.jsonl",
+      "data_sha256": "042f27ade092c6fb248bf88dc42e3ce6187d6fb9e514de60eacf84527ed2b457",
+      "accuracy": 100.0,
+      "recomputed_accuracy": 100.0,
+      "state_dtype": "float32",
+      "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+      "vllm_version": "0.26.1rc1.dev245+ge2fa28594",
+      "host": "autodl-container-kmzddlce45-c57bf976",
+      "path": "/root/autodl-tmp/MLSys_Research/results/quality/ruler-subset/ruler-statebf16-nothink-20260811-9b/ruler_niah_multiquery__L8192__fp16__s7__d11.json",
+      "sha256": "51d85906747ca7998ebb00fe9f812bd6f4b1a957e7aee7a4d66b7f8236378bf0"
+    },
+    {
+      "spec": {
+        "task": "ruler_niah_multiquery",
+        "length": 8192,
+        "model": "9b",
+        "dataset_seed": 11,
+        "allocation": "fp16_statebf16",
+        "attempt": "ruler-statebf16-nothink-20260811-9b"
+      },
+      "data_relative_path": "data/ruler/ruler_niah_multiquery_L8192/seed11/validation.jsonl",
+      "data_sha256": "042f27ade092c6fb248bf88dc42e3ce6187d6fb9e514de60eacf84527ed2b457",
+      "accuracy": 100.0,
+      "recomputed_accuracy": 100.0,
+      "state_dtype": "bfloat16",
+      "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+      "vllm_version": "0.26.1rc1.dev245+ge2fa28594",
+      "host": "autodl-container-kmzddlce45-c57bf976",
+      "path": "/root/autodl-tmp/MLSys_Research/results/quality/ruler-subset/ruler-statebf16-nothink-20260811-9b/ruler_niah_multiquery__L8192__fp16_statebf16__s7__d11.json",
+      "sha256": "f3202182bd4d4d121a5d776a459717414cb4e3b6c5b17b3d3891707eee8da6f0"
+    },
+    {
+      "spec": {
+        "task": "ruler_niah_multiquery",
+        "length": 8192,
+        "model": "9b",
+        "dataset_seed": 23,
+        "allocation": "fp16",
+        "attempt": "ruler-statebf16-nothink-20260811-9b"
+      },
+      "data_relative_path": "data/ruler/ruler_niah_multiquery_L8192/seed23/validation.jsonl",
+      "data_sha256": "eeeded064fce2534d47fa7d6341025783e48861a7766f7c4d0c6d42aae717a69",
+      "accuracy": 100.0,
+      "recomputed_accuracy": 100.0,
+      "state_dtype": "float32",
+      "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+      "vllm_version": "0.26.1rc1.dev245+ge2fa28594",
+      "host": "autodl-container-kmzddlce45-c57bf976",
+      "path": "/root/autodl-tmp/MLSys_Research/results/quality/ruler-subset/ruler-statebf16-nothink-20260811-9b/ruler_niah_multiquery__L8192__fp16__s7__d23.json",
+      "sha256": "18aee2e68b901f9702268ed4a76f5a18ec6ae9e652f0fa50b7c294ccde42e5c6"
+    },
+    {
+      "spec": {
+        "task": "ruler_niah_multiquery",
+        "length": 8192,
+        "model": "9b",
+        "dataset_seed": 23,
+        "allocation": "fp16_statebf16",
+        "attempt": "ruler-statebf16-nothink-20260811-9b"
+      },
+      "data_relative_path": "data/ruler/ruler_niah_multiquery_L8192/seed23/validation.jsonl",
+      "data_sha256": "eeeded064fce2534d47fa7d6341025783e48861a7766f7c4d0c6d42aae717a69",
+      "accuracy": 100.0,
+      "recomputed_accuracy": 100.0,
+      "state_dtype": "bfloat16",
+      "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+      "vllm_version": "0.26.1rc1.dev245+ge2fa28594",
+      "host": "autodl-container-kmzddlce45-c57bf976",
+      "path": "/root/autodl-tmp/MLSys_Research/results/quality/ruler-subset/ruler-statebf16-nothink-20260811-9b/ruler_niah_multiquery__L8192__fp16_statebf16__s7__d23.json",
+      "sha256": "60fb943cd1b9fba3d0f9a242b34c0d6fc2182a78eddb93266c11a9582c76c6f1"
+    },
+    {
+      "spec": {
+        "task": "ruler_fwe",
+        "length": 8192,
+        "model": "9b",
+        "dataset_seed": 42,
+        "allocation": "fp16",
+        "attempt": "ruler-statebf16-nothink-20260811-9b"
+      },
+      "data_relative_path": "data/ruler/ruler_fwe_L8192/validation.jsonl",
+      "data_sha256": "e40be1cdf0e66524188c79b5546ca82665054daa782b49b65a520b04fee0fa01",
+      "accuracy": 100.0,
+      "recomputed_accuracy": 100.0,
+      "state_dtype": "float32",
+      "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+      "vllm_version": "0.26.1rc1.dev245+ge2fa28594",
+      "host": "autodl-container-kmzddlce45-c57bf976",
+      "path": "/root/autodl-tmp/MLSys_Research/results/quality/ruler-subset/ruler-statebf16-nothink-20260811-9b/ruler_fwe__L8192__fp16__s7.json",
+      "sha256": "1bb1c1ec1652f23f723f038b3e5b86b1f8eed761b76890f7c9213fe4a39c0837"
+    },
+    {
+      "spec": {
+        "task": "ruler_fwe",
+        "length": 8192,
+        "model": "9b",
+        "dataset_seed": 42,
+        "allocation": "fp16_statebf16",
+        "attempt": "ruler-statebf16-nothink-20260811-9b"
+      },
+      "data_relative_path": "data/ruler/ruler_fwe_L8192/validation.jsonl",
+      "data_sha256": "e40be1cdf0e66524188c79b5546ca82665054daa782b49b65a520b04fee0fa01",
+      "accuracy": 100.0,
+      "recomputed_accuracy": 100.0,
+      "state_dtype": "bfloat16",
+      "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+      "vllm_version": "0.26.1rc1.dev245+ge2fa28594",
+      "host": "autodl-container-kmzddlce45-c57bf976",
+      "path": "/root/autodl-tmp/MLSys_Research/results/quality/ruler-subset/ruler-statebf16-nothink-20260811-9b/ruler_fwe__L8192__fp16_statebf16__s7.json",
+      "sha256": "ccbaebc1e89b4f689bcb108b0216a580ca4804193ebfc107907ec7abc6d1d93f"
+    },
+    {
+      "spec": {
+        "task": "ruler_fwe",
+        "length": 8192,
+        "model": "9b",
+        "dataset_seed": 11,
+        "allocation": "fp16",
+        "attempt": "ruler-statebf16-nothink-20260811-9b"
+      },
+      "data_relative_path": "data/ruler/ruler_fwe_L8192/seed11/validation.jsonl",
+      "data_sha256": "ea4bc53f1beefef88c61181dfe3666f8832ca9d19bec681c020bc65d2864bb0f",
+      "accuracy": 100.0,
+      "recomputed_accuracy": 100.0,
+      "state_dtype": "float32",
+      "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+      "vllm_version": "0.26.1rc1.dev245+ge2fa28594",
+      "host": "autodl-container-kmzddlce45-c57bf976",
+      "path": "/root/autodl-tmp/MLSys_Research/results/quality/ruler-subset/ruler-statebf16-nothink-20260811-9b/ruler_fwe__L8192__fp16__s7__d11.json",
+      "sha256": "308105aec4ee4249c46f5410a346935d11f54aaf040e853a0a14969d207b6ac8"
+    },
+    {
+      "spec": {
+        "task": "ruler_fwe",
+        "length": 8192,
+        "model": "9b",
+        "dataset_seed": 11,
+        "allocation": "fp16_statebf16",
+        "attempt": "ruler-statebf16-nothink-20260811-9b"
+      },
+      "data_relative_path": "data/ruler/ruler_fwe_L8192/seed11/validation.jsonl",
+      "data_sha256": "ea4bc53f1beefef88c61181dfe3666f8832ca9d19bec681c020bc65d2864bb0f",
+      "accuracy": 100.0,
+      "recomputed_accuracy": 100.0,
+      "state_dtype": "bfloat16",
+      "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+      "vllm_version": "0.26.1rc1.dev245+ge2fa28594",
+      "host": "autodl-container-kmzddlce45-c57bf976",
+      "path": "/root/autodl-tmp/MLSys_Research/results/quality/ruler-subset/ruler-statebf16-nothink-20260811-9b/ruler_fwe__L8192__fp16_statebf16__s7__d11.json",
+      "sha256": "54ee83b3f003b14f11453fd65ba934463b029b1b5fb40b92509670eda7262c57"
+    },
+    {
+      "spec": {
+        "task": "ruler_fwe",
+        "length": 8192,
+        "model": "9b",
+        "dataset_seed": 23,
+        "allocation": "fp16",
+        "attempt": "ruler-statebf16-nothink-20260811-9b"
+      },
+      "data_relative_path": "data/ruler/ruler_fwe_L8192/seed23/validation.jsonl",
+      "data_sha256": "37a7e3761900daffe4cde491b603312b192f60f33d00d9289d4613f23861853c",
+      "accuracy": 100.0,
+      "recomputed_accuracy": 100.0,
+      "state_dtype": "float32",
+      "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+      "vllm_version": "0.26.1rc1.dev245+ge2fa28594",
+      "host": "autodl-container-kmzddlce45-c57bf976",
+      "path": "/root/autodl-tmp/MLSys_Research/results/quality/ruler-subset/ruler-statebf16-nothink-20260811-9b/ruler_fwe__L8192__fp16__s7__d23.json",
+      "sha256": "bdfe66764c24d89d811f6202d0e068b36d61d545db94bdd180367dc785329821"
+    },
+    {
+      "spec": {
+        "task": "ruler_fwe",
+        "length": 8192,
+        "model": "9b",
+        "dataset_seed": 23,
+        "allocation": "fp16_statebf16",
+        "attempt": "ruler-statebf16-nothink-20260811-9b"
+      },
+      "data_relative_path": "data/ruler/ruler_fwe_L8192/seed23/validation.jsonl",
+      "data_sha256": "37a7e3761900daffe4cde491b603312b192f60f33d00d9289d4613f23861853c",
+      "accuracy": 100.0,
+      "recomputed_accuracy": 100.0,
+      "state_dtype": "bfloat16",
+      "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+      "vllm_version": "0.26.1rc1.dev245+ge2fa28594",
+      "host": "autodl-container-kmzddlce45-c57bf976",
+      "path": "/root/autodl-tmp/MLSys_Research/results/quality/ruler-subset/ruler-statebf16-nothink-20260811-9b/ruler_fwe__L8192__fp16_statebf16__s7__d23.json",
+      "sha256": "891f52b63c413bbeb52b52e8cdbb9efeab3f6bf323ce476292250fee42aa3001"
+    }
+  ]
+}

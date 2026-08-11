@@ -1,0 +1,211 @@
+{
+  "schema_version": 1,
+  "analysis_id": "ruler-nothink-5cell-20260811",
+  "contract_sha256": "30bad774d8560183bab5565f6576bd8b60e4ad5c17ade73d83045863ddff40bf",
+  "dataset_seeds": [
+    42,
+    11,
+    23
+  ],
+  "engine_seed": 7,
+  "protocol": "ruler_quality.py --max-tokens 256 --disable-thinking; dataset generated per random_seed",
+  "attempts": {
+    "2b": "ruler-statebf16-nothink-20260811-2b",
+    "9b": "ruler-statebf16-nothink-20260811-9b"
+  },
+  "n_cells": 5,
+  "rows": [
+    {
+      "task": "ruler_fwe",
+      "length": 4096,
+      "model": "2b",
+      "fp16_mean": 91.11,
+      "bf16_mean": 91.11,
+      "nothink_delta_mean": 0.0,
+      "nothink_ci95_delta": [
+        0.0,
+        0.0
+      ],
+      "think_delta_mean": -3.89,
+      "think_ci95_delta": [
+        -32.97,
+        25.19
+      ],
+      "sign_change_think_vs_nothink": false,
+      "ci_overlap_think_vs_nothink": true,
+      "abs_delta_change": -3.89,
+      "per_dataset_seed": {
+        "42": {
+          "fp16": 93.33,
+          "fp16_statebf16": 93.33
+        },
+        "11": {
+          "fp16": 90.0,
+          "fp16_statebf16": 90.0
+        },
+        "23": {
+          "fp16": 90.0,
+          "fp16_statebf16": 90.0
+        }
+      }
+    },
+    {
+      "task": "ruler_fwe",
+      "length": 8192,
+      "model": "2b",
+      "fp16_mean": 98.33,
+      "bf16_mean": 98.33,
+      "nothink_delta_mean": 0.0,
+      "nothink_ci95_delta": [
+        0.0,
+        0.0
+      ],
+      "think_delta_mean": 1.66,
+      "think_ci95_delta": [
+        -5.51,
+        8.83
+      ],
+      "sign_change_think_vs_nothink": true,
+      "ci_overlap_think_vs_nothink": true,
+      "abs_delta_change": -1.66,
+      "per_dataset_seed": {
+        "42": {
+          "fp16": 100.0,
+          "fp16_statebf16": 100.0
+        },
+        "11": {
+          "fp16": 98.33,
+          "fp16_statebf16": 98.33
+        },
+        "23": {
+          "fp16": 96.67,
+          "fp16_statebf16": 96.67
+        }
+      }
+    },
+    {
+      "task": "ruler_niah_multiquery",
+      "length": 4096,
+      "model": "9b",
+      "fp16_mean": 100.0,
+      "bf16_mean": 100.0,
+      "nothink_delta_mean": 0.0,
+      "nothink_ci95_delta": [
+        0.0,
+        0.0
+      ],
+      "think_delta_mean": 0.83,
+      "think_ci95_delta": [
+        -3.91,
+        5.58
+      ],
+      "sign_change_think_vs_nothink": true,
+      "ci_overlap_think_vs_nothink": true,
+      "abs_delta_change": -0.83,
+      "per_dataset_seed": {
+        "42": {
+          "fp16": 100.0,
+          "fp16_statebf16": 100.0
+        },
+        "11": {
+          "fp16": 100.0,
+          "fp16_statebf16": 100.0
+        },
+        "23": {
+          "fp16": 100.0,
+          "fp16_statebf16": 100.0
+        }
+      }
+    },
+    {
+      "task": "ruler_niah_multiquery",
+      "length": 8192,
+      "model": "9b",
+      "fp16_mean": 100.0,
+      "bf16_mean": 100.0,
+      "nothink_delta_mean": 0.0,
+      "nothink_ci95_delta": [
+        0.0,
+        0.0
+      ],
+      "think_delta_mean": -4.17,
+      "think_ci95_delta": [
+        -8.91,
+        0.58
+      ],
+      "sign_change_think_vs_nothink": false,
+      "ci_overlap_think_vs_nothink": true,
+      "abs_delta_change": -4.17,
+      "per_dataset_seed": {
+        "42": {
+          "fp16": 100.0,
+          "fp16_statebf16": 100.0
+        },
+        "11": {
+          "fp16": 100.0,
+          "fp16_statebf16": 100.0
+        },
+        "23": {
+          "fp16": 100.0,
+          "fp16_statebf16": 100.0
+        }
+      }
+    },
+    {
+      "task": "ruler_fwe",
+      "length": 8192,
+      "model": "9b",
+      "fp16_mean": 100.0,
+      "bf16_mean": 100.0,
+      "nothink_delta_mean": 0.0,
+      "nothink_ci95_delta": [
+        0.0,
+        0.0
+      ],
+      "think_delta_mean": 0.55,
+      "think_ci95_delta": [
+        -11.39,
+        12.5
+      ],
+      "sign_change_think_vs_nothink": true,
+      "ci_overlap_think_vs_nothink": true,
+      "abs_delta_change": -0.55,
+      "per_dataset_seed": {
+        "42": {
+          "fp16": 100.0,
+          "fp16_statebf16": 100.0
+        },
+        "11": {
+          "fp16": 100.0,
+          "fp16_statebf16": 100.0
+        },
+        "23": {
+          "fp16": 100.0,
+          "fp16_statebf16": 100.0
+        }
+      }
+    }
+  ],
+  "self_review": [
+    {
+      "fallacy": "Look-elsewhere",
+      "resolution": "5 cells are fixed before analysis; no new cells are selected."
+    },
+    {
+      "fallacy": "Survivorship",
+      "resolution": "Missing/failed cells cause fail-closed exit; they are not dropped."
+    },
+    {
+      "fallacy": "Garden of forking paths",
+      "resolution": "Protocol, seeds, and comparison rules are frozen in the plan document."
+    },
+    {
+      "fallacy": "Regression to the mean",
+      "resolution": "No-think is a protocol correction; think data is reported as sensitivity, not as the target."
+    },
+    {
+      "fallacy": "Correlation != causation",
+      "resolution": "Delta direction change is reported, not attributed to a mechanism."
+    }
+  ]
+}

@@ -8,6 +8,13 @@
 - Verification Status: UNVERIFIED（本文件是计划，未声明任何实验已执行）
 - Version Label: code_plan_v1
 
+> **2026-08-11 correction.** The completed capacity-phase pilot/formal analyses
+> supersede the earlier wording that called the architecture-derived prediction a
+> "conservative lower bound." Formal residuals include a positive error up to
+> `+13.2134%` (2B/int4/L=1024/u=0.80), so the model must be described as an
+> idealized prediction with measured residuals, not as a lower bound. The formal
+> attempt remains `ANALYZED` pending a new-attempt reproducibility gate.
+
 > 输入：`docs/notes/mlsys-review-ars-2026-08-09.md`（5/5 全席、Major Revision、
 > 平均加权 68.3）、`docs/paper/research-summary-2026-08-09.md`、
 > `docs/paper/experiment-matrix-plan-2026-08-08.md`、`docs/paper/claim-evidence-map-2026-08-08.md`、
@@ -456,4 +463,3 @@ claim 3 的 “RULER 基本持平” 在补 seed 后才可去“单 seed”限�
 - `docs/notes/state-compression-feasibility-2026-08-08.md`：追加 M-2×2/stacking/formal
   结果小节；
 - `docs/paper/paper-mainline-2026-08-03.md`：§1/§3.3/§5/§7 叙事与表格回填。
-

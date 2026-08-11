@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "analysis_id": "serving-direction-agreement-20260811",
+  "created_at": "2026-08-11T00:00:00+08:00",
+  "status": "FROZEN",
+  "git_commit": "b61741e48a0ee938dd407c1209bff0c4fe5bc5c8",
+  "purpose": "Quantify directional consistency of paired goodput deltas between the formal serving matrix and the second formal run, and report it by workload and load subset without pooling the two runs.",
+  "inputs": {
+    "formal": {
+      "path": "E:\\MLSys_Research\\results\\verified\\2026-08-09\\statebf16-serving-formal-analysis.json",
+      "sha256": "300b7d45f7ddd53c46c6c4355c7ec870c33789e85a180ff65212e9b4ebe7b8b9"
+    },
+    "repro": {
+      "path": "E:\\MLSys_Research\\results\\verified\\2026-08-09\\statebf16-serving-repro-analysis.json",
+      "sha256": "b4e9c7bce07662885d371ad2d9c3c1a5fdca575be172891aeb2953ac829e6b07"
+    },
+    "bh": {
+      "path": "E:\\MLSys_Research\\results\\quality\\serving-bh\\serving-bh-analysis-20260810.json",
+      "sha256": "8124c2aab150d25935a47aaf8e36c814f51bd699531c2b655f66d4c49fa04f9a"
+    }
+  },
+  "unit_of_analysis": "60 paired cells (workload x offered rate x TTFT threshold)",
+  "sign_rule": "sign(mean_delta_goodput); exact zero is 'no direction'",
+  "agreement_rule": "agree = both nonzero and same sign; opposite = both nonzero and different signs; one_zero and both_zero are neither agree nor opposite",
+  "subset_definitions": {
+    "sustainable": "fp32 and bf16 both all-sustainable in that run",
+    "boundary": "exactly one of fp32/bf16 all-sustainable in that run",
+    "overload": "neither fp32 nor bf16 all-sustainable in that run"
+  },
+  "statistical_procedures": [
+    "exact two-sided binomial sign test over nonzero-both cells, H0 p=0.5",
+    "Pearson correlation between formal and repro mean deltas (descriptive only)"
+  ],
+  "limitations": [
+    "cells share seeds and are not independent; sign-test p-values are exploratory and not corrected",
+    "no new inference or causal claim; mechanism attribution remains open",
+    "near-zero sustainable-region deltas make sign flips expected under measurement noise",
+    "the 60 formal cells and 60 repro cells are paired, never merged into 90 cells"
+  ],
+  "outputs": {
+    "analysis_json": "E:\\MLSys_Research\\results\\quality\\serving-direction\\serving-direction-agreement-20260811.json",
+    "contract_json": "E:\\MLSys_Research\\results\\quality\\serving-direction\\serving-direction-agreement-20260811.contract.json"
+  }
+}

@@ -1,0 +1,163 @@
+{
+  "schema_version": 1,
+  "material_passport": {
+    "origin_skill": "experiment-skill",
+    "origin_mode": "run",
+    "origin_date": "2026-08-10",
+    "verification_status": "UNVERIFIED",
+    "version_label": "capacity_phase_formal_contract_v1"
+  },
+  "contract_status": "FROZEN",
+  "created_at": "2026-08-10T23:00:49+08:00",
+  "attempt_id": "capacity-phase-formal-20260811",
+  "classification": "formal",
+  "determinism_class": "deterministic_allocator_for_frozen_build_and_config",
+  "objective": "Measure the joint KV/state precision capacity phase diagram across the predeclared 2B and 9B context/utilization grid, including float16-state controls.",
+  "primary_hypothesis": "For every predeclared model, KV dtype, context length, and utilization, state=bfloat16 resolves to bf16 and yields strictly more capacity tokens than state=auto resolving to fp32.",
+  "parent_pilot": {
+    "attempt_id": "capacity-phase-pilot-20260811",
+    "contract": {
+      "path": "results/verified/2026-08-11/capacity-phase/capacity-phase-pilot-20260811.contract.json",
+      "sha256": "52846df61ba27a09819fb98d9a476054393e5ad49436676f3227752a044b130a"
+    },
+    "analysis": {
+      "path": "results/verified/2026-08-11/capacity-phase/capacity-phase-pilot-20260811.analysis.json",
+      "sha256": "fdcd6ce5b4ee794b8e494c56a8c5b736a71ae1e69e59df95c53ae368a27e41ac"
+    },
+    "gate_status": "PASS",
+    "validated_cells": 18,
+    "core_pairs_with_strict_separation": 8
+  },
+  "host": {
+    "ssh_endpoint": "connect.westb.seetacloud.com:24184",
+    "hostname": "autodl-container-kmzddlce45-c57bf976",
+    "host_key_sha256": "6zkijTPdPT6WfS5rwH9cKmrjcUOEAXfeneFegE8bUbw",
+    "gpu": "NVIDIA GeForce RTX 5090 32607 MiB",
+    "driver": "580.105.08"
+  },
+  "models": {
+    "2b": {
+      "id": "Qwen/Qwen3.5-2B",
+      "path": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master",
+      "config_sha256": "ed1c1723241f23f7f4e23430759cbd7dcfb4103cbdfe052bfe7626b57c2615b4",
+      "safetensors_index_sha256": "aca8afed9da75b0f050b408d270766fd77627f1af401e240f61c3b47d0db02f9"
+    },
+    "9b": {
+      "id": "Qwen/Qwen3.5-9B",
+      "path": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-9B/snapshots/master",
+      "config_sha256": "d0883072e01861ed0b2d47be3c16c36a8e81c224c7ffaa310c6558fb3f932b05",
+      "safetensors_index_sha256": "26d3539b516be613f39563617cb9d33b3f83d401298125be392c80cefb8f7fe5"
+    }
+  },
+  "code": {
+    "local_repository_head": "b61741e48a0ee938dd407c1209bff0c4fe5bc5c8",
+    "remote_repository_note": "Runtime snapshot has no top-level .git; file hashes are authoritative.",
+    "runner_sha256": "83c294421f58e0c2702be3149e87792c144ece4bb4fcc7fad4a517ca3ad073a9",
+    "probe_sha256": "86d177223d3850bc8cf0f9dfee0e8153b52c7e682bfe59dd0bb6e09b955358ba",
+    "inspect_runtime_sha256": "5bd86de649de4dd52913e0dbd1d8ccf89a9d0c9945706ded94a5560c8c2bdb3f",
+    "analysis_sha256": "278a144c10a53f33310a25635495b7f18583cbeb7da7019b872e5f5f82ecede5",
+    "vllm_commit": "e2fa28594f7baad142a426b0b6a2cfe2c79201c7",
+    "vllm_version": "0.26.1rc1.dev245+ge2fa28594",
+    "vllm_modified_file_sha256": {
+      "vllm/config/cache.py": "f7e25243e0798b7a551f4cf9ee1bd2b1bff6094b6410ceb40f5a23cce6ff7f71",
+      "vllm/engine/arg_utils.py": "1279e1eaa245438617aae70edb89b9a66edf65240b91b5f5851c716a3ca6f544",
+      "vllm/model_executor/layers/attention/attention.py": "41a43eb4ddbd15a504b83affa6758b1da3903f11b5c105a633320888358a849a",
+      "vllm/utils/torch_utils.py": "be6079d95b59a3e03c04e90703f175c8656aee63b9030d62479f99d241cceea3",
+      "vllm/v1/kv_cache_interface.py": "f3a50d05f5e895dd8552d2752b18aaa118238fd0077e59dd631ee63ded71b307"
+    }
+  },
+  "protocol": {
+    "working_directory": "/root/autodl-tmp/MLSys_Research",
+    "command": "bash scripts/bench/run_capacity_phase_diagram.sh formal capacity-phase-formal-20260811",
+    "launched_command": "timeout --signal=TERM --kill-after=30s 21600 bash scripts/bench/run_capacity_phase_diagram.sh formal capacity-phase-formal-20260811",
+    "analysis_command": ".venv/bin/python scripts/bench/analyze_capacity_phase_diagram.py --attempt capacity-phase-formal-20260811 --phase formal --out results/verified/2026-08-11/capacity-phase/capacity-phase-formal-20260811.analysis.json",
+    "seed": 42,
+    "generate": false,
+    "kv_cache_dtype_per_layer": {},
+    "expected_cells": 112,
+    "timeout_seconds": 21600,
+    "monitor_interval_seconds": 60,
+    "output_absent_at_freeze": true,
+    "matrix": {
+      "2b_core": {
+        "context_lengths": [
+          1024,
+          2048,
+          4096,
+          8192,
+          16384,
+          32768
+        ],
+        "gpu_memory_utilizations": [
+          0.7,
+          0.8,
+          0.9
+        ],
+        "kv_dtypes": [
+          "fp16",
+          "int4"
+        ],
+        "state_dtype_args": [
+          "auto",
+          "bfloat16"
+        ],
+        "cell_count": 72
+      },
+      "9b_core": {
+        "context_lengths": [
+          2048,
+          4096,
+          16384,
+          32768
+        ],
+        "gpu_memory_utilizations": [
+          0.8,
+          0.9
+        ],
+        "kv_dtypes": [
+          "fp16",
+          "int4"
+        ],
+        "state_dtype_args": [
+          "auto",
+          "bfloat16"
+        ],
+        "cell_count": 32
+      },
+      "float16_controls": {
+        "models": [
+          "2b",
+          "9b"
+        ],
+        "context_lengths": [
+          4096,
+          16384
+        ],
+        "gpu_memory_utilization": 0.85,
+        "kv_dtypes": [
+          "fp16",
+          "int4"
+        ],
+        "state_dtype_arg": "float16",
+        "cell_count": 8
+      }
+    },
+    "filename_template": "capacity-phase-formal-20260811__{2b|9b}__kv{fp16|int4}__state{auto|bfloat16|float16}__L{length}__u{util}.json"
+  },
+  "expected_outputs": {
+    "cell_root": "results/verified/2026-08-11/capacity-phase/",
+    "analysis": "results/verified/2026-08-11/capacity-phase/capacity-phase-formal-20260811.analysis.json",
+    "runner_log": "logs/capacity-phase-formal-20260811.log",
+    "launcher_log": "logs/capacity-phase-formal-20260811-launcher.log"
+  },
+  "success_criteria": [
+    "The exact 112-cell matrix completes without OOM, timeout, retry, historical skip, or silent exclusion.",
+    "All 112 JSON files and adjacent SHA256 sidecars pass verification.",
+    "Every cell records the frozen model, seed=42, KV dtype, state argument, empty per-layer override, context length, and utilization.",
+    "All auto cells resolve state to float32, all bfloat16 cells resolve to bfloat16, and all float16 controls resolve to float16.",
+    "Capacity tokens, max concurrency, GPU blocks, and elapsed time are finite and positive in every cell.",
+    "Every core auto/bfloat16 pair has strictly greater bf16-state capacity tokens than its fp32-state baseline.",
+    "The strict analyzer accepts exactly 112 cells and writes an adjacent SHA256 sidecar before any paper-facing use."
+  ],
+  "evidence_policy": "Formal output remains UNVERIFIED until reproducibility, statistical, and claim-boundary gates are separately completed. No result is promoted automatically."
+}

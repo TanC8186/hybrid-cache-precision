@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "material_passport": {
+    "origin_skill": "experiment-skill",
+    "origin_mode": "run",
+    "origin_date": "2026-08-10",
+    "verification_status": "UNVERIFIED",
+    "version_label": "ruler_nothink_pilot_v1"
+  },
+  "objective": "Remove the thinking-truncation confound from the five preselected RULER cells and measure paired fp16-state versus bf16-state deltas.",
+  "classification": "pilot_diagnostic",
+  "parent_mvex_attempts": [
+    "ruler-statebf16-nothink-mvex-20260810-2b-fwe4k-fp16-s42",
+    "ruler-statebf16-nothink-mvex-20260810-2b-fwe4k-bf16-s42"
+  ],
+  "attempt_ids": [
+    "ruler-statebf16-nothink-20260811-2b",
+    "ruler-statebf16-nothink-20260811-9b"
+  ],
+  "host": {
+    "ssh_endpoint": "connect.westb.seetacloud.com:24184",
+    "hostname": "autodl-container-kmzddlce45-c57bf976",
+    "host_key_sha256": "6zkijTPdPT6WfS5rwH9cKmrjcUOEAXfeneFegE8bUbw",
+    "gpu": "NVIDIA GeForce RTX 5090 32607 MiB",
+    "driver": "580.105.08"
+  },
+  "code": {
+    "local_repository_head": "b61741e48a0ee938dd407c1209bff0c4fe5bc5c8",
+    "runner_sha256": "7afb97eeb43ab8e73abf613e3a16fffe08997968a0dc50b0f4f8bf2f1234a15c",
+    "cell_runner_sha256": "cb4931e582a23b8c7605edc6d90a67c6b9c9f7aebd0da07fb9097dca8c5be57b",
+    "analysis_sha256": "2e346561990a1b4c79e221bb2b2705b5629b0efabc268303d11d58a3c348ce6d",
+    "vllm_commit": "e2fa28594f7baad142a426b0b6a2cfe2c79201c7",
+    "vllm_version": "0.26.1rc1.dev245+ge2fa28594",
+    "vllm_modified_file_sha256": {
+      "vllm/config/cache.py": "f7e25243e0798b7a551f4cf9ee1bd2b1bff6094b6410ceb40f5a23cce6ff7f71",
+      "vllm/engine/arg_utils.py": "1279e1eaa245438617aae70edb89b9a66edf65240b91b5f5851c716a3ca6f544",
+      "vllm/model_executor/layers/attention/attention.py": "41a43eb4ddbd15a504b83affa6758b1da3903f11b5c105a633320888358a849a",
+      "vllm/utils/torch_utils.py": "be6079d95b59a3e03c04e90703f175c8656aee63b9030d62479f99d241cceea3",
+      "vllm/v1/kv_cache_interface.py": "f3a50d05f5e895dd8552d2752b18aaa118238fd0077e59dd631ee63ded71b307"
+    }
+  },
+  "protocol": {
+    "command": "bash /root/autodl-tmp/MLSys_Research/scripts/eval/run_ruler_statebf16_nothink_5cell.sh",
+    "working_directory": "/root/autodl-tmp/MLSys_Research",
+    "allocations": [
+      "fp16",
+      "fp16_statebf16"
+    ],
+    "dataset_seeds": [
+      42,
+      11,
+      23
+    ],
+    "engine_seed": 7,
+    "max_tokens": 256,
+    "thinking": "disabled",
+    "expected_cells": 30,
+    "timeout_seconds": 21600,
+    "monitor_interval_seconds": 60
+  },
+  "success_criteria": [
+    "30 of 30 cells have status completed_validated",
+    "Every cell records thinking=disabled and max_tokens=256",
+    "Every treatment has config_effect.ok=true and the expected state dtype",
+    "Every JSON matches its adjacent SHA256 sidecar",
+    "Failed cells remain in provenance and are not replaced from historical attempts"
+  ],
+  "expected_outputs": [
+    "/root/autodl-tmp/MLSys_Research/results/quality/ruler-subset/ruler-statebf16-nothink-20260811-2b/",
+    "/root/autodl-tmp/MLSys_Research/results/quality/ruler-subset/ruler-statebf16-nothink-20260811-9b/",
+    "/root/autodl-tmp/MLSys_Research/logs/ruler-statebf16-nothink-20260811-2b.log"
+  ]
+}

@@ -1,0 +1,371 @@
+{
+  "accuracy": 96.67,
+  "allocation": "fp16",
+  "attempt_id": "ruler-statebf16-nothink-20260811-2b",
+  "cases": [
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 0,
+      "output_tokens": 21,
+      "prediction": "The three most frequently appeared words are: ndyprj, cowkod, fsqdkt.",
+      "prompt_tokens": 7616,
+      "references": [
+        "cowkod",
+        "ndyprj",
+        "fsqdkt"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 1,
+      "output_tokens": 11,
+      "prediction": "crauib pmuxna gbyftn",
+      "prompt_tokens": 7439,
+      "references": [
+        "crauib",
+        "pmuxna",
+        "gbyftn"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 2,
+      "output_tokens": 13,
+      "prediction": "bykrzk, mlnwhu, euhpug",
+      "prompt_tokens": 7736,
+      "references": [
+        "bykrzk",
+        "mlnwhu",
+        "euhpug"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 3,
+      "output_tokens": 11,
+      "prediction": "ctxhiz lwmvfi gcqxix",
+      "prompt_tokens": 7730,
+      "references": [
+        "ctxhiz",
+        "lwmvfi",
+        "gcqxix"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 4,
+      "output_tokens": 16,
+      "prediction": "bqybnw, pcdwcq, gdnrwo",
+      "prompt_tokens": 8000,
+      "references": [
+        "bqybnw",
+        "pcdwcq",
+        "gdnrwo"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 5,
+      "output_tokens": 14,
+      "prediction": "cqdngn, nxeqxs, hhnaei",
+      "prompt_tokens": 7971,
+      "references": [
+        "cqdngn",
+        "nxeqxs",
+        "hhnaei"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 6,
+      "output_tokens": 11,
+      "prediction": "bxfcgh mynywa fqjhuo",
+      "prompt_tokens": 7684,
+      "references": [
+        "bxfcgh",
+        "mynywa",
+        "fqjhuo"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 7,
+      "output_tokens": 10,
+      "prediction": "daeyho nltnfq gbsndo",
+      "prompt_tokens": 7911,
+      "references": [
+        "daeyho",
+        "nltnfq",
+        "gbsndo"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 8,
+      "output_tokens": 11,
+      "prediction": "byzglv psblvq fluuzr",
+      "prompt_tokens": 8133,
+      "references": [
+        "byzglv",
+        "psblvq",
+        "fluuzr"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 9,
+      "output_tokens": 10,
+      "prediction": "bzdded nxocmj fixtjj",
+      "prompt_tokens": 8102,
+      "references": [
+        "bzdded",
+        "nxocmj",
+        "fixtjj"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 10,
+      "output_tokens": 10,
+      "prediction": "dfuypw nhnolo fpysdq",
+      "prompt_tokens": 7753,
+      "references": [
+        "dfuypw",
+        "nhnolo",
+        "fpysdq"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 11,
+      "output_tokens": 21,
+      "prediction": "The three most frequently appeared words are: cyoiux, opmhjd, and foroxx.",
+      "prompt_tokens": 7765,
+      "references": [
+        "cyoiux",
+        "opmhjd",
+        "foroxx"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        false
+      ],
+      "index": 12,
+      "output_tokens": 10,
+      "prediction": "cdtzed nxtplb zddygr",
+      "prompt_tokens": 7779,
+      "references": [
+        "cdtzed",
+        "nxtplb",
+        "enzzwt"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        false
+      ],
+      "index": 13,
+      "output_tokens": 10,
+      "prediction": "cvdiab ocbtgt zholwo",
+      "prompt_tokens": 7992,
+      "references": [
+        "cvdiab",
+        "ocbtgt",
+        "gexojy"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 14,
+      "output_tokens": 10,
+      "prediction": "citmhx mivuhs fvlnjs",
+      "prompt_tokens": 7757,
+      "references": [
+        "citmhx",
+        "mivuhs",
+        "fvlnjs"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 15,
+      "output_tokens": 13,
+      "prediction": "chiggy, naqnnc, fexqmm",
+      "prompt_tokens": 8106,
+      "references": [
+        "chiggy",
+        "naqnnc",
+        "fexqmm"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 16,
+      "output_tokens": 14,
+      "prediction": "dgwqwy, nygikx, ggxchi",
+      "prompt_tokens": 7829,
+      "references": [
+        "dgwqwy",
+        "nygikx",
+        "ggxchi"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 17,
+      "output_tokens": 14,
+      "prediction": "dcfepj, nwvftu, gvkais",
+      "prompt_tokens": 7821,
+      "references": [
+        "dcfepj",
+        "nwvftu",
+        "gvkais"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 18,
+      "output_tokens": 11,
+      "prediction": "csjheg pqjabj huwrpy",
+      "prompt_tokens": 7944,
+      "references": [
+        "csjheg",
+        "pqjabj",
+        "huwrpy"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 19,
+      "output_tokens": 15,
+      "prediction": "bupdsr, oobvly, gssigj",
+      "prompt_tokens": 8130,
+      "references": [
+        "bupdsr",
+        "oobvly",
+        "gssigj"
+      ]
+    }
+  ],
+  "config_effect": {
+    "allocation": "fp16",
+    "detail": {
+      "a2_flag": false,
+      "cache_dtype": "auto",
+      "mamba_ssm_cache_dtype": "float32",
+      "per_layer": {}
+    },
+    "group_structure_verified": false,
+    "ok": true
+  },
+  "created_at_utc": "2026-08-10T13:32:44Z",
+  "data_file": "data/ruler/ruler_fwe_L8192/seed23/validation.jsonl",
+  "data_sha256": "37a7e3761900daffe4cde491b603312b192f60f33d00d9289d4613f23861853c",
+  "elapsed_s": 58.6,
+  "engine": {
+    "kwargs": {
+      "disable_log_stats": true,
+      "enforce_eager": true,
+      "gpu_memory_utilization": 0.85,
+      "max_model_len": 16384,
+      "seed": 7
+    },
+    "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master",
+    "vllm_version": "0.26.1rc1.dev245+ge2fa28594"
+  },
+  "host": "autodl-container-kmzddlce45-c57bf976",
+  "length": 8192,
+  "max_tokens": 256,
+  "metric": "string_match_all",
+  "num_samples": 20,
+  "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+  "sampling_params": {
+    "max_tokens": 256,
+    "temperature": 0.0,
+    "thinking": "disabled"
+  },
+  "schema_version": 1,
+  "seed": 7,
+  "status": "completed_validated",
+  "task": "ruler_fwe",
+  "task_type": "freq_words_extraction",
+  "thinking": "disabled",
+  "tokens_to_generate": 50
+}

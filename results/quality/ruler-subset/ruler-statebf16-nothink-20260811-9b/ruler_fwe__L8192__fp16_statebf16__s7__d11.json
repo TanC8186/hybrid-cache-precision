@@ -1,0 +1,372 @@
+{
+  "accuracy": 100.0,
+  "allocation": "fp16_statebf16",
+  "attempt_id": "ruler-statebf16-nothink-20260811-9b",
+  "cases": [
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 0,
+      "output_tokens": 14,
+      "prediction": "sxtwzv, sqblsv, rgsnhh",
+      "prompt_tokens": 7772,
+      "references": [
+        "sxtwzv",
+        "sqblsv",
+        "rgsnhh"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 1,
+      "output_tokens": 10,
+      "prediction": "qkraph pugsqt pcpsok",
+      "prompt_tokens": 7826,
+      "references": [
+        "qkraph",
+        "pugsqt",
+        "pcpsok"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 2,
+      "output_tokens": 14,
+      "prediction": "pvtlvt, plknqe, ovgojg",
+      "prompt_tokens": 7729,
+      "references": [
+        "pvtlvt",
+        "plknqe",
+        "ovgojg"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 3,
+      "output_tokens": 14,
+      "prediction": "qbbdam, pdkyaq, okjzmu",
+      "prompt_tokens": 8041,
+      "references": [
+        "qbbdam",
+        "pdkyaq",
+        "okjzmu"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 4,
+      "output_tokens": 13,
+      "prediction": "qnbacx, pultba, oyudlj",
+      "prompt_tokens": 8145,
+      "references": [
+        "qnbacx",
+        "pultba",
+        "oyudlj"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 5,
+      "output_tokens": 11,
+      "prediction": "qoyfej pvreqh oqkuhm",
+      "prompt_tokens": 8084,
+      "references": [
+        "qoyfej",
+        "pvreqh",
+        "oqkuhm"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 6,
+      "output_tokens": 13,
+      "prediction": "qanvsb, pfstoz, ocqdov",
+      "prompt_tokens": 8078,
+      "references": [
+        "qanvsb",
+        "pfstoz",
+        "ocqdov"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 7,
+      "output_tokens": 13,
+      "prediction": "rqwbor, qxpukr, psdgxi",
+      "prompt_tokens": 7869,
+      "references": [
+        "rqwbor",
+        "qxpukr",
+        "psdgxi"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 8,
+      "output_tokens": 13,
+      "prediction": "pbzkfj, ohncxx, noynhf",
+      "prompt_tokens": 7989,
+      "references": [
+        "pbzkfj",
+        "ohncxx",
+        "noynhf"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 9,
+      "output_tokens": 11,
+      "prediction": "pacsgu, oderco, ncarfu",
+      "prompt_tokens": 7640,
+      "references": [
+        "pacsgu",
+        "oderco",
+        "ncarfu"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 10,
+      "output_tokens": 14,
+      "prediction": "qjpzbw, ptltoz, oykaph",
+      "prompt_tokens": 7830,
+      "references": [
+        "qjpzbw",
+        "ptltoz",
+        "oykaph"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 11,
+      "output_tokens": 13,
+      "prediction": "qbwcwo, pgfcwv, ngspqh",
+      "prompt_tokens": 7732,
+      "references": [
+        "qbwcwo",
+        "pgfcwv",
+        "ngspqh"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 12,
+      "output_tokens": 13,
+      "prediction": "qtwwzz, qkzyfe, psznvy",
+      "prompt_tokens": 7737,
+      "references": [
+        "qtwwzz",
+        "qkzyfe",
+        "psznvy"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 13,
+      "output_tokens": 14,
+      "prediction": "rbxzsr, qmdtza, pxbgja",
+      "prompt_tokens": 7872,
+      "references": [
+        "rbxzsr",
+        "qmdtza",
+        "pxbgja"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 14,
+      "output_tokens": 11,
+      "prediction": "peurjn owcicu ocsfgl",
+      "prompt_tokens": 7550,
+      "references": [
+        "peurjn",
+        "owcicu",
+        "ocsfgl"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 15,
+      "output_tokens": 13,
+      "prediction": "qxpxyc, qimbcn, pomnha",
+      "prompt_tokens": 7809,
+      "references": [
+        "qxpxyc",
+        "qimbcn",
+        "pomnha"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 16,
+      "output_tokens": 13,
+      "prediction": "pnbytn, oxwzha, odhsbp",
+      "prompt_tokens": 7772,
+      "references": [
+        "pnbytn",
+        "oxwzha",
+        "odhsbp"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 17,
+      "output_tokens": 13,
+      "prediction": "rctfuj, qudlps, qcsimg",
+      "prompt_tokens": 7730,
+      "references": [
+        "rctfuj",
+        "qudlps",
+        "qcsimg"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 18,
+      "output_tokens": 12,
+      "prediction": "omsxrv, oddvsc, njyxse",
+      "prompt_tokens": 7925,
+      "references": [
+        "omsxrv",
+        "oddvsc",
+        "njyxse"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true
+      ],
+      "index": 19,
+      "output_tokens": 13,
+      "prediction": "osemvm, ojdwgi, nsvzwf",
+      "prompt_tokens": 8142,
+      "references": [
+        "osemvm",
+        "ojdwgi",
+        "nsvzwf"
+      ]
+    }
+  ],
+  "config_effect": {
+    "allocation": "fp16_statebf16",
+    "detail": {
+      "a2_flag": false,
+      "cache_dtype": "auto",
+      "mamba_ssm_cache_dtype": "bfloat16",
+      "per_layer": {}
+    },
+    "group_structure_verified": false,
+    "ok": true
+  },
+  "created_at_utc": "2026-08-10T13:52:18Z",
+  "data_file": "data/ruler/ruler_fwe_L8192/seed11/validation.jsonl",
+  "data_sha256": "ea4bc53f1beefef88c61181dfe3666f8832ca9d19bec681c020bc65d2864bb0f",
+  "elapsed_s": 74.6,
+  "engine": {
+    "kwargs": {
+      "disable_log_stats": true,
+      "enforce_eager": true,
+      "gpu_memory_utilization": 0.85,
+      "mamba_ssm_cache_dtype": "bfloat16",
+      "max_model_len": 16384,
+      "seed": 7
+    },
+    "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-9B/snapshots/master",
+    "vllm_version": "0.26.1rc1.dev245+ge2fa28594"
+  },
+  "host": "autodl-container-kmzddlce45-c57bf976",
+  "length": 8192,
+  "max_tokens": 256,
+  "metric": "string_match_all",
+  "num_samples": 20,
+  "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+  "sampling_params": {
+    "max_tokens": 256,
+    "temperature": 0.0,
+    "thinking": "disabled"
+  },
+  "schema_version": 1,
+  "seed": 7,
+  "status": "completed_validated",
+  "task": "ruler_fwe",
+  "task_type": "freq_words_extraction",
+  "thinking": "disabled",
+  "tokens_to_generate": 50
+}
