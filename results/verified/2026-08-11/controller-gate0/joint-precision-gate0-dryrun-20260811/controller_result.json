@@ -1,0 +1,57 @@
+{
+  "attempt_id": "joint-precision-gate0-dryrun-20260811",
+  "controller_contract_sha256": "0143e0a262cbc63b1b8553de4078fc863bd1a116cbd4b73c8df1e3a535823a6f",
+  "decision_latency_ms": 0.178635,
+  "deployment_mapping": {
+    "allocation": "joint",
+    "allocation_server_args": [
+      "--kv-cache-dtype",
+      "int4_per_token_head",
+      "--mamba-ssm-cache-dtype",
+      "bfloat16",
+      "--compilation-config",
+      "{\"cudagraph_mode\":\"PIECEWISE\"}"
+    ],
+    "precision_args": [
+      "--kv-cache-dtype",
+      "int4_per_token_head",
+      "--mamba-ssm-cache-dtype",
+      "bfloat16"
+    ],
+    "restart_required": true,
+    "server_command": [
+      "/root/autodl-tmp/MLSys_Research/.venv/bin/vllm",
+      "serve",
+      "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "8000",
+      "--max-model-len",
+      "4096",
+      "--gpu-memory-utilization",
+      "0.80",
+      "--seed",
+      "42",
+      "--kv-cache-dtype",
+      "int4_per_token_head",
+      "--mamba-ssm-cache-dtype",
+      "bfloat16",
+      "--compilation-config",
+      "{\"cudagraph_mode\":\"PIECEWISE\"}"
+    ]
+  },
+  "sample_plan": [
+    {
+      "allocation": "joint",
+      "num_prompts": 2400,
+      "request_rate": 40.0,
+      "sample_id": "joint__random__r40__s7",
+      "seed": 7,
+      "workload": "random"
+    }
+  ],
+  "schema_version": 1,
+  "selected_config_id": "joint",
+  "status": "DRY_RUN_VALIDATED"
+}

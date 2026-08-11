@@ -18,10 +18,13 @@
 当前基线：
 
 - RULER no-think 5-cell 已完成并通过协议审查；
-- `capacity-phase-formal-20260811` 已完成 112/112 cell，证据状态为
-  `ANALYZED`；
-- 已审查证据封存在 Git commit `4ae5a20`；
-- Capacity formal 尚缺新 attempt 的 Gate 4 复现，因此不得标为 `VERIFIED`；
+- Capacity clean R2/R3 均已完成 112/112 cell；R2-to-R3 Gate 4 比较为
+  `REPRODUCIBLE`，证据状态为 `VERIFIED`；
+- Capacity 验证链已封存在 Git commit `628099f`；
+- Selector/controller Gate 0 实现已冻结，并在 clean revision `6ad20b4` 上通过
+  32/32 focused tests、122/122 full tests、Ruff lint/format 和正式 dry-run；
+- Gate 0 dry-run 只验证选择、证据哈希、部署映射和 runner plan，不替代真实
+  calibration、MVEx、formal 或 Gate 4；
 - 论文工作区的未暂存改动不纳入实验提交。
 
 ## 2. 全局运行合同
@@ -158,3 +161,19 @@
   commits；只有 4 个必须包（含已完成的 Capacity）和 4 个当前活动增强包各自达到
   其完成定义后，持续目标才可完成。第二 GPU 包保持 deferred，除非用户后续重新
   纳入范围。
+
+## 6. 执行状态更新（2026-08-11 18:32 +08:00）
+
+| 包 | 当前门 | 状态 | 证据 |
+|---|---|---|---|
+| M1 Capacity | Gate 4 | `VERIFIED` | commit `628099f`，clean R2/R3 112/112 |
+| M2 Selector/controller | Gate 0 dry-run | `PASS / UNVERIFIED` | commit `6ad20b4`；attempt `joint-precision-gate0-dryrun-20260811` |
+| M3 Mechanism isolation | 计划 | `NOT_STARTED` | 依赖真实 serving runner |
+| M4 Four-configuration serving | 计划 | `NOT_STARTED` | 依赖 M2/M3 门禁 |
+| E2 Second architecture | 计划 | `NOT_STARTED` | 单 GPU 范围 |
+| E3 State precision frontier | capacity controls | `PARTIAL` | float16 control 已有；fp8/int8 capability/quality/serving 尚缺 |
+| E4 Real baselines | 计划 | `NOT_STARTED` | 依赖 baseline capability/correctness gate |
+| E5 Cost efficiency | 计划 | `NOT_STARTED` | 依赖 M4 measured goodput |
+
+M2 的下一放行条件是用真实四配置 calibration 结果构建非 fixture、哈希可验证的
+schema-v2 profile。`TEST_FIXTURE` profile 继续被代码强制禁止用于真实 GPU 执行。
