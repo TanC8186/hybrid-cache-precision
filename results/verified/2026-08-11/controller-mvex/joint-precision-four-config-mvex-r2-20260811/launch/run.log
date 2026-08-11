@@ -1,0 +1,14 @@
+attempt=joint-precision-four-config-mvex-r2-20260811 phase=mvex total=4 pending_this_invocation=4
+starting allocation=full samples=1
+running sample=full__random__r30__s7 prompts=1800
+completed sample=full__random__r30__s7 status=completed_validated
+starting allocation=kv_only samples=1
+running sample=kv_only__random__r30__s7 prompts=1800
+completed sample=kv_only__random__r30__s7 status=completed_validated
+starting allocation=state_only samples=1
+running sample=state_only__random__r30__s7 prompts=1800
+completed sample=state_only__random__r30__s7 status=completed_validated
+starting allocation=joint samples=1
+running sample=joint__random__r30__s7 prompts=1800
+completed sample=joint__random__r30__s7 status=completed_validated
+{"completed_validated": 4}

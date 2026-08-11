@@ -1,0 +1,380 @@
+{
+  "anomalies": [
+    "The first full-precision cold start logged stale Triton cubin reload warnings after cache cleanup; vLLM rebuilt/loaded artifacts, reached health, completed the sample, and passed the post-benchmark health check.",
+    "The vLLM controlled shutdown path logs EngineDeadError/force-kill cleanup noise, but each server status records exception=null and returncode=0 after a healthy sample."
+  ],
+  "archive_receipt": {
+    "local_path": "E:\\MLSys_Research\\.transfer-controller-mvex-r2-results.tar.gz",
+    "remote_path": "/root/autodl-tmp/controller-calibration-r2-20260811/packages/joint-precision-four-config-mvex-r2-20260811.tar.gz",
+    "sha256": "ff8052961141dd6fd5fa646dbb0179cf24c74fcaee79b5978842952082da8045",
+    "size_bytes": 8328684
+  },
+  "attempt_id": "joint-precision-four-config-mvex-r2-20260811",
+  "classification": "diagnostic_minimum_viable_execution",
+  "denominator": {
+    "completed_measurement_requests": 7200,
+    "completed_validated_samples": 4,
+    "declared_warmup_requests": 480,
+    "extra_samples": 0,
+    "failed_measurement_requests": 0,
+    "missing_samples": 0,
+    "planned_measurement_requests": 7200,
+    "planned_samples": 4,
+    "silent_exclusions": 0
+  },
+  "evidence_status": "UNVERIFIED",
+  "fallacy_scan": [
+    {
+      "detail": "One workload/rate/seed; no aggregation claim is made.",
+      "fallacy": "Simpson's paradox",
+      "severity": "NOTE"
+    },
+    {
+      "detail": "The unit is an allocation-workload-rate-seed sample; no request-level inference is made.",
+      "fallacy": "Ecological fallacy",
+      "severity": "NOTE"
+    },
+    {
+      "detail": "A single GPU, model, synthetic workload, and feasible rate are intentionally selected for MVEx.",
+      "fallacy": "Berkson's paradox",
+      "severity": "CAUTION"
+    },
+    {
+      "detail": "No adjusted regression or conditioned causal model is used.",
+      "fallacy": "Collider bias",
+      "severity": "NOTE"
+    },
+    {
+      "detail": "No diagnostic classification metric is interpreted.",
+      "fallacy": "Base-rate neglect",
+      "severity": "NOTE"
+    },
+    {
+      "detail": "There is no pre/post selection on an extreme outcome.",
+      "fallacy": "Regression to the mean",
+      "severity": "NOTE"
+    },
+    {
+      "detail": "All 4 planned samples and all 7,200 measurement requests are retained.",
+      "fallacy": "Survivorship bias",
+      "severity": "SOLID"
+    },
+    {
+      "detail": "Five TTFT thresholds are shown; none is promoted as a confirmatory effect.",
+      "fallacy": "Look-elsewhere effect",
+      "severity": "CAUTION"
+    },
+    {
+      "detail": "The matrix, seed, rate, denominator, and SLO sweep were frozen before launch.",
+      "fallacy": "Garden of forking paths",
+      "severity": "NOTE"
+    },
+    {
+      "detail": "Orthogonal treatments are executed, but n=1 MVEx is not used for a causal performance claim.",
+      "fallacy": "Correlation is not causation",
+      "severity": "CAUTION"
+    },
+    {
+      "detail": "No observational directional association is interpreted.",
+      "fallacy": "Reverse causality",
+      "severity": "NOTE"
+    }
+  ],
+  "fallacy_scan_coverage": "11/11",
+  "frozen_contract": {
+    "path": "E:\\MLSys_Research\\configs\\controller\\contracts\\joint_precision_four_config_mvex_r2_20260811.json",
+    "sha256": "a136c3a5b4cc7d8f1ade71d498f153744f32f6bef435047b0072db90aaaae58d"
+  },
+  "gate_1_verdict": "PASS",
+  "generated_at_utc": "2026-08-11T13:15:17Z",
+  "launch": {
+    "duration_s": 882.0,
+    "exit_code": 0,
+    "finished_at": "2026-08-11T20:51:33+08:00",
+    "started_at": "2026-08-11T20:36:51+08:00"
+  },
+  "material_passport": {
+    "origin_date": "2026-08-11",
+    "origin_mode": "validate",
+    "origin_skill": "experiment-agent",
+    "verification_status": "ANALYZED",
+    "version_label": "joint_precision_four_config_mvex_r2_validation_v1"
+  },
+  "overall_confidence": "CAUTION",
+  "parent_attempt": "joint-precision-four-config-mvex-20260811",
+  "promotion": {
+    "calibration_authorized": true,
+    "paper_quantitative_use_authorized": false,
+    "reason": "Gate 1 passed, but single-seed diagnostic evidence remains UNVERIFIED."
+  },
+  "raw_sidecars": {
+    "count": 19,
+    "hashes": {
+      "attempt/attempt_contract.json.sha256": "3cfde013c1cabf9699347e9e487559eeb391f90bb0b5257848ab3c77bb9507ac",
+      "attempt/environment.json.sha256": "2929619a34d5abd94e3d98dd206d11a942e1c8ac7a557b235618e09c34ecbe5f",
+      "attempt/samples/full__random__r30__s7/analysis.json.sha256": "41f06900764483d3ef8d6780bd4a1efb2a20b2f0ae2abd5d0b41406df9647963",
+      "attempt/samples/full__random__r30__s7/contract.json.sha256": "50c9f5c0b6daff0a3ff36657d091a10c9308def327b918702bcb06f7ec05e7f6",
+      "attempt/samples/full__random__r30__s7/result.json.sha256": "3e2e383637f4d2832594b891ba025ce95657dbaf95ac93021c3ec8e541f9173d",
+      "attempt/samples/joint__random__r30__s7/analysis.json.sha256": "c525bb9b332bd7cdb99a26372218ce13955bff186d4b15aaee7258ab9dae3592",
+      "attempt/samples/joint__random__r30__s7/contract.json.sha256": "8a227f40a68f6ecc69377d497dec73dcec34bf7c3506f15be6d2edfe88dc3076",
+      "attempt/samples/joint__random__r30__s7/result.json.sha256": "ce52b3d18e25a127e4532e760bb18ea547432a4e4289f0409740e10a06970300",
+      "attempt/samples/kv_only__random__r30__s7/analysis.json.sha256": "3f670a22530485b95665a84b934384a3ab9b49b3bc84cf6dbb1e305199368a92",
+      "attempt/samples/kv_only__random__r30__s7/contract.json.sha256": "54e95c44b2c81f613c952746deb02db95fabce63adc05b58caec44b6ebdea6d4",
+      "attempt/samples/kv_only__random__r30__s7/result.json.sha256": "88617bf41241750967afd07446f4536f8d89813a005ea097c4d437cd73d7b434",
+      "attempt/samples/state_only__random__r30__s7/analysis.json.sha256": "ff908b689764be3d3c2186af4f6aa66a25cd9409cd898f1d476aad3fde05dcfb",
+      "attempt/samples/state_only__random__r30__s7/contract.json.sha256": "975429e629d6d562d5627fdd8be91fff1a5c0ca21d7262c0744092a3165adcc5",
+      "attempt/samples/state_only__random__r30__s7/result.json.sha256": "1e1c75134fbe5486709653370d4681397388309252defbfe119d528cb4447471",
+      "attempt/servers/full/20260811T123654Z-253bcf4a/contract.json.sha256": "c9015df3a244c4219e622b40665dddfdb398a86637a752b4927299587b4a5f53",
+      "attempt/servers/joint/20260811T124818Z-a2374114/contract.json.sha256": "2ac0e8cbe90a6aaab9810ec4d4c1eb27aaa9a29ee6a0cdbb47ca289d1ed0768a",
+      "attempt/servers/kv_only/20260811T124234Z-88f7ad60/contract.json.sha256": "635cb2d322ae91af4d02b0d1b6dc65342495b916672d36b59d18bc98fd4205e5",
+      "attempt/servers/state_only/20260811T124524Z-1cc3a4a0/contract.json.sha256": "65e90cf7c7447aacfb718c67def17111daeaaebd7d99dea6ccf2ee8bdf0805e1",
+      "attempt/summary.json.sha256": "ff2cbcdbfdc88b2151e838e50ac86b5370b0b47975da13acbed15353eab04718"
+    },
+    "verified": 19
+  },
+  "reproducibility": {
+    "determinism_class": "environment_sensitive_seeded_serving_benchmark",
+    "method": "not run at MVEx",
+    "reason": "Gate 1 validates the execution path; the predeclared multi-seed calibration is the next reproducibility/statistical gate.",
+    "verdict": "CANNOT_VERIFY"
+  },
+  "root_commit": "b3cdfd9042742a66c35619149159d260a6879097",
+  "samples": [
+    {
+      "accounting": {
+        "completed": 1800,
+        "detail_lengths": {
+          "errors": 1800,
+          "input_lens": 1800,
+          "itls": 1800,
+          "output_lens": 1800,
+          "start_times": 1800,
+          "ttfts": 1800
+        },
+        "expected": 1800,
+        "failed": 0,
+        "request_conservation": true
+      },
+      "all_thresholds_sustainable": true,
+      "allocation": "full",
+      "arrival_span_over_target": 1.0000118247543772,
+      "benchmark_duration_s": 60.95800622180104,
+      "goodput_req_s_ttft_250": 29.495715352923774,
+      "goodput_req_s_ttft_3000": 29.5285248249515,
+      "hashes": {
+        "analysis.json": "41f06900764483d3ef8d6780bd4a1efb2a20b2f0ae2abd5d0b41406df9647963",
+        "contract.json": "50c9f5c0b6daff0a3ff36657d091a10c9308def327b918702bcb06f7ec05e7f6",
+        "result.json": "3e2e383637f4d2832594b891ba025ce95657dbaf95ac93021c3ec8e541f9173d"
+      },
+      "request_throughput_req_s": 29.5285248249515,
+      "runner_duration_s": 187.52729531750083,
+      "sample_id": "full__random__r30__s7",
+      "status": "completed_validated",
+      "tpot_p95_ms": 17.797102848082545,
+      "ttft_p95_ms": 192.65712350606918
+    },
+    {
+      "accounting": {
+        "completed": 1800,
+        "detail_lengths": {
+          "errors": 1800,
+          "input_lens": 1800,
+          "itls": 1800,
+          "output_lens": 1800,
+          "start_times": 1800,
+          "ttfts": 1800
+        },
+        "expected": 1800,
+        "failed": 0,
+        "request_conservation": true
+      },
+      "all_thresholds_sustainable": true,
+      "allocation": "kv_only",
+      "arrival_span_over_target": 1.000016365821163,
+      "benchmark_duration_s": 61.32698533311486,
+      "goodput_req_s_ttft_250": 29.17149751096586,
+      "goodput_req_s_ttft_3000": 29.350863901474874,
+      "hashes": {
+        "analysis.json": "3f670a22530485b95665a84b934384a3ab9b49b3bc84cf6dbb1e305199368a92",
+        "contract.json": "54e95c44b2c81f613c952746deb02db95fabce63adc05b58caec44b6ebdea6d4",
+        "result.json": "88617bf41241750967afd07446f4536f8d89813a005ea097c4d437cd73d7b434"
+      },
+      "request_throughput_req_s": 29.350863901474874,
+      "runner_duration_s": 93.54344433918595,
+      "sample_id": "kv_only__random__r30__s7",
+      "status": "completed_validated",
+      "tpot_p95_ms": 22.700757583177932,
+      "ttft_p95_ms": 205.72569034993649
+    },
+    {
+      "accounting": {
+        "completed": 1800,
+        "detail_lengths": {
+          "errors": 1800,
+          "input_lens": 1800,
+          "itls": 1800,
+          "output_lens": 1800,
+          "start_times": 1800,
+          "ttfts": 1800
+        },
+        "expected": 1800,
+        "failed": 0,
+        "request_conservation": true
+      },
+      "all_thresholds_sustainable": true,
+      "allocation": "state_only",
+      "arrival_span_over_target": 1.0000063796217242,
+      "benchmark_duration_s": 60.93896085768938,
+      "goodput_req_s_ttft_250": 29.50493370241192,
+      "goodput_req_s_ttft_3000": 29.53775342844352,
+      "hashes": {
+        "analysis.json": "ff908b689764be3d3c2186af4f6aa66a25cd9409cd898f1d476aad3fde05dcfb",
+        "contract.json": "975429e629d6d562d5627fdd8be91fff1a5c0ca21d7262c0744092a3165adcc5",
+        "result.json": "1e1c75134fbe5486709653370d4681397388309252defbfe119d528cb4447471"
+      },
+      "request_throughput_req_s": 29.53775342844352,
+      "runner_duration_s": 88.17311926558614,
+      "sample_id": "state_only__random__r30__s7",
+      "status": "completed_validated",
+      "tpot_p95_ms": 17.349823650823332,
+      "ttft_p95_ms": 189.36160691082478
+    },
+    {
+      "accounting": {
+        "completed": 1800,
+        "detail_lengths": {
+          "errors": 1800,
+          "input_lens": 1800,
+          "itls": 1800,
+          "output_lens": 1800,
+          "start_times": 1800,
+          "ttfts": 1800
+        },
+        "expected": 1800,
+        "failed": 0,
+        "request_conservation": true
+      },
+      "all_thresholds_sustainable": true,
+      "allocation": "joint",
+      "arrival_span_over_target": 1.000012707710266,
+      "benchmark_duration_s": 61.290930319577456,
+      "goodput_req_s_ttft_250": 29.05813291972688,
+      "goodput_req_s_ttft_3000": 29.368129845877814,
+      "hashes": {
+        "analysis.json": "c525bb9b332bd7cdb99a26372218ce13955bff186d4b15aaee7258ab9dae3592",
+        "contract.json": "8a227f40a68f6ecc69377d497dec73dcec34bf7c3506f15be6d2edfe88dc3076",
+        "result.json": "ce52b3d18e25a127e4532e760bb18ea547432a4e4289f0409740e10a06970300"
+      },
+      "request_throughput_req_s": 29.368129845877814,
+      "runner_duration_s": 93.59505860507488,
+      "sample_id": "joint__random__r30__s7",
+      "status": "completed_validated",
+      "tpot_p95_ms": 23.61740077310425,
+      "ttft_p95_ms": 218.58525965362787
+    }
+  ],
+  "schema_version": 1,
+  "servers": [
+    {
+      "allocation": "full",
+      "contract_sha256": "c9015df3a244c4219e622b40665dddfdb398a86637a752b4927299587b4a5f53",
+      "fatal_signatures": {
+        "CUDA error: an illegal instruction": false,
+        "CUDA error: an illegal memory access": false,
+        "CUDA out of memory": false,
+        "EngineCore encountered a fatal error": false
+      },
+      "health_200_count": 3,
+      "precision_proofs": [
+        "'mamba_ssm_cache_dtype': 'float32'",
+        "kv_cache_dtype=auto",
+        "CUDAGraphMode.PIECEWISE"
+      ],
+      "returncode": 0,
+      "server_log_sha256": "abb5948e62d1d31c8f39527fc6b106c4b62022c2837a0c081c3d312ea6beabd1",
+      "session_id": "20260811T123654Z-253bcf4a",
+      "stale_cubin_reload_warning_count": 18,
+      "startup_duration_s": 151.07272916659713,
+      "status": "stopped"
+    },
+    {
+      "allocation": "kv_only",
+      "contract_sha256": "635cb2d322ae91af4d02b0d1b6dc65342495b916672d36b59d18bc98fd4205e5",
+      "fatal_signatures": {
+        "CUDA error: an illegal instruction": false,
+        "CUDA error: an illegal memory access": false,
+        "CUDA out of memory": false,
+        "EngineCore encountered a fatal error": false
+      },
+      "health_200_count": 2,
+      "precision_proofs": [
+        "'mamba_ssm_cache_dtype': 'float32'",
+        "kv_cache_dtype=int4_per_token_head",
+        "CUDAGraphMode.PIECEWISE"
+      ],
+      "returncode": 0,
+      "server_log_sha256": "4fa84b34016f80173580675c91a9aed0aa58662456fdaa7f3027282fee4b3ff5",
+      "session_id": "20260811T124234Z-88f7ad60",
+      "stale_cubin_reload_warning_count": 15,
+      "startup_duration_s": 75.02769071608782,
+      "status": "stopped"
+    },
+    {
+      "allocation": "state_only",
+      "contract_sha256": "65e90cf7c7447aacfb718c67def17111daeaaebd7d99dea6ccf2ee8bdf0805e1",
+      "fatal_signatures": {
+        "CUDA error: an illegal instruction": false,
+        "CUDA error: an illegal memory access": false,
+        "CUDA out of memory": false,
+        "EngineCore encountered a fatal error": false
+      },
+      "health_200_count": 2,
+      "precision_proofs": [
+        "'mamba_ssm_cache_dtype': 'bfloat16'",
+        "kv_cache_dtype=auto",
+        "CUDAGraphMode.PIECEWISE"
+      ],
+      "returncode": 0,
+      "server_log_sha256": "d3180062d46f896dafac8090db0d80340541a2a83ab107fede6cd2792bc57080",
+      "session_id": "20260811T124524Z-1cc3a4a0",
+      "stale_cubin_reload_warning_count": 15,
+      "startup_duration_s": 85.0311030857265,
+      "status": "stopped"
+    },
+    {
+      "allocation": "joint",
+      "contract_sha256": "2ac0e8cbe90a6aaab9810ec4d4c1eb27aaa9a29ee6a0cdbb47ca289d1ed0768a",
+      "fatal_signatures": {
+        "CUDA error: an illegal instruction": false,
+        "CUDA error: an illegal memory access": false,
+        "CUDA out of memory": false,
+        "EngineCore encountered a fatal error": false
+      },
+      "health_200_count": 2,
+      "precision_proofs": [
+        "'mamba_ssm_cache_dtype': 'bfloat16'",
+        "kv_cache_dtype=int4_per_token_head",
+        "CUDAGraphMode.PIECEWISE"
+      ],
+      "returncode": 0,
+      "server_log_sha256": "76e399fbc3e6298ea7998b89eb7d3131f8216932aa4638f4dea07cf87c9db4a2",
+      "session_id": "20260811T124818Z-a2374114",
+      "stale_cubin_reload_warning_count": 0,
+      "startup_duration_s": 101.03626645728946,
+      "status": "stopped"
+    }
+  ],
+  "statistical_scope": {
+    "confidence_interval": "not estimable",
+    "effect_size": "not estimated",
+    "independent_repeats_per_allocation": 1,
+    "multiple_comparisons": "five SLO thresholds are diagnostic only",
+    "p_values": "not applicable",
+    "unit_of_analysis": "one allocation-workload-rate-seed sample"
+  },
+  "verification_tool": {
+    "path": "E:\\MLSys_Research\\scripts\\analyze\\verify_joint_precision_mvex.py",
+    "sha256": "37e293e36fafc49491e60e3c0375a533143312b05b51b2f827f1aad465c6e26e"
+  },
+  "vllm_commit": "e2fa28594f7baad142a426b0b6a2cfe2c79201c7"
+}

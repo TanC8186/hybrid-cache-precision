@@ -16,5 +16,10 @@ Dockerfile text eol=lf
 .gitignore text eol=lf
 .gitattributes text eol=lf
 
+# Runtime evidence logs may contain semantically significant carriage returns.
+results/verified/**/server.log -text !eol
+results/verified/**/bench.log -text !eol
+results/verified/**/run.log -text !eol
+
 # Format-patch files contain significant unified-diff prefixes and signatures.
 vendor/vllm-patches/*.patch -text -diff

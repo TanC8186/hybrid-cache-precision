@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "scripts/bench/run_steady_state.py",
+    "--config",
+    "configs/experiments/joint_precision_controller_2b.yaml",
+    "--phase",
+    "mvex",
+    "--attempt-id",
+    "joint-precision-four-config-mvex-r2-20260811",
+    "--parent-attempt",
+    "joint-precision-four-config-mvex-20260811",
+    "--output-root",
+    "/root/autodl-tmp/controller-calibration-r2-20260811"
+  ],
+  "invoked_at": "2026-08-11T12:36:54Z",
+  "max_samples": null,
+  "resume": false
+}
