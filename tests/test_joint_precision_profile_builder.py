@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 
 import pytest
+
 from kvcache.policy import canonical_precision_args
 from scripts.controller.build_joint_precision_profile import (
     ProfileBuildError,
