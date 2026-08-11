@@ -3,7 +3,14 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from scripts.bench.run_steady_state import build_sample_plan, load_config, resolve_phase
+import pytest
+from scripts.bench.run_steady_state import (
+    ExperimentError,
+    ServerSession,
+    build_sample_plan,
+    load_config,
+    resolve_phase,
+)
 from scripts.controller.run_joint_precision_controller import validate_deployment_mapping
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -26,6 +33,49 @@ def test_four_allocation_config_has_exact_orthogonal_precision_controls() -> Non
         assert args[args.index("--kv-cache-dtype") + 1] == kv_dtype
         assert args[args.index("--mamba-ssm-cache-dtype") + 1] == state_dtype
         assert "--tensor-parallel-size" not in args
+
+
+def test_four_allocation_log_proofs_are_exact_and_cross_reject(tmp_path: Path) -> None:
+    config = load_config(CONFIG_PATH)
+    controls = {
+        "full": ("auto", "float32"),
+        "kv_only": ("int4_per_token_head", "float32"),
+        "state_only": ("auto", "bfloat16"),
+        "joint": ("int4_per_token_head", "bfloat16"),
+    }
+
+    session_dirs: dict[str, Path] = {}
+    for allocation, (kv_dtype, state_dtype) in controls.items():
+        expected_patterns = [
+            f"'mamba_ssm_cache_dtype': '{state_dtype}'",
+            f"kv_cache_dtype={kv_dtype}",
+            "CUDAGraphMode.PIECEWISE",
+        ]
+        assert config["allocations"][allocation]["required_log_substrings"] == expected_patterns
+        assert "Using the user-specified value" not in expected_patterns
+
+        session_dir = tmp_path / allocation
+        session_dir.mkdir()
+        (session_dir / "server.log").write_text(
+            "non-default args: "
+            f"{{'mamba_ssm_cache_dtype': '{state_dtype}', "
+            "'cudagraph_mode': <CUDAGraphMode.PIECEWISE: 1>}}\n"
+            f"resolved engine config: kv_cache_dtype={kv_dtype}, device=cuda\n",
+            encoding="utf-8",
+        )
+        session_dirs[allocation] = session_dir
+
+    for allocation in controls:
+        session = ServerSession.__new__(ServerSession)
+        session.config = config
+        session.allocation_name = allocation
+        session.session_dir = session_dirs[allocation]
+        session._verify_log_patterns()
+
+        for other_allocation in controls.keys() - {allocation}:
+            session.session_dir = session_dirs[other_allocation]
+            with pytest.raises(ExperimentError, match="server log does not prove allocation"):
+                session._verify_log_patterns()
 
 
 def test_confirmatory_matrix_uses_disjoint_seeds_and_has_full_denominator() -> None:

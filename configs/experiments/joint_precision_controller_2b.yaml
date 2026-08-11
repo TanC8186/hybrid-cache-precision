@@ -57,7 +57,8 @@ allocations:
       - --compilation-config
       - '{"cudagraph_mode":"PIECEWISE"}'
     required_log_substrings:
-      - Using the user-specified value
+      - "'mamba_ssm_cache_dtype': 'float32'"
+      - kv_cache_dtype=auto
       - CUDAGraphMode.PIECEWISE
   kv_only:
     server_args:
@@ -68,8 +69,8 @@ allocations:
       - --compilation-config
       - '{"cudagraph_mode":"PIECEWISE"}'
     required_log_substrings:
-      - int4_per_token_head
-      - Using the user-specified value
+      - "'mamba_ssm_cache_dtype': 'float32'"
+      - kv_cache_dtype=int4_per_token_head
       - CUDAGraphMode.PIECEWISE
   state_only:
     server_args:
@@ -80,7 +81,8 @@ allocations:
       - --compilation-config
       - '{"cudagraph_mode":"PIECEWISE"}'
     required_log_substrings:
-      - Using the user-specified value
+      - "'mamba_ssm_cache_dtype': 'bfloat16'"
+      - kv_cache_dtype=auto
       - CUDAGraphMode.PIECEWISE
   joint:
     server_args:
@@ -91,8 +93,8 @@ allocations:
       - --compilation-config
       - '{"cudagraph_mode":"PIECEWISE"}'
     required_log_substrings:
-      - int4_per_token_head
-      - Using the user-specified value
+      - "'mamba_ssm_cache_dtype': 'bfloat16'"
+      - kv_cache_dtype=int4_per_token_head
       - CUDAGraphMode.PIECEWISE
 
 workloads:
