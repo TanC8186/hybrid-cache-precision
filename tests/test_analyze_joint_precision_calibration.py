@@ -1,11 +1,12 @@
 from __future__ import annotations
 
 import math
+from pathlib import Path
 
 import pytest
-
 from scripts.analyze.analyze_joint_precision_calibration import (
     aggregate_calibration,
+    audit_launch,
     calibration_fallacy_scan,
     student_t_summary,
 )
@@ -97,3 +98,32 @@ def test_calibration_fallacy_scan_covers_all_eleven_categories() -> None:
 
     assert len(scan) == 11
     assert len({item["fallacy"] for item in scan}) == 11
+
+
+def write_launch_evidence(path: Path, *, exit_code: int = 0) -> None:
+    path.mkdir()
+    (path / "pid").write_text("19336\n", encoding="ascii")
+    (path / "started_at").write_text("2026-08-11T21:49:39+08:00\n", encoding="ascii")
+    (path / "finished_at").write_text("2026-08-11T22:49:40+08:00\n", encoding="ascii")
+    (path / "exit_code").write_text(f"{exit_code}\n", encoding="ascii")
+    (path / "run.log").write_bytes(b"completed\n")
+
+
+def test_audit_launch_requires_successful_timestamped_launcher(tmp_path: Path) -> None:
+    launch_dir = tmp_path / "launch"
+    write_launch_evidence(launch_dir)
+
+    result = audit_launch(launch_dir)
+
+    assert result["pid"] == 19336
+    assert result["exit_code"] == 0
+    assert result["duration_s"] == 3601.0
+    assert result["run_log_size_bytes"] == len("completed\n")
+
+
+def test_audit_launch_rejects_nonzero_exit(tmp_path: Path) -> None:
+    launch_dir = tmp_path / "launch"
+    write_launch_evidence(launch_dir, exit_code=124)
+
+    with pytest.raises(VerificationError, match="exit code is nonzero"):
+        audit_launch(launch_dir)

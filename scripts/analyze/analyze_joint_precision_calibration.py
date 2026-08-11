@@ -9,6 +9,7 @@ import math
 import statistics
 from collections import defaultdict
 from collections.abc import Mapping, Sequence
+from datetime import datetime
 from pathlib import Path
 from typing import Any
 
@@ -30,6 +31,45 @@ from scripts.analyze.verify_joint_precision_mvex import (
 from scripts.bench.run_steady_state import load_config
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
+
+
+def parse_aware_timestamp(value: str, field: str) -> datetime:
+    try:
+        parsed = datetime.fromisoformat(value)
+    except ValueError as error:
+        raise VerificationError(f"{field} is not a valid ISO-8601 timestamp") from error
+    require(parsed.tzinfo is not None, f"{field} must include a UTC offset")
+    return parsed
+
+
+def audit_launch(launch_dir: Path) -> dict[str, Any]:
+    required = ("pid", "started_at", "run.log", "exit_code", "finished_at")
+    for name in required:
+        require((launch_dir / name).is_file(), f"launcher evidence is missing: {name}")
+
+    try:
+        pid = int((launch_dir / "pid").read_text(encoding="ascii").strip())
+        exit_code = int((launch_dir / "exit_code").read_text(encoding="ascii").strip())
+    except ValueError as error:
+        raise VerificationError("launcher PID or exit code is not an integer") from error
+    require(pid > 0, "launcher PID must be positive")
+    require(exit_code == 0, f"launcher exit code is nonzero: {exit_code}")
+
+    started_at = (launch_dir / "started_at").read_text(encoding="ascii").strip()
+    finished_at = (launch_dir / "finished_at").read_text(encoding="ascii").strip()
+    started = parse_aware_timestamp(started_at, "launcher started_at")
+    finished = parse_aware_timestamp(finished_at, "launcher finished_at")
+    require(finished >= started, "launcher finished_at precedes started_at")
+    run_log = launch_dir / "run.log"
+    return {
+        "pid": pid,
+        "started_at": started_at,
+        "finished_at": finished_at,
+        "duration_s": (finished - started).total_seconds(),
+        "exit_code": exit_code,
+        "run_log_size_bytes": run_log.stat().st_size,
+        "run_log_sha256": sha256_file(run_log),
+    }
 
 
 def canonical_json_sha(value: Any, *, sort_keys: bool) -> str:
@@ -219,6 +259,7 @@ def calibration_fallacy_scan() -> list[dict[str, str]]:
 
 def validate_attempt(
     attempt_dir: Path,
+    launch_dir: Path,
     frozen_contract_path: Path,
     *,
     repo_root: Path,
@@ -284,6 +325,7 @@ def validate_attempt(
     servers = [
         audit_server(attempt_dir, allocation, config["allocations"][allocation]) for allocation in EXPECTED_ALLOCATIONS
     ]
+    launch = audit_launch(launch_dir)
     aggregated = aggregate_calibration(
         samples,
         matrix,
@@ -330,6 +372,7 @@ def validate_attempt(
             "server_sessions": len(servers),
             "silent_exclusions": 0,
         },
+        "launch": launch,
         "statistical_method": frozen["statistical_plan"],
         "aggregation": aggregated,
         "servers": servers,
@@ -349,6 +392,7 @@ def validate_attempt(
 def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--attempt-dir", type=Path, required=True)
+    parser.add_argument("--launch-dir", type=Path, required=True)
     parser.add_argument("--frozen-contract", type=Path, required=True)
     parser.add_argument("--repo-root", type=Path, default=REPO_ROOT)
     parser.add_argument("--out", type=Path, required=True)
@@ -360,6 +404,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     repo_root = args.repo_root.resolve()
     report = validate_attempt(
         args.attempt_dir.resolve(),
+        args.launch_dir.resolve(),
         args.frozen_contract.resolve(),
         repo_root=repo_root,
     )
