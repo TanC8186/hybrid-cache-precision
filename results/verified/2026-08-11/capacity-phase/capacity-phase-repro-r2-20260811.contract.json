@@ -1,0 +1,158 @@
+{
+  "schema_version": 1,
+  "material_passport": {
+    "origin_skill": "experiment-skill",
+    "origin_mode": "run",
+    "origin_date": "2026-08-11",
+    "verification_status": "UNVERIFIED",
+    "version_label": "capacity_phase_repro_r2_contract_v1"
+  },
+  "contract_status": "FROZEN",
+  "created_at": "2026-08-11T10:55:00+08:00",
+  "attempt_id": "capacity-phase-repro-r2-20260811",
+  "classification": "formal_reproducibility_retry",
+  "determinism_class": "environment-sensitive allocator benchmark",
+  "objective": "Run a complete 112-cell formal matrix under an executable, hash-frozen runtime and quantify agreement with capacity-phase-formal-20260811 without promoting the provenance-defective parent.",
+  "primary_hypothesis": "The exact matrix and resolved dtypes are preserved, all 52 bf16-state pairs remain positive, every cell is within 2% symmetric relative token difference from the old formal, and each model-by-KV median gain is within 2 percentage points.",
+  "promotion_eligible": false,
+  "promotion_block_reason": "The old formal contract records a vendor vLLM hash set that is incompatible with its own frozen probe command. R2 can establish numerical agreement but cannot repair the old attempt's runtime provenance. A subsequent R3 attempt must reproduce R2 under the accurately frozen runtime.",
+  "parent_attempt": {
+    "attempt_id": "capacity-phase-formal-20260811",
+    "contract_path": "results/verified/2026-08-11/capacity-phase/capacity-phase-formal-20260811.contract.json",
+    "contract_sha256": "e21566781209029ec641240d04cb9c8e1bb4c1cbb91569c5e68466ac19179a4e",
+    "analysis_sha256": "1b5bc54d599529e1261dceda5238fd6bdafa5cec8263106df085dbc11c37a789",
+    "provenance_status": "QUARANTINED_PENDING_REPLACEMENT"
+  },
+  "failed_preflight": {
+    "formal_contract_attempt": "capacity-phase-repro-20260811",
+    "formal_contract_sha256": "e1364d19af824930610e186c5b3b7d3e745c4c150dfb4a13a1f19aed561898b9",
+    "mvex_attempt": "capacity-phase-repro-mvex-20260811",
+    "failure_report_sha256": "7a8f1a88c529c65585239102bb4e81c09a65e76bfa8080c9f2ce153f903e27aa",
+    "reason": "Frozen vendor arg_utils.py cannot accept kv_cache_dtype_per_layer and failed before the first cell."
+  },
+  "mvex_gate": {
+    "attempt_id": "capacity-phase-repro-mvex-r2-20260811",
+    "status": "PASS",
+    "validated_cells": 2,
+    "analysis_path": "results/verified/2026-08-11/capacity-phase/capacity-phase-repro-mvex-r2-20260811.analysis.json",
+    "analysis_sha256": "09a0cfcab57cadd76ef4ea1984b6b5d09c1a021b44f7bc78e5900f62562d0359",
+    "runner_log_sha256": "289ed0862a8709d5319d79416acd109a03256769fe4f686ca10bd13032db6d64",
+    "parent_mvex_fp32_tokens": 2693529,
+    "r2_mvex_fp32_tokens": 2692710,
+    "parent_mvex_bf16_tokens": 3703954,
+    "r2_mvex_bf16_tokens": 3691666,
+    "max_cell_symmetric_relative_diff": 0.003317,
+    "gain_absolute_diff_pp": 0.4146
+  },
+  "host": {
+    "ssh_endpoint": "connect.westd.seetacloud.com:43022",
+    "hostname": "autodl-container-ca6c40b13f-016bd465",
+    "kernel": "Linux 5.15.0-94-generic x86_64 GNU/Linux",
+    "gpu_uuid": "GPU-9ab7e73c-a1e4-4679-7019-886b6d4d472f",
+    "gpu": "NVIDIA GeForce RTX 5090 32607 MiB",
+    "driver": "580.76.05"
+  },
+  "storage": {
+    "working_disk": "/root/autodl-tmp",
+    "minimum_system_disk_available_bytes": 8589934592,
+    "minimum_data_disk_available_bytes": 10737418240,
+    "cache_profile": "/etc/profile.d/mlsys-data-disk.sh",
+    "temporary_directory": "/root/autodl-tmp/tmp"
+  },
+  "models": {
+    "2b": {
+      "id": "Qwen/Qwen3.5-2B",
+      "path": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master",
+      "config_sha256": "ed1c1723241f23f7f4e23430759cbd7dcfb4103cbdfe052bfe7626b57c2615b4",
+      "safetensors_index_sha256": "aca8afed9da75b0f050b408d270766fd77627f1af401e240f61c3b47d0db02f9"
+    },
+    "9b": {
+      "id": "Qwen/Qwen3.5-9B",
+      "path": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-9B/snapshots/master",
+      "config_sha256": "d0883072e01861ed0b2d47be3c16c36a8e81c224c7ffaa310c6558fb3f932b05",
+      "safetensors_index_sha256": "26d3539b516be613f39563617cb9d33b3f83d401298125be392c80cefb8f7fe5"
+    }
+  },
+  "code": {
+    "local_repository_head": "6417dab0ebb15ab1a7320050291c26d8d13cb926",
+    "remote_repository_note": "Runtime snapshot has no top-level .git; file hashes are authoritative.",
+    "runner_sha256": "83c294421f58e0c2702be3149e87792c144ece4bb4fcc7fad4a517ca3ad073a9",
+    "probe_sha256": "86d177223d3850bc8cf0f9dfee0e8153b52c7e682bfe59dd0bb6e09b955358ba",
+    "analysis_sha256": "278a144c10a53f33310a25635495b7f18583cbeb7da7019b872e5f5f82ecede5",
+    "repro_validator_sha256": "cfd6b6c570d1b51e2795fd4ca077eb8f2fb81d4bf4ea64cfe7a9db89ef9b1a4c",
+    "vllm_version": "0.26.1rc1.dev245+ge2fa28594",
+    "vllm_commit": "e2fa28594f7baad142a426b0b6a2cfe2c79201c7",
+    "torch_version": "2.13.0+cu130",
+    "python_version": "3.12.13",
+    "vllm_runtime_file_sha256": {
+      "vllm/config/cache.py": "fb55c243900a6f2515edf47995351e7993822b91014791a49439995d94ef9dbb",
+      "vllm/engine/arg_utils.py": "f6b77c1236de03862ec43259d9e10977c87a97e09e36f345ee1743842747ccbe",
+      "vllm/model_executor/layers/attention/attention.py": "5527cfea5299e1406dffefe942cc8ff44013cac426774974da7e9c91aa8282c9",
+      "vllm/utils/torch_utils.py": "f48ef5e4c02afc600f5f68f9302d560afe2776fd88349c9133cc68930245adf6",
+      "vllm/v1/kv_cache_interface.py": "b2a73a7d03418b3cf2b8a12ec6bda707d65c34bcd89ebc60c25d937bb443697a"
+    }
+  },
+  "protocol": {
+    "working_directory": "/root/autodl-tmp/MLSys_Research",
+    "command": "bash scripts/bench/run_capacity_phase_diagram.sh formal capacity-phase-repro-r2-20260811",
+    "launched_command": "timeout --signal=TERM --kill-after=30s 21600 bash scripts/bench/run_capacity_phase_diagram.sh formal capacity-phase-repro-r2-20260811",
+    "analysis_command": ".venv/bin/python scripts/bench/analyze_capacity_phase_diagram.py --attempt capacity-phase-repro-r2-20260811 --phase formal --out results/verified/2026-08-11/capacity-phase/capacity-phase-repro-r2-20260811.analysis.json",
+    "validation_command": ".venv/bin/python scripts/bench/validate_capacity_phase_repro.py --parent-attempt capacity-phase-formal-20260811 --repro-attempt capacity-phase-repro-r2-20260811 --parent-contract results/verified/2026-08-11/capacity-phase/capacity-phase-formal-20260811.contract.json --repro-contract results/verified/2026-08-11/capacity-phase/capacity-phase-repro-r2-20260811.contract.json --token-relative-tolerance 0.02 --median-gain-pp-tolerance 2.0 --out results/verified/2026-08-11/capacity-phase/capacity-phase-repro-r2-20260811.validation.json",
+    "seed": 42,
+    "generate": false,
+    "kv_cache_dtype_per_layer": {},
+    "expected_cells": 112,
+    "timeout_seconds": 21600,
+    "monitor_interval_seconds": 30,
+    "output_absent_at_freeze": true,
+    "matrix": {
+      "2b_core": {
+        "context_lengths": [1024, 2048, 4096, 8192, 16384, 32768],
+        "gpu_memory_utilizations": [0.7, 0.8, 0.9],
+        "kv_dtypes": ["fp16", "int4"],
+        "state_dtype_args": ["auto", "bfloat16"],
+        "cell_count": 72
+      },
+      "9b_core": {
+        "context_lengths": [2048, 4096, 16384, 32768],
+        "gpu_memory_utilizations": [0.8, 0.9],
+        "kv_dtypes": ["fp16", "int4"],
+        "state_dtype_args": ["auto", "bfloat16"],
+        "cell_count": 32
+      },
+      "float16_controls": {
+        "models": ["2b", "9b"],
+        "context_lengths": [4096, 16384],
+        "gpu_memory_utilization": 0.85,
+        "kv_dtypes": ["fp16", "int4"],
+        "state_dtype_arg": "float16",
+        "cell_count": 8
+      }
+    }
+  },
+  "reproducibility_tolerances": {
+    "matrix_and_filename_set": "exact",
+    "contract_fields_and_resolved_dtypes": "exact",
+    "positive_bf16_direction_pairs": "52_of_52",
+    "cell_token_symmetric_relative": 0.02,
+    "group_median_gain_absolute_pp": 2.0,
+    "timing_metrics": "excluded"
+  },
+  "expected_outputs": {
+    "cell_root": "results/verified/2026-08-11/capacity-phase/",
+    "analysis": "results/verified/2026-08-11/capacity-phase/capacity-phase-repro-r2-20260811.analysis.json",
+    "validation": "results/verified/2026-08-11/capacity-phase/capacity-phase-repro-r2-20260811.validation.json",
+    "runner_log": "results/verified/2026-08-11/capacity-phase/capacity-phase-repro-r2-20260811.run.log",
+    "launcher_log": "logs/capacity-phase-repro-r2-20260811-launcher.log"
+  },
+  "success_criteria": [
+    "The exact 112-cell matrix completes without OOM, timeout, retry, historical skip, or silent exclusion.",
+    "All JSON files and SHA256 sidecars pass strict validation.",
+    "All resolved dtypes and frozen inputs match the contract.",
+    "All 52 bf16-state pairs have strictly positive capacity direction.",
+    "Every cell is within 2% symmetric relative token difference from the old formal.",
+    "Each model-by-KV median gain is within 2 percentage points from the old formal.",
+    "R2 remains ANALYZED because promotion_eligible is false; R3 is required for VERIFIED evidence."
+  ],
+  "evidence_policy": "R2 is a new clean formal baseline and numerical bridge. It cannot promote the provenance-defective old parent. Only a successful R3 reproduction of R2 may complete Gate 4."
+}
