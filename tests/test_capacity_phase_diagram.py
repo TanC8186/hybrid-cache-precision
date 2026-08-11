@@ -7,6 +7,10 @@ from scripts.bench.analyze_capacity_phase_diagram import (
     parse_cell_name,
     validate_cell_record,
 )
+from scripts.bench.validate_capacity_phase_repro import (
+    compare_attempts,
+    symmetric_relative_diff,
+)
 
 
 @pytest.mark.parametrize(
@@ -75,3 +79,48 @@ def test_validate_capacity_cell_rejects_wrong_seed() -> None:
 
     with pytest.raises(SystemExit, match="seed mismatch"):
         validate_cell_record(record, meta, Path("cell.json"))
+
+
+def make_formal_cells() -> dict:
+    cells = {}
+    for model, kv, state, length, util in expected_cells("formal"):
+        base = 1_000_000 + length
+        tokens = int(base * 1.2) if state == "bfloat16" else base
+        record = make_capacity_record()
+        record["capacity"] = {
+            "tokens": tokens,
+            "max_concurrency": tokens / length,
+            "max_model_len": length,
+        }
+        record["cache_config"]["num_gpu_blocks"] = max(1, tokens // 64)
+        cells[(model, kv, state, length, util)] = record
+    return cells
+
+
+def test_symmetric_relative_diff_uses_larger_denominator() -> None:
+    assert symmetric_relative_diff(100.0, 98.0) == pytest.approx(0.02)
+    assert symmetric_relative_diff(0.0, 0.0) == 0.0
+
+
+def test_compare_capacity_repro_accepts_matching_formal_matrix() -> None:
+    parent = make_formal_cells()
+    repro = make_formal_cells()
+
+    result = compare_attempts(parent, repro, 0.02, 2.0)
+
+    assert result["passed"] is True
+    assert result["n_cells"] == 112
+    assert result["n_core_pairs"] == 52
+    assert result["token_failure_count"] == 0
+
+
+def test_compare_capacity_repro_rejects_cell_outside_tolerance() -> None:
+    parent = make_formal_cells()
+    repro = make_formal_cells()
+    key = next(iter(repro))
+    repro[key]["capacity"]["tokens"] *= 2
+
+    result = compare_attempts(parent, repro, 0.02, 2.0)
+
+    assert result["passed"] is False
+    assert result["token_failure_count"] == 1
