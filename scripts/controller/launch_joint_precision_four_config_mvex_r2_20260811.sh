@@ -4,6 +4,7 @@ set -Eeuo pipefail
 WORKTREE=/root/autodl-tmp/MLSys_Controller_r2_20260811
 OUTPUT_ROOT=/root/autodl-tmp/controller-calibration-r2-20260811
 ATTEMPT_ID=joint-precision-four-config-mvex-r2-20260811
+PARENT_ATTEMPT=joint-precision-four-config-mvex-20260811
 ATTEMPT_DIR="${OUTPUT_ROOT}/${ATTEMPT_ID}"
 LAUNCH_PARENT="${OUTPUT_ROOT}/launch"
 LAUNCH_DIR="${LAUNCH_PARENT}/${ATTEMPT_ID}"
@@ -38,5 +39,6 @@ timeout --signal=TERM --kill-after=30s 7200 \
     --config configs/experiments/joint_precision_controller_2b.yaml \
     --phase mvex \
     --attempt-id "${ATTEMPT_ID}" \
+    --parent-attempt "${PARENT_ATTEMPT}" \
     --output-root "${OUTPUT_ROOT}" \
     >"${LAUNCH_DIR}/run.log" 2>&1
