@@ -1,0 +1,228 @@
+{
+  "schema_version": 1,
+  "material_passport": {
+    "origin_skill": "experiment-skill",
+    "origin_mode": "run",
+    "origin_date": "2026-08-11",
+    "verification_status": "UNVERIFIED",
+    "version_label": "joint_precision_four_config_calibration_r1_contract_v1"
+  },
+  "contract_status": "FROZEN",
+  "created_at": "2026-08-11T21:39:25+08:00",
+  "attempt_id": "joint-precision-four-config-calibration-r1-20260811",
+  "parent_attempt": "joint-precision-four-config-mvex-r2-20260811",
+  "classification": "calibration_pilot",
+  "analysis_classification": "diagnostic_non_confirmatory",
+  "objective": "Estimate seed-level uncertainty across the complete four-allocation, Random and ShareGPT offered-load grid, then construct a non-fixture schema-v2 selector profile from hash-verified capacity and serving evidence.",
+  "hypothesis": "All four orthogonal precision allocations remain executable across the complete calibration grid, and three independent seed/trace repeats provide finite pointwise robust bounds for SLO-goodput, P95 TTFT, and P95 TPOT without missing or silently excluded samples.",
+  "independent_variables": [
+    "precision allocation",
+    "workload trace family",
+    "offered request rate"
+  ],
+  "dependent_variables": [
+    "request_throughput_req_s",
+    "p95_ttft_ms",
+    "p95_tpot_ms",
+    "goodput_req_s across the predeclared TTFT thresholds",
+    "failed_request_fraction"
+  ],
+  "unit_of_analysis": "one allocation-workload-rate-seed sample; seed/trace, not request, is the independent repeat for uncertainty",
+  "determinism_class": "environment-sensitive serving benchmark with deterministic generation and seed-dependent request traces",
+  "gate_1_parent_evidence": {
+    "artifact": "results/verified/2026-08-11/controller-mvex/joint-precision-four-config-mvex-r2-20260811/mvex_audit_report.json",
+    "sha256": "180182d1065e38ef9fac16293b809a1f51a97c81a637e9445c67fdaf0c353157",
+    "verdict": "PASS",
+    "verification_status": "ANALYZED",
+    "scope": "Four allocations completed the real-GPU end-to-end path once; this authorizes calibration but is not paper-level quantitative evidence."
+  },
+  "code": {
+    "baseline_revision": "2ee74d17a42c1b28154156e1ea4b889bde1d5367",
+    "run_revision_policy": "The remote worktree must be clean at the Git commit containing this frozen contract and launcher. The exact commit is captured by attempt_contract.json and every sample contract.",
+    "worktree": "/root/autodl-tmp/MLSys_Controller_r2_20260811",
+    "config_path": "configs/experiments/joint_precision_controller_2b.yaml",
+    "config_sha256": "0df1b9aea9342474d0027548d9f9a031dba2b9dd7a087562aa95d49636333e71",
+    "runner_path": "scripts/bench/run_steady_state.py",
+    "runner_sha256": "b15a73ee6ba8c4cee929959fd3dbef1c4c32f6e4c473a4b046772e80b5c7b64c",
+    "launcher_path": "scripts/controller/launch_joint_precision_four_config_calibration_r1_20260811.sh",
+    "launcher_sha256": "832f94c53c44699daa35c96ab7563d37c864212bd3135c5a7fb9d7981dc178d0"
+  },
+  "preflight": {
+    "full_tests": "127/127 passed with PYTHONPATH=src:.",
+    "focused_tests": "Controller MVEx validator 4/4 passed.",
+    "ruff_lint": "passed with ruff 0.16.1",
+    "ruff_format": "passed with ruff 0.16.1",
+    "launcher_syntax": "bash -n passed",
+    "matrix_proof": "The tested config resolves calibration to exactly 144 samples and confirmatory seeds are disjoint.",
+    "gate_1": "The parent MVEx completed 4/4 samples and 7200/7200 measurement requests with exact allocation-specific precision and PIECEWISE log proofs."
+  },
+  "host": {
+    "ssh_endpoint": "connect.westb.seetacloud.com:24184",
+    "hostname": "autodl-container-kmzddlce45-c57bf976",
+    "host_key_sha256": "6zkijTPdPT6WfS5rwH9cKmrjcUOEAXfeneFegE8bUbw",
+    "gpu": "NVIDIA GeForce RTX 5090",
+    "gpu_memory_mib": 32607,
+    "driver": "580.105.08",
+    "python": "3.12.13",
+    "torch": "2.13.0+cu130",
+    "cuda": "13.0",
+    "vllm_version": "0.26.1rc1.dev245+ge2fa28594",
+    "vllm_commit": "e2fa28594f7baad142a426b0b6a2cfe2c79201c7",
+    "vllm_expected_modified_file_count": 5,
+    "vllm_modified_file_sha256": {
+      "vllm/config/cache.py": "f7e25243e0798b7a551f4cf9ee1bd2b1bff6094b6410ceb40f5a23cce6ff7f71",
+      "vllm/engine/arg_utils.py": "1279e1eaa245438617aae70edb89b9a66edf65240b91b5f5851c716a3ca6f544",
+      "vllm/model_executor/layers/attention/attention.py": "41a43eb4ddbd15a504b83affa6758b1da3903f11b5c105a633320888358a849a",
+      "vllm/utils/torch_utils.py": "be6079d95b59a3e03c04e90703f175c8656aee63b9030d62479f99d241cceea3",
+      "vllm/v1/kv_cache_interface.py": "f3a50d05f5e895dd8552d2752b18aaa118238fd0077e59dd631ee63ded71b307"
+    }
+  },
+  "model": {
+    "id": "Qwen/Qwen3.5-2B",
+    "path": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master",
+    "config_sha256": "ed1c1723241f23f7f4e23430759cbd7dcfb4103cbdfe052bfe7626b57c2615b4",
+    "safetensors_index_sha256": "aca8afed9da75b0f050b408d270766fd77627f1af401e240f61c3b47d0db02f9"
+  },
+  "datasets": {
+    "random": {
+      "generator": "vLLM random dataset",
+      "input_tokens": 1024,
+      "output_tokens": 128
+    },
+    "sharegpt": {
+      "path": "/root/autodl-tmp/caches/sharegpt/ShareGPT_V3_unfiltered_cleaned_split.json",
+      "sha256": "35f0e213ce091ed9b9af2a1f0755e9d39f9ccec34ab281cd4ca60d70f6479ba4",
+      "size_bytes": 672837942,
+      "ignore_eos": true,
+      "no_oversample": true
+    }
+  },
+  "matrix": {
+    "allocations": [
+      {
+        "id": "full",
+        "kv_cache_dtype": "auto",
+        "recurrent_state_dtype": "float32"
+      },
+      {
+        "id": "kv_only",
+        "kv_cache_dtype": "int4_per_token_head",
+        "recurrent_state_dtype": "float32"
+      },
+      {
+        "id": "state_only",
+        "kv_cache_dtype": "auto",
+        "recurrent_state_dtype": "bfloat16"
+      },
+      {
+        "id": "joint",
+        "kv_cache_dtype": "int4_per_token_head",
+        "recurrent_state_dtype": "bfloat16"
+      }
+    ],
+    "seeds": [
+      7,
+      42,
+      2026
+    ],
+    "workload_rates_req_s": {
+      "random": [
+        30,
+        35,
+        40,
+        45,
+        50
+      ],
+      "sharegpt": [
+        20,
+        25,
+        30,
+        35,
+        40,
+        45,
+        50
+      ]
+    },
+    "measurement_window_s": 60,
+    "warmup_requests_per_sample": 120,
+    "expected_samples": 144,
+    "expected_measurement_requests": 320400,
+    "expected_warmup_requests": 17280,
+    "samples_per_allocation": 36,
+    "plan_canonicalization": "UTF-8 JSON with ensure_ascii=true, sort_keys=true, separators=(',', ':') and no trailing newline",
+    "plan_sha256": "756ebe24e8c290ee164fde815081bff4ddcded7d89a29d32147aa71f46618b66",
+    "sample_ids_canonicalization": "Runner-order sample ID array as compact UTF-8 JSON with no trailing newline",
+    "sample_ids_sha256": "ee3744008c6df05acdafadac3b18803e48ac3c60f34715a7bea9e6563524461c",
+    "first_sample_id": "full__random__r30__s7",
+    "last_sample_id": "joint__sharegpt__r50__s2026",
+    "ttft_thresholds_ms": [
+      250,
+      500,
+      1000,
+      2000,
+      3000
+    ],
+    "tpot_threshold_ms": 200,
+    "request_failure_policy": "count_as_slo_miss"
+  },
+  "statistical_plan": {
+    "repeat_unit": "seed/trace within each allocation-workload-rate cell",
+    "n_independent_repeats": 3,
+    "bounds": "Two-sided 95% Student t interval across the three repeat-level metrics; the lower endpoint is used for SLO-goodput and the upper endpoint for P95 TTFT and P95 TPOT.",
+    "t_critical_df2": 4.302652729911275,
+    "request_level_pseudoreplication": "Requests are used only to compute each repeat-level metric and are never treated as independent repeats.",
+    "multiple_comparisons": "This calibration performs no claim-level significance testing. Bounds are pointwise controller inputs; confirmatory comparisons and multiplicity correction are reserved for disjoint seeds 11, 23, and 47.",
+    "exploratory_boundary": "Calibration outcomes may choose a selector profile but may not be reported as confirmatory paper effects."
+  },
+  "execution": {
+    "working_directory": "/root/autodl-tmp/MLSys_Controller_r2_20260811",
+    "launch_command": "cd /root/autodl-tmp/MLSys_Controller_r2_20260811 && nohup bash scripts/controller/launch_joint_precision_four_config_calibration_r1_20260811.sh </dev/null >/dev/null 2>&1 &",
+    "launcher_command": "bash scripts/controller/launch_joint_precision_four_config_calibration_r1_20260811.sh",
+    "child_command": "PYTHONPATH=/root/autodl-tmp/MLSys_Controller_r2_20260811/src:/root/autodl-tmp/MLSys_Controller_r2_20260811 PYTHONDONTWRITEBYTECODE=1 timeout --signal=TERM --kill-after=30s 28800 /root/autodl-tmp/MLSys_Research/.venv/bin/python scripts/bench/run_steady_state.py --config configs/experiments/joint_precision_controller_2b.yaml --phase calibration --attempt-id joint-precision-four-config-calibration-r1-20260811 --parent-attempt joint-precision-four-config-mvex-r2-20260811 --output-root /root/autodl-tmp/controller-calibration-r1-20260811",
+    "output_root": "/root/autodl-tmp/controller-calibration-r1-20260811",
+    "attempt_dir": "/root/autodl-tmp/controller-calibration-r1-20260811/joint-precision-four-config-calibration-r1-20260811",
+    "launch_dir": "/root/autodl-tmp/controller-calibration-r1-20260811/launch/joint-precision-four-config-calibration-r1-20260811",
+    "hard_timeout_s": 28800,
+    "sample_timeout_s": 900,
+    "server_startup_timeout_s": 600,
+    "monitor_interval_s": 30,
+    "output_absent_at_freeze": true,
+    "port_8000_free_at_freeze": true,
+    "estimated_compute_scope": "Four sequential vLLM cold starts and 144 measurements of 60 seconds plus warmups; expected wall time approximately 4 to 6 hours with an eight-hour hard limit."
+  },
+  "disk_policy": {
+    "required_profile": "/etc/profile.d/mlsys-data-disk.sh",
+    "required_profile_sha256": "35efc95572b9fd09f718ff03d6eb9546ec7d6288eb30dfa5a792b5275498b2e8",
+    "data_root": "/root/autodl-tmp",
+    "minimum_system_free_gib": 8,
+    "minimum_data_free_gib": 10,
+    "observed_system_free_gib_at_freeze": 28,
+    "observed_data_free_gib_at_freeze": 74,
+    "cache_and_temp_policy": "Pip, Hugging Face, Transformers, Torch, Triton, CUDA, vLLM, TMPDIR, worktrees, logs, and results must resolve under /root/autodl-tmp."
+  },
+  "expected_outputs": [
+    "launch/<attempt_id>/pid, started_at, run.log, exit_code, and finished_at",
+    "<attempt_id>/attempt_contract.json and SHA256 sidecar",
+    "<attempt_id>/environment.json and SHA256 sidecar",
+    "<attempt_id>/summary.json and SHA256 sidecar",
+    "<attempt_id>/invocations/*.json",
+    "<attempt_id>/servers/<allocation>/<session>/contract.json, sidecar, status.json, and server.log",
+    "<attempt_id>/samples/<sample_id>/contract.json, result.json, analysis.json, required sidecars, status.json, and bench.log"
+  ],
+  "success_criteria": [
+    "The launcher exits 0 and summary reports exactly completed_validated=144 with no failed, running, not_started, or silently excluded sample.",
+    "The observed canonical plan and sample-ID digests exactly match the frozen hashes, with 36 samples per allocation, 320400 measurement requests, and 17280 warmup requests.",
+    "All four allocation commands and logs prove the exact orthogonal KV and recurrent-state precision controls plus CUDAGraphMode.PIECEWISE; no tensor-parallel argument is present.",
+    "Every sample conserves its offered-rate times 60-second measurement denominator, counts failures as SLO misses, passes arrival-window and goodput cross-check gates, and emits finite repeat-level metrics.",
+    "Every required JSON SHA-256 sidecar matches, the ShareGPT and model identities match this contract, and attempt/sample provenance records one clean run revision.",
+    "Exactly three repeat-level observations exist for every allocation-workload-rate cell, allowing the predeclared pointwise t bounds to be computed without imputation or exclusion.",
+    "All servers remain healthy after each benchmark, stop after their allocation slice, port 8000 is free after exit, and both disks remain above safety thresholds."
+  ],
+  "failure_criteria": [
+    "Any nonzero launcher or child exit, hard or sample timeout, OOM, server-health failure, or occupied output path invalidates this attempt.",
+    "Any missing sample, reduced request denominator, non-finite metric, failed arrival-window check, missing precision proof, hash mismatch, dirty root worktree, dataset drift, or provenance mismatch invalidates this attempt.",
+    "An invalid attempt is preserved and never resumed or retried under the same attempt ID; any retry requires a new frozen contract and a new ID linked through parent_attempt."
+  ],
+  "promotion_gate": "Passing the complete Gate 2 audit authorizes hash-verified schema-v2 profile construction and disjoint-seed controller confirmatory execution. It does not promote calibration metrics to paper evidence.",
+  "evidence_policy": "This calibration remains UNVERIFIED diagnostic evidence until completeness and statistical audits pass; even after analysis it remains non-confirmatory and excluded from paper-level effect estimates."
+}
