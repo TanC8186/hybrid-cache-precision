@@ -357,7 +357,7 @@ def build_benchmark_command(
         "--percentile-metrics",
         "ttft,tpot,itl",
         "--metric-percentiles",
-        "50,99",
+        "50,95,99",
         "--goodput",
         f"ttft:{max_ttft:g}",
         f"tpot:{float(protocol['tpot_threshold_ms']):g}",
@@ -534,6 +534,8 @@ def analyze_result(
         "drain_after_arrival_window_s": max(0.0, duration_s - window_s),
         "request_throughput_req_s": request_throughput,
         "request_throughput_over_offered": delivery_ratio,
+        "ttft_p95_ms_recomputed": percentile(ttfts_ms, 95),
+        "tpot_p95_ms_recomputed": percentile(tpots_ms, 95),
         "ttft_p99_ms_recomputed": percentile(ttfts_ms, 99),
         "tpot_p99_ms_recomputed": percentile(tpots_ms, 99),
         "reported_ttft_p99_ms": ensure_finite("p99_ttft_ms", result["p99_ttft_ms"]),
@@ -584,6 +586,8 @@ class ServerSession:
         self.process: subprocess.Popen[Any] | None = None
         self.log_handle: Any | None = None
         self.session_dir: Path | None = None
+        self.started_monotonic: float | None = None
+        self.startup_duration_s: float | None = None
 
     def __enter__(self) -> ServerSession:  # noqa: PYI034
         server = self.config["server"]
@@ -609,6 +613,7 @@ class ServerSession:
         self.log_handle = (self.session_dir / "server.log").open("w", encoding="utf-8")
         env = os.environ.copy()
         env.update({str(key): str(value) for key, value in self.config["environment"].get("env", {}).items()})
+        self.started_monotonic = time.monotonic()
         self.process = subprocess.Popen(
             command,
             cwd=self.repo_root,
@@ -640,6 +645,7 @@ class ServerSession:
                 {
                     "status": "startup_failed",
                     "returncode": self.process.returncode,
+                    "startup_duration_s": time.monotonic() - self.started_monotonic,
                     "updated_at": utc_timestamp(),
                 },
             )
@@ -665,12 +671,15 @@ class ServerSession:
                         time.sleep(float(server.get("stabilization_s", 0)))
                         self.log_handle.flush()
                         self._verify_log_patterns()
+                        assert self.started_monotonic is not None
+                        self.startup_duration_s = time.monotonic() - self.started_monotonic
                         atomic_write_json(
                             self.session_dir / "status.json",
                             {
                                 "status": "ready",
                                 "pid": self.process.pid,
                                 "health_url": health_url,
+                                "startup_duration_s": self.startup_duration_s,
                                 "updated_at": utc_timestamp(),
                             },
                         )
@@ -738,6 +747,7 @@ class ServerSession:
                 {
                     "status": "stopped",
                     "returncode": self.process.returncode if self.process else None,
+                    "startup_duration_s": self.startup_duration_s,
                     "updated_at": utc_timestamp(),
                     "exception": str(exc) if exc else None,
                 },

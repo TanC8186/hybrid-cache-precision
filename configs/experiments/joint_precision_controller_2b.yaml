@@ -1,0 +1,132 @@
+schema_version: 1
+name: joint_precision_controller_2b
+
+controller:
+  model_id: Qwen/Qwen3.5-2B
+  transition_semantics: deployment_epoch_cold_restart
+  calibration_seeds: [7, 42, 2026]
+  confirmatory_seeds: [11, 23, 47]
+
+environment:
+  vllm_executable: /root/autodl-tmp/MLSys_Research/.venv/bin/vllm
+  vllm_source_dir: /root/autodl-tmp/MLSys_Research/vendor/vllm
+  model_path: /root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master
+  env:
+    VLLM_USE_FLASHINFER_SAMPLER: "0"
+    PYTHONUNBUFFERED: "1"
+    VLLM_HTTP_TIMEOUT_KEEP_ALIVE: "75"
+
+server:
+  host: 127.0.0.1
+  port: 8000
+  health_path: /health
+  startup_timeout_s: 600
+  health_poll_interval_s: 2
+  stabilization_s: 5
+  shutdown_grace_s: 30
+  args:
+    - --max-model-len
+    - "4096"
+    - --gpu-memory-utilization
+    - "0.80"
+    - --seed
+    - "42"
+
+protocol:
+  protocol_version: 3
+  request_failure_policy: count_as_slo_miss
+  benchmark_client_keepalive_timeout_s: 60
+  warmup_requests: 120
+  measurement_window_s: 60
+  max_concurrency: null
+  ttft_thresholds_ms: [250, 500, 1000, 2000, 3000]
+  tpot_threshold_ms: 200
+  sustainable_goodput_ratio: 0.95
+  arrival_window_tolerance_fraction: 0.10
+  goodput_crosscheck_abs_tolerance: 0.02
+  sample_timeout_s: 900
+  require_clean_git: true
+
+allocations:
+  full:
+    server_args:
+      - --kv-cache-dtype
+      - auto
+      - --mamba-ssm-cache-dtype
+      - float32
+      - --compilation-config
+      - '{"cudagraph_mode":"PIECEWISE"}'
+    required_log_substrings:
+      - Using the user-specified value
+      - CUDAGraphMode.PIECEWISE
+  kv_only:
+    server_args:
+      - --kv-cache-dtype
+      - int4_per_token_head
+      - --mamba-ssm-cache-dtype
+      - float32
+      - --compilation-config
+      - '{"cudagraph_mode":"PIECEWISE"}'
+    required_log_substrings:
+      - int4_per_token_head
+      - Using the user-specified value
+      - CUDAGraphMode.PIECEWISE
+  state_only:
+    server_args:
+      - --kv-cache-dtype
+      - auto
+      - --mamba-ssm-cache-dtype
+      - bfloat16
+      - --compilation-config
+      - '{"cudagraph_mode":"PIECEWISE"}'
+    required_log_substrings:
+      - Using the user-specified value
+      - CUDAGraphMode.PIECEWISE
+  joint:
+    server_args:
+      - --kv-cache-dtype
+      - int4_per_token_head
+      - --mamba-ssm-cache-dtype
+      - bfloat16
+      - --compilation-config
+      - '{"cudagraph_mode":"PIECEWISE"}'
+    required_log_substrings:
+      - int4_per_token_head
+      - Using the user-specified value
+      - CUDAGraphMode.PIECEWISE
+
+workloads:
+  random:
+    dataset_name: random
+    random_input_len: 1024
+    random_output_len: 128
+  sharegpt:
+    dataset_name: sharegpt
+    dataset_path: /root/autodl-tmp/caches/sharegpt/ShareGPT_V3_unfiltered_cleaned_split.json
+    sharegpt_output_len: null
+    ignore_eos: true
+    no_oversample: true
+
+phases:
+  gate0:
+    allocations: [full, kv_only, state_only, joint]
+    seeds: [7]
+    workload_rates:
+      random: [40]
+  mvex:
+    allocations: [full, kv_only, state_only, joint]
+    seeds: [7]
+    workload_rates:
+      random: [30]
+  calibration:
+    allocations: [full, kv_only, state_only, joint]
+    seeds: [7, 42, 2026]
+    workload_rates:
+      random: [30, 35, 40, 45, 50]
+      sharegpt: [20, 25, 30, 35, 40, 45, 50]
+  confirmatory:
+    allocations: [full, kv_only, state_only, joint]
+    seeds: [11, 23, 47]
+    workload_rates:
+      random: [30, 35, 40, 45, 50]
+      sharegpt: [20, 25, 30, 35, 40, 45, 50]

@@ -1,0 +1,181 @@
+{
+  "schema_version": 1,
+  "profile_status": "TEST_FIXTURE",
+  "evidence": [
+    {
+      "evidence_id": "gate0_fixture",
+      "path": "configs/controller/fixtures/joint_precision_gate0_evidence.json",
+      "verification_status": "FIXTURE"
+    }
+  ],
+  "candidates": [
+    {
+      "config_id": "full",
+      "kv_cache_dtype": "auto",
+      "state_cache_dtype": "float32",
+      "deployment": {
+        "engine": "vllm",
+        "allocation": "full",
+        "precision_args": ["--kv-cache-dtype", "auto", "--mamba-ssm-cache-dtype", "float32"],
+        "restart_required": true
+      },
+      "capacity_profiles": [
+        {
+          "model_id": "Qwen/Qwen3.5-2B",
+          "max_model_len": 4096,
+          "gpu_memory_utilization": 0.8,
+          "cache_bytes": {"source": {"evidence_id": "gate0_fixture", "json_pointer": "/candidates/full/cache_bytes"}},
+          "max_concurrency": {"source": {"evidence_id": "gate0_fixture", "json_pointer": "/candidates/full/max_concurrency"}}
+        }
+      ],
+      "serving_profiles": [
+        {
+          "model_id": "Qwen/Qwen3.5-2B",
+          "max_model_len": 4096,
+          "workload": "random",
+          "offered_rate_req_s": 40,
+          "slo": {"p95_ttft_ms": 500, "p95_tpot_ms": 200},
+          "slo_goodput_lcb_req_s": {"source": {"evidence_id": "gate0_fixture", "json_pointer": "/candidates/full/goodput_lcb_req_s"}},
+          "p95_ttft_ucb_ms": {"source": {"evidence_id": "gate0_fixture", "json_pointer": "/candidates/full/p95_ttft_ucb_ms"}},
+          "p95_tpot_ucb_ms": {"source": {"evidence_id": "gate0_fixture", "json_pointer": "/candidates/full/p95_tpot_ucb_ms"}},
+          "n_independent_repeats": {"source": {"evidence_id": "gate0_fixture", "json_pointer": "/candidates/full/n_independent_repeats"}}
+        }
+      ],
+      "quality_profiles": [
+        {
+          "model_id": "Qwen/Qwen3.5-2B",
+          "task": "gsm8k",
+          "delta_ci95_low": {"source": {"evidence_id": "gate0_fixture", "json_pointer": "/candidates/full/quality_ci95/0"}},
+          "delta_ci95_high": {"source": {"evidence_id": "gate0_fixture", "json_pointer": "/candidates/full/quality_ci95/1"}},
+          "n_independent_repeats": {"source": {"evidence_id": "gate0_fixture", "json_pointer": "/candidates/full/n_independent_repeats"}}
+        }
+      ]
+    },
+    {
+      "config_id": "kv_only",
+      "kv_cache_dtype": "int4_per_token_head",
+      "state_cache_dtype": "float32",
+      "deployment": {
+        "engine": "vllm",
+        "allocation": "kv_only",
+        "precision_args": ["--kv-cache-dtype", "int4_per_token_head", "--mamba-ssm-cache-dtype", "float32"],
+        "restart_required": true
+      },
+      "capacity_profiles": [
+        {
+          "model_id": "Qwen/Qwen3.5-2B",
+          "max_model_len": 4096,
+          "gpu_memory_utilization": 0.8,
+          "cache_bytes": {"source": {"evidence_id": "gate0_fixture", "json_pointer": "/candidates/kv_only/cache_bytes"}},
+          "max_concurrency": {"source": {"evidence_id": "gate0_fixture", "json_pointer": "/candidates/kv_only/max_concurrency"}}
+        }
+      ],
+      "serving_profiles": [
+        {
+          "model_id": "Qwen/Qwen3.5-2B",
+          "max_model_len": 4096,
+          "workload": "random",
+          "offered_rate_req_s": 40,
+          "slo": {"p95_ttft_ms": 500, "p95_tpot_ms": 200},
+          "slo_goodput_lcb_req_s": {"source": {"evidence_id": "gate0_fixture", "json_pointer": "/candidates/kv_only/goodput_lcb_req_s"}},
+          "p95_ttft_ucb_ms": {"source": {"evidence_id": "gate0_fixture", "json_pointer": "/candidates/kv_only/p95_ttft_ucb_ms"}},
+          "p95_tpot_ucb_ms": {"source": {"evidence_id": "gate0_fixture", "json_pointer": "/candidates/kv_only/p95_tpot_ucb_ms"}},
+          "n_independent_repeats": {"source": {"evidence_id": "gate0_fixture", "json_pointer": "/candidates/kv_only/n_independent_repeats"}}
+        }
+      ],
+      "quality_profiles": [
+        {
+          "model_id": "Qwen/Qwen3.5-2B",
+          "task": "gsm8k",
+          "delta_ci95_low": {"source": {"evidence_id": "gate0_fixture", "json_pointer": "/candidates/kv_only/quality_ci95/0"}},
+          "delta_ci95_high": {"source": {"evidence_id": "gate0_fixture", "json_pointer": "/candidates/kv_only/quality_ci95/1"}},
+          "n_independent_repeats": {"source": {"evidence_id": "gate0_fixture", "json_pointer": "/candidates/kv_only/n_independent_repeats"}}
+        }
+      ]
+    },
+    {
+      "config_id": "state_only",
+      "kv_cache_dtype": "auto",
+      "state_cache_dtype": "bfloat16",
+      "deployment": {
+        "engine": "vllm",
+        "allocation": "state_only",
+        "precision_args": ["--kv-cache-dtype", "auto", "--mamba-ssm-cache-dtype", "bfloat16"],
+        "restart_required": true
+      },
+      "capacity_profiles": [
+        {
+          "model_id": "Qwen/Qwen3.5-2B",
+          "max_model_len": 4096,
+          "gpu_memory_utilization": 0.8,
+          "cache_bytes": {"source": {"evidence_id": "gate0_fixture", "json_pointer": "/candidates/state_only/cache_bytes"}},
+          "max_concurrency": {"source": {"evidence_id": "gate0_fixture", "json_pointer": "/candidates/state_only/max_concurrency"}}
+        }
+      ],
+      "serving_profiles": [
+        {
+          "model_id": "Qwen/Qwen3.5-2B",
+          "max_model_len": 4096,
+          "workload": "random",
+          "offered_rate_req_s": 40,
+          "slo": {"p95_ttft_ms": 500, "p95_tpot_ms": 200},
+          "slo_goodput_lcb_req_s": {"source": {"evidence_id": "gate0_fixture", "json_pointer": "/candidates/state_only/goodput_lcb_req_s"}},
+          "p95_ttft_ucb_ms": {"source": {"evidence_id": "gate0_fixture", "json_pointer": "/candidates/state_only/p95_ttft_ucb_ms"}},
+          "p95_tpot_ucb_ms": {"source": {"evidence_id": "gate0_fixture", "json_pointer": "/candidates/state_only/p95_tpot_ucb_ms"}},
+          "n_independent_repeats": {"source": {"evidence_id": "gate0_fixture", "json_pointer": "/candidates/state_only/n_independent_repeats"}}
+        }
+      ],
+      "quality_profiles": [
+        {
+          "model_id": "Qwen/Qwen3.5-2B",
+          "task": "gsm8k",
+          "delta_ci95_low": {"source": {"evidence_id": "gate0_fixture", "json_pointer": "/candidates/state_only/quality_ci95/0"}},
+          "delta_ci95_high": {"source": {"evidence_id": "gate0_fixture", "json_pointer": "/candidates/state_only/quality_ci95/1"}},
+          "n_independent_repeats": {"source": {"evidence_id": "gate0_fixture", "json_pointer": "/candidates/state_only/n_independent_repeats"}}
+        }
+      ]
+    },
+    {
+      "config_id": "joint",
+      "kv_cache_dtype": "int4_per_token_head",
+      "state_cache_dtype": "bfloat16",
+      "deployment": {
+        "engine": "vllm",
+        "allocation": "joint",
+        "precision_args": ["--kv-cache-dtype", "int4_per_token_head", "--mamba-ssm-cache-dtype", "bfloat16"],
+        "restart_required": true
+      },
+      "capacity_profiles": [
+        {
+          "model_id": "Qwen/Qwen3.5-2B",
+          "max_model_len": 4096,
+          "gpu_memory_utilization": 0.8,
+          "cache_bytes": {"source": {"evidence_id": "gate0_fixture", "json_pointer": "/candidates/joint/cache_bytes"}},
+          "max_concurrency": {"source": {"evidence_id": "gate0_fixture", "json_pointer": "/candidates/joint/max_concurrency"}}
+        }
+      ],
+      "serving_profiles": [
+        {
+          "model_id": "Qwen/Qwen3.5-2B",
+          "max_model_len": 4096,
+          "workload": "random",
+          "offered_rate_req_s": 40,
+          "slo": {"p95_ttft_ms": 500, "p95_tpot_ms": 200},
+          "slo_goodput_lcb_req_s": {"source": {"evidence_id": "gate0_fixture", "json_pointer": "/candidates/joint/goodput_lcb_req_s"}},
+          "p95_ttft_ucb_ms": {"source": {"evidence_id": "gate0_fixture", "json_pointer": "/candidates/joint/p95_ttft_ucb_ms"}},
+          "p95_tpot_ucb_ms": {"source": {"evidence_id": "gate0_fixture", "json_pointer": "/candidates/joint/p95_tpot_ucb_ms"}},
+          "n_independent_repeats": {"source": {"evidence_id": "gate0_fixture", "json_pointer": "/candidates/joint/n_independent_repeats"}}
+        }
+      ],
+      "quality_profiles": [
+        {
+          "model_id": "Qwen/Qwen3.5-2B",
+          "task": "gsm8k",
+          "delta_ci95_low": {"source": {"evidence_id": "gate0_fixture", "json_pointer": "/candidates/joint/quality_ci95/0"}},
+          "delta_ci95_high": {"source": {"evidence_id": "gate0_fixture", "json_pointer": "/candidates/joint/quality_ci95/1"}},
+          "n_independent_repeats": {"source": {"evidence_id": "gate0_fixture", "json_pointer": "/candidates/joint/n_independent_repeats"}}
+        }
+      ]
+    }
+  ]
+}

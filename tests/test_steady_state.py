@@ -4,15 +4,14 @@ import json
 from pathlib import Path
 
 import pytest
-
 from scripts.bench.run_steady_state import (
     ExperimentError,
+    ServerSession,
     analyze_result,
     build_benchmark_command,
     build_sample_plan,
     load_config,
     resolve_phase,
-    ServerSession,
 )
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -61,6 +60,7 @@ def test_benchmark_command_freezes_window_and_sharegpt_pairing(tmp_path: Path) -
     assert "--max-concurrency" not in command
     assert "ttft:3000" in command
     assert "tpot:200" in command
+    assert command[command.index("--metric-percentiles") + 1] == "50,95,99"
 
 
 def make_result(
@@ -121,6 +121,8 @@ def test_analysis_recomputes_threshold_sweep() -> None:
     assert analysis["slo_sweep"]["1000"]["good_requests"] == 3
     assert analysis["slo_sweep"]["2000"]["good_requests"] == 4
     assert analysis["slo_sweep"]["2000"]["sustainable"] is True
+    assert analysis["ttft_p95_ms_recomputed"] == pytest.approx(1365.0)
+    assert analysis["tpot_p95_ms_recomputed"] == pytest.approx(38.5)
 
 
 def test_analysis_fails_closed_on_arrival_window_drift() -> None:
