@@ -1,0 +1,3 @@
+ERROR: server log does not prove allocation 'full'; missing substrings: ['Using the user-specified value']
+attempt=joint-precision-four-config-mvex-20260811 phase=mvex total=4 pending_this_invocation=4
+starting allocation=full samples=1

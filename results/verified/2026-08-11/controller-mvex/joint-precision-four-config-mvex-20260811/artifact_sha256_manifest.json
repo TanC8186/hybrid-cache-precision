@@ -1,0 +1,115 @@
+{
+    "schema_version":  1,
+    "material_passport":  {
+                              "origin_skill":  "experiment-skill",
+                              "origin_mode":  "run",
+                              "origin_date":  "2026-08-11",
+                              "verification_status":  "INVALID",
+                              "version_label":  "joint_precision_mvex_artifact_manifest_v1"
+                          },
+    "attempt_id":  "joint-precision-four-config-mvex-20260811",
+    "scope":  "Complete downloaded failed-attempt evidence before retry",
+    "generated_at_utc":  "2026-08-11T11:51:46Z",
+    "files":  [
+                  {
+                      "relative_path":  "attempt/attempt_contract.json",
+                      "sha256":  "0783a56c58ff89f6e72317b66cffedf415df11dbf247a0415251ffa391add50b",
+                      "size_bytes":  1496
+                  },
+                  {
+                      "relative_path":  "attempt/attempt_contract.json.sha256",
+                      "sha256":  "208881bb3c890c37cabcb927896c66abe241e7b93a2e0b6f9cdaebf1ccaec3ba",
+                      "size_bytes":  65
+                  },
+                  {
+                      "relative_path":  "attempt/environment.json",
+                      "sha256":  "a4306408b7801ef014af6022dcb4161129eafa0234b12db89559214a7e656313",
+                      "size_bytes":  11859
+                  },
+                  {
+                      "relative_path":  "attempt/environment.json.sha256",
+                      "sha256":  "ed736e00e8ea206daea0b13d2b113d2b6e216e1a1fbedbf37b2cc1bca5d7407c",
+                      "size_bytes":  65
+                  },
+                  {
+                      "relative_path":  "attempt/invocations/20260811T110343Z-44c0fc40.json",
+                      "sha256":  "ae1f5d889fe73413bd25e3ad5510f0b8e668e5d6ba668c926cacefaa8b4431e8",
+                      "size_bytes":  393
+                  },
+                  {
+                      "relative_path":  "attempt/servers/full/20260811T110343Z-f6ca5f93/contract.json",
+                      "sha256":  "ee5732881703b757f86222e18d333b7e03e1acf1991eba133a53974dbd4f3a25",
+                      "size_bytes":  625
+                  },
+                  {
+                      "relative_path":  "attempt/servers/full/20260811T110343Z-f6ca5f93/contract.json.sha256",
+                      "sha256":  "9f52363fe4a1cbb5688355f73d5839e50e730526bef1a902ecf18cbebd5d45ef",
+                      "size_bytes":  65
+                  },
+                  {
+                      "relative_path":  "attempt/servers/full/20260811T110343Z-f6ca5f93/server.log",
+                      "sha256":  "2e3357922329de71a62e67463969b39cb45884073c78ea63474ce5210575cae9",
+                      "size_bytes":  29362
+                  },
+                  {
+                      "relative_path":  "attempt/servers/full/20260811T110343Z-f6ca5f93/status.json",
+                      "sha256":  "fba5fe13582f751150ff31aa531d3b4a220dddc661f1534e206319564c50aa28",
+                      "size_bytes":  135
+                  },
+                  {
+                      "relative_path":  "attempt/summary.json",
+                      "sha256":  "d652b8b922da1ff365565fd99f7f0c0b231eb2e07c36759532f789a02738282e",
+                      "size_bytes":  483
+                  },
+                  {
+                      "relative_path":  "attempt/summary.json.sha256",
+                      "sha256":  "e068414c95c87a56aa91e996afce54d46960e48beb21cac3fcc35758fecc05a2",
+                      "size_bytes":  65
+                  },
+                  {
+                      "relative_path":  "failure_record.json",
+                      "sha256":  "0a2d34a007697414bb175610ae5720557fdbf347fe03b880552465348b770e42",
+                      "size_bytes":  2837
+                  },
+                  {
+                      "relative_path":  "failure_record.json.sha256",
+                      "sha256":  "17c090c3a3fd4439244dc1c10492460aac770dd38608dd941944fea9a69db3db",
+                      "size_bytes":  65
+                  },
+                  {
+                      "relative_path":  "invalid_audit_report.md",
+                      "sha256":  "a620b49151488573ba0cdd0db506109c1c45588a794fd20bddd7d2c9e45f7954",
+                      "size_bytes":  2709
+                  },
+                  {
+                      "relative_path":  "invalid_audit_report.md.sha256",
+                      "sha256":  "a179cac3d83f8ee54a684e731a0cf13abff1b1a25701cd6a6d9f7519ff6c01b5",
+                      "size_bytes":  65
+                  },
+                  {
+                      "relative_path":  "launch/exit_code",
+                      "sha256":  "53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3",
+                      "size_bytes":  2
+                  },
+                  {
+                      "relative_path":  "launch/finished_at",
+                      "sha256":  "33d3dc628aae8a0de9eca9217eb68d0e6861c8829335e977bb6c04db770b1a63",
+                      "size_bytes":  26
+                  },
+                  {
+                      "relative_path":  "launch/pid",
+                      "sha256":  "b2da9424ab2734952f48d24cda36025410f6c3ccefe49655d9182f69fcfdad6e",
+                      "size_bytes":  7
+                  },
+                  {
+                      "relative_path":  "launch/run.log",
+                      "sha256":  "ebf885e4256e81d608693c8c42cf7e694e675a9598b06acc7deefba01a8914d3",
+                      "size_bytes":  237
+                  },
+                  {
+                      "relative_path":  "launch/started_at",
+                      "sha256":  "1f46b76025f8f380575b3a52f6ec472689a67cf4d652696e6a052dddf7db95fb",
+                      "size_bytes":  26
+                  }
+              ]
+}

@@ -1,0 +1,61 @@
+{
+  "attempt_id": "joint-precision-four-config-mvex-20260811",
+  "config_path": "/root/autodl-tmp/MLSys_Controller_1037a6c/configs/experiments/joint_precision_controller_2b.yaml",
+  "config_sha256": "6bb06fcb388d787d49bf5bb0fb6cfe721f1bce12aefb70cc4344317a027d7c9c",
+  "experiment": "joint_precision_controller_2b",
+  "git_commit": "99c86b48a6577b44d6389e9975ca6e3146a4d77b",
+  "parent_attempt": null,
+  "phase": {
+    "allocations": [
+      "full",
+      "kv_only",
+      "state_only",
+      "joint"
+    ],
+    "name": "mvex",
+    "seeds": [
+      7
+    ],
+    "workload_rates": {
+      "random": [
+        30.0
+      ]
+    }
+  },
+  "plan": [
+    {
+      "allocation": "full",
+      "num_prompts": 1800,
+      "request_rate": 30.0,
+      "sample_id": "full__random__r30__s7",
+      "seed": 7,
+      "workload": "random"
+    },
+    {
+      "allocation": "kv_only",
+      "num_prompts": 1800,
+      "request_rate": 30.0,
+      "sample_id": "kv_only__random__r30__s7",
+      "seed": 7,
+      "workload": "random"
+    },
+    {
+      "allocation": "state_only",
+      "num_prompts": 1800,
+      "request_rate": 30.0,
+      "sample_id": "state_only__random__r30__s7",
+      "seed": 7,
+      "workload": "random"
+    },
+    {
+      "allocation": "joint",
+      "num_prompts": 1800,
+      "request_rate": 30.0,
+      "sample_id": "joint__random__r30__s7",
+      "seed": 7,
+      "workload": "random"
+    }
+  ],
+  "schema_version": 1,
+  "vllm_source_commit": "e2fa28594f7baad142a426b0b6a2cfe2c79201c7"
+}
