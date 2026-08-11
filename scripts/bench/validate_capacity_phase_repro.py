@@ -8,12 +8,20 @@ import statistics
 from pathlib import Path
 from typing import Any
 
-from scripts.bench.analyze_capacity_phase_diagram import (
-    atomic_write_json,
-    expected_cells,
-    load_cells,
-    sha256_file,
-)
+if __package__:
+    from .analyze_capacity_phase_diagram import (
+        atomic_write_json,
+        expected_cells,
+        load_cells,
+        sha256_file,
+    )
+else:
+    from analyze_capacity_phase_diagram import (
+        atomic_write_json,
+        expected_cells,
+        load_cells,
+        sha256_file,
+    )
 
 
 EPSILON = 1e-12

@@ -1,3 +1,5 @@
+import subprocess
+import sys
 from pathlib import Path
 
 import pytest
@@ -40,6 +42,24 @@ def test_parse_capacity_phase_cell_name() -> None:
 def test_expected_cells_rejects_unknown_phase() -> None:
     with pytest.raises(ValueError, match="phase must be"):
         expected_cells("unknown")
+
+
+def test_capacity_repro_script_entrypoint_loads_repo_modules() -> None:
+    repo_root = Path(__file__).resolve().parents[1]
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(repo_root / "scripts" / "bench" / "validate_capacity_phase_repro.py"),
+            "--help",
+        ],
+        cwd=repo_root,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+
+    assert result.returncode == 0, result.stderr
+    assert "--parent-attempt" in result.stdout
 
 
 def make_capacity_record() -> dict:
