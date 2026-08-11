@@ -1,0 +1,8 @@
+completed_at=2026-08-11T19:48:43+08:00
+deleted_source=/root/autodl-tmp/a2-serving-20260805-f7a79f5
+verified_files=6827
+verified_apparent_bytes=33564817799
+local_manifest_sha256=6233bf161727a857b463f2fc461322af8805bce3e785fe1aea13eb5ec98784ff
+local_residual_sha256=08eb2a55cee4232508c880bf5fce8b50d87071f0adffb007e28380b67afb11f3
+Filesystem     Type  Size  Used Avail Use% Mounted on
+/dev/md0       xfs   150G   77G   74G  51% /root/autodl-tmp
