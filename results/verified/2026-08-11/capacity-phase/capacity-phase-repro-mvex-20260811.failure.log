@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/root/autodl-tmp/MLSys_Research/scripts/bench/probe_ssm_state_dtype.py", line 216, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/root/autodl-tmp/MLSys_Research/scripts/bench/probe_ssm_state_dtype.py", line 157, in main
+    llm = LLM(**llm_kwargs)
+          ^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/MLSys_Research/.venv/lib/python3.12/site-packages/vllm/entrypoints/llm.py", line 295, in __init__
+    engine_args = EngineArgs(
+                  ^^^^^^^^^^^
+TypeError: EngineArgs.__init__() got an unexpected keyword argument 'kv_cache_dtype_per_layer'
+[FAIL] 2b kv=int4 state=auto L=4096 util=0.85

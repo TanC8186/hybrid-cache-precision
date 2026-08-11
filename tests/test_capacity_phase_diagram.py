@@ -9,6 +9,7 @@ from scripts.bench.analyze_capacity_phase_diagram import (
 )
 from scripts.bench.validate_capacity_phase_repro import (
     compare_attempts,
+    evidence_outcome,
     symmetric_relative_diff,
 )
 
@@ -100,6 +101,22 @@ def make_formal_cells() -> dict:
 def test_symmetric_relative_diff_uses_larger_denominator() -> None:
     assert symmetric_relative_diff(100.0, 98.0) == pytest.approx(0.02)
     assert symmetric_relative_diff(0.0, 0.0) == 0.0
+
+
+@pytest.mark.parametrize(
+    ("comparison_passed", "promotion_eligible", "expected"),
+    [
+        (True, True, ("VERIFIED", "REPRODUCIBLE")),
+        (True, False, ("ANALYZED", "PARTIALLY_REPRODUCIBLE")),
+        (False, True, ("ANALYZED", "NOT_REPRODUCIBLE")),
+    ],
+)
+def test_capacity_repro_evidence_outcome(
+    comparison_passed: bool,
+    promotion_eligible: bool,
+    expected: tuple[str, str],
+) -> None:
+    assert evidence_outcome(comparison_passed, promotion_eligible) == expected
 
 
 def test_compare_capacity_repro_accepts_matching_formal_matrix() -> None:

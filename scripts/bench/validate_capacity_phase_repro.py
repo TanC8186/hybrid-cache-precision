@@ -23,6 +23,14 @@ def symmetric_relative_diff(left: float, right: float) -> float:
     return abs(left - right) / max(abs(left), abs(right), EPSILON)
 
 
+def evidence_outcome(comparison_passed: bool, promotion_eligible: bool) -> tuple[str, str]:
+    if not comparison_passed:
+        return "ANALYZED", "NOT_REPRODUCIBLE"
+    if not promotion_eligible:
+        return "ANALYZED", "PARTIALLY_REPRODUCIBLE"
+    return "VERIFIED", "REPRODUCIBLE"
+
+
 def load_frozen_contract(path: Path, attempt: str) -> tuple[dict[str, Any], str]:
     sidecar = path.with_suffix(path.suffix + ".sha256")
     digest = sha256_file(path)
@@ -175,13 +183,15 @@ def main() -> int:
         args.median_gain_pp_tolerance,
     )
     passed = comparison["passed"]
+    promotion_eligible = bool(repro_contract.get("promotion_eligible", True))
+    verification_status, verdict = evidence_outcome(passed, promotion_eligible)
     result = {
         "schema_version": 1,
         "material_passport": {
             "origin_skill": "experiment-skill",
             "origin_mode": "validate",
             "origin_date": "2026-08-11",
-            "verification_status": "VERIFIED" if passed else "ANALYZED",
+            "verification_status": verification_status,
             "version_label": "capacity_phase_repro_validation_v1",
         },
         "parent_attempt": args.parent_attempt,
@@ -196,7 +206,12 @@ def main() -> int:
             "group_median_gain_absolute_pp": args.median_gain_pp_tolerance,
             "timing_metrics_compared": False,
         },
-        "reproducibility_verdict": "REPRODUCIBLE" if passed else "NOT_REPRODUCIBLE",
+        "promotion_gate": {
+            "eligible": promotion_eligible,
+            "status": "PASS" if passed and promotion_eligible else "BLOCKED",
+            "reason": repro_contract.get("promotion_block_reason"),
+        },
+        "reproducibility_verdict": verdict,
         "comparison": comparison,
     }
     atomic_write_json(args.out, result)
