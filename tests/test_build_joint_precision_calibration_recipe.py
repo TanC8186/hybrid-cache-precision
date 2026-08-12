@@ -10,6 +10,7 @@ from scripts.controller.build_joint_precision_calibration_recipe import (
     EXPECTED_ALLOCATIONS,
     ProfileBuildError,
     build_recipe,
+    derive_physical_cache_summary,
     normalize_quality_evidence,
     parse_capacity_paths,
 )
@@ -171,3 +172,33 @@ def test_parse_capacity_paths_requires_exact_allocation_set() -> None:
                 "joint=joint.json",
             ]
         )
+
+
+def test_derive_physical_cache_summary_uses_unique_backing_storage() -> None:
+    document = capacity_document("full", 0)
+    document["kv_cache_config"] = {
+        "num_blocks": 2,
+        "tensors": [
+            {"tensor_id": 0, "size": 600},
+            {"tensor_id": 1, "size": 300},
+        ],
+    }
+    summary = derive_physical_cache_summary("full", document)
+
+    assert summary["physical_cache_bytes"] == 900
+    assert summary["logical_view_bytes"] == 1000
+    assert summary["backing_storage_count"] == 2
+
+
+def test_derive_physical_cache_summary_rejects_duplicate_backing_storage_ids() -> None:
+    document = capacity_document("full", 0)
+    document["kv_cache_config"] = {
+        "num_blocks": 2,
+        "tensors": [
+            {"tensor_id": 0, "size": 600},
+            {"tensor_id": 0, "size": 300},
+        ],
+    }
+
+    with pytest.raises(ProfileBuildError, match="duplicate backing-storage"):
+        derive_physical_cache_summary("full", document)

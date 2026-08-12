@@ -1,0 +1,20 @@
+{
+  "deployment_epoch_id": "m2-medium-20260812",
+  "previous_config_id": "full",
+  "model_id": "Qwen/Qwen3.5-2B",
+  "max_model_len": 4096,
+  "workload": "random",
+  "offered_rate_req_s": 30,
+  "memory_budget": {
+    "gpu_memory_utilization": 0.8,
+    "max_cache_bytes": 20000000000
+  },
+  "required_concurrency": 300,
+  "slo": {
+    "p95_ttft_ms": 500,
+    "p95_tpot_ms": 200
+  },
+  "quality_constraints": {
+    "gsm8k": -0.02
+  }
+}

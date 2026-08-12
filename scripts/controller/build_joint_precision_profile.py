@@ -286,6 +286,10 @@ def build_profile(recipe: Mapping[str, Any], repo_root: Path, *, recipe_path: Pa
         "evidence": evidence,
         "candidates": candidates,
     }
+    if "capacity_bytes_semantics" in recipe:
+        profile["capacity_bytes_semantics"] = copy.deepcopy(recipe["capacity_bytes_semantics"])
+    if "capacity_bytes_source" in recipe:
+        profile["capacity_bytes_source"] = copy.deepcopy(recipe["capacity_bytes_source"])
     if recipe_path is not None:
         try:
             relative_recipe = recipe_path.resolve().relative_to(repo_root.resolve()).as_posix()

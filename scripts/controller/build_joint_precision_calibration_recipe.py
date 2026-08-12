@@ -200,6 +200,54 @@ def audit_capacity_document(
     return max_model_len, float(utilization)
 
 
+def derive_physical_cache_summary(allocation: str, document: Mapping[str, Any]) -> dict[str, Any]:
+    """Derive physical cache bytes from unique backing-storage tensors.
+
+    ``cache_tensor_summary`` reports per-layer logical views.  Hybrid layers
+    share those views, so summing that field double-counts the allocation.  The
+    ``kv_cache_config.tensors`` entries are the unique backing storages used by
+    the allocator and are therefore the only valid source for a memory budget.
+    """
+
+    audit_capacity_document(allocation, document)
+    cache_config = document.get("kv_cache_config")
+    require(isinstance(cache_config, dict), f"{allocation}: kv cache config is missing")
+    raw_tensors = cache_config.get("tensors")
+    require(isinstance(raw_tensors, list) and raw_tensors, f"{allocation}: backing-storage tensors are missing")
+
+    tensor_ids: list[int] = []
+    sizes: list[int] = []
+    for index, raw_tensor in enumerate(raw_tensors):
+        require(isinstance(raw_tensor, dict), f"{allocation}: tensor {index} is invalid")
+        tensor_id = raw_tensor.get("tensor_id")
+        size = raw_tensor.get("size")
+        require(
+            isinstance(tensor_id, int) and not isinstance(tensor_id, bool) and tensor_id >= 0,
+            f"{allocation}: tensor {index} has an invalid tensor_id",
+        )
+        require(
+            isinstance(size, int) and not isinstance(size, bool) and size > 0,
+            f"{allocation}: tensor {index} has an invalid backing-storage size",
+        )
+        tensor_ids.append(tensor_id)
+        sizes.append(size)
+
+    require(len(tensor_ids) == len(set(tensor_ids)), f"{allocation}: duplicate backing-storage tensor_id")
+    logical_bytes = document["cache_tensor_summary"]["workers"][0]["total_cache_bytes"]
+    physical_bytes = sum(sizes)
+    require(logical_bytes >= physical_bytes, f"{allocation}: logical cache bytes are below physical bytes")
+    return {
+        "physical_cache_bytes": physical_bytes,
+        "logical_view_bytes": logical_bytes,
+        "backing_storage_count": len(sizes),
+        "backing_storage_tensor_ids": tensor_ids,
+        "max_concurrency": document["capacity"]["max_concurrency"],
+        "max_model_len": document["args"]["max_model_len"],
+        "gpu_memory_utilization": document["args"]["gpu_memory_utilization"],
+        "num_gpu_blocks": cache_config.get("num_blocks"),
+    }
+
+
 def serving_rows(allocation: str, profile_inputs: Mapping[str, Any]) -> list[dict[str, Any]]:
     allocation_inputs = profile_inputs.get(allocation)
     require(isinstance(allocation_inputs, dict), f"calibration profile inputs are missing: {allocation}")

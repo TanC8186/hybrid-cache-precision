@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "material_passport": {
+    "origin_skill": "experiment-skill",
+    "origin_mode": "run",
+    "origin_date": "2026-08-12",
+    "verification_status": "UNVERIFIED",
+    "version_label": "joint_precision_selector_m2_contract_v1"
+  },
+  "package_id": "joint-precision-selector-m2-20260812",
+  "parent_attempt": "joint-precision-four-config-calibration-r1-20260811",
+  "classification": "confirmatory_selector_pilot",
+  "objective": "Test whether a frozen quality/SLO/concurrency selector maps three predeclared deployment budgets to executable full, state-only, and joint allocations on disjoint confirmatory seeds.",
+  "profile": {
+    "path": "results/verified/2026-08-12/controller-profile/joint-precision-four-config-calibration-physical-r1-20260812/physical_calibration_profile.json",
+    "sha256": "a0379a61ae3988bf91fa917fc42f803380001cf84adc5c1627292771096ae27d",
+    "recipe_path": "results/verified/2026-08-12/controller-profile/joint-precision-four-config-calibration-physical-r1-20260812/physical_calibration_recipe.json",
+    "recipe_sha256": "5d406fc35ffcd63f45cb4dd491bfa43554ff4734994a3c01d915ffc1c2b71534",
+    "physical_evidence_path": "results/verified/2026-08-12/controller-profile/joint-precision-four-config-calibration-physical-r1-20260812/physical_cache_evidence.json",
+    "physical_evidence_sha256": "fcff035a6a6a8b1b827ffdf8922d5ba5a4484ed5705a1e2cbb3759f03711f655",
+    "capacity_bytes_semantics": "unique_backing_storage_sum",
+    "profile_status": "CALIBRATION",
+    "calibration_seeds": [7, 42, 2026],
+    "confirmatory_seeds": [11, 23, 47]
+  },
+  "requests": [
+    {
+      "id": "strict",
+      "path": "configs/controller/requests/joint_precision_m2_strict_20260812.json",
+      "sha256": "661133ba74cad2cbd6112601f92a5f769d9e14bf5dba6078ba39c6fbb4d22877",
+      "expected_selected_config_id": "full"
+    },
+    {
+      "id": "medium",
+      "path": "configs/controller/requests/joint_precision_m2_medium_20260812.json",
+      "sha256": "4bb34afa7750187ee0295b39ad98136279988b444c9d4d431f1b0dcad2e65685",
+      "expected_selected_config_id": "state_only"
+    },
+    {
+      "id": "high",
+      "path": "configs/controller/requests/joint_precision_m2_high_20260812.json",
+      "sha256": "dae1630139cf70c2d6147dc647d59f558f300cec544d5b9c7051af83b1b1144c",
+      "expected_selected_config_id": "joint"
+    }
+  ],
+  "negative_request": {
+    "path": "configs/controller/requests/joint_precision_m2_no_feasible_20260812.json",
+    "sha256": "60edb97d04998cae6626e811bac28bbde70fbf079b000906df5aed6029826c32",
+    "expected_status": "NO_FEASIBLE_CANDIDATE",
+    "expected_exit_code": 2,
+    "gpu_execution": false
+  },
+  "serving_config": {
+    "path": "configs/experiments/joint_precision_controller_2b.yaml",
+    "phase": "confirmatory",
+    "measurement_window_s": 60,
+    "warmup_requests": 120,
+    "request_failure_policy": "count_as_slo_miss",
+    "server_transition": "deployment_epoch_cold_restart"
+  },
+  "matrix": {
+    "mvex": {
+      "request_id": "high",
+      "seeds": [11],
+      "expected_samples": 1,
+      "expected_measurement_requests": 2400
+    },
+    "pilot": {
+      "request_ids": ["strict", "medium", "high"],
+      "seeds": [11, 23, 47],
+      "expected_samples": 9,
+      "expected_measurement_requests": 18000,
+      "expected_warmup_requests": 1080
+    }
+  },
+  "primary_metrics": [
+    "feasible_decision_rate",
+    "prediction_error",
+    "slo_attainment",
+    "request_goodput",
+    "capacity_utilization"
+  ],
+  "evidence_policy": "MVEx is diagnostic and excluded from pilot denominators. Pilot remains ANALYZED until a separate reproducibility comparison and 11/11 statistical audit pass.",
+  "failure_policy": "Any missing sample, nonzero runner exit, timeout, OOM, failed precision proof, NaN, denominator reduction, dirty remote worktree, or profile hash drift invalidates the affected attempt; retries require a new attempt ID linked to the failed parent."
+}

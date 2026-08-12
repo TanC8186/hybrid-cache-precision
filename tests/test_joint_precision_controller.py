@@ -319,6 +319,11 @@ def test_fixture_profile_is_blocked_from_real_execution(
     assert failure["status"] == "NON_EXECUTABLE_PROFILE"
 
 
+def test_legacy_logical_view_profile_is_rejected_before_execution() -> None:
+    with pytest.raises(controller.ProfileBuildError, match="legacy logical-view"):
+        controller.validate_profile_capacity_semantics({"profile_status": "CALIBRATION"})
+
+
 def test_mapping_preflight_failure_is_persisted(
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,

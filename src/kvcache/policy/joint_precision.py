@@ -10,6 +10,7 @@ from typing import Any
 
 PROFILE_SCHEMA_VERSION = 2
 POLICY_NAME = "joint_precision_deployment_epoch_v2"
+CAPACITY_BYTES_SEMANTICS = "unique_backing_storage_sum"
 SUPPORTED_KV_CACHE_DTYPES = {"auto", "int4_per_token_head"}
 SUPPORTED_STATE_CACHE_DTYPES = {"float32", "bfloat16", "float16"}
 EVIDENCE_STATUSES = {"ANALYZED", "FIXTURE", "VERIFIED"}

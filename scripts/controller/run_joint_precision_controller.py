@@ -18,7 +18,7 @@ for import_root in (REPO_ROOT, SOURCE_ROOT):
     if str(import_root) not in sys.path:
         sys.path.insert(0, str(import_root))
 
-from kvcache.policy import NoFeasibleCandidate, PolicyInputError, select_joint_precision
+from kvcache.policy import CAPACITY_BYTES_SEMANTICS, NoFeasibleCandidate, PolicyInputError, select_joint_precision
 from scripts.bench.run_steady_state import (
     ExperimentError,
     build_sample_plan,
@@ -48,6 +48,20 @@ def load_json(path: Path) -> dict[str, Any]:
     if not isinstance(value, dict):
         raise ControllerError(f"JSON root must be an object: {path}")
     return value
+
+
+def validate_profile_capacity_semantics(profile: Mapping[str, Any]) -> None:
+    """Reject legacy profiles that counted shared logical layer views."""
+
+    # Test fixtures and synthetic unit-test profiles never drive a real GPU
+    # run.  Calibration profiles are executable inputs and must be explicit.
+    if profile.get("profile_status") in {"TEST_FIXTURE", "VERIFIED"}:
+        return
+    if profile.get("capacity_bytes_semantics") != CAPACITY_BYTES_SEMANTICS:
+        raise ProfileBuildError(
+            "controller requires capacity_bytes_semantics="
+            f"{CAPACITY_BYTES_SEMANTICS!r}; legacy logical-view profiles are not executable"
+        )
 
 
 def extract_unique_option(args: Sequence[str], flag: str) -> str:
@@ -243,6 +257,7 @@ def main(argv: Sequence[str] | None = None) -> int:
 
     try:
         profile = load_json(profile_path)
+        validate_profile_capacity_semantics(profile)
         request = load_json(request_path)
         config = load_config(config_path)
         repo_root = config_path.parents[2]

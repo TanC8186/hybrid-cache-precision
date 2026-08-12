@@ -1,0 +1,99 @@
+{
+  "allocations": {
+    "full": {
+      "backing_storage_count": 6,
+      "backing_storage_tensor_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "gpu_memory_utilization": 0.8,
+      "logical_view_bytes": 77854875648,
+      "max_concurrency": 269.90909090909093,
+      "max_model_len": 4096,
+      "num_gpu_blocks": 2969,
+      "physical_cache_bytes": 19846791168
+    },
+    "joint": {
+      "backing_storage_count": 6,
+      "backing_storage_tensor_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "gpu_memory_utilization": 0.8,
+      "logical_view_bytes": 78754014720,
+      "max_concurrency": 833.5714285714286,
+      "max_model_len": 4096,
+      "num_gpu_blocks": 5835,
+      "physical_cache_bytes": 19816220160
+    },
+    "kv_only": {
+      "backing_storage_count": 6,
+      "backing_storage_tensor_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "gpu_memory_utilization": 0.8,
+      "logical_view_bytes": 79012316160,
+      "max_concurrency": 606.0,
+      "max_model_len": 4096,
+      "num_gpu_blocks": 3030,
+      "physical_cache_bytes": 19812418560
+    },
+    "state_only": {
+      "backing_storage_count": 6,
+      "backing_storage_tensor_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "gpu_memory_utilization": 0.8,
+      "logical_view_bytes": 76504965120,
+      "max_concurrency": 311.6111111111111,
+      "max_model_len": 4096,
+      "num_gpu_blocks": 5609,
+      "physical_cache_bytes": 19849936896
+    }
+  },
+  "capacity_bytes_semantics": "unique_backing_storage_sum",
+  "material_passport": {
+    "origin_date": "2026-08-12",
+    "origin_mode": "validate",
+    "origin_skill": "experiment-skill",
+    "verification_status": "VERIFIED",
+    "version_label": "physical_cache_evidence_v1"
+  },
+  "schema_version": 1,
+  "source_documents": {
+    "full": {
+      "path": "results/verified/2026-08-11/capacity-phase/capacity-phase-repro-r3-20260811__2b__kvfp16__stateauto__L4096__u080.json",
+      "sha256": "46fdb4fca2709548e0d5578d0708c869b330c4b1285bbc6d42d28bb549d96ff2"
+    },
+    "joint": {
+      "path": "results/verified/2026-08-11/capacity-phase/capacity-phase-repro-r3-20260811__2b__kvint4__statebfloat16__L4096__u080.json",
+      "sha256": "c64f87b9ed9291730c4c5603d6e0cfc0fbbe95d31adc247971c6eccd5d1d7b35"
+    },
+    "kv_only": {
+      "path": "results/verified/2026-08-11/capacity-phase/capacity-phase-repro-r3-20260811__2b__kvint4__stateauto__L4096__u080.json",
+      "sha256": "a23e554a9b12c8af8a2a65f3cf8cf1913525e81793a199c7a7d3df9bb137e3b8"
+    },
+    "state_only": {
+      "path": "results/verified/2026-08-11/capacity-phase/capacity-phase-repro-r3-20260811__2b__kvfp16__statebfloat16__L4096__u080.json",
+      "sha256": "21b873e1fc46ce43aec86c250458c0b293cf9e0f40fcfdae3f29e9468b4cfdb7"
+    }
+  }
+}
