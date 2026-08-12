@@ -1,0 +1,1035 @@
+{
+  "audit": {
+    "checks": [
+      "selector/allocation mapping",
+      "contract/result consistency",
+      "exact sample/request/warmup denominators",
+      "failures, NaNs, missing samples, and partial artifacts",
+      "SLO latency and goodput recomputation",
+      "server precision command and log proof",
+      "three-seed confidence intervals",
+      "11/11 statistical fallacy scan"
+    ],
+    "hash_validation_performed": false,
+    "mode": "logical_only",
+    "sidecar_files_used_as_gates": false
+  },
+  "cells": [
+    {
+      "attempt_id": "joint-precision-m2-pilot-strict-s11-23-47-20260812",
+      "calibration_goodput_lcb_req_s": 29.4830412408679,
+      "capacity_utilization": 0.9262377905018524,
+      "confirmatory_goodput_ci95_low_minus_calibration_lcb_req_s": 0.03946400865254773,
+      "confirmatory_goodput_minus_calibration_lcb_req_s": 0.07991957949607809,
+      "decision_latency_ms": 1.166309,
+      "launch": {
+        "attempt_id": "joint-precision-m2-pilot-strict-s11-23-47-20260812",
+        "duration_s": 349.0,
+        "exit_code": 0,
+        "expected_allocation": "full",
+        "finished_at": "2026-08-12T22:10:13+08:00",
+        "run_log_size_bytes": 528,
+        "started_at": "2026-08-12T22:04:24+08:00"
+      },
+      "metric_summaries": {
+        "goodput_over_offered": {
+          "ci95_high": 0.9867805463735838,
+          "ci95_low": 0.9840835083173484,
+          "mean": 0.9854320273454661,
+          "n": 3,
+          "sample_sd": 0.0005428519609393257,
+          "values": [
+            0.9860588504665164,
+            0.985115817091828,
+            0.9851214144780536
+          ]
+        },
+        "goodput_req_s": {
+          "ci95_high": 29.60341639120751,
+          "ci95_low": 29.52250524952045,
+          "mean": 29.56296082036398,
+          "n": 3,
+          "sample_sd": 0.016285558828178937,
+          "values": [
+            29.581765513995492,
+            29.553474512754843,
+            29.553642434341608
+          ]
+        },
+        "p95_tpot_ms": {
+          "ci95_high": 20.467294136643872,
+          "ci95_low": 16.832088319218222,
+          "mean": 18.649691227931047,
+          "n": 3,
+          "sample_sd": 0.7316836341427229,
+          "values": [
+            19.493980705738068,
+            18.200299494320483,
+            18.2547934837346
+          ]
+        },
+        "p95_ttft_ms": {
+          "ci95_high": 201.58284424414535,
+          "ci95_low": 187.40052084207235,
+          "mean": 194.49168254310885,
+          "n": 3,
+          "sample_sd": 2.854576727863196,
+          "values": [
+            195.57997081428766,
+            196.64203831925988,
+            191.25303849577904
+          ]
+        },
+        "request_throughput_req_s": {
+          "ci95_high": 29.60341639120751,
+          "ci95_low": 29.52250524952045,
+          "mean": 29.56296082036398,
+          "n": 3,
+          "sample_sd": 0.016285558828178937,
+          "values": [
+            29.581765513995492,
+            29.553474512754843,
+            29.553642434341608
+          ]
+        }
+      },
+      "quality_slack": 0.01,
+      "request_id": "strict",
+      "requested_slo_attainment": "3/3",
+      "required_concurrency": 250.0,
+      "root_commit": "a3533b3774c596a67101d9a116be1604965488f9",
+      "samples": [
+        {
+          "accounting": {
+            "completed": 1800,
+            "detail_lengths": {
+              "errors": 1800,
+              "input_lens": 1800,
+              "itls": 1800,
+              "output_lens": 1800,
+              "start_times": 1800,
+              "ttfts": 1800
+            },
+            "expected": 1800,
+            "failed": 0,
+            "request_conservation": true
+          },
+          "allocation": "full",
+          "arrival_span_over_target": 0.9999529524395864,
+          "benchmark_duration_s": 60.84829518198967,
+          "goodput_over_offered": 0.9860588504665164,
+          "goodput_req_s": 29.581765513995492,
+          "offered_rate_req_s": 30.0,
+          "request_throughput_req_s": 29.581765513995492,
+          "requested_slo_attained": true,
+          "sample_id": "full__random__r30__s11",
+          "seed": 11,
+          "slo_sweep": {
+            "1000": {
+              "good_requests": 1800,
+              "goodput_over_offered": 0.9860588504665164,
+              "goodput_req_s": 29.581765513995492,
+              "sustainable": true
+            },
+            "2000": {
+              "good_requests": 1800,
+              "goodput_over_offered": 0.9860588504665164,
+              "goodput_req_s": 29.581765513995492,
+              "sustainable": true
+            },
+            "250": {
+              "good_requests": 1800,
+              "goodput_over_offered": 0.9860588504665164,
+              "goodput_req_s": 29.581765513995492,
+              "sustainable": true
+            },
+            "3000": {
+              "good_requests": 1800,
+              "goodput_over_offered": 0.9860588504665164,
+              "goodput_req_s": 29.581765513995492,
+              "sustainable": true
+            },
+            "500": {
+              "good_requests": 1800,
+              "goodput_over_offered": 0.9860588504665164,
+              "goodput_req_s": 29.581765513995492,
+              "sustainable": true
+            }
+          },
+          "tpot_p95_ms": 19.493980705738068,
+          "ttft_p95_ms": 195.57997081428766,
+          "warmup_requests": 120,
+          "workload": "random"
+        },
+        {
+          "accounting": {
+            "completed": 1800,
+            "detail_lengths": {
+              "errors": 1800,
+              "input_lens": 1800,
+              "itls": 1800,
+              "output_lens": 1800,
+              "start_times": 1800,
+              "ttfts": 1800
+            },
+            "expected": 1800,
+            "failed": 0,
+            "request_conservation": true
+          },
+          "allocation": "full",
+          "arrival_span_over_target": 0.9996593346508841,
+          "benchmark_duration_s": 60.90654414333403,
+          "goodput_over_offered": 0.985115817091828,
+          "goodput_req_s": 29.553474512754843,
+          "offered_rate_req_s": 30.0,
+          "request_throughput_req_s": 29.553474512754843,
+          "requested_slo_attained": true,
+          "sample_id": "full__random__r30__s23",
+          "seed": 23,
+          "slo_sweep": {
+            "1000": {
+              "good_requests": 1800,
+              "goodput_over_offered": 0.985115817091828,
+              "goodput_req_s": 29.553474512754843,
+              "sustainable": true
+            },
+            "2000": {
+              "good_requests": 1800,
+              "goodput_over_offered": 0.985115817091828,
+              "goodput_req_s": 29.553474512754843,
+              "sustainable": true
+            },
+            "250": {
+              "good_requests": 1800,
+              "goodput_over_offered": 0.985115817091828,
+              "goodput_req_s": 29.553474512754843,
+              "sustainable": true
+            },
+            "3000": {
+              "good_requests": 1800,
+              "goodput_over_offered": 0.985115817091828,
+              "goodput_req_s": 29.553474512754843,
+              "sustainable": true
+            },
+            "500": {
+              "good_requests": 1800,
+              "goodput_over_offered": 0.985115817091828,
+              "goodput_req_s": 29.553474512754843,
+              "sustainable": true
+            }
+          },
+          "tpot_p95_ms": 18.200299494320483,
+          "ttft_p95_ms": 196.64203831925988,
+          "warmup_requests": 120,
+          "workload": "random"
+        },
+        {
+          "accounting": {
+            "completed": 1800,
+            "detail_lengths": {
+              "errors": 1800,
+              "input_lens": 1800,
+              "itls": 1800,
+              "output_lens": 1800,
+              "start_times": 1800,
+              "ttfts": 1800
+            },
+            "expected": 1800,
+            "failed": 0,
+            "request_conservation": true
+          },
+          "allocation": "full",
+          "arrival_span_over_target": 1.0000037794311842,
+          "benchmark_duration_s": 60.90619807690382,
+          "goodput_over_offered": 0.9851214144780536,
+          "goodput_req_s": 29.553642434341608,
+          "offered_rate_req_s": 30.0,
+          "request_throughput_req_s": 29.553642434341608,
+          "requested_slo_attained": true,
+          "sample_id": "full__random__r30__s47",
+          "seed": 47,
+          "slo_sweep": {
+            "1000": {
+              "good_requests": 1800,
+              "goodput_over_offered": 0.9851214144780536,
+              "goodput_req_s": 29.553642434341608,
+              "sustainable": true
+            },
+            "2000": {
+              "good_requests": 1800,
+              "goodput_over_offered": 0.9851214144780536,
+              "goodput_req_s": 29.553642434341608,
+              "sustainable": true
+            },
+            "250": {
+              "good_requests": 1800,
+              "goodput_over_offered": 0.9851214144780536,
+              "goodput_req_s": 29.553642434341608,
+              "sustainable": true
+            },
+            "3000": {
+              "good_requests": 1800,
+              "goodput_over_offered": 0.9851214144780536,
+              "goodput_req_s": 29.553642434341608,
+              "sustainable": true
+            },
+            "500": {
+              "good_requests": 1800,
+              "goodput_over_offered": 0.9851214144780536,
+              "goodput_req_s": 29.553642434341608,
+              "sustainable": true
+            }
+          },
+          "tpot_p95_ms": 18.2547934837346,
+          "ttft_p95_ms": 191.25303849577904,
+          "warmup_requests": 120,
+          "workload": "random"
+        }
+      ],
+      "selected_config_id": "full",
+      "selected_max_concurrency": 269.90909090909093,
+      "selector_logic_recomputed": true,
+      "server": {
+        "allocation": "full",
+        "fatal_signatures": {
+          "CUDA error: an illegal instruction": false,
+          "CUDA error: an illegal memory access": false,
+          "CUDA out of memory": false,
+          "EngineCore encountered a fatal error": false
+        },
+        "health_200_count": 4,
+        "precision_proofs": [
+          "'mamba_ssm_cache_dtype': 'float32'",
+          "kv_cache_dtype=auto",
+          "CUDAGraphMode.PIECEWISE"
+        ],
+        "returncode": 0,
+        "session_id": "20260812T140428Z-d3dc8234",
+        "stale_cubin_reload_warning_count": 0,
+        "startup_duration_s": 77.03162653185427,
+        "status": "stopped"
+      },
+      "vllm_commit": "e2fa28594f7baad142a426b0b6a2cfe2c79201c7"
+    },
+    {
+      "attempt_id": "joint-precision-m2-pilot-medium-s11-23-47-20260812",
+      "calibration_goodput_lcb_req_s": 29.486713178179297,
+      "capacity_utilization": 0.9627384560527724,
+      "confirmatory_goodput_ci95_low_minus_calibration_lcb_req_s": 0.04585182519248221,
+      "confirmatory_goodput_minus_calibration_lcb_req_s": 0.07640328369499372,
+      "decision_latency_ms": 1.215841,
+      "launch": {
+        "attempt_id": "joint-precision-m2-pilot-medium-s11-23-47-20260812",
+        "duration_s": 349.0,
+        "exit_code": 0,
+        "expected_allocation": "state_only",
+        "finished_at": "2026-08-12T22:16:02+08:00",
+        "run_log_size_bytes": 570,
+        "started_at": "2026-08-12T22:10:13+08:00"
+      },
+      "metric_summaries": {
+        "goodput_over_offered": {
+          "ci95_high": 0.9864555973458934,
+          "ci95_low": 0.9844188334457261,
+          "mean": 0.9854372153958098,
+          "n": 3,
+          "sample_sd": 0.0004099539028083141,
+          "values": [
+            0.9858594334535482,
+            0.9850407387963748,
+            0.9854114739375065
+          ]
+        },
+        "goodput_req_s": {
+          "ci95_high": 29.593667920376802,
+          "ci95_low": 29.53256500337178,
+          "mean": 29.56311646187429,
+          "n": 3,
+          "sample_sd": 0.012298617084249567,
+          "values": [
+            29.575783003606446,
+            29.551222163891243,
+            29.562344218125194
+          ]
+        },
+        "p95_tpot_ms": {
+          "ci95_high": 19.689834187803996,
+          "ci95_low": 16.18907860237823,
+          "mean": 17.939456395091113,
+          "n": 3,
+          "sample_sd": 0.7046218832263269,
+          "values": [
+            18.75206965909112,
+            17.49798215441699,
+            17.568317371765225
+          ]
+        },
+        "p95_ttft_ms": {
+          "ci95_high": 212.74352135567375,
+          "ci95_low": 180.58401681673024,
+          "mean": 196.663769086202,
+          "n": 3,
+          "sample_sd": 6.4729713625808625,
+          "values": [
+            191.6062369942665,
+            203.95860113203523,
+            194.4264691323042
+          ]
+        },
+        "request_throughput_req_s": {
+          "ci95_high": 29.593667920376802,
+          "ci95_low": 29.53256500337178,
+          "mean": 29.56311646187429,
+          "n": 3,
+          "sample_sd": 0.012298617084249567,
+          "values": [
+            29.575783003606446,
+            29.551222163891243,
+            29.562344218125194
+          ]
+        }
+      },
+      "quality_slack": 0.0029,
+      "request_id": "medium",
+      "requested_slo_attainment": "3/3",
+      "required_concurrency": 300.0,
+      "root_commit": "a3533b3774c596a67101d9a116be1604965488f9",
+      "samples": [
+        {
+          "accounting": {
+            "completed": 1800,
+            "detail_lengths": {
+              "errors": 1800,
+              "input_lens": 1800,
+              "itls": 1800,
+              "output_lens": 1800,
+              "start_times": 1800,
+              "ttfts": 1800
+            },
+            "expected": 1800,
+            "failed": 0,
+            "request_conservation": true
+          },
+          "allocation": "state_only",
+          "arrival_span_over_target": 0.9999469240196049,
+          "benchmark_duration_s": 60.86060341261327,
+          "goodput_over_offered": 0.9858594334535482,
+          "goodput_req_s": 29.575783003606446,
+          "offered_rate_req_s": 30.0,
+          "request_throughput_req_s": 29.575783003606446,
+          "requested_slo_attained": true,
+          "sample_id": "state_only__random__r30__s11",
+          "seed": 11,
+          "slo_sweep": {
+            "1000": {
+              "good_requests": 1800,
+              "goodput_over_offered": 0.9858594334535482,
+              "goodput_req_s": 29.575783003606446,
+              "sustainable": true
+            },
+            "2000": {
+              "good_requests": 1800,
+              "goodput_over_offered": 0.9858594334535482,
+              "goodput_req_s": 29.575783003606446,
+              "sustainable": true
+            },
+            "250": {
+              "good_requests": 1800,
+              "goodput_over_offered": 0.9858594334535482,
+              "goodput_req_s": 29.575783003606446,
+              "sustainable": true
+            },
+            "3000": {
+              "good_requests": 1800,
+              "goodput_over_offered": 0.9858594334535482,
+              "goodput_req_s": 29.575783003606446,
+              "sustainable": true
+            },
+            "500": {
+              "good_requests": 1800,
+              "goodput_over_offered": 0.9858594334535482,
+              "goodput_req_s": 29.575783003606446,
+              "sustainable": true
+            }
+          },
+          "tpot_p95_ms": 18.75206965909112,
+          "ttft_p95_ms": 191.6062369942665,
+          "warmup_requests": 120,
+          "workload": "random"
+        },
+        {
+          "accounting": {
+            "completed": 1800,
+            "detail_lengths": {
+              "errors": 1800,
+              "input_lens": 1800,
+              "itls": 1800,
+              "output_lens": 1800,
+              "start_times": 1800,
+              "ttfts": 1800
+            },
+            "expected": 1800,
+            "failed": 0,
+            "request_conservation": true
+          },
+          "allocation": "state_only",
+          "arrival_span_over_target": 0.9996154548600316,
+          "benchmark_duration_s": 60.911186346784234,
+          "goodput_over_offered": 0.9850407387963748,
+          "goodput_req_s": 29.551222163891243,
+          "offered_rate_req_s": 30.0,
+          "request_throughput_req_s": 29.551222163891243,
+          "requested_slo_attained": true,
+          "sample_id": "state_only__random__r30__s23",
+          "seed": 23,
+          "slo_sweep": {
+            "1000": {
+              "good_requests": 1800,
+              "goodput_over_offered": 0.9850407387963748,
+              "goodput_req_s": 29.551222163891243,
+              "sustainable": true
+            },
+            "2000": {
+              "good_requests": 1800,
+              "goodput_over_offered": 0.9850407387963748,
+              "goodput_req_s": 29.551222163891243,
+              "sustainable": true
+            },
+            "250": {
+              "good_requests": 1793,
+              "goodput_over_offered": 0.9812100248121667,
+              "goodput_req_s": 29.436300744365,
+              "sustainable": true
+            },
+            "3000": {
+              "good_requests": 1800,
+              "goodput_over_offered": 0.9850407387963748,
+              "goodput_req_s": 29.551222163891243,
+              "sustainable": true
+            },
+            "500": {
+              "good_requests": 1800,
+              "goodput_over_offered": 0.9850407387963748,
+              "goodput_req_s": 29.551222163891243,
+              "sustainable": true
+            }
+          },
+          "tpot_p95_ms": 17.49798215441699,
+          "ttft_p95_ms": 203.95860113203523,
+          "warmup_requests": 120,
+          "workload": "random"
+        },
+        {
+          "accounting": {
+            "completed": 1800,
+            "detail_lengths": {
+              "errors": 1800,
+              "input_lens": 1800,
+              "itls": 1800,
+              "output_lens": 1800,
+              "start_times": 1800,
+              "ttfts": 1800
+            },
+            "expected": 1800,
+            "failed": 0,
+            "request_conservation": true
+          },
+          "allocation": "state_only",
+          "arrival_span_over_target": 0.9999964573731025,
+          "benchmark_duration_s": 60.88827011547983,
+          "goodput_over_offered": 0.9854114739375065,
+          "goodput_req_s": 29.562344218125194,
+          "offered_rate_req_s": 30.0,
+          "request_throughput_req_s": 29.562344218125194,
+          "requested_slo_attained": true,
+          "sample_id": "state_only__random__r30__s47",
+          "seed": 47,
+          "slo_sweep": {
+            "1000": {
+              "good_requests": 1800,
+              "goodput_over_offered": 0.9854114739375065,
+              "goodput_req_s": 29.562344218125194,
+              "sustainable": true
+            },
+            "2000": {
+              "good_requests": 1800,
+              "goodput_over_offered": 0.9854114739375065,
+              "goodput_req_s": 29.562344218125194,
+              "sustainable": true
+            },
+            "250": {
+              "good_requests": 1800,
+              "goodput_over_offered": 0.9854114739375065,
+              "goodput_req_s": 29.562344218125194,
+              "sustainable": true
+            },
+            "3000": {
+              "good_requests": 1800,
+              "goodput_over_offered": 0.9854114739375065,
+              "goodput_req_s": 29.562344218125194,
+              "sustainable": true
+            },
+            "500": {
+              "good_requests": 1800,
+              "goodput_over_offered": 0.9854114739375065,
+              "goodput_req_s": 29.562344218125194,
+              "sustainable": true
+            }
+          },
+          "tpot_p95_ms": 17.568317371765225,
+          "ttft_p95_ms": 194.4264691323042,
+          "warmup_requests": 120,
+          "workload": "random"
+        }
+      ],
+      "selected_config_id": "state_only",
+      "selected_max_concurrency": 311.6111111111111,
+      "selector_logic_recomputed": true,
+      "server": {
+        "allocation": "state_only",
+        "fatal_signatures": {
+          "CUDA error: an illegal instruction": false,
+          "CUDA error: an illegal memory access": false,
+          "CUDA out of memory": false,
+          "EngineCore encountered a fatal error": false
+        },
+        "health_200_count": 4,
+        "precision_proofs": [
+          "'mamba_ssm_cache_dtype': 'bfloat16'",
+          "kv_cache_dtype=auto",
+          "CUDAGraphMode.PIECEWISE"
+        ],
+        "returncode": 0,
+        "session_id": "20260812T141017Z-e31e2261",
+        "stale_cubin_reload_warning_count": 0,
+        "startup_duration_s": 77.03712357953191,
+        "status": "stopped"
+      },
+      "vllm_commit": "e2fa28594f7baad142a426b0b6a2cfe2c79201c7"
+    },
+    {
+      "attempt_id": "joint-precision-m2-pilot-high-s11-23-47-20260812",
+      "calibration_goodput_lcb_req_s": 37.6236282660987,
+      "capacity_utilization": 0.8397600685518424,
+      "confirmatory_goodput_ci95_low_minus_calibration_lcb_req_s": 0.6396906428518179,
+      "confirmatory_goodput_minus_calibration_lcb_req_s": 1.2545346476522496,
+      "decision_latency_ms": 1.185543,
+      "launch": {
+        "attempt_id": "joint-precision-m2-pilot-high-s11-23-47-20260812",
+        "duration_s": 439.0,
+        "exit_code": 0,
+        "expected_allocation": "joint",
+        "finished_at": "2026-08-12T22:23:21+08:00",
+        "run_log_size_bytes": 533,
+        "started_at": "2026-08-12T22:16:02+08:00"
+      },
+      "metric_summaries": {
+        "goodput_over_offered": {
+          "ci95_high": 0.9873251729637847,
+          "ci95_low": 0.956582972723763,
+          "mean": 0.9719540728437739,
+          "n": 3,
+          "sample_sd": 0.006187700483240222,
+          "values": [
+            0.9751981845627944,
+            0.9648189015640881,
+            0.975845132404439
+          ]
+        },
+        "goodput_req_s": {
+          "ci95_high": 39.49300691855138,
+          "ci95_low": 38.26331890895052,
+          "mean": 38.87816291375095,
+          "n": 3,
+          "sample_sd": 0.24750801932960892,
+          "values": [
+            39.007927382511774,
+            38.592756062563524,
+            39.03380529617756
+          ]
+        },
+        "p95_tpot_ms": {
+          "ci95_high": 43.46853271545734,
+          "ci95_low": 32.75687758027614,
+          "mean": 38.11270514786674,
+          "n": 3,
+          "sample_sd": 2.156010732438603,
+          "values": [
+            37.31224318731606,
+            40.554461970661336,
+            36.471410285622824
+          ]
+        },
+        "p95_ttft_ms": {
+          "ci95_high": 485.49914725836936,
+          "ci95_low": 268.5817198259949,
+          "mean": 377.04043354218214,
+          "n": 3,
+          "sample_sd": 43.66050770820111,
+          "values": [
+            369.1731862723828,
+            424.0996846929193,
+            337.8484296612442
+          ]
+        },
+        "request_throughput_req_s": {
+          "ci95_high": 39.10622799964233,
+          "ci95_low": 38.96478640534147,
+          "mean": 39.0355072024919,
+          "n": 3,
+          "sample_sd": 0.02846895194789249,
+          "values": [
+            39.007927382511774,
+            39.06478892878636,
+            39.03380529617756
+          ]
+        }
+      },
+      "quality_slack": 0.004700000000000003,
+      "request_id": "high",
+      "requested_slo_attainment": "3/3",
+      "required_concurrency": 700.0,
+      "root_commit": "a3533b3774c596a67101d9a116be1604965488f9",
+      "samples": [
+        {
+          "accounting": {
+            "completed": 2400,
+            "detail_lengths": {
+              "errors": 2400,
+              "input_lens": 2400,
+              "itls": 2400,
+              "output_lens": 2400,
+              "start_times": 2400,
+              "ttfts": 2400
+            },
+            "expected": 2400,
+            "failed": 0,
+            "request_conservation": true
+          },
+          "allocation": "joint",
+          "arrival_span_over_target": 1.0001865427941083,
+          "benchmark_duration_s": 61.52595539018512,
+          "goodput_over_offered": 0.9751981845627944,
+          "goodput_req_s": 39.007927382511774,
+          "offered_rate_req_s": 40.0,
+          "request_throughput_req_s": 39.007927382511774,
+          "requested_slo_attained": true,
+          "sample_id": "joint__random__r40__s11",
+          "seed": 11,
+          "slo_sweep": {
+            "1000": {
+              "good_requests": 2400,
+              "goodput_over_offered": 0.9751981845627944,
+              "goodput_req_s": 39.007927382511774,
+              "sustainable": true
+            },
+            "2000": {
+              "good_requests": 2400,
+              "goodput_over_offered": 0.9751981845627944,
+              "goodput_req_s": 39.007927382511774,
+              "sustainable": true
+            },
+            "250": {
+              "good_requests": 1456,
+              "goodput_over_offered": 0.5916202319680952,
+              "goodput_req_s": 23.66480927872381,
+              "sustainable": false
+            },
+            "3000": {
+              "good_requests": 2400,
+              "goodput_over_offered": 0.9751981845627944,
+              "goodput_req_s": 39.007927382511774,
+              "sustainable": true
+            },
+            "500": {
+              "good_requests": 2400,
+              "goodput_over_offered": 0.9751981845627944,
+              "goodput_req_s": 39.007927382511774,
+              "sustainable": true
+            }
+          },
+          "tpot_p95_ms": 37.31224318731606,
+          "ttft_p95_ms": 369.1731862723828,
+          "warmup_requests": 120,
+          "workload": "random"
+        },
+        {
+          "accounting": {
+            "completed": 2400,
+            "detail_lengths": {
+              "errors": 2400,
+              "input_lens": 2400,
+              "itls": 2400,
+              "output_lens": 2400,
+              "start_times": 2400,
+              "ttfts": 2400
+            },
+            "expected": 2400,
+            "failed": 0,
+            "request_conservation": true
+          },
+          "allocation": "joint",
+          "arrival_span_over_target": 1.0000255887707075,
+          "benchmark_duration_s": 61.43640003725886,
+          "goodput_over_offered": 0.9648189015640881,
+          "goodput_req_s": 38.592756062563524,
+          "offered_rate_req_s": 40.0,
+          "request_throughput_req_s": 39.06478892878636,
+          "requested_slo_attained": true,
+          "sample_id": "joint__random__r40__s23",
+          "seed": 23,
+          "slo_sweep": {
+            "1000": {
+              "good_requests": 2400,
+              "goodput_over_offered": 0.9766197232196591,
+              "goodput_req_s": 39.06478892878636,
+              "sustainable": true
+            },
+            "2000": {
+              "good_requests": 2400,
+              "goodput_over_offered": 0.9766197232196591,
+              "goodput_req_s": 39.06478892878636,
+              "sustainable": true
+            },
+            "250": {
+              "good_requests": 1361,
+              "goodput_over_offered": 0.5538247680424816,
+              "goodput_req_s": 22.152990721699265,
+              "sustainable": false
+            },
+            "3000": {
+              "good_requests": 2400,
+              "goodput_over_offered": 0.9766197232196591,
+              "goodput_req_s": 39.06478892878636,
+              "sustainable": true
+            },
+            "500": {
+              "good_requests": 2371,
+              "goodput_over_offered": 0.9648189015640881,
+              "goodput_req_s": 38.592756062563524,
+              "sustainable": true
+            }
+          },
+          "tpot_p95_ms": 40.554461970661336,
+          "ttft_p95_ms": 424.0996846929193,
+          "warmup_requests": 120,
+          "workload": "random"
+        },
+        {
+          "accounting": {
+            "completed": 2400,
+            "detail_lengths": {
+              "errors": 2400,
+              "input_lens": 2400,
+              "itls": 2400,
+              "output_lens": 2400,
+              "start_times": 2400,
+              "ttfts": 2400
+            },
+            "expected": 2400,
+            "failed": 0,
+            "request_conservation": true
+          },
+          "allocation": "joint",
+          "arrival_span_over_target": 1.0000348043007155,
+          "benchmark_duration_s": 61.48516604490578,
+          "goodput_over_offered": 0.975845132404439,
+          "goodput_req_s": 39.03380529617756,
+          "offered_rate_req_s": 40.0,
+          "request_throughput_req_s": 39.03380529617756,
+          "requested_slo_attained": true,
+          "sample_id": "joint__random__r40__s47",
+          "seed": 47,
+          "slo_sweep": {
+            "1000": {
+              "good_requests": 2400,
+              "goodput_over_offered": 0.975845132404439,
+              "goodput_req_s": 39.03380529617756,
+              "sustainable": true
+            },
+            "2000": {
+              "good_requests": 2400,
+              "goodput_over_offered": 0.975845132404439,
+              "goodput_req_s": 39.03380529617756,
+              "sustainable": true
+            },
+            "250": {
+              "good_requests": 1659,
+              "goodput_over_offered": 0.6745529477745684,
+              "goodput_req_s": 26.982117910982737,
+              "sustainable": false
+            },
+            "3000": {
+              "good_requests": 2400,
+              "goodput_over_offered": 0.975845132404439,
+              "goodput_req_s": 39.03380529617756,
+              "sustainable": true
+            },
+            "500": {
+              "good_requests": 2400,
+              "goodput_over_offered": 0.975845132404439,
+              "goodput_req_s": 39.03380529617756,
+              "sustainable": true
+            }
+          },
+          "tpot_p95_ms": 36.471410285622824,
+          "ttft_p95_ms": 337.8484296612442,
+          "warmup_requests": 120,
+          "workload": "random"
+        }
+      ],
+      "selected_config_id": "joint",
+      "selected_max_concurrency": 833.5714285714286,
+      "selector_logic_recomputed": true,
+      "server": {
+        "allocation": "joint",
+        "fatal_signatures": {
+          "CUDA error: an illegal instruction": false,
+          "CUDA error: an illegal memory access": false,
+          "CUDA out of memory": false,
+          "EngineCore encountered a fatal error": false
+        },
+        "health_200_count": 4,
+        "precision_proofs": [
+          "'mamba_ssm_cache_dtype': 'bfloat16'",
+          "kv_cache_dtype=int4_per_token_head",
+          "CUDAGraphMode.PIECEWISE"
+        ],
+        "returncode": 0,
+        "session_id": "20260812T141607Z-19e11599",
+        "stale_cubin_reload_warning_count": 18,
+        "startup_duration_s": 143.062632471323,
+        "status": "stopped"
+      },
+      "vllm_commit": "e2fa28594f7baad142a426b0b6a2cfe2c79201c7"
+    }
+  ],
+  "classification": "confirmatory_selector_pilot",
+  "completeness": {
+    "audited_samples": 9,
+    "completed_measurement_requests": 18000,
+    "declared_warmup_requests": 1080,
+    "expected_measurement_requests": 18000,
+    "expected_samples": 9,
+    "expected_warmup_requests": 1080,
+    "failed_measurement_requests": 0,
+    "launcher_exit_codes": [
+      0,
+      0,
+      0
+    ],
+    "silent_exclusions": 0
+  },
+  "decision_metrics": {
+    "expected_mapping_accuracy": 1.0,
+    "feasible_decision_rate": 1.0,
+    "mapping": {
+      "high": "joint",
+      "medium": "state_only",
+      "strict": "full"
+    }
+  },
+  "evidence_status": "ANALYZED",
+  "fallacy_scan": {
+    "coverage": "11/11",
+    "items": [
+      {
+        "detail": "Each budget/allocation cell remains separate; no pooled direction replaces cell-level results.",
+        "fallacy": "Simpson's paradox",
+        "severity": "NOTE"
+      },
+      {
+        "detail": "The inferential unit is the seeded benchmark sample, not an individual request.",
+        "fallacy": "Ecological fallacy",
+        "severity": "NOTE"
+      },
+      {
+        "detail": "The pilot intentionally covers one GPU, one model/context, Random workload, and three selected budget strata.",
+        "fallacy": "Berkson's paradox",
+        "severity": "CAUTION"
+      },
+      {
+        "detail": "No post-treatment covariate adjustment or conditioned regression is used.",
+        "fallacy": "Collider bias",
+        "severity": "NOTE"
+      },
+      {
+        "detail": "Every sample retains its full request denominator and failures count as SLO misses.",
+        "fallacy": "Base-rate neglect",
+        "severity": "NOTE"
+      },
+      {
+        "detail": "Budget requests, rates, and confirmatory seeds were frozen before pilot execution.",
+        "fallacy": "Regression to the mean",
+        "severity": "NOTE"
+      },
+      {
+        "detail": "All nine planned samples and all 18,000 measurement requests are required; none are silently excluded.",
+        "fallacy": "Survivorship bias",
+        "severity": "NOTE"
+      },
+      {
+        "detail": "The requested 500/200 ms SLO is primary; the remaining frozen TTFT sweep is descriptive.",
+        "fallacy": "Look-elsewhere effect",
+        "severity": "CAUTION"
+      },
+      {
+        "detail": "Mappings, seeds, rates, denominators, and SLO thresholds were frozen in the package contract.",
+        "fallacy": "Garden of forking paths",
+        "severity": "NOTE"
+      },
+      {
+        "detail": "The selector executes controlled precision configurations, but the scoped pilot cannot establish cross-model or mechanism claims.",
+        "fallacy": "Correlation is not causation",
+        "severity": "CAUTION"
+      },
+      {
+        "detail": "Each precision decision precedes a cold-start deployment epoch and its measurements.",
+        "fallacy": "Reverse causality",
+        "severity": "NOTE"
+      }
+    ]
+  },
+  "gate_2_verdict": "PASS",
+  "generated_at_utc": "2026-08-12T14:46:40.534580Z",
+  "material_passport": {
+    "origin_date": "2026-08-12",
+    "origin_mode": "validate",
+    "origin_skill": "experiment-skill",
+    "verification_status": "ANALYZED",
+    "version_label": "joint_precision_m2_pilot_logical_audit_v1"
+  },
+  "package_id": "joint-precision-selector-m2-20260812",
+  "promotion": {
+    "gate_3_expansion_authorized": true,
+    "paper_quantitative_use_authorized": false,
+    "reason": "Gate 2 passed, but a separately identified Gate 4 reproduction has not yet passed."
+  },
+  "reproducibility": {
+    "determinism_class": "environment_sensitive_seeded_serving_benchmark",
+    "method": "not yet run for this pilot",
+    "verdict": "CANNOT_VERIFY"
+  },
+  "schema_version": 1,
+  "scope": {
+    "gpu_count": 1,
+    "max_model_len": 4096,
+    "model_id": "Qwen/Qwen3.5-2B",
+    "tensor_parallelism": 1,
+    "workload": "random"
+  },
+  "source": {
+    "host": "mlsys-westd-28432:/root/autodl-tmp/m2-pilot-20260812",
+    "pilot_root": "E:\\MLSys_Research\\tmp\\m2-pilot-20260812",
+    "raw_evidence_retained_on_data_disk": true
+  },
+  "statistical_method": {
+    "ci": "two-sided Student-t 95% CI",
+    "degrees_of_freedom": 2,
+    "multiple_comparisons": "one predeclared primary SLO per budget; remaining threshold sweep descriptive",
+    "n_per_budget": 3,
+    "request_level_pseudoreplication_avoided": true,
+    "t_critical": 4.302652729911275,
+    "unit_of_analysis": "seeded benchmark sample"
+  }
+}
