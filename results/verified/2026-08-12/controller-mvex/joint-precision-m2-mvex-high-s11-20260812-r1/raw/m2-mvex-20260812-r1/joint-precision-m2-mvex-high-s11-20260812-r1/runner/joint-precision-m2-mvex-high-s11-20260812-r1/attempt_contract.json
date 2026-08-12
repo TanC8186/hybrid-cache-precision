@@ -1,0 +1,34 @@
+{
+  "attempt_id": "joint-precision-m2-mvex-high-s11-20260812-r1",
+  "config_path": "/root/autodl-tmp/MLSys_M2_20260812/configs/experiments/joint_precision_controller_2b.yaml",
+  "config_sha256": "0df1b9aea9342474d0027548d9f9a031dba2b9dd7a087562aa95d49636333e71",
+  "experiment": "joint_precision_controller_2b",
+  "git_commit": "a3533b3774c596a67101d9a116be1604965488f9",
+  "parent_attempt": null,
+  "phase": {
+    "allocations": [
+      "joint"
+    ],
+    "name": "confirmatory",
+    "seeds": [
+      11
+    ],
+    "workload_rates": {
+      "random": [
+        40.0
+      ]
+    }
+  },
+  "plan": [
+    {
+      "allocation": "joint",
+      "num_prompts": 2400,
+      "request_rate": 40.0,
+      "sample_id": "joint__random__r40__s11",
+      "seed": 11,
+      "workload": "random"
+    }
+  ],
+  "schema_version": 1,
+  "vllm_source_commit": "e2fa28594f7baad142a426b0b6a2cfe2c79201c7"
+}

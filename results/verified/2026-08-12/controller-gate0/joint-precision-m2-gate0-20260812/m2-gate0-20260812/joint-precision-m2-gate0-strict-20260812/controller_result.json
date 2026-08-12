@@ -1,0 +1,73 @@
+{
+  "attempt_id": "joint-precision-m2-gate0-strict-20260812",
+  "controller_contract_sha256": "4b57961c7f16ed5ad578acdbe4d0794903a6ff07133ac7a328d971d242cf6171",
+  "decision_latency_ms": 1.166492,
+  "deployment_mapping": {
+    "allocation": "full",
+    "allocation_server_args": [
+      "--kv-cache-dtype",
+      "auto",
+      "--mamba-ssm-cache-dtype",
+      "float32",
+      "--compilation-config",
+      "{\"cudagraph_mode\":\"PIECEWISE\"}"
+    ],
+    "precision_args": [
+      "--kv-cache-dtype",
+      "auto",
+      "--mamba-ssm-cache-dtype",
+      "float32"
+    ],
+    "restart_required": true,
+    "server_command": [
+      "/root/autodl-tmp/MLSys_Research/.venv/bin/vllm",
+      "serve",
+      "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "8000",
+      "--max-model-len",
+      "4096",
+      "--gpu-memory-utilization",
+      "0.80",
+      "--seed",
+      "42",
+      "--kv-cache-dtype",
+      "auto",
+      "--mamba-ssm-cache-dtype",
+      "float32",
+      "--compilation-config",
+      "{\"cudagraph_mode\":\"PIECEWISE\"}"
+    ]
+  },
+  "sample_plan": [
+    {
+      "allocation": "full",
+      "num_prompts": 1800,
+      "request_rate": 30.0,
+      "sample_id": "full__random__r30__s11",
+      "seed": 11,
+      "workload": "random"
+    },
+    {
+      "allocation": "full",
+      "num_prompts": 1800,
+      "request_rate": 30.0,
+      "sample_id": "full__random__r30__s23",
+      "seed": 23,
+      "workload": "random"
+    },
+    {
+      "allocation": "full",
+      "num_prompts": 1800,
+      "request_rate": 30.0,
+      "sample_id": "full__random__r30__s47",
+      "seed": 47,
+      "workload": "random"
+    }
+  ],
+  "schema_version": 1,
+  "selected_config_id": "full",
+  "status": "DRY_RUN_VALIDATED"
+}

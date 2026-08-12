@@ -1,0 +1,96 @@
+{
+  "decision_latency_ms": 1.140456,
+  "evaluations": [
+    {
+      "cache_bytes": 19846791168,
+      "config_id": "full",
+      "feasible": false,
+      "max_concurrency": 269.90909090909093,
+      "objective_lcb_req_s": 7.948346512922458,
+      "quality_slack": 0.04,
+      "rejection_reasons": [
+        "insufficient_concurrency",
+        "ttft_slo_violated"
+      ]
+    },
+    {
+      "cache_bytes": 19812418560,
+      "config_id": "kv_only",
+      "feasible": false,
+      "max_concurrency": 606.0,
+      "objective_lcb_req_s": 32.13662788989264,
+      "quality_slack": -0.0020000000000000018,
+      "rejection_reasons": [
+        "insufficient_concurrency",
+        "ttft_slo_violated",
+        "quality_guardrail_violated:gsm8k"
+      ]
+    },
+    {
+      "cache_bytes": 19849936896,
+      "config_id": "state_only",
+      "feasible": false,
+      "max_concurrency": 311.6111111111111,
+      "objective_lcb_req_s": 15.356147298374234,
+      "quality_slack": 0.0229,
+      "rejection_reasons": [
+        "insufficient_concurrency",
+        "ttft_slo_violated"
+      ]
+    },
+    {
+      "cache_bytes": 19816220160,
+      "config_id": "joint",
+      "feasible": true,
+      "max_concurrency": 833.5714285714286,
+      "objective_lcb_req_s": 37.6236282660987,
+      "quality_slack": 0.004700000000000003,
+      "rejection_reasons": []
+    }
+  ],
+  "objective": "maximize robust SLO-goodput lower confidence bound",
+  "policy": "joint_precision_deployment_epoch_v2",
+  "profile_status": "CALIBRATION",
+  "request": {
+    "deployment_epoch_id": "m2-high-20260812",
+    "max_model_len": 4096,
+    "memory_budget": {
+      "gpu_memory_utilization": 0.8,
+      "max_cache_bytes": 20000000000
+    },
+    "model_id": "Qwen/Qwen3.5-2B",
+    "offered_rate_req_s": 40.0,
+    "previous_config_id": "full",
+    "quality_constraints": {
+      "gsm8k": -0.04
+    },
+    "required_concurrency": 700.0,
+    "slo": {
+      "p95_tpot_ms": 200.0,
+      "p95_ttft_ms": 500.0
+    },
+    "workload": "random"
+  },
+  "schema_version": 2,
+  "selected": {
+    "cache_bytes": 19816220160,
+    "config_id": "joint",
+    "deployment": {
+      "allocation": "joint",
+      "engine": "vllm",
+      "precision_args": [
+        "--kv-cache-dtype",
+        "int4_per_token_head",
+        "--mamba-ssm-cache-dtype",
+        "bfloat16"
+      ],
+      "restart_required": true
+    },
+    "kv_cache_dtype": "int4_per_token_head",
+    "max_concurrency": 833.5714285714286,
+    "objective_lcb_req_s": 37.6236282660987,
+    "quality_slack": 0.004700000000000003,
+    "state_cache_dtype": "bfloat16"
+  },
+  "status": "SELECTED"
+}

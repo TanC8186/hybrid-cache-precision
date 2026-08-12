@@ -1,0 +1,113 @@
+{
+  "attempt_id": "joint-precision-m2-mvex-high-s11-20260812-r1",
+  "denominator": {
+    "completed_measurement_requests": 2400,
+    "completed_validated_samples": 1,
+    "failed_measurement_requests": 0,
+    "planned_measurement_requests": 2400,
+    "planned_samples": 1,
+    "silent_exclusions": 0
+  },
+  "evidence_status": "UNVERIFIED",
+  "fallacy_scan": [
+    {
+      "detail": "The MVEx has one predeclared allocation, workload, rate, and seed; no effect claim is promoted.",
+      "fallacy": "Simpson's paradox",
+      "recommendation": "Keep this sample diagnostic and use the frozen multi-seed pilot for inference.",
+      "severity": "NOTE"
+    },
+    {
+      "detail": "The MVEx has one predeclared allocation, workload, rate, and seed; no effect claim is promoted.",
+      "fallacy": "Ecological fallacy",
+      "recommendation": "Keep this sample diagnostic and use the frozen multi-seed pilot for inference.",
+      "severity": "NOTE"
+    },
+    {
+      "detail": "The MVEx has one predeclared allocation, workload, rate, and seed; no effect claim is promoted.",
+      "fallacy": "Berkson's paradox",
+      "recommendation": "Keep this sample diagnostic and use the frozen multi-seed pilot for inference.",
+      "severity": "NOTE"
+    },
+    {
+      "detail": "The MVEx has one predeclared allocation, workload, rate, and seed; no effect claim is promoted.",
+      "fallacy": "Collider bias",
+      "recommendation": "Keep this sample diagnostic and use the frozen multi-seed pilot for inference.",
+      "severity": "NOTE"
+    },
+    {
+      "detail": "The MVEx has one predeclared allocation, workload, rate, and seed; no effect claim is promoted.",
+      "fallacy": "Base rate neglect",
+      "recommendation": "Keep this sample diagnostic and use the frozen multi-seed pilot for inference.",
+      "severity": "NOTE"
+    },
+    {
+      "detail": "The MVEx has one predeclared allocation, workload, rate, and seed; no effect claim is promoted.",
+      "fallacy": "Regression to the mean",
+      "recommendation": "Keep this sample diagnostic and use the frozen multi-seed pilot for inference.",
+      "severity": "NOTE"
+    },
+    {
+      "detail": "The MVEx has one predeclared allocation, workload, rate, and seed; no effect claim is promoted.",
+      "fallacy": "Survivorship bias",
+      "recommendation": "Keep this sample diagnostic and use the frozen multi-seed pilot for inference.",
+      "severity": "NOTE"
+    },
+    {
+      "detail": "The MVEx has one predeclared allocation, workload, rate, and seed; no effect claim is promoted.",
+      "fallacy": "Look-elsewhere effect",
+      "recommendation": "Keep this sample diagnostic and use the frozen multi-seed pilot for inference.",
+      "severity": "NOTE"
+    },
+    {
+      "detail": "The MVEx has one predeclared allocation, workload, rate, and seed; no effect claim is promoted.",
+      "fallacy": "Garden of forking paths",
+      "recommendation": "Keep this sample diagnostic and use the frozen multi-seed pilot for inference.",
+      "severity": "NOTE"
+    },
+    {
+      "detail": "The MVEx has one predeclared allocation, workload, rate, and seed; no effect claim is promoted.",
+      "fallacy": "Correlation is not causation",
+      "recommendation": "Keep this sample diagnostic and use the frozen multi-seed pilot for inference.",
+      "severity": "NOTE"
+    },
+    {
+      "detail": "The MVEx has one predeclared allocation, workload, rate, and seed; no effect claim is promoted.",
+      "fallacy": "Reverse causality",
+      "recommendation": "Keep this sample diagnostic and use the frozen multi-seed pilot for inference.",
+      "severity": "NOTE"
+    }
+  ],
+  "fallacy_scan_coverage": "11/11",
+  "gate_1_verdict": "PASS",
+  "generated_at_utc": "2026-08-12T14:14:57.547018Z",
+  "material_passport": {
+    "origin_date": "2026-08-12",
+    "origin_mode": "validate",
+    "origin_skill": "experiment-skill",
+    "verification_status": "ANALYZED",
+    "version_label": "joint_precision_m2_mvex_validation_v1"
+  },
+  "metrics": {
+    "goodput_500_req_s": 39.069372314932394,
+    "request_throughput_over_offered": 0.9767343078733098,
+    "request_throughput_req_s": 39.069372314932394,
+    "tpot_p95_ms_recomputed": 39.67730690116488,
+    "tpot_p99_ms_recomputed": 40.13466457682331,
+    "ttft_p95_ms_recomputed": 332.0482252165675,
+    "ttft_p99_ms_recomputed": 409.0343064814809
+  },
+  "promotion": {
+    "paper_quantitative_use_authorized": false,
+    "pilot_authorized": true
+  },
+  "reproducibility": {
+    "determinism_class": "environment_sensitive_seeded_serving_benchmark",
+    "method": "not run at MVEx",
+    "verdict": "CANNOT_VERIFY"
+  },
+  "root_commit": "a3533b3774c596a67101d9a116be1604965488f9",
+  "schema_version": 1,
+  "selected_config_id": "joint",
+  "server_startup_duration_s": 75.03029565513134,
+  "vllm_commit": "e2fa28594f7baad142a426b0b6a2cfe2c79201c7"
+}

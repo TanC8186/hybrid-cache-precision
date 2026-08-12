@@ -1,0 +1,180 @@
+{
+  "attempt_id": "joint-precision-m2-gate0-high-20260812",
+  "decision_sha256": "59e753aeae962e222dbf66b2befff19be014cc33479c0e4e38c18a799ed795cd",
+  "deployment_mapping": {
+    "allocation": "joint",
+    "allocation_server_args": [
+      "--kv-cache-dtype",
+      "int4_per_token_head",
+      "--mamba-ssm-cache-dtype",
+      "bfloat16",
+      "--compilation-config",
+      "{\"cudagraph_mode\":\"PIECEWISE\"}"
+    ],
+    "precision_args": [
+      "--kv-cache-dtype",
+      "int4_per_token_head",
+      "--mamba-ssm-cache-dtype",
+      "bfloat16"
+    ],
+    "restart_required": true,
+    "server_command": [
+      "/root/autodl-tmp/MLSys_Research/.venv/bin/vllm",
+      "serve",
+      "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "8000",
+      "--max-model-len",
+      "4096",
+      "--gpu-memory-utilization",
+      "0.80",
+      "--seed",
+      "42",
+      "--kv-cache-dtype",
+      "int4_per_token_head",
+      "--mamba-ssm-cache-dtype",
+      "bfloat16",
+      "--compilation-config",
+      "{\"cudagraph_mode\":\"PIECEWISE\"}"
+    ]
+  },
+  "dry_run": true,
+  "evidence_verification": [
+    {
+      "evidence_id": "serving_calibration",
+      "path": "results/verified/2026-08-11/controller-calibration/joint-precision-four-config-calibration-r1-20260811/calibration_analysis.json",
+      "sha256": "6230c6f6cbc247c9d5e11f2833d95465c91332085e15dcf646b2a278c884dcfc",
+      "sidecar_path": "results/verified/2026-08-11/controller-calibration/joint-precision-four-config-calibration-r1-20260811/calibration_analysis.json.sha256"
+    },
+    {
+      "evidence_id": "calibration_contract",
+      "path": "configs/controller/contracts/joint_precision_four_config_calibration_r1_20260811.json",
+      "sha256": "17d5d79dccf8aaace9ac6473a00561be723964ac33f1fcd2b8361ff75603a930",
+      "sidecar_path": "configs/controller/contracts/joint_precision_four_config_calibration_r1_20260811.json.sha256"
+    },
+    {
+      "evidence_id": "capacity_validation",
+      "path": "results/verified/2026-08-11/capacity-phase/capacity-phase-repro-r3-20260811.validation.json",
+      "sha256": "58b977f0e85b24375aa83380422f8e9b143cd83d6d9feaedddacc2f807827ecf",
+      "sidecar_path": "results/verified/2026-08-11/capacity-phase/capacity-phase-repro-r3-20260811.validation.json.sha256"
+    },
+    {
+      "evidence_id": "quality_gsm8k",
+      "path": "results/verified/2026-08-11/controller-calibration/joint-precision-four-config-calibration-r1-20260811/quality_evidence.json",
+      "sha256": "6248ce34638018d51bf2c1f65c7d7a9c9236de63025812407644a556f36c93f1",
+      "sidecar_path": "results/verified/2026-08-11/controller-calibration/joint-precision-four-config-calibration-r1-20260811/quality_evidence.json.sha256"
+    },
+    {
+      "evidence_id": "capacity_full",
+      "path": "results/verified/2026-08-11/capacity-phase/capacity-phase-repro-r3-20260811__2b__kvfp16__stateauto__L4096__u080.json",
+      "sha256": "46fdb4fca2709548e0d5578d0708c869b330c4b1285bbc6d42d28bb549d96ff2",
+      "sidecar_path": "results/verified/2026-08-11/capacity-phase/capacity-phase-repro-r3-20260811__2b__kvfp16__stateauto__L4096__u080.json.sha256"
+    },
+    {
+      "evidence_id": "capacity_kv_only",
+      "path": "results/verified/2026-08-11/capacity-phase/capacity-phase-repro-r3-20260811__2b__kvint4__stateauto__L4096__u080.json",
+      "sha256": "a23e554a9b12c8af8a2a65f3cf8cf1913525e81793a199c7a7d3df9bb137e3b8",
+      "sidecar_path": "results/verified/2026-08-11/capacity-phase/capacity-phase-repro-r3-20260811__2b__kvint4__stateauto__L4096__u080.json.sha256"
+    },
+    {
+      "evidence_id": "capacity_state_only",
+      "path": "results/verified/2026-08-11/capacity-phase/capacity-phase-repro-r3-20260811__2b__kvfp16__statebfloat16__L4096__u080.json",
+      "sha256": "21b873e1fc46ce43aec86c250458c0b293cf9e0f40fcfdae3f29e9468b4cfdb7",
+      "sidecar_path": "results/verified/2026-08-11/capacity-phase/capacity-phase-repro-r3-20260811__2b__kvfp16__statebfloat16__L4096__u080.json.sha256"
+    },
+    {
+      "evidence_id": "capacity_joint",
+      "path": "results/verified/2026-08-11/capacity-phase/capacity-phase-repro-r3-20260811__2b__kvint4__statebfloat16__L4096__u080.json",
+      "sha256": "c64f87b9ed9291730c4c5603d6e0cfc0fbbe95d31adc247971c6eccd5d1d7b35",
+      "sidecar_path": "results/verified/2026-08-11/capacity-phase/capacity-phase-repro-r3-20260811__2b__kvint4__statebfloat16__L4096__u080.json.sha256"
+    },
+    {
+      "evidence_id": "capacity_physical",
+      "path": "results/verified/2026-08-12/controller-profile/joint-precision-four-config-calibration-physical-r1-20260812/physical_cache_evidence.json",
+      "sha256": "fcff035a6a6a8b1b827ffdf8922d5ba5a4484ed5705a1e2cbb3759f03711f655",
+      "sidecar_path": "results/verified/2026-08-12/controller-profile/joint-precision-four-config-calibration-physical-r1-20260812/physical_cache_evidence.json.sha256"
+    }
+  ],
+  "material_passport": {
+    "origin_date": "2026-08-12",
+    "origin_mode": "run",
+    "origin_skill": "experiment-skill",
+    "verification_status": "UNVERIFIED",
+    "version_label": "joint_precision_controller_contract_v1"
+  },
+  "phase": {
+    "allocations": [
+      "joint"
+    ],
+    "name": "confirmatory",
+    "seeds": [
+      11,
+      23,
+      47
+    ],
+    "workload_rates": {
+      "random": [
+        40.0
+      ]
+    }
+  },
+  "plan": [
+    {
+      "allocation": "joint",
+      "num_prompts": 2400,
+      "request_rate": 40.0,
+      "sample_id": "joint__random__r40__s11",
+      "seed": 11,
+      "workload": "random"
+    },
+    {
+      "allocation": "joint",
+      "num_prompts": 2400,
+      "request_rate": 40.0,
+      "sample_id": "joint__random__r40__s23",
+      "seed": 23,
+      "workload": "random"
+    },
+    {
+      "allocation": "joint",
+      "num_prompts": 2400,
+      "request_rate": 40.0,
+      "sample_id": "joint__random__r40__s47",
+      "seed": 47,
+      "workload": "random"
+    }
+  ],
+  "profile_path": "/root/autodl-tmp/MLSys_M2_20260812/results/verified/2026-08-12/controller-profile/joint-precision-four-config-calibration-physical-r1-20260812/physical_calibration_profile.json",
+  "profile_sha256": "a0379a61ae3988bf91fa917fc42f803380001cf84adc5c1627292771096ae27d",
+  "request_path": "/root/autodl-tmp/MLSys_M2_20260812/configs/controller/requests/joint_precision_m2_high_20260812.json",
+  "request_sha256": "dae1630139cf70c2d6147dc647d59f558f300cec544d5b9c7051af83b1b1144c",
+  "root_git": {
+    "clean": true,
+    "commit": "a3533b3774c596a67101d9a116be1604965488f9",
+    "status": ""
+  },
+  "runner_argv": [
+    "--config",
+    "/root/autodl-tmp/MLSys_M2_20260812/configs/experiments/joint_precision_controller_2b.yaml",
+    "--phase",
+    "confirmatory",
+    "--attempt-id",
+    "joint-precision-m2-gate0-high-20260812",
+    "--output-root",
+    "/root/autodl-tmp/m2-gate0-20260812/joint-precision-m2-gate0-high-20260812/runner",
+    "--allocations",
+    "joint",
+    "--workloads",
+    "random",
+    "--rates",
+    "40",
+    "--seeds",
+    "11,23,47"
+  ],
+  "runner_attempt_dir": "/root/autodl-tmp/m2-gate0-20260812/joint-precision-m2-gate0-high-20260812/runner/joint-precision-m2-gate0-high-20260812",
+  "schema_version": 1,
+  "serving_config_path": "/root/autodl-tmp/MLSys_M2_20260812/configs/experiments/joint_precision_controller_2b.yaml",
+  "serving_config_sha256": "0df1b9aea9342474d0027548d9f9a031dba2b9dd7a087562aa95d49636333e71"
+}

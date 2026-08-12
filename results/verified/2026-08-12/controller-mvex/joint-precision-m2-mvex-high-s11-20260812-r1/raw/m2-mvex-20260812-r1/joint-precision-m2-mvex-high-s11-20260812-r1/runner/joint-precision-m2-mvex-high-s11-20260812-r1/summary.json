@@ -1,0 +1,13 @@
+{
+  "counts": {
+    "completed_validated": 1
+  },
+  "samples": [
+    {
+      "sample_id": "joint__random__r40__s11",
+      "status": "completed_validated"
+    }
+  ],
+  "schema_version": 1,
+  "updated_at": "2026-08-12T01:37:00Z"
+}

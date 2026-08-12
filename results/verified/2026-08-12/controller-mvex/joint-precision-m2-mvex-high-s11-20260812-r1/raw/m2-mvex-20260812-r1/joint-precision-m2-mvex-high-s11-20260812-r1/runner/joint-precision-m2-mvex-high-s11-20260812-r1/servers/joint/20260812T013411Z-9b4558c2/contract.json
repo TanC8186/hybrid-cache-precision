@@ -1,0 +1,27 @@
+{
+  "allocation": "joint",
+  "command": [
+    "/root/autodl-tmp/MLSys_Research/.venv/bin/vllm",
+    "serve",
+    "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "8000",
+    "--max-model-len",
+    "4096",
+    "--gpu-memory-utilization",
+    "0.80",
+    "--seed",
+    "42",
+    "--kv-cache-dtype",
+    "int4_per_token_head",
+    "--mamba-ssm-cache-dtype",
+    "bfloat16",
+    "--compilation-config",
+    "{\"cudagraph_mode\":\"PIECEWISE\"}"
+  ],
+  "cwd": "/root/autodl-tmp/MLSys_M2_20260812",
+  "schema_version": 1,
+  "started_at": "2026-08-12T01:34:11Z"
+}

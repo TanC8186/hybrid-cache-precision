@@ -1,0 +1,23 @@
+{
+  "argv": [
+    "--config",
+    "/root/autodl-tmp/MLSys_M2_20260812/configs/experiments/joint_precision_controller_2b.yaml",
+    "--phase",
+    "confirmatory",
+    "--attempt-id",
+    "joint-precision-m2-mvex-high-s11-20260812-r1",
+    "--output-root",
+    "/root/autodl-tmp/m2-mvex-20260812-r1/joint-precision-m2-mvex-high-s11-20260812-r1/runner",
+    "--allocations",
+    "joint",
+    "--workloads",
+    "random",
+    "--rates",
+    "40",
+    "--seeds",
+    "11"
+  ],
+  "invoked_at": "2026-08-12T01:34:11Z",
+  "max_samples": null,
+  "resume": false
+}
