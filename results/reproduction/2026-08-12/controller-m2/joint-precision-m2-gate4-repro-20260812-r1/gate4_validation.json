@@ -1,0 +1,1278 @@
+{
+  "audit": {
+    "hash_validation_performed": false,
+    "mode": "logical_only",
+    "sidecar_files_used_as_gates": false
+  },
+  "comparison": {
+    "all_within_tolerance": true,
+    "cells": [
+      {
+        "metrics": [
+          {
+            "metric": "mean_goodput_req_s",
+            "parent": 29.56296082036398,
+            "reproduction": 29.553602262720336,
+            "status": "WITHIN_TOLERANCE",
+            "symmetric_relative_difference": 0.00031656361149040964,
+            "tolerance": 0.1
+          },
+          {
+            "metric": "mean_p95_ttft_ms",
+            "parent": 194.49168254310885,
+            "reproduction": 194.23224090908965,
+            "status": "WITHIN_TOLERANCE",
+            "symmetric_relative_difference": 0.0013339471931489513,
+            "tolerance": 0.2
+          },
+          {
+            "metric": "mean_p95_tpot_ms",
+            "parent": 18.649691227931047,
+            "reproduction": 18.03942812812023,
+            "status": "WITHIN_TOLERANCE",
+            "symmetric_relative_difference": 0.03272242378452056,
+            "tolerance": 0.2
+          }
+        ],
+        "request_id": "strict",
+        "selected_config_id": "full",
+        "structural_status": "MATCH"
+      },
+      {
+        "metrics": [
+          {
+            "metric": "mean_goodput_req_s",
+            "parent": 29.56311646187429,
+            "reproduction": 29.55227429363428,
+            "status": "WITHIN_TOLERANCE",
+            "symmetric_relative_difference": 0.0003667464576677184,
+            "tolerance": 0.1
+          },
+          {
+            "metric": "mean_p95_ttft_ms",
+            "parent": 196.663769086202,
+            "reproduction": 192.28164901336035,
+            "status": "WITHIN_TOLERANCE",
+            "symmetric_relative_difference": 0.022282294767374596,
+            "tolerance": 0.2
+          },
+          {
+            "metric": "mean_p95_tpot_ms",
+            "parent": 17.939456395091113,
+            "reproduction": 17.841375490352316,
+            "status": "WITHIN_TOLERANCE",
+            "symmetric_relative_difference": 0.005467328695959575,
+            "tolerance": 0.2
+          }
+        ],
+        "request_id": "medium",
+        "selected_config_id": "state_only",
+        "structural_status": "MATCH"
+      },
+      {
+        "metrics": [
+          {
+            "metric": "mean_goodput_req_s",
+            "parent": 38.87816291375095,
+            "reproduction": 38.905324058730535,
+            "status": "WITHIN_TOLERANCE",
+            "symmetric_relative_difference": 0.0006981343977134129,
+            "tolerance": 0.1
+          },
+          {
+            "metric": "mean_p95_ttft_ms",
+            "parent": 377.04043354218214,
+            "reproduction": 372.4174787290396,
+            "status": "WITHIN_TOLERANCE",
+            "symmetric_relative_difference": 0.012261164591052646,
+            "tolerance": 0.2
+          },
+          {
+            "metric": "mean_p95_tpot_ms",
+            "parent": 38.11270514786674,
+            "reproduction": 38.769292805998965,
+            "status": "WITHIN_TOLERANCE",
+            "symmetric_relative_difference": 0.016935765669437934,
+            "tolerance": 0.2
+          }
+        ],
+        "request_id": "high",
+        "selected_config_id": "joint",
+        "structural_status": "MATCH"
+      }
+    ]
+  },
+  "completeness": {
+    "audited_samples": 9,
+    "completed_measurement_requests": 18000,
+    "declared_warmup_requests": 1080,
+    "expected_measurement_requests": 18000,
+    "expected_samples": 9,
+    "expected_warmup_requests": 1080,
+    "failed_measurement_requests": 0,
+    "launcher_exit_codes": [
+      0,
+      0,
+      0
+    ],
+    "silent_exclusions": 0
+  },
+  "evidence_status": "VERIFIED",
+  "fallacy_scan": {
+    "coverage": "11/11",
+    "items": [
+      {
+        "detail": "Each budget/allocation cell remains separate; no pooled direction replaces cell-level results.",
+        "fallacy": "Simpson's paradox",
+        "severity": "NOTE"
+      },
+      {
+        "detail": "The inferential unit is the seeded benchmark sample, not an individual request.",
+        "fallacy": "Ecological fallacy",
+        "severity": "NOTE"
+      },
+      {
+        "detail": "The pilot intentionally covers one GPU, one model/context, Random workload, and three selected budget strata.",
+        "fallacy": "Berkson's paradox",
+        "severity": "CAUTION"
+      },
+      {
+        "detail": "No post-treatment covariate adjustment or conditioned regression is used.",
+        "fallacy": "Collider bias",
+        "severity": "NOTE"
+      },
+      {
+        "detail": "Every sample retains its full request denominator and failures count as SLO misses.",
+        "fallacy": "Base-rate neglect",
+        "severity": "NOTE"
+      },
+      {
+        "detail": "Budget requests, rates, and confirmatory seeds were frozen before pilot execution.",
+        "fallacy": "Regression to the mean",
+        "severity": "NOTE"
+      },
+      {
+        "detail": "All nine planned samples and all 18,000 measurement requests are required; none are silently excluded.",
+        "fallacy": "Survivorship bias",
+        "severity": "NOTE"
+      },
+      {
+        "detail": "The requested 500/200 ms SLO is primary; the remaining frozen TTFT sweep is descriptive.",
+        "fallacy": "Look-elsewhere effect",
+        "severity": "CAUTION"
+      },
+      {
+        "detail": "Mappings, seeds, rates, denominators, and SLO thresholds were frozen in the package contract.",
+        "fallacy": "Garden of forking paths",
+        "severity": "NOTE"
+      },
+      {
+        "detail": "The selector executes controlled precision configurations, but the scoped pilot cannot establish cross-model or mechanism claims.",
+        "fallacy": "Correlation is not causation",
+        "severity": "CAUTION"
+      },
+      {
+        "detail": "Each precision decision precedes a cold-start deployment epoch and its measurements.",
+        "fallacy": "Reverse causality",
+        "severity": "NOTE"
+      }
+    ]
+  },
+  "gate_4_verdict": "PASS",
+  "generated_at_utc": "2026-08-12T15:34:18.857775Z",
+  "lineage": [
+    {
+      "evidence_review_mode": "logical_only",
+      "parent_attempt": "joint-precision-m2-pilot-strict-s11-23-47-20260812",
+      "reproduction_attempt": "joint-precision-m2-gate4-repro-strict-s11-23-47-20260812-r1",
+      "request_id": "strict",
+      "root_commit": "39739e03012747bd622175b9a37996297c1b1519",
+      "selected_config_id": "full",
+      "vllm_commit": "e2fa28594f7baad142a426b0b6a2cfe2c79201c7"
+    },
+    {
+      "evidence_review_mode": "logical_only",
+      "parent_attempt": "joint-precision-m2-pilot-medium-s11-23-47-20260812",
+      "reproduction_attempt": "joint-precision-m2-gate4-repro-medium-s11-23-47-20260812-r1",
+      "request_id": "medium",
+      "root_commit": "39739e03012747bd622175b9a37996297c1b1519",
+      "selected_config_id": "state_only",
+      "vllm_commit": "e2fa28594f7baad142a426b0b6a2cfe2c79201c7"
+    },
+    {
+      "evidence_review_mode": "logical_only",
+      "parent_attempt": "joint-precision-m2-pilot-high-s11-23-47-20260812",
+      "reproduction_attempt": "joint-precision-m2-gate4-repro-high-s11-23-47-20260812-r1",
+      "request_id": "high",
+      "root_commit": "39739e03012747bd622175b9a37996297c1b1519",
+      "selected_config_id": "joint",
+      "vllm_commit": "e2fa28594f7baad142a426b0b6a2cfe2c79201c7"
+    }
+  ],
+  "material_passport": {
+    "origin_date": "2026-08-12",
+    "origin_mode": "validate",
+    "origin_skill": "experiment-skill",
+    "verification_status": "VERIFIED",
+    "version_label": "joint_precision_m2_gate4_validation_v1"
+  },
+  "package_id": "joint-precision-m2-gate4-reproduction-20260812-r1",
+  "parent_gate2_report": "E:\\MLSys_Research\\results\\verified\\2026-08-12\\controller-pilot\\joint-precision-m2-pilot-s11-23-47-20260812\\pilot_logical_audit.json",
+  "promotion": {
+    "boundary": "A passing comparison can promote only this single-GPU Qwen3.5-2B, 4096-context, Random-workload selector slice. It does not establish cross-model, cross-context, cross-hardware, TP=2/4, or mechanism claims.",
+    "paper_quantitative_use_authorized_for_scoped_slice": true,
+    "reason": "Gate 4 passes: structural checks and all predeclared environment-sensitive metric tolerances pass. The scoped M2 selector slice is promoted to VERIFIED."
+  },
+  "reproducibility": {
+    "determinism_class": "environment_sensitive_seeded_serving_benchmark",
+    "method": "same-host temporal rerun with frozen seeds and matrix",
+    "verdict": "REPRODUCIBLE"
+  },
+  "reproduction_audit": {
+    "audit": {
+      "checks": [
+        "selector/allocation mapping",
+        "contract/result consistency",
+        "exact sample/request/warmup denominators",
+        "failures, NaNs, missing samples, and partial artifacts",
+        "SLO latency and goodput recomputation",
+        "server precision command and log proof",
+        "three-seed confidence intervals",
+        "11/11 statistical fallacy scan"
+      ],
+      "hash_validation_performed": false,
+      "mode": "logical_only",
+      "sidecar_files_used_as_gates": false
+    },
+    "cells": [
+      {
+        "attempt_id": "joint-precision-m2-gate4-repro-strict-s11-23-47-20260812-r1",
+        "calibration_goodput_lcb_req_s": 29.4830412408679,
+        "capacity_utilization": 0.9262377905018524,
+        "confirmatory_goodput_ci95_low_minus_calibration_lcb_req_s": 0.05193564723810695,
+        "confirmatory_goodput_minus_calibration_lcb_req_s": 0.07056102185243418,
+        "decision_latency_ms": 1.123484,
+        "launch": {
+          "attempt_id": "joint-precision-m2-gate4-repro-strict-s11-23-47-20260812-r1",
+          "duration_s": 350.0,
+          "exit_code": 0,
+          "expected_allocation": "full",
+          "finished_at": "2026-08-12T23:18:37+08:00",
+          "run_log_size_bytes": 537,
+          "started_at": "2026-08-12T23:12:47+08:00"
+        },
+        "metric_summaries": {
+          "goodput_over_offered": {
+            "ci95_high": 0.9857409212444889,
+            "ci95_low": 0.9844992296035334,
+            "mean": 0.9851200754240111,
+            "n": 3,
+            "sample_sd": 0.00024992407527072797,
+            "values": [
+              0.9854046923422941,
+              0.9849364517041267,
+              0.9850190822256126
+            ]
+          },
+          "goodput_req_s": {
+            "ci95_high": 29.572227637334663,
+            "ci95_low": 29.53497688810601,
+            "mean": 29.553602262720336,
+            "n": 3,
+            "sample_sd": 0.007497722258120672,
+            "values": [
+              29.562140770268822,
+              29.548093551123802,
+              29.55057246676838
+            ]
+          },
+          "p95_tpot_ms": {
+            "ci95_high": 18.826036313483126,
+            "ci95_low": 17.252819942757338,
+            "mean": 18.03942812812023,
+            "n": 3,
+            "sample_sd": 0.3166524068341868,
+            "values": [
+              18.38135667819911,
+              17.980635136101892,
+              17.756292570059692
+            ]
+          },
+          "p95_ttft_ms": {
+            "ci95_high": 203.27069093001109,
+            "ci95_low": 185.19379088816822,
+            "mean": 194.23224090908965,
+            "n": 3,
+            "sample_sd": 3.638465765335126,
+            "values": [
+              193.65641623735428,
+              198.12428317964077,
+              190.91602331027386
+            ]
+          },
+          "request_throughput_req_s": {
+            "ci95_high": 29.572227637334663,
+            "ci95_low": 29.53497688810601,
+            "mean": 29.553602262720336,
+            "n": 3,
+            "sample_sd": 0.007497722258120672,
+            "values": [
+              29.562140770268822,
+              29.548093551123802,
+              29.55057246676838
+            ]
+          }
+        },
+        "quality_slack": 0.01,
+        "request_id": "strict",
+        "requested_slo_attainment": "3/3",
+        "required_concurrency": 250.0,
+        "root_commit": "39739e03012747bd622175b9a37996297c1b1519",
+        "samples": [
+          {
+            "accounting": {
+              "completed": 1800,
+              "detail_lengths": {
+                "errors": 1800,
+                "input_lens": 1800,
+                "itls": 1800,
+                "output_lens": 1800,
+                "start_times": 1800,
+                "ttfts": 1800
+              },
+              "expected": 1800,
+              "failed": 0,
+              "request_conservation": true
+            },
+            "allocation": "full",
+            "arrival_span_over_target": 0.9999520090719064,
+            "benchmark_duration_s": 60.88868915103376,
+            "goodput_over_offered": 0.9854046923422941,
+            "goodput_req_s": 29.562140770268822,
+            "offered_rate_req_s": 30.0,
+            "request_throughput_req_s": 29.562140770268822,
+            "requested_slo_attained": true,
+            "sample_id": "full__random__r30__s11",
+            "seed": 11,
+            "slo_sweep": {
+              "1000": {
+                "good_requests": 1800,
+                "goodput_over_offered": 0.9854046923422941,
+                "goodput_req_s": 29.562140770268822,
+                "sustainable": true
+              },
+              "2000": {
+                "good_requests": 1800,
+                "goodput_over_offered": 0.9854046923422941,
+                "goodput_req_s": 29.562140770268822,
+                "sustainable": true
+              },
+              "250": {
+                "good_requests": 1794,
+                "goodput_over_offered": 0.9821200100344865,
+                "goodput_req_s": 29.463600301034592,
+                "sustainable": true
+              },
+              "3000": {
+                "good_requests": 1800,
+                "goodput_over_offered": 0.9854046923422941,
+                "goodput_req_s": 29.562140770268822,
+                "sustainable": true
+              },
+              "500": {
+                "good_requests": 1800,
+                "goodput_over_offered": 0.9854046923422941,
+                "goodput_req_s": 29.562140770268822,
+                "sustainable": true
+              }
+            },
+            "tpot_p95_ms": 18.38135667819911,
+            "ttft_p95_ms": 193.65641623735428,
+            "warmup_requests": 120,
+            "workload": "random"
+          },
+          {
+            "accounting": {
+              "completed": 1800,
+              "detail_lengths": {
+                "errors": 1800,
+                "input_lens": 1800,
+                "itls": 1800,
+                "output_lens": 1800,
+                "start_times": 1800,
+                "ttfts": 1800
+              },
+              "expected": 1800,
+              "failed": 0,
+              "request_conservation": true
+            },
+            "allocation": "full",
+            "arrival_span_over_target": 0.9996187056414783,
+            "benchmark_duration_s": 60.917635748162866,
+            "goodput_over_offered": 0.9849364517041267,
+            "goodput_req_s": 29.548093551123802,
+            "offered_rate_req_s": 30.0,
+            "request_throughput_req_s": 29.548093551123802,
+            "requested_slo_attained": true,
+            "sample_id": "full__random__r30__s23",
+            "seed": 23,
+            "slo_sweep": {
+              "1000": {
+                "good_requests": 1800,
+                "goodput_over_offered": 0.9849364517041267,
+                "goodput_req_s": 29.548093551123802,
+                "sustainable": true
+              },
+              "2000": {
+                "good_requests": 1800,
+                "goodput_over_offered": 0.9849364517041267,
+                "goodput_req_s": 29.548093551123802,
+                "sustainable": true
+              },
+              "250": {
+                "good_requests": 1799,
+                "goodput_over_offered": 0.9843892647865133,
+                "goodput_req_s": 29.5316779435954,
+                "sustainable": true
+              },
+              "3000": {
+                "good_requests": 1800,
+                "goodput_over_offered": 0.9849364517041267,
+                "goodput_req_s": 29.548093551123802,
+                "sustainable": true
+              },
+              "500": {
+                "good_requests": 1800,
+                "goodput_over_offered": 0.9849364517041267,
+                "goodput_req_s": 29.548093551123802,
+                "sustainable": true
+              }
+            },
+            "tpot_p95_ms": 17.980635136101892,
+            "ttft_p95_ms": 198.12428317964077,
+            "warmup_requests": 120,
+            "workload": "random"
+          },
+          {
+            "accounting": {
+              "completed": 1800,
+              "detail_lengths": {
+                "errors": 1800,
+                "input_lens": 1800,
+                "itls": 1800,
+                "output_lens": 1800,
+                "start_times": 1800,
+                "ttfts": 1800
+              },
+              "expected": 1800,
+              "failed": 0,
+              "request_conservation": true
+            },
+            "allocation": "full",
+            "arrival_span_over_target": 1.0000265581222871,
+            "benchmark_duration_s": 60.91252553649247,
+            "goodput_over_offered": 0.9850190822256126,
+            "goodput_req_s": 29.55057246676838,
+            "offered_rate_req_s": 30.0,
+            "request_throughput_req_s": 29.55057246676838,
+            "requested_slo_attained": true,
+            "sample_id": "full__random__r30__s47",
+            "seed": 47,
+            "slo_sweep": {
+              "1000": {
+                "good_requests": 1800,
+                "goodput_over_offered": 0.9850190822256126,
+                "goodput_req_s": 29.55057246676838,
+                "sustainable": true
+              },
+              "2000": {
+                "good_requests": 1800,
+                "goodput_over_offered": 0.9850190822256126,
+                "goodput_req_s": 29.55057246676838,
+                "sustainable": true
+              },
+              "250": {
+                "good_requests": 1800,
+                "goodput_over_offered": 0.9850190822256126,
+                "goodput_req_s": 29.55057246676838,
+                "sustainable": true
+              },
+              "3000": {
+                "good_requests": 1800,
+                "goodput_over_offered": 0.9850190822256126,
+                "goodput_req_s": 29.55057246676838,
+                "sustainable": true
+              },
+              "500": {
+                "good_requests": 1800,
+                "goodput_over_offered": 0.9850190822256126,
+                "goodput_req_s": 29.55057246676838,
+                "sustainable": true
+              }
+            },
+            "tpot_p95_ms": 17.756292570059692,
+            "ttft_p95_ms": 190.91602331027386,
+            "warmup_requests": 120,
+            "workload": "random"
+          }
+        ],
+        "selected_config_id": "full",
+        "selected_max_concurrency": 269.90909090909093,
+        "selector_logic_recomputed": true,
+        "server": {
+          "allocation": "full",
+          "fatal_signatures": {
+            "CUDA error: an illegal instruction": false,
+            "CUDA error: an illegal memory access": false,
+            "CUDA out of memory": false,
+            "EngineCore encountered a fatal error": false
+          },
+          "health_200_count": 4,
+          "precision_proofs": [
+            "'mamba_ssm_cache_dtype': 'float32'",
+            "kv_cache_dtype=auto",
+            "CUDAGraphMode.PIECEWISE"
+          ],
+          "returncode": 0,
+          "session_id": "20260812T151251Z-b42a7640",
+          "stale_cubin_reload_warning_count": 0,
+          "startup_duration_s": 77.10997947864234,
+          "status": "stopped"
+        },
+        "vllm_commit": "e2fa28594f7baad142a426b0b6a2cfe2c79201c7"
+      },
+      {
+        "attempt_id": "joint-precision-m2-gate4-repro-medium-s11-23-47-20260812-r1",
+        "calibration_goodput_lcb_req_s": 29.486713178179297,
+        "capacity_utilization": 0.9627384560527724,
+        "confirmatory_goodput_ci95_low_minus_calibration_lcb_req_s": 0.006228064777442199,
+        "confirmatory_goodput_minus_calibration_lcb_req_s": 0.06556111545498311,
+        "decision_latency_ms": 1.146109,
+        "launch": {
+          "attempt_id": "joint-precision-m2-gate4-repro-medium-s11-23-47-20260812-r1",
+          "duration_s": 347.0,
+          "exit_code": 0,
+          "expected_allocation": "state_only",
+          "finished_at": "2026-08-12T23:24:24+08:00",
+          "run_log_size_bytes": 579,
+          "started_at": "2026-08-12T23:18:37+08:00"
+        },
+        "metric_summaries": {
+          "goodput_over_offered": {
+            "ci95_high": 0.9870535781437273,
+            "ci95_low": 0.9830980414318913,
+            "mean": 0.9850758097878093,
+            "n": 3,
+            "sample_sd": 0.0007961589031431187,
+            "values": [
+              0.9859368083531758,
+              0.9843662404388672,
+              0.9849243805713849
+            ]
+          },
+          "goodput_req_s": {
+            "ci95_high": 29.61160734431182,
+            "ci95_low": 29.49294124295674,
+            "mean": 29.55227429363428,
+            "n": 3,
+            "sample_sd": 0.023884767094293772,
+            "values": [
+              29.578104250595274,
+              29.530987213166018,
+              29.547731417141545
+            ]
+          },
+          "p95_tpot_ms": {
+            "ci95_high": 18.523291904472742,
+            "ci95_low": 17.15945907623189,
+            "mean": 17.841375490352316,
+            "n": 3,
+            "sample_sd": 0.27450829753488226,
+            "values": [
+              18.11303705285032,
+              17.564106376211,
+              17.84698304199562
+            ]
+          },
+          "p95_ttft_ms": {
+            "ci95_high": 201.7688288213957,
+            "ci95_low": 182.79446920532502,
+            "mean": 192.28164901336035,
+            "n": 3,
+            "sample_sd": 3.819103813288136,
+            "values": [
+              191.07470205053687,
+              189.21183878555894,
+              196.55840620398516
+            ]
+          },
+          "request_throughput_req_s": {
+            "ci95_high": 29.61160734431182,
+            "ci95_low": 29.49294124295674,
+            "mean": 29.55227429363428,
+            "n": 3,
+            "sample_sd": 0.023884767094293772,
+            "values": [
+              29.578104250595274,
+              29.530987213166018,
+              29.547731417141545
+            ]
+          }
+        },
+        "quality_slack": 0.0029,
+        "request_id": "medium",
+        "requested_slo_attainment": "3/3",
+        "required_concurrency": 300.0,
+        "root_commit": "39739e03012747bd622175b9a37996297c1b1519",
+        "samples": [
+          {
+            "accounting": {
+              "completed": 1800,
+              "detail_lengths": {
+                "errors": 1800,
+                "input_lens": 1800,
+                "itls": 1800,
+                "output_lens": 1800,
+                "start_times": 1800,
+                "ttfts": 1800
+              },
+              "expected": 1800,
+              "failed": 0,
+              "request_conservation": true
+            },
+            "allocation": "state_only",
+            "arrival_span_over_target": 0.9999805867051085,
+            "benchmark_duration_s": 60.855827160179615,
+            "goodput_over_offered": 0.9859368083531758,
+            "goodput_req_s": 29.578104250595274,
+            "offered_rate_req_s": 30.0,
+            "request_throughput_req_s": 29.578104250595274,
+            "requested_slo_attained": true,
+            "sample_id": "state_only__random__r30__s11",
+            "seed": 11,
+            "slo_sweep": {
+              "1000": {
+                "good_requests": 1800,
+                "goodput_over_offered": 0.9859368083531758,
+                "goodput_req_s": 29.578104250595274,
+                "sustainable": true
+              },
+              "2000": {
+                "good_requests": 1800,
+                "goodput_over_offered": 0.9859368083531758,
+                "goodput_req_s": 29.578104250595274,
+                "sustainable": true
+              },
+              "250": {
+                "good_requests": 1800,
+                "goodput_over_offered": 0.9859368083531758,
+                "goodput_req_s": 29.578104250595274,
+                "sustainable": true
+              },
+              "3000": {
+                "good_requests": 1800,
+                "goodput_over_offered": 0.9859368083531758,
+                "goodput_req_s": 29.578104250595274,
+                "sustainable": true
+              },
+              "500": {
+                "good_requests": 1800,
+                "goodput_over_offered": 0.9859368083531758,
+                "goodput_req_s": 29.578104250595274,
+                "sustainable": true
+              }
+            },
+            "tpot_p95_ms": 18.11303705285032,
+            "ttft_p95_ms": 191.07470205053687,
+            "warmup_requests": 120,
+            "workload": "random"
+          },
+          {
+            "accounting": {
+              "completed": 1800,
+              "detail_lengths": {
+                "errors": 1800,
+                "input_lens": 1800,
+                "itls": 1800,
+                "output_lens": 1800,
+                "start_times": 1800,
+                "ttfts": 1800
+              },
+              "expected": 1800,
+              "failed": 0,
+              "request_conservation": true
+            },
+            "allocation": "state_only",
+            "arrival_span_over_target": 0.9996186811166505,
+            "benchmark_duration_s": 60.9529233481735,
+            "goodput_over_offered": 0.9843662404388672,
+            "goodput_req_s": 29.530987213166018,
+            "offered_rate_req_s": 30.0,
+            "request_throughput_req_s": 29.530987213166018,
+            "requested_slo_attained": true,
+            "sample_id": "state_only__random__r30__s23",
+            "seed": 23,
+            "slo_sweep": {
+              "1000": {
+                "good_requests": 1800,
+                "goodput_over_offered": 0.9843662404388672,
+                "goodput_req_s": 29.530987213166018,
+                "sustainable": true
+              },
+              "2000": {
+                "good_requests": 1800,
+                "goodput_over_offered": 0.9843662404388672,
+                "goodput_req_s": 29.530987213166018,
+                "sustainable": true
+              },
+              "250": {
+                "good_requests": 1800,
+                "goodput_over_offered": 0.9843662404388672,
+                "goodput_req_s": 29.530987213166018,
+                "sustainable": true
+              },
+              "3000": {
+                "good_requests": 1800,
+                "goodput_over_offered": 0.9843662404388672,
+                "goodput_req_s": 29.530987213166018,
+                "sustainable": true
+              },
+              "500": {
+                "good_requests": 1800,
+                "goodput_over_offered": 0.9843662404388672,
+                "goodput_req_s": 29.530987213166018,
+                "sustainable": true
+              }
+            },
+            "tpot_p95_ms": 17.564106376211,
+            "ttft_p95_ms": 189.21183878555894,
+            "warmup_requests": 120,
+            "workload": "random"
+          },
+          {
+            "accounting": {
+              "completed": 1800,
+              "detail_lengths": {
+                "errors": 1800,
+                "input_lens": 1800,
+                "itls": 1800,
+                "output_lens": 1800,
+                "start_times": 1800,
+                "ttfts": 1800
+              },
+              "expected": 1800,
+              "failed": 0,
+              "request_conservation": true
+            },
+            "allocation": "state_only",
+            "arrival_span_over_target": 1.0000064631924033,
+            "benchmark_duration_s": 60.91838234849274,
+            "goodput_over_offered": 0.9849243805713849,
+            "goodput_req_s": 29.547731417141545,
+            "offered_rate_req_s": 30.0,
+            "request_throughput_req_s": 29.547731417141545,
+            "requested_slo_attained": true,
+            "sample_id": "state_only__random__r30__s47",
+            "seed": 47,
+            "slo_sweep": {
+              "1000": {
+                "good_requests": 1800,
+                "goodput_over_offered": 0.9849243805713849,
+                "goodput_req_s": 29.547731417141545,
+                "sustainable": true
+              },
+              "2000": {
+                "good_requests": 1800,
+                "goodput_over_offered": 0.9849243805713849,
+                "goodput_req_s": 29.547731417141545,
+                "sustainable": true
+              },
+              "250": {
+                "good_requests": 1800,
+                "goodput_over_offered": 0.9849243805713849,
+                "goodput_req_s": 29.547731417141545,
+                "sustainable": true
+              },
+              "3000": {
+                "good_requests": 1800,
+                "goodput_over_offered": 0.9849243805713849,
+                "goodput_req_s": 29.547731417141545,
+                "sustainable": true
+              },
+              "500": {
+                "good_requests": 1800,
+                "goodput_over_offered": 0.9849243805713849,
+                "goodput_req_s": 29.547731417141545,
+                "sustainable": true
+              }
+            },
+            "tpot_p95_ms": 17.84698304199562,
+            "ttft_p95_ms": 196.55840620398516,
+            "warmup_requests": 120,
+            "workload": "random"
+          }
+        ],
+        "selected_config_id": "state_only",
+        "selected_max_concurrency": 311.6111111111111,
+        "selector_logic_recomputed": true,
+        "server": {
+          "allocation": "state_only",
+          "fatal_signatures": {
+            "CUDA error: an illegal instruction": false,
+            "CUDA error: an illegal memory access": false,
+            "CUDA out of memory": false,
+            "EngineCore encountered a fatal error": false
+          },
+          "health_200_count": 4,
+          "precision_proofs": [
+            "'mamba_ssm_cache_dtype': 'bfloat16'",
+            "kv_cache_dtype=auto",
+            "CUDAGraphMode.PIECEWISE"
+          ],
+          "returncode": 0,
+          "session_id": "20260812T151842Z-db9e8f01",
+          "stale_cubin_reload_warning_count": 0,
+          "startup_duration_s": 75.0915909241885,
+          "status": "stopped"
+        },
+        "vllm_commit": "e2fa28594f7baad142a426b0b6a2cfe2c79201c7"
+      },
+      {
+        "attempt_id": "joint-precision-m2-gate4-repro-high-s11-23-47-20260812-r1",
+        "calibration_goodput_lcb_req_s": 37.6236282660987,
+        "capacity_utilization": 0.8397600685518424,
+        "confirmatory_goodput_ci95_low_minus_calibration_lcb_req_s": 0.9494088586711555,
+        "confirmatory_goodput_minus_calibration_lcb_req_s": 1.2816957926318366,
+        "decision_latency_ms": 1.126138,
+        "launch": {
+          "attempt_id": "joint-precision-m2-gate4-repro-high-s11-23-47-20260812-r1",
+          "duration_s": 369.0,
+          "exit_code": 0,
+          "expected_allocation": "joint",
+          "finished_at": "2026-08-12T23:30:33+08:00",
+          "run_log_size_bytes": 542,
+          "started_at": "2026-08-12T23:24:24+08:00"
+        },
+        "metric_summaries": {
+          "goodput_over_offered": {
+            "ci95_high": 0.9809402748172806,
+            "ci95_low": 0.9643259281192464,
+            "mean": 0.9726331014682635,
+            "n": 3,
+            "sample_sd": 0.0033440872900928685,
+            "values": [
+              0.9724194099331482,
+              0.9694009845601348,
+              0.9760789099115073
+            ]
+          },
+          "goodput_req_s": {
+            "ci95_high": 39.237610992691216,
+            "ci95_low": 38.573037124769854,
+            "mean": 38.905324058730535,
+            "n": 3,
+            "sample_sd": 0.13376349160371387,
+            "values": [
+              38.89677639732593,
+              38.77603938240539,
+              39.04315639646029
+            ]
+          },
+          "p95_tpot_ms": {
+            "ci95_high": 44.889751048073975,
+            "ci95_low": 32.648834563923955,
+            "mean": 38.769292805998965,
+            "n": 3,
+            "sample_sd": 2.463816000576047,
+            "values": [
+              39.571982779078134,
+              40.73166436127086,
+              36.00423127764792
+            ]
+          },
+          "p95_ttft_ms": {
+            "ci95_high": 456.8451093138176,
+            "ci95_low": 287.9898481442616,
+            "mean": 372.4174787290396,
+            "n": 3,
+            "sample_sd": 33.9866949333155,
+            "values": [
+              389.1066647134721,
+              394.8332292959095,
+              333.31254217773704
+            ]
+          },
+          "request_throughput_req_s": {
+            "ci95_high": 39.09031558390352,
+            "ci95_low": 38.980601745017665,
+            "mean": 39.03545866446059,
+            "n": 3,
+            "sample_sd": 0.022082881790886716,
+            "values": [
+              39.01055718912755,
+              39.05266240779393,
+              39.04315639646029
+            ]
+          }
+        },
+        "quality_slack": 0.004700000000000003,
+        "request_id": "high",
+        "requested_slo_attainment": "3/3",
+        "required_concurrency": 700.0,
+        "root_commit": "39739e03012747bd622175b9a37996297c1b1519",
+        "samples": [
+          {
+            "accounting": {
+              "completed": 2400,
+              "detail_lengths": {
+                "errors": 2400,
+                "input_lens": 2400,
+                "itls": 2400,
+                "output_lens": 2400,
+                "start_times": 2400,
+                "ttfts": 2400
+              },
+              "expected": 2400,
+              "failed": 0,
+              "request_conservation": true
+            },
+            "allocation": "joint",
+            "arrival_span_over_target": 1.0000039709421495,
+            "benchmark_duration_s": 61.52180776000023,
+            "goodput_over_offered": 0.9724194099331482,
+            "goodput_req_s": 38.89677639732593,
+            "offered_rate_req_s": 40.0,
+            "request_throughput_req_s": 39.01055718912755,
+            "requested_slo_attained": true,
+            "sample_id": "joint__random__r40__s11",
+            "seed": 11,
+            "slo_sweep": {
+              "1000": {
+                "good_requests": 2400,
+                "goodput_over_offered": 0.9752639297281889,
+                "goodput_req_s": 39.01055718912755,
+                "sustainable": true
+              },
+              "2000": {
+                "good_requests": 2400,
+                "goodput_over_offered": 0.9752639297281889,
+                "goodput_req_s": 39.01055718912755,
+                "sustainable": true
+              },
+              "250": {
+                "good_requests": 1529,
+                "goodput_over_offered": 0.6213243952310002,
+                "goodput_req_s": 24.85297580924001,
+                "sustainable": false
+              },
+              "3000": {
+                "good_requests": 2400,
+                "goodput_over_offered": 0.9752639297281889,
+                "goodput_req_s": 39.01055718912755,
+                "sustainable": true
+              },
+              "500": {
+                "good_requests": 2393,
+                "goodput_over_offered": 0.9724194099331482,
+                "goodput_req_s": 38.89677639732593,
+                "sustainable": true
+              }
+            },
+            "tpot_p95_ms": 39.571982779078134,
+            "ttft_p95_ms": 389.1066647134721,
+            "warmup_requests": 120,
+            "workload": "random"
+          },
+          {
+            "accounting": {
+              "completed": 2400,
+              "detail_lengths": {
+                "errors": 2400,
+                "input_lens": 2400,
+                "itls": 2400,
+                "output_lens": 2400,
+                "start_times": 2400,
+                "ttfts": 2400
+              },
+              "expected": 2400,
+              "failed": 0,
+              "request_conservation": true
+            },
+            "allocation": "joint",
+            "arrival_span_over_target": 0.9999267344052593,
+            "benchmark_duration_s": 61.455477092415094,
+            "goodput_over_offered": 0.9694009845601348,
+            "goodput_req_s": 38.77603938240539,
+            "offered_rate_req_s": 40.0,
+            "request_throughput_req_s": 39.05266240779393,
+            "requested_slo_attained": true,
+            "sample_id": "joint__random__r40__s23",
+            "seed": 23,
+            "slo_sweep": {
+              "1000": {
+                "good_requests": 2400,
+                "goodput_over_offered": 0.9763165601948482,
+                "goodput_req_s": 39.05266240779393,
+                "sustainable": true
+              },
+              "2000": {
+                "good_requests": 2400,
+                "goodput_over_offered": 0.9763165601948482,
+                "goodput_req_s": 39.05266240779393,
+                "sustainable": true
+              },
+              "250": {
+                "good_requests": 1457,
+                "goodput_over_offered": 0.5927055117516224,
+                "goodput_req_s": 23.708220470064898,
+                "sustainable": false
+              },
+              "3000": {
+                "good_requests": 2400,
+                "goodput_over_offered": 0.9763165601948482,
+                "goodput_req_s": 39.05266240779393,
+                "sustainable": true
+              },
+              "500": {
+                "good_requests": 2383,
+                "goodput_over_offered": 0.9694009845601348,
+                "goodput_req_s": 38.77603938240539,
+                "sustainable": true
+              }
+            },
+            "tpot_p95_ms": 40.73166436127086,
+            "ttft_p95_ms": 394.8332292959095,
+            "warmup_requests": 120,
+            "workload": "random"
+          },
+          {
+            "accounting": {
+              "completed": 2400,
+              "detail_lengths": {
+                "errors": 2400,
+                "input_lens": 2400,
+                "itls": 2400,
+                "output_lens": 2400,
+                "start_times": 2400,
+                "ttfts": 2400
+              },
+              "expected": 2400,
+              "failed": 0,
+              "request_conservation": true
+            },
+            "allocation": "joint",
+            "arrival_span_over_target": 1.0001697008498014,
+            "benchmark_duration_s": 61.47043993137777,
+            "goodput_over_offered": 0.9760789099115073,
+            "goodput_req_s": 39.04315639646029,
+            "offered_rate_req_s": 40.0,
+            "request_throughput_req_s": 39.04315639646029,
+            "requested_slo_attained": true,
+            "sample_id": "joint__random__r40__s47",
+            "seed": 47,
+            "slo_sweep": {
+              "1000": {
+                "good_requests": 2400,
+                "goodput_over_offered": 0.9760789099115073,
+                "goodput_req_s": 39.04315639646029,
+                "sustainable": true
+              },
+              "2000": {
+                "good_requests": 2400,
+                "goodput_over_offered": 0.9760789099115073,
+                "goodput_req_s": 39.04315639646029,
+                "sustainable": true
+              },
+              "250": {
+                "good_requests": 1722,
+                "goodput_over_offered": 0.7003366178615065,
+                "goodput_req_s": 28.01346471446026,
+                "sustainable": false
+              },
+              "3000": {
+                "good_requests": 2400,
+                "goodput_over_offered": 0.9760789099115073,
+                "goodput_req_s": 39.04315639646029,
+                "sustainable": true
+              },
+              "500": {
+                "good_requests": 2400,
+                "goodput_over_offered": 0.9760789099115073,
+                "goodput_req_s": 39.04315639646029,
+                "sustainable": true
+              }
+            },
+            "tpot_p95_ms": 36.00423127764792,
+            "ttft_p95_ms": 333.31254217773704,
+            "warmup_requests": 120,
+            "workload": "random"
+          }
+        ],
+        "selected_config_id": "joint",
+        "selected_max_concurrency": 833.5714285714286,
+        "selector_logic_recomputed": true,
+        "server": {
+          "allocation": "joint",
+          "fatal_signatures": {
+            "CUDA error: an illegal instruction": false,
+            "CUDA error: an illegal memory access": false,
+            "CUDA out of memory": false,
+            "EngineCore encountered a fatal error": false
+          },
+          "health_200_count": 4,
+          "precision_proofs": [
+            "'mamba_ssm_cache_dtype': 'bfloat16'",
+            "kv_cache_dtype=int4_per_token_head",
+            "CUDAGraphMode.PIECEWISE"
+          ],
+          "returncode": 0,
+          "session_id": "20260812T152429Z-c6a8be8f",
+          "stale_cubin_reload_warning_count": 18,
+          "startup_duration_s": 77.0378801766783,
+          "status": "stopped"
+        },
+        "vllm_commit": "e2fa28594f7baad142a426b0b6a2cfe2c79201c7"
+      }
+    ],
+    "classification": "environment_sensitive_same_host_temporal_reproduction",
+    "completeness": {
+      "audited_samples": 9,
+      "completed_measurement_requests": 18000,
+      "declared_warmup_requests": 1080,
+      "expected_measurement_requests": 18000,
+      "expected_samples": 9,
+      "expected_warmup_requests": 1080,
+      "failed_measurement_requests": 0,
+      "launcher_exit_codes": [
+        0,
+        0,
+        0
+      ],
+      "silent_exclusions": 0
+    },
+    "decision_metrics": {
+      "expected_mapping_accuracy": 1.0,
+      "feasible_decision_rate": 1.0,
+      "mapping": {
+        "high": "joint",
+        "medium": "state_only",
+        "strict": "full"
+      }
+    },
+    "evidence_status": "ANALYZED",
+    "fallacy_scan": {
+      "coverage": "11/11",
+      "items": [
+        {
+          "detail": "Each budget/allocation cell remains separate; no pooled direction replaces cell-level results.",
+          "fallacy": "Simpson's paradox",
+          "severity": "NOTE"
+        },
+        {
+          "detail": "The inferential unit is the seeded benchmark sample, not an individual request.",
+          "fallacy": "Ecological fallacy",
+          "severity": "NOTE"
+        },
+        {
+          "detail": "The pilot intentionally covers one GPU, one model/context, Random workload, and three selected budget strata.",
+          "fallacy": "Berkson's paradox",
+          "severity": "CAUTION"
+        },
+        {
+          "detail": "No post-treatment covariate adjustment or conditioned regression is used.",
+          "fallacy": "Collider bias",
+          "severity": "NOTE"
+        },
+        {
+          "detail": "Every sample retains its full request denominator and failures count as SLO misses.",
+          "fallacy": "Base-rate neglect",
+          "severity": "NOTE"
+        },
+        {
+          "detail": "Budget requests, rates, and confirmatory seeds were frozen before pilot execution.",
+          "fallacy": "Regression to the mean",
+          "severity": "NOTE"
+        },
+        {
+          "detail": "All nine planned samples and all 18,000 measurement requests are required; none are silently excluded.",
+          "fallacy": "Survivorship bias",
+          "severity": "NOTE"
+        },
+        {
+          "detail": "The requested 500/200 ms SLO is primary; the remaining frozen TTFT sweep is descriptive.",
+          "fallacy": "Look-elsewhere effect",
+          "severity": "CAUTION"
+        },
+        {
+          "detail": "Mappings, seeds, rates, denominators, and SLO thresholds were frozen in the package contract.",
+          "fallacy": "Garden of forking paths",
+          "severity": "NOTE"
+        },
+        {
+          "detail": "The selector executes controlled precision configurations, but the scoped pilot cannot establish cross-model or mechanism claims.",
+          "fallacy": "Correlation is not causation",
+          "severity": "CAUTION"
+        },
+        {
+          "detail": "Each precision decision precedes a cold-start deployment epoch and its measurements.",
+          "fallacy": "Reverse causality",
+          "severity": "NOTE"
+        }
+      ]
+    },
+    "gate_2_verdict": "PASS",
+    "generated_at_utc": "2026-08-12T15:34:18.852198Z",
+    "material_passport": {
+      "origin_date": "2026-08-12",
+      "origin_mode": "validate",
+      "origin_skill": "experiment-skill",
+      "verification_status": "ANALYZED",
+      "version_label": "joint_precision_m2_pilot_logical_audit_v1"
+    },
+    "package_id": "joint-precision-m2-gate4-reproduction-20260812-r1",
+    "promotion": {
+      "gate_3_expansion_authorized": true,
+      "paper_quantitative_use_authorized": false,
+      "reason": "Gate 2 passed, but a separately identified Gate 4 reproduction has not yet passed."
+    },
+    "reproducibility": {
+      "determinism_class": "environment_sensitive_seeded_serving_benchmark",
+      "method": "not yet run for this pilot",
+      "verdict": "CANNOT_VERIFY"
+    },
+    "schema_version": 1,
+    "scope": {
+      "gpu_count": 1,
+      "max_model_len": 4096,
+      "model_id": "Qwen/Qwen3.5-2B",
+      "tensor_parallelism": 1,
+      "workload": "random"
+    },
+    "source": {
+      "host": "mlsys-westd-28432:/root/autodl-tmp/m2-gate4-repro-20260812-r1",
+      "pilot_root": "E:\\MLSys_Research\\tmp\\m2-gate4-repro-20260812-r1",
+      "raw_evidence_retained_on_data_disk": true
+    },
+    "statistical_method": {
+      "ci": "two-sided Student-t 95% CI",
+      "degrees_of_freedom": 2,
+      "multiple_comparisons": "one predeclared primary SLO per budget; remaining threshold sweep descriptive",
+      "n_per_budget": 3,
+      "request_level_pseudoreplication_avoided": true,
+      "t_critical": 4.302652729911275,
+      "unit_of_analysis": "seeded benchmark sample"
+    }
+  },
+  "schema_version": 1,
+  "scope": {
+    "gpu_count": 1,
+    "max_model_len": 4096,
+    "model_id": "Qwen/Qwen3.5-2B",
+    "tensor_parallelism": 1,
+    "workload": "random"
+  },
+  "source": {
+    "host": "mlsys-westd-28432:/root/autodl-tmp/m2-gate4-repro-20260812-r1",
+    "reproduction_root": "E:\\MLSys_Research\\tmp\\m2-gate4-repro-20260812-r1"
+  }
+}

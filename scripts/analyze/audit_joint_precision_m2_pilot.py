@@ -323,7 +323,12 @@ def audit_server(
     }
 
 
-def find_controller_root(pilot_root: Path, request_id: str) -> Path:
+def find_controller_root(pilot_root: Path, request_id: str, explicit_attempt_id: str | None = None) -> Path:
+    if explicit_attempt_id is not None:
+        path = pilot_root / explicit_attempt_id
+        require(path.is_dir(), f"request {request_id}: explicit controller attempt is missing")
+        require((path / "controller_result.json").is_file(), f"request {request_id}: explicit controller result is missing")
+        return path
     matches = [
         path
         for path in pilot_root.iterdir()
@@ -370,7 +375,12 @@ def audit_controller(
 ) -> dict[str, Any]:
     request_id = str(request_spec["id"])
     expected_allocation = str(request_spec["expected_selected_config_id"])
-    controller_root = find_controller_root(pilot_root, request_id)
+    explicit_attempt_id = request_spec.get("attempt_id")
+    require(
+        explicit_attempt_id is None or isinstance(explicit_attempt_id, str),
+        f"{request_id}: request attempt_id must be a string",
+    )
+    controller_root = find_controller_root(pilot_root, request_id, explicit_attempt_id)
     controller = load_json(controller_root / "controller_result.json")
     controller_contract = load_json(controller_root / "controller_contract.json")
     decision = load_json(controller_root / "decision.json")
