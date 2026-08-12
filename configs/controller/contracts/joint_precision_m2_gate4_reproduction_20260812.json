@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "material_passport": {
+    "origin_skill": "experiment-skill",
+    "origin_mode": "validate",
+    "origin_date": "2026-08-12",
+    "verification_status": "UNVERIFIED",
+    "version_label": "joint_precision_m2_gate4_reproduction_contract_v1"
+  },
+  "package_id": "joint-precision-m2-gate4-reproduction-20260812-r1",
+  "classification": "environment_sensitive_same_host_temporal_reproduction",
+  "parent_package": "joint-precision-selector-m2-20260812",
+  "parent_gate2_report": "results/verified/2026-08-12/controller-pilot/joint-precision-m2-pilot-s11-23-47-20260812/pilot_logical_audit.json",
+  "audit_policy": {
+    "mode": "logical_only",
+    "hash_validation_performed": false,
+    "sidecar_files_used_as_launch_or_audit_gates": false
+  },
+  "attempts": [
+    {
+      "request_id": "strict",
+      "parent_attempt": "joint-precision-m2-pilot-strict-s11-23-47-20260812",
+      "reproduction_attempt": "joint-precision-m2-gate4-repro-strict-s11-23-47-20260812-r1",
+      "expected_selected_config_id": "full"
+    },
+    {
+      "request_id": "medium",
+      "parent_attempt": "joint-precision-m2-pilot-medium-s11-23-47-20260812",
+      "reproduction_attempt": "joint-precision-m2-gate4-repro-medium-s11-23-47-20260812-r1",
+      "expected_selected_config_id": "state_only"
+    },
+    {
+      "request_id": "high",
+      "parent_attempt": "joint-precision-m2-pilot-high-s11-23-47-20260812",
+      "reproduction_attempt": "joint-precision-m2-gate4-repro-high-s11-23-47-20260812-r1",
+      "expected_selected_config_id": "joint"
+    }
+  ],
+  "matrix": {
+    "seeds": [11, 23, 47],
+    "expected_samples": 9,
+    "expected_measurement_requests": 18000,
+    "expected_warmup_requests": 1080,
+    "model_id": "Qwen/Qwen3.5-2B",
+    "max_model_len": 4096,
+    "workload": "random",
+    "gpu_count": 1,
+    "tensor_parallelism": 1
+  },
+  "comparison": {
+    "structural_exact": [
+      "selector_mapping",
+      "sample_membership",
+      "request_and_warmup_denominators",
+      "zero_failed_requests",
+      "three_of_three_requested_slo_attainment",
+      "precision_command_and_log_proof"
+    ],
+    "symmetric_relative_tolerances": {
+      "mean_goodput_req_s": 0.10,
+      "mean_p95_ttft_ms": 0.20,
+      "mean_p95_tpot_ms": 0.20
+    },
+    "epsilon": 1e-12,
+    "timing_interpretation": "Latency and goodput comparisons are environment-sensitive serving outcomes, not deterministic wall-clock equality checks."
+  },
+  "promotion_boundary": "A passing comparison can promote only this single-GPU Qwen3.5-2B, 4096-context, Random-workload selector slice. It does not establish cross-model, cross-context, cross-hardware, TP=2/4, or mechanism claims.",
+  "failure_policy": "Any missing sample, nonzero launcher or runner exit, timeout, OOM, failed precision proof, NaN, denominator reduction, mapping drift, or tolerance failure makes Gate 4 fail closed. A retry requires a new attempt ID linked to the failed attempt."
+}

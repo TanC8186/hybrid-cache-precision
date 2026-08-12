@@ -263,6 +263,69 @@ def test_dry_run_keeps_controller_and_runner_attempt_paths_separate(
     assert not (attempt_dir / "runner").exists()
 
 
+def test_logical_evidence_review_skips_hash_sidecars_and_records_parent(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    repo_root = tmp_path
+    config_path = repo_root / "configs" / "experiments" / "controller.yaml"
+    config_path.parent.mkdir(parents=True)
+    config_path.write_text(yaml.safe_dump(config(), sort_keys=False), encoding="utf-8")
+    evidence_path = repo_root / "results" / "fixture.json"
+    evidence_path.parent.mkdir()
+    evidence_path.write_text(json.dumps({"fixture": True}), encoding="utf-8")
+    profile_path = repo_root / "profile.json"
+    request_path = repo_root / "request.json"
+    profile_path.write_text(json.dumps(profile(evidence_sha256="0" * 64)), encoding="utf-8")
+    request_path.write_text(json.dumps(request()), encoding="utf-8")
+    output_root = repo_root / "outputs"
+    monkeypatch.setattr(
+        controller,
+        "get_git_state",
+        lambda root, require_clean: {"commit": "b" * 40, "status": "", "clean": True},
+    )
+    monkeypatch.setattr(
+        controller,
+        "verify_profile_evidence",
+        lambda *args, **kwargs: pytest.fail("hash verifier was called in logical-only mode"),
+    )
+
+    rc = controller.main(
+        [
+            "--profile",
+            str(profile_path),
+            "--request",
+            str(request_path),
+            "--serving-config",
+            str(config_path),
+            "--phase",
+            "mvex",
+            "--attempt-id",
+            "logical-review",
+            "--parent-attempt",
+            "original-attempt",
+            "--output-root",
+            str(output_root),
+            "--seeds",
+            "7",
+            "--evidence-review-mode",
+            "logical_only",
+            "--dry-run",
+        ]
+    )
+
+    assert rc == 0
+    contract = json.loads((output_root / "logical-review" / "controller_contract.json").read_text(encoding="utf-8"))
+    assert contract["parent_attempt"] == "original-attempt"
+    assert contract["evidence_review"] == {
+        "mode": "logical_only",
+        "hash_validation_performed": False,
+        "sidecar_files_used_as_launch_gates": False,
+    }
+    assert contract["evidence_verification"][0]["review_mode"] == "logical_only"
+    assert "--parent-attempt" in contract["runner_argv"]
+
+
 def test_fixture_profile_is_blocked_from_real_execution(
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,

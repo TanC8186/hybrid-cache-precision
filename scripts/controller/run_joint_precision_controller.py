@@ -50,6 +50,49 @@ def load_json(path: Path) -> dict[str, Any]:
     return value
 
 
+def review_profile_evidence_logically(profile: Mapping[str, Any], repo_root: Path) -> list[dict[str, Any]]:
+    """Require referenced evidence to exist and parse, without digest checks."""
+
+    raw_records = profile.get("evidence")
+    if not isinstance(raw_records, list) or not raw_records:
+        raise ProfileBuildError("profile.evidence must be a non-empty array")
+    resolved_root = repo_root.resolve()
+    reviewed: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for index, raw_record in enumerate(raw_records):
+        if not isinstance(raw_record, dict):
+            raise ProfileBuildError(f"profile.evidence[{index}] must be an object")
+        evidence_id = raw_record.get("evidence_id")
+        if not isinstance(evidence_id, str) or not evidence_id:
+            raise ProfileBuildError(f"profile.evidence[{index}].evidence_id must be a non-empty string")
+        if evidence_id in seen:
+            raise ProfileBuildError(f"duplicate evidence_id: {evidence_id}")
+        seen.add(evidence_id)
+        raw_path = raw_record.get("path")
+        if not isinstance(raw_path, str) or not raw_path.strip():
+            raise ProfileBuildError(f"profile.evidence.{evidence_id}.path must be a non-empty string")
+        declared = Path(raw_path)
+        if declared.is_absolute():
+            raise ProfileBuildError(f"profile evidence path must be repository-relative: {raw_path}")
+        resolved = (resolved_root / declared).resolve()
+        try:
+            resolved.relative_to(resolved_root)
+        except ValueError as error:
+            raise ProfileBuildError(f"profile evidence path escapes the repository: {raw_path}") from error
+        document = load_json(resolved)
+        reviewed.append(
+            {
+                "evidence_id": evidence_id,
+                "path": declared.as_posix(),
+                "verification_status": raw_record.get("verification_status"),
+                "review_mode": "logical_only",
+                "json_root": "object",
+                "top_level_fields": sorted(document),
+            }
+        )
+    return reviewed
+
+
 def validate_profile_capacity_semantics(profile: Mapping[str, Any]) -> None:
     """Reject legacy profiles that counted shared logical layer views."""
 
@@ -238,8 +281,14 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--serving-config", type=Path, required=True)
     parser.add_argument("--phase", required=True)
     parser.add_argument("--attempt-id", required=True)
+    parser.add_argument("--parent-attempt")
     parser.add_argument("--output-root", type=Path, required=True)
     parser.add_argument("--seeds")
+    parser.add_argument(
+        "--evidence-review-mode",
+        choices=("hash_verified", "logical_only"),
+        default="hash_verified",
+    )
     parser.add_argument("--dry-run", action="store_true")
     return parser.parse_args(argv)
 
@@ -261,7 +310,10 @@ def main(argv: Sequence[str] | None = None) -> int:
         request = load_json(request_path)
         config = load_config(config_path)
         repo_root = config_path.parents[2]
-        evidence_verification = verify_profile_evidence(profile, repo_root)
+        if args.evidence_review_mode == "logical_only":
+            evidence_verification = review_profile_evidence_logically(profile, repo_root)
+        else:
+            evidence_verification = verify_profile_evidence(profile, repo_root)
         root_git = get_git_state(repo_root, require_clean=bool(config["protocol"]["require_clean_git"]))
         seeds = parse_int_csv(args.seeds)
     except (ControllerError, ExperimentError, ProfileBuildError, OSError, ValueError, KeyError) as error:
@@ -343,10 +395,16 @@ def main(argv: Sequence[str] | None = None) -> int:
             "version_label": "joint_precision_controller_contract_v1",
         },
         "attempt_id": args.attempt_id,
+        "parent_attempt": args.parent_attempt,
         "dry_run": bool(args.dry_run),
         "profile_path": str(profile_path),
         "profile_sha256": sha256_file(profile_path),
         "evidence_verification": evidence_verification,
+        "evidence_review": {
+            "mode": args.evidence_review_mode,
+            "hash_validation_performed": args.evidence_review_mode == "hash_verified",
+            "sidecar_files_used_as_launch_gates": args.evidence_review_mode == "hash_verified",
+        },
         "request_path": str(request_path),
         "request_sha256": sha256_file(request_path),
         "serving_config_path": str(config_path),
@@ -366,6 +424,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             args.attempt_id,
             "--output-root",
             str(runner_output_root),
+            *(["--parent-attempt", args.parent_attempt] if args.parent_attempt else []),
             "--allocations",
             mapping["allocation"],
             "--workloads",
