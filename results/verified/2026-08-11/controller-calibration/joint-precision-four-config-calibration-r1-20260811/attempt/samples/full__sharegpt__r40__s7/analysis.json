@@ -1,0 +1,66 @@
+{
+  "arrival_span_over_target": 1.0001369752610723,
+  "benchmark_duration_s": 68.0638089813292,
+  "completed": 2400,
+  "drain_after_arrival_window_s": 8.063808981329203,
+  "failed": 0,
+  "failed_request_fraction": 0.0,
+  "failed_request_indices": [],
+  "measurement_window_s": 60.0,
+  "observed_arrival_span_s": 60.00821851566434,
+  "offered_rate_req_s": 40.0,
+  "reported_tpot_p99_ms": 24.694191698605813,
+  "reported_ttft_p99_ms": 194.34799183160058,
+  "request_failure_policy": "count_as_slo_miss",
+  "request_throughput_over_offered": 0.8815257461782485,
+  "request_throughput_req_s": 35.26102984712994,
+  "sample_id": "full__sharegpt__r40__s7",
+  "schema_version": 2,
+  "slo_sweep": {
+    "1000": {
+      "good_requests": 2400,
+      "goodput_over_offered": 0.8815257461782485,
+      "goodput_req_s": 35.26102984712994,
+      "sustainable": false,
+      "tpot_threshold_ms": 200.0,
+      "ttft_threshold_ms": 1000.0
+    },
+    "2000": {
+      "good_requests": 2400,
+      "goodput_over_offered": 0.8815257461782485,
+      "goodput_req_s": 35.26102984712994,
+      "sustainable": false,
+      "tpot_threshold_ms": 200.0,
+      "ttft_threshold_ms": 2000.0
+    },
+    "250": {
+      "good_requests": 2400,
+      "goodput_over_offered": 0.8815257461782485,
+      "goodput_req_s": 35.26102984712994,
+      "sustainable": false,
+      "tpot_threshold_ms": 200.0,
+      "ttft_threshold_ms": 250.0
+    },
+    "3000": {
+      "good_requests": 2400,
+      "goodput_over_offered": 0.8815257461782485,
+      "goodput_req_s": 35.26102984712994,
+      "sustainable": false,
+      "tpot_threshold_ms": 200.0,
+      "ttft_threshold_ms": 3000.0
+    },
+    "500": {
+      "good_requests": 2400,
+      "goodput_over_offered": 0.8815257461782485,
+      "goodput_req_s": 35.26102984712994,
+      "sustainable": false,
+      "tpot_threshold_ms": 200.0,
+      "ttft_threshold_ms": 500.0
+    }
+  },
+  "status": "completed_validated",
+  "tpot_p95_ms_recomputed": 18.114724281864866,
+  "tpot_p99_ms_recomputed": 24.69423537453016,
+  "ttft_p95_ms_recomputed": 170.68343795835978,
+  "ttft_p99_ms_recomputed": 194.34799183160072
+}

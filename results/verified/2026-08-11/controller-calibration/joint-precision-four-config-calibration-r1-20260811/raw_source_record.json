@@ -1,0 +1,36 @@
+{
+  "attempt_id": "joint-precision-four-config-calibration-r1-20260811",
+  "compact_archive": {
+    "file_count": 1052,
+    "path": "/root/autodl-tmp/controller-calibration-r1-20260811/audit/compact-evidence.tar.gz",
+    "sha256": "497edaf7bc290f9d27ee7c92c5dde019c8a7defd1c2d8e7d552fadeee405e2a3",
+    "size_bytes": 1092760
+  },
+  "git_archive": {
+    "excluded_from_git": [
+      "request-level result.json",
+      "*.log",
+      "*.tar.gz"
+    ],
+    "external_raw_result_references": 144,
+    "local_sidecar_targets_verified": 300
+  },
+  "material_passport": {
+    "origin_date": "2026-08-11",
+    "origin_mode": "validate",
+    "origin_skill": "experiment-agent",
+    "verification_status": "ANALYZED",
+    "version_label": "joint_precision_calibration_analysis_v1"
+  },
+  "raw_source": {
+    "file_count": 1175,
+    "path": "/root/autodl-tmp/controller-calibration-r1-20260811/joint-precision-four-config-calibration-r1-20260811",
+    "result_count": 144,
+    "result_size_bytes": 1432266239,
+    "sidecars_total": 439,
+    "sidecars_verified": 439,
+    "size_bytes": 1465063691,
+    "storage": "server_data_disk_source_of_truth"
+  },
+  "schema_version": 1
+}

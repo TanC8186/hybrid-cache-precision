@@ -1,0 +1,9 @@
+{
+  "analysis_sha256": "a30a9ed895ce48072a8feeaf03c0ad02908bae6aa036f42a341c7d7658c29282",
+  "evidence_status": "UNVERIFIED",
+  "finished_at": "2026-08-11T14:25:26Z",
+  "result_sha256": "cdb89b8a830a8dc04c475d54c6e7495a42b63964b12d3f42ad686b119bb4a445",
+  "returncode": 0,
+  "runner_duration_s": 90.2037223353982,
+  "status": "completed_validated"
+}

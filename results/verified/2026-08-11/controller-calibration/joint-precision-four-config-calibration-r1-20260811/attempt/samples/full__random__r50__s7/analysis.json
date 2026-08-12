@@ -1,0 +1,66 @@
+{
+  "arrival_span_over_target": 1.0002194334442416,
+  "benchmark_duration_s": 81.92684271559119,
+  "completed": 3000,
+  "drain_after_arrival_window_s": 21.926842715591192,
+  "failed": 0,
+  "failed_request_fraction": 0.0,
+  "failed_request_indices": [],
+  "measurement_window_s": 60.0,
+  "observed_arrival_span_s": 60.0131660066545,
+  "offered_rate_req_s": 50.0,
+  "reported_tpot_p99_ms": 48.67668117917194,
+  "reported_ttft_p99_ms": 20601.72307796776,
+  "request_failure_policy": "count_as_slo_miss",
+  "request_throughput_over_offered": 0.7323607014649623,
+  "request_throughput_req_s": 36.618035073248116,
+  "sample_id": "full__random__r50__s7",
+  "schema_version": 2,
+  "slo_sweep": {
+    "1000": {
+      "good_requests": 265,
+      "goodput_over_offered": 0.06469186196273834,
+      "goodput_req_s": 3.2345930981369166,
+      "sustainable": false,
+      "tpot_threshold_ms": 200.0,
+      "ttft_threshold_ms": 1000.0
+    },
+    "2000": {
+      "good_requests": 457,
+      "goodput_over_offered": 0.11156294685649591,
+      "goodput_req_s": 5.578147342824796,
+      "sustainable": false,
+      "tpot_threshold_ms": 200.0,
+      "ttft_threshold_ms": 2000.0
+    },
+    "250": {
+      "good_requests": 132,
+      "goodput_over_offered": 0.03222387086445834,
+      "goodput_req_s": 1.611193543222917,
+      "sustainable": false,
+      "tpot_threshold_ms": 200.0,
+      "ttft_threshold_ms": 250.0
+    },
+    "3000": {
+      "good_requests": 590,
+      "goodput_over_offered": 0.14403093795477592,
+      "goodput_req_s": 7.201546897738796,
+      "sustainable": false,
+      "tpot_threshold_ms": 200.0,
+      "ttft_threshold_ms": 3000.0
+    },
+    "500": {
+      "good_requests": 179,
+      "goodput_over_offered": 0.043697521854076084,
+      "goodput_req_s": 2.1848760927038042,
+      "sustainable": false,
+      "tpot_threshold_ms": 200.0,
+      "ttft_threshold_ms": 500.0
+    }
+  },
+  "status": "completed_validated",
+  "tpot_p95_ms_recomputed": 48.614410470848476,
+  "tpot_p99_ms_recomputed": 48.67668551224189,
+  "ttft_p95_ms_recomputed": 19825.252600759268,
+  "ttft_p99_ms_recomputed": 20601.723077967767
+}

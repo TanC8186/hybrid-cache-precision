@@ -1,0 +1,47 @@
+{
+  "candidates": {
+    "full": {
+      "delta_ci95_high": 0.0,
+      "delta_ci95_low": 0.0,
+      "n_independent_repeats": 9,
+      "source_allocation": "fp16",
+      "source_row_index": 0
+    },
+    "joint": {
+      "delta_ci95_high": 0.0042,
+      "delta_ci95_low": -0.0353,
+      "n_independent_repeats": 9,
+      "source_allocation": "uniform_int4_statebf16",
+      "source_row_index": 3
+    },
+    "kv_only": {
+      "delta_ci95_high": -0.0124,
+      "delta_ci95_low": -0.042,
+      "n_independent_repeats": 9,
+      "source_allocation": "uniform_int4",
+      "source_row_index": 2
+    },
+    "state_only": {
+      "delta_ci95_high": -0.0029,
+      "delta_ci95_low": -0.0171,
+      "n_independent_repeats": 9,
+      "source_allocation": "fp16_statebf16",
+      "source_row_index": 1
+    }
+  },
+  "material_passport": {
+    "origin_date": "2026-08-12",
+    "origin_mode": "validate",
+    "origin_skill": "experiment-skill",
+    "verification_status": "ANALYZED",
+    "version_label": "joint_precision_quality_evidence_v1"
+  },
+  "schema_version": 1,
+  "source": {
+    "attempt": "reasoning-gsm8k-state9seed-v2-20260809",
+    "path": "results/quality/gsm8k-state9seed-v2-analysis-20260809.json",
+    "protocol": "no-think, greedy, max_tokens=1024, 200 rows sampled per seed (random_state=seed, no replacement); same seed -> same subset in every allocation; engine seed kept for provenance only",
+    "sha256": "1fb4349ed2c9c9dfc0b396c02c4a5b734ba132a27e8a08e60031dc8338703f16"
+  },
+  "task": "gsm8k"
+}
