@@ -1,0 +1,1 @@
+/root/autodl-tmp/MLSys_Research/.venv/bin/python scripts/bench/run_steady_state.py --config configs/experiments/joint_precision_controller_2b.yaml --phase confirmatory --attempt-id m4-four-config-serving-repro-39739e0-20260813-r3 --parent-attempt m4-four-config-serving-formal-39739e0-20260813-r2 --output-root /root/autodl-tmp/m4-four-config-formal-20260813

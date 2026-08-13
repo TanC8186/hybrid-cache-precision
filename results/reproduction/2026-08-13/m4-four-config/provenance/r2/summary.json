@@ -1,0 +1,585 @@
+{
+  "counts": {
+    "completed_validated": 144
+  },
+  "samples": [
+    {
+      "sample_id": "full__random__r30__s11",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "full__random__r30__s23",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "full__random__r30__s47",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "full__random__r35__s11",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "full__random__r35__s23",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "full__random__r35__s47",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "full__random__r40__s11",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "full__random__r40__s23",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "full__random__r40__s47",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "full__random__r45__s11",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "full__random__r45__s23",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "full__random__r45__s47",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "full__random__r50__s11",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "full__random__r50__s23",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "full__random__r50__s47",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "full__sharegpt__r20__s11",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "full__sharegpt__r20__s23",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "full__sharegpt__r20__s47",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "full__sharegpt__r25__s11",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "full__sharegpt__r25__s23",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "full__sharegpt__r25__s47",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "full__sharegpt__r30__s11",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "full__sharegpt__r30__s23",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "full__sharegpt__r30__s47",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "full__sharegpt__r35__s11",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "full__sharegpt__r35__s23",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "full__sharegpt__r35__s47",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "full__sharegpt__r40__s11",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "full__sharegpt__r40__s23",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "full__sharegpt__r40__s47",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "full__sharegpt__r45__s11",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "full__sharegpt__r45__s23",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "full__sharegpt__r45__s47",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "full__sharegpt__r50__s11",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "full__sharegpt__r50__s23",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "full__sharegpt__r50__s47",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "kv_only__random__r30__s11",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "kv_only__random__r30__s23",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "kv_only__random__r30__s47",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "kv_only__random__r35__s11",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "kv_only__random__r35__s23",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "kv_only__random__r35__s47",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "kv_only__random__r40__s11",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "kv_only__random__r40__s23",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "kv_only__random__r40__s47",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "kv_only__random__r45__s11",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "kv_only__random__r45__s23",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "kv_only__random__r45__s47",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "kv_only__random__r50__s11",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "kv_only__random__r50__s23",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "kv_only__random__r50__s47",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "kv_only__sharegpt__r20__s11",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "kv_only__sharegpt__r20__s23",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "kv_only__sharegpt__r20__s47",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "kv_only__sharegpt__r25__s11",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "kv_only__sharegpt__r25__s23",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "kv_only__sharegpt__r25__s47",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "kv_only__sharegpt__r30__s11",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "kv_only__sharegpt__r30__s23",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "kv_only__sharegpt__r30__s47",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "kv_only__sharegpt__r35__s11",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "kv_only__sharegpt__r35__s23",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "kv_only__sharegpt__r35__s47",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "kv_only__sharegpt__r40__s11",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "kv_only__sharegpt__r40__s23",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "kv_only__sharegpt__r40__s47",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "kv_only__sharegpt__r45__s11",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "kv_only__sharegpt__r45__s23",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "kv_only__sharegpt__r45__s47",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "kv_only__sharegpt__r50__s11",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "kv_only__sharegpt__r50__s23",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "kv_only__sharegpt__r50__s47",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "state_only__random__r30__s11",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "state_only__random__r30__s23",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "state_only__random__r30__s47",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "state_only__random__r35__s11",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "state_only__random__r35__s23",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "state_only__random__r35__s47",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "state_only__random__r40__s11",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "state_only__random__r40__s23",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "state_only__random__r40__s47",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "state_only__random__r45__s11",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "state_only__random__r45__s23",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "state_only__random__r45__s47",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "state_only__random__r50__s11",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "state_only__random__r50__s23",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "state_only__random__r50__s47",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "state_only__sharegpt__r20__s11",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "state_only__sharegpt__r20__s23",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "state_only__sharegpt__r20__s47",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "state_only__sharegpt__r25__s11",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "state_only__sharegpt__r25__s23",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "state_only__sharegpt__r25__s47",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "state_only__sharegpt__r30__s11",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "state_only__sharegpt__r30__s23",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "state_only__sharegpt__r30__s47",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "state_only__sharegpt__r35__s11",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "state_only__sharegpt__r35__s23",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "state_only__sharegpt__r35__s47",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "state_only__sharegpt__r40__s11",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "state_only__sharegpt__r40__s23",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "state_only__sharegpt__r40__s47",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "state_only__sharegpt__r45__s11",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "state_only__sharegpt__r45__s23",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "state_only__sharegpt__r45__s47",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "state_only__sharegpt__r50__s11",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "state_only__sharegpt__r50__s23",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "state_only__sharegpt__r50__s47",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "joint__random__r30__s11",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "joint__random__r30__s23",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "joint__random__r30__s47",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "joint__random__r35__s11",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "joint__random__r35__s23",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "joint__random__r35__s47",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "joint__random__r40__s11",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "joint__random__r40__s23",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "joint__random__r40__s47",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "joint__random__r45__s11",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "joint__random__r45__s23",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "joint__random__r45__s47",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "joint__random__r50__s11",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "joint__random__r50__s23",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "joint__random__r50__s47",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "joint__sharegpt__r20__s11",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "joint__sharegpt__r20__s23",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "joint__sharegpt__r20__s47",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "joint__sharegpt__r25__s11",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "joint__sharegpt__r25__s23",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "joint__sharegpt__r25__s47",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "joint__sharegpt__r30__s11",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "joint__sharegpt__r30__s23",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "joint__sharegpt__r30__s47",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "joint__sharegpt__r35__s11",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "joint__sharegpt__r35__s23",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "joint__sharegpt__r35__s47",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "joint__sharegpt__r40__s11",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "joint__sharegpt__r40__s23",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "joint__sharegpt__r40__s47",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "joint__sharegpt__r45__s11",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "joint__sharegpt__r45__s23",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "joint__sharegpt__r45__s47",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "joint__sharegpt__r50__s11",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "joint__sharegpt__r50__s23",
+      "status": "completed_validated"
+    },
+    {
+      "sample_id": "joint__sharegpt__r50__s47",
+      "status": "completed_validated"
+    }
+  ],
+  "schema_version": 1,
+  "updated_at": "2026-08-13T09:07:25Z"
+}
