@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "material_passport": {
+    "origin_skill": "experiment-skill",
+    "origin_mode": "run",
+    "origin_date": "2026-08-13",
+    "verification_status": "UNVERIFIED",
+    "version_label": "ruler_nothink_reproduction_contract_v1"
+  },
+  "package_id": "ruler-nothink-5cell-reproduction-20260813",
+  "classification": "environment_sensitive_independent_temporal_reproduction",
+  "parent_package": "ruler-nothink-5cell-pilot-20260811",
+  "parent_attempts": {
+    "2b": "ruler-statebf16-nothink-20260811-2b",
+    "9b": "ruler-statebf16-nothink-20260811-9b"
+  },
+  "attempt_ids": {
+    "2b": "ruler-statebf16-nothink-repro-20260813-2b",
+    "9b": "ruler-statebf16-nothink-repro-20260813-9b"
+  },
+  "review_policy": {
+    "mode": "logical_only",
+    "hash_validation_performed": false,
+    "script_hashes_are_not_launch_gates": true,
+    "result_sidecars_retained": true,
+    "failed_or_missing_cells_fail_closed": true
+  },
+  "matrix": {
+    "cells": [
+      ["ruler_fwe", 4096, "2b"],
+      ["ruler_fwe", 8192, "2b"],
+      ["ruler_niah_multiquery", 4096, "9b"],
+      ["ruler_niah_multiquery", 8192, "9b"],
+      ["ruler_fwe", 8192, "9b"]
+    ],
+    "allocations": ["fp16", "fp16_statebf16"],
+    "dataset_seeds": [42, 11, 23],
+    "engine_seed": 7,
+    "expected_cells": 30,
+    "expected_samples_per_cell": 20
+  },
+  "protocol": {
+    "runner": "scripts/eval/ruler_quality.py",
+    "thinking": "disabled",
+    "max_tokens": 256,
+    "temperature": 0.0,
+    "max_model_len": 16384,
+    "gpu_memory_utilization": 0.85,
+    "independent_reproduction": "same frozen matrix on westd RTX 5090, new attempt IDs and new execution epoch"
+  },
+  "execution": {
+    "working_directory": "/root/autodl-tmp/MLSys_Research",
+    "output_root": "/root/autodl-tmp/MLSys_Research/results/quality/ruler-subset",
+    "timeout_s": 7200,
+    "expected_log_files": [
+      "/root/autodl-tmp/MLSys_Research/logs/ruler-statebf16-nothink-repro-20260813-2b.log",
+      "/root/autodl-tmp/MLSys_Research/logs/ruler-statebf16-nothink-repro-20260813-9b.log"
+    ]
+  },
+  "promotion_boundary": "Only the pre-registered five-cell no-think comparison on this RTX 5090 environment; it does not establish cross-hardware or equivalence claims."
+}

@@ -1,0 +1,412 @@
+{
+  "accuracy": 100.0,
+  "allocation": "fp16_statebf16",
+  "attempt_id": "ruler-statebf16-nothink-repro-20260813-9b",
+  "cases": [
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 22649,
+      "output_tokens": 85,
+      "prediction": "Based on the text provided, here are the special magic numbers for each item:\n\n*   **acceptable-blueberry:** 2876828\n*   **fragile-tub:** 2321324\n*   **laughable-warfare:** 6159230\n*   **fortunate-coevolution:** 1971823",
+      "prompt_tokens": 8066,
+      "references": [
+        "6159230",
+        "2876828",
+        "2321324",
+        "1971823"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 18613,
+      "output_tokens": 83,
+      "prediction": "Based on the text provided, here are the special magic numbers you asked for:\n\n*   **good-standoff:** 9852897\n*   **wide-spume:** 6229731\n*   **stormy-e-mail:** 8099076\n*   **faint-water:** 4374754",
+      "prompt_tokens": 8063,
+      "references": [
+        "6229731",
+        "9852897",
+        "4374754",
+        "8099076"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 10933,
+      "output_tokens": 85,
+      "prediction": "Based on the text provided, here are the special magic numbers for each item:\n\n*   **spectacular-spleen:** 4694634\n*   **beautiful-conditioner:** 6672134\n*   **abject-tenant:** 2191066\n*   **accidental-airfield:** 4860684",
+      "prompt_tokens": 8066,
+      "references": [
+        "4694634",
+        "6672134",
+        "2191066",
+        "4860684"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 4671,
+      "output_tokens": 86,
+      "prediction": "Based on the text provided, here are the special magic numbers you asked for:\n\n*   **freezing-milk:** 8935169\n*   **fallacious-woodland:** 3219824\n*   **worried-purse:** 8930103\n*   **unbiased-inability:** 9143903",
+      "prompt_tokens": 8066,
+      "references": [
+        "8935169",
+        "3219824",
+        "8930103",
+        "9143903"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 8991,
+      "output_tokens": 87,
+      "prediction": "Based on the text provided, here are the special magic numbers for each identifier:\n\n*   **painful-pigpen**: 1908841\n*   **x-rated-ratepayer**: 6692553\n*   **uneven-sycamore**: 2651177\n*   **axiomatic-watch**: 7754864",
+      "prompt_tokens": 8072,
+      "references": [
+        "6692553",
+        "1908841",
+        "2651177",
+        "7754864"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 7915,
+      "output_tokens": 87,
+      "prediction": "Based on the text provided, here are the special magic numbers for each category:\n\n*   **aromatic-molding:** 1247595\n*   **futuristic-wine:** 2264748\n*   **guiltless-machinery:** 8761611\n*   **obedient-breeze:** 2642635",
+      "prompt_tokens": 8063,
+      "references": [
+        "1247595",
+        "2264748",
+        "8761611",
+        "2642635"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 7525,
+      "output_tokens": 87,
+      "prediction": "Based on the text provided, here are the special magic numbers for each item:\n\n*   **sneaky-giant:** 2022698\n*   **purring-watercress:** 9910817\n*   **hurried-tensor:** 1959074\n*   **aromatic-allegation:** 8999183",
+      "prompt_tokens": 7444,
+      "references": [
+        "1959074",
+        "2022698",
+        "8999183",
+        "9910817"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 27206,
+      "output_tokens": 86,
+      "prediction": "Based on the text provided, here are the special magic numbers:\n\n*   **sneaky-balaclava**: 1666754\n*   **skillful-palace**: 5130808\n*   **melted-hide**: 3011363\n*   **swift-bronze**: 2375453",
+      "prompt_tokens": 8075,
+      "references": [
+        "1666754",
+        "5130808",
+        "3011363",
+        "2375453"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 555,
+      "output_tokens": 82,
+      "prediction": "Based on the text provided, here are the special magic numbers:\n\n*   **forgetful-cuckoo:** 5456272\n*   **orange-mangle:** 6304573\n*   **mammoth-marten:** 3195773\n*   **undesirable-sister:** 6033115",
+      "prompt_tokens": 8069,
+      "references": [
+        "5456272",
+        "6304573",
+        "6033115",
+        "3195773"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 14052,
+      "output_tokens": 84,
+      "prediction": "Based on the text provided, here are the special magic numbers for each item:\n\n*   **cynical-spell:** 6855396\n*   **different-burn:** 8351517\n*   **billowy-blend:** 5098412\n*   **light-barbecue:** 5781295",
+      "prompt_tokens": 8063,
+      "references": [
+        "6855396",
+        "5781295",
+        "5098412",
+        "8351517"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 28203,
+      "output_tokens": 89,
+      "prediction": "Based on the text provided, here are the special magic numbers for each item:\n\n*   **screeching-dory:** 3607983\n*   **grieving-subsidiary:** 5727085\n*   **condemned-scam:** 2795765\n*   **damaged-bread:** 5437001",
+      "prompt_tokens": 8072,
+      "references": [
+        "3607983",
+        "5727085",
+        "2795765",
+        "5437001"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 7647,
+      "output_tokens": 86,
+      "prediction": "Based on the text provided, here are the special magic numbers for each category:\n\n*   **aromatic-specialist:** 2548511\n*   **abashed-girlfriend:** 6596150\n*   **teeny-margarine:** 8106422\n*   **grumpy-criminal:** 1739653",
+      "prompt_tokens": 8072,
+      "references": [
+        "6596150",
+        "1739653",
+        "2548511",
+        "8106422"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 17126,
+      "output_tokens": 85,
+      "prediction": "Based on the text provided, here are the special magic numbers:\n\n*   **lewd-porthole:** 3484601\n*   **boiling-basement:** 3500715\n*   **new-nougat:** 3138181\n*   **salty-spiritual:** 1604451",
+      "prompt_tokens": 8075,
+      "references": [
+        "3484601",
+        "3500715",
+        "3138181",
+        "1604451"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 15626,
+      "output_tokens": 86,
+      "prediction": "Based on the text provided, here are the special magic numbers for each term:\n\n*   **knotty-inlay:** 7817881\n*   **dynamic-yarn:** 7917152\n*   **symptomatic-principle:** 3592974\n*   **foamy-sneeze:** 3726327",
+      "prompt_tokens": 8072,
+      "references": [
+        "3592974",
+        "7917152",
+        "7817881",
+        "3726327"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 9074,
+      "output_tokens": 88,
+      "prediction": "Based on the text provided, here are the special magic numbers for each term:\n\n*   **lucky-cirrus:** 1649691\n*   **jumpy-kinase:** 6120253\n*   **parsimonious-conditioner:** 4731818\n*   **erect-stench:** 8722606",
+      "prompt_tokens": 8075,
+      "references": [
+        "6120253",
+        "4731818",
+        "8722606",
+        "1649691"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 12024,
+      "output_tokens": 86,
+      "prediction": "Based on the text provided, here are the special magic numbers for each item:\n\n*   **jolly-mortise:** 6262632\n*   **smiling-coil:** 4188992\n*   **nostalgic-scallops:** 9580255\n*   **confused-armament:** 7462506",
+      "prompt_tokens": 7438,
+      "references": [
+        "9580255",
+        "4188992",
+        "7462506",
+        "6262632"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 15286,
+      "output_tokens": 88,
+      "prediction": "Based on the text provided, here are the special magic numbers associated with each term:\n\n*   **wonderful-diary:** 6038571\n*   **ugly-manor:** 3090865\n*   **tacit-scope:** 6266630\n*   **ultra-nerve:** 6539837",
+      "prompt_tokens": 8066,
+      "references": [
+        "6038571",
+        "3090865",
+        "6266630",
+        "6539837"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 25591,
+      "output_tokens": 81,
+      "prediction": "Based on the text provided, here are the special magic numbers:\n\n*   **empty-drop**: 8053918\n*   **super-experimentation**: 6049101\n*   **unable-ice-cream**: 7361002\n*   **upbeat-satin**: 3919694",
+      "prompt_tokens": 8066,
+      "references": [
+        "3919694",
+        "8053918",
+        "7361002",
+        "6049101"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 17899,
+      "output_tokens": 87,
+      "prediction": "Based on the text provided, here are the special magic numbers for each term:\n\n*   **erect-elixir:** 3472189\n*   **subsequent-beyond:** 2221854\n*   **ad hoc-cough:** 1775337\n*   **fretful-stag:** 8971465",
+      "prompt_tokens": 7444,
+      "references": [
+        "2221854",
+        "1775337",
+        "3472189",
+        "8971465"
+      ]
+    },
+    {
+      "hits": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "index": 2448,
+      "output_tokens": 83,
+      "prediction": "Based on the text provided, here are the special magic numbers:\n\n*   **tranquil-investment:** 1093026\n*   **wacky-sandbar:** 9689889\n*   **clever-spit:** 8132769\n*   **fast-pottery:** 3950888",
+      "prompt_tokens": 8069,
+      "references": [
+        "1093026",
+        "8132769",
+        "9689889",
+        "3950888"
+      ]
+    }
+  ],
+  "config_effect": {
+    "allocation": "fp16_statebf16",
+    "detail": {
+      "a2_flag": false,
+      "cache_dtype": "auto",
+      "mamba_ssm_cache_dtype": "bfloat16",
+      "per_layer": {}
+    },
+    "group_structure_verified": false,
+    "ok": true
+  },
+  "created_at_utc": "2026-08-12T19:08:59Z",
+  "data_file": "data/ruler/ruler_niah_multiquery_L8192/validation.jsonl",
+  "data_sha256": "c4addade2eec70a77cdbe6bb236f6c0a727de283a848bc5ef6817aa51c2eeac0",
+  "elapsed_s": 79.4,
+  "engine": {
+    "kwargs": {
+      "disable_log_stats": true,
+      "enforce_eager": true,
+      "gpu_memory_utilization": 0.85,
+      "mamba_ssm_cache_dtype": "bfloat16",
+      "max_model_len": 16384,
+      "seed": 7
+    },
+    "model": "/root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-9B/snapshots/master",
+    "vllm_version": "0.26.1rc1.dev245+ge2fa28594"
+  },
+  "host": "autodl-container-fd9942a535-1d97988d",
+  "length": 8192,
+  "max_tokens": 256,
+  "metric": "string_match_all",
+  "num_samples": 20,
+  "ruler_commit": "c3f5e3b4f87f97e048793bb510a3a6b19a46bf3a",
+  "sampling_params": {
+    "max_tokens": 256,
+    "temperature": 0.0,
+    "thinking": "disabled"
+  },
+  "schema_version": 1,
+  "seed": 7,
+  "status": "completed_validated",
+  "task": "ruler_niah_multiquery",
+  "task_type": "niah",
+  "thinking": "disabled",
+  "tokens_to_generate": 128
+}

@@ -1,0 +1,661 @@
+{
+  "schema_version": 1,
+  "material_passport": {
+    "origin_skill": "experiment-skill",
+    "origin_mode": "validate",
+    "origin_date": "2026-08-13T02:38:49.367230+00:00",
+    "verification_status": "VERIFIED",
+    "version_label": "ruler_nothink_gate4_reproduction_v1"
+  },
+  "validation_id": "ruler-nothink-5cell-gate4-20260813",
+  "gate": "Gate 4 reproducibility and promotion",
+  "gate_status": "PASS",
+  "evidence_status": "VERIFIED",
+  "overall_confidence": "CAUTION",
+  "source": {
+    "contract": "/root/autodl-tmp/MLSys_Research/results/quality/ruler-nothink-5cell-reproduction-20260813.contract.json",
+    "parent_attempts": {
+      "2b": "ruler-statebf16-nothink-20260811-2b",
+      "9b": "ruler-statebf16-nothink-20260811-9b"
+    },
+    "reproduction_attempts": {
+      "2b": "ruler-statebf16-nothink-repro-20260813-2b",
+      "9b": "ruler-statebf16-nothink-repro-20260813-9b"
+    }
+  },
+  "review_policy": {
+    "experiment_script_hashes_checked": false,
+    "experiment_script_hashes_used_as_gates": false,
+    "result_sidecars_checked": true,
+    "logical_protocol_checks": true
+  },
+  "matrix": {
+    "expected_cells_per_run": 30,
+    "parent_cells_validated": 30,
+    "reproduction_cells_validated": 30,
+    "exact_reproduction_matches": 30,
+    "samples_per_cell": 20
+  },
+  "statistical_findings": [
+    {
+      "task": "ruler_fwe",
+      "length": 4096,
+      "model": "2b",
+      "unit_of_analysis": "paired dataset seed",
+      "n_pairs": 3,
+      "fp16_mean_accuracy": 91.11,
+      "statebf16_mean_accuracy": 91.11,
+      "mean_delta_accuracy_points": 0.0,
+      "ci95_delta_accuracy_points": [
+        0.0,
+        0.0
+      ],
+      "paired_deltas": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "standardized_effect": "undefined_zero_variance",
+      "inference": "descriptive_only_no_equivalence_claim"
+    },
+    {
+      "task": "ruler_fwe",
+      "length": 8192,
+      "model": "2b",
+      "unit_of_analysis": "paired dataset seed",
+      "n_pairs": 3,
+      "fp16_mean_accuracy": 98.333333,
+      "statebf16_mean_accuracy": 98.333333,
+      "mean_delta_accuracy_points": 0.0,
+      "ci95_delta_accuracy_points": [
+        0.0,
+        0.0
+      ],
+      "paired_deltas": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "standardized_effect": "undefined_zero_variance",
+      "inference": "descriptive_only_no_equivalence_claim"
+    },
+    {
+      "task": "ruler_niah_multiquery",
+      "length": 4096,
+      "model": "9b",
+      "unit_of_analysis": "paired dataset seed",
+      "n_pairs": 3,
+      "fp16_mean_accuracy": 100.0,
+      "statebf16_mean_accuracy": 100.0,
+      "mean_delta_accuracy_points": 0.0,
+      "ci95_delta_accuracy_points": [
+        0.0,
+        0.0
+      ],
+      "paired_deltas": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "standardized_effect": "undefined_zero_variance",
+      "inference": "descriptive_only_no_equivalence_claim"
+    },
+    {
+      "task": "ruler_niah_multiquery",
+      "length": 8192,
+      "model": "9b",
+      "unit_of_analysis": "paired dataset seed",
+      "n_pairs": 3,
+      "fp16_mean_accuracy": 100.0,
+      "statebf16_mean_accuracy": 100.0,
+      "mean_delta_accuracy_points": 0.0,
+      "ci95_delta_accuracy_points": [
+        0.0,
+        0.0
+      ],
+      "paired_deltas": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "standardized_effect": "undefined_zero_variance",
+      "inference": "descriptive_only_no_equivalence_claim"
+    },
+    {
+      "task": "ruler_fwe",
+      "length": 8192,
+      "model": "9b",
+      "unit_of_analysis": "paired dataset seed",
+      "n_pairs": 3,
+      "fp16_mean_accuracy": 100.0,
+      "statebf16_mean_accuracy": 100.0,
+      "mean_delta_accuracy_points": 0.0,
+      "ci95_delta_accuracy_points": [
+        0.0,
+        0.0
+      ],
+      "paired_deltas": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "standardized_effect": "undefined_zero_variance",
+      "inference": "descriptive_only_no_equivalence_claim"
+    }
+  ],
+  "statistical_assumptions": {
+    "unit_of_analysis": "paired dataset seed",
+    "n_pairs_per_cell": 3,
+    "interval": "two-sided 95% t interval with df=2",
+    "effect_size": "raw paired accuracy-point delta; standardized effect undefined for zero variance",
+    "multiple_comparisons": "all five predeclared cells reported; no p-value claims or outcome selection",
+    "equivalence_margin": null,
+    "equivalence_claim_authorized": false
+  },
+  "warnings": [
+    "n=3 paired dataset seeds is low power",
+    "exact observed equality is not evidence of population equivalence",
+    "zero-width empirical intervals do not authorize a no-loss claim"
+  ],
+  "fallacy_scan_coverage": "11/11",
+  "fallacy_scan": [
+    {
+      "fallacy": "Simpson's paradox",
+      "severity": "NOTE",
+      "status": "CHECKED",
+      "detail": "All five cells are reported separately by task, length, and model; aggregate direction is not substituted for strata."
+    },
+    {
+      "fallacy": "Ecological fallacy",
+      "severity": "CAUTION",
+      "status": "CHECKED",
+      "detail": "The unit of analysis and inference is the paired dataset seed, not an individual request or token."
+    },
+    {
+      "fallacy": "Berkson's paradox",
+      "severity": "NOTE",
+      "status": "CHECKED",
+      "detail": "The five cells were fixed by the protocol-repair question before this reproduction; no outcome-based admission filter was applied."
+    },
+    {
+      "fallacy": "Collider bias",
+      "severity": "NOTE",
+      "status": "CHECKED",
+      "detail": "No post-treatment variable is conditioned on; allocation pairs share the same frozen samples."
+    },
+    {
+      "fallacy": "Base rate neglect",
+      "severity": "NOTE",
+      "status": "CHECKED",
+      "detail": "Accuracy is reported with its exact 20-sample denominator; this is not a diagnostic sensitivity/specificity claim."
+    },
+    {
+      "fallacy": "Regression to the mean",
+      "severity": "NOTE",
+      "status": "CHECKED",
+      "detail": "The independent temporal rerun repeats every cell and is not selected from extreme parent outcomes."
+    },
+    {
+      "fallacy": "Survivorship bias",
+      "severity": "NOTE",
+      "status": "CHECKED",
+      "detail": "The exact 30-cell matrix is required; any missing, failed, or extra cell fails validation."
+    },
+    {
+      "fallacy": "Look-elsewhere effect",
+      "severity": "CAUTION",
+      "status": "CHECKED",
+      "detail": "Five task/length/model cells, two allocations, and three dataset seeds were frozen before execution; no cell is selected by result."
+    },
+    {
+      "fallacy": "Garden of forking paths",
+      "severity": "CAUTION",
+      "status": "CHECKED",
+      "detail": "Thinking mode, token budget, seeds, allocations, matrix, comparison rule, and denominator are fixed in the contract."
+    },
+    {
+      "fallacy": "Correlation != causation",
+      "severity": "NOTE",
+      "status": "CHECKED",
+      "detail": "The report describes observed accuracy agreement and does not attribute a causal mechanism to state dtype."
+    },
+    {
+      "fallacy": "Reverse causality",
+      "severity": "NOTE",
+      "status": "CHECKED",
+      "detail": "Allocation is experimentally assigned before generation, so outcome-to-allocation reverse direction is not applicable."
+    }
+  ],
+  "reproducibility": {
+    "classification": "environment_sensitive_quality_deterministic",
+    "verdict": "REPRODUCIBLE",
+    "timing_compared": false,
+    "primary_metric_tolerance": "exact",
+    "sample_output_tolerance": "exact",
+    "comparisons": [
+      {
+        "cell": {
+          "task": "ruler_fwe",
+          "length": 4096,
+          "model": "2b",
+          "dataset_seed": 11,
+          "allocation": "fp16"
+        },
+        "original_accuracy": 90.0,
+        "reproduction_accuracy": 90.0,
+        "accuracy_difference": 0.0,
+        "sample_outputs_exact": true,
+        "status": "MATCH"
+      },
+      {
+        "cell": {
+          "task": "ruler_fwe",
+          "length": 4096,
+          "model": "2b",
+          "dataset_seed": 11,
+          "allocation": "fp16_statebf16"
+        },
+        "original_accuracy": 90.0,
+        "reproduction_accuracy": 90.0,
+        "accuracy_difference": 0.0,
+        "sample_outputs_exact": true,
+        "status": "MATCH"
+      },
+      {
+        "cell": {
+          "task": "ruler_fwe",
+          "length": 4096,
+          "model": "2b",
+          "dataset_seed": 23,
+          "allocation": "fp16"
+        },
+        "original_accuracy": 90.0,
+        "reproduction_accuracy": 90.0,
+        "accuracy_difference": 0.0,
+        "sample_outputs_exact": true,
+        "status": "MATCH"
+      },
+      {
+        "cell": {
+          "task": "ruler_fwe",
+          "length": 4096,
+          "model": "2b",
+          "dataset_seed": 23,
+          "allocation": "fp16_statebf16"
+        },
+        "original_accuracy": 90.0,
+        "reproduction_accuracy": 90.0,
+        "accuracy_difference": 0.0,
+        "sample_outputs_exact": true,
+        "status": "MATCH"
+      },
+      {
+        "cell": {
+          "task": "ruler_fwe",
+          "length": 4096,
+          "model": "2b",
+          "dataset_seed": 42,
+          "allocation": "fp16"
+        },
+        "original_accuracy": 93.33,
+        "reproduction_accuracy": 93.33,
+        "accuracy_difference": 0.0,
+        "sample_outputs_exact": true,
+        "status": "MATCH"
+      },
+      {
+        "cell": {
+          "task": "ruler_fwe",
+          "length": 4096,
+          "model": "2b",
+          "dataset_seed": 42,
+          "allocation": "fp16_statebf16"
+        },
+        "original_accuracy": 93.33,
+        "reproduction_accuracy": 93.33,
+        "accuracy_difference": 0.0,
+        "sample_outputs_exact": true,
+        "status": "MATCH"
+      },
+      {
+        "cell": {
+          "task": "ruler_fwe",
+          "length": 8192,
+          "model": "2b",
+          "dataset_seed": 11,
+          "allocation": "fp16"
+        },
+        "original_accuracy": 98.33,
+        "reproduction_accuracy": 98.33,
+        "accuracy_difference": 0.0,
+        "sample_outputs_exact": true,
+        "status": "MATCH"
+      },
+      {
+        "cell": {
+          "task": "ruler_fwe",
+          "length": 8192,
+          "model": "2b",
+          "dataset_seed": 11,
+          "allocation": "fp16_statebf16"
+        },
+        "original_accuracy": 98.33,
+        "reproduction_accuracy": 98.33,
+        "accuracy_difference": 0.0,
+        "sample_outputs_exact": true,
+        "status": "MATCH"
+      },
+      {
+        "cell": {
+          "task": "ruler_fwe",
+          "length": 8192,
+          "model": "2b",
+          "dataset_seed": 23,
+          "allocation": "fp16"
+        },
+        "original_accuracy": 96.67,
+        "reproduction_accuracy": 96.67,
+        "accuracy_difference": 0.0,
+        "sample_outputs_exact": true,
+        "status": "MATCH"
+      },
+      {
+        "cell": {
+          "task": "ruler_fwe",
+          "length": 8192,
+          "model": "2b",
+          "dataset_seed": 23,
+          "allocation": "fp16_statebf16"
+        },
+        "original_accuracy": 96.67,
+        "reproduction_accuracy": 96.67,
+        "accuracy_difference": 0.0,
+        "sample_outputs_exact": true,
+        "status": "MATCH"
+      },
+      {
+        "cell": {
+          "task": "ruler_fwe",
+          "length": 8192,
+          "model": "2b",
+          "dataset_seed": 42,
+          "allocation": "fp16"
+        },
+        "original_accuracy": 100.0,
+        "reproduction_accuracy": 100.0,
+        "accuracy_difference": 0.0,
+        "sample_outputs_exact": true,
+        "status": "MATCH"
+      },
+      {
+        "cell": {
+          "task": "ruler_fwe",
+          "length": 8192,
+          "model": "2b",
+          "dataset_seed": 42,
+          "allocation": "fp16_statebf16"
+        },
+        "original_accuracy": 100.0,
+        "reproduction_accuracy": 100.0,
+        "accuracy_difference": 0.0,
+        "sample_outputs_exact": true,
+        "status": "MATCH"
+      },
+      {
+        "cell": {
+          "task": "ruler_fwe",
+          "length": 8192,
+          "model": "9b",
+          "dataset_seed": 11,
+          "allocation": "fp16"
+        },
+        "original_accuracy": 100.0,
+        "reproduction_accuracy": 100.0,
+        "accuracy_difference": 0.0,
+        "sample_outputs_exact": true,
+        "status": "MATCH"
+      },
+      {
+        "cell": {
+          "task": "ruler_fwe",
+          "length": 8192,
+          "model": "9b",
+          "dataset_seed": 11,
+          "allocation": "fp16_statebf16"
+        },
+        "original_accuracy": 100.0,
+        "reproduction_accuracy": 100.0,
+        "accuracy_difference": 0.0,
+        "sample_outputs_exact": true,
+        "status": "MATCH"
+      },
+      {
+        "cell": {
+          "task": "ruler_fwe",
+          "length": 8192,
+          "model": "9b",
+          "dataset_seed": 23,
+          "allocation": "fp16"
+        },
+        "original_accuracy": 100.0,
+        "reproduction_accuracy": 100.0,
+        "accuracy_difference": 0.0,
+        "sample_outputs_exact": true,
+        "status": "MATCH"
+      },
+      {
+        "cell": {
+          "task": "ruler_fwe",
+          "length": 8192,
+          "model": "9b",
+          "dataset_seed": 23,
+          "allocation": "fp16_statebf16"
+        },
+        "original_accuracy": 100.0,
+        "reproduction_accuracy": 100.0,
+        "accuracy_difference": 0.0,
+        "sample_outputs_exact": true,
+        "status": "MATCH"
+      },
+      {
+        "cell": {
+          "task": "ruler_fwe",
+          "length": 8192,
+          "model": "9b",
+          "dataset_seed": 42,
+          "allocation": "fp16"
+        },
+        "original_accuracy": 100.0,
+        "reproduction_accuracy": 100.0,
+        "accuracy_difference": 0.0,
+        "sample_outputs_exact": true,
+        "status": "MATCH"
+      },
+      {
+        "cell": {
+          "task": "ruler_fwe",
+          "length": 8192,
+          "model": "9b",
+          "dataset_seed": 42,
+          "allocation": "fp16_statebf16"
+        },
+        "original_accuracy": 100.0,
+        "reproduction_accuracy": 100.0,
+        "accuracy_difference": 0.0,
+        "sample_outputs_exact": true,
+        "status": "MATCH"
+      },
+      {
+        "cell": {
+          "task": "ruler_niah_multiquery",
+          "length": 4096,
+          "model": "9b",
+          "dataset_seed": 11,
+          "allocation": "fp16"
+        },
+        "original_accuracy": 100.0,
+        "reproduction_accuracy": 100.0,
+        "accuracy_difference": 0.0,
+        "sample_outputs_exact": true,
+        "status": "MATCH"
+      },
+      {
+        "cell": {
+          "task": "ruler_niah_multiquery",
+          "length": 4096,
+          "model": "9b",
+          "dataset_seed": 11,
+          "allocation": "fp16_statebf16"
+        },
+        "original_accuracy": 100.0,
+        "reproduction_accuracy": 100.0,
+        "accuracy_difference": 0.0,
+        "sample_outputs_exact": true,
+        "status": "MATCH"
+      },
+      {
+        "cell": {
+          "task": "ruler_niah_multiquery",
+          "length": 4096,
+          "model": "9b",
+          "dataset_seed": 23,
+          "allocation": "fp16"
+        },
+        "original_accuracy": 100.0,
+        "reproduction_accuracy": 100.0,
+        "accuracy_difference": 0.0,
+        "sample_outputs_exact": true,
+        "status": "MATCH"
+      },
+      {
+        "cell": {
+          "task": "ruler_niah_multiquery",
+          "length": 4096,
+          "model": "9b",
+          "dataset_seed": 23,
+          "allocation": "fp16_statebf16"
+        },
+        "original_accuracy": 100.0,
+        "reproduction_accuracy": 100.0,
+        "accuracy_difference": 0.0,
+        "sample_outputs_exact": true,
+        "status": "MATCH"
+      },
+      {
+        "cell": {
+          "task": "ruler_niah_multiquery",
+          "length": 4096,
+          "model": "9b",
+          "dataset_seed": 42,
+          "allocation": "fp16"
+        },
+        "original_accuracy": 100.0,
+        "reproduction_accuracy": 100.0,
+        "accuracy_difference": 0.0,
+        "sample_outputs_exact": true,
+        "status": "MATCH"
+      },
+      {
+        "cell": {
+          "task": "ruler_niah_multiquery",
+          "length": 4096,
+          "model": "9b",
+          "dataset_seed": 42,
+          "allocation": "fp16_statebf16"
+        },
+        "original_accuracy": 100.0,
+        "reproduction_accuracy": 100.0,
+        "accuracy_difference": 0.0,
+        "sample_outputs_exact": true,
+        "status": "MATCH"
+      },
+      {
+        "cell": {
+          "task": "ruler_niah_multiquery",
+          "length": 8192,
+          "model": "9b",
+          "dataset_seed": 11,
+          "allocation": "fp16"
+        },
+        "original_accuracy": 100.0,
+        "reproduction_accuracy": 100.0,
+        "accuracy_difference": 0.0,
+        "sample_outputs_exact": true,
+        "status": "MATCH"
+      },
+      {
+        "cell": {
+          "task": "ruler_niah_multiquery",
+          "length": 8192,
+          "model": "9b",
+          "dataset_seed": 11,
+          "allocation": "fp16_statebf16"
+        },
+        "original_accuracy": 100.0,
+        "reproduction_accuracy": 100.0,
+        "accuracy_difference": 0.0,
+        "sample_outputs_exact": true,
+        "status": "MATCH"
+      },
+      {
+        "cell": {
+          "task": "ruler_niah_multiquery",
+          "length": 8192,
+          "model": "9b",
+          "dataset_seed": 23,
+          "allocation": "fp16"
+        },
+        "original_accuracy": 100.0,
+        "reproduction_accuracy": 100.0,
+        "accuracy_difference": 0.0,
+        "sample_outputs_exact": true,
+        "status": "MATCH"
+      },
+      {
+        "cell": {
+          "task": "ruler_niah_multiquery",
+          "length": 8192,
+          "model": "9b",
+          "dataset_seed": 23,
+          "allocation": "fp16_statebf16"
+        },
+        "original_accuracy": 100.0,
+        "reproduction_accuracy": 100.0,
+        "accuracy_difference": 0.0,
+        "sample_outputs_exact": true,
+        "status": "MATCH"
+      },
+      {
+        "cell": {
+          "task": "ruler_niah_multiquery",
+          "length": 8192,
+          "model": "9b",
+          "dataset_seed": 42,
+          "allocation": "fp16"
+        },
+        "original_accuracy": 100.0,
+        "reproduction_accuracy": 100.0,
+        "accuracy_difference": 0.0,
+        "sample_outputs_exact": true,
+        "status": "MATCH"
+      },
+      {
+        "cell": {
+          "task": "ruler_niah_multiquery",
+          "length": 8192,
+          "model": "9b",
+          "dataset_seed": 42,
+          "allocation": "fp16_statebf16"
+        },
+        "original_accuracy": 100.0,
+        "reproduction_accuracy": 100.0,
+        "accuracy_difference": 0.0,
+        "sample_outputs_exact": true,
+        "status": "MATCH"
+      }
+    ]
+  },
+  "promotion_boundary": "Only the pre-registered five-cell no-think comparison on this RTX 5090 environment; it does not establish cross-hardware or equivalence claims.",
+  "paper_quantitative_use_authorized": true,
+  "claim_limit": "Observed equality only; no equivalence, non-inferiority, cross-task, or cross-hardware claim."
+}

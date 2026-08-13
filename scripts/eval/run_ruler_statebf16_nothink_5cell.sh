@@ -7,8 +7,8 @@ set -euo pipefail
 cd /root/autodl-tmp/MLSys_Research
 export VLLM_USE_FLASHINFER_SAMPLER=0
 
-ATTEMPT_2B="ruler-statebf16-nothink-20260811-2b"
-ATTEMPT_9B="ruler-statebf16-nothink-20260811-9b"
+ATTEMPT_2B="${RULER_ATTEMPT_2B:-ruler-statebf16-nothink-20260811-2b}"
+ATTEMPT_9B="${RULER_ATTEMPT_9B:-ruler-statebf16-nothink-20260811-9b}"
 LOGDIR="logs"
 mkdir -p "$LOGDIR"
 
