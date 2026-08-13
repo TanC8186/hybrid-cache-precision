@@ -10,7 +10,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-ROOT = Path(r"E:\MLSys_Research")
+ROOT = Path(__file__).resolve().parents[3]
 LEDGER: list[tuple[str, str, object, str]] = []
 
 
@@ -59,12 +59,15 @@ for corpus, tab in ppl["tables"].items():
     add("fig3", f"PPL {corpus} delta", tab["delta_bf16_vs_fp32"],
         "ppl-stacking-analysis")
     add("fig3", f"PPL {corpus} CI", tab["ci95_delta"], "same")
-rul = load("results/quality/ruler-statebf16-multiseed-analysis-20260809.json")
-for r in rul["rows"]:
+rul = load(
+    "results/reproduction/2026-08-13/ruler-nothink/"
+    "ruler-nothink-5cell-gate4-20260813/gate4_validation.json"
+)
+for r in rul["statistical_findings"]:
     add("fig3", f"RULER {r['model']} {r['task']} L{r['length']} delta",
-        r["delta_mean"], "ruler-statebf16-multiseed-analysis")
+        r["mean_delta_accuracy_points"], "ruler-nothink Gate 4")
     add("fig3", f"RULER {r['model']} {r['task']} L{r['length']} CI",
-        r["ci95_delta"], "same")
+        r["ci95_delta_accuracy_points"], "same")
 
 # Figure 4: serving.
 for tag in ("formal", "repro"):

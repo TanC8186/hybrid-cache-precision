@@ -23,6 +23,7 @@
 \mlsysauthor{Anonymous}{}
 \end{mlsysauthorlist}
 \mlsysaffiliation{}{Anonymous Institution}
+\mlsyscorrespondingauthor{Anonymous Author}{anon.email@domain.com}
 
 \vskip 0.3in
 
@@ -31,20 +32,25 @@ Hybrid linear-attention models pair a small set of GQA attention layers with
 interleaved Gated Delta Network (GDN) layers, so serving memory is split
 between a growing, quantizable attention KV cache and a fixed per-sequence
 recurrent state that no KV quantizer touches. Existing systems optimize the
-KV bit-width and leave state precision fixed. We show that state precision
-is a second, composable budget dimension. On Qwen3.5-2B/9B served
-with vLLM on an RTX 5090, switching the GDN state from fp32 to bf16 raises
-int4-KV capacity by 1.11--1.41x across context lengths 4K--16K (a conservative
-lower bound: all four measured cells fall below the architecture-derived
-model, errors $-3.24\%$ to $-0.18\%$), and raises the compound int4-over-fp16
-KV ratio from 2.245x to 2.675x at 2B/4K. Quality effects are bounded:
-perplexity shows no detectable change, GSM8K has a significant but
-under-powered 1.0-point regression at 2B and none at 9B, and RULER shows no
-detectable difference within wide intervals. Paired goodput gains appear in
-the Random60 overload region and reappear in a second formal run, while no
-serving cell survives multiple-comparison correction; boundaries remain
-workload- and threshold-dependent. We report both the capacity model and the
-exact statistical boundaries of every quality and serving claim.
+KV bit-width and leave state precision fixed. We treat state precision as a
+second budget dimension and implement a selector that maps quality, memory,
+concurrency, and latency constraints to executable precision configurations.
+On Qwen3.5-2B/9B served with vLLM on one RTX 5090, a reproducible 112-cell
+allocator matrix shows higher capacity in all 52 paired fp32/bf16 cells, with
+a median gain of 15.44\%. The idealized capacity model has 1.81\% median
+absolute residual (range $-3.66\%$ to $+13.21\%$); it is a prediction, not a
+bound. Quality remains task-dependent: GSM8K loses 1.0 percentage point at
+2B, whereas five preregistered no-think RULER cells show exact observed
+agreement across three dataset seeds, with all 30 accuracy values and sample
+outputs reproduced exactly. This equality does not establish equivalence.
+The selector reproducibly maps three preregistered budgets to full,
+state-only, and joint precision, but only for one 2B/4K Random-workload slice.
+Controlled mechanism contrasts reproduce throughput, not tail latency. A
+broader four-configuration serving matrix completes 144/144 cells per attempt
+but fails its continuous-goodput stability gate (183/720 comparisons outside
+10\% tolerance). We therefore claim a verified capacity effect and scoped
+policy execution, while reporting serving instability rather than a universal
+performance benefit.
 \end{abstract}
 ]
 
@@ -73,56 +79,64 @@ itself~\cite{replayssm,vllmpr43518}, do not treat it as a dimension that
 should be jointly allocated with the KV bit-width.
 
 This paper is a system study with four contributions. (a) A capacity model
-$C(L)=M/(A\cdot L+G)$ in which $A$ is the per-token attention-KV footprint at
-the chosen KV bit-width and $G$ is the per-sequence state footprint at the
-chosen state precision. All parameters are derived from the model
-configuration and the vLLM page layout, so the model predicts capacity at
-untested context lengths without probing the engine; on seven cells it
-matches measurement within $-3.2\%$ to $+3.5\%$, and under int4 KV all four
-cells fall below the prediction. (b) A capacity measurement protocol that
-probes exact token capacity on the serving engine and verifies the resolved
-configurations. (c) A quality map across perplexity, GSM8K, and RULER with
-paired seeds and disclosed statistical power. (d) A serving evaluation with
-a second formal run, in which the Random60 overload-region goodput deltas
-reappear and every boundary cell is reported without assigning an effect.
+that separates concurrent sequences $N(L)=M/(A L+G)$ from total token
+capacity $T(L)=L N(L)$, plus a deterministic probe validated by two complete
+112-cell attempts. (b) An executable joint-precision selector that filters
+full, KV-only, state-only, and joint candidates by quality, memory,
+concurrency, and tail-latency constraints, then maximizes a robust SLO-goodput
+lower bound and fails closed on unmeasured strata. (c) A paired quality map
+across perplexity, GSM8K, and no-think RULER, with statistical resolution and
+reproduction status stated per endpoint. (d) Controlled mechanism contrasts
+and a four-configuration serving matrix whose partial and failed
+reproducibility results are retained rather than converted into a performance
+headline.
 The target regime is short-context, high-concurrency, memory-bound serving,
 where the fixed state is a large fraction of the budget.
 
-The headline result is a capacity effect. Under int4 KV, bf16 state increases
-token capacity by 1.3755x (2B, 4K), 1.4063x (9B, 4K), 1.1149x (2B, 16K), and
-1.1398x (9B, 16K), and every measured cell falls below the architecture-derived
-prediction, which justifies treating the model as a conservative lower bound
-for the int4 column (sign test $P=0.0625$; errors $-0.18\%$ to $-3.24\%$). The
-compound ratio of int4 over fp16 KV rises from 2.245 to 2.675 at 2B/4K when
-the state is also bf16. The fp16-KV column is reported cell-by-cell because its
-signs are mixed ($+2.86\%$, $+3.53\%$, $-2.83\%$); block-rounding granularity
-shifts with layout and we do not treat the fp16 column as a bound.
+The headline result is a verified capacity effect. Across the frozen matrix
+of model size, KV dtype, context length, and memory utilization, all 52
+fp32/bf16 pairs favor bf16 state and the median gain is 15.44\%. The clean
+R2-to-R3 comparison reproduces all 112 cells within the preregistered
+tolerances. The architecture-derived model has a median absolute residual of
+1.81\%, with signed residuals from $-3.66\%$ to $+13.21\%$; page and block
+rounding therefore make it an idealized predictor rather than a lower or upper
+bound. In a representative 2B/4K cell, the int4-over-fp16 KV capacity ratio
+rises from 2.245 to 2.675 when state is also bf16.
 
 The quality evidence is bounded. Perplexity changes are within
 $[-0.013, +0.007]$ (C4) and $[-0.045, +0.058]$ (PG19) with all confidence
 intervals containing zero. GSM8K (200 seeded items, 9 seeds) shows a
 significant 1.0-point regression at 2B state-bf16 ($p=0.025$), which we
 report together with its pre-registered minimum detectable effect of 1.16
-points and 67.5\% observed power; the 9B model shows no regression. RULER
-intervals are wide ($\pm$5--33 points) and we make no equivalence claim: the
-protocol simply cannot detect a difference at 20 samples. Serving boundaries
-are workload- and threshold-dependent; paired goodput gains in the Random60
-overload region reappear in a second formal run with the same contracts and
-seeds, but two boundary
-cells and the ShareGPT 250 ms direction do not, and we restrict every serving
-claim accordingly.
+points and 67.5\% observed power; the 9B model shows no regression. In the
+no-think RULER repair, every tested fp32/bf16 pair has a delta of 0.00 across
+three dataset seeds, and an independent temporal attempt reproduces all 30
+accuracy values and sample outputs exactly. These are observed agreements,
+not equivalence or non-inferiority results. The controller's three mappings
+also reproduce within their frozen tolerances. In contrast, tail-latency
+mechanism metrics and the broader four-configuration goodput matrix do not
+pass their respective stability gates, so we make no general serving-speed
+claim.
 
 \section{Background and Related Work}
 \label{sec:related}
 
 \textbf{KV cache quantization and eviction.} KIVI~\cite{kivi} and
 KVQuant~\cite{kvquant} established 2--4-bit per-token-head KV quantization;
-MiniKV~\cite{minikv} and TurboQuant~\cite{turboquant} push toward 2-bit
-regimes with system co-design. Eviction and hybrid policies
+MiniKV~\cite{minikv} co-designs 2-bit layer-discriminative KV quantization
+with the vLLM system, while TurboQuant~\cite{turboquant} applies online
+vector quantization to the KV cache at 2--4 bits per entry in vLLM. Neither
+work treats the recurrent-state dtype as an allocatable dimension. Eviction
+and hybrid policies
 (H2O~\cite{h2o}, StreamingLLM~\cite{streamingllm}, SnapKV~\cite{snapkv})
 release memory by dropping tokens rather than reducing precision. All of
 these target attention-only models. On a hybrid model they compress only the
-attention layers; the GDN state remains untouched. Recent system-level work
+attention layers; the GDN state remains untouched. Eviction and
+offloading therefore operate on a different axis from the state-dtype switch:
+they change which tokens or layers stay in memory, whereas state-bf16 changes
+the bytes per recurrent-state element. Our formal matrix holds eviction and
+offloading fixed, so the two levers are not mixed in the measured deltas.
+Recent system-level work
 also co-optimizes eviction with quantization within the attention-KV budget
 (HqeKV~\cite{hqekv}, RDKV~\cite{rdkv}, ARKV~\cite{arkv}).
 
@@ -131,7 +145,9 @@ Mamba2~\cite{mamba2} established selective state-space layers; Gated Delta
 Networks~\cite{gateddeltanet} make the recurrence a delta rule. Production
 hybrids (Jamba~\cite{jamba}, RecurrentGemma~\cite{recurrentgemma},
 Zamba~\cite{zamba}, Qwen3.5~\cite{qwen35}) interleave such layers with a small
-number of full-attention layers. Serving them requires a per-sequence state
+number of full-attention layers. RecurrentGemma builds on
+Griffin~\cite{griffin}; the GDN recurrence continues the delta-rule lineage
+of DeltaNet~\cite{deltanet}. Serving them requires a per-sequence state
 in addition to the attention KV; vLLM's PagedAttention memory
 manager~\cite{vllm} now allocates both from the same GPU pool.
 
@@ -151,22 +167,24 @@ under a fixed byte budget for attention models. State compression itself is
 prior art. The gap is joint budget accounting: serving systems expose state
 dtype without analyzing it as a precision dimension that multiplies with
 the KV bit-width decision, and without validating the resulting
-capacity-quality-serving trade-off with replicated measurements.
+capacity-quality-serving trade-off with disclosed statistical resolution and
+a second formal run.
 
 \section{Precision Budget Model}
 \label{sec:model}
 
 Let $L$ be the context length, $A_f$ and $A_q$ the per-token attention-KV
 bytes at fp16 and int4 KV respectively, and $G$ the per-sequence state bytes
-at the chosen state dtype. The maximum number of context tokens served on a
-single GPU with $M$ bytes available for KV plus state is
+at the chosen state dtype. With $M$ bytes available for KV plus state, the
+maximum number of concurrent length-$L$ sequences and the corresponding
+total token capacity are
 \begin{equation}
-  C(L) = \frac{L\cdot M}{A\cdot L + G},
+  N(L) = \frac{M}{A\cdot L + G}, \qquad
+  T(L) = L N(L) = \frac{L\cdot M}{A\cdot L + G},
   \label{eq:capacity}
 \end{equation}
 where $A\in\{A_f,A_q\}$ and $G$ depends on the state dtype; the denominator
-is the per-sequence footprint of a length-$L$ request, so $C(L)/L$ is the
-corresponding number of concurrent sequences. The capacity ratio from
+is the per-sequence footprint of a length-$L$ request. The capacity ratio from
 switching the state fp32 to bf16 is
 \begin{equation}
   r_{state}(L)=\frac{A L + G_{fp32}}{A L + G_{bf16}},
@@ -181,33 +199,67 @@ counts, so the comparison of Eq.~\eqref{eq:rstate} against measurements is
 not circular. Details of the derivation and the padded block accounting are
 in the appendix.
 
+For deployment stratum $x$ and candidate precision configuration $q$, the
+selector implements
+\begin{equation}
+q^*(x)=\arg\max_{q\in\mathcal{F}(x)}
+\underline{\mathrm{Goodput}}(q,x),
+\label{eq:selector}
+\end{equation}
+where $\mathcal{F}(x)$ contains only measured candidates satisfying
+$\underline{\Delta Q_t}\ge-\epsilon_t$ for every requested task,
+$\overline{\mathrm{TTFT}}_{95}\le\tau_f$,
+$\overline{\mathrm{TPOT}}_{95}\le\tau_p$, cache bytes $\le M$, and
+$N_q(L)\ge N_{min}$. Underlines and overlines denote the stored lower and
+upper confidence bounds. Missing or ambiguous profile rows yield no feasible
+candidate rather than interpolation or extrapolation.
+
 \section{Evaluation Setup}
 \label{sec:setup}
 
-\textbf{Platform and engine.} Qwen3.5-2B and Qwen3.5-9B served from a vLLM
-worktree (commit \texttt{55f4768}) on a single RTX 5090 (32 GB), with
-\texttt{gpu\_memory\_utilization=0.85}. All runs record the resolved
-configuration (\texttt{kv\_cache\_dtype}, \texttt{mamba\_ssm\_cache\_dtype},
-sha256 of the serving config) per attempt.
+\textbf{Platform and engine.} All experiments use Qwen3.5-2B or Qwen3.5-9B
+on a single RTX 5090 (32 GB). Earlier serving and quality matrices use a
+frozen vLLM worktree at commit \texttt{55f4768}; the preregistered capacity,
+repaired RULER, controller, mechanism, and four-configuration packages use
+the later frozen worktree at commit \texttt{e2fa285}. Memory utilization is a
+protocol-level parameter rather than a global constant: 0.85 for the earlier
+matrices and RULER, 0.70--0.90 in the capacity grid (plus 0.85 controls), and
+0.80 for the controller and follow-up serving packages. Each package archives
+its resolved cache dtypes and protocol fields, and repetitions are compared
+only within the corresponding frozen package.
 
 \textbf{Capacity probes.} We use the engine's maximum-token probe with
-4K/16K context, uniform int4 KV (\texttt{int4\_per\_token\_head}) or fp16 KV,
-and state fp32/bf16. Each cell is a single deterministic run: the block
-allocator is deterministic for a fixed engine build and configuration, and
-each attempt records the resolved dtype and block counts plus the sha256 of
-the serving configuration. The 2x2 capacity experiment is summarized in
-Table~\ref{tab:capacity}.
+1K--32K contexts, uniform int4 KV (\texttt{int4\_per\_token\_head}) or fp16
+KV, state fp32/bf16, and the preregistered utilization grid. Each cell is a
+single deterministic allocator run; each attempt records the resolved dtype,
+block counts, and serving configuration. Two clean attempts each complete
+112/112 cells (52 fp32/bf16 core pairs plus 8 fp16-state controls), and Gate~4
+compares per-cell tokens, directions, and model-by-KV median gains.
+Table~\ref{tab:capacity} shows an independently verified fixed-utilization
+4K/16K slice used for deployment interpretation.
 
 \textbf{Quality.} Perplexity is measured with a chunk-level harness
 (write-back rounding at chunk boundaries, chunk 128) on C4 and PG19, 5
 sequences, 3 dataset seeds; we report in Section~\ref{sec:limits} why this
 harness is an approximation. Reasoning quality uses the vLLM kernel path:
 GSM8K~\cite{gsm8k} with 200 seeded items per seed, greedy, no
-chain-of-thought, 9 seeds; RULER~\cite{ruler} with 3 dataset seeds and the
-engine seed fixed, using the engine's default thinking mode with a 256-token
-generation cap (Section~\ref{sec:limits} discusses think truncation). All
-comparisons are paired across seeds and reported as deltas with 95\%
-confidence intervals.
+chain-of-thought, 9 seeds; RULER~\cite{ruler} on five preregistered
+model-task-length cells, 20 samples per cell, 3 dataset seeds, fixed engine
+seed, thinking disabled, and a 256-token generation cap. All comparisons are
+paired across dataset seeds. For RULER, all paired deltas are identical zeros,
+so the zero-width descriptive intervals denote observed equality only.
+
+\textbf{Joint-precision controller.} Each deployment request specifies the
+model and context, workload and offered load, memory and concurrency budgets,
+TTFT/TPOT SLOs, and a task-level quality floor. The controller requires an
+exact measured profile row for every candidate and does not interpolate across
+strata. It rejects candidates whose quality lower bound, cache bytes,
+concurrency, or latency upper bounds violate the request, maximizes the
+remaining SLO-goodput lower confidence bound, and maps the selected KV/state
+dtypes to a cold-restart vLLM command. We test three frozen budgets on
+Qwen3.5-2B at 4K, Random workload, TP=1, with seeds 11, 23, and 47. The parent
+and temporal reproduction each contain 9 samples and 18,000 measurement
+requests, with failures retained in the SLO denominator.
 
 \textbf{Serving.} Protocol v3: piecewise constant Poisson arrivals,
 120 s warmup, 60 s (300 s for boundary confirmation) measurement windows,
@@ -215,16 +267,25 @@ TTFT thresholds 250--3000 ms, TPOT 200 ms, goodput/offered $\ge 0.95$
 required for a sustainable boundary, failures counted in the denominator,
 3 seeds. Workloads: Random60 (60-token requests) and ShareGPT300 (300-token
 traces~\cite{sharegpt}). The formal matrix was followed by a second formal run with the same
-contracts and seeds; both are committed as atomic
+contracts and seeds (run-stability evidence, not an independent sample); both are committed as atomic
 artifacts~\cite{mlsys2026ae}.
+
+\textbf{Mechanism and four-configuration contracts.} Mechanism isolation
+crosses full and joint precision with fixed block count, fixed cache bytes,
+and fixed concurrency (3 seeds; 18 cells and 5,400 requests per attempt).
+The broader serving matrix crosses full, KV-only, state-only, and joint
+precision with Random and ShareGPT workloads (3 seeds; 144 cells and 320,400
+requests per attempt). Its frozen Gate~4 compares all 720
+cell-threshold goodput values at a strict 10\% run-stability tolerance.
 
 \begin{table}[t]
 \centering
 \footnotesize
 \caption{\textbf{Capacity ratio $r_{state}$ from bf16 state.} Measured token
 capacity ratio and architecture-derived prediction; signed gap is
-(measured$-$predicted)/predicted. int4 column: all four cells are below the
-prediction (conservative lower bound). fp16 column reported per cell.}
+(measured$-$predicted)/predicted. This 4K/16K slice illustrates allocator
+rounding; the full 52-pair matrix has residuals on both sides of zero, so the
+model is not a bound.}
 \label{tab:capacity}
 \setlength{\tabcolsep}{4pt}
 \begin{tabular}{lccccl}
@@ -254,45 +315,50 @@ measurements. Under int4 KV, bf16 state raises capacity by 37.6\% (2B, 4K),
 shows smaller gains (7.0--15.4\% at 4K) with mixed prediction signs. The
 discrete page-block rounding is the source of the residual: fp32/bf16 block
 sizes change with layout (e.g., int4 2B: 2064/1072 tokens per block; fp16:
-544/288), and the same rounding that makes the int4 column conservative
-flips sign under fp16 KV. We therefore frame the capacity model as a
-conservative lower bound only for the int4-KV column.
+544/288). Across the complete 112-cell attempt, all 52 core pairs favor bf16
+state; the median capacity gain is 15.44\%. The model's median absolute
+residual is 1.81\%, with signed residuals from $-3.66\%$ to $+13.21\%$.
+Because residuals cross zero, we use the model as an idealized predictor and
+make no bound claim. The clean second attempt reproduces all 112 cells and 52
+directions within the frozen Gate~4 tolerances (maximum per-cell token
+difference 1.42\%).
 Figure~\ref{fig:blocks} shows the mechanism: bf16 state halves the per-block
 state footprint, which doubles the number of allocatable GPU blocks, and the
 measured ratio is the integer-arithmetic outcome of that re-partitioning.
 
 Figure~\ref{fig:capacity}b also shows the compound KV ratio: with fp32 state,
 int4 KV yields 2.2451x over fp16 KV at 2B/4K; with bf16 state the same
-comparison yields 2.6754x. The two budget dimensions compound: the state
-switch and the KV switch do not share memory and their gains multiply.
+comparison yields 2.6754x. Both components draw from the same GPU pool but
+enter the per-sequence footprint as the additive terms $A L$ and $G$; changing
+either term changes the ratio of feasible capacities.
 In deployment terms, the fp32 GDN state at 2B is 18.63 MiB per sequence
 (9.32 MiB at bf16). At 4K under int4 KV, the measured total-token ceilings
 of 2,692,710 and 3,703,954 tokens correspond to 657 and 904 concurrent
 length-4096 sequences on the same GPU budget, so the state switch adds
 roughly 247 sequence slots without changing the KV bytes themselves.
 
-\begin{figure}[t]
+\begin{figure*}[t]
 \centering
-\includegraphics[width=\linewidth]{figures/fig5_block_granularity.pdf}
+\includegraphics[width=\textwidth]{figures/vector_redesign/fig5_block_granularity.pdf}
 \caption{\textbf{Block granularity under fp32 vs.\ bf16 state.}
 (a) Tokens per GPU block and (b) number of allocated GPU blocks for the seven
 capacity cells. bf16 halves the per-block state footprint; the discrete
 re-partitioning of blocks explains the residual between measured and modeled
 $r_{state}$ in Table~\ref{tab:capacity}.}
 \label{fig:blocks}
-\end{figure}
+\end{figure*}
 
-\begin{figure}[t]
+\begin{figure*}[t]
 \centering
-\includegraphics[width=\linewidth]{figures/fig1_capacity.pdf}
+\includegraphics[width=\textwidth]{figures/vector_redesign/fig1_capacity.pdf}
 \caption{\textbf{Precision budget for hybrid serving.} (a) GDN recurrent
 state (fixed per sequence) and attention KV (growing with context) both draw
 from the same GPU pool; both bit-width (KV) and state precision are
 allocatable. (b) Measured vs.\ predicted $r_{state}$ for the int4/fp16 KV
 columns (7 cells; gap labels are signed percent error). int4 column is a
-conservative lower bound: all four gaps are negative.}
+representative slice; the full matrix contains residuals of both signs.}
 \label{fig:capacity}
-\end{figure}
+\end{figure*}
 
 \subsection{Quality: perplexity and reasoning}
 \label{sec:quality}
@@ -314,7 +380,10 @@ both corpora.
 At 2B, bf16 state loses 1.00 point [$-$1.71, $-$0.29], $p=0.025$, with a
 pre-registered minimum detectable effect of 1.16 points and 67.5\% observed
 power; this is a significant regression whose effect size is below the
-pre-registered MDE, and we report both. Uniform int4 KV loses 2.72 points
+pre-registered MDE, and we report both. Across the nine paired dataset seeds
+the regression has paired Cohen's $d=-0.92$; at 9B the paired $d=+0.54$, but
+the confidence interval contains zero, so we do not interpret it as a gain.
+Uniform int4 KV loses 2.72 points
 [$-$4.20, $-$1.24], $p=0.007$, power 88.3\%. Stacking state-bf16 onto int4 KV
 shows a marginal $+1.17$ points [$-0.33$, $+2.66$] relative to int4 alone:
 no additional regression. At 9B, bf16 state gains 0.33 points [$-0.07$,
@@ -326,7 +395,7 @@ Figure~\ref{fig:gsm8k} summarize.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\linewidth]{figures/fig2_gsm8k.pdf}
+\includegraphics[width=\linewidth]{figures/vector_redesign/fig2_gsm8k.pdf}
 \caption{\textbf{GSM8K paired deltas.} 200 seeded items, greedy, no
 chain-of-thought, 9 dataset seeds; points and 95\% paired CIs. Red intervals
 exclude zero. The 2B state and int4 regressions are significant; the 2B state
@@ -337,29 +406,32 @@ effect is below the pre-registered MDE (1.16 pp) with 67.5\% power.}
 \textbf{RULER.} Figure~\ref{fig:ruler} reports the five cells (FWE and
 NIAH-multiquery, 4K/8K) that the earlier KV-quantization screen had singled
 out; the selection predates the state-dtype grid and is not a post hoc
-choice from the single-seed deltas in this comparison. With three dataset
-seeds, every confidence interval contains zero; the FWE intervals are
-$\pm$5--33 points wide. We make no equivalence claim: the protocol cannot
-detect a difference at 20 samples per cell. The single-seed full grid
-(7 tasks, 2 lengths, 2 models, same protocol) is archived and summarized in
-Appendix Table~\ref{tab:ruler-grid}: mean deltas are $+0.49$ points (2B) and
-$-0.71$ points (9B); apart from the five re-tested cells, the nonzero
-single-seed cells lie within $\pm$1.7 points.
+choice from these outcomes. Thinking is disabled to remove truncation of the
+model's hidden reasoning from the 256-token answer budget. Across the three
+paired dataset seeds, fp32 and bf16 state produce identical accuracy in every
+cell: 91.11 and 98.33 for 2B FWE at 4K and 8K, and 100.00 for the three 9B
+cells. Thus all five bf16-minus-fp32 deltas are 0.00. An independent temporal
+attempt reproduces all 30 allocation-by-seed accuracy values and their
+sample-level predictions, references, hit vectors, and token counts exactly.
+The degenerate zero-width descriptive intervals reflect identical observed
+outputs, not population-level certainty; with only three paired seeds and 20
+samples per cell, we do not claim equivalence or non-inferiority.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\linewidth]{figures/fig3_ppl_ruler.pdf}
+\includegraphics[width=\linewidth]{figures/vector_redesign/fig3_ppl_ruler.pdf}
 \caption{\textbf{Perplexity stacking and RULER.} (a) PPL marginal change of
 bf16 state under int4 KV (C4/PG19, 3 seeds). (b) RULER deltas (bf16 minus
 fp32 state) for the five screen-selected cells (FWE and NIAH-multiquery,
-4K/8K); 3 dataset seeds, default thinking mode (max 256 tokens), wide CIs,
-no detectable difference.}
+4K/8K); thinking disabled, 20 samples per cell, and 3 paired dataset seeds.
+Every observed delta is exactly zero in both attempts. Zero-width descriptive
+intervals are not an equivalence test.}
 \label{fig:ruler}
 \end{figure}
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\linewidth]{figures/fig7_harness.pdf}
+\includegraphics[width=\linewidth]{figures/vector_redesign/fig7_harness.pdf}
 \caption{\textbf{Harness boundary and stacking cost.}
 (a) Chunk-level write-back rounding: chunk=1 raises C4 PPL by roughly 87\%
 relative to chunk=128 (1 seed, 1 sequence), so PPL is a chunk-level
@@ -370,11 +442,12 @@ approximation. (b) Marginal state-bf16 PPL delta under fp16 KV vs.\ int4 KV
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\linewidth]{figures/fig8_gsm8k_per_seed.pdf}
+\includegraphics[width=\linewidth]{figures/vector_redesign/fig8_gsm8k_per_seed.pdf}
 \caption{\textbf{GSM8K per-seed paired accuracy.}
 200 seeded items, greedy, no chain-of-thought, 9 dataset seeds. Thin lines
 connect the same seed across allocations; the blue line and markers are seed
-means. (a) 2B across four allocations; (b) 9B across two.}
+means. (a) 2B across four allocations; (b) 9B across two. This figure is the
+per-seed resolution of Figure~\ref{fig:gsm8k}.}
 \label{fig:gsm8k-seeds}
 \end{figure}
 
@@ -390,15 +463,33 @@ precision benefit, so the paper's allocation dimension is the whole-state
 switch rather than layer-wise state precision
 (Figure~\ref{fig:sensitivity}).
 
-\begin{figure}[t]
+\begin{figure*}[t]
 \centering
-\includegraphics[width=\linewidth]{figures/fig6_sensitivity.pdf}
+\includegraphics[width=\textwidth]{figures/vector_redesign/fig6_sensitivity.pdf}
 \caption{\textbf{Per-layer state sensitivity (2B, C4/PG19, 3 seeds).}
 Each row is bf16 applied to one GDN layer; points and paired 95\% CIs are
-deltas against the fp32 baseline. Red rows (C4 layers 2 and 8) have raw
-$p<0.05$ and are not significant after Bonferroni or BH-FDR correction.}
+deltas against the fp32 baseline. Orange rings mark the two C4 layers with
+raw $p<0.05$; neither is significant after Bonferroni or BH-FDR correction.}
 \label{fig:sensitivity}
-\end{figure}
+\end{figure*}
+
+\subsection{Executable budget selection}
+\label{sec:controller}
+
+The controller turns the paper's two-dimensional accounting into an
+executable decision. It selects \texttt{full}, \texttt{state\_only}, or
+\texttt{joint} for the strict, medium, and high frozen budgets, respectively;
+an infeasible request fails closed. Every selected mapping launches the
+corresponding vLLM precision arguments and meets the requested 500 ms TTFT and
+200 ms TPOT SLO in all three confirmatory seeds. In the independent temporal
+run, mean goodput is 29.554, 29.552, and 38.905 req/s for strict, medium, and
+high; mean P95 TTFT is 194.23, 192.28, and 372.42 ms, and mean P95 TPOT is
+18.04, 17.84, and 38.77 ms. All nine parent-to-rerun metrics fall within the
+predeclared environment-sensitive tolerances (10\% for goodput and 20\% for
+tail latency), with 18,000/18,000 requests and no failures in either attempt.
+This verifies policy execution for one Qwen3.5-2B, 4K, Random-workload,
+single-GPU slice. It is not evidence that the selected allocation dominates
+baselines across models or workloads.
 
 \subsection{Serving}
 \label{sec:serving}
@@ -436,8 +527,10 @@ two runs. We therefore do not present either workload as improved; the
 boundary tables are measurements, and we report them without assigning an
 effect.
 
-What does replicate is the paired goodput delta in the Random60 overload
-region. At r40, bf16 state improves goodput by 0.334 [0.078, 0.589] at
+What is stable across the two runs is the paired goodput delta in the
+Random60 overload region; because the second run uses identical contracts and
+seeds, this establishes run-to-run stability rather than an independent
+sample. At r40, bf16 state improves goodput by 0.334 [0.078, 0.589] at
 250 ms (paired t-test $p=0.030$) and 0.215 [0.154, 0.276] at 500 ms
 ($p=0.004$); the second formal run measures 0.304 [0.250, 0.359]
 ($p=0.002$) and 0.138 [0.082, 0.195] ($p=0.009$). At r45/r50 and
@@ -446,24 +539,48 @@ region. At r40, bf16 state improves goodput by 0.334 [0.078, 0.589] at
 $p=0.001$ and $p=0.002$). None of the 60 serving cells survives BH-FDR at
 $q<0.05$ (closest: formal r40/500 ms $q=0.066$; second run r40/250 ms
 $q=0.052$). We therefore treat the overload-region deltas as directional
-evidence whose weight comes from same-cell replication across the two
+evidence whose weight comes from same-cell stability across the two
 runs, and we stop short of treating them as sustainable-SLO improvements.
+A cell-level direction audit over the same 60-cell grid is workload-limited:
+all 13 Random60 cells that are overloaded in both runs have positive deltas in
+both runs (13/13), while 7 of the 10 ShareGPT overload cells have opposite
+signs, so the directional evidence does not generalize across workloads.
 Per-cell $p$ and BH $q$ values for all 60 cells are archived with the
 analysis artifacts. We report the goodput deltas as aggregate effects and
-do not assign them to a mechanism; Section~\ref{sec:limits} states the
-confounded channels and the discriminator we leave for future work.
+do not assign them to a mechanism. The controlled contrasts below delimit
+which serving metrics reproduce.
 ShareGPT at 500 ms and above shows boundary parity in both runs.
 
-\begin{figure}[t]
+The mechanism matrix completes all 18 allocation-by-seed cells and 5,400
+requests in each attempt. Throughput reproduces within 10\% in 18/18 cells
+(maximum relative difference 5.10\%), but TTFT P95 does so in only 10/18
+cells (maximum 75.39\%) and TPOT P95 in 17/18 (maximum 12.13\%). In the formal
+attempt, joint-minus-full mean throughput is $-0.760$, $-0.815$, and
+$-2.492$ req/s under fixed block count, fixed bytes, and fixed concurrency,
+respectively; none of the nine metric-by-contrast tests survives Holm
+correction. We therefore promote only the tested throughput direction and do
+not attribute a universal causal mechanism or exact latency effect.
+
+Finally, the four-configuration formal matrix completes 144/144 cells and
+320,400/320,400 measurement requests with zero failures in each of two runs.
+Nevertheless, its frozen Gate~4 fails: only 537/720 continuous goodput values
+are within 10\% across attempts, 183/720 are outside tolerance, and the
+maximum symmetric relative difference is 79.61\%. Sustainable labels are
+more stable (713/720 cell-threshold labels and 38/40 all-seed boundaries
+match), but these binary agreements do not override the failed primary gate.
+We therefore use this matrix to disclose serving instability, not to claim a
+four-configuration performance advantage.
+
+\begin{figure*}[t]
 \centering
-\includegraphics[width=\linewidth]{figures/fig4_serving.pdf}
+\includegraphics[width=\textwidth]{figures/vector_redesign/fig4_serving.pdf}
 \caption{\textbf{Serving, Random60 overload region.} (a) Paired goodput
 delta (bf16 minus fp32 state) at rates 40--50 req/s, all thresholds, formal
-and second run, 3 seeds each, 95\% CI. (b) Sustainable-rate boundary parity
-map (int4 vs.\ int4+bf16); orange cells differ between allocations, teal
-cells are equal, with the second-run value in parentheses.}
+and second run, 3 seeds each, 95\% CI. (b) bf16-minus-fp32 sustainable-rate
+boundary changes for both workloads and runs. The three nonzero cells are
+run-sensitive; none of the 60 cellwise comparisons survives BH-FDR.}
 \label{fig:serving}
-\end{figure}
+\end{figure*}
 
 \section{Limitations}
 \label{sec:limits}
@@ -474,11 +591,11 @@ boundaries (chunk 128). A chunk-1 ablation changes PPL from 19.35 to 36.16
 semantics. We treat PPL as supporting evidence and place the kernel-path
 quality conclusions (GSM8K, RULER) on the vLLM serving path.
 
-\textbf{RULER protocol.} RULER runs used the engine's default thinking mode
-with a 256-token generation cap. FWE scores can be sensitive to think
-truncation, so the wide intervals in Figure~\ref{fig:ruler} may shift in
-either direction under a no-think protocol; a no-think re-run of the five
-cells is future work.
+\textbf{RULER resolution.} The repaired protocol disables thinking and has
+20 samples in each of five cells with three paired dataset seeds. Exact
+agreement in both attempts is transparent but low-resolution evidence: it
+does not define an equivalence margin or establish equivalence,
+non-inferiority, or quality preservation outside the tested cells.
 
 \textbf{Generalization.} All evidence is from Qwen3.5-2B/9B on one RTX 5090.
 Claims are scoped to GDN-based hybrids; Mamba2-style architectures and other
@@ -489,29 +606,44 @@ spectrum.
 \textbf{Serving variability.} Overload-region goodput is stable in direction
 but not in magnitude across runs; boundary cells are run-sensitive. A
 workload with very long requests or a different mix may not show the effect.
-We did not test offloading or prefix caching, each of which changes the
-memory equation.
+The broader four-configuration matrix does not pass its continuous-goodput
+stability gate. We did not test offloading or prefix caching, each of which
+changes the memory equation, and the four internal precision configurations
+do not substitute for those external system baselines.
 
-\textbf{Mechanism attribution.} The serving deltas are aggregate effects:
-bf16 state changes state bytes, tokens per block, and the number of
-allocatable blocks at once, so capacity, bandwidth, and allocator
-granularity are confounded. A fixed-block-count contrast (same number of
-GPU blocks while varying state bytes) or a fixed-bytes contrast (same state
-bytes while varying block geometry) would separate these channels; neither
-was run. The mechanism behind the serving benefit remains open, and we
-claim only the reproduced aggregate delta.
+\textbf{Mechanism attribution.} We ran fixed-block-count, fixed-bytes, and
+fixed-concurrency contrasts, but only throughput passes the temporal
+reproducibility threshold in every cell. TTFT and one TPOT cell do not.
+Moreover, the fixed-concurrency contrast changes the queueing constraint and
+is not a pure dtype intervention. These results narrow the plausible
+mechanism but do not identify a universal causal channel.
+
+\textbf{Controller scope.} The selector is executable and reproducible, but
+its verified evidence covers one Qwen3.5-2B, 4K, Random-workload, TP=1 slice
+and three preregistered budget requests. It uses calibrated profiles and cold
+restarts rather than online adaptation, and it does not interpolate to
+unmeasured strata. Cross-model, cross-workload, cross-context, and switching
+overhead claims require separate evaluation.
 
 \textbf{Tensor parallelism.} The single-GPU ratios extend to tensor
 parallelism only under uniform sharding. If the GDN state is sharded by its
 hidden dimension and the attention KV by its KV heads, both $A\cdot L$ and
-$G$ scale as $1/P$, so $r_{state}(L)$ is unchanged to first order. Per-rank
+$G$ scale as $1/P$, so $r_{state}(L)$ is unchanged to first order; for
+example, at $P=2$ with the 2B/int4 KV and $L=4096$ configuration, both terms
+halve and the ratio is unchanged to first order. Per-rank
 block rounding and communication overhead can shift the measured ratio, and
 we did not test TP=2/4; the transfer is an expectation, not a measurement.
 
 \textbf{Statistical resolution.} GSM8K at 2B detects a 1.0-point regression
 with 67.5\% power; effects smaller than $\sim$1.16 points are below the
-pre-registered MDE. RULER cannot distinguish differences smaller than tens
-of points at 20 samples.
+pre-registered MDE. Serving cells use $n=3$ seeds per cell and 60-cell BH-FDR
+control; no cell survives $q<0.05$, so serving claims remain directional.
+The GSM8K seed resolution is $n=9$ paired dataset seeds. The two serving runs
+share contracts and seeds, so the second run provides run-stability evidence
+rather than an independent sample. RULER uses only three paired dataset seeds;
+its exact zero deltas are descriptive and do not supply an equivalence bound.
+The M3 latency endpoints and M4 continuous-goodput family fail their frozen
+reproducibility gates and remain unverified.
 
 \section{Conclusion}
 \label{sec:conclusion}
@@ -519,11 +651,23 @@ of points at 20 samples.
 Hybrid linear-attention serving has two allocatable precision dimensions:
 the attention-KV bit-width and the recurrent-state dtype. We measured the
 capacity, quality, and serving consequences of treating both as a joint
-budget. The capacity model is a conservative lower bound under int4 KV, the
-compound KV $\times$ state gain is real (2.245 to 2.675 at 2B/4K), quality
-degradation is bounded and disclosed at the level of statistical power, and
-the serving benefit is a workload-limited paired goodput effect reproduced
-in a second formal run.
+budget and implemented a constraint-aware selector that produces executable
+deployments. The verified result is the capacity effect: all 52 core pairs in
+the 112-cell matrix favor bf16 state, with a 15.44\% median gain. The capacity
+model is an idealized predictor with measured residuals, not a bound. Quality
+remains task-specific: the 2B GSM8K regression is retained, while no-think
+RULER shows exact observed agreement only in the five tested cells. The
+controller's three budget mappings reproduce in one scoped slice. Controlled
+serving contrasts reproduce throughput but not tail latency, and the broader
+four-configuration matrix fails its continuous-goodput stability gate.
+
+Operational rule. Under the target regime (short-context, high-concurrency,
+memory-bound serving), the state switch is material: at 2B/4K/int4 KV it adds
+roughly 247 concurrent sequence slots without changing the KV bytes
+themselves. When the KV footprint dominates the budget (e.g., at longer
+contexts), the relative gain shrinks, and operators should re-evaluate with
+the same capacity and quality protocol before adopting the switch.
+
 We release the full measurement contracts, per-seed data, and reproduction
 artifacts so that the boundary cells and null results can be audited
 independently. Long-form and retrieval evidence beyond GSM8K and RULER
@@ -549,41 +693,7 @@ parameters. The observed residual is attributable to the allocator's
 discrete block rounding, which we verified from the per-attempt block-size
 and block-count records.
 
-For Eq.~\eqref{eq:capacity}, $C(L)/L$ is the number of concurrent
-length-$L$ sequences.
-
-\begin{table}[h]
-\centering
-\scriptsize
-\caption{\textbf{Single-seed RULER grid.} bf16-minus-fp32 state accuracy
-deltas (percentage points) for the full 7-task $\times$ 2-length grid,
-protocol as in Section~\ref{sec:setup}. One dataset seed with the engine
-seed fixed; values are a screen, not a multiplicity-corrected test. The
-five cells with 3-seed re-tests (Figure~\ref{fig:ruler}) were fixed by the
-earlier KV-quantization screen. Overall mean deltas are $+0.49$ points
-(2B) and $-0.71$ points (9B).}
-\label{tab:ruler-grid}
-\setlength{\tabcolsep}{3pt}
-\begin{tabular}{llcc}
-\toprule
-Model & Task & $L=4096$ & $L=8192$\\
-\midrule
-2B & NIAH single & 0.00 & 0.00\\
-2B & NIAH multikey & 0.00 & 0.00\\
-2B & NIAH multivalue & 0.00 & $-1.25$\\
-2B & NIAH multiquery & 0.00 & 0.00\\
-2B & VT & 0.00 & $+1.00$\\
-2B & CWE & 0.00 & $+0.50$\\
-2B & FWE & $+8.33$ & $-1.67$\\
-9B & NIAH single & 0.00 & 0.00\\
-9B & NIAH multikey & 0.00 & 0.00\\
-9B & NIAH multivalue & 0.00 & 0.00\\
-9B & NIAH multiquery & $+1.25$ & $-6.25$\\
-9B & VT & 0.00 & 0.00\\
-9B & CWE & 0.00 & 0.00\\
-9B & FWE & 0.00 & $-5.00$\\
-\bottomrule
-\end{tabular}
-\end{table}
+For Eq.~\eqref{eq:capacity}, $N(L)$ is the number of concurrent length-$L$
+sequences and $T(L)$ is their total token capacity.
 
 \end{document}
