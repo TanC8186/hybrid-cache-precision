@@ -35,13 +35,13 @@ archive: ## 归档 headline 原始运行：make archive EXP=<name>
 	./scripts/archive.sh $(EXP)
 
 reproduce: ## 一键复现（供审稿人 / AE）
-	./reproduce.sh
+	bash ./reproduce.sh
 
 artifact-check: ## CPU-only artifact integrity and unit-test gate
-	PYTHON=$(PYTHON) ./reproduce.sh verify
+	PYTHON=$(PYTHON) bash ./reproduce.sh verify
 
 figures: ## Regenerate publication figures from committed evidence
-	PYTHON=$(PYTHON) ./reproduce.sh figures
+	PYTHON=$(PYTHON) bash ./reproduce.sh figures
 
 paper-dls: ## Build the IEEE/DLS manuscript (requires latexmk)
 	$(MAKE) -C paper/dls2026
