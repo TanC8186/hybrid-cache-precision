@@ -16,11 +16,8 @@ DEFAULT_OUTPUT = ROOT / "paper/mlsys2026/capacity_matrix_table.tex"
 
 
 def sha256_file(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as handle:
-        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
-            digest.update(chunk)
-    return digest.hexdigest()
+    payload = path.read_bytes().replace(b"\r\n", b"\n")
+    return hashlib.sha256(payload).hexdigest()
 
 
 def load_analysis(path: Path) -> tuple[dict[str, Any], str]:

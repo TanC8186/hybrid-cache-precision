@@ -33,7 +33,7 @@ EXPECTED_HASHES = {
     "results/quality/gsm8k-9b-state9seed-v2-dependence-aware-20260814.json":
         "d40fb7acd69d4196dac53e271f66d5732cafd01c29a4a070bdb7a8dd151bef54",
     "results/quality/ppl-stacking-analysis-20260809.json":
-        "24399fd20c082a72089da7fae67fd0f80bd99c0d246833ed2543c55da4005f74",
+        "4e0b5f413167c0b8b6adba4fca2537427e8b496043302dfa1b784c6b2696aef5",
     "results/reproduction/2026-08-13/ruler-nothink/"
     "ruler-nothink-5cell-gate4-20260813/gate4_validation.json":
         "fb231af4945cfdaec12acdf0058db47f673f9d6e8b407e13c86a02368c8face7",
@@ -42,31 +42,30 @@ EXPECTED_HASHES = {
     "results/verified/2026-08-09/statebf16-serving-repro-analysis.json":
         "b4e9c7bce07662885d371ad2d9c3c1a5fdca575be172891aeb2953ac829e6b07",
     "results/quality/serving-direction/serving-direction-agreement-20260811.json":
-        "a0f3910bf00f5c9fac2e52cde241528d4fd757d8daec834d48288dbd80bc8834",
+        "ed4a4a66e34477110ac76437e4301441915b3d455f65ab009500b58642db9df0",
     "results/reproduction/2026-08-13/m4-four-config/gate4-r3/"
     "m4_gate4_validation.json":
         "7933182cb23e44c2d4b24277ba52fb3a6e14ccbf1320e155f1c4e60c447d1201",
     "results/quality/state-sensitivity-analysis-20260809-bonf.json":
-        "65c034e133573b89c465d35d8f09602d09860c9a17c97da8dec2d6ebba1e9562",
+        "5b09608d4f6af9ac92a4582f23934ca334fc79fda48ba2074d86c6f07670d2dc",
     "results/verified/2026-08-14/controller-decisions/selector-audit.json":
         "dab8f055a047c5eeefb01545518e95568b70ce94577a194d33cf2ddb2ba04848",
     "results/quality/chunk-ablation/chunk-ablation-20260809__statefp32__chunk128__2b.csv":
-        "0d8f3e3aab4cd5ffb6920085abb4b8c0a00532c1acc63ea3766e9b0fcf51c333",
+        "00f7795e1844ca44151411d494ab295239b7b2bfab0f75ee77033ee5c946a1a1",
     "results/quality/chunk-ablation/chunk-ablation-20260809__statefp32__chunk1__2b.csv":
-        "0a6e2911bf4323733cc60033a3ff775595349f6ab67424e51f720817e288e6f0",
+        "f468ef0dcb7f849965299fd6c763238589f29f6d46f26c7d2d6bee30c5884d29",
     "results/quality/chunk-ablation/chunk-ablation-20260809__statebf16__chunk128__2b.csv":
-        "8ae3cfc2cfe4fdccab4111c154e0001b46bd9c25671d935fa42de599005ce6b5",
+        "8a11bb31d70984cf15db0c7ca71c7ec8683c8cccb6ba4bf20dababe358e4bd4d",
     "results/quality/chunk-ablation/chunk-ablation-20260809__statebf16__chunk1__2b.csv":
-        "08d515852a952f2b161686da85eacdbcc849ab9ee07fe25fce931106adfa7d03",
+        "1dcab697280ac33ffbd12be8e4a65ed11a4e4d943618c0d77c71382b00fc4e7a",
 }
 
 
 def sha256_file(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as handle:
-        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
-            digest.update(chunk)
-    return digest.hexdigest()
+    # Git stores these tracked text artifacts with LF. Normalize stale Windows
+    # worktrees so the verification contract is identical in every clone.
+    payload = path.read_bytes().replace(b"\r\n", b"\n")
+    return hashlib.sha256(payload).hexdigest()
 
 
 def load_json(relative_path: str) -> dict[str, Any]:

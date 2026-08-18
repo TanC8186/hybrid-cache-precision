@@ -10,6 +10,8 @@ Makefile text eol=lf
 *.toml text eol=lf
 *.md text eol=lf
 *.json text eol=lf
+*.csv text eol=lf
+*.tex text eol=lf
 *.sha256 text eol=lf
 *.log text eol=lf
 Dockerfile text eol=lf
@@ -23,6 +25,7 @@ results/verified/**/run.log -text !eol
 
 # Calibration archive metadata is hash-addressed, including extensionless launch files.
 results/verified/2026-08-11/controller-calibration/** text eol=lf
+results/**/*.exit_code text eol=lf
 
 # Format-patch files contain significant unified-diff prefixes and signatures.
 vendor/vllm-patches/*.patch -text -diff

@@ -40,6 +40,10 @@ including the corrected 2026-08-14 capacity analysis and dependence-aware
 GSM8K intervals. A passing integrity check does not relabel exploratory or
 failed-gate evidence as verified.
 
+Hashes for tracked textual evidence use Git-canonical LF bytes. The verifier
+normalizes a stale Windows CRLF checkout before hashing so the contract remains
+identical across native Windows, WSL, and Linux clones.
+
 ## 3. Tier B: regenerate paper outputs
 
 Regenerate all vector figures and their ignored raster previews:
