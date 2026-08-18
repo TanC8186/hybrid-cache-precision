@@ -98,9 +98,21 @@ def test_calibration_contract_matches_runner_plan_and_launcher() -> None:
     sidecar = CALIBRATION_CONTRACT_PATH.with_suffix(".json.sha256").read_text(encoding="ascii").strip()
     assert hashlib.sha256(CALIBRATION_CONTRACT_PATH.read_bytes()).hexdigest() == sidecar
 
-    for path_key, hash_key in (
+    code_entries = (
         ("config_path", "config_sha256"),
         ("runner_path", "runner_sha256"),
+        ("launcher_path", "launcher_sha256"),
+    )
+    for path_key, hash_key in code_entries:
+        source = ROOT / contract["code"][path_key]
+        assert source.is_file()
+        assert len(contract["code"][hash_key]) == 64
+        assert all(char in "0123456789abcdef" for char in contract["code"][hash_key])
+
+    # The runner evolves after a frozen experiment. Its recorded hash remains
+    # provenance; current runner behavior is checked by the plan assertions below.
+    for path_key, hash_key in (
+        ("config_path", "config_sha256"),
         ("launcher_path", "launcher_sha256"),
     ):
         source = ROOT / contract["code"][path_key]

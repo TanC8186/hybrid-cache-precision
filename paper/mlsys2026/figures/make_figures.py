@@ -1,22 +1,23 @@
 """MLSys 2026 paper figures (nature-figure Python backend).
 
 Every quantitative panel reads its source values from the verified atomic JSONs
-under E:\\MLSys_Research\\results; no number is hard-coded except axes labels.
+under the repository's results directory; no number is hard-coded except axes
+labels.
 Exports: PDF (vector, editable text) + PNG (300 dpi preview) + TIFF (600 dpi).
 """
 
 from __future__ import annotations
 
-import json
 import csv
+import json
 from pathlib import Path
 
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
 
-ROOT = Path(r"E:\MLSys_Research")
 FIG = Path(__file__).resolve().parent
+ROOT = FIG.parents[2]
 
 mpl.rcParams.update({
     "font.family": "sans-serif",

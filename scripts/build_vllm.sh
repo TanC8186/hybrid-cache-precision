@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# 构建 vendor/vllm fork（固定 submodule SHA），记录 wheel sha256 到构建记录。
+# Build the pinned vendor/vllm working tree and record its source SHA.
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 VLLM="$ROOT/vendor/vllm"
 
 if [ ! -d "$VLLM" ]; then
-  echo "ERROR: vendor/vllm 不存在。先执行: git submodule update --init --recursive vendor/vllm" >&2
+  echo "ERROR: vendor/vllm is missing. Reconstruct it using vendor/README.md." >&2
   exit 1
 fi
 

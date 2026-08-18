@@ -1,10 +1,23 @@
-# paper — 论文
+# Manuscripts
 
-- `main.tex`：主文档（MLSys 双栏格式）
-- `figures/`：引用 `results/figures/` 的图（或软链）
-- `references.bib`
+Both directories are venue-specific versions of the same research artifact.
+They share the title, evidence, analysis code, and core figures.
 
-**铁律**：论文里的数字/图表只来自 `results/`（由 scripts/analyze 产出）。
-提交前：每个表格单元格都能通过 `results/_provenance.jsonl` 追溯到 run。
+| Directory | Role | Build |
+|---|---|---|
+| `mlsys2026/` | Anonymous MLSys-format research manuscript and appendix | Use the bundled MLSys style files with a standard LaTeX toolchain |
+| `dls2026/` | Six-page IEEE MASS DLS workshop version and internal supplement | `make -C paper/dls2026` |
 
-> 后续可用 ARS（academic-research-skills）的 ars-outline / ars-reviewer 辅助写作与模拟审稿。
+The manuscript values must be traceable to `results/`. The executable value
+ledger is `mlsys2026/figures/verify_figure_data.py`; run it before committing a
+paper change:
+
+```bash
+python paper/mlsys2026/figures/verify_figure_data.py
+```
+
+Editable Draw.io, SVG, PDF, and Python figure sources are retained. Generated
+LaTeX auxiliaries, TIFF exports, and visual-QA rasters are ignored.
+
+The manuscripts remain anonymous. Replace placeholders and add citation
+metadata only when the applicable venue policy permits de-anonymization.

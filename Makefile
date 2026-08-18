@@ -1,13 +1,14 @@
 SHELL := /bin/bash
 export ROOT := $(shell pwd)
+PYTHON ?= python3
 
-.PHONY: help setup-local setup-remote run sweep bench eval analyze archive reproduce check smoke-remote init-vendor lint test
+.PHONY: help setup-local setup-remote run sweep bench eval analyze archive reproduce artifact-check figures paper-dls check smoke-remote init-vendor lint test
 
 help:  ## 显示所有命令
 	@grep -E '^[a-zA-Z_-]+:.*## ' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*## "}; {printf "  %-16s %s\n", $$1, $$2}'
 
-init-vendor:  ## 初始化 vLLM fork 子模块
-	git submodule update --init --recursive vendor/vllm
+init-vendor:  ## Reconstruct the pinned vLLM working tree
+	./scripts/env/init_vllm.sh
 
 setup-local:  ## 初始化本地开发环境（在 WSL2 内执行）
 	./scripts/env/setup_wsl2.sh
@@ -36,6 +37,15 @@ archive: ## 归档 headline 原始运行：make archive EXP=<name>
 reproduce: ## 一键复现（供审稿人 / AE）
 	./reproduce.sh
 
+artifact-check: ## CPU-only artifact integrity and unit-test gate
+	PYTHON=$(PYTHON) ./reproduce.sh verify
+
+figures: ## Regenerate publication figures from committed evidence
+	PYTHON=$(PYTHON) ./reproduce.sh figures
+
+paper-dls: ## Build the IEEE/DLS manuscript (requires latexmk)
+	$(MAKE) -C paper/dls2026
+
 check: ## 环境自检（本地或租机）
 	./env_check.sh
 
@@ -46,4 +56,4 @@ lint: ## 代码检查
 	ruff check src scripts tests
 
 test: ## 运行正确性门禁测试
-	pytest -q tests/
+	$(PYTHON) -m pytest -q tests/

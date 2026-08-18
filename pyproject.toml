@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "kvcache"
 version = "0.1.0"
-description = "KV cache quantization/compression for LLM serving (MLSys research)"
+description = "Precision accounting for KV and recurrent-state caches in hybrid LLM serving"
 requires-python = ">=3.10,<3.13"   # vLLM 兼容范围；宿主 Python 3.13 不适用
 dependencies = [
     "numpy>=1.26",
@@ -19,7 +19,26 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["pytest>=8", "pytest-cov", "ruff", "mypy"]
+analysis = [
+    "scipy>=1.11",
+    "statsmodels>=0.14",
+]
+figures = [
+    "matplotlib>=3.8",
+    "pillow>=10",
+    "pymupdf>=1.24",
+]
+dev = [
+    "pytest>=8",
+    "pytest-cov",
+    "ruff",
+    "mypy",
+    "scipy>=1.11",
+    "statsmodels>=0.14",
+    "matplotlib>=3.8",
+    "pillow>=10",
+    "pymupdf>=1.24",
+]
 # 注意：vLLM 从 vendor/vllm 构建安装，不在此声明（版本以 configs/env + submodule SHA 锁定）
 bench = ["aiohttp"]
 eval = []   # lm-eval-harness / LongBench 以 submodule 形式固定于 vendor/eval

@@ -1,28 +1,41 @@
 #!/usr/bin/env bash
-# 一键复现入口（供 MLSys Artifact Evaluation）
-# 流程：clone → 构建锁定 submodule → 下载并校验数据 → 跑一个 canonical 实验 → 对照期望指标区间
-#
-# 用法（审稿人侧）: ./reproduce.sh <experiment_name>
+# Artifact entry point. Run from Linux or WSL2 with Python 3.10-3.12.
 set -euo pipefail
 
-EXP_NAME="${1:-template}"
 ROOT="$(cd "$(dirname "$0")" && pwd)"
+PYTHON_BIN="${PYTHON:-python3}"
+MODE="${1:-verify}"
 
-echo "==> [1/5] 校验 git 状态（应提交了当前实验相关代码）"
-git -C "$ROOT" status --short | head -20
+usage() {
+  cat <<'EOF'
+Usage: ./reproduce.sh [verify|figures|paper|help]
 
-echo "==> [2/5] 构建锁定的 vLLM submodule"
-git -C "$ROOT" submodule update --init --recursive vendor/vllm
-bash "$ROOT/scripts/build_vllm.sh"
+  verify   Run unit tests and verify manuscript evidence (default).
+  figures  Regenerate vector paper figures from committed evidence.
+  paper    Build the IEEE/DLS manuscript with latexmk.
+EOF
+}
 
-echo "==> [3/5] 下载并校验数据（溯源见 data/MANIFEST.yaml）"
-bash "$ROOT/scripts/fetch_data.sh"
-
-echo "==> [4/5] 运行 canonical 实验（固化 provenance）"
-bash "$ROOT/scripts/run.sh" "$EXP_NAME"
-
-echo "==> [5/5] 对照存储的期望指标区间"
-echo "TODO: 从 results/_provenance.jsonl 读取该实验的期望范围，校验本次输出是否落在区间内"
-
-echo
-echo "复现完成。若与论文数字不一致，检查 experiments/$EXP_NAME/env_probe.txt 与 git_commit。"
+case "$MODE" in
+  verify)
+    "$PYTHON_BIN" -m pytest -q "$ROOT/tests"
+    "$PYTHON_BIN" "$ROOT/paper/mlsys2026/figures/verify_figure_data.py"
+    ;;
+  figures)
+    (
+      cd "$ROOT/paper/mlsys2026/figures/vector_redesign"
+      "$PYTHON_BIN" make_vector_figures.py
+    )
+    "$PYTHON_BIN" "$ROOT/paper/mlsys2026/figures/verify_figure_data.py"
+    ;;
+  paper)
+    make -C "$ROOT/paper/dls2026"
+    ;;
+  help|-h|--help)
+    usage
+    ;;
+  *)
+    usage >&2
+    exit 2
+    ;;
+esac
