@@ -80,7 +80,12 @@ def normalized_quality_document() -> dict:
             allocation: {
                 "delta_ci95_low": -0.01 * index,
                 "delta_ci95_high": 0.01 * index,
-                "n_independent_repeats": 9,
+                "inference_method": "intercept_only_ols_two_way_cluster_robust_cr1",
+                "estimand": "mean paired accuracy difference over observed seed-item draws",
+                "n_seed_item_draws": 1800,
+                "n_item_clusters": 1017,
+                "n_seed_clusters": 9,
+                "cluster_degrees_of_freedom": 8,
             }
             for index, allocation in enumerate(EXPECTED_ALLOCATIONS)
         },
@@ -92,14 +97,28 @@ def test_normalize_quality_evidence_maps_all_four_allocations() -> None:
     for index, metadata in enumerate(EXPECTED_ALLOCATIONS.values()):
         row = {
             "allocation": metadata["quality_allocation"],
-            "n_seeds": 9,
+            "n_dataset_seeds": 9,
+            "cluster_robust_inference": {
+                "method": "intercept_only_ols_two_way_cluster_robust_cr1",
+                "n_item_clusters": 1017,
+                "n_seed_clusters": 9,
+                "degrees_of_freedom": 8,
+            },
         }
         if index:
             row["ci95_vs_fp16"] = [-0.01 * index, 0.01 * index]
         rows.append(row)
 
     normalized = normalize_quality_evidence(
-        {"bench": "gsm8k", "attempt": "quality", "protocol": "paired", "rows": rows},
+        {
+            "schema_version": 2,
+            "bench": "gsm8k",
+            "attempt": "quality",
+            "protocol": "paired",
+            "primary_estimand": "mean paired accuracy difference over observed seed-item draws",
+            "diagnostics": {"n_seed_item_draws": 1800, "n_unique_items": 1017},
+            "rows": rows,
+        },
         source_path="results/quality.json",
         source_sha256="a" * 64,
     )
@@ -108,6 +127,8 @@ def test_normalize_quality_evidence_maps_all_four_allocations() -> None:
     assert normalized["candidates"]["full"]["delta_ci95_low"] == 0.0
     assert normalized["candidates"]["joint"]["delta_ci95_high"] == pytest.approx(0.03)
     assert normalized["source"]["sha256"] == "a" * 64
+    assert normalized["candidates"]["full"]["n_seed_item_draws"] == 1800
+    assert normalized["candidates"]["joint"]["cluster_degrees_of_freedom"] == 8
 
 
 def test_recipe_materializes_a_valid_calibration_profile(tmp_path: Path) -> None:

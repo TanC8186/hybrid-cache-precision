@@ -15,8 +15,8 @@ from typing import Any
 
 
 MODEL_PARAMS = {
-    "2b": {"A_f": 16384.0, "A_q": 3168.0, "G_fp32": 19_537_920.0, "G_bf16": 18 * 561_152.0},
-    "9b": {"A_f": 16384.0, "A_q": 16_384.0 / 3.878, "G_fp32": 26_050_560.0, "G_bf16": 24 * 561_152.0},
+    "2b": {"A_f": 6 * 2_048.0, "A_q": 6 * 528.0, "G_fp32": 18 * 1_085_440.0, "G_bf16": 18 * 561_152.0},
+    "9b": {"A_f": 8 * 2_048.0, "A_q": 8 * 528.0, "G_fp32": 24 * 1_085_440.0, "G_bf16": 24 * 561_152.0},
 }
 
 CELL_RE = re.compile(
@@ -211,8 +211,8 @@ def main() -> int:
                 "measured_state_ratio": round(measured, 6),
                 "predicted_state_ratio": round(predicted, 6),
                 "prediction_residual_pct": round(residual, 4),
-                "fp32_max_concurrency": fp32["capacity"]["max_concurrency"],
-                "bf16_max_concurrency": bf16["capacity"]["max_concurrency"],
+                "fp32_allocator_equivalent_sequence_slots": fp32["capacity"]["max_concurrency"],
+                "bf16_allocator_equivalent_sequence_slots": bf16["capacity"]["max_concurrency"],
                 "fp32_num_gpu_blocks": fp32["cache_config"]["num_gpu_blocks"],
                 "bf16_num_gpu_blocks": bf16["cache_config"]["num_gpu_blocks"],
             }
@@ -230,7 +230,7 @@ def main() -> int:
                 "length": length,
                 "gpu_memory_utilization": util,
                 "capacity_tokens": int(record["capacity"]["tokens"]),
-                "max_concurrency": record["capacity"]["max_concurrency"],
+                "allocator_equivalent_sequence_slots": record["capacity"]["max_concurrency"],
             }
         )
 
@@ -246,6 +246,11 @@ def main() -> int:
         "attempt": args.attempt,
         "phase": args.phase,
         "determinism_class": "deterministic_allocator_for_frozen_build_and_config",
+        "model_parameters": MODEL_PARAMS,
+        "capacity_semantics": (
+            "allocator token capacity and L-normalized allocator-equivalent sequence slots; "
+            "not demonstrated scheduler admission or SLO-serving concurrency"
+        ),
         "n_cells": len(cells),
         "rows": rows,
         "float16_state_frontier": frontier,

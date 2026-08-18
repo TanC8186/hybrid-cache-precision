@@ -21,6 +21,7 @@ import time
 import uuid
 from collections.abc import Callable, Iterable, Mapping, Sequence
 from pathlib import Path
+from threading import Event, Thread
 from typing import Any
 from urllib.error import URLError
 from urllib.request import urlopen
@@ -368,7 +369,8 @@ def build_benchmark_command(
         "--request-id-prefix",
         f"{sample['sample_id']}-",
     ]
-    max_concurrency = protocol.get("max_concurrency")
+    allocation_config = config["allocations"][sample["allocation"]]
+    max_concurrency = allocation_config.get("client_max_concurrency", protocol.get("max_concurrency"))
     if max_concurrency is not None:
         command.extend(["--max-concurrency", str(max_concurrency)])
 
@@ -582,6 +584,10 @@ class ServerSession:
         self.session_dir: Path | None = None
         self.started_monotonic: float | None = None
         self.startup_duration_s: float | None = None
+        self.telemetry_stop: Event | None = None
+        self.telemetry_thread: Thread | None = None
+        self.telemetry_path: Path | None = None
+        self.telemetry_summary_path: Path | None = None
 
     def __enter__(self) -> ServerSession:  # noqa: PYI034
         server = self.config["server"]
@@ -667,6 +673,7 @@ class ServerSession:
                         self._verify_log_patterns()
                         assert self.started_monotonic is not None
                         self.startup_duration_s = time.monotonic() - self.started_monotonic
+                        self._start_telemetry()
                         atomic_write_json(
                             self.session_dir / "status.json",
                             {
@@ -694,6 +701,119 @@ class ServerSession:
             raise ExperimentError(
                 f"server log does not prove allocation {self.allocation_name!r}; missing substrings: {missing}"
             )
+
+    @staticmethod
+    def _parse_prometheus_metrics(text: str) -> dict[str, float]:
+        """Extract scalar samples and expose histogram metric families.
+
+        Prometheus histograms are emitted as ``_bucket``, ``_count``,
+        ``_sum``, and ``_created`` samples.  The experiment contract names
+        the family (for example ``vllm:time_to_first_token_seconds``), so
+        retain the raw samples while also indexing their family name.
+        """
+        metrics: dict[str, float] = {}
+        for raw_line in text.splitlines():
+            line = raw_line.strip()
+            if not line or line.startswith("#") or " " not in line:
+                continue
+            name, raw_value = line.rsplit(None, 1)
+            name = name.split("{", 1)[0]
+            try:
+                value = float(raw_value)
+            except ValueError:
+                continue
+            if math.isfinite(value):
+                metrics[name] = value
+                family = ServerSession._prometheus_metric_family(name)
+                if family != name:
+                    metrics.setdefault(family, value)
+        return metrics
+
+    @staticmethod
+    def _prometheus_metric_family(name: str) -> str:
+        """Return the base name for a Prometheus histogram sample."""
+        for suffix in ("_bucket", "_count", "_sum", "_created"):
+            if name.endswith(suffix):
+                return name[: -len(suffix)]
+        return name
+
+    def _start_telemetry(self) -> None:
+        """Sample Prometheus and GPU counters in a session-local JSONL file."""
+        if not self.session_dir:
+            return
+        protocol = self.config.get("protocol", {})
+        if not protocol.get("telemetry_required_metrics"):
+            return
+        server = self.config["server"]
+        interval = max(0.2, float(protocol.get("telemetry_interval_s", 1.0)))
+        self.telemetry_path = self.session_dir / "telemetry.jsonl"
+        self.telemetry_summary_path = self.session_dir / "telemetry_summary.json"
+        self.telemetry_stop = Event()
+        stop = self.telemetry_stop
+        path = self.telemetry_path
+        metrics_url = f"http://{server['host']}:{server['port']}{server.get('metrics_path', '/metrics')}"
+
+        def sample_loop() -> None:
+            records = 0
+            errors = 0
+            seen: set[str] = set()
+            hbm_records = 0
+            with path.open("w", encoding="utf-8") as handle:
+                while not stop.is_set():
+                    record: dict[str, Any] = {
+                        "timestamp": utc_timestamp(),
+                        "monotonic_s": time.monotonic(),
+                        "metrics": {},
+                        "gpu": {},
+                    }
+                    try:
+                        with urlopen(metrics_url, timeout=2) as response:
+                            payload = response.read().decode("utf-8", errors="replace")
+                        parsed = self._parse_prometheus_metrics(payload)
+                        record["metrics"] = parsed
+                        seen.update(parsed)
+                    except (OSError, URLError, UnicodeError, ValueError) as exc:
+                        # Telemetry is advisory; benchmark validity is audited after the run.
+                        errors += 1
+                        record["metrics_error"] = str(exc)
+                    try:
+                        output = run_capture(
+                            [
+                                "nvidia-smi",
+                                "--query-gpu=memory.used,memory.total,utilization.gpu",
+                                "--format=csv,noheader,nounits",
+                            ],
+                            allow_failure=True,
+                        )
+                        fields = [item.strip() for item in output.split(",")]
+                        if len(fields) >= 3:
+                            record["gpu"] = {
+                                "memory_used_mib": float(fields[0]),
+                                "memory_total_mib": float(fields[1]),
+                                "utilization_gpu_pct": float(fields[2]),
+                            }
+                            hbm_records += 1
+                    except (OSError, ValueError, ExperimentError) as exc:
+                        record["gpu_error"] = str(exc)
+                    handle.write(json.dumps(record, ensure_ascii=True, sort_keys=True) + "\n")
+                    handle.flush()
+                    records += 1
+                    stop.wait(interval)
+            atomic_write_json(
+                self.telemetry_summary_path,
+                {
+                    "schema_version": 1,
+                    "records": records,
+                    "metrics_errors": errors,
+                    "gpu_records": hbm_records,
+                    "metric_names": sorted(seen),
+                    "required_metrics": list(protocol.get("telemetry_required_metrics", [])),
+                    "stopped_at": utc_timestamp(),
+                },
+            )
+
+        self.telemetry_thread = Thread(target=sample_loop, name="m3-telemetry", daemon=True)
+        self.telemetry_thread.start()
 
     def assert_healthy(self) -> None:
         assert self.process is not None
@@ -724,6 +844,10 @@ class ServerSession:
                 self.process,
                 float(self.config["server"].get("shutdown_grace_s", 30)),
             )
+        if self.telemetry_stop is not None:
+            self.telemetry_stop.set()
+        if self.telemetry_thread is not None:
+            self.telemetry_thread.join(timeout=10)
         if self.log_handle is not None:
             self.log_handle.flush()
             self.log_handle.close()

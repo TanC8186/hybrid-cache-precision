@@ -1,0 +1,33 @@
+\begin{table*}[t]
+\centering
+\caption{Frozen selector audit after dependence-aware GSM8K reanalysis. Quality values are percentage-point differences from full precision. Slots are allocator-equivalent sequence slots, not demonstrated scheduler concurrency.}
+\label{tab:selector-audit}
+\small
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{llrrrrl}
+\toprule
+Budget & Candidate & Required slots & Quality floor & Quality 95\% CI & Goodput LCB & Outcome \\
+ & & & (pp) & (pp) & (req/s) & \\
+\midrule
+strict & full & 250 & -1.0 & [+0.00, +0.00] & 29.483 & \textbf{selected} \\
+ & kv\_only & 250 & -1.0 & [-5.28, -0.17] & 29.358 & reject: quality \\
+ & state\_only & 250 & -1.0 & [-2.04, +0.04] & 29.487 & reject: quality \\
+ & joint & 250 & -1.0 & [-4.45, +1.34] & 29.357 & reject: quality \\
+\addlinespace[2pt]
+medium & full & 300 & -2.0 & [+0.00, +0.00] & 29.483 & reject: slots \\
+ & kv\_only & 300 & -2.0 & [-5.28, -0.17] & 29.358 & reject: quality \\
+ & state\_only & 300 & -2.0 & [-2.04, +0.04] & 29.487 & reject: quality \\
+ & joint & 300 & -2.0 & [-4.45, +1.34] & 29.357 & reject: quality \\
+\addlinespace[2pt]
+high & full & 700 & -4.0 & [+0.00, +0.00] & 7.948 & reject: slots, TTFT \\
+ & kv\_only & 700 & -4.0 & [-5.28, -0.17] & 32.137 & reject: slots, TTFT, quality \\
+ & state\_only & 700 & -4.0 & [-2.04, +0.04] & 15.356 & reject: slots, TTFT \\
+ & joint & 700 & -4.0 & [-4.45, +1.34] & 37.624 & reject: quality \\
+\addlinespace[2pt]
+negative & full & 900 & -4.0 & [+0.00, +0.00] & 7.948 & reject: slots, TTFT \\
+ & kv\_only & 900 & -4.0 & [-5.28, -0.17] & 32.137 & reject: slots, TTFT, quality \\
+ & state\_only & 900 & -4.0 & [-2.04, +0.04] & 15.356 & reject: slots, TTFT \\
+ & joint & 900 & -4.0 & [-4.45, +1.34] & 37.624 & reject: slots, quality \\
+\bottomrule
+\end{tabular}
+\end{table*}

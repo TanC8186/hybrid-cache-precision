@@ -1,0 +1,355 @@
+{
+  "schema_version": 1,
+  "artifact": "joint_precision_selector_audit",
+  "capacity_semantics": "allocator_equivalent_sequence_slots",
+  "quality_interval_semantics": "two-way CR1 cluster-robust 95% confidence interval over paired seed-item draws",
+  "decisions": [
+    {
+      "label": "strict",
+      "source": {
+        "path": "results/verified/2026-08-14/controller-decisions/strict.decision.json",
+        "sha256": "835324f30d37686df4c3197ca9f470ce8d09f66f4cfa973852c69ddfa5a00f46"
+      },
+      "status": "SELECTED",
+      "selected_config_id": "full",
+      "selected_objective_lcb_req_s": 29.4830412408679,
+      "request": {
+        "workload": "random",
+        "offered_rate_req_s": 30.0,
+        "required_allocator_equivalent_sequence_slots": 250.0,
+        "gsm8k_minimum_delta": -0.01,
+        "p95_ttft_limit_ms": 500.0,
+        "p95_tpot_limit_ms": 200.0,
+        "max_cache_bytes": 20000000000.0
+      },
+      "candidates": [
+        {
+          "candidate": "full",
+          "feasible": true,
+          "selected": true,
+          "objective_lcb_req_s": 29.4830412408679,
+          "quality_ci95": [
+            0.0,
+            0.0
+          ],
+          "allocator_equivalent_sequence_slots": 269.90909090909093,
+          "p95_ttft_ucb_ms": 212.75619423601609,
+          "p95_tpot_ucb_ms": 22.773829453452976,
+          "rejection_reasons": []
+        },
+        {
+          "candidate": "kv_only",
+          "feasible": false,
+          "selected": false,
+          "objective_lcb_req_s": 29.35789203861351,
+          "quality_ci95": [
+            -0.05275141,
+            -0.00169303
+          ],
+          "allocator_equivalent_sequence_slots": 606.0,
+          "p95_ttft_ucb_ms": 213.21759177039547,
+          "p95_tpot_ucb_ms": 26.301649815321365,
+          "rejection_reasons": [
+            "quality_guardrail_violated:gsm8k"
+          ]
+        },
+        {
+          "candidate": "state_only",
+          "feasible": false,
+          "selected": false,
+          "objective_lcb_req_s": 29.486713178179297,
+          "quality_ci95": [
+            -0.02044313,
+            0.00044313
+          ],
+          "allocator_equivalent_sequence_slots": 311.6111111111111,
+          "p95_ttft_ucb_ms": 198.75348836406928,
+          "p95_tpot_ucb_ms": 20.366252824580116,
+          "rejection_reasons": [
+            "quality_guardrail_violated:gsm8k"
+          ]
+        },
+        {
+          "candidate": "joint",
+          "feasible": false,
+          "selected": false,
+          "objective_lcb_req_s": 29.35730941000377,
+          "quality_ci95": [
+            -0.04446884,
+            0.01335773
+          ],
+          "allocator_equivalent_sequence_slots": 833.5714285714286,
+          "p95_ttft_ucb_ms": 221.2714973016895,
+          "p95_tpot_ucb_ms": 26.710600793294766,
+          "rejection_reasons": [
+            "quality_guardrail_violated:gsm8k"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "medium",
+      "source": {
+        "path": "results/verified/2026-08-14/controller-decisions/medium.decision.json",
+        "sha256": "f1bdd9e5a32e4a37d826bb6c3864a44fe53daffa8e2e3216f2563c83579d287e"
+      },
+      "status": "NO_FEASIBLE_CANDIDATE",
+      "selected_config_id": null,
+      "selected_objective_lcb_req_s": null,
+      "request": {
+        "workload": "random",
+        "offered_rate_req_s": 30.0,
+        "required_allocator_equivalent_sequence_slots": 300.0,
+        "gsm8k_minimum_delta": -0.02,
+        "p95_ttft_limit_ms": 500.0,
+        "p95_tpot_limit_ms": 200.0,
+        "max_cache_bytes": 20000000000.0
+      },
+      "candidates": [
+        {
+          "candidate": "full",
+          "feasible": false,
+          "selected": false,
+          "objective_lcb_req_s": 29.4830412408679,
+          "quality_ci95": [
+            0.0,
+            0.0
+          ],
+          "allocator_equivalent_sequence_slots": 269.90909090909093,
+          "p95_ttft_ucb_ms": 212.75619423601609,
+          "p95_tpot_ucb_ms": 22.773829453452976,
+          "rejection_reasons": [
+            "insufficient_allocator_equivalent_sequence_slots"
+          ]
+        },
+        {
+          "candidate": "kv_only",
+          "feasible": false,
+          "selected": false,
+          "objective_lcb_req_s": 29.35789203861351,
+          "quality_ci95": [
+            -0.05275141,
+            -0.00169303
+          ],
+          "allocator_equivalent_sequence_slots": 606.0,
+          "p95_ttft_ucb_ms": 213.21759177039547,
+          "p95_tpot_ucb_ms": 26.301649815321365,
+          "rejection_reasons": [
+            "quality_guardrail_violated:gsm8k"
+          ]
+        },
+        {
+          "candidate": "state_only",
+          "feasible": false,
+          "selected": false,
+          "objective_lcb_req_s": 29.486713178179297,
+          "quality_ci95": [
+            -0.02044313,
+            0.00044313
+          ],
+          "allocator_equivalent_sequence_slots": 311.6111111111111,
+          "p95_ttft_ucb_ms": 198.75348836406928,
+          "p95_tpot_ucb_ms": 20.366252824580116,
+          "rejection_reasons": [
+            "quality_guardrail_violated:gsm8k"
+          ]
+        },
+        {
+          "candidate": "joint",
+          "feasible": false,
+          "selected": false,
+          "objective_lcb_req_s": 29.35730941000377,
+          "quality_ci95": [
+            -0.04446884,
+            0.01335773
+          ],
+          "allocator_equivalent_sequence_slots": 833.5714285714286,
+          "p95_ttft_ucb_ms": 221.2714973016895,
+          "p95_tpot_ucb_ms": 26.710600793294766,
+          "rejection_reasons": [
+            "quality_guardrail_violated:gsm8k"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "high",
+      "source": {
+        "path": "results/verified/2026-08-14/controller-decisions/high.decision.json",
+        "sha256": "2a3f4cb00c0a16d7bb714345bc161732a3a1d62dd12ba00cc37d56104e9dec91"
+      },
+      "status": "NO_FEASIBLE_CANDIDATE",
+      "selected_config_id": null,
+      "selected_objective_lcb_req_s": null,
+      "request": {
+        "workload": "random",
+        "offered_rate_req_s": 40.0,
+        "required_allocator_equivalent_sequence_slots": 700.0,
+        "gsm8k_minimum_delta": -0.04,
+        "p95_ttft_limit_ms": 500.0,
+        "p95_tpot_limit_ms": 200.0,
+        "max_cache_bytes": 20000000000.0
+      },
+      "candidates": [
+        {
+          "candidate": "full",
+          "feasible": false,
+          "selected": false,
+          "objective_lcb_req_s": 7.948346512922458,
+          "quality_ci95": [
+            0.0,
+            0.0
+          ],
+          "allocator_equivalent_sequence_slots": 269.90909090909093,
+          "p95_ttft_ucb_ms": 4989.4042725279605,
+          "p95_tpot_ucb_ms": 48.58275748494111,
+          "rejection_reasons": [
+            "insufficient_allocator_equivalent_sequence_slots",
+            "ttft_slo_violated"
+          ]
+        },
+        {
+          "candidate": "kv_only",
+          "feasible": false,
+          "selected": false,
+          "objective_lcb_req_s": 32.13662788989264,
+          "quality_ci95": [
+            -0.05275141,
+            -0.00169303
+          ],
+          "allocator_equivalent_sequence_slots": 606.0,
+          "p95_ttft_ucb_ms": 852.645857914849,
+          "p95_tpot_ucb_ms": 45.049239220302326,
+          "rejection_reasons": [
+            "insufficient_allocator_equivalent_sequence_slots",
+            "ttft_slo_violated",
+            "quality_guardrail_violated:gsm8k"
+          ]
+        },
+        {
+          "candidate": "state_only",
+          "feasible": false,
+          "selected": false,
+          "objective_lcb_req_s": 15.356147298374234,
+          "quality_ci95": [
+            -0.02044313,
+            0.00044313
+          ],
+          "allocator_equivalent_sequence_slots": 311.6111111111111,
+          "p95_ttft_ucb_ms": 1829.5109786140515,
+          "p95_tpot_ucb_ms": 46.048372348020635,
+          "rejection_reasons": [
+            "insufficient_allocator_equivalent_sequence_slots",
+            "ttft_slo_violated"
+          ]
+        },
+        {
+          "candidate": "joint",
+          "feasible": false,
+          "selected": false,
+          "objective_lcb_req_s": 37.6236282660987,
+          "quality_ci95": [
+            -0.04446884,
+            0.01335773
+          ],
+          "allocator_equivalent_sequence_slots": 833.5714285714286,
+          "p95_ttft_ucb_ms": 475.9610134396088,
+          "p95_tpot_ucb_ms": 39.5667013191418,
+          "rejection_reasons": [
+            "quality_guardrail_violated:gsm8k"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "negative",
+      "source": {
+        "path": "results/verified/2026-08-14/controller-decisions/no_feasible.decision.json",
+        "sha256": "e6d468cec35a686b23d1aea7fe57ee6061080128df3bed5d492315a3e1dd44fc"
+      },
+      "status": "NO_FEASIBLE_CANDIDATE",
+      "selected_config_id": null,
+      "selected_objective_lcb_req_s": null,
+      "request": {
+        "workload": "random",
+        "offered_rate_req_s": 40.0,
+        "required_allocator_equivalent_sequence_slots": 900.0,
+        "gsm8k_minimum_delta": -0.04,
+        "p95_ttft_limit_ms": 500.0,
+        "p95_tpot_limit_ms": 200.0,
+        "max_cache_bytes": 20000000000.0
+      },
+      "candidates": [
+        {
+          "candidate": "full",
+          "feasible": false,
+          "selected": false,
+          "objective_lcb_req_s": 7.948346512922458,
+          "quality_ci95": [
+            0.0,
+            0.0
+          ],
+          "allocator_equivalent_sequence_slots": 269.90909090909093,
+          "p95_ttft_ucb_ms": 4989.4042725279605,
+          "p95_tpot_ucb_ms": 48.58275748494111,
+          "rejection_reasons": [
+            "insufficient_allocator_equivalent_sequence_slots",
+            "ttft_slo_violated"
+          ]
+        },
+        {
+          "candidate": "kv_only",
+          "feasible": false,
+          "selected": false,
+          "objective_lcb_req_s": 32.13662788989264,
+          "quality_ci95": [
+            -0.05275141,
+            -0.00169303
+          ],
+          "allocator_equivalent_sequence_slots": 606.0,
+          "p95_ttft_ucb_ms": 852.645857914849,
+          "p95_tpot_ucb_ms": 45.049239220302326,
+          "rejection_reasons": [
+            "insufficient_allocator_equivalent_sequence_slots",
+            "ttft_slo_violated",
+            "quality_guardrail_violated:gsm8k"
+          ]
+        },
+        {
+          "candidate": "state_only",
+          "feasible": false,
+          "selected": false,
+          "objective_lcb_req_s": 15.356147298374234,
+          "quality_ci95": [
+            -0.02044313,
+            0.00044313
+          ],
+          "allocator_equivalent_sequence_slots": 311.6111111111111,
+          "p95_ttft_ucb_ms": 1829.5109786140515,
+          "p95_tpot_ucb_ms": 46.048372348020635,
+          "rejection_reasons": [
+            "insufficient_allocator_equivalent_sequence_slots",
+            "ttft_slo_violated"
+          ]
+        },
+        {
+          "candidate": "joint",
+          "feasible": false,
+          "selected": false,
+          "objective_lcb_req_s": 37.6236282660987,
+          "quality_ci95": [
+            -0.04446884,
+            0.01335773
+          ],
+          "allocator_equivalent_sequence_slots": 833.5714285714286,
+          "p95_ttft_ucb_ms": 475.9610134396088,
+          "p95_tpot_ucb_ms": 39.5667013191418,
+          "rejection_reasons": [
+            "insufficient_allocator_equivalent_sequence_slots",
+            "quality_guardrail_violated:gsm8k"
+          ]
+        }
+      ]
+    }
+  ]
+}

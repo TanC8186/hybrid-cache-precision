@@ -1,0 +1,185 @@
+%%%%%%%% MLSys 2026 supplementary material (anonymous draft) %%%%%%%%%%%%%%%%
+\documentclass{article}
+
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage[hypertexnames=false,hyperfootnotes=false]{hyperref}
+
+\usepackage{mlsys2025}
+\DeclareMathSizes{7}{7}{6}{5}
+\mlsystitlerunning{Supplementary Material: Precision Accounting}
+
+\begin{document}
+
+\twocolumn[{
+\mlsystitle{Supplementary Material: Precision Accounting for Hybrid LLM Caches}
+\begin{mlsysauthorlist}
+\mlsysauthor{Anonymous}{anon}
+\end{mlsysauthorlist}
+\mlsysaffiliation{anon}{Anonymous Institution}
+\mlsyscorrespondingauthor{Anonymous Author}{anon.email@domain.com}
+\vskip 0.2in
+}]
+\printAffiliationsAndNotice{}
+
+\section{Byte-exact parameter derivation}
+\label{app:bytes}
+
+The attention term includes all GQA layers. At fp16, one attention layer uses
+two tensors (K and V), 512 elements per token, and 2 bytes per element. This
+is 2,048 bytes per layer and token. At int4, K and V each use 256 packed
+payload bytes plus 8 metadata bytes. The total is therefore
+$2\times(256+8)=528$ bytes per layer and token.
+
+Each GDN layer contains two state components. The convolution state is bf16
+in both configurations and uses 36,864 bytes. The temporal state uses
+1,048,576 bytes at fp32 or 524,288 bytes at bf16. Consequently,
+\begin{align}
+G^{\mathrm{layer}}_{\mathrm{fp32}} &= 36{,}864+1{,}048{,}576
+ = 1{,}085{,}440,\\
+G^{\mathrm{layer}}_{\mathrm{bf16}} &= 36{,}864+524{,}288
+ = 561{,}152.
+\end{align}
+The complete layer state falls by 48.30\%, not 50\%.
+
+\begin{table}[t]
+\centering
+\small
+\caption{\textbf{Architecture-derived continuous-model parameters.} All
+values are bytes. No parameter is fitted to allocator token counts.}
+\label{tab:parameters}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrr}
+\toprule
+Model & $A_f$ & $A_q$ & $G_{fp32}$ & $G_{bf16}$\\
+\midrule
+2B & 12,288 & 3,168 & 19,537,920 & 10,100,736\\
+9B & 16,384 & 4,224 & 26,050,560 & 13,467,648\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The 2B model has six GQA and 18 GDN layers. The 9B model has eight GQA and
+24 GDN layers. Multiplying the per-layer values yields
+Table~\ref{tab:parameters}. The representative padded recurrent pages are
+1,089,792 bytes at fp32 and 566,016 bytes at bf16. Padding therefore adds
+4,352 and 4,864 bytes, respectively. The continuous model uses unpadded
+architecture bytes; the discrete allocator uses the padded layout.
+
+\section{Discrete allocator reconstruction}
+\label{app:discrete}
+
+Let $K$ be the GPU-block count, $H$ the recurrent cache-group count, $B$ the
+attention block size, and $L$ the requested context. The allocator-equivalent
+slot count and token capacity are
+\begin{equation}
+S_{\mathrm{alloc}}=\frac{K}{H+\lceil L/B\rceil},\qquad
+T_{\mathrm{alloc}}=\lfloor L S_{\mathrm{alloc}}\rfloor.
+\end{equation}
+
+For 2B/int4/4K with fp32 state, $K=3287$, $H=3$, and $B=2064$.
+The denominator is $3+\lceil4096/2064\rceil=5$. Thus
+$S_{\mathrm{alloc}}=657.4$ and $T_{\mathrm{alloc}}=2{,}692{,}710$.
+With bf16 state, $K=6330$ and $B=1072$. The denominator is seven,
+$S_{\mathrm{alloc}}=904.286$, and
+$T_{\mathrm{alloc}}=3{,}703{,}954$.
+
+Fractional slot counts are an allocator normalization. They do not mean that
+the scheduler admits a fractional request, nor do they prove admission of the
+integer floor under prefill, decode, or latency constraints.
+
+\section{Full-matrix and temporal checks}
+\label{app:matrix}
+
+The formal matrix contains 112 allocator cells and 52 matched fp32/bf16 core
+pairs. Every pair favors bf16 state. The median capacity increase is 15.44\%,
+with a range of 3.32--93.28\%. The corrected continuous-model residual has
+2.3795\% median absolute magnitude, 2.7955\% mean absolute magnitude, and
+13.2134\% maximum absolute magnitude. Signed residuals span
+$-5.1604\%$ to $+13.2134\%$.
+
+The temporal rerun repeats the frozen matrix. The allocator is deterministic
+for a fixed build and configuration, so this is a reproducibility check rather
+than an independent statistical replicate. All cell directions agree and the
+maximum token difference is 1.42\%.
+
+\section{Dependence-aware GSM8K analysis}
+\label{app:gsm8k}
+
+Each dataset seed samples 200 GSM8K items without replacement. Samples overlap
+across seeds, producing 1,800 seed-item draws but only 1,017 unique items.
+Pairwise seed overlap ranges from 19 to 39, with median 30. The primary
+estimand is the mean paired difference over the observed seed-item draws.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.72\textwidth]{figures/vector_redesign/fig8_gsm8k_per_seed.pdf}
+\caption{\textbf{Descriptive GSM8K dataset-seed summaries.} Thin lines show
+nine seed summaries. The blue line is the draw-weighted mean. These lines are
+not independent replicates and are not the basis of the confidence intervals.}
+\label{fig:seed-summaries}
+\end{figure*}
+
+For each candidate, an intercept-only OLS model is fit to paired binary
+differences. The covariance uses two-way CR1 clustering by item and dataset
+seed. The reference distribution is Student-$t$ with
+$\min(1017-1,9-1)=8$ degrees of freedom. A percentile bootstrap samples the
+1,017 item-level means with equal item weight for 20,000 replicates.
+
+Repeated items are not always deterministic across dataset seeds despite
+greedy decoding. The 2B full, state-only, KV-only, and joint allocations have
+30, 27, 47, and 43 repeated items with inconsistent outcomes. Clustering
+accounts for dependence but does not explain this behavior. The old script
+that treated seed means as iid now exits with a deprecation error.
+
+\section{Additional evidence panels}
+\label{app:figures}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.72\textwidth]{figures/vector_redesign/fig7_harness.pdf}
+\caption{\textbf{PPL harness boundary.} (a) Reducing chunk size from 128 to
+one changes the PPL scale by about 87\%, so the harness is not equivalent to
+per-token kernel semantics. (b) State contrasts under fp16 and int4 KV have
+wide three-seed uncertainty and do not establish equivalence.}
+\label{fig:harness}
+\end{figure*}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/vector_redesign/fig6_sensitivity.pdf}
+\caption{\textbf{Exploratory per-layer sensitivity.} Two of 36 raw tests have
+$p<0.05$. None survives Bonferroni or Benjamini--Hochberg correction. This
+screen does not establish that whole-state precision is optimal.}
+\label{fig:layers}
+\end{figure*}
+
+\section{Artifact and verification manifest}
+\label{app:artifact}
+
+The current anonymous draft does not claim a public artifact release. The
+repository-local verifier checks SHA-256 digests for 16 frozen sources,
+asserts headline values and all 52 paired capacity rows, and rejects old
+capacity and seed-iid GSM8K inputs. It also checks all eight SVG/PDF pairs for
+nonempty vector output. The selector audit generator verifies the four
+decision sidecars before producing its JSON and LaTeX tables.
+
+\clearpage
+\onecolumn
+\section{Complete paired allocator matrix}
+\label{app:full-matrix}
+
+Table~\ref{tab:full-capacity} enumerates every fp32/bf16 pair in the formal
+112-cell run. A pair is uniquely identified by model, KV dtype, context length,
+and GPU-memory utilization. The remaining eight cells probe a float16-state
+frontier and are not part of the 52-pair state comparison. The frozen source is
+\texttt{capacity-phase-formal-corrected.analysis.json}; its SHA-256 prefix is
+\texttt{879dc059579e}, with the full digest in the adjacent sidecar.
+
+\input{capacity_matrix_table.tex}
+
+\end{document}

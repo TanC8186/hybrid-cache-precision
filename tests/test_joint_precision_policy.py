@@ -21,7 +21,7 @@ def candidate(
     goodput_lcb: float,
     quality_low: float,
     cache_bytes: int = 80,
-    max_concurrency: float = 64,
+    allocator_slots: float = 64,
     ttft_ucb: float = 450,
     tpot_ucb: float = 150,
     kv_cache_dtype: str = "auto",
@@ -43,7 +43,7 @@ def candidate(
                 "max_model_len": 4096,
                 "gpu_memory_utilization": 0.85,
                 "cache_bytes": cache_bytes,
-                "max_concurrency": max_concurrency,
+                "allocator_equivalent_sequence_slots": allocator_slots,
                 "evidence_ids": ["capacity"],
             }
         ],
@@ -67,7 +67,12 @@ def candidate(
                 "task": "gsm8k",
                 "delta_ci95_low": quality_low,
                 "delta_ci95_high": quality_low + 0.5,
-                "n_independent_repeats": 9,
+                "inference_method": "intercept_only_ols_two_way_cluster_robust_cr1",
+                "estimand": "mean paired accuracy difference over observed seed-item draws",
+                "n_seed_item_draws": 1800,
+                "n_item_clusters": 1017,
+                "n_seed_clusters": 9,
+                "cluster_degrees_of_freedom": 8,
                 "evidence_ids": ["quality"],
             }
         ],
@@ -101,7 +106,7 @@ def request() -> dict:
             "gpu_memory_utilization": 0.85,
             "max_cache_bytes": 100,
         },
-        "required_concurrency": 50,
+        "required_allocator_equivalent_sequence_slots": 50,
         "slo": {"p95_ttft_ms": 500, "p95_tpot_ms": 200},
         "quality_constraints": {"gsm8k": -1.5},
     }
@@ -152,7 +157,7 @@ def test_selector_rejects_tail_latency_capacity_and_memory_violations() -> None:
     calibration = profile(
         [
             candidate("slow", goodput_lcb=80, quality_low=0, ttft_ucb=800),
-            candidate("small", goodput_lcb=70, quality_low=0, max_concurrency=20),
+            candidate("small", goodput_lcb=70, quality_low=0, allocator_slots=20),
             candidate("oversize", goodput_lcb=60, quality_low=0, cache_bytes=101),
             candidate("valid", goodput_lcb=30, quality_low=0),
         ]
@@ -163,7 +168,7 @@ def test_selector_rejects_tail_latency_capacity_and_memory_violations() -> None:
     assert report["selected"]["config_id"] == "valid"
     reasons = {row["config_id"]: row["rejection_reasons"] for row in report["evaluations"]}
     assert reasons["slow"] == ["ttft_slo_violated"]
-    assert reasons["small"] == ["insufficient_concurrency"]
+    assert reasons["small"] == ["insufficient_allocator_equivalent_sequence_slots"]
     assert reasons["oversize"] == ["memory_budget_exceeded"]
 
 
@@ -238,3 +243,45 @@ def test_selector_accepts_explicitly_labeled_test_fixture_profile() -> None:
     report = select_joint_precision(fixture, request())
 
     assert report["profile_status"] == "TEST_FIXTURE"
+
+
+def test_selector_decision_trace_exposes_constraints_and_quality_inference() -> None:
+    report = select_joint_precision(
+        profile([candidate("full", goodput_lcb=32, quality_low=0)]),
+        request(),
+    )
+
+    evaluation = report["evaluations"][0]
+    assert evaluation["objective_lcb_req_s"] == 32
+    assert evaluation["constraint_checks"]["capacity"] == {
+        "profile_found": True,
+        "cache_bytes": 80,
+        "max_cache_bytes": 100,
+        "allocator_equivalent_sequence_slots": 64.0,
+        "required_allocator_equivalent_sequence_slots": 50.0,
+        "source_field": "allocator_equivalent_sequence_slots",
+    }
+    inference = evaluation["constraint_checks"]["quality"]["gsm8k"]["inference"]
+    assert inference["method"] == "intercept_only_ols_two_way_cluster_robust_cr1"
+    assert inference["n_seed_item_draws"] == 1800
+    assert inference["n_item_clusters"] == 1017
+    assert inference["n_seed_clusters"] == 9
+    assert inference["cluster_degrees_of_freedom"] == 8
+
+
+def test_selector_labels_historical_capacity_aliases() -> None:
+    historical = candidate("historical", goodput_lcb=32, quality_low=0)
+    capacity = historical["capacity_profiles"][0]
+    capacity["max_concurrency"] = capacity.pop("allocator_equivalent_sequence_slots")
+    historical_request = request()
+    historical_request["required_concurrency"] = historical_request.pop(
+        "required_allocator_equivalent_sequence_slots"
+    )
+
+    report = select_joint_precision(profile([historical]), historical_request)
+
+    assert report["request"]["allocator_slot_requirement_input_field"] == (
+        "required_concurrency (legacy alias)"
+    )
+    capacity_check = report["evaluations"][0]["constraint_checks"]["capacity"]
+    assert capacity_check["source_field"] == "max_concurrency (legacy alias)"

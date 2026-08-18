@@ -4,21 +4,63 @@ Merges the int4-KV probes (results/verified/2026-08-08/capacity-state) with the
 fp16-KV probes (results/verified/2026-08-09/capacity-state-fp16kv), computes
 r_state per KV dtype and r_kv per state dtype, and reports signed model error
 plus the block-granularity evidence (block_size / num_gpu_blocks /
-mamba_page_size_padded) used for the conservative-lower-bound discussion.
+mamba_page_size_padded) used to explain deviations from the idealized model.
 Fail-closed on missing cells.
 """
 
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
+import os
+import uuid
 from pathlib import Path
 
 
 MODEL_PARAMS = {
-    "2b": {"A_f": 16384.0, "A_q": 3168.0, "G_fp32": 19_537_920.0, "G_bf16": 18 * 561_152.0},
-    "9b": {"A_f": 16384.0, "A_q": 16_384.0 / 3.878, "G_fp32": 26_050_560.0, "G_bf16": 24 * 561_152.0},
+    # fp16: K/V x 512 elements x 2 B = 2,048 B per attention layer.
+    # int4: K/V x (256 B packed payload + 8 B scale metadata) = 528 B.
+    # State: 36,864 B bf16 convolution state plus a 1,048,576 B fp32 or
+    # 524,288 B bf16 temporal state in every GDN layer.
+    "2b": {
+        "A_f": 6 * 2_048.0,
+        "A_q": 6 * 528.0,
+        "G_fp32": 18 * 1_085_440.0,
+        "G_bf16": 18 * 561_152.0,
+    },
+    "9b": {
+        "A_f": 8 * 2_048.0,
+        "A_q": 8 * 528.0,
+        "G_fp32": 24 * 1_085_440.0,
+        "G_bf16": 24 * 561_152.0,
+    },
 }
+
+
+def sha256_file(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def atomic_write_json(path: Path, value: dict) -> str:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    payload = (
+        json.dumps(value, ensure_ascii=False, indent=2, allow_nan=False).encode("utf-8")
+        + b"\n"
+    )
+    temporary = path.with_name(f".{path.name}.tmp-{os.getpid()}-{uuid.uuid4().hex[:8]}")
+    with temporary.open("wb") as handle:
+        handle.write(payload)
+        handle.flush()
+        os.fsync(handle.fileno())
+    os.replace(temporary, path)
+    digest = sha256_file(path)
+    path.with_suffix(path.suffix + ".sha256").write_text(f"{digest}\n", encoding="ascii")
+    return digest
 
 
 def load_cells(probe_dir: Path, attempt: str) -> dict[tuple[str, str, int], dict]:
@@ -103,6 +145,7 @@ def main() -> int:
                     "fp32_num_gpu_blocks": fp32_probe["cache_config"]["num_gpu_blocks"],
                     "bf16_block_size": bf16_probe["cache_config"]["block_size"],
                     "bf16_num_gpu_blocks": bf16_probe["cache_config"]["num_gpu_blocks"],
+                    "fp32_mamba_page_size_padded": fp32_probe["cache_config"]["mamba_page_size_padded"],
                     "bf16_mamba_page_size_padded": bf16_probe["cache_config"]["mamba_page_size_padded"],
                 }
                 if length == 4096 and kv == "fp16":
@@ -144,6 +187,31 @@ def main() -> int:
             "state auto resolves to fp32"
         ),
         "model": "r_state(L)=(A L+G_fp32)/(A L+G_bf16); A=A_f for fp16 KV, A=A_q for int4 KV",
+        "model_parameters": MODEL_PARAMS,
+        "layout_accounting": {
+            "fp16_per_attention_layer_bytes_per_token": 2_048,
+            "int4_per_attention_layer_bytes_per_token": 528,
+            "int4_layout": (
+                "per K or V: 512 4-bit values = 256 packed bytes, plus 8 bytes "
+                "of per-token-head scale metadata"
+            ),
+            "state_per_gdn_layer_bytes": {
+                "fp32_temporal_plus_bf16_conv": 1_085_440,
+                "bf16_temporal_plus_bf16_conv": 561_152,
+            },
+            "reported_allocator_token_capacity": (
+                "floor(L * K / (H + ceil(L/B))), where K is num_gpu_blocks, "
+                "H is the recurrent cache-group count, and B is the attention block size"
+            ),
+        },
+        "missing_cells": [
+            {
+                "model": "9b",
+                "length": 16384,
+                "kv_dtype": "fp16",
+                "reason": "not probed in the frozen gpu_memory_utilization=0.85 fp16 attempt",
+            }
+        ],
         "rows": rows,
         "r_kv_rows": r_kv_rows,
         "signed_error_summary": {
@@ -155,11 +223,10 @@ def main() -> int:
                     "positive_count": sum(1 for v in vals if v > 0),
                     "min_pct": round(min(vals), 2),
                     "max_pct": round(max(vals), 2),
-                    "same_sign_probability_note": (
-                        "int4 headline cells: P(all negative by chance | coin flip) "
-                        "= 2 * (0.5)^4 = 0.0625, consistent with discrete block "
-                        "rounding; fp16-KV cells show mixed signs, so the "
-                        "conservative-lower-bound framing is scoped to int4 KV"
+                    "interpretation": (
+                        "Signed residuals describe idealized-model error from the "
+                        "observed discrete layout; they establish neither a lower "
+                        "nor an upper bound."
                     ),
                 }
                 for kv, vals in by_kv.items()
@@ -167,9 +234,8 @@ def main() -> int:
         },
     }
     out = Path(args.out)
-    out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(json.dumps(result, ensure_ascii=False, indent=2))
+    digest = atomic_write_json(out, result)
+    print(json.dumps({"out": str(out), "sha256": digest, "n_rows": len(rows)}, indent=2))
     return 0
 
 

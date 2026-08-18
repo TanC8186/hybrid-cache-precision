@@ -105,6 +105,16 @@ def normalize_quality_evidence(
     source_sha256: str,
 ) -> dict[str, Any]:
     require(quality.get("bench") == "gsm8k", "quality evidence must be the GSM8K analysis")
+    require(
+        quality.get("schema_version") == 2,
+        "quality evidence must use the dependence-aware schema_version=2 analysis",
+    )
+    diagnostics = quality.get("diagnostics")
+    require(isinstance(diagnostics, dict), "quality diagnostics must be an object")
+    n_draws = diagnostics.get("n_seed_item_draws")
+    n_items = diagnostics.get("n_unique_items")
+    require(isinstance(n_draws, int) and n_draws > 0, "invalid seed-item draw count")
+    require(isinstance(n_items, int) and n_items > 1, "invalid item-cluster count")
     raw_rows = quality.get("rows")
     require(isinstance(raw_rows, list), "quality rows must be an array")
     indexed: dict[str, tuple[int, Mapping[str, Any]]] = {}
@@ -120,9 +130,10 @@ def normalize_quality_evidence(
         quality_allocation = str(metadata["quality_allocation"])
         require(quality_allocation in indexed, f"quality allocation is missing: {quality_allocation}")
         source_index, row = indexed[quality_allocation]
-        n = row.get("n_seeds")
+        n = row.get("n_dataset_seeds")
         require(
-            isinstance(n, int) and not isinstance(n, bool) and n >= 2, f"invalid repeat count: {quality_allocation}"
+            isinstance(n, int) and not isinstance(n, bool) and n >= 2,
+            f"invalid dataset-seed count: {quality_allocation}",
         )
         if allocation == "full":
             interval = [0.0, 0.0]
@@ -134,22 +145,47 @@ def normalize_quality_evidence(
             )
         low, high = (float(interval[0]), float(interval[1]))
         require(low <= high, f"quality CI is reversed: {quality_allocation}")
+        if allocation == "full":
+            inference = next(
+                (
+                    candidate.get("cluster_robust_inference")
+                    for _, candidate in indexed.values()
+                    if candidate.get("cluster_robust_inference") is not None
+                ),
+                None,
+            )
+        else:
+            inference = row.get("cluster_robust_inference")
+        require(isinstance(inference, dict), f"cluster inference is missing: {quality_allocation}")
+        method = inference.get("method")
+        n_seed_clusters = inference.get("n_seed_clusters")
+        n_item_clusters = inference.get("n_item_clusters")
+        cluster_df = inference.get("degrees_of_freedom")
+        require(isinstance(method, str) and method, f"invalid inference method: {quality_allocation}")
+        require(n_seed_clusters == n, f"seed-cluster count mismatch: {quality_allocation}")
+        require(n_item_clusters == n_items, f"item-cluster count mismatch: {quality_allocation}")
+        require(isinstance(cluster_df, int) and cluster_df > 0, f"invalid cluster df: {quality_allocation}")
         candidates[allocation] = {
             "source_allocation": quality_allocation,
             "source_row_index": source_index,
             "delta_ci95_low": low,
             "delta_ci95_high": high,
-            "n_independent_repeats": n,
+            "inference_method": method,
+            "estimand": quality.get("primary_estimand"),
+            "n_seed_item_draws": n_draws,
+            "n_item_clusters": n_item_clusters,
+            "n_seed_clusters": n_seed_clusters,
+            "cluster_degrees_of_freedom": cluster_df,
         }
 
     return {
-        "schema_version": 1,
+        "schema_version": 2,
         "material_passport": {
             "origin_skill": "experiment-skill",
             "origin_mode": "validate",
             "origin_date": datetime.now(timezone.utc).date().isoformat(),
             "verification_status": "ANALYZED",
-            "version_label": "joint_precision_quality_evidence_v1",
+            "version_label": "joint_precision_quality_evidence_v2",
         },
         "source": {
             "path": source_path,
@@ -195,7 +231,7 @@ def audit_capacity_document(
     )
     require(
         isinstance(capacity.get("max_concurrency"), (int, float)) and float(capacity["max_concurrency"]) > 0,
-        f"{allocation}: invalid max concurrency",
+        f"{allocation}: invalid allocator-equivalent sequence slots",
     )
     return max_model_len, float(utilization)
 
@@ -241,7 +277,7 @@ def derive_physical_cache_summary(allocation: str, document: Mapping[str, Any]) 
         "logical_view_bytes": logical_bytes,
         "backing_storage_count": len(sizes),
         "backing_storage_tensor_ids": tensor_ids,
-        "max_concurrency": document["capacity"]["max_concurrency"],
+        "allocator_equivalent_sequence_slots": document["capacity"]["max_concurrency"],
         "max_model_len": document["args"]["max_model_len"],
         "gpu_memory_utilization": document["args"]["gpu_memory_utilization"],
         "num_gpu_blocks": cache_config.get("num_blocks"),
@@ -429,7 +465,7 @@ def build_recipe(
                             "0",
                             "total_cache_bytes",
                         ),
-                        "max_concurrency": source(
+                        "allocator_equivalent_sequence_slots": source(
                             f"capacity_{allocation}",
                             "capacity",
                             "max_concurrency",
@@ -443,11 +479,27 @@ def build_recipe(
                         "task": "gsm8k",
                         "delta_ci95_low": source("quality_gsm8k", "candidates", allocation, "delta_ci95_low"),
                         "delta_ci95_high": source("quality_gsm8k", "candidates", allocation, "delta_ci95_high"),
-                        "n_independent_repeats": source(
+                        "inference_method": source(
                             "quality_gsm8k",
                             "candidates",
                             allocation,
-                            "n_independent_repeats",
+                            "inference_method",
+                        ),
+                        "estimand": source("quality_gsm8k", "candidates", allocation, "estimand"),
+                        "n_seed_item_draws": source(
+                            "quality_gsm8k", "candidates", allocation, "n_seed_item_draws"
+                        ),
+                        "n_item_clusters": source(
+                            "quality_gsm8k", "candidates", allocation, "n_item_clusters"
+                        ),
+                        "n_seed_clusters": source(
+                            "quality_gsm8k", "candidates", allocation, "n_seed_clusters"
+                        ),
+                        "cluster_degrees_of_freedom": source(
+                            "quality_gsm8k",
+                            "candidates",
+                            allocation,
+                            "cluster_degrees_of_freedom",
                         ),
                     }
                 ],

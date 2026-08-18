@@ -71,7 +71,9 @@ def recipe(capacity_sha: str, serving_sha: str, quality_sha: str) -> dict:
                         "max_model_len": 4096,
                         "gpu_memory_utilization": 0.85,
                         "cache_bytes": source("capacity", "/cache/total_bytes"),
-                        "max_concurrency": source("capacity", "/capacity/max_concurrency"),
+                        "allocator_equivalent_sequence_slots": source(
+                            "capacity", "/capacity/max_concurrency"
+                        ),
                     }
                 ],
                 "serving_profiles": [
@@ -93,7 +95,14 @@ def recipe(capacity_sha: str, serving_sha: str, quality_sha: str) -> dict:
                         "task": "gsm8k",
                         "delta_ci95_low": source("quality", "/ci/0"),
                         "delta_ci95_high": source("quality", "/ci/1"),
-                        "n_independent_repeats": source("quality", "/n"),
+                        "inference_method": source("quality", "/inference_method"),
+                        "estimand": source("quality", "/estimand"),
+                        "n_seed_item_draws": source("quality", "/n_seed_item_draws"),
+                        "n_item_clusters": source("quality", "/n_item_clusters"),
+                        "n_seed_clusters": source("quality", "/n_seed_clusters"),
+                        "cluster_degrees_of_freedom": source(
+                            "quality", "/cluster_degrees_of_freedom"
+                        ),
                     }
                 ],
             }
@@ -112,7 +121,19 @@ def evidence_fixture(repo_root: Path) -> tuple[str, str, str]:
         "evidence/serving.json",
         {"metrics": {"goodput_lcb": 39, "ttft_ucb": 450, "tpot_ucb": 150}, "n": 3},
     )
-    quality_sha = write_evidence(repo_root, "evidence/quality.json", {"ci": [-1.0, -0.5], "n": 9})
+    quality_sha = write_evidence(
+        repo_root,
+        "evidence/quality.json",
+        {
+            "ci": [-1.0, -0.5],
+            "inference_method": "intercept_only_ols_two_way_cluster_robust_cr1",
+            "estimand": "mean paired accuracy difference over observed seed-item draws",
+            "n_seed_item_draws": 1800,
+            "n_item_clusters": 1017,
+            "n_seed_clusters": 9,
+            "cluster_degrees_of_freedom": 8,
+        },
+    )
     return capacity_sha, serving_sha, quality_sha
 
 
@@ -121,10 +142,12 @@ def test_builder_materializes_metrics_and_computes_evidence_ids(tmp_path: Path) 
 
     row = built["candidates"][0]
     assert row["capacity_profiles"][0]["cache_bytes"] == 80
+    assert row["capacity_profiles"][0]["allocator_equivalent_sequence_slots"] == 64
     assert row["capacity_profiles"][0]["evidence_ids"] == ["capacity"]
     assert row["serving_profiles"][0]["slo_goodput_lcb_req_s"] == 39
     assert row["serving_profiles"][0]["evidence_ids"] == ["serving"]
     assert row["quality_profiles"][0]["delta_ci95_low"] == -1.0
+    assert row["quality_profiles"][0]["n_seed_item_draws"] == 1800
     assert verify_profile_evidence(built, tmp_path)[0]["evidence_id"] == "capacity"
 
 
@@ -139,7 +162,9 @@ def test_builder_rejects_tampered_evidence(tmp_path: Path) -> None:
 def test_builder_requires_every_profile_row_to_source_evidence(tmp_path: Path) -> None:
     calibration_recipe = recipe(*evidence_fixture(tmp_path))
     calibration_recipe["candidates"][0]["capacity_profiles"][0]["cache_bytes"] = 80
-    calibration_recipe["candidates"][0]["capacity_profiles"][0]["max_concurrency"] = 64
+    calibration_recipe["candidates"][0]["capacity_profiles"][0][
+        "allocator_equivalent_sequence_slots"
+    ] = 64
 
     with pytest.raises(ProfileBuildError, match="must be sourced from evidence"):
         build_profile(calibration_recipe, tmp_path)

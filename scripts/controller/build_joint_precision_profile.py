@@ -259,7 +259,7 @@ def build_profile(recipe: Mapping[str, Any], repo_root: Path, *, recipe_path: Pa
             raw_candidate.get("capacity_profiles"),
             f"recipe.candidates[{index}].capacity_profiles",
             documents,
-            ("cache_bytes", "max_concurrency"),
+            ("cache_bytes", "allocator_equivalent_sequence_slots"),
         )
         candidate["serving_profiles"] = _materialize_rows(
             raw_candidate.get("serving_profiles"),
@@ -276,7 +276,16 @@ def build_profile(recipe: Mapping[str, Any], repo_root: Path, *, recipe_path: Pa
             raw_candidate.get("quality_profiles", []),
             f"recipe.candidates[{index}].quality_profiles",
             documents,
-            ("delta_ci95_low", "delta_ci95_high", "n_independent_repeats"),
+            (
+                "delta_ci95_low",
+                "delta_ci95_high",
+                "inference_method",
+                "estimand",
+                "n_seed_item_draws",
+                "n_item_clusters",
+                "n_seed_clusters",
+                "cluster_degrees_of_freedom",
+            ),
         )
         candidates.append(candidate)
 

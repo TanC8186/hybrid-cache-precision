@@ -16,11 +16,11 @@ from pathlib import Path
 
 # Paper §3.3 parameters (uniform int4 per-token-head attention KV).
 # 2B: A_q = 6 layers x 528 B/token = 3168; G = 18 x 1,085,440 B.
-# 9B: A_q = A_f/3.878 = 16384/3.878; G = 24 x 1,085,440 B.
+# 9B: A_q = 8 layers x 528 B/token; G = 24 x 1,085,440 B.
 # G_bf16 = layers x (temporal bf16 524,288 + conv bf16 36,864) = layers x 561,152.
 MODEL_PARAMS = {
     "2b": {"A_q": 3168.0, "G_fp32": 19_537_920.0, "G_bf16": 18 * 561_152.0},
-    "9b": {"A_q": 16_384.0 / 3.878, "G_fp32": 26_050_560.0, "G_bf16": 24 * 561_152.0},
+    "9b": {"A_q": 8 * 528.0, "G_fp32": 24 * 1_085_440.0, "G_bf16": 24 * 561_152.0},
 }
 
 

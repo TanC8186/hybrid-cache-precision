@@ -38,7 +38,8 @@ class CandidateEvaluation:
     objective_lcb_req_s: float | None
     quality_slack: float | None
     cache_bytes: int | None
-    max_concurrency: float | None
+    allocator_equivalent_sequence_slots: float | None
+    constraint_checks: dict[str, Any]
 
     def as_dict(self) -> dict[str, Any]:
         return {
@@ -48,7 +49,8 @@ class CandidateEvaluation:
             "objective_lcb_req_s": self.objective_lcb_req_s,
             "quality_slack": self.quality_slack,
             "cache_bytes": self.cache_bytes,
-            "max_concurrency": self.max_concurrency,
+            "allocator_equivalent_sequence_slots": self.allocator_equivalent_sequence_slots,
+            "constraint_checks": self.constraint_checks,
         }
 
 
@@ -130,6 +132,13 @@ def _validate_request(request: dict[str, Any]) -> dict[str, Any]:
             minimum_delta,
             f"request.quality_constraints.{task_name}",
         )
+    slot_field = "required_allocator_equivalent_sequence_slots"
+    if slot_field in request:
+        raw_required_slots = request[slot_field]
+        slot_input_field = slot_field
+    else:
+        raw_required_slots = request.get("required_concurrency")
+        slot_input_field = "required_concurrency (legacy alias)"
     normalized = {
         "model_id": _nonempty_string(request.get("model_id"), "request.model_id"),
         "max_model_len": _positive_int(request.get("max_model_len"), "request.max_model_len"),
@@ -138,10 +147,11 @@ def _validate_request(request: dict[str, Any]) -> dict[str, Any]:
             request.get("offered_rate_req_s"),
             "request.offered_rate_req_s",
         ),
-        "required_concurrency": _positive_number(
-            request.get("required_concurrency"),
-            "request.required_concurrency",
+        "required_allocator_equivalent_sequence_slots": _positive_number(
+            raw_required_slots,
+            f"request.{slot_input_field}",
         ),
+        "allocator_slot_requirement_input_field": slot_input_field,
         "memory_budget": {
             "gpu_memory_utilization": _fraction(
                 memory.get("gpu_memory_utilization"),
@@ -218,6 +228,8 @@ def _validate_capacity_profiles(value: Any, field: str, evidence_ids: set[str]) 
     for index, raw in enumerate(rows):
         row_field = f"{field}[{index}]"
         row = _require_mapping(raw, row_field)
+        slot_field = "allocator_equivalent_sequence_slots"
+        raw_slots = row.get(slot_field, row.get("max_concurrency"))
         normalized.append(
             {
                 "model_id": _nonempty_string(row.get("model_id"), f"{row_field}.model_id"),
@@ -227,9 +239,12 @@ def _validate_capacity_profiles(value: Any, field: str, evidence_ids: set[str]) 
                     f"{row_field}.gpu_memory_utilization",
                 ),
                 "cache_bytes": _positive_int(row.get("cache_bytes"), f"{row_field}.cache_bytes"),
-                "max_concurrency": _positive_number(
-                    row.get("max_concurrency"),
-                    f"{row_field}.max_concurrency",
+                "allocator_equivalent_sequence_slots": _positive_number(
+                    raw_slots,
+                    f"{row_field}.{slot_field}",
+                ),
+                "allocator_slot_source_field": (
+                    slot_field if slot_field in row else "max_concurrency (legacy alias)"
                 ),
                 "evidence_ids": _validate_evidence_ids(
                     row.get("evidence_ids"),
@@ -305,16 +320,42 @@ def _validate_quality_profiles(value: Any, field: str, evidence_ids: set[str]) -
         high = _finite_number(row.get("delta_ci95_high"), f"{row_field}.delta_ci95_high")
         if low > high:
             raise PolicyInputError(f"{row_field} has delta_ci95_low > delta_ci95_high")
+        inference_method = row.get("inference_method")
+        if inference_method is None:
+            # Read-only compatibility for historical profiles. New profile builders
+            # do not emit this branch, and the decision trace labels it explicitly.
+            inference = {
+                "method": "legacy_independent_repeat_count",
+                "n_independent_repeats": _positive_int(
+                    row.get("n_independent_repeats"),
+                    f"{row_field}.n_independent_repeats",
+                ),
+            }
+        else:
+            inference = {
+                "method": _nonempty_string(inference_method, f"{row_field}.inference_method"),
+                "estimand": _nonempty_string(row.get("estimand"), f"{row_field}.estimand"),
+                "n_seed_item_draws": _positive_int(
+                    row.get("n_seed_item_draws"), f"{row_field}.n_seed_item_draws"
+                ),
+                "n_item_clusters": _positive_int(
+                    row.get("n_item_clusters"), f"{row_field}.n_item_clusters"
+                ),
+                "n_seed_clusters": _positive_int(
+                    row.get("n_seed_clusters"), f"{row_field}.n_seed_clusters"
+                ),
+                "cluster_degrees_of_freedom": _positive_int(
+                    row.get("cluster_degrees_of_freedom"),
+                    f"{row_field}.cluster_degrees_of_freedom",
+                ),
+            }
         normalized.append(
             {
                 "model_id": _nonempty_string(row.get("model_id"), f"{row_field}.model_id"),
                 "task": _nonempty_string(row.get("task"), f"{row_field}.task"),
                 "delta_ci95_low": low,
                 "delta_ci95_high": high,
-                "n_independent_repeats": _positive_int(
-                    row.get("n_independent_repeats"),
-                    f"{row_field}.n_independent_repeats",
-                ),
+                "inference": inference,
                 "evidence_ids": _validate_evidence_ids(
                     row.get("evidence_ids"),
                     f"{row_field}.evidence_ids",
@@ -432,16 +473,28 @@ def _evaluate_candidate(candidate: dict[str, Any], request: dict[str, Any]) -> C
         f"candidate.{config_id}.capacity",
     )
     cache_bytes: int | None = None
-    max_concurrency: float | None = None
+    allocator_slots: float | None = None
+    capacity_checks: dict[str, Any] = {"profile_found": capacity is not None}
     if capacity is None:
         reasons.append("missing_capacity_profile")
     else:
         cache_bytes = capacity["cache_bytes"]
-        max_concurrency = capacity["max_concurrency"]
+        allocator_slots = capacity["allocator_equivalent_sequence_slots"]
+        capacity_checks.update(
+            {
+                "cache_bytes": cache_bytes,
+                "max_cache_bytes": request["memory_budget"]["max_cache_bytes"],
+                "allocator_equivalent_sequence_slots": allocator_slots,
+                "required_allocator_equivalent_sequence_slots": request[
+                    "required_allocator_equivalent_sequence_slots"
+                ],
+                "source_field": capacity["allocator_slot_source_field"],
+            }
+        )
         if cache_bytes > request["memory_budget"]["max_cache_bytes"]:
             reasons.append("memory_budget_exceeded")
-        if max_concurrency < request["required_concurrency"]:
-            reasons.append("insufficient_concurrency")
+        if allocator_slots < request["required_allocator_equivalent_sequence_slots"]:
+            reasons.append("insufficient_allocator_equivalent_sequence_slots")
 
     serving = _find_unique(
         candidate["serving_profiles"],
@@ -456,16 +509,27 @@ def _evaluate_candidate(candidate: dict[str, Any], request: dict[str, Any]) -> C
         f"candidate.{config_id}.serving",
     )
     objective: float | None = None
+    serving_checks: dict[str, Any] = {"profile_found": serving is not None}
     if serving is None:
         reasons.append("missing_serving_profile")
     else:
         objective = serving["slo_goodput_lcb_req_s"]
+        serving_checks.update(
+            {
+                "slo_goodput_lcb_req_s": objective,
+                "p95_ttft_ucb_ms": serving["p95_ttft_ucb_ms"],
+                "p95_ttft_limit_ms": request["slo"]["p95_ttft_ms"],
+                "p95_tpot_ucb_ms": serving["p95_tpot_ucb_ms"],
+                "p95_tpot_limit_ms": request["slo"]["p95_tpot_ms"],
+            }
+        )
         if serving["p95_ttft_ucb_ms"] > request["slo"]["p95_ttft_ms"]:
             reasons.append("ttft_slo_violated")
         if serving["p95_tpot_ucb_ms"] > request["slo"]["p95_tpot_ms"]:
             reasons.append("tpot_slo_violated")
 
     slacks: list[float] = []
+    quality_checks: dict[str, Any] = {}
     for task, minimum_delta in request["quality_constraints"].items():
         quality = _find_unique(
             candidate["quality_profiles"],
@@ -474,8 +538,16 @@ def _evaluate_candidate(candidate: dict[str, Any], request: dict[str, Any]) -> C
         )
         if quality is None:
             reasons.append(f"missing_quality_profile:{task}")
+            quality_checks[task] = {"profile_found": False, "minimum_delta": minimum_delta}
             continue
         slack = quality["delta_ci95_low"] - minimum_delta
+        quality_checks[task] = {
+            "profile_found": True,
+            "delta_ci95": [quality["delta_ci95_low"], quality["delta_ci95_high"]],
+            "minimum_delta": minimum_delta,
+            "slack": slack,
+            "inference": quality["inference"],
+        }
         slacks.append(slack)
         if slack < 0:
             reasons.append(f"quality_guardrail_violated:{task}")
@@ -487,7 +559,12 @@ def _evaluate_candidate(candidate: dict[str, Any], request: dict[str, Any]) -> C
         objective_lcb_req_s=objective,
         quality_slack=min(slacks) if slacks else None,
         cache_bytes=cache_bytes,
-        max_concurrency=max_concurrency,
+        allocator_equivalent_sequence_slots=allocator_slots,
+        constraint_checks={
+            "capacity": capacity_checks,
+            "serving": serving_checks,
+            "quality": quality_checks,
+        },
     )
 
 
@@ -520,13 +597,13 @@ def select_joint_precision(profile: dict[str, Any], request: dict[str, Any]) -> 
     def selection_key(item: CandidateEvaluation) -> tuple[float, float, int, float, str]:
         assert item.objective_lcb_req_s is not None
         assert item.cache_bytes is not None
-        assert item.max_concurrency is not None
+        assert item.allocator_equivalent_sequence_slots is not None
         quality_slack = item.quality_slack if item.quality_slack is not None else math.inf
         return (
             -item.objective_lcb_req_s,
             -quality_slack,
             item.cache_bytes,
-            -item.max_concurrency,
+            -item.allocator_equivalent_sequence_slots,
             item.config_id,
         )
 
@@ -540,7 +617,7 @@ def select_joint_precision(profile: dict[str, Any], request: dict[str, Any]) -> 
         "objective_lcb_req_s": selected.objective_lcb_req_s,
         "quality_slack": selected.quality_slack,
         "cache_bytes": selected.cache_bytes,
-        "max_concurrency": selected.max_concurrency,
+        "allocator_equivalent_sequence_slots": selected.allocator_equivalent_sequence_slots,
         "deployment": selected_profile["deployment"],
     }
     return report

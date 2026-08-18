@@ -58,7 +58,7 @@ def panel_label(ax, label: str):
 # Figure 1: capacity model, 2x2 precision budget.
 # --------------------------------------------------------------------------
 def fig1_capacity():
-    cap = load("results/verified/2026-08-09/capacity-2x2-analysis.json")
+    cap = load("results/verified/2026-08-14/capacity-2x2-analysis-corrected.json")
     rows = cap["rows"]
     rkv = cap["r_kv_rows"]
     fig = plt.figure(figsize=(7.0, 3.6))
@@ -161,8 +161,8 @@ def fig1_capacity():
 # Figure 2: GSM8K paired deltas (forest, 9-seed).
 # --------------------------------------------------------------------------
 def fig2_gsm8k():
-    g2b = load("results/quality/gsm8k-state9seed-v2-analysis-20260809.json")
-    g9b = load("results/quality/gsm8k-9b-state9seed-v2-analysis-20260809.json")
+    g2b = load("results/quality/gsm8k-state9seed-v2-dependence-aware-20260814.json")
+    g9b = load("results/quality/gsm8k-9b-state9seed-v2-dependence-aware-20260814.json")
     rows = g2b["rows"]
     stack = g2b["stacking_marginal"]
     labels = []
@@ -181,18 +181,18 @@ def fig2_gsm8k():
     r_both = next(r for r in rows if r["allocation"] == "uniform_int4_statebf16")
     add("2B int4 KV vs fp16", r_int4["delta_vs_fp16"],
         r_int4["ci95_vs_fp16"],
-        f"p={r_int4['paired_t']['p_value']:.3f}")
+        f"p={r_int4['cluster_robust_inference']['p_value']:.3f}")
     add("2B bf16 state vs fp32", r_state["delta_vs_fp16"],
         r_state["ci95_vs_fp16"],
-        f"p={r_state['paired_t']['p_value']:.3f}")
+        f"p={r_state['cluster_robust_inference']['p_value']:.3f}")
     add("2B int4+bf16 vs fp16", r_both["delta_vs_fp16"],
         r_both["ci95_vs_fp16"],
-        f"p={r_both['paired_t']['p_value']:.3f}")
+        f"p={r_both['cluster_robust_inference']['p_value']:.3f}")
     add("2B stacking (int4+bf16 vs int4)", stack["mean"], stack["ci95"],
-        f"p={stack['paired_t']['p_value']:.3f}")
+        f"p={stack['cluster_robust_inference']['p_value']:.3f}")
     r9 = g9b["rows"][1]
     add("9B bf16 state vs fp32", r9["delta_vs_fp16"], r9["ci95_vs_fp16"],
-        f"p={r9['paired_t']['p_value']:.3f}")
+        f"p={r9['cluster_robust_inference']['p_value']:.3f}")
 
     fig, ax = plt.subplots(figsize=(3.45, 2.55))
     items = list(zip(eff, lo, hi, anno))
@@ -207,7 +207,7 @@ def fig2_gsm8k():
     ax.set_yticklabels(labels, fontsize=6.5)
     ax.set_xlabel("GSM8K accuracy delta (pp, bf16 minus fp32; stacked cells noted)")
     ax.set_xlim(-0.055, 0.055)
-    ax.set_title("GSM8K, 200 seeded items x 9 seeds, paired 95% CI",
+    ax.set_title("GSM8K, 1,800 paired draws, item + seed clustered 95% CI",
                  fontsize=7, pad=4)
     # Error bars are paired 95% CIs across the 9 dataset seeds.
     panel_label(ax, "a")
@@ -313,7 +313,7 @@ def fig4_serving():
     ax.set_title("Random60 overload: goodput delta, 3 seeds, 95% CI",
                  fontsize=7.2, pad=4)
     ax.plot([], [], color=BLUE, lw=1.6, label="formal")
-    ax.plot([], [], color=CYAN, lw=1.4, ls="-", label="independent repro")
+    ax.plot([], [], color=CYAN, lw=1.4, ls="-", label="temporal rerun")
     ax.legend(fontsize=6.3, loc="lower right")  # formal vs repro runs
     panel_label(ax, "a")
 
@@ -360,7 +360,7 @@ def fig4_serving():
 # Figure 5: block granularity evidence (capacity mechanism).
 # --------------------------------------------------------------------------
 def fig5_block_granularity():
-    cap = load("results/verified/2026-08-09/capacity-2x2-analysis.json")
+    cap = load("results/verified/2026-08-14/capacity-2x2-analysis-corrected.json")
     cats = [
         ("2B", 4096, "fp16"), ("2B", 16384, "fp16"), ("9B", 4096, "fp16"),
         ("2B", 4096, "int4"), ("2B", 16384, "int4"),
@@ -496,8 +496,8 @@ def fig7_harness():
 # Figure 8: GSM8K per-seed paired accuracy.
 # --------------------------------------------------------------------------
 def fig8_gsm8k_per_seed():
-    g2b = load("results/quality/gsm8k-state9seed-v2-analysis-20260809.json")
-    g9b = load("results/quality/gsm8k-9b-state9seed-v2-analysis-20260809.json")
+    g2b = load("results/quality/gsm8k-state9seed-v2-dependence-aware-20260814.json")
+    g9b = load("results/quality/gsm8k-9b-state9seed-v2-dependence-aware-20260814.json")
     fig, axes = plt.subplots(1, 2, figsize=(6.9, 2.8),
                              gridspec_kw={"wspace": 0.3})
 
@@ -508,7 +508,7 @@ def fig8_gsm8k_per_seed():
             ys = [next(r for r in rows if r["allocation"] == a)["per_seed"][s]
                   for a in allocs]
             ax.plot(x, ys, color="#999999", lw=0.7, alpha=0.65, zorder=1)
-        means = [next(r for r in rows if r["allocation"] == a)["mean"]
+        means = [next(r for r in rows if r["allocation"] == a)["mean_accuracy_over_seed_item_draws"]
                  for a in allocs]
         ax.plot(x, means, color=BLUE, lw=1.6, marker="o", ms=4, zorder=3,
                 label="seed mean")

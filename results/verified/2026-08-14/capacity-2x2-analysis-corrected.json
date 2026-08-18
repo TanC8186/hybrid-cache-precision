@@ -1,0 +1,229 @@
+{
+  "schema_version": 1,
+  "int4_attempt": "capacity-state-20260808",
+  "fp16_attempt": "capacity-state-fp16kv-20260809",
+  "protocol": "probe_ssm_state_dtype.py, gpu_memory_utilization=0.85; int4 KV = kv_cache_dtype int4_per_token_head, fp16 KV = auto; state auto resolves to fp32",
+  "model": "r_state(L)=(A L+G_fp32)/(A L+G_bf16); A=A_f for fp16 KV, A=A_q for int4 KV",
+  "model_parameters": {
+    "2b": {
+      "A_f": 12288.0,
+      "A_q": 3168.0,
+      "G_fp32": 19537920.0,
+      "G_bf16": 10100736.0
+    },
+    "9b": {
+      "A_f": 16384.0,
+      "A_q": 4224.0,
+      "G_fp32": 26050560.0,
+      "G_bf16": 13467648.0
+    }
+  },
+  "layout_accounting": {
+    "fp16_per_attention_layer_bytes_per_token": 2048,
+    "int4_per_attention_layer_bytes_per_token": 528,
+    "int4_layout": "per K or V: 512 4-bit values = 256 packed bytes, plus 8 bytes of per-token-head scale metadata",
+    "state_per_gdn_layer_bytes": {
+      "fp32_temporal_plus_bf16_conv": 1085440,
+      "bf16_temporal_plus_bf16_conv": 561152
+    },
+    "reported_allocator_token_capacity": "floor(L * K / (H + ceil(L/B))), where K is num_gpu_blocks, H is the recurrent cache-group count, and B is the attention block size"
+  },
+  "missing_cells": [
+    {
+      "model": "9b",
+      "length": 16384,
+      "kv_dtype": "fp16",
+      "reason": "not probed in the frozen gpu_memory_utilization=0.85 fp16 attempt"
+    }
+  ],
+  "rows": [
+    {
+      "model": "2b",
+      "length": 4096,
+      "kv_dtype": "fp16",
+      "fp32_state_tokens": 1199383,
+      "bf16_state_tokens": 1384448,
+      "measured_r_state": 1.1543,
+      "predicted_r_state": 1.1562,
+      "signed_gap_pct": -0.16,
+      "fp32_block_size": 544,
+      "fp32_num_gpu_blocks": 3221,
+      "bf16_block_size": 288,
+      "bf16_num_gpu_blocks": 6084,
+      "fp32_mamba_page_size_padded": 1114112,
+      "bf16_mamba_page_size_padded": 589824,
+      "fp16_state_tokens": 1384448,
+      "measured_r_state_fp16_state": 1.1543
+    },
+    {
+      "model": "2b",
+      "length": 4096,
+      "kv_dtype": "int4",
+      "fp32_state_tokens": 2692710,
+      "bf16_state_tokens": 3703954,
+      "measured_r_state": 1.3755,
+      "predicted_r_state": 1.4089,
+      "signed_gap_pct": -2.37,
+      "fp32_block_size": 2064,
+      "fp32_num_gpu_blocks": 3287,
+      "bf16_block_size": 1072,
+      "bf16_num_gpu_blocks": 6330,
+      "fp32_mamba_page_size_padded": 1089792,
+      "bf16_mamba_page_size_padded": 566016
+    },
+    {
+      "model": "2b",
+      "length": 16384,
+      "kv_dtype": "fp16",
+      "fp32_state_tokens": 1552143,
+      "bf16_state_tokens": 1661337,
+      "measured_r_state": 1.0704,
+      "predicted_r_state": 1.0446,
+      "signed_gap_pct": 2.46,
+      "fp32_block_size": 544,
+      "fp32_num_gpu_blocks": 3221,
+      "bf16_block_size": 288,
+      "bf16_num_gpu_blocks": 6084,
+      "fp32_mamba_page_size_padded": 1114112,
+      "bf16_mamba_page_size_padded": 589824
+    },
+    {
+      "model": "2b",
+      "length": 16384,
+      "kv_dtype": "int4",
+      "fp32_state_tokens": 4895837,
+      "bf16_state_tokens": 5458458,
+      "measured_r_state": 1.1149,
+      "predicted_r_state": 1.1522,
+      "signed_gap_pct": -3.24,
+      "fp32_block_size": 2064,
+      "fp32_num_gpu_blocks": 3287,
+      "bf16_block_size": 1072,
+      "bf16_num_gpu_blocks": 6330,
+      "fp32_mamba_page_size_padded": 1089792,
+      "bf16_mamba_page_size_padded": 566016
+    },
+    {
+      "model": "9b",
+      "length": 4096,
+      "kv_dtype": "fp16",
+      "fp32_state_tokens": 144104,
+      "bf16_state_tokens": 161899,
+      "measured_r_state": 1.1235,
+      "predicted_r_state": 1.1562,
+      "signed_gap_pct": -2.83,
+      "fp32_block_size": 528,
+      "fp32_num_gpu_blocks": 387,
+      "bf16_block_size": 272,
+      "bf16_num_gpu_blocks": 751,
+      "fp32_mamba_page_size_padded": 2162688,
+      "bf16_mamba_page_size_padded": 1114112,
+      "fp16_state_tokens": 161899,
+      "measured_r_state_fp16_state": 1.1235
+    },
+    {
+      "model": "9b",
+      "length": 4096,
+      "kv_dtype": "int4",
+      "fp32_state_tokens": 315392,
+      "bf16_state_tokens": 443538,
+      "measured_r_state": 1.4063,
+      "predicted_r_state": 1.4089,
+      "signed_gap_pct": -0.19,
+      "fp32_block_size": 2048,
+      "fp32_num_gpu_blocks": 385,
+      "bf16_block_size": 1040,
+      "bf16_num_gpu_blocks": 758,
+      "fp32_mamba_page_size_padded": 2162688,
+      "bf16_mamba_page_size_padded": 1098240
+    },
+    {
+      "model": "9b",
+      "length": 16384,
+      "kv_dtype": "int4",
+      "fp32_state_tokens": 573440,
+      "bf16_state_tokens": 653635,
+      "measured_r_state": 1.1398,
+      "predicted_r_state": 1.1522,
+      "signed_gap_pct": -1.07,
+      "fp32_block_size": 2048,
+      "fp32_num_gpu_blocks": 385,
+      "bf16_block_size": 1040,
+      "bf16_num_gpu_blocks": 758,
+      "fp32_mamba_page_size_padded": 2162688,
+      "bf16_mamba_page_size_padded": 1098240
+    }
+  ],
+  "r_kv_rows": [
+    {
+      "model": "2b",
+      "length": 4096,
+      "state_dtype": "fp32",
+      "fp16_kv_tokens": 1199383,
+      "int4_kv_tokens": 2692710,
+      "measured_r_kv": 2.2451
+    },
+    {
+      "model": "2b",
+      "length": 4096,
+      "state_dtype": "bf16",
+      "fp16_kv_tokens": 1384448,
+      "int4_kv_tokens": 3703954,
+      "measured_r_kv": 2.6754
+    },
+    {
+      "model": "2b",
+      "length": 16384,
+      "state_dtype": "fp32",
+      "fp16_kv_tokens": 1552143,
+      "int4_kv_tokens": 4895837,
+      "measured_r_kv": 3.1542
+    },
+    {
+      "model": "2b",
+      "length": 16384,
+      "state_dtype": "bf16",
+      "fp16_kv_tokens": 1661337,
+      "int4_kv_tokens": 5458458,
+      "measured_r_kv": 3.2856
+    },
+    {
+      "model": "9b",
+      "length": 4096,
+      "state_dtype": "fp32",
+      "fp16_kv_tokens": 144104,
+      "int4_kv_tokens": 315392,
+      "measured_r_kv": 2.1886
+    },
+    {
+      "model": "9b",
+      "length": 4096,
+      "state_dtype": "bf16",
+      "fp16_kv_tokens": 161899,
+      "int4_kv_tokens": 443538,
+      "measured_r_kv": 2.7396
+    }
+  ],
+  "signed_error_summary": {
+    "by_kv_dtype": {
+      "fp16": {
+        "n_cells": 3,
+        "all_negative": false,
+        "negative_count": 2,
+        "positive_count": 1,
+        "min_pct": -2.83,
+        "max_pct": 2.46,
+        "interpretation": "Signed residuals describe idealized-model error from the observed discrete layout; they establish neither a lower nor an upper bound."
+      },
+      "int4": {
+        "n_cells": 4,
+        "all_negative": true,
+        "negative_count": 4,
+        "positive_count": 0,
+        "min_pct": -3.24,
+        "max_pct": -0.19,
+        "interpretation": "Signed residuals describe idealized-model error from the observed discrete layout; they establish neither a lower nor an upper bound."
+      }
+    }
+  }
+}

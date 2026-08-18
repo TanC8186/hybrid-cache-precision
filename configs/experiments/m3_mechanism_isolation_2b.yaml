@@ -1,0 +1,226 @@
+schema_version: 1
+name: m3_mechanism_isolation_2b
+
+experiment:
+  parent: joint_precision_controller_2b
+  objective: >-
+    Separate capacity, page/block geometry, and queueing effects of state
+    precision under controlled serving contrasts.
+  analysis_classification: mechanism_isolation_exploratory
+  unit_of_analysis: allocation-constraint-cell
+  contrasts:
+    fixed_block_count: >-
+      Hold the allocator block count constant while changing KV/state dtype.
+    fixed_bytes: >-
+      Hold the requested KV memory byte budget constant while changing
+      KV/state dtype.
+    fixed_concurrency: >-
+      Hold the client/server concurrency ceiling constant while changing
+      KV/state dtype.
+  profiler_mode: telemetry_only
+  profiler_overhead_calibration: separate_from_formal
+
+environment:
+  vllm_executable: /root/autodl-tmp/MLSys_Research/.venv/bin/vllm
+  vllm_source_dir: /root/autodl-tmp/MLSys_Research/vendor/vllm
+  model_path: /root/autodl-tmp/caches/modelscope/models/Qwen--Qwen3.5-2B/snapshots/master
+  env:
+    VLLM_USE_FLASHINFER_SAMPLER: "0"
+    VLLM_ALLOW_INSECURE_SERIALIZATION: "1"
+    PYTHONUNBUFFERED: "1"
+    VLLM_HTTP_TIMEOUT_KEEP_ALIVE: "75"
+
+server:
+  host: 127.0.0.1
+  port: 8000
+  health_path: /health
+  metrics_path: /metrics
+  startup_timeout_s: 600
+  health_poll_interval_s: 2
+  stabilization_s: 5
+  shutdown_grace_s: 30
+  args:
+    - --max-model-len
+    - "4096"
+    - --gpu-memory-utilization
+    - "0.80"
+    - --seed
+    - "42"
+    - --enable-logging-iteration-details
+    - --kv-cache-metrics
+    - --cudagraph-metrics
+
+protocol:
+  protocol_version: 4
+  request_failure_policy: count_as_slo_miss
+  benchmark_client_keepalive_timeout_s: 60
+  warmup_requests: 20
+  measurement_window_s: 7.5
+  max_concurrency: null
+  ttft_thresholds_ms: [250, 500, 1000, 2000, 3000]
+  tpot_threshold_ms: 200
+  sustainable_goodput_ratio: 0.95
+  arrival_window_tolerance_fraction: 0.20
+  goodput_crosscheck_abs_tolerance: 0.02
+  sample_timeout_s: 900
+  require_clean_git: true
+  telemetry_interval_s: 1.0
+  telemetry_required_metrics:
+    - vllm:kv_cache_usage_perc
+    - vllm:num_requests_running
+    - vllm:num_requests_waiting
+    - vllm:request_queue_time_seconds
+    - vllm:time_to_first_token_seconds
+    - vllm:inter_token_latency_seconds
+    - vllm:e2e_request_latency_seconds
+    - vllm:request_inference_time_seconds
+    - vllm:request_prefill_time_seconds
+
+workloads:
+  random:
+    dataset_name: random
+    random_input_len: 1024
+    random_output_len: 128
+
+allocations:
+  full_fixed_block_count:
+    base_allocation: full
+    constraint: fixed_block_count
+    server_args:
+      - --kv-cache-dtype
+      - auto
+      - --mamba-ssm-cache-dtype
+      - float32
+      - --num-gpu-blocks-override
+      - "2969"
+      - --compilation-config
+      - '{"cudagraph_mode":"PIECEWISE"}'
+    required_log_substrings:
+      - "'mamba_ssm_cache_dtype': 'float32'"
+      - "kv_cache_dtype=auto"
+      - "'num_gpu_blocks_override': 2969"
+      - "GPU KV cache size:"
+      - "CUDAGraphMode.PIECEWISE"
+  joint_fixed_block_count:
+    base_allocation: joint
+    constraint: fixed_block_count
+    server_args:
+      - --kv-cache-dtype
+      - int4_per_token_head
+      - --mamba-ssm-cache-dtype
+      - bfloat16
+      - --num-gpu-blocks-override
+      - "2969"
+      - --compilation-config
+      - '{"cudagraph_mode":"PIECEWISE"}'
+    required_log_substrings:
+      - "'mamba_ssm_cache_dtype': 'bfloat16'"
+      - "kv_cache_dtype=int4_per_token_head"
+      - "'num_gpu_blocks_override': 2969"
+      - "GPU KV cache size:"
+      - "CUDAGraphMode.PIECEWISE"
+  full_fixed_bytes:
+    base_allocation: full
+    constraint: fixed_bytes
+    server_args:
+      - --kv-cache-dtype
+      - auto
+      - --mamba-ssm-cache-dtype
+      - float32
+      - --kv-cache-memory-bytes
+      - "19800000000"
+      - --compilation-config
+      - '{"cudagraph_mode":"PIECEWISE"}'
+    required_log_substrings:
+      - "'mamba_ssm_cache_dtype': 'float32'"
+      - "kv_cache_dtype=auto"
+      - "'kv_cache_memory_bytes': 19800000000"
+      - "GPU KV cache size:"
+      - "CUDAGraphMode.PIECEWISE"
+  joint_fixed_bytes:
+    base_allocation: joint
+    constraint: fixed_bytes
+    server_args:
+      - --kv-cache-dtype
+      - int4_per_token_head
+      - --mamba-ssm-cache-dtype
+      - bfloat16
+      - --kv-cache-memory-bytes
+      - "19800000000"
+      - --compilation-config
+      - '{"cudagraph_mode":"PIECEWISE"}'
+    required_log_substrings:
+      - "'mamba_ssm_cache_dtype': 'bfloat16'"
+      - "kv_cache_dtype=int4_per_token_head"
+      - "'kv_cache_memory_bytes': 19800000000"
+      - "GPU KV cache size:"
+      - "CUDAGraphMode.PIECEWISE"
+  full_fixed_concurrency:
+    base_allocation: full
+    constraint: fixed_concurrency
+    client_max_concurrency: 128
+    server_args:
+      - --kv-cache-dtype
+      - auto
+      - --mamba-ssm-cache-dtype
+      - float32
+      - --max-num-seqs
+      - "128"
+      - --compilation-config
+      - '{"cudagraph_mode":"PIECEWISE"}'
+    required_log_substrings:
+      - "'mamba_ssm_cache_dtype': 'float32'"
+      - "kv_cache_dtype=auto"
+      - "'max_num_seqs': 128"
+      - "GPU KV cache size:"
+      - "CUDAGraphMode.PIECEWISE"
+  joint_fixed_concurrency:
+    base_allocation: joint
+    constraint: fixed_concurrency
+    client_max_concurrency: 128
+    server_args:
+      - --kv-cache-dtype
+      - int4_per_token_head
+      - --mamba-ssm-cache-dtype
+      - bfloat16
+      - --max-num-seqs
+      - "128"
+      - --compilation-config
+      - '{"cudagraph_mode":"PIECEWISE"}'
+    required_log_substrings:
+      - "'mamba_ssm_cache_dtype': 'bfloat16'"
+      - "kv_cache_dtype=int4_per_token_head"
+      - "'max_num_seqs': 128"
+      - "GPU KV cache size:"
+      - "CUDAGraphMode.PIECEWISE"
+
+phases:
+  mvex:
+    allocations:
+      - full_fixed_block_count
+      - joint_fixed_block_count
+    seeds: [7]
+    workload_rates:
+      random: [20]
+  pilot:
+    allocations:
+      - full_fixed_block_count
+      - joint_fixed_block_count
+      - full_fixed_bytes
+      - joint_fixed_bytes
+      - full_fixed_concurrency
+      - joint_fixed_concurrency
+    seeds: [7]
+    workload_rates:
+      random: [20]
+  formal:
+    allocations:
+      - full_fixed_block_count
+      - joint_fixed_block_count
+      - full_fixed_bytes
+      - joint_fixed_bytes
+      - full_fixed_concurrency
+      - joint_fixed_concurrency
+    seeds: [11, 23, 47]
+    workload_rates:
+      random: [40]
