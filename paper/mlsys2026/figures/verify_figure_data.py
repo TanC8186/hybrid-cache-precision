@@ -176,6 +176,49 @@ def verify_capacity() -> None:
     assert min(gaps) == -3.24 and max(gaps) == 2.46
 
 
+def verify_state_share_crossover() -> None:
+    """Crossover lengths and state shares quoted in the Eq. (2) discussion.
+
+    L* = G / A is the context length where the fixed state term equals the
+    attention term, and s(L) = G / (A L + G) is the state share of the
+    continuous pool. Both are recomputed from the frozen architecture
+    parameters so the manuscript never carries a hand-computed copy.
+    """
+    cap = load_json("results/verified/2026-08-14/capacity-2x2-analysis-corrected.json")
+    params = cap["model_parameters"]
+    expected_crossover = {
+        ("fp16", "fp32"): 1590.0,
+        ("fp16", "bf16"): 822.0,
+        ("int4", "fp32"): 6167.2727,
+        ("int4", "bf16"): 3188.3636,
+    }
+    for values in params.values():
+        for (kv_dtype, state_dtype), expected in expected_crossover.items():
+            attention_key = "A_f" if kv_dtype == "fp16" else "A_q"
+            state_key = "G_fp32" if state_dtype == "fp32" else "G_bf16"
+            assert_close(values[state_key] / values[attention_key], expected, atol=5e-4)
+    # Both model sizes share the same GDN:GQA ratio and per-layer byte counts,
+    # so the crossover is invariant across 2B and 9B.
+    for kv_dtype, state_dtype in expected_crossover:
+        attention_key = "A_f" if kv_dtype == "fp16" else "A_q"
+        state_key = "G_fp32" if state_dtype == "fp32" else "G_bf16"
+        assert_close(
+            params["2b"][state_key] / params["2b"][attention_key],
+            params["9b"][state_key] / params["9b"][attention_key],
+        )
+    two_b = params["2b"]
+    expected_shares = {
+        (4096, "int4", "fp32"): 0.6009,
+        (4096, "int4", "bf16"): 0.4377,
+        (16384, "int4", "fp32"): 0.2735,
+    }
+    for (length, kv_dtype, state_dtype), expected in expected_shares.items():
+        attention_key = "A_f" if kv_dtype == "fp16" else "A_q"
+        state_key = "G_fp32" if state_dtype == "fp32" else "G_bf16"
+        denominator = two_b[attention_key] * length + two_b[state_key]
+        assert_close(two_b[state_key] / denominator, expected, atol=5e-5)
+
+
 def verify_gsm8k() -> None:
     g2b = load_json("results/quality/gsm8k-state9seed-v2-dependence-aware-20260814.json")
     g9b = load_json("results/quality/gsm8k-9b-state9seed-v2-dependence-aware-20260814.json")
@@ -341,6 +384,7 @@ def verify_plot_contract_and_outputs() -> None:
 def main() -> int:
     verify_hashes()
     verify_capacity()
+    verify_state_share_crossover()
     verify_gsm8k()
     verify_secondary_panels()
     verify_plot_contract_and_outputs()
