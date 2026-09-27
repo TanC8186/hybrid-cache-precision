@@ -9,6 +9,8 @@
 \usepackage{array}
 \usepackage{balance}
 \usepackage[hypertexnames=false,hyperfootnotes=false]{hyperref}
+% Break long artifact URLs at any character so they stay inside a column.
+\usepackage{xurl}
 
 % Keep visible content safely clear of the inter-column gutter.
 \setlength{\columnsep}{0.20in}
@@ -44,31 +46,33 @@ Emails: \IEEEauthorrefmark{1}2677510433@qq.com,
 
 \begin{abstract}
 Hybrid linear-attention models allocate two caches with different scaling
-laws. Attention key-value (KV) storage grows with context, while recurrent
-state is fixed per sequence. We characterize their joint precision budget in
-Qwen3.5-2B/9B with vLLM on one RTX 5090. This is an allocator study, not a
-claim about scheduler admission or end-to-end benefit. Across a frozen
-112-cell matrix, all 52 paired fp32/bf16 state comparisons increase allocator
-token capacity. The median increase is 15.44\%. A byte-derived continuous
-model has 2.38\% median absolute residual, with signed residuals from
-$-5.16\%$ to $+13.21\%$. Discrete block and recurrent-page accounting explains
-why the model is neither a lower nor an upper bound. For 2B, int4 KV, and 4K
-context, the reported capacities correspond to 657.4 and 904.3
-allocator-equivalent sequence slots. These are not demonstrated concurrent
-requests. We reanalyze GSM8K as 1,800 paired seed-item draws with two-way
-clustering by item and dataset seed. State-only changes accuracy by
-$-1.00$ percentage point (95\% CI $[-2.04,+0.04]$), while int4 KV changes it
-by $-2.72$ points ($[-5.28,-0.17]$). Under these corrected intervals, an
-offline selector chooses full precision for the strict request; the medium,
-high, and negative-control requests have no feasible candidate. A broader
-serving matrix also fails its frozen continuous-goodput stability gate. For
-agent deployments, this fail-closed trace treats cache precision as a
-safety-relevant configuration, but our evidence does not establish agentic or
-adversarial safety.
+laws: attention key-value (KV) storage grows with context, while recurrent
+state is fixed per sequence. We present a byte-exact method for budgeting both
+from one cache pool, instantiated on Qwen3.5-2B/9B with vLLM on one RTX 5090.
+The method derives the two byte terms and reconstructs vLLM's discrete
+block-and-page rule for this layout. This is an allocator study, not a claim
+about scheduler admission or end-to-end benefit. Across a frozen 112-cell
+matrix,
+all 52 paired fp32/bf16 state comparisons increase allocator token capacity;
+the median increase is 15.44\%. The continuous model has 2.38\% median
+absolute residual, with signed residuals from $-5.16\%$ to $+13.21\%$;
+discrete accounting explains why it is neither a lower nor an upper bound.
+For 2B, int4 KV, and 4K context, the reported capacities correspond to 657.4
+and 904.3 allocator-equivalent sequence slots; fixed state outweighs attention
+below about 1.6K tokens (fp16 KV) or 3.2K--6.2K tokens (int4 KV). These are
+not demonstrated concurrent requests. We reanalyze GSM8K as 1,800 paired
+seed-item draws with two-way clustering by item and dataset seed. State-only
+changes accuracy by $-1.00$ percentage point (95\% CI $[-2.04,+0.04]$), while
+int4 KV changes it by $-2.72$ points ($[-5.28,-0.17]$). Under these corrected
+intervals, an offline selector chooses full precision for the strict request;
+the medium, high, and negative-control requests have no feasible candidate; a
+broader serving matrix fails its continuous-goodput stability gate. The
+selector admits a configuration only when capacity, quality, and SLO evidence
+all pass, and rejects missing evidence.
 \end{abstract}
 
 \begin{IEEEkeywords}
-hybrid language models, KV cache, recurrent state, precision, deployment safety
+hybrid language models, KV cache, recurrent state, precision, memory accounting
 \end{IEEEkeywords}
 
 % IEEEtran.bst-supported compression for unusually long author lists.
@@ -91,13 +95,15 @@ precision changes the per-sequence term.
 
 The state data type is already a vLLM deployment switch
 (\texttt{mamba\_ssm\_cache\_dtype})~\cite{vllmpr22196}. We do not introduce a
-new quantizer, cache allocator, or online scheduler. Our contribution is a
-scoped empirical characterization of how existing KV and state controls
-compose. We make four contributions:
+new quantizer, cache allocator, or online scheduler. Our main contribution is
+a byte-exact accounting method for the two caches of a hybrid serving stack;
+the measurements below instantiate it for one model family and one engine. We
+make four contributions:
 
 \begin{enumerate}
-\item We derive byte-exact attention and recurrent-state terms, then connect
-them to vLLM's discrete hybrid-cache allocation rule.
+\item (Method) We derive byte-exact attention and recurrent-state terms, model
+the allocator continuously, and reconstruct vLLM's discrete hybrid-cache
+allocation rule from the engine's own block and page layout.
 \item We validate this accounting on two temporal 112-cell allocator runs and
 report residuals without converting them into a bound.
 \item We replace seed-iid GSM8K inference with paired seed-item analysis that
@@ -107,8 +113,15 @@ corrected evidence leaves only the strict request feasible, at full precision.
 \end{enumerate}
 
 The target regime is short-context, memory-limited deployment, where fixed
-state can consume a substantial fraction of the cache pool. Our conclusions
-are limited to Qwen3.5, vLLM, one RTX 5090, and the measured strata. We do not
+state can consume a substantial fraction of the cache pool. Three practical
+implications follow. First, bf16 temporal state buys allocator token capacity
+in every measured short-context cell, but the gain shrinks with context, so
+treat it as a capacity tool, not a throughput promise. Second, capacity
+budgets must use the discrete reconstruction, where a 48.30\% byte reduction
+yields a 37.55\% slot increase in the representative cell, not 50\%. Third,
+quality gates must use dependence-aware intervals; seed-iid intervals would
+admit the medium request that the corrected audit rejects. Conclusions are
+limited to Qwen3.5, vLLM, one RTX 5090, and the measured strata; we do not
 infer usable concurrency or stable serving gains from allocator capacity.
 
 \section{Background and Positioning}
@@ -126,9 +139,11 @@ The capability boundary is explicit. KV quantization changes attention
 precision but not recurrent-state precision, whereas prior state compression
 changes state without auditing joint allocator behavior~\cite{kivi,kvquant,
 replayssm}. vLLM exposes both controls~\cite{vllm,vllmpr22196}, which this work
-uses rather than claims as new. The contribution is the byte-exact joint
-accounting, complete allocator matrix, dependence-aware quality audit, and
-fail-closed decision trace. It is not a new precision mechanism or serving
+uses rather than claims as new. The main contribution is the method: byte-exact
+joint accounting plus a discrete allocator reconstruction that explains when
+the continuous model's residuals appear. The allocator matrix,
+dependence-aware quality audit, and fail-closed decision trace are its
+instantiation and validation. This is not a new precision mechanism or serving
 system.
 
 % Queue the byte-to-page allocation figure at the top of page 2.
@@ -191,6 +206,14 @@ admission. The predicted state ratio is
   \label{eq:rstate}
 \end{equation}
 The ratio decreases as $L$ grows because the attention term becomes dominant.
+The two terms trade places at the crossover length $L^{\ast}=G/A$; define the
+state share $s(L)=G/(AL+G)$, so $s(L^{\ast})=1/2$. At the measured geometry,
+$L^{\ast}\approx1{,}590$ tokens with fp16 KV and $3{,}188$ (bf16 state) to
+$6{,}167$ (fp32 state) tokens with int4 KV, and $L^{\ast}$ is the same for 2B
+and 9B because per-layer state and per-token attention bytes hold the same
+ratio at both sizes. At the measured 4K int4 strata, fixed state still occupies
+60\% (fp32) or 44\% (bf16) of the continuous pool, and the bf16-state gain
+above $L^{\ast}$ decays roughly as $1/L$.
 
 The engine reports a discrete capacity. Let $K$ be the allocated GPU-block
 count, $H$ the number of recurrent cache groups, and $B$ the attention block
@@ -255,11 +278,10 @@ requests without changing their thresholds after observing the reanalysis.
 
 Serving uses Random60 and ShareGPT300 workloads~\cite{sharegpt}, three seed and
 trace repeats, Poisson arrivals, and fixed measurement windows. A request is
-good only if it completes and satisfies the specified time-to-first-token
-(TTFT) and time-per-output-token (TPOT) limits. SLO-goodput is the number of
-good requests divided by measurement duration. Failed requests remain in the
-denominator. A second run uses the same host, contracts, and seeds, so we call
-it a temporal rerun.
+good only if it completes within the specified time-to-first-token (TTFT) and
+time-per-output-token (TPOT) limits; SLO-goodput divides good requests by
+measurement duration, with failed requests in the denominator. A second run
+uses the same host, contracts, and seeds, so we call it a temporal rerun.
 
 \section{Results}
 \label{sec:results}
@@ -299,9 +321,9 @@ fixed state dominates. The temporal rerun reproduces all 112 cells within the
 frozen token tolerance; the largest per-cell difference is 1.42\%.
 
 The corrected continuous model has 2.3795\% median absolute residual. Signed
-residuals range from $-5.1604\%$ to $+13.2134\%$. Their mixed signs rule out a
-lower-bound or upper-bound interpretation. Figure~\ref{fig:capacity} compares
-the model with the fixed-utilization slice.
+residuals range from $-5.1604\%$ to $+13.2134\%$; their mixed signs rule out a
+lower-bound or upper-bound interpretation, and Figure~\ref{fig:capacity}
+compares the model with the fixed-utilization slice.
 
 The byte correction matters. Each GDN layer contains a 36,864-byte bf16
 convolution state plus a temporal state. Changing only the temporal state from
@@ -336,7 +358,7 @@ non-inferior.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\linewidth]{figures/vector_redesign/fig2_gsm8k.pdf}
+\includegraphics[width=0.95\linewidth]{figures/vector_redesign/fig2_gsm8k.pdf}
 \caption{\textbf{Quality evidence and selector consequence.} (a) The primary
 GSM8K analysis uses
 1,800 paired seed-item draws, 1,017 item clusters, nine dataset-seed clusters,
@@ -348,18 +370,18 @@ and TTFT, respectively. Only strict/full is feasible and selected.}
 \label{fig:gsm8k}
 \end{figure}
 
-On C4, PPL changes by $-0.0029$, with a 95\% CI from $-0.0129$ to
-$+0.0072$. On PG19, it changes by $+0.0065$, with a CI from $-0.0447$ to
-$+0.0578$. Both intervals include zero and do not establish equivalence. The
-harness also rounds state at chunk boundaries, so it is supporting evidence
-only. In five no-think RULER cells, both temporal runs observe identical fp32
-and bf16 outputs across three seeds. The resulting zero-width descriptive
-intervals are observed equality, not population certainty
+On C4, PPL changes by $-0.0029$ (95\% CI from $-0.0129$ to $+0.0072$); on
+PG19, by $+0.0065$ (from $-0.0447$ to $+0.0578$). Both intervals include zero
+and do not establish equivalence. The harness also rounds state at chunk
+boundaries, so it is supporting evidence only. In five no-think RULER cells,
+both temporal runs observe identical fp32 and bf16 outputs across three seeds.
+The resulting zero-width descriptive intervals are observed equality, not
+population certainty
 (Figure~\ref{fig:ruler}).
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\linewidth]{figures/vector_redesign/fig3_ppl_ruler.pdf}
+\includegraphics[width=0.95\linewidth]{figures/vector_redesign/fig3_ppl_ruler.pdf}
 \caption{\textbf{PPL and RULER boundaries.} (a) Chunk-level PPL contrasts for
 C4 and PG19. (b) Five no-think RULER cells have exact observed equality; each
 cell also has 6/6 exact temporal matches across three seeds and two allocations
@@ -369,32 +391,32 @@ equivalence or non-inferiority test.}
 \end{figure}
 
 An exploratory 18-layer sensitivity screen produces two raw C4 intervals with
-$p<0.05$, but neither survives Bonferroni or Benjamini--Hochberg correction.
-This result does not show that whole-state precision is optimal. It only
-provides no corrected evidence for a layer exception in this screen. The
-Supplementary Material reports the panel and the chunk-size ablation.
+$p<0.05$, but neither survives Bonferroni or Benjamini--Hochberg correction;
+this provides no corrected evidence for a layer exception and does not show
+that whole-state precision is optimal. The Supplementary Material reports the
+panel and the chunk-size ablation.
 
 \subsection{Corrected selector audit}
 \label{sec:controller}
 
-Table~\ref{tab:selector-audit} replays the four frozen requests after replacing
-seed-iid quality bounds with the clustered intervals above. The strict request
-requires 250 allocator-equivalent slots and a $-1.0$ point GSM8K floor. Full
-precision is its only feasible candidate and has a 29.483 req/s SLO-goodput
-lower bound.
+Table~\ref{tab:selector-audit} replays the four frozen requests with the
+clustered intervals above in place of seed-iid quality bounds. The strict
+request requires 250 allocator-equivalent slots and a $-1.0$ point GSM8K floor.
+Full precision is its only feasible candidate and has a 29.483 req/s
+SLO-goodput lower bound.
 
-The medium request has no feasible candidate. Full precision provides only
-269.9 slots against a requirement of 300. State-only provides 311.6 slots, but
-its quality lower bound is $-2.044$ points against a $-2.0$ point floor. KV-only
-and joint also violate quality. For the high request, joint provides enough
-slots but misses the $-4.0$ point quality floor. The negative control requires
-900 slots, which no candidate provides. We did not relax any threshold after
-seeing these outcomes.
+The medium request has no feasible candidate: full precision provides only
+269.9 slots against 300, and state-only provides 311.6 slots but a quality
+lower bound of $-2.044$ points against a $-2.0$ point floor; KV-only and joint
+also violate quality. For the high request, joint provides enough slots but
+misses the $-4.0$ point floor, and the negative control's 900-slot requirement
+exceeds every candidate. We did not relax any threshold after seeing these
+outcomes.
 
 \input{selector_audit_table.tex}
 
-This audit invalidates the earlier three-mapping narrative. It demonstrates
-fail-closed constraint evaluation and complete rejection traces. It does not
+The audit invalidates the earlier three-mapping narrative and demonstrates
+fail-closed constraint evaluation with complete rejection traces; it does not
 demonstrate an optimal online policy, held-out regret, or a serving advantage.
 
 \subsection{Serving boundary}
@@ -446,48 +468,57 @@ strata requires a fresh probe.
 
 \textbf{Quality inference remains scoped.}
 Two-way clustering addresses repeated items and shared dataset seeds, but
-repeated greedy evaluations still show inconsistent outcomes for some items.
-The 2B baseline has 30 such repeated items and state-only has 27. The item
-bootstrap targets a different equal-item estimand and gives a similar state
-estimate, but it does not explain this variability. The contrasts are also
-not adjusted as one discovery family.
+repeated greedy evaluations still show inconsistent outcomes for some items
+(30 in the 2B baseline, 27 under state-only). The item bootstrap targets a
+different equal-item estimand and gives a similar state estimate, but it does
+not explain this variability. The contrasts are also not adjusted as one
+discovery family.
 
 \textbf{The selector is an audited, fail-closed lookup policy.}
 It uses cold-start, exact-stratum profiles without interpolation, oracle
-comparison, or measured switching overhead. Because cache precision may alter
-outputs used for agent planning or tool selection, a configuration is admitted
-only when its capacity target, quality bounds, and SLO evidence all pass;
-missing evidence rejects it. We do not evaluate prompt injection, data leakage, cache isolation,
-adversarial robustness, policy compliance, or agent safety.
+comparison, or measured switching overhead. A configuration is admitted only
+when its capacity target, quality bounds, and SLO evidence all pass; missing or
+ambiguous evidence rejects it. Fail-closed evaluation is a configuration
+property of this offline selector. We do not evaluate prompt injection, data
+leakage, cache isolation, adversarial robustness, policy compliance, or agent
+safety.
 
-\textbf{System and hardware coverage is narrow.}
-All measurements use Qwen3.5-2B/9B, one RTX 5090, and one vLLM lineage. Tensor
-parallelism, prefix caching, offloading, other hybrid architectures, and other
-accelerators can change both terms and rounding. The PPL harness is not a
-per-token kernel equivalence test, and RULER has only three dataset seeds.
+\textbf{Scope and transferability.}
+All measurements use Qwen3.5-2B/9B, one RTX 5090, and one vLLM lineage. The
+accounting itself is parameterized by per-token attention bytes $A$ and
+per-sequence state bytes $G$, so it transfers to another hybrid stack by
+re-deriving those two terms and re-probing that stack's block and page layout;
+the numbers here must not be extrapolated. Concretely, tensor parallelism
+changes per-rank parameter and page layouts, prefix caching and offloading
+change the effective pool $M$, and other hybrid architectures and accelerators
+change both terms and rounding. The PPL harness is not a per-token kernel
+equivalence test, and RULER has only three dataset seeds.
 
-\textbf{Artifact status is local.}
-The current submission has no public artifact URL. Reproducibility claims
-refer to repository-local JSON, CSV, scripts, and SHA-256 sidecars. The figure
-verifier pins 16 source hashes, checks all 52 paired capacity rows, and fails
-on numeric drift. Public release and independent-host validation remain future
-work.
+\textbf{Artifact.}
+The artifact is public at
+\url{https://github.com/TanC8186/hybrid-cache-precision} under the
+\texttt{dls2026-camera-ready} tag. The verifier pins 16 source hashes, checks
+all 52 paired capacity rows, recomputes the crossover and state-share values
+quoted in Section~\ref{sec:model}, and fails on numeric drift. Independent-host
+validation remains future work.
 
 \section{Conclusion}
 \label{sec:conclusion}
 
 Hybrid LLM cache accounting must include both per-token attention KV and fixed
-recurrent state. In the measured Qwen3.5/vLLM matrix, bf16 temporal state raises
-allocator token capacity in all 52 pairs, with a 15.44\% median increase. The
-effect is strongest at short contexts, but the continuous model retains
-material, mixed-sign residuals.
+recurrent state. We have presented a byte-exact method for that joint budget
+and instantiated it in the measured Qwen3.5/vLLM matrix. Bf16 temporal state
+raises allocator token capacity in all 52 pairs, with a 15.44\% median increase;
+the effect is strongest in short-context cells, where fixed state outweighs
+attention (below about 1.6K tokens with fp16 KV and 3.2K--6.2K tokens with
+int4 KV here). The continuous model retains material, mixed-sign residuals.
 
 The dependence-aware audit leaves only the strict request feasible at full
-precision, while the serving matrix provides no stable end-to-end benefit. For
-agent deployments, cache precision is therefore a safety-relevant configuration:
-capacity, quality bounds, and SLO evidence must all pass, and missing evidence
-must fail closed.
-This work does not establish agentic or adversarial safety, including defenses
+precision, while the serving matrix provides no stable end-to-end benefit. The
+fail-closed selector therefore admits a configuration only when capacity,
+quality bounds, and SLO evidence all pass. These results remain allocator-level
+and scoped to the measured stack; they do not establish serving concurrency,
+end-to-end benefit, or agentic and adversarial safety, including defenses
 against prompt injection, data leakage, cache-isolation failures, adversarial
 behavior, or policy violations.
 

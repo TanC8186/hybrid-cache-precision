@@ -71,3 +71,42 @@ file as internal unless EDAS or the workshop chairs explicitly allow it.
   IEEE MASS main track. Safety framing is limited to deployment implications:
   the manuscript does not claim agentic or adversarial safety experiments or
   improved security.
+
+## Camera-ready revision (2026-09-27)
+
+The paper was accepted at DLS 2026 (reviews: Weak Accept 4, Strong Accept 5).
+The camera-ready addresses every actionable comment; the per-comment mapping
+and the response skeleton live outside the repository (peer-review comments are
+not redistributed).
+
+- R1 (generalizability): Limitations paragraph rewritten as "Scope and
+  transferability"; the accounting is stated as parameterized by the two byte
+  terms so it can be re-instantiated for another hybrid stack.
+- R1 (recurrent-state dominance): Section III now defines the state share
+  `s(L) = G/(A L + G)` and the crossover length `L* = G/A`, with values
+  recomputed by the verifier from the frozen architecture parameters.
+- R1 (artifact): the Limitations and supplement artifact statements now cite
+  the public repository and its `dls2026-camera-ready` tag. Internal
+  review-process notes were removed from the repository in a separate commit.
+- R2 (safety framing): the "safety-relevant configuration" claim was removed;
+  fail-closed evaluation is presented as a property of the offline selector,
+  and the agentic/adversarial-safety boundary sentence is retained.
+- R2 (practical implications): the Introduction now lists three practitioner
+  implications, and the Abstract states the fail-closed admission rule.
+- R2 (method framing): the Abstract, Introduction contributions, and Related
+  Work present the byte-exact accounting and discrete reconstruction as the
+  main methodological contribution, with the matrix results framed as its
+  instantiation.
+- R2 (scope): tensor parallelism, prefix caching, and offloading are named as
+  unmeasured settings that change the terms or the layout.
+
+Re-verified after the revision:
+
+- `main.pdf`: 6 pages, 612 x 792 pt (US Letter); no overfull or underfull
+  boxes; abstract 248 words by mechanical count with LaTeX commands stripped
+  (the venue submission form allows 20--250)
+- Figures 3 and 4 are set at `0.95\linewidth`; `xurl` is loaded so the artifact
+  URL can break inside a column
+- `supplement.pdf`: 4 pages
+- Figure/data verifier: PASS, including the new crossover and state-share
+  recomputation (`verify_state_share_crossover`)

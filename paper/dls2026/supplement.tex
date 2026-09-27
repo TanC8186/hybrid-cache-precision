@@ -165,13 +165,15 @@ screen does not establish that whole-state precision is optimal.}
 \section{Artifact and verification manifest}
 \label{app:artifact}
 
-The current submission does not claim a public artifact release. The
-repository-local verifier checks SHA-256 digests for 16 frozen sources,
-asserts headline values and all 52 paired capacity rows, and rejects obsolete
-capacity inputs and GSM8K inputs based on seed-level independence. It also
-checks all eight SVG/PDF pairs for nonempty vector output. Before producing
-the JSON and LaTeX tables, the selector-audit generator verifies all four
-decision sidecars.
+The artifact is public at
+\url{https://github.com/TanC8186/hybrid-cache-precision} under the
+\texttt{dls2026-camera-ready} tag. The verifier checks SHA-256 digests for 16
+frozen sources, asserts headline values and all 52 paired capacity rows,
+recomputes the crossover lengths and state shares from the frozen architecture
+parameters, and rejects obsolete capacity inputs and GSM8K inputs based on
+seed-level independence. It also checks all eight SVG/PDF pairs for nonempty
+vector output. Before producing the JSON and LaTeX tables, the selector-audit
+generator verifies all four decision sidecars.
 
 \clearpage
 \onecolumn
