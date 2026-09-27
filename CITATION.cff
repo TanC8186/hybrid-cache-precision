@@ -1,0 +1,42 @@
+cff-version: 1.2.0
+message: "If you use this artifact, please cite the DLS 2026 paper and this repository."
+title: "Precision Accounting for KV and Recurrent-State Caches in Hybrid LLM Serving (artifact)"
+abstract: >-
+  Verification and reproduction artifact for a byte-exact accounting study of
+  attention KV cache and recurrent-state memory in hybrid LLM serving. Contains
+  the frozen allocator-run evidence, the dependence-aware GSM8K reanalysis, the
+  fail-closed selector audit, and the figure/data verifier used by the paper.
+type: software
+version: "dls2026-camera-ready"
+date-released: "2026-09-27"
+license: MIT
+repository-code: "https://github.com/TanC8186/hybrid-cache-precision"
+keywords:
+  - KV cache
+  - recurrent state
+  - hybrid linear attention
+  - quantization
+  - LLM serving
+  - vLLM
+authors:
+  - family-names: Tan
+    given-names: Junxi
+    affiliation: "Guangdong University of Finance & Economics, Guangzhou, China"
+  - family-names: Xiao
+    given-names: Yinhao
+    affiliation: "GDUFE-UCM Joint Institute, Guangdong University of Finance & Economics, Guangzhou, China"
+  - family-names: Yang
+    given-names: Wencheng
+    affiliation: "School of Science, Engineering and Digital Technologies, University of Southern Queensland, Queensland, Australia"
+preferred-citation:
+  type: conference-paper
+  title: "Precision Accounting for KV and Recurrent-State Caches in Hybrid LLM Serving"
+  collection-title: "2nd Workshop on Data Security and LLM Safety in Smart Systems (DLS), co-located with IEEE MASS 2026"
+  year: 2026
+  authors:
+    - family-names: Tan
+      given-names: Junxi
+    - family-names: Xiao
+      given-names: Yinhao
+    - family-names: Yang
+      given-names: Wencheng
