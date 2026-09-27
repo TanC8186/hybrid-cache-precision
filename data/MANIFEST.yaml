@@ -35,4 +35,5 @@ files:
 #     source: "本地生成 scripts/gen_synthetic_retrieval.py --seed 42"
 #     license: "生成数据（无版权）"
 
-# 待登记：longbench、pg19、sharegpt_trace（先确认 license）、niah 合成数据
+# 待登记：sharegpt_trace（先确认 license；本仓库不分发，见 docs/artifact.md）。
+# niah 合成数据未用于已发表结果（scripts/gen_synthetic_retrieval.py 仍为 stub）。

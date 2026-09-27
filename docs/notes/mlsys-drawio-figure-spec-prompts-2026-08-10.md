@@ -4,7 +4,7 @@
 > 目标：为 hybrid linear-attention serving 论文重建一套 MLSys 级主图与附录图  
 > 绘图方式：AI 驱动的 draw.io 客户端  
 > 强制格式：draw.io 原生矢量对象；主交付 `.drawio`，并导出 editable SVG 与 vector PDF  
-> 关联审稿报告：`docs/notes/mlsys-ars-max-intensity-review-2026-08-10.md`
+> 关联审稿报告：内部文档，已从公开树移除
 
 ---
 

@@ -279,9 +279,9 @@ bf16 state 的 2.675×。部署换算：2B/4K/int4 下 657 → 904 条并发
 
 ### 过程文档
 
-- 审稿报告：`docs/notes/mlsys-review-ars-2026-08-10-paper-draft.md`
+- 审稿报告：内部文档，已从公开树移除
 - 引用审计：[citation-audit-2026-08-11.md](citation-audit-2026-08-11.md)
-- 修复执行：[ars-repair-execution-2026-08-11.md](ars-repair-execution-2026-08-11.md)
+- 修复执行：内部文档，已从公开树移除
 - 下一阶段计划：`docs/notes/next-stage-experiment-plan-2026-08-09.md`
 - 结果摘要：`docs/notes/results-digest-2026-08-09.md`
 - 复现语义：`docs/notes/repro-final-2026-08-09.md`、

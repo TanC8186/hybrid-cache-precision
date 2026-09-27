@@ -1,7 +1,7 @@
 # MLSys 项目总览（2026-08-06 更新）
 
 > 研究方向、实验方法、实验进度、审稿人意见的完整汇总（最新：2026-08-06，含 A2 serving formal 108/108 结果）。
-> 数据地图：`docs/notes/data-inventory-2026-08-04.md`；审稿全文：`docs/notes/mlsys-review-2026-08-04.md`；审稿后实验计划/冻结合同：`docs/notes/next-stage-experiment-plan-2026-08-04.md`；VERIFIED 证据：`results/verified/2026-08-04/`。
+> 数据地图：`docs/notes/data-inventory-2026-08-04.md`；审稿全文：内部文档，已从公开树移除；审稿后实验计划/冻结合同：`docs/notes/next-stage-experiment-plan-2026-08-04.md`；VERIFIED 证据：`results/verified/2026-08-04/`。
 
 ---
 
@@ -123,7 +123,7 @@
 ## 四、审稿人意见
 
 ### 4.0 第二轮 ARS 审稿（2026-08-06，5 审稿人 panel：EIC+R1+R2+R3+DA）
-- **决策：REJECT（Resubmit Encouraged）**——加权 54-57（Major Revision 档），F1 block 升级。全文：`docs/notes/mlsys-review-ars-2026-08-06.md`
+- **决策：REJECT（Resubmit Encouraged）**——加权 54-57（Major Revision 档），F1 block 升级。全文：内部文档，已从公开树移除
 - **核心批评**：C1 论文文本仍写已撤回的 +25%（与自身 VERIFIED 证据冲突，最致命）；C2 PPL 三文件矛盾；C3 A2 未入正文仍为 future work；M1 GDN state 压缩替代路径未讨论；M2 A2 复用 DeepSeek V4 packed 布局增量未证；M3 'first' 声明过强；M4 serving formal 仅 ANALYZED
 - **Revision Roadmap**：R1-R8 Required + S1-S6 Suggested（6-8 周）。**R3/R4 已完成，R5 进行中，R8 草稿完成**（见 §3.1c）
 - 附录含外部核验（Qwen3.5 架构、KIVI/KVQuant/TurboQuant、DeepSeek V4 PR #44454/#46252 等全部属实）
@@ -158,7 +158,7 @@ data-audit 6/10 · method 4/10 · novelty 4/10 · clarity 5.5/10
 | `docs/paper/paper-mainline-2026-08-03.md` | 论文主线四章草稿 |
 | `docs/paper/serving-evaluation-2026-08-03.md` | Evaluation 章节草稿 |
 | `docs/notes/next-stage-experiment-plan-2026-08-04.md` | **A2/E3 冻结合同、执行结果、下一轮计划**（A2 serving formal 契约）|
-| `docs/notes/mlsys-review-2026-08-04.md` | 审稿报告（全文）|
+| 内部审稿报告（全文） | 已从公开树移除 |
 | `docs/notes/data-inventory-2026-08-04.md` | 数据地图（审稿导航）|
 | `docs/notes/serving-3seed-9b-2026-08-03.md` | 2B 3-seed + 9B 数据 |
 | `docs/notes/per-layer-page-group-design-2026-08-03.md` | A2 设计（386 行）|

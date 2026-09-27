@@ -15,8 +15,8 @@
 > idealized prediction with measured residuals, not as a lower bound. The formal
 > attempt remains `ANALYZED` pending a new-attempt reproducibility gate.
 
-> 输入：`docs/notes/mlsys-review-ars-2026-08-09.md`（5/5 全席、Major Revision、
-> 平均加权 68.3）、`docs/paper/research-summary-2026-08-09.md`、
+> 输入：内部审稿报告（5/5 全席、Major Revision、平均加权 68.3；已从公开树移除）、
+> `docs/paper/research-summary-2026-08-09.md`、
 > `docs/paper/experiment-matrix-plan-2026-08-08.md`、`docs/paper/claim-evidence-map-2026-08-08.md`、
 > `results/verified/2026-08-08/{ssm_dtype,capacity-state}/`、
 > `results/verified/2026-08-09/statebf16-random60-pilot-20260809/`、
