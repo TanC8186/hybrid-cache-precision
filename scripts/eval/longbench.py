@@ -8,7 +8,11 @@ import argparse
 
 
 def run_longbench(experiment: str) -> None:
-    raise NotImplementedError("TODO: 跑 LongBench 子集（sampling/summarization 等）→ metrics(jsonl)")
+    raise NotImplementedError(
+        "TODO: 跑 LongBench 子集（sampling/summarization 等）→ metrics(jsonl)。"
+        "未实现：LongBench 由 scripts/eval/longbench_bench.py 采集"
+        "（scripts/eval/run_longbench.sh 启动）、scripts/eval/analyze_longbench.py 分析。"
+    )
 
 
 def main() -> None:

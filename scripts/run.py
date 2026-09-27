@@ -16,7 +16,11 @@ import argparse
 
 def run_experiment(cfg_path: str) -> None:
     """运行单个实验：先做 schema 校验，再调用 scripts/run.sh，最后汇总。"""
-    raise NotImplementedError("TODO: 接入配置加载器 + scripts/run.sh")
+    raise NotImplementedError(
+        "TODO: 接入配置加载器 + scripts/run.sh。未实现：单次运行请直接用 "
+        "scripts/run.sh；网格运行见各 study 启动器（如 "
+        "scripts/bench/run_capacity_phase_diagram.sh）。"
+    )
 
 
 def run_sweep(config_glob: str) -> None:

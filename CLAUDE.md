@@ -2,7 +2,7 @@
 
 ## 项目
 - **目标**：MLSys 顶会论文，LLM serving 的 KV cache 量化/压缩
-- **基座**：vLLM（`vendor/vllm` fork，git submodule）
+- **基座**：vLLM（`vendor/vllm` 为 gitignored 工作树，由 `vendor/vllm-patches/` 补丁栈重建，非 submodule）
 - **工作流**：本地 RTX 4060 8G（WSL2/Docker 内开发，1-3B 模型）+ 租用 RTX 5090 32G（最终实验，7B）
 - **设计文档**：`docs/superpowers/specs/2026-08-01-mlsys-experiment-framework-design.md`
 
@@ -33,10 +33,10 @@
 ```bash
 make setup-local      # 初始化本地开发环境（WSL2 内）
 make run EXP=<name>   # 运行实验（provenance 固化）
-make sweep            # 网格消融
-make bench            # serving benchmark
-make eval             # 质量评测
-make analyze          # 汇总 → results/（唯一论文图表来源）
+make sweep            # [未实现] 网格消融：见各 study 启动器
+make bench            # [未实现] serving benchmark：见 scripts/bench/ 的 5090 启动器
+make eval             # [未实现] 质量评测：见 scripts/eval/run_*.sh 与对应 analyzer
+make analyze          # [未实现] 汇总：论文数值由各 stage analyzer 产出（见 docs/artifact.md §4）
 make archive          # 归档 headline 原始运行
 make reproduce        # 一键复现（供审稿人）
 make check            # 环境自检

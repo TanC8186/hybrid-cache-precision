@@ -19,17 +19,33 @@ setup-remote: ## 在租用的 5090 实例上校验并初始化运行环境
 run: ## 运行实验：make run EXP=<configs/experiments/<name>.yaml>
 	./scripts/run.sh $(EXP)
 
-sweep: ## 网格消融：make sweep CONFIG=<glob>
-	python scripts/run.py --sweep --config $(if $(CONFIG),$(CONFIG),configs/quantization/*.yaml)
+sweep: ## [not implemented] 网格消融：见 configs/experiments/ 与各 study 启动器
+	@echo "make sweep is not implemented: scripts/run.py is a stub."
+	@echo "Grid runs used the per-study launchers, e.g."
+	@echo "  scripts/bench/run_capacity_phase_diagram.sh  (frozen contracts in configs/experiments/)"
+	@exit 2
 
-bench: ## 运行 serving benchmark：make bench MODE=memory|throughput|latency EXP=<name>
-	python -m scripts.bench.$(MODE) --config configs/bench/$(MODE).yaml --experiment $(EXP)
+bench: ## [not implemented] serving benchmark：见 scripts/bench/ 的 5090 启动器
+	@echo "make bench is not implemented: scripts.bench.{memory,throughput,latency} are stubs or absent."
+	@echo "Serving runs used the 5090 launchers:"
+	@echo "  scripts/bench/run_serving_formal.sh, scripts/bench/bench_driver_5090.sh, scripts/bench/bench_seed_loop.sh"
+	@exit 2
 
-eval: ## 运行质量评测：make eval TASK=perplexity|longbench|niah EXP=<name>
-	python -m scripts.eval.$(TASK) --config configs/eval/quality.yaml --experiment $(EXP)
+eval: ## [not implemented] 质量评测：见 scripts/eval/run_*.sh 与对应 analyzer
+	@echo "make eval is not implemented: scripts.eval.{perplexity,longbench,niah} are stubs."
+	@echo "Quality stages ran through scripts/eval/run_*.sh (GSM8K, RULER, PPL) plus their"
+	@echo "analyzers, e.g. scripts/eval/analyze_gsm8k_dependence.py; the PPL harness is"
+	@echo "scripts/exp/hybrid_premise.py."
+	@exit 2
 
-analyze: ## 汇总 metrics -> results/（唯一允许产出论文图表的入口）
-	python -m scripts.analyze.aggregate
+analyze: ## [not implemented] 统一汇总入口：见各 stage analyzer 与 ./reproduce.sh figures
+	@echo "make analyze is not implemented: scripts.analyze.aggregate is a stub."
+	@echo "Paper values come from per-stage analyzers:"
+	@echo "  scripts/bench/build_capacity_matrix_table.py"
+	@echo "  scripts/eval/analyze_gsm8k_dependence.py"
+	@echo "  scripts/quality/analyze_m4_formal.py"
+	@echo "  paper/mlsys2026/figures/make_vector_figures.py  (via ./reproduce.sh figures)"
+	@exit 2
 
 archive: ## 归档 headline 原始运行：make archive EXP=<name>
 	./scripts/archive.sh $(EXP)

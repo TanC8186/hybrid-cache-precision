@@ -14,7 +14,10 @@ import argparse
 def measure_memory(experiment: str) -> None:
     raise NotImplementedError(
         "TODO: 起 vLLM 引擎（量化 KV）→ 固定 workload → 读 allocator num_blocks×block_size"
-        "→ 计算 KV 字节与 weights 分解 → 输出曲线到 results/（仅 remote_5090）"
+        "→ 计算 KV 字节与 weights 分解 → 输出曲线到 results/（仅 remote_5090）。"
+        "未实现：论文的容量/内存证据由 scripts/bench/run_capacity_phase_diagram.sh "
+        "采集、scripts/bench/analyze_capacity_phase_diagram.py 分析；SSM state "
+        "探针见 scripts/bench/probe_ssm_state_dtype.py。"
     )
 
 

@@ -16,7 +16,11 @@ import argparse
 def aggregate(runs: list[str] | None = None) -> None:
     raise NotImplementedError(
         "TODO: 读取 experiments/<run>/metrics.jsonl（含 env_id 校验），"
-        "折叠 seeds → mean/std/p50/p99 → 写 results/tables|figures"
+        "折叠 seeds → mean/std/p50/p99 → 写 results/tables|figures。"
+        "未实现：论文数值由各 stage analyzer 产出——"
+        "scripts/bench/build_capacity_matrix_table.py、"
+        "scripts/eval/analyze_gsm8k_dependence.py、"
+        "scripts/quality/analyze_m4_formal.py；图由 ./reproduce.sh figures 重生成。"
     )
 
 

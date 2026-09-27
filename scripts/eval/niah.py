@@ -8,7 +8,11 @@ import argparse
 
 
 def run_niah(experiment: str) -> None:
-    raise NotImplementedError("TODO: 加载 data/niah 合成数据，测各 (depth, length) 检索准确率 → metrics(jsonl)")
+    raise NotImplementedError(
+        "TODO: 加载 data/niah 合成数据，测各 (depth, length) 检索准确率 → metrics(jsonl)。"
+        "未实现：NIAH 由 scripts/eval/run_niah_fixed.sh 采集、"
+        "scripts/eval/analyze_niah_fixed.py 分析。"
+    )
 
 
 def main() -> None:

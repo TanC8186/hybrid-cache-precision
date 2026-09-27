@@ -1,9 +1,8 @@
 """困惑度评测：PPL vs 上下文长度（Wikitext / PG19），量化方法的核心质量指标。
 
-评测 harness 来自 vendor/eval（submodule 固定版本），本模块只做封装与路由：
-- 读取 configs/eval/quality.yaml 的 env_routing
-- 断言上下文长度在 configs/env/*.yaml 的预算内（context_budget_guard）
-- 写 metrics(jsonl)：每 (model, quantization, seq_len, seed) 一行
+本模块的 harness 封装未实现。论文使用的是 chunk-level C4/PG19 harness：
+scripts/exp/hybrid_premise.py 采集，scripts/eval/analyze_ppl_stacking.py 等分析；
+论文报告值为 chunk=128、三个 dataset seed。
 """
 from __future__ import annotations
 
@@ -12,8 +11,9 @@ import argparse
 
 def run_perplexity(experiment: str) -> None:
     raise NotImplementedError(
-        "TODO: 调 lm-eval-harness（vendor/eval）跑 wikitext/pg19，"
-        "按 config 路由到 remote_5090，输出 metrics(jsonl)"
+        "TODO: 调 lm-eval-harness 跑 wikitext/pg19，按 config 路由到 remote_5090，"
+        "输出 metrics(jsonl)。未实现：论文 PPL 由 scripts/exp/hybrid_premise.py "
+        "采集、scripts/eval/analyze_ppl_stacking.py 等分析。"
     )
 
 

@@ -39,9 +39,9 @@ dev = [
     "pillow>=10",
     "pymupdf>=1.24",
 ]
-# 注意：vLLM 从 vendor/vllm 构建安装，不在此声明（版本以 configs/env + submodule SHA 锁定）
+# 注意：vLLM 从 vendor/vllm 构建安装，不在此声明（版本以 configs/env + 重建补丁栈锁定）
 bench = ["aiohttp"]
-eval = []   # lm-eval-harness / LongBench 以 submodule 形式固定于 vendor/eval
+eval = []   # 质量 harness 见 scripts/eval/ 与 scripts/exp/hybrid_premise.py
 
 [tool.setuptools.packages.find]
 where = ["src"]
