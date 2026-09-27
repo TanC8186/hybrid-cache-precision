@@ -102,11 +102,19 @@ not redistributed).
 
 Re-verified after the revision:
 
-- `main.pdf`: 6 pages, 612 x 792 pt (US Letter); no overfull or underfull
-  boxes; abstract 248 words by mechanical count with LaTeX commands stripped
-  (the venue submission form allows 20--250)
+- `main.pdf`: 6 pages, 612 x 792 pt (US Letter); PDF metadata (title, authors,
+  keywords) now set explicitly; abstract 248 words by mechanical count with
+  LaTeX commands stripped (the venue submission form allows 20--250)
+- No overfull boxes and no content outside the text block: rendered ink extents
+  are rows 51--718 and columns 47--563 against a text block of roughly
+  45--567 pt at 72 dpi (float pages 3 and 5 end early by design). Three
+  underfull notices remain and were inspected: two `\vbox` slack warnings on
+  the float and balanced pages, and one mildly loose line (badness 1502) in the
+  artifact paragraph where the URL breaks
 - Figures 3 and 4 are set at `0.95\linewidth`; `xurl` is loaded so the artifact
   URL can break inside a column
 - `supplement.pdf`: 4 pages
 - Figure/data verifier: PASS, including the new crossover and state-share
   recomputation (`verify_state_share_crossover`)
+- A clean rebuild in an isolated copy reproduces the committed PDF exactly
+  (identical extracted text, 6 pages)
