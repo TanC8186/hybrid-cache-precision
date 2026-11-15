@@ -31,10 +31,20 @@ class _DummyQuantizer:
         return q.to(torch.float32) * self.scale
 
 
-def test_roundtrip_error_within_tolerance() -> None:
-    """8-bit 对称量化，roundtrip 最大误差应 < scale/2（数据推导 scale 时 ≈0.016）。"""
-    x = torch.randn(64, 128)
-    assert_sanity(x, _DummyQuantizer(bits=8), tol=2e-2)
+@pytest.mark.parametrize("peak", [1.0, 6.0, 128.0])
+def test_roundtrip_error_within_tolerance(peak: float) -> None:
+    """Nearest rounding stays within half a quantization step at every scale."""
+    x = torch.linspace(-peak, peak, 64 * 128).reshape(64, 128)
+    half_step = peak / (2 * 127)
+    rounding_allowance = 2 * torch.finfo(x.dtype).eps * peak
+    assert_sanity(x, _DummyQuantizer(bits=8), tol=half_step + rounding_allowance)
+
+
+def test_sanity_rejects_excessive_roundtrip_error() -> None:
+    """A tolerance below the actual reconstruction error must fail closed."""
+    x = torch.tensor([-1.0, -0.5, 0.0, 0.5, 1.0])
+    with pytest.raises(AssertionError, match="exceeds tol"):
+        assert_sanity(x, _DummyQuantizer(bits=8), tol=1e-8)
 
 
 def test_kv_reconstruction_mse_small() -> None:

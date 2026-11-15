@@ -19,5 +19,7 @@ python paper/mlsys2026/figures/verify_figure_data.py
 Editable Draw.io, SVG, PDF, and Python figure sources are retained. Generated
 LaTeX auxiliaries, TIFF exports, and visual-QA rasters are ignored.
 
-The manuscripts remain anonymous. Replace placeholders and add citation
-metadata only when the applicable venue policy permits de-anonymization.
+The DLS 2026 camera-ready contains the final author metadata. The earlier
+MLSys-format source retains its anonymous presentation; check the applicable
+venue policy before reusing it for a new submission. These are two versions
+of the same study, not independent replications.
